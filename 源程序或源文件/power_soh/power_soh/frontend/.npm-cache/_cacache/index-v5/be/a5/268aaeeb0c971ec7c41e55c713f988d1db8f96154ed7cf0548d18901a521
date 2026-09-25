@@ -1,0 +1,2 @@
+
+bc96cc2eddf4265618443ac9d09676458e5047e6	{"key":"make-fetch-happen:request-cache:http://registry.npm.taobao.org/ssf","integrity":null,"time":1768188127709,"size":"262","metadata":{"time":1768188127709,"url":"http://registry.npm.taobao.org/ssf","reqHeaders":{"accept":"application/json"},"resHeaders":{"content-type":"text/html","date":"Mon, 12 Jan 2026 03:22:07 GMT","location":"https://registry.npmmirror.com/ssf"},"options":{"compress":true},"status":301}}
