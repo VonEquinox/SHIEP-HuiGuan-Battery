@@ -1,0 +1,122 @@
+{
+  "scope": "adaptive development; absolute-capacity targets never model inputs; heldout unscored",
+  "view_sha256": "52ce55b7e6510a5b949d98df6338b3123b3d7fab43baee64567b4dcda8952974",
+  "source_bundle_sha256": "f9b4b71263c69806b88759cc8b71d16fc6eb47246c7421d8e464bd36609750ef",
+  "code_sha256": "e1d75367a61254cee55488814fefdabbd31d727a5613631a3475f0bc9c70706a",
+  "model_code_sha256": "9a2106ed6cd3dbc6c0beb0aaaef0ad1ad472a7bc8631c2438254c1b1140022c2",
+  "folds": [
+    {
+      "train_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-6",
+        "Batch-4/R3_battery-7",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-4",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-7",
+        "Batch-6/Sim_satellite_battery-8"
+      ],
+      "validation_cells": [
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-7",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4"
+      ]
+    },
+    {
+      "train_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-6",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-7",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-8"
+      ],
+      "validation_cells": [
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-7",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-4",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-7"
+      ]
+    },
+    {
+      "train_cells": [
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-7",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-4",
+        "Batch-5/RW_battery-7",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4",
+        "Batch-6/Sim_satellite_battery-7"
+      ],
+      "validation_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-6",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-8"
+      ]
+    }
+  ],
+  "configs": [
+    {
+      "width": 96,
+      "lr": 0.0005
+    },
+    {
+      "width": 96,
+      "lr": 0.002
+    },
+    {
+      "width": 96,
+      "lr": 0.006
+    }
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "modes": [
+    "capacity_joint",
+    "capacity_absolute_only",
+    "capacity_relative_only"
+  ],
+  "max_epochs": 500,
+  "patience": 60,
+  "joint_absolute_loss_weight": 0.25,
+  "heldout_cells": [
+    "Batch-4/R3_battery-5",
+    "Batch-5/RW_battery-5",
+    "Batch-6/Sim_satellite_battery-5"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "created_at_utc": "2026-09-25T13:51:34.429378+00:00",
+  "scope": "fixed-recipe adaptive development follow-up; holdout unscored",
+  "package": "tabicl==2.2.0",
+  "checkpoint_sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+  "runner_sha256": "2c7ad77a50c8f063f0002afd165e08696cc11baaa667fb07dd579a75271b28e9",
+  "protocol_sha256": "afbecee874aeefc37b1070bc2e9902d73935eabfa5f2622e936930e6deff07b1",
+  "view_sha256": "52ce55b7e6510a5b949d98df6338b3123b3d7fab43baee64567b4dcda8952974",
+  "folds_sha256": "684c9906735e376cd4507f577bd307407f69a9a826585e75d566cfcafeb030b3",
+  "regressor_source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+  "prior_manifest_sha256": "86fd391ceec366fb69721913e0fec2cabea886c19d2b7dd579751c0f5e7d1628",
+  "folds": [
+    {
+      "train_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-6",
+        "Batch-4/R3_battery-7",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-4",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-7",
+        "Batch-6/Sim_satellite_battery-8"
+      ],
+      "validation_cells": [
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-7",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4"
+      ]
+    },
+    {
+      "train_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-6",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-7",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-8"
+      ],
+      "validation_cells": [
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-7",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-4",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-7"
+      ]
+    },
+    {
+      "train_cells": [
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-7",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-4",
+        "Batch-5/RW_battery-7",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4",
+        "Batch-6/Sim_satellite_battery-7"
+      ],
+      "validation_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-6",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-8"
+      ]
+    }
+  ],
+  "heldout_cells_unscored": [
+    "Batch-4/R3_battery-5",
+    "Batch-5/RW_battery-5",
+    "Batch-6/Sim_satellite_battery-5"
+  ],
+  "methods": [
+    "extra_trees_matched",
+    "extra_trees_anchored",
+    "tabicl",
+    "tabicl_anchored",
+    "tabicl_et_equal"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "context_fits": 9,
+  "n_estimators": 8,
+  "batch_size": 1,
+  "kv_cache": "repr",
+  "device": "mps",
+  "amp": false,
+  "sample_weight_supported": false,
+  "sample_weight_note": "Native full-cycle context; macro evaluation remains equal-cell",
+  "target": "log of observed diagnostic capacity ratio",
+  "query_gate_tolerance": 0.0001,
+  "mixture_weight": 0.5,
+  "external_inference_service": false,
+  "et_artifact_sha256": {
+    "extra_trees_matched-f0-s0.joblib": "2278a504f8d2eb7c21146b89fee309d33481f40462c6942722fd57e8d4820477",
+    "extra_trees_matched-f0-s1.joblib": "39442cab6741759509a9138d78a19da1c7bcf5c6d22d7446f82681762760215b",
+    "extra_trees_matched-f0-s2.joblib": "957a7f2e7824d06cf6f878fcac0e1abe25df18eddd30d3ac6ace674038ad5fad",
+    "extra_trees_matched-f1-s0.joblib": "e9a91cda184044084cf5d74d7469c67db77680e1570897d621e0f63cedbcd9f3",
+    "extra_trees_matched-f1-s1.joblib": "641f4fbc5b52e936a674d305312c66a46cae13b92addc72c08815050989f5872",
+    "extra_trees_matched-f1-s2.joblib": "a013be3f3a175c56b47200c674299ed9ca01f16307cbb1a00a7f4c4b94f5b3a3",
+    "extra_trees_matched-f2-s0.joblib": "0ba949a57c968795a109f94757cd71b369c12a74edf694585fceb6dffe2c1583",
+    "extra_trees_matched-f2-s1.joblib": "31595251eff20e21cf033763e39a16b78532870ae51fbd1a4a22a54418bcf7c4",
+    "extra_trees_matched-f2-s2.joblib": "f610f20469892f6d7a3d549ec00c6e2de7f9c4bf819d0f61a93a63eacc9ba5d9"
+  }
+}

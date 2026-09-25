@@ -1,0 +1,289 @@
+{
+  "scope": "NASA source/protocol transfer stress test, zero-shot; not same-benchmark SOTA",
+  "task": "2.7V integrated NASA operational discharge relative to first eligible calibration",
+  "archive_sha256": "82302a7db4fc1b34e0b6676326610438d43b816bdf11a69d1d012a464ef2f92e",
+  "raw_audit_sha256": "2e2ce27a6f5dea3b5fb50b7d0b13c22694338d2d1016aaa038edf2aa2d6a4bfe",
+  "audit_view_sha256": "c8a7b283e4224b785b9c767453aa0ff110814b11d1f9028f046c9d57d0a2f22a",
+  "frozen_champion_sha256": "c652bdfc52f994884c06e70d4a2e710070deec21c50d7934d39e48bec4831981",
+  "scorer_sha256": "f81b2ad366740f2fcfc7d7febea095cbbb030c06081fc2c5258f3bb33c0a425b",
+  "source_cells": 34,
+  "eligible_cells": 23,
+  "eligible_rows": 946,
+  "excluded_cells": 11,
+  "cell_macro_mae_pp": 4.9478843327124125,
+  "pooled_mae_pp": 4.136389865527514,
+  "prediction_range_soh": [
+    0.8383054137721003,
+    0.9676332062408585
+  ],
+  "truth_range_soh": [
+    0.01890620661241837,
+    1.3575372310415472
+  ],
+  "input_outside_training_range": {
+    "rows_with_any_outside_feature": 946,
+    "total_rows": 946,
+    "outside_feature_fraction": 0.6057305779709973,
+    "per_feature_outside_counts": [
+      833,
+      1892,
+      1892,
+      1892,
+      1717,
+      1588,
+      1241,
+      1014,
+      961,
+      1265,
+      1570,
+      1892,
+      1890,
+      1879,
+      1807,
+      1814,
+      1703,
+      1892,
+      1892,
+      1892,
+      1892,
+      1892,
+      1553,
+      743,
+      768,
+      985,
+      1742,
+      1831,
+      1889,
+      1892,
+      1806,
+      1727,
+      355,
+      1712,
+      1854,
+      1692,
+      1594,
+      1143,
+      778,
+      656,
+      641,
+      762,
+      1157,
+      1444,
+      1733,
+      1725,
+      1709,
+      1697,
+      0,
+      0,
+      23,
+      214,
+      255,
+      255,
+      255,
+      310,
+      339,
+      547,
+      634,
+      687,
+      688,
+      691,
+      805,
+      816,
+      200,
+      154,
+      0,
+      1892,
+      0,
+      706,
+      0
+    ]
+  },
+  "per_cell": [
+    {
+      "cell": "B0005",
+      "n": 49,
+      "mae_pp": 2.5127704529624766
+    },
+    {
+      "cell": "B0006",
+      "n": 43,
+      "mae_pp": 4.258118020483397
+    },
+    {
+      "cell": "B0007",
+      "n": 60,
+      "mae_pp": 2.930274188531369
+    },
+    {
+      "cell": "B0018",
+      "n": 109,
+      "mae_pp": 9.327374858195537
+    },
+    {
+      "cell": "B0025",
+      "n": 25,
+      "mae_pp": 3.455872176028106
+    },
+    {
+      "cell": "B0026",
+      "n": 25,
+      "mae_pp": 4.285793514000528
+    },
+    {
+      "cell": "B0027",
+      "n": 25,
+      "mae_pp": 2.647564459594293
+    },
+    {
+      "cell": "B0028",
+      "n": 25,
+      "mae_pp": 4.280297360891755
+    },
+    {
+      "cell": "B0029",
+      "n": 33,
+      "mae_pp": 3.5667779656049445
+    },
+    {
+      "cell": "B0030",
+      "n": 32,
+      "mae_pp": 3.768494378865922
+    },
+    {
+      "cell": "B0031",
+      "n": 35,
+      "mae_pp": 2.1433754337545583
+    },
+    {
+      "cell": "B0032",
+      "n": 31,
+      "mae_pp": 3.9780996393801233
+    },
+    {
+      "cell": "B0036",
+      "n": 179,
+      "mae_pp": 2.9603747904403894
+    },
+    {
+      "cell": "B0038",
+      "n": 32,
+      "mae_pp": 3.9056690641899285
+    },
+    {
+      "cell": "B0039",
+      "n": 31,
+      "mae_pp": 3.4383061385801215
+    },
+    {
+      "cell": "B0040",
+      "n": 32,
+      "mae_pp": 4.974561810696079
+    },
+    {
+      "cell": "B0042",
+      "n": 54,
+      "mae_pp": 2.4492164845969318
+    },
+    {
+      "cell": "B0043",
+      "n": 42,
+      "mae_pp": 3.0522556479484626
+    },
+    {
+      "cell": "B0044",
+      "n": 17,
+      "mae_pp": 1.8685599826975072
+    },
+    {
+      "cell": "B0046",
+      "n": 51,
+      "mae_pp": 5.036261984582105
+    },
+    {
+      "cell": "B0047",
+      "n": 9,
+      "mae_pp": 3.5327736411717012
+    },
+    {
+      "cell": "B0048",
+      "n": 4,
+      "mae_pp": 3.116885273258577
+    },
+    {
+      "cell": "B0050",
+      "n": 3,
+      "mae_pp": 32.31166238593068
+    }
+  ],
+  "by_source_archive": {
+    "5. Battery Data Set/1. BatteryAgingARC-FY08Q4.zip": {
+      "cells": 4,
+      "cell_mae_pp": 4.757134380043196
+    },
+    "5. Battery Data Set/2. BatteryAgingARC_25_26_27_28_P1.zip": {
+      "cells": 4,
+      "cell_mae_pp": 3.667381877628671
+    },
+    "5. Battery Data Set/3. BatteryAgingARC_25-44.zip": {
+      "cells": 11,
+      "cell_mae_pp": 3.282335576068633
+    },
+    "5. Battery Data Set/4. BatteryAgingARC_45_46_47_48.zip": {
+      "cells": 3,
+      "cell_mae_pp": 3.8953069663374613
+    },
+    "5. Battery Data Set/5. BatteryAgingARC_49_50_51_52.zip": {
+      "cells": 1,
+      "cell_mae_pp": 32.31166238593068
+    }
+  },
+  "worst_cells": [
+    {
+      "cell": "B0050",
+      "n": 3,
+      "mae_pp": 32.31166238593068
+    },
+    {
+      "cell": "B0018",
+      "n": 109,
+      "mae_pp": 9.327374858195537
+    },
+    {
+      "cell": "B0046",
+      "n": 51,
+      "mae_pp": 5.036261984582105
+    },
+    {
+      "cell": "B0040",
+      "n": 32,
+      "mae_pp": 4.974561810696079
+    },
+    {
+      "cell": "B0026",
+      "n": 25,
+      "mae_pp": 4.285793514000528
+    },
+    {
+      "cell": "B0028",
+      "n": 25,
+      "mae_pp": 4.280297360891755
+    },
+    {
+      "cell": "B0006",
+      "n": 43,
+      "mae_pp": 4.258118020483397
+    },
+    {
+      "cell": "B0032",
+      "n": 31,
+      "mae_pp": 3.9780996393801233
+    }
+  ],
+  "audit_pair_roles": {
+    "initial_reference": 25,
+    "scored_external_candidate": 946,
+    "excluded_nonstandard_capacity": 6
+  },
+  "xjtu_heldout_model_scores": false,
+  "nasa_fitting_or_threshold_selection": false
+}

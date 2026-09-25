@@ -1,0 +1,29 @@
+{
+  "all_passed": true,
+  "scope": "host CSV recomputation and code/data/pretrained-weight checks",
+  "checks": [
+    {
+      "method": "extra_trees_matched",
+      "recomputed_cell_macro_mae_pp": 0.6575461807590995
+    },
+    {
+      "method": "extra_trees_anchored",
+      "recomputed_cell_macro_mae_pp": 1.1770748189367775
+    },
+    {
+      "method": "tabicl",
+      "recomputed_cell_macro_mae_pp": 0.6058636436138412
+    },
+    {
+      "method": "tabicl_anchored",
+      "recomputed_cell_macro_mae_pp": 5.599988432596989
+    },
+    {
+      "method": "tabicl_et_equal",
+      "recomputed_cell_macro_mae_pp": 0.5858972199103467
+    }
+  ],
+  "heldout_model_scores": false,
+  "current_selected_recipe": "tabicl_et_equal",
+  "note": "Adaptive development uncertainty; not SOTA or no-overfit acceptance."
+}

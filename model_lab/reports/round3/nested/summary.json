@@ -1,0 +1,2054 @@
+{
+  "scope": "adaptive nested development only; no heldout model scores",
+  "seconds": 263.5381455839961,
+  "device": "mps",
+  "development_cells": 21,
+  "development_rows": 2058,
+  "heldout_cells_unscored": [
+    "Batch-4/R3_battery-5",
+    "Batch-5/RW_battery-5",
+    "Batch-6/Sim_satellite_battery-5"
+  ],
+  "selections": [
+    {
+      "method": "ridge_matched",
+      "fold": 0,
+      "selected_config": 1,
+      "config_values": {
+        "alpha": 10.0
+      },
+      "inner_mean_seed_cell_mae_pp": 1.360416186180754,
+      "inner_mean_train_cell_mae_pp": 0.8981410648538226,
+      "epochs_by_seed": {
+        "0": null
+      },
+      "inner_minus_train_gap_pp": 0.4622751213269314
+    },
+    {
+      "method": "extra_trees_matched",
+      "fold": 0,
+      "selected_config": 0,
+      "config_values": {
+        "min_samples_leaf": 1
+      },
+      "inner_mean_seed_cell_mae_pp": 1.538542925287205,
+      "inner_mean_train_cell_mae_pp": 1.5433508958356285e-14,
+      "epochs_by_seed": {
+        "0": null,
+        "1": null,
+        "2": null
+      },
+      "inner_minus_train_gap_pp": 1.5385429252871894
+    },
+    {
+      "method": "conditional_kernel",
+      "fold": 0,
+      "selected_config": 0,
+      "config_values": {
+        "alpha": 0.01,
+        "gamma": 0.0017605633802816902
+      },
+      "inner_mean_seed_cell_mae_pp": 1.1278028938966798,
+      "inner_mean_train_cell_mae_pp": 0.27913161714500245,
+      "epochs_by_seed": {
+        "0": null
+      },
+      "inner_minus_train_gap_pp": 0.8486712767516773
+    },
+    {
+      "method": "matched_mlp",
+      "fold": 0,
+      "selected_config": 0,
+      "config_values": {
+        "width": 96,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 1.2709435004418612,
+      "inner_mean_train_cell_mae_pp": 0.5080853507596138,
+      "epochs_by_seed": {
+        "0": 65,
+        "1": 70,
+        "2": 75
+      },
+      "inner_minus_train_gap_pp": 0.7628581496822474
+    },
+    {
+      "method": "tabm_embedded",
+      "fold": 0,
+      "selected_config": 0,
+      "config_values": {
+        "width": 96,
+        "members": 8,
+        "bins": 16,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 1.2309942576783808,
+      "inner_mean_train_cell_mae_pp": 0.5774135620043367,
+      "epochs_by_seed": {
+        "0": 65,
+        "1": 65,
+        "2": 80
+      },
+      "inner_minus_train_gap_pp": 0.6535806956740441
+    },
+    {
+      "method": "film_context",
+      "fold": 0,
+      "selected_config": 1,
+      "config_values": {
+        "width": 32,
+        "members": 4,
+        "lr": 0.002,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 1.3822467404491103,
+      "inner_mean_train_cell_mae_pp": 0.2709669321373282,
+      "epochs_by_seed": {
+        "0": 285,
+        "1": 490,
+        "2": 405
+      },
+      "inner_minus_train_gap_pp": 1.111279808311782
+    },
+    {
+      "method": "film_no_context",
+      "fold": 0,
+      "selected_config": 2,
+      "config_values": {
+        "width": 32,
+        "members": 4,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 1.3587903025784527,
+      "inner_mean_train_cell_mae_pp": 0.47292433970396597,
+      "epochs_by_seed": {
+        "0": 375,
+        "1": 45,
+        "2": 165
+      },
+      "inner_minus_train_gap_pp": 0.8858659628744867
+    },
+    {
+      "method": "anchored_conditional",
+      "fold": 0,
+      "selected_config": 0,
+      "config_values": {
+        "width": 24,
+        "rank": 4,
+        "lr": 0.0005,
+        "weight_decay": 0.01
+      },
+      "inner_mean_seed_cell_mae_pp": 1.1943906156701825,
+      "inner_mean_train_cell_mae_pp": 0.5701180175869321,
+      "epochs_by_seed": {
+        "0": 500,
+        "1": 500,
+        "2": 370
+      },
+      "inner_minus_train_gap_pp": 0.6242725980832503
+    },
+    {
+      "method": "ridge_matched",
+      "fold": 1,
+      "selected_config": 0,
+      "config_values": {
+        "alpha": 0.1
+      },
+      "inner_mean_seed_cell_mae_pp": 1.1097707956920313,
+      "inner_mean_train_cell_mae_pp": 0.6724421989237835,
+      "epochs_by_seed": {
+        "0": null
+      },
+      "inner_minus_train_gap_pp": 0.43732859676824776
+    },
+    {
+      "method": "extra_trees_matched",
+      "fold": 1,
+      "selected_config": 0,
+      "config_values": {
+        "min_samples_leaf": 1
+      },
+      "inner_mean_seed_cell_mae_pp": 0.7042497612799042,
+      "inner_mean_train_cell_mae_pp": 1.6841415393388994e-14,
+      "epochs_by_seed": {
+        "0": null,
+        "1": null,
+        "2": null
+      },
+      "inner_minus_train_gap_pp": 0.7042497612798874
+    },
+    {
+      "method": "conditional_kernel",
+      "fold": 1,
+      "selected_config": 0,
+      "config_values": {
+        "alpha": 0.01,
+        "gamma": 0.0017605633802816902
+      },
+      "inner_mean_seed_cell_mae_pp": 0.5054583732486585,
+      "inner_mean_train_cell_mae_pp": 0.2737083257005729,
+      "epochs_by_seed": {
+        "0": null
+      },
+      "inner_minus_train_gap_pp": 0.2317500475480856
+    },
+    {
+      "method": "matched_mlp",
+      "fold": 1,
+      "selected_config": 0,
+      "config_values": {
+        "width": 96,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 0.4975732193884053,
+      "inner_mean_train_cell_mae_pp": 0.29643154495041485,
+      "epochs_by_seed": {
+        "0": 435,
+        "1": 195,
+        "2": 345
+      },
+      "inner_minus_train_gap_pp": 0.20114167443799047
+    },
+    {
+      "method": "tabm_embedded",
+      "fold": 1,
+      "selected_config": 0,
+      "config_values": {
+        "width": 96,
+        "members": 8,
+        "bins": 16,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 0.5690698491085592,
+      "inner_mean_train_cell_mae_pp": 0.3573408478910088,
+      "epochs_by_seed": {
+        "0": 200,
+        "1": 150,
+        "2": 180
+      },
+      "inner_minus_train_gap_pp": 0.2117290012175504
+    },
+    {
+      "method": "film_context",
+      "fold": 1,
+      "selected_config": 0,
+      "config_values": {
+        "width": 32,
+        "members": 4,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 0.6460475380825987,
+      "inner_mean_train_cell_mae_pp": 0.41411473359569717,
+      "epochs_by_seed": {
+        "0": 500,
+        "1": 500,
+        "2": 250
+      },
+      "inner_minus_train_gap_pp": 0.23193280448690157
+    },
+    {
+      "method": "film_no_context",
+      "fold": 1,
+      "selected_config": 2,
+      "config_values": {
+        "width": 32,
+        "members": 4,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 0.6190838778723764,
+      "inner_mean_train_cell_mae_pp": 0.4661591388312169,
+      "epochs_by_seed": {
+        "0": 355,
+        "1": 90,
+        "2": 65
+      },
+      "inner_minus_train_gap_pp": 0.1529247390411595
+    },
+    {
+      "method": "anchored_conditional",
+      "fold": 1,
+      "selected_config": 2,
+      "config_values": {
+        "width": 24,
+        "rank": 4,
+        "lr": 0.006,
+        "weight_decay": 0.01
+      },
+      "inner_mean_seed_cell_mae_pp": 0.5164126497157434,
+      "inner_mean_train_cell_mae_pp": 0.4113198239924702,
+      "epochs_by_seed": {
+        "0": 95,
+        "1": 475,
+        "2": 130
+      },
+      "inner_minus_train_gap_pp": 0.10509282572327322
+    },
+    {
+      "method": "ridge_matched",
+      "fold": 2,
+      "selected_config": 1,
+      "config_values": {
+        "alpha": 10.0
+      },
+      "inner_mean_seed_cell_mae_pp": 1.097683933506148,
+      "inner_mean_train_cell_mae_pp": 0.9243381904550461,
+      "epochs_by_seed": {
+        "0": null
+      },
+      "inner_minus_train_gap_pp": 0.17334574305110184
+    },
+    {
+      "method": "extra_trees_matched",
+      "fold": 2,
+      "selected_config": 1,
+      "config_values": {
+        "min_samples_leaf": 3
+      },
+      "inner_mean_seed_cell_mae_pp": 0.839269222355076,
+      "inner_mean_train_cell_mae_pp": 0.0797635310940223,
+      "epochs_by_seed": {
+        "0": null,
+        "1": null,
+        "2": null
+      },
+      "inner_minus_train_gap_pp": 0.7595056912610536
+    },
+    {
+      "method": "conditional_kernel",
+      "fold": 2,
+      "selected_config": 2,
+      "config_values": {
+        "alpha": 1.0,
+        "gamma": 0.028169014084507043
+      },
+      "inner_mean_seed_cell_mae_pp": 1.4038010659068016,
+      "inner_mean_train_cell_mae_pp": 0.3831741600047795,
+      "epochs_by_seed": {
+        "0": null
+      },
+      "inner_minus_train_gap_pp": 1.020626905902022
+    },
+    {
+      "method": "matched_mlp",
+      "fold": 2,
+      "selected_config": 1,
+      "config_values": {
+        "width": 96,
+        "lr": 0.002,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 0.7459991463226358,
+      "inner_mean_train_cell_mae_pp": 0.6383068202765214,
+      "epochs_by_seed": {
+        "0": 100,
+        "1": 20,
+        "2": 175
+      },
+      "inner_minus_train_gap_pp": 0.10769232604611434
+    },
+    {
+      "method": "tabm_embedded",
+      "fold": 2,
+      "selected_config": 2,
+      "config_values": {
+        "width": 96,
+        "members": 8,
+        "bins": 16,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 0.8652247500001655,
+      "inner_mean_train_cell_mae_pp": 0.4276970878398099,
+      "epochs_by_seed": {
+        "0": 15,
+        "1": 270,
+        "2": 295
+      },
+      "inner_minus_train_gap_pp": 0.4375276621603556
+    },
+    {
+      "method": "film_context",
+      "fold": 2,
+      "selected_config": 2,
+      "config_values": {
+        "width": 32,
+        "members": 4,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 1.1321092195087565,
+      "inner_mean_train_cell_mae_pp": 0.8078244233971299,
+      "epochs_by_seed": {
+        "0": 30,
+        "1": 90,
+        "2": 25
+      },
+      "inner_minus_train_gap_pp": 0.32428479611162664
+    },
+    {
+      "method": "film_no_context",
+      "fold": 2,
+      "selected_config": 2,
+      "config_values": {
+        "width": 32,
+        "members": 4,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      },
+      "inner_mean_seed_cell_mae_pp": 1.2274895505635166,
+      "inner_mean_train_cell_mae_pp": 1.1283602452525663,
+      "epochs_by_seed": {
+        "0": 30,
+        "1": 25,
+        "2": 35
+      },
+      "inner_minus_train_gap_pp": 0.09912930531095032
+    },
+    {
+      "method": "anchored_conditional",
+      "fold": 2,
+      "selected_config": 1,
+      "config_values": {
+        "width": 24,
+        "rank": 4,
+        "lr": 0.002,
+        "weight_decay": 0.01
+      },
+      "inner_mean_seed_cell_mae_pp": 1.2542129298602835,
+      "inner_mean_train_cell_mae_pp": 0.8775171128335747,
+      "epochs_by_seed": {
+        "0": 60,
+        "1": 195,
+        "2": 65
+      },
+      "inner_minus_train_gap_pp": 0.37669581702670885
+    }
+  ],
+  "methods": [
+    {
+      "method": "ridge_matched",
+      "single_seed_cell_mae_pp": [
+        1.383480495904757
+      ],
+      "single_seed_mean_pp": 1.383480495904757,
+      "single_seed_sd_pp": null,
+      "geometric_ensemble": {
+        "cell_mae_pp": 1.383480495904757,
+        "cell_rmse_pp": 1.674300633364577,
+        "cells": [
+          {
+            "cell": "Batch-4/R3_battery-1",
+            "n": 133,
+            "mae_pp": 1.5416337843837649,
+            "rmse_pp": 1.691192822541648
+          },
+          {
+            "cell": "Batch-4/R3_battery-2",
+            "n": 112,
+            "mae_pp": 1.4241004524277383,
+            "rmse_pp": 1.6213738166734148
+          },
+          {
+            "cell": "Batch-4/R3_battery-3",
+            "n": 112,
+            "mae_pp": 0.869633847591923,
+            "rmse_pp": 1.1890179907424887
+          },
+          {
+            "cell": "Batch-4/R3_battery-4",
+            "n": 121,
+            "mae_pp": 3.2192152294614167,
+            "rmse_pp": 3.2963733369091766
+          },
+          {
+            "cell": "Batch-4/R3_battery-6",
+            "n": 119,
+            "mae_pp": 0.923437512349006,
+            "rmse_pp": 1.1660902812691594
+          },
+          {
+            "cell": "Batch-4/R3_battery-7",
+            "n": 100,
+            "mae_pp": 1.626208950205512,
+            "rmse_pp": 2.1103084915118813
+          },
+          {
+            "cell": "Batch-4/R3_battery-8",
+            "n": 125,
+            "mae_pp": 1.415554759177564,
+            "rmse_pp": 1.6590196458341577
+          },
+          {
+            "cell": "Batch-5/RW_battery-1",
+            "n": 16,
+            "mae_pp": 2.642394186824001,
+            "rmse_pp": 2.7114275787085678
+          },
+          {
+            "cell": "Batch-5/RW_battery-2",
+            "n": 26,
+            "mae_pp": 1.545950675436758,
+            "rmse_pp": 1.9138286300380176
+          },
+          {
+            "cell": "Batch-5/RW_battery-3",
+            "n": 29,
+            "mae_pp": 0.9076581133575985,
+            "rmse_pp": 1.1892377154112097
+          },
+          {
+            "cell": "Batch-5/RW_battery-4",
+            "n": 21,
+            "mae_pp": 0.8924906633310421,
+            "rmse_pp": 1.1174731545348395
+          },
+          {
+            "cell": "Batch-5/RW_battery-6",
+            "n": 18,
+            "mae_pp": 1.2339623289730421,
+            "rmse_pp": 1.4880192008947297
+          },
+          {
+            "cell": "Batch-5/RW_battery-7",
+            "n": 15,
+            "mae_pp": 1.7629391325972203,
+            "rmse_pp": 1.9335118446136343
+          },
+          {
+            "cell": "Batch-5/RW_battery-8",
+            "n": 17,
+            "mae_pp": 1.1758535285262213,
+            "rmse_pp": 2.083259185410495
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-1",
+            "n": 146,
+            "mae_pp": 0.942370879317366,
+            "rmse_pp": 1.2067382682630539
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-2",
+            "n": 189,
+            "mae_pp": 0.8432241351554198,
+            "rmse_pp": 1.1099328423731125
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-3",
+            "n": 140,
+            "mae_pp": 1.2015709956246927,
+            "rmse_pp": 1.4475575497184783
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-4",
+            "n": 145,
+            "mae_pp": 1.0067342884937744,
+            "rmse_pp": 1.2971169476353812
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-6",
+            "n": 166,
+            "mae_pp": 1.0648463197141311,
+            "rmse_pp": 1.4237203323115366
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-7",
+            "n": 146,
+            "mae_pp": 1.6665683954730288,
+            "rmse_pp": 1.9851740659257946
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-8",
+            "n": 162,
+            "mae_pp": 1.1467422355786774,
+            "rmse_pp": 1.519939599335341
+          }
+        ]
+      },
+      "by_batch": {
+        "Batch-4": {
+          "cell_mae_pp": 1.5742549336567035,
+          "cells": 7
+        },
+        "Batch-5": {
+          "cell_mae_pp": 1.451606947006555,
+          "cells": 7
+        },
+        "Batch-6": {
+          "cell_mae_pp": 1.124579607051013,
+          "cells": 7
+        }
+      },
+      "worst_cells": [
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "n": 121,
+          "mae_pp": 3.2192152294614167,
+          "rmse_pp": 3.2963733369091766
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "n": 16,
+          "mae_pp": 2.642394186824001,
+          "rmse_pp": 2.7114275787085678
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "n": 15,
+          "mae_pp": 1.7629391325972203,
+          "rmse_pp": 1.9335118446136343
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "n": 146,
+          "mae_pp": 1.6665683954730288,
+          "rmse_pp": 1.9851740659257946
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "n": 100,
+          "mae_pp": 1.626208950205512,
+          "rmse_pp": 2.1103084915118813
+        }
+      ]
+    },
+    {
+      "method": "extra_trees_matched",
+      "single_seed_cell_mae_pp": [
+        0.6595800129888736,
+        0.6649179220710101,
+        0.6551373776444538
+      ],
+      "single_seed_mean_pp": 0.6598784375681125,
+      "single_seed_sd_pp": 0.004897096613513029,
+      "geometric_ensemble": {
+        "cell_mae_pp": 0.6575461807590997,
+        "cell_rmse_pp": 0.8327093619640277,
+        "cells": [
+          {
+            "cell": "Batch-4/R3_battery-1",
+            "n": 133,
+            "mae_pp": 0.611868309425649,
+            "rmse_pp": 0.8369839329934025
+          },
+          {
+            "cell": "Batch-4/R3_battery-2",
+            "n": 112,
+            "mae_pp": 0.4380639288251631,
+            "rmse_pp": 0.4745770081170197
+          },
+          {
+            "cell": "Batch-4/R3_battery-3",
+            "n": 112,
+            "mae_pp": 0.6367513153291867,
+            "rmse_pp": 0.7929771151358443
+          },
+          {
+            "cell": "Batch-4/R3_battery-4",
+            "n": 121,
+            "mae_pp": 1.6661776138841171,
+            "rmse_pp": 1.7349255927320504
+          },
+          {
+            "cell": "Batch-4/R3_battery-6",
+            "n": 119,
+            "mae_pp": 1.3110606678435714,
+            "rmse_pp": 1.3368468557876303
+          },
+          {
+            "cell": "Batch-4/R3_battery-7",
+            "n": 100,
+            "mae_pp": 0.45229870080979695,
+            "rmse_pp": 0.8662847211804012
+          },
+          {
+            "cell": "Batch-4/R3_battery-8",
+            "n": 125,
+            "mae_pp": 0.9636460943967601,
+            "rmse_pp": 1.0008027031800302
+          },
+          {
+            "cell": "Batch-5/RW_battery-1",
+            "n": 16,
+            "mae_pp": 0.5993584687162046,
+            "rmse_pp": 0.7030138338127739
+          },
+          {
+            "cell": "Batch-5/RW_battery-2",
+            "n": 26,
+            "mae_pp": 0.4057753938036112,
+            "rmse_pp": 0.5295404131542267
+          },
+          {
+            "cell": "Batch-5/RW_battery-3",
+            "n": 29,
+            "mae_pp": 0.5300104888872735,
+            "rmse_pp": 0.6524895673909581
+          },
+          {
+            "cell": "Batch-5/RW_battery-4",
+            "n": 21,
+            "mae_pp": 0.6433791081143239,
+            "rmse_pp": 0.8543243053286154
+          },
+          {
+            "cell": "Batch-5/RW_battery-6",
+            "n": 18,
+            "mae_pp": 0.43029567188579537,
+            "rmse_pp": 0.5776137292058344
+          },
+          {
+            "cell": "Batch-5/RW_battery-7",
+            "n": 15,
+            "mae_pp": 0.48940853401561857,
+            "rmse_pp": 0.5714134357421841
+          },
+          {
+            "cell": "Batch-5/RW_battery-8",
+            "n": 17,
+            "mae_pp": 0.969039443636787,
+            "rmse_pp": 1.6940129896459224
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-1",
+            "n": 146,
+            "mae_pp": 0.37976439326949996,
+            "rmse_pp": 0.4995276729667922
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-2",
+            "n": 189,
+            "mae_pp": 0.42876432306661433,
+            "rmse_pp": 0.8653114047304912
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-3",
+            "n": 140,
+            "mae_pp": 0.5949725339185346,
+            "rmse_pp": 0.7215911609287144
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-4",
+            "n": 145,
+            "mae_pp": 0.442060310597021,
+            "rmse_pp": 0.5308347137454816
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-6",
+            "n": 166,
+            "mae_pp": 0.866068527019311,
+            "rmse_pp": 1.035360375646275
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-7",
+            "n": 146,
+            "mae_pp": 0.42145611574463454,
+            "rmse_pp": 0.5516307783296779
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-8",
+            "n": 162,
+            "mae_pp": 0.5282498527516187,
+            "rmse_pp": 0.6568342914902555
+          }
+        ]
+      },
+      "by_batch": {
+        "Batch-4": {
+          "cell_mae_pp": 0.8685523757877492,
+          "cells": 7
+        },
+        "Batch-5": {
+          "cell_mae_pp": 0.5810381584370877,
+          "cells": 7
+        },
+        "Batch-6": {
+          "cell_mae_pp": 0.5230480080524621,
+          "cells": 7
+        }
+      },
+      "worst_cells": [
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "n": 121,
+          "mae_pp": 1.6661776138841171,
+          "rmse_pp": 1.7349255927320504
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "n": 119,
+          "mae_pp": 1.3110606678435714,
+          "rmse_pp": 1.3368468557876303
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "n": 17,
+          "mae_pp": 0.969039443636787,
+          "rmse_pp": 1.6940129896459224
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "n": 125,
+          "mae_pp": 0.9636460943967601,
+          "rmse_pp": 1.0008027031800302
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "n": 166,
+          "mae_pp": 0.866068527019311,
+          "rmse_pp": 1.035360375646275
+        }
+      ]
+    },
+    {
+      "method": "conditional_kernel",
+      "single_seed_cell_mae_pp": [
+        1.0816023294544326
+      ],
+      "single_seed_mean_pp": 1.0816023294544326,
+      "single_seed_sd_pp": null,
+      "geometric_ensemble": {
+        "cell_mae_pp": 1.0816023294544326,
+        "cell_rmse_pp": 1.2398910780084222,
+        "cells": [
+          {
+            "cell": "Batch-4/R3_battery-1",
+            "n": 133,
+            "mae_pp": 0.4145355117427633,
+            "rmse_pp": 0.5732362686788988
+          },
+          {
+            "cell": "Batch-4/R3_battery-2",
+            "n": 112,
+            "mae_pp": 0.9060810802984308,
+            "rmse_pp": 0.937198702106112
+          },
+          {
+            "cell": "Batch-4/R3_battery-3",
+            "n": 112,
+            "mae_pp": 0.5533692676314506,
+            "rmse_pp": 0.6700663294756349
+          },
+          {
+            "cell": "Batch-4/R3_battery-4",
+            "n": 121,
+            "mae_pp": 1.499710390978622,
+            "rmse_pp": 1.5371615532890117
+          },
+          {
+            "cell": "Batch-4/R3_battery-6",
+            "n": 119,
+            "mae_pp": 1.047984586919034,
+            "rmse_pp": 1.1269315215770086
+          },
+          {
+            "cell": "Batch-4/R3_battery-7",
+            "n": 100,
+            "mae_pp": 1.1513007578970686,
+            "rmse_pp": 1.3610913161979825
+          },
+          {
+            "cell": "Batch-4/R3_battery-8",
+            "n": 125,
+            "mae_pp": 0.37045034144498273,
+            "rmse_pp": 0.4443454920463047
+          },
+          {
+            "cell": "Batch-5/RW_battery-1",
+            "n": 16,
+            "mae_pp": 1.854892858066614,
+            "rmse_pp": 1.9107410023275557
+          },
+          {
+            "cell": "Batch-5/RW_battery-2",
+            "n": 26,
+            "mae_pp": 0.6938482017672845,
+            "rmse_pp": 0.8098998842606433
+          },
+          {
+            "cell": "Batch-5/RW_battery-3",
+            "n": 29,
+            "mae_pp": 1.0617439633972283,
+            "rmse_pp": 1.2469067389720199
+          },
+          {
+            "cell": "Batch-5/RW_battery-4",
+            "n": 21,
+            "mae_pp": 4.977885346971031,
+            "rmse_pp": 4.998830148971471
+          },
+          {
+            "cell": "Batch-5/RW_battery-6",
+            "n": 18,
+            "mae_pp": 0.3268435612322682,
+            "rmse_pp": 0.4226148511346933
+          },
+          {
+            "cell": "Batch-5/RW_battery-7",
+            "n": 15,
+            "mae_pp": 0.7449594359020381,
+            "rmse_pp": 0.8511732689389921
+          },
+          {
+            "cell": "Batch-5/RW_battery-8",
+            "n": 17,
+            "mae_pp": 1.2363535653829019,
+            "rmse_pp": 1.7155771242989406
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-1",
+            "n": 146,
+            "mae_pp": 0.457617034300545,
+            "rmse_pp": 0.5808204666413446
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-2",
+            "n": 189,
+            "mae_pp": 0.7290396870204011,
+            "rmse_pp": 1.2498013448507146
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-3",
+            "n": 140,
+            "mae_pp": 0.6675660120754661,
+            "rmse_pp": 0.7935712789129332
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-4",
+            "n": 145,
+            "mae_pp": 0.4226393760916654,
+            "rmse_pp": 0.5326457012613576
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-6",
+            "n": 166,
+            "mae_pp": 0.6667865825226502,
+            "rmse_pp": 0.8877866493196502
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-7",
+            "n": 146,
+            "mae_pp": 0.8327554605520202,
+            "rmse_pp": 0.9663617361889236
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-8",
+            "n": 162,
+            "mae_pp": 2.0972858963486165,
+            "rmse_pp": 2.4209512587266757
+          }
+        ]
+      },
+      "by_batch": {
+        "Batch-4": {
+          "cell_mae_pp": 0.8490617052731931,
+          "cells": 7
+        },
+        "Batch-5": {
+          "cell_mae_pp": 1.5566467046741952,
+          "cells": 7
+        },
+        "Batch-6": {
+          "cell_mae_pp": 0.8390985784159092,
+          "cells": 7
+        }
+      },
+      "worst_cells": [
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "n": 21,
+          "mae_pp": 4.977885346971031,
+          "rmse_pp": 4.998830148971471
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "n": 162,
+          "mae_pp": 2.0972858963486165,
+          "rmse_pp": 2.4209512587266757
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "n": 16,
+          "mae_pp": 1.854892858066614,
+          "rmse_pp": 1.9107410023275557
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "n": 121,
+          "mae_pp": 1.499710390978622,
+          "rmse_pp": 1.5371615532890117
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "n": 17,
+          "mae_pp": 1.2363535653829019,
+          "rmse_pp": 1.7155771242989406
+        }
+      ]
+    },
+    {
+      "method": "matched_mlp",
+      "single_seed_cell_mae_pp": [
+        0.9270606994491796,
+        0.9935098425866777,
+        0.848950948676639
+      ],
+      "single_seed_mean_pp": 0.9231738302374987,
+      "single_seed_sd_pp": 0.07235778649409469,
+      "geometric_ensemble": {
+        "cell_mae_pp": 0.8702033757830551,
+        "cell_rmse_pp": 1.0385701891379078,
+        "cells": [
+          {
+            "cell": "Batch-4/R3_battery-1",
+            "n": 133,
+            "mae_pp": 0.6024754484021685,
+            "rmse_pp": 0.693284202115583
+          },
+          {
+            "cell": "Batch-4/R3_battery-2",
+            "n": 112,
+            "mae_pp": 0.5058328334715917,
+            "rmse_pp": 0.8040787624230274
+          },
+          {
+            "cell": "Batch-4/R3_battery-3",
+            "n": 112,
+            "mae_pp": 0.6152255354823749,
+            "rmse_pp": 0.9248232379394108
+          },
+          {
+            "cell": "Batch-4/R3_battery-4",
+            "n": 121,
+            "mae_pp": 1.2706957990720658,
+            "rmse_pp": 1.3406494040586663
+          },
+          {
+            "cell": "Batch-4/R3_battery-6",
+            "n": 119,
+            "mae_pp": 1.2205655183678348,
+            "rmse_pp": 1.3593759727736363
+          },
+          {
+            "cell": "Batch-4/R3_battery-7",
+            "n": 100,
+            "mae_pp": 1.1425339189825328,
+            "rmse_pp": 1.3073161960839454
+          },
+          {
+            "cell": "Batch-4/R3_battery-8",
+            "n": 125,
+            "mae_pp": 0.9172251407067408,
+            "rmse_pp": 1.2351754429464732
+          },
+          {
+            "cell": "Batch-5/RW_battery-1",
+            "n": 16,
+            "mae_pp": 0.829206947639638,
+            "rmse_pp": 0.9322069386033948
+          },
+          {
+            "cell": "Batch-5/RW_battery-2",
+            "n": 26,
+            "mae_pp": 0.5472102765858372,
+            "rmse_pp": 0.6807243625348963
+          },
+          {
+            "cell": "Batch-5/RW_battery-3",
+            "n": 29,
+            "mae_pp": 0.45511167331473773,
+            "rmse_pp": 0.6231560199280486
+          },
+          {
+            "cell": "Batch-5/RW_battery-4",
+            "n": 21,
+            "mae_pp": 3.7550843809929324,
+            "rmse_pp": 3.7885854520304405
+          },
+          {
+            "cell": "Batch-5/RW_battery-6",
+            "n": 18,
+            "mae_pp": 0.5464208070601297,
+            "rmse_pp": 0.7253578617175354
+          },
+          {
+            "cell": "Batch-5/RW_battery-7",
+            "n": 15,
+            "mae_pp": 0.9067018009997075,
+            "rmse_pp": 1.0093210352664643
+          },
+          {
+            "cell": "Batch-5/RW_battery-8",
+            "n": 17,
+            "mae_pp": 0.534838439167291,
+            "rmse_pp": 0.8552394734713216
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-1",
+            "n": 146,
+            "mae_pp": 0.4513425975191608,
+            "rmse_pp": 0.6120127185222848
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-2",
+            "n": 189,
+            "mae_pp": 0.545935476037484,
+            "rmse_pp": 0.7641189825218768
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-3",
+            "n": 140,
+            "mae_pp": 0.7454334343187925,
+            "rmse_pp": 0.8652824477268998
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-4",
+            "n": 145,
+            "mae_pp": 0.5678648136894803,
+            "rmse_pp": 0.7045934778069229
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-6",
+            "n": 166,
+            "mae_pp": 0.8046669780070987,
+            "rmse_pp": 1.0327976069052418
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-7",
+            "n": 146,
+            "mae_pp": 0.6004251238091076,
+            "rmse_pp": 0.722537520224055
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-8",
+            "n": 162,
+            "mae_pp": 0.7094739478174555,
+            "rmse_pp": 0.8293368562959369
+          }
+        ]
+      },
+      "by_batch": {
+        "Batch-4": {
+          "cell_mae_pp": 0.8963648849264727,
+          "cells": 7
+        },
+        "Batch-5": {
+          "cell_mae_pp": 1.0820820465371819,
+          "cells": 7
+        },
+        "Batch-6": {
+          "cell_mae_pp": 0.6321631958855114,
+          "cells": 7
+        }
+      },
+      "worst_cells": [
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "n": 21,
+          "mae_pp": 3.7550843809929324,
+          "rmse_pp": 3.7885854520304405
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "n": 121,
+          "mae_pp": 1.2706957990720658,
+          "rmse_pp": 1.3406494040586663
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "n": 119,
+          "mae_pp": 1.2205655183678348,
+          "rmse_pp": 1.3593759727736363
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "n": 100,
+          "mae_pp": 1.1425339189825328,
+          "rmse_pp": 1.3073161960839454
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "n": 125,
+          "mae_pp": 0.9172251407067408,
+          "rmse_pp": 1.2351754429464732
+        }
+      ]
+    },
+    {
+      "method": "tabm_embedded",
+      "single_seed_cell_mae_pp": [
+        0.9256504379441883,
+        0.7709142673587883,
+        0.7573831293344967
+      ],
+      "single_seed_mean_pp": 0.8179826115458244,
+      "single_seed_sd_pp": 0.09348820008465922,
+      "geometric_ensemble": {
+        "cell_mae_pp": 0.7911800331431192,
+        "cell_rmse_pp": 0.9627393085273145,
+        "cells": [
+          {
+            "cell": "Batch-4/R3_battery-1",
+            "n": 133,
+            "mae_pp": 1.2958020350185984,
+            "rmse_pp": 1.384219447637003
+          },
+          {
+            "cell": "Batch-4/R3_battery-2",
+            "n": 112,
+            "mae_pp": 0.6342680191799991,
+            "rmse_pp": 0.8545730248399062
+          },
+          {
+            "cell": "Batch-4/R3_battery-3",
+            "n": 112,
+            "mae_pp": 1.080246778237928,
+            "rmse_pp": 1.1979421828100776
+          },
+          {
+            "cell": "Batch-4/R3_battery-4",
+            "n": 121,
+            "mae_pp": 1.1944570569391146,
+            "rmse_pp": 1.3074559452676464
+          },
+          {
+            "cell": "Batch-4/R3_battery-6",
+            "n": 119,
+            "mae_pp": 0.84714357109511,
+            "rmse_pp": 0.9630091006645093
+          },
+          {
+            "cell": "Batch-4/R3_battery-7",
+            "n": 100,
+            "mae_pp": 1.1685682218825488,
+            "rmse_pp": 1.5907218842879522
+          },
+          {
+            "cell": "Batch-4/R3_battery-8",
+            "n": 125,
+            "mae_pp": 1.217755363015312,
+            "rmse_pp": 1.3279629567906472
+          },
+          {
+            "cell": "Batch-5/RW_battery-1",
+            "n": 16,
+            "mae_pp": 0.5406491677842025,
+            "rmse_pp": 0.6271705006566827
+          },
+          {
+            "cell": "Batch-5/RW_battery-2",
+            "n": 26,
+            "mae_pp": 0.5794499040302087,
+            "rmse_pp": 0.6867562102251583
+          },
+          {
+            "cell": "Batch-5/RW_battery-3",
+            "n": 29,
+            "mae_pp": 0.41914167449311335,
+            "rmse_pp": 0.5009452823348621
+          },
+          {
+            "cell": "Batch-5/RW_battery-4",
+            "n": 21,
+            "mae_pp": 1.5460458324715294,
+            "rmse_pp": 1.7330152155578993
+          },
+          {
+            "cell": "Batch-5/RW_battery-6",
+            "n": 18,
+            "mae_pp": 0.44964443119257946,
+            "rmse_pp": 0.5448965948718432
+          },
+          {
+            "cell": "Batch-5/RW_battery-7",
+            "n": 15,
+            "mae_pp": 0.7935920003208828,
+            "rmse_pp": 0.873587248191387
+          },
+          {
+            "cell": "Batch-5/RW_battery-8",
+            "n": 17,
+            "mae_pp": 0.7197950599563302,
+            "rmse_pp": 1.3087407838613654
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-1",
+            "n": 146,
+            "mae_pp": 0.4249084406795307,
+            "rmse_pp": 0.5894065954786472
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-2",
+            "n": 189,
+            "mae_pp": 0.4966087556110096,
+            "rmse_pp": 0.8183254732959383
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-3",
+            "n": 140,
+            "mae_pp": 0.8994830999392935,
+            "rmse_pp": 1.0354470450614386
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-4",
+            "n": 145,
+            "mae_pp": 0.5804751688100158,
+            "rmse_pp": 0.7585876900169554
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-6",
+            "n": 166,
+            "mae_pp": 0.6190633476156061,
+            "rmse_pp": 0.7797857950026829
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-7",
+            "n": 146,
+            "mae_pp": 0.5697070550666133,
+            "rmse_pp": 0.6989010344681145
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-8",
+            "n": 162,
+            "mae_pp": 0.5379757126659738,
+            "rmse_pp": 0.6360754677528863
+          }
+        ]
+      },
+      "by_batch": {
+        "Batch-4": {
+          "cell_mae_pp": 1.0626058636240874,
+          "cells": 7
+        },
+        "Batch-5": {
+          "cell_mae_pp": 0.7211882957498352,
+          "cells": 7
+        },
+        "Batch-6": {
+          "cell_mae_pp": 0.5897459400554348,
+          "cells": 7
+        }
+      },
+      "worst_cells": [
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "n": 21,
+          "mae_pp": 1.5460458324715294,
+          "rmse_pp": 1.7330152155578993
+        },
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "n": 133,
+          "mae_pp": 1.2958020350185984,
+          "rmse_pp": 1.384219447637003
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "n": 125,
+          "mae_pp": 1.217755363015312,
+          "rmse_pp": 1.3279629567906472
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "n": 121,
+          "mae_pp": 1.1944570569391146,
+          "rmse_pp": 1.3074559452676464
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "n": 100,
+          "mae_pp": 1.1685682218825488,
+          "rmse_pp": 1.5907218842879522
+        }
+      ]
+    },
+    {
+      "method": "film_context",
+      "single_seed_cell_mae_pp": [
+        1.0702496518820825,
+        1.0590060726854165,
+        1.1883439413511532
+      ],
+      "single_seed_mean_pp": 1.1058665553062175,
+      "single_seed_sd_pp": 0.07164840490123944,
+      "geometric_ensemble": {
+        "cell_mae_pp": 1.048735115593523,
+        "cell_rmse_pp": 1.1733772205582838,
+        "cells": [
+          {
+            "cell": "Batch-4/R3_battery-1",
+            "n": 133,
+            "mae_pp": 1.3445081851953606,
+            "rmse_pp": 1.4132371664032108
+          },
+          {
+            "cell": "Batch-4/R3_battery-2",
+            "n": 112,
+            "mae_pp": 0.6547816584623661,
+            "rmse_pp": 0.6906407184223263
+          },
+          {
+            "cell": "Batch-4/R3_battery-3",
+            "n": 112,
+            "mae_pp": 0.428987791799966,
+            "rmse_pp": 0.5230516785515656
+          },
+          {
+            "cell": "Batch-4/R3_battery-4",
+            "n": 121,
+            "mae_pp": 2.2901368032606166,
+            "rmse_pp": 2.3631040655623545
+          },
+          {
+            "cell": "Batch-4/R3_battery-6",
+            "n": 119,
+            "mae_pp": 1.0683626888102213,
+            "rmse_pp": 1.17355312168721
+          },
+          {
+            "cell": "Batch-4/R3_battery-7",
+            "n": 100,
+            "mae_pp": 0.6674908920263851,
+            "rmse_pp": 0.8590637204710575
+          },
+          {
+            "cell": "Batch-4/R3_battery-8",
+            "n": 125,
+            "mae_pp": 0.6353831350078216,
+            "rmse_pp": 0.7199196490869205
+          },
+          {
+            "cell": "Batch-5/RW_battery-1",
+            "n": 16,
+            "mae_pp": 1.7645939297355584,
+            "rmse_pp": 1.840587335151872
+          },
+          {
+            "cell": "Batch-5/RW_battery-2",
+            "n": 26,
+            "mae_pp": 1.0107867191300481,
+            "rmse_pp": 1.1405192972183087
+          },
+          {
+            "cell": "Batch-5/RW_battery-3",
+            "n": 29,
+            "mae_pp": 1.1407610245202795,
+            "rmse_pp": 1.3733104914249505
+          },
+          {
+            "cell": "Batch-5/RW_battery-4",
+            "n": 21,
+            "mae_pp": 3.7981119236859024,
+            "rmse_pp": 3.838058865632547
+          },
+          {
+            "cell": "Batch-5/RW_battery-6",
+            "n": 18,
+            "mae_pp": 0.7979225943564484,
+            "rmse_pp": 0.9009790166374361
+          },
+          {
+            "cell": "Batch-5/RW_battery-7",
+            "n": 15,
+            "mae_pp": 0.5895290064855703,
+            "rmse_pp": 0.6431201709223281
+          },
+          {
+            "cell": "Batch-5/RW_battery-8",
+            "n": 17,
+            "mae_pp": 1.0676498382514792,
+            "rmse_pp": 1.2738619674472176
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-1",
+            "n": 146,
+            "mae_pp": 0.5379910312904319,
+            "rmse_pp": 0.7079222686167516
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-2",
+            "n": 189,
+            "mae_pp": 0.7990612353998776,
+            "rmse_pp": 1.0587060168820401
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-3",
+            "n": 140,
+            "mae_pp": 0.6331030571109605,
+            "rmse_pp": 0.7327087392245526
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-4",
+            "n": 145,
+            "mae_pp": 0.4209734704388132,
+            "rmse_pp": 0.532099430541338
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-6",
+            "n": 166,
+            "mae_pp": 1.1497098533729746,
+            "rmse_pp": 1.3367978836133176
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-7",
+            "n": 146,
+            "mae_pp": 0.6729921504396488,
+            "rmse_pp": 0.7909712324858389
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-8",
+            "n": 162,
+            "mae_pp": 0.5506004386832499,
+            "rmse_pp": 0.7287087957408178
+          }
+        ]
+      },
+      "by_batch": {
+        "Batch-4": {
+          "cell_mae_pp": 1.0128073077946769,
+          "cells": 7
+        },
+        "Batch-5": {
+          "cell_mae_pp": 1.4527650051664693,
+          "cells": 7
+        },
+        "Batch-6": {
+          "cell_mae_pp": 0.6806330338194223,
+          "cells": 7
+        }
+      },
+      "worst_cells": [
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "n": 21,
+          "mae_pp": 3.7981119236859024,
+          "rmse_pp": 3.838058865632547
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "n": 121,
+          "mae_pp": 2.2901368032606166,
+          "rmse_pp": 2.3631040655623545
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "n": 16,
+          "mae_pp": 1.7645939297355584,
+          "rmse_pp": 1.840587335151872
+        },
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "n": 133,
+          "mae_pp": 1.3445081851953606,
+          "rmse_pp": 1.4132371664032108
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "n": 166,
+          "mae_pp": 1.1497098533729746,
+          "rmse_pp": 1.3367978836133176
+        }
+      ]
+    },
+    {
+      "method": "film_no_context",
+      "single_seed_cell_mae_pp": [
+        1.0380180600151054,
+        1.147312743856839,
+        1.0293962631705174
+      ],
+      "single_seed_mean_pp": 1.0715756890141541,
+      "single_seed_sd_pp": 0.06573172713682673,
+      "geometric_ensemble": {
+        "cell_mae_pp": 1.0057621399171928,
+        "cell_rmse_pp": 1.1945525142073923,
+        "cells": [
+          {
+            "cell": "Batch-4/R3_battery-1",
+            "n": 133,
+            "mae_pp": 1.5924619478183613,
+            "rmse_pp": 1.741059890053891
+          },
+          {
+            "cell": "Batch-4/R3_battery-2",
+            "n": 112,
+            "mae_pp": 0.5959182524032024,
+            "rmse_pp": 0.6660271011186846
+          },
+          {
+            "cell": "Batch-4/R3_battery-3",
+            "n": 112,
+            "mae_pp": 0.607527242135432,
+            "rmse_pp": 0.7071758884619872
+          },
+          {
+            "cell": "Batch-4/R3_battery-4",
+            "n": 121,
+            "mae_pp": 2.1594205613159265,
+            "rmse_pp": 2.2079887542675762
+          },
+          {
+            "cell": "Batch-4/R3_battery-6",
+            "n": 119,
+            "mae_pp": 0.6989364181431615,
+            "rmse_pp": 0.9323035999410991
+          },
+          {
+            "cell": "Batch-4/R3_battery-7",
+            "n": 100,
+            "mae_pp": 0.5704249871963892,
+            "rmse_pp": 0.784632746577153
+          },
+          {
+            "cell": "Batch-4/R3_battery-8",
+            "n": 125,
+            "mae_pp": 0.8107369652678738,
+            "rmse_pp": 0.9653725607101684
+          },
+          {
+            "cell": "Batch-5/RW_battery-1",
+            "n": 16,
+            "mae_pp": 2.3214855894655013,
+            "rmse_pp": 2.3949655089099577
+          },
+          {
+            "cell": "Batch-5/RW_battery-2",
+            "n": 26,
+            "mae_pp": 0.4651981584369764,
+            "rmse_pp": 0.5508979767437844
+          },
+          {
+            "cell": "Batch-5/RW_battery-3",
+            "n": 29,
+            "mae_pp": 1.2340985539483549,
+            "rmse_pp": 1.4136802442517904
+          },
+          {
+            "cell": "Batch-5/RW_battery-4",
+            "n": 21,
+            "mae_pp": 0.7703845935386692,
+            "rmse_pp": 0.9601889678216583
+          },
+          {
+            "cell": "Batch-5/RW_battery-6",
+            "n": 18,
+            "mae_pp": 1.0670269313719443,
+            "rmse_pp": 1.3714259597823917
+          },
+          {
+            "cell": "Batch-5/RW_battery-7",
+            "n": 15,
+            "mae_pp": 0.5573344928502544,
+            "rmse_pp": 0.6794113407684161
+          },
+          {
+            "cell": "Batch-5/RW_battery-8",
+            "n": 17,
+            "mae_pp": 1.625772258169856,
+            "rmse_pp": 2.4703617264037456
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-1",
+            "n": 146,
+            "mae_pp": 0.6762739076799068,
+            "rmse_pp": 0.8211966681802754
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-2",
+            "n": 189,
+            "mae_pp": 1.1444633584657888,
+            "rmse_pp": 1.3455922415606318
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-3",
+            "n": 140,
+            "mae_pp": 0.5823326208938123,
+            "rmse_pp": 0.7014880344215285
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-4",
+            "n": 145,
+            "mae_pp": 0.6991231307452684,
+            "rmse_pp": 0.8180849027920282
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-6",
+            "n": 166,
+            "mae_pp": 1.4979370379664367,
+            "rmse_pp": 1.723726072501276
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-7",
+            "n": 146,
+            "mae_pp": 0.6642625696999805,
+            "rmse_pp": 0.8115287287370195
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-8",
+            "n": 162,
+            "mae_pp": 0.7798853607479508,
+            "rmse_pp": 1.0184938843501714
+          }
+        ]
+      },
+      "by_batch": {
+        "Batch-4": {
+          "cell_mae_pp": 1.0050609106114783,
+          "cells": 7
+        },
+        "Batch-5": {
+          "cell_mae_pp": 1.1487572253973652,
+          "cells": 7
+        },
+        "Batch-6": {
+          "cell_mae_pp": 0.863468283742735,
+          "cells": 7
+        }
+      },
+      "worst_cells": [
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "n": 16,
+          "mae_pp": 2.3214855894655013,
+          "rmse_pp": 2.3949655089099577
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "n": 121,
+          "mae_pp": 2.1594205613159265,
+          "rmse_pp": 2.2079887542675762
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "n": 17,
+          "mae_pp": 1.625772258169856,
+          "rmse_pp": 2.4703617264037456
+        },
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "n": 133,
+          "mae_pp": 1.5924619478183613,
+          "rmse_pp": 1.741059890053891
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "n": 166,
+          "mae_pp": 1.4979370379664367,
+          "rmse_pp": 1.723726072501276
+        }
+      ]
+    },
+    {
+      "method": "anchored_conditional",
+      "single_seed_cell_mae_pp": [
+        1.3954652361754312,
+        1.1740159908221097,
+        1.3032648352394982
+      ],
+      "single_seed_mean_pp": 1.290915354079013,
+      "single_seed_sd_pp": 0.11123994035681956,
+      "geometric_ensemble": {
+        "cell_mae_pp": 1.251622789858541,
+        "cell_rmse_pp": 1.4554562120677028,
+        "cells": [
+          {
+            "cell": "Batch-4/R3_battery-1",
+            "n": 133,
+            "mae_pp": 2.0743494660672015,
+            "rmse_pp": 2.21361380451588
+          },
+          {
+            "cell": "Batch-4/R3_battery-2",
+            "n": 112,
+            "mae_pp": 0.6739915457787305,
+            "rmse_pp": 0.9954389317220343
+          },
+          {
+            "cell": "Batch-4/R3_battery-3",
+            "n": 112,
+            "mae_pp": 1.225149849605063,
+            "rmse_pp": 1.3704200193324565
+          },
+          {
+            "cell": "Batch-4/R3_battery-4",
+            "n": 121,
+            "mae_pp": 1.7203236539608613,
+            "rmse_pp": 1.811505385785945
+          },
+          {
+            "cell": "Batch-4/R3_battery-6",
+            "n": 119,
+            "mae_pp": 1.0399298584283037,
+            "rmse_pp": 1.2457357188845555
+          },
+          {
+            "cell": "Batch-4/R3_battery-7",
+            "n": 100,
+            "mae_pp": 1.349525283810594,
+            "rmse_pp": 1.7874930883401439
+          },
+          {
+            "cell": "Batch-4/R3_battery-8",
+            "n": 125,
+            "mae_pp": 1.7492005804112916,
+            "rmse_pp": 1.8606016751366612
+          },
+          {
+            "cell": "Batch-5/RW_battery-1",
+            "n": 16,
+            "mae_pp": 1.0023281326835747,
+            "rmse_pp": 1.1380071734386434
+          },
+          {
+            "cell": "Batch-5/RW_battery-2",
+            "n": 26,
+            "mae_pp": 1.0270059430457847,
+            "rmse_pp": 1.2578333941468585
+          },
+          {
+            "cell": "Batch-5/RW_battery-3",
+            "n": 29,
+            "mae_pp": 1.2344576233543814,
+            "rmse_pp": 1.5038920628559427
+          },
+          {
+            "cell": "Batch-5/RW_battery-4",
+            "n": 21,
+            "mae_pp": 6.145477475614869,
+            "rmse_pp": 6.181238156608552
+          },
+          {
+            "cell": "Batch-5/RW_battery-6",
+            "n": 18,
+            "mae_pp": 0.7695279245483441,
+            "rmse_pp": 0.9027806426071255
+          },
+          {
+            "cell": "Batch-5/RW_battery-7",
+            "n": 15,
+            "mae_pp": 0.6551817360417759,
+            "rmse_pp": 0.7829383868481867
+          },
+          {
+            "cell": "Batch-5/RW_battery-8",
+            "n": 17,
+            "mae_pp": 0.8617075559875669,
+            "rmse_pp": 1.196414798537181
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-1",
+            "n": 146,
+            "mae_pp": 0.4919655182115477,
+            "rmse_pp": 0.6767116082637652
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-2",
+            "n": 189,
+            "mae_pp": 0.6042989114291121,
+            "rmse_pp": 0.941319972113808
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-3",
+            "n": 140,
+            "mae_pp": 0.7411468512388585,
+            "rmse_pp": 0.9128415540875181
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-4",
+            "n": 145,
+            "mae_pp": 0.5574429020083111,
+            "rmse_pp": 0.780923373002834
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-6",
+            "n": 166,
+            "mae_pp": 0.944306410338935,
+            "rmse_pp": 1.210809504255489
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-7",
+            "n": 146,
+            "mae_pp": 0.7254482144802531,
+            "rmse_pp": 0.8381263620544814
+          },
+          {
+            "cell": "Batch-6/Sim_satellite_battery-8",
+            "n": 162,
+            "mae_pp": 0.6913131499839983,
+            "rmse_pp": 0.9559348408836971
+          }
+        ]
+      },
+      "by_batch": {
+        "Batch-4": {
+          "cell_mae_pp": 1.404638605437435,
+          "cells": 7
+        },
+        "Batch-5": {
+          "cell_mae_pp": 1.6708123416108993,
+          "cells": 7
+        },
+        "Batch-6": {
+          "cell_mae_pp": 0.679417422527288,
+          "cells": 7
+        }
+      },
+      "worst_cells": [
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "n": 21,
+          "mae_pp": 6.145477475614869,
+          "rmse_pp": 6.181238156608552
+        },
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "n": 133,
+          "mae_pp": 2.0743494660672015,
+          "rmse_pp": 2.21361380451588
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "n": 125,
+          "mae_pp": 1.7492005804112916,
+          "rmse_pp": 1.8606016751366612
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "n": 121,
+          "mae_pp": 1.7203236539608613,
+          "rmse_pp": 1.811505385785945
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "n": 100,
+          "mae_pp": 1.349525283810594,
+          "rmse_pp": 1.7874930883401439
+        }
+      ]
+    }
+  ],
+  "paired_cell_bootstrap": {
+    "ridge_matched_minus_matched_mlp": {
+      "difference_pp": 0.5132771201217018,
+      "ci95_pp": [
+        0.08287551737107454,
+        0.8500213996176103
+      ],
+      "cells": 21
+    },
+    "extra_trees_matched_minus_matched_mlp": {
+      "difference_pp": -0.2126571950239557,
+      "ci95_pp": [
+        -0.5511967501640497,
+        0.007911087225227266
+      ],
+      "cells": 21
+    },
+    "conditional_kernel_minus_matched_mlp": {
+      "difference_pp": 0.21139895367137723,
+      "ci95_pp": [
+        0.015091587568704146,
+        0.4281631558588014
+      ],
+      "cells": 21
+    },
+    "tabm_embedded_minus_matched_mlp": {
+      "difference_pp": -0.07902334263993628,
+      "ci95_pp": [
+        -0.33933886295126137,
+        0.10822827397890471
+      ],
+      "cells": 21
+    },
+    "film_context_minus_matched_mlp": {
+      "difference_pp": 0.17853173981046752,
+      "ci95_pp": [
+        0.007616854702829292,
+        0.3554258422564018
+      ],
+      "cells": 21
+    },
+    "film_no_context_minus_matched_mlp": {
+      "difference_pp": 0.1355587641341374,
+      "ci95_pp": [
+        -0.27598470820929405,
+        0.46846857591002383
+      ],
+      "cells": 21
+    },
+    "anchored_conditional_minus_matched_mlp": {
+      "difference_pp": 0.38141941407548546,
+      "ci95_pp": [
+        0.15683866116207015,
+        0.6600877182959325
+      ],
+      "cells": 21
+    },
+    "ridge_matched_minus_extra_trees_matched": {
+      "difference_pp": 0.7259343151456574,
+      "ci95_pp": [
+        0.5026089736974636,
+        0.9590092924246868
+      ],
+      "cells": 21
+    },
+    "conditional_kernel_minus_extra_trees_matched": {
+      "difference_pp": 0.4240561486953328,
+      "ci95_pp": [
+        0.06751500405478046,
+        0.9088177624136837
+      ],
+      "cells": 21
+    },
+    "matched_mlp_minus_extra_trees_matched": {
+      "difference_pp": 0.2126571950239557,
+      "ci95_pp": [
+        -0.006408784827681074,
+        0.5540668312498951
+      ],
+      "cells": 21
+    },
+    "tabm_embedded_minus_extra_trees_matched": {
+      "difference_pp": 0.13363385238401942,
+      "ci95_pp": [
+        -0.011685566866994573,
+        0.2854402263590572
+      ],
+      "cells": 21
+    },
+    "film_context_minus_extra_trees_matched": {
+      "difference_pp": 0.3911889348344233,
+      "ci95_pp": [
+        0.14101723921391796,
+        0.7381408700646432
+      ],
+      "cells": 21
+    },
+    "film_no_context_minus_extra_trees_matched": {
+      "difference_pp": 0.3482159591580931,
+      "ci95_pp": [
+        0.15988724137830254,
+        0.5598732853417678
+      ],
+      "cells": 21
+    },
+    "anchored_conditional_minus_extra_trees_matched": {
+      "difference_pp": 0.594076609099441,
+      "ci95_pp": [
+        0.22527975049407115,
+        1.1661477304493264
+      ],
+      "cells": 21
+    }
+  },
+  "failed_runs": [],
+  "no_result": [],
+  "actual_inner_fits": 180,
+  "actual_refits": 60
+}

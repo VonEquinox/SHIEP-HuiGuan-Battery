@@ -1,0 +1,41 @@
+{
+  "url": "https://phm-datasets.s3.amazonaws.com/NASA/5.+Battery+Data+Set.zip",
+  "official_page": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/",
+  "terms": "NASA PCoE requests acknowledgement and data citation. Public redistribution rights not independently assessed.",
+  "status": "downloaded_crc_verified",
+  "content_length": 209708670,
+  "etag": "\"d97c40652800c2cce87ad16b0ff15dff-13\"",
+  "bytes": 209708670,
+  "sha256": "82302a7db4fc1b34e0b6676326610438d43b816bdf11a69d1d012a464ef2f92e",
+  "archive_listing": [
+    {
+      "name": "5. Battery Data Set/",
+      "bytes": 0
+    },
+    {
+      "name": "5. Battery Data Set/1. BatteryAgingARC-FY08Q4.zip",
+      "bytes": 56517371
+    },
+    {
+      "name": "5. Battery Data Set/2. BatteryAgingARC_25_26_27_28_P1.zip",
+      "bytes": 11123439
+    },
+    {
+      "name": "5. Battery Data Set/3. BatteryAgingARC_25-44.zip",
+      "bytes": 93662572
+    },
+    {
+      "name": "5. Battery Data Set/4. BatteryAgingARC_45_46_47_48.zip",
+      "bytes": 14715108
+    },
+    {
+      "name": "5. Battery Data Set/5. BatteryAgingARC_49_50_51_52.zip",
+      "bytes": 8717235
+    },
+    {
+      "name": "5. Battery Data Set/6. BatteryAgingARC_53_54_55_56.zip",
+      "bytes": 24923477
+    }
+  ],
+  "official_checksum": "not provided; SHA256 is local identity, not an official checksum"
+}

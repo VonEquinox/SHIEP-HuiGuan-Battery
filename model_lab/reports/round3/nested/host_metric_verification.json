@@ -1,0 +1,66 @@
+{
+  "scope": "independent host CSV metric and input/code identity checks",
+  "all_passed": true,
+  "holdout_model_scores": false,
+  "checks": [
+    {
+      "method": "ridge_matched",
+      "recomputed_mae_pp": 1.383480495904757,
+      "reported_delta": 0.0,
+      "rows": 2058,
+      "cells": 21
+    },
+    {
+      "method": "extra_trees_matched",
+      "recomputed_mae_pp": 0.6575461807590995,
+      "reported_delta": 1.1102230246251565e-16,
+      "rows": 2058,
+      "cells": 21
+    },
+    {
+      "method": "conditional_kernel",
+      "recomputed_mae_pp": 1.0816023294544324,
+      "reported_delta": 2.220446049250313e-16,
+      "rows": 2058,
+      "cells": 21
+    },
+    {
+      "method": "matched_mlp",
+      "recomputed_mae_pp": 0.8702033757830546,
+      "reported_delta": 4.440892098500626e-16,
+      "rows": 2058,
+      "cells": 21
+    },
+    {
+      "method": "tabm_embedded",
+      "recomputed_mae_pp": 0.791180033143119,
+      "reported_delta": 2.220446049250313e-16,
+      "rows": 2058,
+      "cells": 21
+    },
+    {
+      "method": "film_context",
+      "recomputed_mae_pp": 1.0487351155935225,
+      "reported_delta": 4.440892098500626e-16,
+      "rows": 2058,
+      "cells": 21
+    },
+    {
+      "method": "film_no_context",
+      "recomputed_mae_pp": 1.0057621399171932,
+      "reported_delta": 4.440892098500626e-16,
+      "rows": 2058,
+      "cells": 21
+    },
+    {
+      "method": "anchored_conditional",
+      "recomputed_mae_pp": 1.251622789858541,
+      "reported_delta": 0.0,
+      "rows": 2058,
+      "cells": 21
+    }
+  ],
+  "actual_fits": 240,
+  "failures": [],
+  "note": "Does not prove out-of-domain generalization or absence of model-selection overfit."
+}

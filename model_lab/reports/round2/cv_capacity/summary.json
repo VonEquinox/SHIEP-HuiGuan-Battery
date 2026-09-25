@@ -1,0 +1,1267 @@
+{
+  "scope": "development only",
+  "seconds": 347.0777280330658,
+  "candidates": [
+    {
+      "model": "capacity_relative_only",
+      "config": 2,
+      "config_values": {
+        "width": 96,
+        "lr": 0.006
+      },
+      "cell_mae_pp": 0.7053461394956995,
+      "cell_rmse_pp": 0.8403212966789374,
+      "pooled_mae_pp": 0.6481340905530187,
+      "pooled_rmse_pp": 0.8583011554134925,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.24403180654864284,
+          "rmse_pp": 0.36763595922653075,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.3436897852805844,
+          "rmse_pp": 0.38222915535281454,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.37785253818266007,
+          "rmse_pp": 0.48263053334073125,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 1.7627097226743047,
+          "rmse_pp": 1.80649255010557,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 1.0735984148731141,
+          "rmse_pp": 1.1010807097386142,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.46771698465091505,
+          "rmse_pp": 0.7507998650394447,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 0.6893243422179447,
+          "rmse_pp": 0.7924434369181842,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 1.9991647955556011,
+          "rmse_pp": 2.039816918610164,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.43863878304015763,
+          "rmse_pp": 0.5693039258598446,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 0.5173368221078152,
+          "rmse_pp": 0.6723581922129848,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 0.7968146744498606,
+          "rmse_pp": 0.9225367002845266,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.28927365450341974,
+          "rmse_pp": 0.393732318918527,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 0.6105932842144245,
+          "rmse_pp": 0.7817807402647194,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 1.1219546922509986,
+          "rmse_pp": 1.5598937362662773,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.47843651500624446,
+          "rmse_pp": 0.602677376955158,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.6564566091426187,
+          "rmse_pp": 0.9616131143494598,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.6757872146604985,
+          "rmse_pp": 0.7989480959841158,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.3106842287874456,
+          "rmse_pp": 0.37165907661281566,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 0.49097150389087735,
+          "rmse_pp": 0.6021435425541131,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 0.9208071617008081,
+          "rmse_pp": 1.0317090928366943,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 0.5464253956707521,
+          "rmse_pp": 0.6552621888263953,
+          "n": 162
+        }
+      ]
+    },
+    {
+      "model": "capacity_relative_only",
+      "config": 1,
+      "config_values": {
+        "width": 96,
+        "lr": 0.002
+      },
+      "cell_mae_pp": 0.7410450209727146,
+      "cell_rmse_pp": 0.8577843840329278,
+      "pooled_mae_pp": 0.7124834320486584,
+      "pooled_rmse_pp": 0.9127726040238313,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.3445224630152047,
+          "rmse_pp": 0.440646646364777,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.4991306475930023,
+          "rmse_pp": 0.5400378739675313,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.5042889935235043,
+          "rmse_pp": 0.6245296647648315,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 2.0285507379311407,
+          "rmse_pp": 2.0564244496229898,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 1.0719610765170764,
+          "rmse_pp": 1.0990333112753696,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.678017236084069,
+          "rmse_pp": 0.8837251739041352,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 0.931249886347622,
+          "rmse_pp": 1.034451339924848,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 1.9479902310212691,
+          "rmse_pp": 1.9808263971075126,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.37740314910695544,
+          "rmse_pp": 0.4900312500287303,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 0.4023407723132623,
+          "rmse_pp": 0.513204269335159,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 0.693579395579404,
+          "rmse_pp": 0.8128519330485019,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.26487318917782776,
+          "rmse_pp": 0.35286161632163443,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 0.572760854815435,
+          "rmse_pp": 0.7346661303664501,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 1.0900544947828197,
+          "rmse_pp": 1.4671529692668561,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.5432891706635669,
+          "rmse_pp": 0.6451314090298472,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.6043525629337032,
+          "rmse_pp": 0.8622551438343691,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.5973730838016085,
+          "rmse_pp": 0.7098835125774506,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.25571524429401704,
+          "rmse_pp": 0.3241676942772004,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 0.5033071850331463,
+          "rmse_pp": 0.596449228339215,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 0.846109487461297,
+          "rmse_pp": 0.9496584628707074,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 0.8050755784310775,
+          "rmse_pp": 0.8954835884633671,
+          "n": 162
+        }
+      ]
+    },
+    {
+      "model": "capacity_joint",
+      "config": 2,
+      "config_values": {
+        "width": 96,
+        "lr": 0.006
+      },
+      "cell_mae_pp": 0.7665331795674251,
+      "cell_rmse_pp": 0.9748843278414092,
+      "pooled_mae_pp": 0.7403617026475765,
+      "pooled_rmse_pp": 0.9783616716308191,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.37423405627012973,
+          "rmse_pp": 0.638752675732341,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.35050276079185455,
+          "rmse_pp": 0.5081572429206642,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.5332665162493008,
+          "rmse_pp": 0.6983663687408082,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 1.5922124807433613,
+          "rmse_pp": 1.6250137832612717,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 1.1303766513115965,
+          "rmse_pp": 1.1893279697882428,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.42016509330557383,
+          "rmse_pp": 0.740363794346252,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 0.7288809681977142,
+          "rmse_pp": 0.9863125887777167,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 1.5402166379698128,
+          "rmse_pp": 1.7024672500968145,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.6787240386032802,
+          "rmse_pp": 0.7678970014482258,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 1.0690054222086565,
+          "rmse_pp": 1.3989406112260199,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 0.44580309027742643,
+          "rmse_pp": 0.5462661919378214,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.3932967359448468,
+          "rmse_pp": 0.4735953606000762,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 0.7771419448416454,
+          "rmse_pp": 1.1164017908953041,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 1.0457767329068053,
+          "rmse_pp": 1.9745967235820205,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.32016148507858616,
+          "rmse_pp": 0.3941413581254947,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.9403811932141721,
+          "rmse_pp": 1.1794886048489284,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.6746623830591925,
+          "rmse_pp": 0.810693405480211,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.4085193879242389,
+          "rmse_pp": 0.5745333281632928,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 0.8085000231160735,
+          "rmse_pp": 1.0001862503323675,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 1.195158196302484,
+          "rmse_pp": 1.2957104844605192,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 0.6702109725991727,
+          "rmse_pp": 0.8513580999052014,
+          "n": 162
+        }
+      ]
+    },
+    {
+      "model": "capacity_absolute_only",
+      "config": 2,
+      "config_values": {
+        "width": 96,
+        "lr": 0.006
+      },
+      "cell_mae_pp": 0.7751204328998457,
+      "cell_rmse_pp": 0.9609279805923061,
+      "pooled_mae_pp": 0.7286840225014531,
+      "pooled_rmse_pp": 0.957952516160429,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.5712658064789968,
+          "rmse_pp": 0.6599054817405611,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.6304088613831779,
+          "rmse_pp": 0.7024875963394052,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.5119065754448019,
+          "rmse_pp": 0.6776863703682238,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 1.2597634852073465,
+          "rmse_pp": 1.3020735726037218,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 0.28199309679537304,
+          "rmse_pp": 0.3589154281577122,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.6542850077001445,
+          "rmse_pp": 0.956750909059805,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 0.5260730876823064,
+          "rmse_pp": 0.5715841986069535,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 1.6052423638690256,
+          "rmse_pp": 1.7778524716553423,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.8620198253268956,
+          "rmse_pp": 0.9673177451832713,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 1.4237242363319569,
+          "rmse_pp": 1.8879252577835743,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 0.4195108334898964,
+          "rmse_pp": 0.5124542423832604,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.35934720839550516,
+          "rmse_pp": 0.44996932157442265,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 1.0302563314812059,
+          "rmse_pp": 1.3604320564124872,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 0.8404136425048323,
+          "rmse_pp": 1.4588719031873862,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.5062016825262526,
+          "rmse_pp": 0.6340867543335296,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.7330663579943115,
+          "rmse_pp": 1.2216251336147115,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.5599558492224068,
+          "rmse_pp": 0.6497538032937713,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.3875894658235863,
+          "rmse_pp": 0.5092153886871269,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 1.0954852376396305,
+          "rmse_pp": 1.2210780239246821,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 0.740406267579803,
+          "rmse_pp": 0.9042125303435985,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 1.278613868019303,
+          "rmse_pp": 1.395289403184874,
+          "n": 162
+        }
+      ]
+    },
+    {
+      "model": "capacity_joint",
+      "config": 1,
+      "config_values": {
+        "width": 96,
+        "lr": 0.002
+      },
+      "cell_mae_pp": 0.8103333890343911,
+      "cell_rmse_pp": 1.0047453606842232,
+      "pooled_mae_pp": 0.7897400134643857,
+      "pooled_rmse_pp": 1.0458886423334752,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.3813018437881181,
+          "rmse_pp": 0.6699718649464009,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.4500592224035282,
+          "rmse_pp": 0.5185699577955292,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.47213876833485896,
+          "rmse_pp": 0.5875685377111509,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 2.3541272579845023,
+          "rmse_pp": 2.383872912537236,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 1.2202074146762423,
+          "rmse_pp": 1.2806755721364067,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.6778327852633258,
+          "rmse_pp": 0.8828525727769695,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 0.930807606258272,
+          "rmse_pp": 1.0188946742206633,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 1.4213401257404459,
+          "rmse_pp": 1.5231700259844743,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.6393813851555719,
+          "rmse_pp": 0.743383869423875,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 1.048340111389034,
+          "rmse_pp": 1.3575699890783264,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 0.36965515919764186,
+          "rmse_pp": 0.5602399182746052,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.39450451910398987,
+          "rmse_pp": 0.5698545090128555,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 0.8782120426806972,
+          "rmse_pp": 1.2318448480955786,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 1.104161803823311,
+          "rmse_pp": 2.0697155949371893,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.4038372793545817,
+          "rmse_pp": 0.5272678849444773,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.8456674290633948,
+          "rmse_pp": 1.0461036845026461,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.5744794108462249,
+          "rmse_pp": 0.6721351800241089,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.3432011161578831,
+          "rmse_pp": 0.4678422229568679,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 0.7657552947512336,
+          "rmse_pp": 0.9609547260491237,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 1.1111372470403291,
+          "rmse_pp": 1.2273671710867038,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 0.6308533467090228,
+          "rmse_pp": 0.7997968578734945,
+          "n": 162
+        }
+      ]
+    },
+    {
+      "model": "capacity_absolute_only",
+      "config": 1,
+      "config_values": {
+        "width": 96,
+        "lr": 0.002
+      },
+      "cell_mae_pp": 0.8293136282504879,
+      "cell_rmse_pp": 1.010736520874264,
+      "pooled_mae_pp": 0.8103284569852173,
+      "pooled_rmse_pp": 1.0256533855659455,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.704799307986717,
+          "rmse_pp": 0.791513741444908,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.8076030081387374,
+          "rmse_pp": 0.8740852751709116,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.7104606239397118,
+          "rmse_pp": 0.8287152336492093,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 1.3551412834865055,
+          "rmse_pp": 1.395573745830382,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 0.3636522201445379,
+          "rmse_pp": 0.42879107100051933,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.6077294558708801,
+          "rmse_pp": 0.9214838040693218,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 0.9613534139134996,
+          "rmse_pp": 0.993857638167799,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 1.6047445678450587,
+          "rmse_pp": 1.7539970237574198,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.9470442939763158,
+          "rmse_pp": 1.0701274909247331,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 1.3353715581918222,
+          "rmse_pp": 1.8142240081095666,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 0.40950421989290253,
+          "rmse_pp": 0.5086307235459487,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.33563875369685725,
+          "rmse_pp": 0.4047427689133824,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 0.8761492566271353,
+          "rmse_pp": 1.132335670460385,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 0.8295677963987349,
+          "rmse_pp": 1.4549033044097215,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.5878009328464017,
+          "rmse_pp": 0.7364507336856274,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.7111591532219076,
+          "rmse_pp": 1.1517356549567275,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.5970382409902699,
+          "rmse_pp": 0.6931168303694453,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.3751464472742303,
+          "rmse_pp": 0.5363453811010396,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 1.1140514910067718,
+          "rmse_pp": 1.2416296293963918,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 0.7357099396372734,
+          "rmse_pp": 0.937555849712058,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 1.4459202281739785,
+          "rmse_pp": 1.555651359684048,
+          "n": 162
+        }
+      ]
+    },
+    {
+      "model": "capacity_absolute_only",
+      "config": 0,
+      "config_values": {
+        "width": 96,
+        "lr": 0.0005
+      },
+      "cell_mae_pp": 0.898866850096525,
+      "cell_rmse_pp": 1.0958406665625042,
+      "pooled_mae_pp": 0.8832440071269947,
+      "pooled_rmse_pp": 1.0961603757087177,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.7456015288534275,
+          "rmse_pp": 0.8697226563150942,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.852702241547593,
+          "rmse_pp": 0.9504782474608672,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.8124705013249873,
+          "rmse_pp": 0.908418162081225,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 1.7320867419754205,
+          "rmse_pp": 1.7780501401993662,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 0.6771513428865694,
+          "rmse_pp": 0.7210437714940511,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.5954740384784251,
+          "rmse_pp": 0.9004469846526629,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 1.1919643795099226,
+          "rmse_pp": 1.2318599299733748,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 1.7048153606953655,
+          "rmse_pp": 1.8402746438954483,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.8812865964563685,
+          "rmse_pp": 0.9801243276516557,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 1.2440739878812421,
+          "rmse_pp": 1.7257294476572815,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 0.844563990994198,
+          "rmse_pp": 0.9499192988815919,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.39098046712773965,
+          "rmse_pp": 0.4485487845637593,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 0.7139146234161076,
+          "rmse_pp": 1.0210160107609312,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 0.8522898675888356,
+          "rmse_pp": 1.6635235990769521,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.654715791674451,
+          "rmse_pp": 0.8262404166184122,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.8368994851356951,
+          "rmse_pp": 1.1677282406953737,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.6025860008657133,
+          "rmse_pp": 0.7237338855487511,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.4495332018060958,
+          "rmse_pp": 0.6697028798738837,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 1.2533270128665146,
+          "rmse_pp": 1.393834448044612,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 0.7684858571668126,
+          "rmse_pp": 1.0149988036896933,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 1.0712808337755377,
+          "rmse_pp": 1.2272593186776033,
+          "n": 162
+        }
+      ]
+    },
+    {
+      "model": "capacity_relative_only",
+      "config": 0,
+      "config_values": {
+        "width": 96,
+        "lr": 0.0005
+      },
+      "cell_mae_pp": 0.9097949873378637,
+      "cell_rmse_pp": 1.1284772166014343,
+      "pooled_mae_pp": 0.8736220884411802,
+      "pooled_rmse_pp": 1.1881915765114603,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.47433487309455263,
+          "rmse_pp": 0.6483827403592549,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.5716801051172437,
+          "rmse_pp": 0.7071142457709678,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.6850629205790536,
+          "rmse_pp": 0.8473939506647999,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 2.8166825850315442,
+          "rmse_pp": 2.8777661020875005,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 1.3801297414713758,
+          "rmse_pp": 1.4141006641948877,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.7303713603855765,
+          "rmse_pp": 1.020165290351047,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 0.9899489915237499,
+          "rmse_pp": 1.3167154841092368,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 2.036634633692173,
+          "rmse_pp": 2.173532683278962,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.6071807444140578,
+          "rmse_pp": 0.7431707995484786,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 0.5535807074314282,
+          "rmse_pp": 0.6410275804518872,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 1.274420223522289,
+          "rmse_pp": 1.972809480431553,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.44111843772873993,
+          "rmse_pp": 0.5229566018712687,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 0.6657319197118174,
+          "rmse_pp": 0.8816432559032092,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 0.9367674272099933,
+          "rmse_pp": 1.6508600885184619,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.6326446934568837,
+          "rmse_pp": 0.8045933965603407,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.6189122576668697,
+          "rmse_pp": 0.9016713475595658,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.7773075333497207,
+          "rmse_pp": 0.9328122009095858,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.5261070130585357,
+          "rmse_pp": 0.6747840218957257,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 0.6413593854657113,
+          "rmse_pp": 0.8722181266492753,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 1.0327653321570371,
+          "rmse_pp": 1.2489518713322578,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 0.7129538480267851,
+          "rmse_pp": 0.8453516161818535,
+          "n": 162
+        }
+      ]
+    },
+    {
+      "model": "capacity_joint",
+      "config": 0,
+      "config_values": {
+        "width": 96,
+        "lr": 0.0005
+      },
+      "cell_mae_pp": 0.9145373983459198,
+      "cell_rmse_pp": 1.1585600942543242,
+      "pooled_mae_pp": 0.9057724742194413,
+      "pooled_rmse_pp": 1.236311484063757,
+      "cells": [
+        {
+          "cell": "Batch-4/R3_battery-1",
+          "mae_pp": 0.3553682816928962,
+          "rmse_pp": 0.6445022900795258,
+          "n": 133
+        },
+        {
+          "cell": "Batch-4/R3_battery-2",
+          "mae_pp": 0.5721063081425027,
+          "rmse_pp": 0.7374551452699294,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-3",
+          "mae_pp": 0.6444797188209334,
+          "rmse_pp": 0.7983978037228988,
+          "n": 112
+        },
+        {
+          "cell": "Batch-4/R3_battery-4",
+          "mae_pp": 3.0289091264062558,
+          "rmse_pp": 3.0948726291976265,
+          "n": 121
+        },
+        {
+          "cell": "Batch-4/R3_battery-6",
+          "mae_pp": 1.1401480100925716,
+          "rmse_pp": 1.2018740110550643,
+          "n": 119
+        },
+        {
+          "cell": "Batch-4/R3_battery-7",
+          "mae_pp": 0.8567004340630097,
+          "rmse_pp": 1.0736385106790687,
+          "n": 100
+        },
+        {
+          "cell": "Batch-4/R3_battery-8",
+          "mae_pp": 1.0817330106515717,
+          "rmse_pp": 1.308349277188225,
+          "n": 125
+        },
+        {
+          "cell": "Batch-5/RW_battery-1",
+          "mae_pp": 1.4729464791183324,
+          "rmse_pp": 1.5460819904750374,
+          "n": 16
+        },
+        {
+          "cell": "Batch-5/RW_battery-2",
+          "mae_pp": 0.6636280334361939,
+          "rmse_pp": 0.7478915718777873,
+          "n": 26
+        },
+        {
+          "cell": "Batch-5/RW_battery-3",
+          "mae_pp": 1.0806602871858038,
+          "rmse_pp": 1.3915907239999996,
+          "n": 29
+        },
+        {
+          "cell": "Batch-5/RW_battery-4",
+          "mae_pp": 0.7311331458330497,
+          "rmse_pp": 1.2020844813561338,
+          "n": 21
+        },
+        {
+          "cell": "Batch-5/RW_battery-6",
+          "mae_pp": 0.4043967932771798,
+          "rmse_pp": 0.6449753044545751,
+          "n": 18
+        },
+        {
+          "cell": "Batch-5/RW_battery-7",
+          "mae_pp": 0.7158582017675119,
+          "rmse_pp": 1.0601956315311631,
+          "n": 15
+        },
+        {
+          "cell": "Batch-5/RW_battery-8",
+          "mae_pp": 1.1163442938130352,
+          "rmse_pp": 2.08931440916079,
+          "n": 17
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-1",
+          "mae_pp": 0.7446590875133687,
+          "rmse_pp": 1.0779040431989155,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-2",
+          "mae_pp": 0.7861255600406118,
+          "rmse_pp": 0.9915632704582402,
+          "n": 189
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-3",
+          "mae_pp": 0.6580089921599452,
+          "rmse_pp": 0.8073763027383551,
+          "n": 140
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-4",
+          "mae_pp": 0.6523995046391654,
+          "rmse_pp": 0.8555468945629601,
+          "n": 145
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-6",
+          "mae_pp": 0.7138033517915346,
+          "rmse_pp": 0.909630056460648,
+          "n": 166
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-7",
+          "mae_pp": 1.1771231724722528,
+          "rmse_pp": 1.3572951199823584,
+          "n": 146
+        },
+        {
+          "cell": "Batch-6/Sim_satellite_battery-8",
+          "mae_pp": 0.6087535723465886,
+          "rmse_pp": 0.7892225118915033,
+          "n": 162
+        }
+      ]
+    }
+  ],
+  "failed_runs": []
+}

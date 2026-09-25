@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "scope": "same published weights, same fold0 seed0 context, all675 saved development queries",
+  "rows": 675,
+  "max_abs_log_prediction_difference": 4.470348352603182e-08,
+  "tolerance_log_soh": 0.0001,
+  "streaming_code_sha256": "10218b1ddb79bc34972cddb71266c2c120b9e1a98f25ca98d4cabf176a399ea5",
+  "source_predictions_sha256": "1c30cfd640f7a983a9ee6977cf091479b5f44680bbf44244eef6826e56344b42",
+  "seconds": 23.907829874995514,
+  "model_or_target_refitting_change": false,
+  "heldout_model_scores": false,
+  "resource_policy": "MPS high/low watermarks0.7/0.5; oneview cache only"
+}

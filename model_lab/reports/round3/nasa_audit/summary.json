@@ -1,0 +1,694 @@
+{
+  "archive_sha256": "82302a7db4fc1b34e0b6676326610438d43b816bdf11a69d1d012a464ef2f92e",
+  "archive_bytes": 209708670,
+  "source_record_sha256": "35781a5c4d4b4ba02d8bb861c4568d1808516a123f16a4cee3d9b0d9f012eb6f",
+  "parser_version": "nasa_pcoe_prefix_v1_conservative_temperature",
+  "parser_sha256": "e20850a57a043cf75d6b760f0a503d162a7fc619ae8ee0331c0841df7c951868",
+  "protocol_sha256": "d4ebd6415c528c6994f142da642f9bd8a4faaf5c8bf52a0956257ac9ad1e76ee",
+  "mat_members": 38,
+  "distinct_cells": 34,
+  "duplicate_cells": [
+    "B0025",
+    "B0026",
+    "B0027",
+    "B0028"
+  ],
+  "duplicate_member_count": 4,
+  "parsed_cells": 34,
+  "failed_cells": [],
+  "operations": 7565,
+  "operation_types": {
+    "charge": 2815,
+    "discharge": 2794,
+    "impedance": 1956
+  },
+  "operation_statuses": {
+    "charge_window_rejected": 1821,
+    "unpaired_discharge": 1817,
+    "charge_ready": 994,
+    "integrated_2p7": 971,
+    "intervening_impedance": 1956,
+    "protocol_terminal_capacity_not_standard_2p7": 6
+  },
+  "paired_discharges": 977,
+  "pair_roles": {
+    "initial_reference": 25,
+    "scored_external_candidate": 946,
+    "excluded_nonstandard_capacity": 6
+  },
+  "capacity_statuses": {
+    "integrated_2p7": 971,
+    "protocol_terminal_capacity_not_standard_2p7": 6
+  },
+  "scored_candidate_rows": 946,
+  "scored_candidate_cells": 23,
+  "summary_vs_integrated_2p7_abs_rel_quantiles": [
+    1.3222014181260013e-06,
+    0.0017117132546093127,
+    0.004434306757950389,
+    0.0053980156663507245,
+    0.006863412505326401,
+    0.046629578833277716
+  ],
+  "summary_vs_integrated_2p7_over_5pct": 0,
+  "cell_summary": [
+    {
+      "cell": "B0005",
+      "source_sha256": "0eae4585baf3f200c09fe24c5ab884f1889679fc75206ca1aa19da704104f0b0",
+      "archives": [
+        "5. Battery Data Set/1. BatteryAgingARC-FY08Q4.zip"
+      ],
+      "operations": 616,
+      "pairs": 50,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 49,
+      "operation_statuses": {
+        "charge_window_rejected": 118,
+        "unpaired_discharge": 118,
+        "charge_ready": 52,
+        "integrated_2p7": 50,
+        "intervening_impedance": 278
+      },
+      "seconds": 0.09190004199626856
+    },
+    {
+      "cell": "B0006",
+      "source_sha256": "fa818ab4db5db8ab21e910b6dd6c3e20d3761bb9672089e1a4de8f96074616c5",
+      "archives": [
+        "5. Battery Data Set/1. BatteryAgingARC-FY08Q4.zip"
+      ],
+      "operations": 616,
+      "pairs": 44,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 43,
+      "operation_statuses": {
+        "charge_window_rejected": 125,
+        "unpaired_discharge": 124,
+        "charge_ready": 45,
+        "integrated_2p7": 44,
+        "intervening_impedance": 278
+      },
+      "seconds": 0.0852203329995973
+    },
+    {
+      "cell": "B0007",
+      "source_sha256": "d022afa086efaf54ab5b63f05220f5be178c8027e2fa8d68589db0e85a441a3b",
+      "archives": [
+        "5. Battery Data Set/1. BatteryAgingARC-FY08Q4.zip"
+      ],
+      "operations": 616,
+      "pairs": 61,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 60,
+      "operation_statuses": {
+        "charge_window_rejected": 107,
+        "unpaired_discharge": 107,
+        "charge_ready": 63,
+        "integrated_2p7": 61,
+        "intervening_impedance": 278
+      },
+      "seconds": 0.08300970899290405
+    },
+    {
+      "cell": "B0018",
+      "source_sha256": "d1e6c923a43ea1c9666b3a90bbb521757a067fd60b4d17dbfaa49c50b179da69",
+      "archives": [
+        "5. Battery Data Set/1. BatteryAgingARC-FY08Q4.zip"
+      ],
+      "operations": 319,
+      "pairs": 110,
+      "reference_discharge_operation_index": 7,
+      "scored_candidates": 109,
+      "operation_statuses": {
+        "charge_window_rejected": 23,
+        "intervening_impedance": 53,
+        "unpaired_discharge": 22,
+        "charge_ready": 111,
+        "integrated_2p7": 110
+      },
+      "seconds": 0.05159666700637899
+    },
+    {
+      "cell": "B0025",
+      "source_sha256": "38894747a9c79d719e95a2e6c42be18017e29c522b760056b680a65105d1a15f",
+      "archives": [
+        "5. Battery Data Set/2. BatteryAgingARC_25_26_27_28_P1.zip",
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 80,
+      "pairs": 26,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 25,
+      "operation_statuses": {
+        "intervening_impedance": 21,
+        "charge_ready": 28,
+        "integrated_2p7": 26,
+        "charge_window_rejected": 3,
+        "unpaired_discharge": 2
+      },
+      "seconds": 0.01569679199019447
+    },
+    {
+      "cell": "B0026",
+      "source_sha256": "ca5eee0b33d8070e3a6c254696444a0c65a12f40587fcfc8db858640b2e6e36c",
+      "archives": [
+        "5. Battery Data Set/2. BatteryAgingARC_25_26_27_28_P1.zip",
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 80,
+      "pairs": 26,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 25,
+      "operation_statuses": {
+        "intervening_impedance": 21,
+        "charge_ready": 28,
+        "integrated_2p7": 26,
+        "charge_window_rejected": 3,
+        "unpaired_discharge": 2
+      },
+      "seconds": 0.01554220900288783
+    },
+    {
+      "cell": "B0027",
+      "source_sha256": "de2b4045ef20a6900885e169f3540664bb637f5f94b41fb4333c31d759237209",
+      "archives": [
+        "5. Battery Data Set/2. BatteryAgingARC_25_26_27_28_P1.zip",
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 80,
+      "pairs": 26,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 25,
+      "operation_statuses": {
+        "intervening_impedance": 21,
+        "charge_ready": 29,
+        "integrated_2p7": 26,
+        "charge_window_rejected": 2,
+        "unpaired_discharge": 2
+      },
+      "seconds": 0.015971999993780628
+    },
+    {
+      "cell": "B0028",
+      "source_sha256": "050c377e85a2c41165f2e2e0d22bf9575385dd8c835a713c27edb65af6bb25e8",
+      "archives": [
+        "5. Battery Data Set/2. BatteryAgingARC_25_26_27_28_P1.zip",
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 80,
+      "pairs": 26,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 25,
+      "operation_statuses": {
+        "intervening_impedance": 21,
+        "charge_ready": 28,
+        "integrated_2p7": 26,
+        "charge_window_rejected": 3,
+        "unpaired_discharge": 2
+      },
+      "seconds": 0.01709545800986234
+    },
+    {
+      "cell": "B0029",
+      "source_sha256": "da9c63ac7b8a10d2354ff53fec9be23f4194352e667de5c503b069f7d267ebb2",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 97,
+      "pairs": 34,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 33,
+      "operation_statuses": {
+        "intervening_impedance": 17,
+        "unpaired_discharge": 6,
+        "charge_ready": 34,
+        "integrated_2p7": 34,
+        "charge_window_rejected": 6
+      },
+      "seconds": 0.017575458012288436
+    },
+    {
+      "cell": "B0030",
+      "source_sha256": "c29a910256812449aa6090031471a57440e2e7bc827bd2c822b0d3135485cc99",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 97,
+      "pairs": 33,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 32,
+      "operation_statuses": {
+        "intervening_impedance": 17,
+        "unpaired_discharge": 7,
+        "charge_ready": 33,
+        "integrated_2p7": 33,
+        "charge_window_rejected": 7
+      },
+      "seconds": 0.017019207996781915
+    },
+    {
+      "cell": "B0031",
+      "source_sha256": "c47cb3a5ef47ef4de26fcc80c2173fec24a139f6c305852fccee603cd6c4bcec",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 97,
+      "pairs": 36,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 35,
+      "operation_statuses": {
+        "intervening_impedance": 17,
+        "unpaired_discharge": 4,
+        "charge_ready": 36,
+        "integrated_2p7": 36,
+        "charge_window_rejected": 4
+      },
+      "seconds": 0.01738154199847486
+    },
+    {
+      "cell": "B0032",
+      "source_sha256": "bd146cad3a18f9e8d42d05014c90e7bcde7abc7ccc89bdd46e5655604c61bc0f",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 97,
+      "pairs": 32,
+      "reference_discharge_operation_index": 4,
+      "scored_candidates": 31,
+      "operation_statuses": {
+        "intervening_impedance": 17,
+        "unpaired_discharge": 8,
+        "charge_ready": 32,
+        "integrated_2p7": 32,
+        "charge_window_rejected": 8
+      },
+      "seconds": 0.01754487500875257
+    },
+    {
+      "cell": "B0033",
+      "source_sha256": "3f6b44d7e123b9e9e4a26c3651acd0b9f38ca4d21aac3930bd9197ccf8b04426",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 486,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 197,
+        "intervening_impedance": 92,
+        "charge_window_rejected": 197
+      },
+      "seconds": 0.07057666699984111
+    },
+    {
+      "cell": "B0034",
+      "source_sha256": "d8cd5faff49f0d5672736327c5cd16913e0a0f08fb2817f672f52a67184cb885",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 486,
+      "pairs": 1,
+      "reference_discharge_operation_index": 5,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 196,
+        "intervening_impedance": 92,
+        "charge_ready": 1,
+        "integrated_2p7": 1,
+        "charge_window_rejected": 196
+      },
+      "seconds": 0.05531633300415706
+    },
+    {
+      "cell": "B0036",
+      "source_sha256": "40511cccf0262d61b8345fdfe6c4e0a67ccc42e7f5e869ec32c7f33619e7dc15",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 486,
+      "pairs": 180,
+      "reference_discharge_operation_index": 5,
+      "scored_candidates": 179,
+      "operation_statuses": {
+        "unpaired_discharge": 17,
+        "intervening_impedance": 92,
+        "charge_ready": 180,
+        "integrated_2p7": 180,
+        "charge_window_rejected": 17
+      },
+      "seconds": 0.07093137499759905
+    },
+    {
+      "cell": "B0038",
+      "source_sha256": "41d4a6977e3f3a46623f80ad8f6e5ba6ad83a2746403f71966c88a4722ffd409",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 122,
+      "pairs": 33,
+      "reference_discharge_operation_index": 37,
+      "scored_candidates": 32,
+      "operation_statuses": {
+        "unpaired_discharge": 14,
+        "intervening_impedance": 28,
+        "charge_window_rejected": 13,
+        "charge_ready": 34,
+        "integrated_2p7": 33
+      },
+      "seconds": 0.020296250004321337
+    },
+    {
+      "cell": "B0039",
+      "source_sha256": "0ea0a44622b61f13306cfc9c7080c7a6a8eb187da38607bfdc776974fcb5f000",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 122,
+      "pairs": 32,
+      "reference_discharge_operation_index": 37,
+      "scored_candidates": 31,
+      "operation_statuses": {
+        "unpaired_discharge": 15,
+        "intervening_impedance": 28,
+        "charge_window_rejected": 15,
+        "charge_ready": 32,
+        "integrated_2p7": 32
+      },
+      "seconds": 0.02001483399362769
+    },
+    {
+      "cell": "B0040",
+      "source_sha256": "1d7eb3dbf82bda46837831756999d911211b9ed0cc892c7e2e8d7f9059a5e013",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 122,
+      "pairs": 33,
+      "reference_discharge_operation_index": 37,
+      "scored_candidates": 32,
+      "operation_statuses": {
+        "unpaired_discharge": 14,
+        "intervening_impedance": 28,
+        "charge_window_rejected": 14,
+        "charge_ready": 33,
+        "integrated_2p7": 33
+      },
+      "seconds": 0.02060337500006426
+    },
+    {
+      "cell": "B0041",
+      "source_sha256": "a5440bfb8a141a123ed255ddccaec736b7e04028bce266f04da44c99d53c1eaf",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 163,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 67,
+        "charge_window_rejected": 67,
+        "intervening_impedance": 29
+      },
+      "seconds": 0.017752790998201817
+    },
+    {
+      "cell": "B0042",
+      "source_sha256": "4c39701508278c7a4f14e8af299f2510403dca30f2627fcf30c0ad7dc9f33675",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 275,
+      "pairs": 56,
+      "reference_discharge_operation_index": 5,
+      "scored_candidates": 54,
+      "operation_statuses": {
+        "charge_window_rejected": 56,
+        "intervening_impedance": 50,
+        "unpaired_discharge": 56,
+        "charge_ready": 57,
+        "integrated_2p7": 55,
+        "protocol_terminal_capacity_not_standard_2p7": 1
+      },
+      "seconds": 0.04070987500017509
+    },
+    {
+      "cell": "B0043",
+      "source_sha256": "3e937018342628667a0b1cf30ce804aebed9a1d79577de372d5232ad4bf96034",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 275,
+      "pairs": 44,
+      "reference_discharge_operation_index": 5,
+      "scored_candidates": 42,
+      "operation_statuses": {
+        "charge_window_rejected": 69,
+        "intervening_impedance": 50,
+        "unpaired_discharge": 68,
+        "charge_ready": 44,
+        "integrated_2p7": 43,
+        "protocol_terminal_capacity_not_standard_2p7": 1
+      },
+      "seconds": 0.03854387500905432
+    },
+    {
+      "cell": "B0044",
+      "source_sha256": "e66d3620de32f134619eaf9692a41d2ab70fa3f8c49211c2b303261504974f30",
+      "archives": [
+        "5. Battery Data Set/3. BatteryAgingARC_25-44.zip"
+      ],
+      "operations": 275,
+      "pairs": 18,
+      "reference_discharge_operation_index": 5,
+      "scored_candidates": 17,
+      "operation_statuses": {
+        "charge_window_rejected": 95,
+        "intervening_impedance": 50,
+        "unpaired_discharge": 94,
+        "charge_ready": 18,
+        "integrated_2p7": 18
+      },
+      "seconds": 0.038039833001676016
+    },
+    {
+      "cell": "B0045",
+      "source_sha256": "dc8e4cc149fe87f4ff855f30f0d31155ada6f467d06f5365550bab9370670fe3",
+      "archives": [
+        "5. Battery Data Set/4. BatteryAgingARC_45_46_47_48.zip"
+      ],
+      "operations": 184,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 72,
+        "intervening_impedance": 40,
+        "charge_window_rejected": 72
+      },
+      "seconds": 0.018805166997481138
+    },
+    {
+      "cell": "B0046",
+      "source_sha256": "fe62dffc7079f6131e591415c740f6863364b23e728fe2aa7286a9c749dcdebc",
+      "archives": [
+        "5. Battery Data Set/4. BatteryAgingARC_45_46_47_48.zip"
+      ],
+      "operations": 184,
+      "pairs": 55,
+      "reference_discharge_operation_index": 5,
+      "scored_candidates": 51,
+      "operation_statuses": {
+        "unpaired_discharge": 17,
+        "intervening_impedance": 40,
+        "charge_ready": 55,
+        "integrated_2p7": 52,
+        "charge_window_rejected": 17,
+        "protocol_terminal_capacity_not_standard_2p7": 3
+      },
+      "seconds": 0.02291904200683348
+    },
+    {
+      "cell": "B0047",
+      "source_sha256": "8089a9180cf353704642c457c844d83dd2e83aa2fc43fe4f7c05322f86fd0648",
+      "archives": [
+        "5. Battery Data Set/4. BatteryAgingARC_45_46_47_48.zip"
+      ],
+      "operations": 184,
+      "pairs": 10,
+      "reference_discharge_operation_index": 7,
+      "scored_candidates": 9,
+      "operation_statuses": {
+        "unpaired_discharge": 62,
+        "intervening_impedance": 40,
+        "charge_window_rejected": 62,
+        "charge_ready": 10,
+        "integrated_2p7": 10
+      },
+      "seconds": 0.01864725000632461
+    },
+    {
+      "cell": "B0048",
+      "source_sha256": "341219d38d8531e0a89ecaa18736b79e1547d22edea4a1d45357bb5bfeb7757d",
+      "archives": [
+        "5. Battery Data Set/4. BatteryAgingARC_45_46_47_48.zip"
+      ],
+      "operations": 184,
+      "pairs": 6,
+      "reference_discharge_operation_index": 7,
+      "scored_candidates": 4,
+      "operation_statuses": {
+        "unpaired_discharge": 66,
+        "intervening_impedance": 40,
+        "charge_window_rejected": 66,
+        "charge_ready": 6,
+        "integrated_2p7": 5,
+        "protocol_terminal_capacity_not_standard_2p7": 1
+      },
+      "seconds": 0.018778416007990018
+    },
+    {
+      "cell": "B0049",
+      "source_sha256": "bf56a4362287c8489dbeda27b823432f1e587473a7bf7096deec057c5a44d895",
+      "archives": [
+        "5. Battery Data Set/5. BatteryAgingARC_49_50_51_52.zip"
+      ],
+      "operations": 62,
+      "pairs": 1,
+      "reference_discharge_operation_index": 9,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 24,
+        "intervening_impedance": 12,
+        "charge_window_rejected": 24,
+        "charge_ready": 1,
+        "integrated_2p7": 1
+      },
+      "seconds": 0.01029420799750369
+    },
+    {
+      "cell": "B0050",
+      "source_sha256": "4dcb2475a8e689d54ac231832b40be0bf081805f28f69524e1c46f4c1d153d4e",
+      "archives": [
+        "5. Battery Data Set/5. BatteryAgingARC_49_50_51_52.zip"
+      ],
+      "operations": 62,
+      "pairs": 4,
+      "reference_discharge_operation_index": 5,
+      "scored_candidates": 3,
+      "operation_statuses": {
+        "unpaired_discharge": 21,
+        "intervening_impedance": 12,
+        "charge_ready": 4,
+        "integrated_2p7": 4,
+        "charge_window_rejected": 21
+      },
+      "seconds": 0.01017666699772235
+    },
+    {
+      "cell": "B0051",
+      "source_sha256": "37c247607dc7e5384fae4ef595d8b2f9072a2107ce1112fe0a460b4f48c8894b",
+      "archives": [
+        "5. Battery Data Set/5. BatteryAgingARC_49_50_51_52.zip"
+      ],
+      "operations": 62,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 25,
+        "intervening_impedance": 12,
+        "charge_window_rejected": 25
+      },
+      "seconds": 0.009905083003104664
+    },
+    {
+      "cell": "B0052",
+      "source_sha256": "640d86ac187b223c2edf83715b0f95ba5faeaaf5402a51dc81fc5f6275d4edd8",
+      "archives": [
+        "5. Battery Data Set/5. BatteryAgingARC_49_50_51_52.zip"
+      ],
+      "operations": 62,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 25,
+        "intervening_impedance": 12,
+        "charge_window_rejected": 25
+      },
+      "seconds": 0.00937254200107418
+    },
+    {
+      "cell": "B0053",
+      "source_sha256": "5ae945704d75f9865608c1bf585c80b62ba8e6a98c555840735c1f64fa5513f9",
+      "archives": [
+        "5. Battery Data Set/6. BatteryAgingARC_53_54_55_56.zip"
+      ],
+      "operations": 137,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 56,
+        "intervening_impedance": 26,
+        "charge_window_rejected": 55
+      },
+      "seconds": 0.016017458998248912
+    },
+    {
+      "cell": "B0054",
+      "source_sha256": "02ececa6edf2ab1febdfa31daccaaff59b090e627b9403a59060157c9488712a",
+      "archives": [
+        "5. Battery Data Set/6. BatteryAgingARC_53_54_55_56.zip"
+      ],
+      "operations": 253,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 103,
+        "intervening_impedance": 48,
+        "charge_window_rejected": 102
+      },
+      "seconds": 0.03320579200226348
+    },
+    {
+      "cell": "B0055",
+      "source_sha256": "8405c13378ced0894019a74f343057b0151f58c417fed45a5e068c4e372ea039",
+      "archives": [
+        "5. Battery Data Set/6. BatteryAgingARC_53_54_55_56.zip"
+      ],
+      "operations": 252,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 102,
+        "intervening_impedance": 48,
+        "charge_window_rejected": 102
+      },
+      "seconds": 0.03211995899619069
+    },
+    {
+      "cell": "B0056",
+      "source_sha256": "e894d92938c6fb09b6455bcc49330902c0e3ea8ee65129f664f1718a4843e709",
+      "archives": [
+        "5. Battery Data Set/6. BatteryAgingARC_53_54_55_56.zip"
+      ],
+      "operations": 252,
+      "pairs": 0,
+      "reference_discharge_operation_index": null,
+      "scored_candidates": 0,
+      "operation_statuses": {
+        "unpaired_discharge": 102,
+        "intervening_impedance": 48,
+        "charge_window_rejected": 102
+      },
+      "seconds": 0.032611167000140995
+    }
+  ],
+  "elapsed_seconds": 2.2626686669973424,
+  "external_scoring_gate_candidate": true
+}

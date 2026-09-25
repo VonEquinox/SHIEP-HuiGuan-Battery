@@ -1,0 +1,315 @@
+{
+  "scope": "adaptive development nested cell evaluation; no heldout scores",
+  "protocol_sha256": "22ce011e25ce9036addc5acbc25dab6993d0f19e6bc8def649c26341e1cc16e6",
+  "view_sha256": "52ce55b7e6510a5b949d98df6338b3123b3d7fab43baee64567b4dcda8952974",
+  "original_folds_sha256": "684c9906735e376cd4507f577bd307407f69a9a826585e75d566cfcafeb030b3",
+  "runner_sha256": "b2ec2da455a6b055de51fb352495eb66aadef29b79062cfb7ae100a24d63ac23",
+  "model_sha256": {
+    "anchored_conditional.py": "5190e57c362248ed4a6de37be78e3c7515c8dcac50daed830561d150d216a145",
+    "conditional_kernel.py": "a95276021a7f3df6d89669b688d21c9201b517955cd555dfcdff9556cd9f3c3f",
+    "conditional_reference.py": "c1e987d04e4db84863e0b0b8307f40a84563377c3a4c0e1c28c9edff7af20f0a",
+    "embedded_potential.py": "f707309d3f50a3971880e820d67c88899b5dc376dc5a68262ccca8d035a93e3e",
+    "reference_potential.py": "e8b060c654ef059620ebccd6c12de787654239f2f7a5a94ade6829718e4291a9"
+  },
+  "device": "mps",
+  "threads": 4,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "methods": [
+    "ridge_matched",
+    "extra_trees_matched",
+    "conditional_kernel",
+    "matched_mlp",
+    "tabm_embedded",
+    "film_context",
+    "film_no_context",
+    "anchored_conditional"
+  ],
+  "configs": {
+    "ridge_matched": [
+      {
+        "alpha": 0.1
+      },
+      {
+        "alpha": 10.0
+      },
+      {
+        "alpha": 1000.0
+      }
+    ],
+    "extra_trees_matched": [
+      {
+        "min_samples_leaf": 1
+      },
+      {
+        "min_samples_leaf": 3
+      },
+      {
+        "min_samples_leaf": 7
+      }
+    ],
+    "conditional_kernel": [
+      {
+        "alpha": 0.01,
+        "gamma": 0.0017605633802816902
+      },
+      {
+        "alpha": 0.1,
+        "gamma": 0.007042253521126761
+      },
+      {
+        "alpha": 1.0,
+        "gamma": 0.028169014084507043
+      }
+    ],
+    "matched_mlp": [
+      {
+        "width": 96,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      {
+        "width": 96,
+        "lr": 0.002,
+        "weight_decay": 0.001
+      },
+      {
+        "width": 96,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      }
+    ],
+    "tabm_embedded": [
+      {
+        "width": 96,
+        "members": 8,
+        "bins": 16,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      {
+        "width": 96,
+        "members": 8,
+        "bins": 16,
+        "lr": 0.002,
+        "weight_decay": 0.001
+      },
+      {
+        "width": 96,
+        "members": 8,
+        "bins": 16,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      }
+    ],
+    "film_context": [
+      {
+        "width": 32,
+        "members": 4,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      {
+        "width": 32,
+        "members": 4,
+        "lr": 0.002,
+        "weight_decay": 0.001
+      },
+      {
+        "width": 32,
+        "members": 4,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      }
+    ],
+    "film_no_context": [
+      {
+        "width": 32,
+        "members": 4,
+        "lr": 0.0005,
+        "weight_decay": 0.001
+      },
+      {
+        "width": 32,
+        "members": 4,
+        "lr": 0.002,
+        "weight_decay": 0.001
+      },
+      {
+        "width": 32,
+        "members": 4,
+        "lr": 0.006,
+        "weight_decay": 0.001
+      }
+    ],
+    "anchored_conditional": [
+      {
+        "width": 24,
+        "rank": 4,
+        "lr": 0.0005,
+        "weight_decay": 0.01
+      },
+      {
+        "width": 24,
+        "rank": 4,
+        "lr": 0.002,
+        "weight_decay": 0.01
+      },
+      {
+        "width": 24,
+        "rank": 4,
+        "lr": 0.006,
+        "weight_decay": 0.01
+      }
+    ]
+  },
+  "max_updates": 500,
+  "patience": 60,
+  "check_every": 5,
+  "scheduled_fit_cap": 240,
+  "heldout_cells_unscored": [
+    "Batch-4/R3_battery-5",
+    "Batch-5/RW_battery-5",
+    "Batch-6/Sim_satellite_battery-5"
+  ],
+  "folds": [
+    {
+      "outer_train_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-6",
+        "Batch-4/R3_battery-7",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-4",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-7",
+        "Batch-6/Sim_satellite_battery-8"
+      ],
+      "inner_train_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-6",
+        "Batch-4/R3_battery-7",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-4",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-7"
+      ],
+      "inner_valid_cells": [
+        "Batch-4/R3_battery-4",
+        "Batch-5/RW_battery-3",
+        "Batch-6/Sim_satellite_battery-8"
+      ],
+      "outer_valid_cells": [
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-7",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4"
+      ]
+    },
+    {
+      "outer_train_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-6",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-7",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-8"
+      ],
+      "inner_train_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-6",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4",
+        "Batch-6/Sim_satellite_battery-8"
+      ],
+      "inner_valid_cells": [
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-7",
+        "Batch-6/Sim_satellite_battery-6"
+      ],
+      "outer_valid_cells": [
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-7",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-4",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-7"
+      ]
+    },
+    {
+      "outer_train_cells": [
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-7",
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-1",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-4",
+        "Batch-5/RW_battery-7",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4",
+        "Batch-6/Sim_satellite_battery-7"
+      ],
+      "inner_train_cells": [
+        "Batch-4/R3_battery-2",
+        "Batch-4/R3_battery-3",
+        "Batch-4/R3_battery-4",
+        "Batch-4/R3_battery-7",
+        "Batch-5/RW_battery-2",
+        "Batch-5/RW_battery-4",
+        "Batch-5/RW_battery-7",
+        "Batch-6/Sim_satellite_battery-1",
+        "Batch-6/Sim_satellite_battery-3",
+        "Batch-6/Sim_satellite_battery-4"
+      ],
+      "inner_valid_cells": [
+        "Batch-4/R3_battery-8",
+        "Batch-5/RW_battery-1",
+        "Batch-6/Sim_satellite_battery-7"
+      ],
+      "outer_valid_cells": [
+        "Batch-4/R3_battery-1",
+        "Batch-4/R3_battery-6",
+        "Batch-5/RW_battery-3",
+        "Batch-5/RW_battery-6",
+        "Batch-5/RW_battery-8",
+        "Batch-6/Sim_satellite_battery-2",
+        "Batch-6/Sim_satellite_battery-6",
+        "Batch-6/Sim_satellite_battery-8"
+      ]
+    }
+  ]
+}

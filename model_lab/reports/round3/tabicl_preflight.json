@@ -1,0 +1,10 @@
+{
+  "scope": "synthetic runtime/query-isolation check, not battery performance",
+  "device": "mps",
+  "check": {
+    "max_log_prediction_difference": 1.6763806343078613e-08,
+    "tolerance": 0.0001,
+    "single_vs_batch_and_other_query_perturbation": "passed"
+  },
+  "seconds": 7.6877834999904735
+}

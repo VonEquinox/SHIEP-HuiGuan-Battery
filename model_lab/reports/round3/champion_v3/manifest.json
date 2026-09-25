@@ -1,0 +1,37 @@
+{
+  "scope": "frozen development-only ET; no XJTU holdout scores",
+  "task": "XJTU 3.7-4.1V RPT-relative SOH, matched 71D view, initial measured diagnostic calibration",
+  "task_sha256": "214f0d04f33d1fc2710dcdeba900dd55a0bb511dac02a04cc0a4d10a5f4910b2",
+  "source_hashes": {
+    "view_bundle": "52ce55b7e6510a5b949d98df6338b3123b3d7fab43baee64567b4dcda8952974",
+    "nested_summary": "ac2ee9e71a0435e3b15d646983c63c7e77156d423050ce342bbe9eb2359e1d43",
+    "nested_host_verification": "a960c01f256f907b44f1a3d136f5b3295a55d873a3d97c27e20029acbf788edd",
+    "external_protocol": "d4ebd6415c528c6994f142da642f9bd8a4faaf5c8bf52a0956257ac9ad1e76ee",
+    "feature_map": "5fd1a3cd9dd526f3c45de97b17f1acd0ddfde7f0e1b41fc99d7a1b2b482e9086",
+    "inference_code": "2906962c11c4dbfdc3bef2efc5618e40f6152aea9954c0f0b379e55bcd58f26c",
+    "trainer_code": "525fce6971d534c09ef041eefc35038fc6d720f91992d475e710e28623441882",
+    "nested_runner_code": "b2ec2da455a6b055de51fb352495eb66aadef29b79062cfb7ae100a24d63ac23"
+  },
+  "artifact_sha256": "c652bdfc52f994884c06e70d4a2e710070deec21c50d7934d39e48bec4831981",
+  "fold_selected_leaves": [
+    1,
+    1,
+    3
+  ],
+  "frozen_leaf": 1,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "trees_per_seed": 300,
+  "train_cells": 21,
+  "train_rows": 2058,
+  "heldout_cells_unscored": [
+    "Batch-4/R3_battery-5",
+    "Batch-5/RW_battery-5",
+    "Batch-6/Sim_satellite_battery-5"
+  ],
+  "cpu_reload_max_abs_difference": 0.0,
+  "development_fit_mae_pp_not_validation": 1.206787612286917e-14
+}

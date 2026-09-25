@@ -1,0 +1,128 @@
+[
+  {
+    "fold": 0,
+    "seed": 0,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 2.60770320892334e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1383,
+    "evaluation_rows": 675,
+    "seconds": 33.61966916700476
+  },
+  {
+    "fold": 0,
+    "seed": 1,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 1.1175870895385742e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1383,
+    "evaluation_rows": 675,
+    "seconds": 31.975319999997737
+  },
+  {
+    "fold": 0,
+    "seed": 2,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 2.0489096641540527e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1383,
+    "evaluation_rows": 675,
+    "seconds": 31.3999013749999
+  },
+  {
+    "fold": 1,
+    "seed": 0,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 4.470348358154297e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1508,
+    "evaluation_rows": 550,
+    "seconds": 35.36177291699278
+  },
+  {
+    "fold": 1,
+    "seed": 1,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 2.2351741790771484e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1508,
+    "evaluation_rows": 550,
+    "seconds": 38.56031950000033
+  },
+  {
+    "fold": 1,
+    "seed": 2,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 6.705522537231445e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1508,
+    "evaluation_rows": 550,
+    "seconds": 49.17418545798864
+  },
+  {
+    "fold": 2,
+    "seed": 0,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 6.705522537231445e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1225,
+    "evaluation_rows": 833,
+    "seconds": 50.283828040992375
+  },
+  {
+    "fold": 2,
+    "seed": 1,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 2.2351741790771484e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1225,
+    "evaluation_rows": 833,
+    "seconds": 40.615985917000216
+  },
+  {
+    "fold": 2,
+    "seed": 2,
+    "stage": "context_fit_and_predict",
+    "status": "ok",
+    "query_isolation": {
+      "max_log_prediction_difference": 3.725290298461914e-08,
+      "tolerance": 0.0001,
+      "single_vs_batch_and_other_query_perturbation": "passed"
+    },
+    "context_rows": 1225,
+    "evaluation_rows": 833,
+    "seconds": 39.20308662499883
+  }
+]

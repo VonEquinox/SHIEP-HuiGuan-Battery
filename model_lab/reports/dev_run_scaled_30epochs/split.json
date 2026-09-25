@@ -1,0 +1,78 @@
+{
+  "train": [
+    "2C_battery-1",
+    "2C_battery-2",
+    "2C_battery-3"
+  ],
+  "validation": [
+    "2C_battery-4"
+  ],
+  "test": [
+    "2C_battery-5"
+  ],
+  "scaler": {
+    "mean": [
+      4.096042156219482,
+      0.056707389652729034,
+      -1.2144412994384766,
+      0.02494286559522152,
+      0.33652251958847046,
+      302.8656005859375,
+      0.0006546370568685234,
+      0.0,
+      0.23004324734210968,
+      0.10914422571659088,
+      -0.5014826059341431,
+      0.7781654596328735,
+      0.0635303258895874,
+      996.3139038085938,
+      -0.0009571961127221584,
+      6.508073329925537
+    ],
+    "std": [
+      0.00032426448888145387,
+      0.00021179791656322777,
+      0.007180447690188885,
+      0.005404987372457981,
+      0.0051717390306293964,
+      4.634396076202393,
+      1.0722748811531346e-05,
+      1.0,
+      0.002652919851243496,
+      0.0008578383713029325,
+      0.07035208493471146,
+      0.03523467481136322,
+      0.011231356300413609,
+      187.0354461669922,
+      0.00013934991147834808,
+      0.1837083250284195
+    ]
+  },
+  "feature_columns": [
+    "voltage mean",
+    "voltage std",
+    "voltage kurtosis",
+    "voltage skewness",
+    "CC Q",
+    "CC charge time",
+    "voltage slope",
+    "voltage entropy",
+    "current mean",
+    "current std",
+    "current kurtosis",
+    "current skewness",
+    "CV Q",
+    "CV charge time",
+    "current slope",
+    "current entropy"
+  ],
+  "reference": "first observed capacity; early-calibrated SOH",
+  "source_hashes": {
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-1.csv": "03c9650af431fa33f4460b40c5b405a8f66883320c5074797841712b35762906",
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-2.csv": "237763560c8d1cb1ed107fb8da709fe00039cacbd0cad86f8a3574c7d956d1ce",
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-3.csv": "445645dd74590d9f5803e728603e9cbfef8748b6d42fbf844b63ba2fbabe171a",
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-4.csv": "d716a9c37172285fba15357a34f061229ae64966169af2f390e937ee914bf81d",
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-5.csv": "b68db594771f3f685570494da0831a9f7ab84a7d786fc93bdea61157197c62d3"
+  },
+  "status": "development split; test frozen and not evaluated"
+}

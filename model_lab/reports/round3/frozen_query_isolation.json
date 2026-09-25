@@ -1,0 +1,19 @@
+{
+  "created_at_utc": "2026-09-25T14:18:32.008293+00:00",
+  "scope": "runtime isolation check on actual frozen interface; no XJTU heldout input or query-target comparison",
+  "package_manifest_sha256": "9f52ad03e8ce7e35d40ed422af82e4c507445458d1b7f78fd6a46e818b803dbe",
+  "script_sha256": "4f4d85462399caf93d221e8726a4dbbf4862043e7eb9184844146b17db239beb",
+  "inference_sha256": "80dce956e250b6aec0d1926e245efd7b2424c8a7c67c4ce4b8f4250d9c8a4d3f",
+  "rows": 520,
+  "mixed_populations": [
+    "XJTU development",
+    "previously audited NASA"
+  ],
+  "chunk_rows": 256,
+  "tolerance_log_soh": 0.0001,
+  "instrumentation": "additional calls to unmodified publisher predict; original baseline returned",
+  "heldout_model_scores": false,
+  "query_labels_used": false,
+  "checks": [],
+  "seconds": 414.7392847919982
+}

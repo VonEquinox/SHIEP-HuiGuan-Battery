@@ -1,0 +1,1 @@
+"""Independent HuiGuan battery application."""

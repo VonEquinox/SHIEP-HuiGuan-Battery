@@ -1,0 +1,242 @@
+{
+  "config": {
+    "created_at": "2026-09-25T10:48:30.566270+00:00",
+    "data_glob": "model_lab/data/derived/author/PINN4SOH/xjtu/*.csv",
+    "source_hashes": {
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-1.csv": "03c9650af431fa33f4460b40c5b405a8f66883320c5074797841712b35762906",
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-2.csv": "237763560c8d1cb1ed107fb8da709fe00039cacbd0cad86f8a3574c7d956d1ce",
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-3.csv": "445645dd74590d9f5803e728603e9cbfef8748b6d42fbf844b63ba2fbabe171a",
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-4.csv": "d716a9c37172285fba15357a34f061229ae64966169af2f390e937ee914bf81d",
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-5.csv": "b68db594771f3f685570494da0831a9f7ab84a7d786fc93bdea61157197c62d3"
+    },
+    "cell_count": 5,
+    "feature_count": 16,
+    "feature_columns": [
+      "voltage mean",
+      "voltage std",
+      "voltage kurtosis",
+      "voltage skewness",
+      "CC Q",
+      "CC charge time",
+      "voltage slope",
+      "voltage entropy",
+      "current mean",
+      "current std",
+      "current kurtosis",
+      "current skewness",
+      "CV Q",
+      "CV charge time",
+      "current slope",
+      "current entropy"
+    ],
+    "epochs": 30,
+    "seeds": [
+      0
+    ],
+    "torch_threads": 4,
+    "num_workers": 0,
+    "batch_size": 32,
+    "device": "mps",
+    "mps_built": true,
+    "mps_available": true,
+    "label_provenance": [
+      "unknown"
+    ],
+    "primary_soh_metric": "not_primary_unknown_author_derived_capacity",
+    "test_evaluation": "not_run_until_model_freeze",
+    "models": [
+      "dummy_mean",
+      "ridge",
+      "hist_gradient_boosting",
+      "extra_trees",
+      "mlp_current_only",
+      "mlp_matched",
+      "cpmlp_like",
+      "cada_v0"
+    ],
+    "standardize_target": true,
+    "target_scaler_fit_scope": "training cells only",
+    "reported_checkpoint": "best_validation_cell_macro_mae",
+    "code_hashes": {
+      "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/scripts/train_soh.py": "8db9dbfd7f6ce6994d24de82718bf6856f10f9b3036ce5f29389aa785f17a031",
+      "model_lab/modeling/cada.py": "c7ab333e7e12dbc27a2e609ad0bf5699a01b84e6c46c8479cb4ae7e79808ee7d",
+      "model_lab/data/window_dataset.py": "9c8a358755392e1fec30c3ac543b545fc57a86d2e542d66c5b885e9a91a7fa6b"
+    }
+  },
+  "split": {
+    "train": [
+      "2C_battery-1",
+      "2C_battery-2",
+      "2C_battery-3"
+    ],
+    "validation": [
+      "2C_battery-4"
+    ],
+    "test": [
+      "2C_battery-5"
+    ],
+    "scaler": {
+      "mean": [
+        4.096042156219482,
+        0.056707389652729034,
+        -1.2144412994384766,
+        0.02494286559522152,
+        0.33652251958847046,
+        302.8656005859375,
+        0.0006546370568685234,
+        0.0,
+        0.23004324734210968,
+        0.10914422571659088,
+        -0.5014826059341431,
+        0.7781654596328735,
+        0.0635303258895874,
+        996.3139038085938,
+        -0.0009571961127221584,
+        6.508073329925537
+      ],
+      "std": [
+        0.00032426448888145387,
+        0.00021179791656322777,
+        0.007180447690188885,
+        0.005404987372457981,
+        0.0051717390306293964,
+        4.634396076202393,
+        1.0722748811531346e-05,
+        1.0,
+        0.002652919851243496,
+        0.0008578383713029325,
+        0.07035208493471146,
+        0.03523467481136322,
+        0.011231356300413609,
+        187.0354461669922,
+        0.00013934991147834808,
+        0.1837083250284195
+      ]
+    },
+    "feature_columns": [
+      "voltage mean",
+      "voltage std",
+      "voltage kurtosis",
+      "voltage skewness",
+      "CC Q",
+      "CC charge time",
+      "voltage slope",
+      "voltage entropy",
+      "current mean",
+      "current std",
+      "current kurtosis",
+      "current skewness",
+      "CV Q",
+      "CV charge time",
+      "current slope",
+      "current entropy"
+    ],
+    "reference": "first observed capacity; early-calibrated SOH",
+    "source_hashes": {
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-1.csv": "03c9650af431fa33f4460b40c5b405a8f66883320c5074797841712b35762906",
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-2.csv": "237763560c8d1cb1ed107fb8da709fe00039cacbd0cad86f8a3574c7d956d1ce",
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-3.csv": "445645dd74590d9f5803e728603e9cbfef8748b6d42fbf844b63ba2fbabe171a",
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-4.csv": "d716a9c37172285fba15357a34f061229ae64966169af2f390e937ee914bf81d",
+      "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-5.csv": "b68db594771f3f685570494da0831a9f7ab84a7d786fc93bdea61157197c62d3"
+    },
+    "status": "development split; test frozen and not evaluated"
+  },
+  "results": [
+    {
+      "model": "dummy_mean",
+      "seed": 0,
+      "device": "cpu",
+      "status": "smoke",
+      "mae_pct": 4.583920760192075,
+      "rmse_pct": 5.561333162730985,
+      "cell_macro_mae_pct": 4.583920760192075,
+      "cell_macro_rmse_pct": 5.561333162730985
+    },
+    {
+      "model": "ridge",
+      "seed": 0,
+      "device": "cpu",
+      "status": "smoke",
+      "mae_pct": 1.1806529744798147,
+      "rmse_pct": 1.3492399642448367,
+      "cell_macro_mae_pct": 1.1806529744798147,
+      "cell_macro_rmse_pct": 1.3492399642448367
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "seed": 0,
+      "device": "cpu",
+      "status": "smoke",
+      "mae_pct": 0.9885507153590579,
+      "rmse_pct": 1.125448438603679,
+      "cell_macro_mae_pct": 0.9885507153590579,
+      "cell_macro_rmse_pct": 1.125448438603679
+    },
+    {
+      "model": "extra_trees",
+      "seed": 0,
+      "device": "cpu",
+      "status": "smoke",
+      "mae_pct": 1.0017888460391873,
+      "rmse_pct": 1.2062277570471207,
+      "cell_macro_mae_pct": 1.0017888460391873,
+      "cell_macro_rmse_pct": 1.2062277570471207
+    },
+    {
+      "model": "mlp_current_only",
+      "seed": 0,
+      "device": "mps",
+      "status": "smoke",
+      "mae_pct": 0.7565479054463439,
+      "rmse_pct": 1.1286456052402256,
+      "cell_macro_mae_pct": 0.7565479054463439,
+      "cell_macro_rmse_pct": 1.1286456052402256,
+      "parameters": 5313,
+      "best_checkpoint": "model_lab/reports/dev_run_scaled_30epochs/mlp_current_only-seed0-best.pt",
+      "last_checkpoint": "model_lab/reports/dev_run_scaled_30epochs/mlp_current_only-seed0-last.pt",
+      "history": "model_lab/reports/dev_run_scaled_30epochs/mlp_current_only-seed0-history.json"
+    },
+    {
+      "model": "mlp_matched",
+      "seed": 0,
+      "device": "mps",
+      "status": "smoke",
+      "mae_pct": 1.115151516139974,
+      "rmse_pct": 1.311713063442355,
+      "cell_macro_mae_pct": 1.115151516139974,
+      "cell_macro_rmse_pct": 1.311713063442355,
+      "parameters": 8449,
+      "best_checkpoint": "model_lab/reports/dev_run_scaled_30epochs/mlp_matched-seed0-best.pt",
+      "last_checkpoint": "model_lab/reports/dev_run_scaled_30epochs/mlp_matched-seed0-last.pt",
+      "history": "model_lab/reports/dev_run_scaled_30epochs/mlp_matched-seed0-history.json"
+    },
+    {
+      "model": "cpmlp_like",
+      "seed": 0,
+      "device": "mps",
+      "status": "smoke",
+      "mae_pct": 0.9260277368381191,
+      "rmse_pct": 1.0718280135426252,
+      "cell_macro_mae_pct": 0.9260277368381191,
+      "cell_macro_rmse_pct": 1.0718280135426252,
+      "parameters": 18817,
+      "best_checkpoint": "model_lab/reports/dev_run_scaled_30epochs/cpmlp_like-seed0-best.pt",
+      "last_checkpoint": "model_lab/reports/dev_run_scaled_30epochs/cpmlp_like-seed0-last.pt",
+      "history": "model_lab/reports/dev_run_scaled_30epochs/cpmlp_like-seed0-history.json"
+    },
+    {
+      "model": "cada_v0",
+      "seed": 0,
+      "device": "mps",
+      "status": "smoke",
+      "mae_pct": 1.0517124718847848,
+      "rmse_pct": 1.1722724139311294,
+      "cell_macro_mae_pct": 1.0517124718847848,
+      "cell_macro_rmse_pct": 1.1722724139311294,
+      "parameters": 54273,
+      "best_checkpoint": "model_lab/reports/dev_run_scaled_30epochs/cada_v0-seed0-best.pt",
+      "last_checkpoint": "model_lab/reports/dev_run_scaled_30epochs/cada_v0-seed0-last.pt",
+      "history": "model_lab/reports/dev_run_scaled_30epochs/cada_v0-seed0-history.json"
+    }
+  ]
+}

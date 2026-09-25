@@ -1,0 +1,56 @@
+{
+  "created_at": "2026-09-25T10:41:54.896973+00:00",
+  "data_glob": "model_lab/data/derived/author/PINN4SOH/xjtu/*.csv",
+  "source_hashes": {
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-1.csv": "03c9650af431fa33f4460b40c5b405a8f66883320c5074797841712b35762906",
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-2.csv": "237763560c8d1cb1ed107fb8da709fe00039cacbd0cad86f8a3574c7d956d1ce",
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-3.csv": "445645dd74590d9f5803e728603e9cbfef8748b6d42fbf844b63ba2fbabe171a",
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-4.csv": "d716a9c37172285fba15357a34f061229ae64966169af2f390e937ee914bf81d",
+    "model_lab/data/derived/author/PINN4SOH/xjtu/2C_battery-5.csv": "b68db594771f3f685570494da0831a9f7ab84a7d786fc93bdea61157197c62d3"
+  },
+  "cell_count": 5,
+  "feature_count": 16,
+  "feature_columns": [
+    "voltage mean",
+    "voltage std",
+    "voltage kurtosis",
+    "voltage skewness",
+    "CC Q",
+    "CC charge time",
+    "voltage slope",
+    "voltage entropy",
+    "current mean",
+    "current std",
+    "current kurtosis",
+    "current skewness",
+    "CV Q",
+    "CV charge time",
+    "current slope",
+    "current entropy"
+  ],
+  "epochs": 3,
+  "seeds": [
+    0
+  ],
+  "torch_threads": 4,
+  "num_workers": 0,
+  "batch_size": 32,
+  "device": "cpu",
+  "mps_built": true,
+  "mps_available": false,
+  "label_provenance": [
+    "unknown"
+  ],
+  "primary_soh_metric": "not_primary_unknown_author_derived_capacity",
+  "test_evaluation": "not_run_until_model_freeze",
+  "models": [
+    "dummy_mean",
+    "ridge",
+    "hist_gradient_boosting",
+    "extra_trees",
+    "mlp_current_only",
+    "mlp_matched",
+    "cpmlp_like",
+    "cada_v0"
+  ]
+}

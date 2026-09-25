@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-09-25T00:00:00Z",
+  "disk_policy": {
+    "max_new_bytes": 42949672960,
+    "min_free_bytes": 75161927680,
+    "max_retries": 3,
+    "raw_and_derived_separate": true
+  },
+  "sources": [
+    {
+      "id": "xjtu",
+      "name": "XJTU Battery Dataset",
+      "official_url": "https://zenodo.org/records/10963339",
+      "metadata_api": "https://zenodo.org/api/records/10963339",
+      "version": "V1",
+      "license": "cc-by-4.0",
+      "status": "complete",
+      "raw_dir": "data/raw/xjtu",
+      "derived_dir": "data/derived/xjtu",
+      "notes": "Priority source. Do not assume a ZIP member's field names or label semantics until inspected.",
+      "official_record": "data/derived/xjtu/official_record.json",
+      "official_summary": {
+        "record_id": 10963339,
+        "version": "V1",
+        "license": "cc-by-4.0",
+        "title": "Project - Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis",
+        "modified": "2024-08-29T09:47:25.153142+00:00",
+        "files": [
+          {
+            "key": "Battery Dataset.zip",
+            "size": 2438769934,
+            "checksum": "md5:a635cef9678e0de21f9d5c1f78a4342c",
+            "url": "https://zenodo.org/api/records/10963339/files/Battery%20Dataset.zip/content"
+          }
+        ]
+      },
+      "partial_file": "data/raw/xjtu/Battery Dataset.zip.part",
+      "partial_bytes": 2273312768,
+      "partial_sha256": "c45d5bd698b65fe99e2facccb3f684924b1124337ccba4c3d1cd565718c93ccf",
+      "download_status": "partial_not_checksum_verified; no extraction",
+      "downloaded_file": "data/raw/xjtu/Battery Dataset.zip",
+      "downloaded_bytes": 2438769934,
+      "md5": "a635cef9678e0de21f9d5c1f78a4342c",
+      "sha256": "009deeda5ca935bf7b6230497aa492db12af120b6fc5211a9af05352affe55b1",
+      "physical_cell_file_count": 55,
+      "auxiliary_mat_file_count": 1
+    },
+    {
+      "id": "hust",
+      "name": "HUST Battery Dataset",
+      "official_url": "https://data.mendeley.com/datasets/nsc7hnsg4s/2",
+      "metadata_api": null,
+      "version": "2 (verify from page/API)",
+      "license": "verify from official record",
+      "status": "pending_metadata",
+      "raw_dir": "data/raw/hust",
+      "derived_dir": "data/derived/hust",
+      "notes": "Download only after anonymous access, metadata, size, and checksum are verified."
+    },
+    {
+      "id": "matr",
+      "name": "MATR battery cycle-life dataset",
+      "official_url": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation",
+      "metadata_api": null,
+      "version": "repository state (verify commit/tag)",
+      "license": "verify repository/data license",
+      "status": "pending_metadata",
+      "raw_dir": "data/raw/matr",
+      "derived_dir": "data/derived/matr",
+      "notes": "Static inspection only for external repository; do not execute setup hooks or untrusted loaders."
+    },
+    {
+      "id": "batterylife_reference",
+      "name": "BatteryLife standardization reference",
+      "official_url": "https://github.com/Ruifeng-Tan/BatteryLife",
+      "metadata_api": null,
+      "version": "repository state (reference only)",
+      "license": "verify repository license",
+      "status": "reference_only",
+      "raw_dir": null,
+      "derived_dir": "data/derived/batterylife_reference",
+      "notes": "Reference for naming/standardization. It does not create additional samples or replace raw source provenance."
+    },
+    {
+      "id": "pinn4soh_xjtu_derived",
+      "name": "PINN4SOH author-derived XJTU CSV statistics",
+      "official_url": "https://github.com/wang-fujin/PINN4SOH",
+      "metadata_api": "https://api.github.com/repos/wang-fujin/PINN4SOH/git/trees/cc3cc5053caf38f04e0665f7f88cb109144d035e?recursive=1",
+      "version": "commit cc3cc5053caf38f04e0665f7f88cb109144d035e",
+      "license": "verify repository/data license",
+      "status": "complete_derived",
+      "raw_dir": null,
+      "derived_dir": "data/derived/author/PINN4SOH/xjtu",
+      "notes": "Five explicitly selected 2C_battery-1..5.csv files. Author statistics, not raw curves; capacity provenance is unknown and metrics are development-only."
+    }
+  ]
+}

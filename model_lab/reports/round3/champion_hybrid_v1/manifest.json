@@ -1,0 +1,72 @@
+{
+  "created_at_utc": "2026-09-25T14:08:58.645390+00:00",
+  "scope": "frozen research inference package; no final test score at freezing",
+  "recipe": "tabicl_et_equal",
+  "et_weight": 0.5,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "tabicl_estimators_per_seed": 8,
+  "tabicl_package": "2.2.0",
+  "checkpoint_sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+  "schema": "xjtu_71d_partial_cc_v1",
+  "task": "3.7-4.1V preceding CC prefix and initial reference -> RPT-relative SOH",
+  "train_rows": 2058,
+  "train_cell_ids": [
+    "Batch-4/R3_battery-1",
+    "Batch-4/R3_battery-2",
+    "Batch-4/R3_battery-3",
+    "Batch-4/R3_battery-4",
+    "Batch-4/R3_battery-6",
+    "Batch-4/R3_battery-7",
+    "Batch-4/R3_battery-8",
+    "Batch-5/RW_battery-1",
+    "Batch-5/RW_battery-2",
+    "Batch-5/RW_battery-3",
+    "Batch-5/RW_battery-4",
+    "Batch-5/RW_battery-6",
+    "Batch-5/RW_battery-7",
+    "Batch-5/RW_battery-8",
+    "Batch-6/Sim_satellite_battery-1",
+    "Batch-6/Sim_satellite_battery-2",
+    "Batch-6/Sim_satellite_battery-3",
+    "Batch-6/Sim_satellite_battery-4",
+    "Batch-6/Sim_satellite_battery-6",
+    "Batch-6/Sim_satellite_battery-7",
+    "Batch-6/Sim_satellite_battery-8"
+  ],
+  "heldout_cell_ids": [
+    "Batch-4/R3_battery-5",
+    "Batch-5/RW_battery-5",
+    "Batch-6/Sim_satellite_battery-5"
+  ],
+  "heldout_scored_at_freeze": false,
+  "package_file_sha256": {
+    "et_champion.joblib": "c652bdfc52f994884c06e70d4a2e710070deec21c50d7934d39e48bec4831981",
+    "development_context.npz": "2871e217e821ef0ebab29740523c10f4773f471fe73af8bf14b080333e09e204"
+  },
+  "code_sha256": {
+    "inference": "80dce956e250b6aec0d1926e245efd7b2424c8a7c67c4ce4b8f4250d9c8a4d3f",
+    "et_inference": "2906962c11c4dbfdc3bef2efc5618e40f6152aea9954c0f0b379e55bcd58f26c",
+    "packager": "41d5a0d9c6497c5b080cd60bdec9bc74648d853959a25db08be1e30f8093f5b6"
+  },
+  "provenance_sha256": {
+    "followup_summary": "62d83ee75e9ccf1bea9b860cc00bccb5a3835a28c5726e8d9f62b26e0295eb84",
+    "followup_manifest": "8f762f91b8d4b358deae4d2fcf9f95d2114a6297de1f8f89ffdf26d11e2510e8",
+    "selection_protocol": "afbecee874aeefc37b1070bc2e9902d73935eabfa5f2622e936930e6deff07b1",
+    "view": "52ce55b7e6510a5b949d98df6338b3123b3d7fab43baee64567b4dcda8952974",
+    "feature_map": "5fd1a3cd9dd526f3c45de97b17f1acd0ddfde7f0e1b41fc99d7a1b2b482e9086",
+    "environment": "fa0f6defb03771baf27235261990a1323adaf0aefc1487bcd3f8c52a8b8143ae"
+  },
+  "development_ensemble_mae_pp": 0.5858972199103465,
+  "not_claimed": [
+    "public-benchmark SOTA",
+    "zero overfitting",
+    "universal battery transfer",
+    "low-latency production BMS",
+    "calibrated safety risk",
+    "RUL"
+  ]
+}

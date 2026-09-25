@@ -1,0 +1,23 @@
+{
+  "heldout_model_scores": false,
+  "attempts": [
+    {
+      "session": 47,
+      "status": "interrupted_before_first_prediction",
+      "seconds": 417.648,
+      "stage": "native full-development cache construction",
+      "signal": "SIGINT",
+      "side_effect": "frozen_query_isolation.json retains incomplete check; no final test directory created"
+    },
+    {
+      "session": 48,
+      "status": "memory_error_before_equivalence_result",
+      "stage": "column attention; hardware estimate chose too large independent-column batch",
+      "max_allowed_GiB": 8.29,
+      "mps_allocated_GiB": 2.15,
+      "other_allocations_GiB": 5.74,
+      "requested_GiB": 1.16,
+      "remedy": "cap independent column batch16, row batch64, ICLbatch1; retain ALL context rows/features/weights/views, keep hard memory limit"
+    }
+  ]
+}
