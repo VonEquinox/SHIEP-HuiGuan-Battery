@@ -1,2 +1,0 @@
-
-41f6059a60d3cc402a400e6365e8a0555d9c8ddc	{"key":"make-fetch-happen:request-cache:http://registry.npm.taobao.org/codepage","integrity":null,"time":1768188127710,"size":"262","metadata":{"time":1768188127710,"url":"http://registry.npm.taobao.org/codepage","reqHeaders":{"accept":"application/json"},"resHeaders":{"content-type":"text/html","date":"Mon, 12 Jan 2026 03:22:07 GMT","location":"https://registry.npmmirror.com/codepage"},"options":{"compress":true},"status":301}}

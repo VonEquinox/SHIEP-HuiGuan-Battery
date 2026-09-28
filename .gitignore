@@ -2,3 +2,7 @@
 .DS_Store
 __pycache__/
 *.pyc
+# Original project files are preserved on the original branch.
+/源程序或源文件/
+/需求文档/
+/上海电力大学-20260300-设计说明书.docx

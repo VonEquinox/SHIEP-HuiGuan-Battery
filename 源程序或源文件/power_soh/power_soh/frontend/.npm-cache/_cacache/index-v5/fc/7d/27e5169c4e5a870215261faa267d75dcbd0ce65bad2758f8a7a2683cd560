@@ -1,2 +1,0 @@
-
-95fa4bfa32acf4fba6c612efae572bc6ea844c79	{"key":"make-fetch-happen:request-cache:http://registry.npm.taobao.org/adler-32","integrity":null,"time":1768188127630,"size":"262","metadata":{"time":1768188127630,"url":"http://registry.npm.taobao.org/adler-32","reqHeaders":{"accept":"application/json"},"resHeaders":{"content-type":"text/html","date":"Mon, 12 Jan 2026 03:22:07 GMT","location":"https://registry.npmmirror.com/adler-32"},"options":{"compress":true},"status":301}}

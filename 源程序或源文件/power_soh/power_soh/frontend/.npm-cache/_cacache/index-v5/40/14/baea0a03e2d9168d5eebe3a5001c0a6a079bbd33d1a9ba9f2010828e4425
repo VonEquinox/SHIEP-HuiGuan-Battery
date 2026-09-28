@@ -1,2 +1,0 @@
-
-35b510b39283828eb9f32e71c34dc5d8429425db	{"key":"make-fetch-happen:request-cache:http://registry.npm.taobao.org/wmf","integrity":null,"time":1768188127708,"size":"262","metadata":{"time":1768188127708,"url":"http://registry.npm.taobao.org/wmf","reqHeaders":{"accept":"application/json"},"resHeaders":{"content-type":"text/html","date":"Mon, 12 Jan 2026 03:22:07 GMT","location":"https://registry.npmmirror.com/wmf"},"options":{"compress":true},"status":301}}

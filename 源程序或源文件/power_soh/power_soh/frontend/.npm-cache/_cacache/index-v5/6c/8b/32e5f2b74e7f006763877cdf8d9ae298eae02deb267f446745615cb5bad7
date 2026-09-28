@@ -1,2 +1,0 @@
-
-05b8b2da72c57405466802089ed6d88d962addc3	{"key":"make-fetch-happen:request-cache:http://registry.npm.taobao.org/pinia","integrity":null,"time":1767837396993,"size":"262","metadata":{"time":1767837396993,"url":"http://registry.npm.taobao.org/pinia","reqHeaders":{"accept":"application/json"},"resHeaders":{"content-type":"text/html","date":"Thu, 08 Jan 2026 01:56:35 GMT","location":"https://registry.npmmirror.com/pinia"},"options":{"compress":true},"status":301}}

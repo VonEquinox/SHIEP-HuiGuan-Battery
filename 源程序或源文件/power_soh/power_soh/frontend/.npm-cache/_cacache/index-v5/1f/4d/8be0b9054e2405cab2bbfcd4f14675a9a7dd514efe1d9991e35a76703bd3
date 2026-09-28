@@ -1,2 +1,0 @@
-
-367c853eaf5e760be2695ee8742cc6d7304826d9	{"key":"make-fetch-happen:request-cache:http://registry.npm.taobao.org/word","integrity":null,"time":1768188127709,"size":"262","metadata":{"time":1768188127709,"url":"http://registry.npm.taobao.org/word","reqHeaders":{"accept":"application/json"},"resHeaders":{"content-type":"text/html","date":"Mon, 12 Jan 2026 03:22:07 GMT","location":"https://registry.npmmirror.com/word"},"options":{"compress":true},"status":301}}
