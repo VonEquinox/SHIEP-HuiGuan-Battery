@@ -1,0 +1,8 @@
+{
+  "schema_version": "development-diagnostic-status-v2",
+  "status": "superseded_before_final",
+  "reason": "Offline M2.predict fell back to global head availability on a dev/calibration-only exact policy. Package query guard refused unknown policies, but offline metrics and CQR must mask them as untrained. No final accessed.",
+  "replacement_experiment": "matr_lifetime_development_masked_20261002",
+  "selection_use": "none; identical model recipe, seeds and input; domain support bug correction only",
+  "no_weights_or_prior_metrics_overwritten": true
+}

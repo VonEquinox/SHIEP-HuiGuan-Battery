@@ -1,0 +1,43 @@
+{
+  "status": "raw_verified_identity_and_structural_qualification_passed",
+  "started_at": "2026-10-01T17:56:03.357099+00:00",
+  "network_concurrency": 2,
+  "proxy": "http://127.0.0.1:7897",
+  "max_bytes_per_file": 4294967296,
+  "minimum_free_bytes": 75161927680,
+  "total_expected_bytes": 8269341808,
+  "files": [
+    {
+      "name": "2017-05-12_batchdata_updated_struct_errorcorrect.mat",
+      "expected_bytes": 3025320241,
+      "url": "https://data.matr.io/1/api/v1/file/5c86c0b5fa2ede00015ddf66/download",
+      "author_digest_published": false
+    },
+    {
+      "name": "2017-06-30_batchdata_updated_struct_errorcorrect.mat",
+      "expected_bytes": 2007331155,
+      "url": "https://data.matr.io/1/api/v1/file/5c86bf13fa2ede00015ddd82/download",
+      "author_digest_published": false
+    },
+    {
+      "name": "2018-04-12_batchdata_updated_struct_errorcorrect.mat",
+      "expected_bytes": 3236690412,
+      "url": "https://data.matr.io/1/api/v1/file/5c86bd64fa2ede00015ddbb2/download",
+      "author_digest_published": false
+    }
+  ],
+  "purpose": "new corrected-batch data qualification; no existing final scoring, model retuning or frozen artifact mutation",
+  "updated_at": "2026-10-01T18:20:53.957612+00:00",
+  "verified_files": [
+    "2017-05-12_batchdata_updated_struct_errorcorrect.mat",
+    "2017-06-30_batchdata_updated_struct_errorcorrect.mat",
+    "2018-04-12_batchdata_updated_struct_errorcorrect.mat"
+  ],
+  "verified_bytes": 8269341808,
+  "sha256": {
+    "2017-05-12_batchdata_updated_struct_errorcorrect.mat": "9d928ab978f0e3c70b31cb833a749fedd35094d01af76475d69b40aa3497f5ba",
+    "2017-06-30_batchdata_updated_struct_errorcorrect.mat": "63ab200d09ecb237fee5ef3a5c5db76e3212e3206a0bd92f769e1427fed338b8",
+    "2018-04-12_batchdata_updated_struct_errorcorrect.mat": "62c30e413b63e6144720e016deed3661fac8468641794a5807b123fe84717998"
+  },
+  "parsed_manifest": "model_lab/data/derived/v2/matr_corrected_development_20261002/manifest.json"
+}

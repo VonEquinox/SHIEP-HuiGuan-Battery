@@ -1,0 +1,2968 @@
+[
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800464881",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(70%)-3C",
+      "source_protocol_id": "5.4C(70%)-3C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0886388,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/31"
+      ],
+      "domain_index": 38,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.2371579051332829
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9650867495295237,
+          "0.5": 1.0297205489602945,
+          "0.95": 1.0986830038522388
+        },
+        "params": {
+          "location": 0.02928745374083519,
+          "scale": 0.03941064327955246
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460617",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "6C(40%)-3C",
+      "source_protocol_id": "6C(40%)-3C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0783457,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/31"
+      ],
+      "domain_index": 56,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.2767005540922135
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9639434785960423,
+          "0.5": 1.0038313126503782,
+          "0.95": 1.0453696991913217
+        },
+        "params": {
+          "location": 0.0038239918649196625,
+          "scale": 0.024650588631629944
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/26/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460640",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "6C(60%)-3C",
+      "source_protocol_id": "6C(60%)-3C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0810486,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/33/cycles/31"
+      ],
+      "domain_index": 61,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "unsupported",
+      "reasons": [
+        "unsupported_source_chemistry_protocol"
+      ],
+      "ood_score": null
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460525",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "7C(30%)-3.6C",
+      "source_protocol_id": "7C(30%)-3.6C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0798281,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/31"
+      ],
+      "domain_index": 62,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.34138428852944425
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9955945839201137,
+          "0.5": 1.0357904465371202,
+          "0.95": 1.0776091658847884
+        },
+        "params": {
+          "location": 0.03516485169529915,
+          "scale": 0.024062931537628174
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/35/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460506",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "7C(40%)-3C",
+      "source_protocol_id": "7C(40%)-3C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.081539,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/31"
+      ],
+      "domain_index": 64,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.4376646158888707
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.969536094361889,
+          "0.5": 1.0251006214400342,
+          "0.95": 1.0838495752634774
+        },
+        "params": {
+          "location": 0.024790775030851364,
+          "scale": 0.033880431205034256
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460642",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "7C(40%)-3.6C",
+      "source_protocol_id": "7C(40%)-3.6C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0856049,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/31"
+      ],
+      "domain_index": 63,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.3745648096950847
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 1.004985169207385,
+          "0.5": 1.0503684823834272,
+          "0.95": 1.0978012239271129
+        },
+        "params": {
+          "location": 0.049141038209199905,
+          "scale": 0.02685239166021347
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460635",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "3.6C(2%)-4.85C",
+      "source_protocol_id": "3.6C(2%)-4.85C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.071297,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/6/cycles/31"
+      ],
+      "domain_index": 4,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "unsupported",
+      "reasons": [
+        "unsupported_source_chemistry_protocol"
+      ],
+      "ood_score": null
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460466",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "4C(13%)-5C",
+      "source_protocol_id": "4C(13%)-5C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0752143,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/31"
+      ],
+      "domain_index": 22,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "unsupported",
+      "reasons": [
+        "unsupported_source_chemistry_protocol"
+      ],
+      "ood_score": null
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460449",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "4C(4%)-4.85C",
+      "source_protocol_id": "4C(4%)-4.85C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0816983,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/15/cycles/31"
+      ],
+      "domain_index": 24,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "unsupported",
+      "reasons": [
+        "unsupported_source_chemistry_protocol"
+      ],
+      "ood_score": null
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460501",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "4.65C(69%)-6C",
+      "source_protocol_id": "4.65C(69%)-6C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0779557,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/24/cycles/31"
+      ],
+      "domain_index": 16,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "unsupported",
+      "reasons": [
+        "unsupported_source_chemistry_protocol"
+      ],
+      "ood_score": null
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460597",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "4.8C(80%)-4.8C",
+      "source_protocol_id": "4.8C(80%)-4.8C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0710604,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/31"
+      ],
+      "domain_index": 17,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.800206720515494
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9586411463977834,
+          "0.5": 1.0114632788268199,
+          "0.95": 1.067195966143715
+        },
+        "params": {
+          "location": 0.0113980732858181,
+          "scale": 0.03260870277881622
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "insufficient_calibration_objects",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "physical_cycle",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/31"
+        ],
+        "distribution_kind": "discrete_survival",
+        "params": {
+          "grid": [
+            100.0,
+            200.0,
+            400.0,
+            600.0,
+            800.0,
+            1000.0,
+            1500.0,
+            2000.0,
+            2500.0,
+            3000.0
+          ],
+          "survival": [
+            0.9672347865998745,
+            0.9336535299431488,
+            0.5945566810966337,
+            0.26191066482222936,
+            0.24527984638712172,
+            0.21790218653829213,
+            0.17451248035013245,
+            0.12495909448434805,
+            0.061716976626781966,
+            0.031165748599586773
+          ],
+          "median": 600.0,
+          "median_status": "within_support",
+          "horizon": 3000.0,
+          "threshold_probability": 0.9688342514004132
+        }
+      },
+      "threshold_risk": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "probability",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/25/cycles/31"
+        ],
+        "distribution_kind": "bernoulli",
+        "params": {
+          "probability": 0.9688342514004132
+        }
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": "insufficient_calibration_class_objects",
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460627",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(58%)-3.5C",
+      "source_protocol_id": "5.6C(58%)-3.5C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0841404,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/40/cycles/31"
+      ],
+      "domain_index": 46,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "unsupported",
+      "reasons": [
+        "unsupported_source_chemistry_protocol"
+      ],
+      "ood_score": null
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460526",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(5%)-4.75C",
+      "source_protocol_id": "5.6C(5%)-4.75C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0816238,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/41/cycles/31"
+      ],
+      "domain_index": 45,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "unsupported",
+      "reasons": [
+        "unsupported_source_chemistry_protocol"
+      ],
+      "ood_score": null
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800460678",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "6C(52%)-3.5C",
+      "source_protocol_id": "6C(52%)-3.5C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0772098,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat#batch/47/cycles/31"
+      ],
+      "domain_index": 60,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "unsupported",
+      "reasons": [
+        "unsupported_source_chemistry_protocol"
+      ],
+      "ood_score": null
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "unsupported_source_chemistry_protocol",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800737313",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5.3C(54%)-4C-newstructure",
+      "source_protocol_id": "5.3C(54%)-4C-newstructure",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.068262,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/31"
+      ],
+      "domain_index": 32,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.5023029956366186
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9898317510136995,
+          "0.5": 1.017754317676906,
+          "0.95": 1.046464563385832
+        },
+        "params": {
+          "location": 0.017598550766706467,
+          "scale": 0.016912659630179405
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "insufficient_calibration_objects",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "physical_cycle",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/31"
+        ],
+        "distribution_kind": "discrete_survival",
+        "params": {
+          "grid": [
+            100.0,
+            200.0,
+            400.0,
+            600.0,
+            800.0,
+            1000.0,
+            1500.0,
+            2000.0,
+            2500.0,
+            3000.0
+          ],
+          "survival": [
+            0.9884398020803928,
+            0.9781102591548969,
+            0.952732466676877,
+            0.9065575472266278,
+            0.8947512125392387,
+            0.8767844730514651,
+            0.8207375559432838,
+            0.7266881170140538,
+            0.326858131666731,
+            0.1404080837475169
+          ],
+          "median": 2500.0,
+          "median_status": "within_support",
+          "horizon": 3000.0,
+          "threshold_probability": 0.8595919162524831
+        }
+      },
+      "threshold_risk": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "probability",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/2/cycles/31"
+        ],
+        "distribution_kind": "bernoulli",
+        "params": {
+          "probability": 0.8595919162524831
+        }
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": "insufficient_calibration_class_objects",
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800737277",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "4.8C(80%)-4.8C-newstructure",
+      "source_protocol_id": "4.8C(80%)-4.8C-newstructure",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0643069,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/31"
+      ],
+      "domain_index": 18,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.44346230404053216
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9518057965897472,
+          "0.5": 0.988417293099872,
+          "0.95": 1.0264370618452716
+        },
+        "params": {
+          "location": -0.011650308966636658,
+          "scale": 0.022946693003177643
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "insufficient_calibration_objects",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "physical_cycle",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/31"
+        ],
+        "distribution_kind": "discrete_survival",
+        "params": {
+          "grid": [
+            100.0,
+            200.0,
+            400.0,
+            600.0,
+            800.0,
+            1000.0,
+            1500.0,
+            2000.0,
+            2500.0,
+            3000.0
+          ],
+          "survival": [
+            0.9828785620629787,
+            0.9680118373595846,
+            0.9389825446766639,
+            0.8698985713536167,
+            0.8522099697493737,
+            0.82801392894081,
+            0.7516573523206953,
+            0.6548941387392369,
+            0.2804693152860607,
+            0.12920006993728791
+          ],
+          "median": 2500.0,
+          "median_status": "within_support",
+          "horizon": 3000.0,
+          "threshold_probability": 0.8707999300627121
+        }
+      },
+      "threshold_risk": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "probability",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/11/cycles/31"
+        ],
+        "distribution_kind": "bernoulli",
+        "params": {
+          "probability": 0.8707999300627121
+        }
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": "insufficient_calibration_class_objects",
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800737276",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(19%)-4.6C-newstructure",
+      "source_protocol_id": "5.6C(19%)-4.6C-newstructure",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0706047,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/31"
+      ],
+      "domain_index": 40,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.3734261772182704
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9782423841011525,
+          "0.5": 1.00982884663081,
+          "0.95": 1.04243520426147
+        },
+        "params": {
+          "location": 0.00978085771203041,
+          "scale": 0.019320053979754448
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "insufficient_calibration_objects",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "physical_cycle",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/31"
+        ],
+        "distribution_kind": "discrete_survival",
+        "params": {
+          "grid": [
+            100.0,
+            200.0,
+            400.0,
+            600.0,
+            800.0,
+            1000.0,
+            1500.0,
+            2000.0,
+            2500.0,
+            3000.0
+          ],
+          "survival": [
+            0.9860396357253194,
+            0.9734695700988051,
+            0.9379277228366704,
+            0.8792518873710151,
+            0.8651057021881204,
+            0.8435335376832311,
+            0.7688285232033994,
+            0.6545731486957017,
+            0.2636720286915957,
+            0.11271850606186576
+          ],
+          "median": 2500.0,
+          "median_status": "within_support",
+          "horizon": 3000.0,
+          "threshold_probability": 0.8872814939381343
+        }
+      },
+      "threshold_risk": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "probability",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/12/cycles/31"
+        ],
+        "distribution_kind": "bernoulli",
+        "params": {
+          "probability": 0.8872814939381343
+        }
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": "insufficient_calibration_class_objects",
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800737386",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5.9C(15%)-4.6C-newstructure",
+      "source_protocol_id": "5.9C(15%)-4.6C-newstructure",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0709045,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/31"
+      ],
+      "domain_index": 48,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.3500448952413761
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9878222877009912,
+          "0.5": 1.0182488099443447,
+          "0.95": 1.049612518225462
+        },
+        "params": {
+          "location": 0.018084298819303513,
+          "scale": 0.01844344474375248
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/16/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800737365",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(36%)-4.3C-newstructure",
+      "source_protocol_id": "5.6C(36%)-4.3C-newstructure",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0600277,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/31"
+      ],
+      "domain_index": 42,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.6146755782440285
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 1.0379047373942252,
+          "0.5": 1.0651004564833118,
+          "0.95": 1.093008771931318
+        },
+        "params": {
+          "location": 0.06306912004947662,
+          "scale": 0.015724873170256615
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "insufficient_calibration_objects",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "physical_cycle",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/31"
+        ],
+        "distribution_kind": "discrete_survival",
+        "params": {
+          "grid": [
+            100.0,
+            200.0,
+            400.0,
+            600.0,
+            800.0,
+            1000.0,
+            1500.0,
+            2000.0,
+            2500.0,
+            3000.0
+          ],
+          "survival": [
+            0.9919432392343879,
+            0.9842423794938351,
+            0.9659356819966283,
+            0.935174363040841,
+            0.9250165223571128,
+            0.9102351411302443,
+            0.8505471127210973,
+            0.7654498340836275,
+            0.30599933414523817,
+            0.12661812922491922
+          ],
+          "median": 2500.0,
+          "median_status": "within_support",
+          "horizon": 3000.0,
+          "threshold_probability": 0.8733818707750808
+        }
+      },
+      "threshold_risk": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "probability",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/37/cycles/31"
+        ],
+        "distribution_kind": "bernoulli",
+        "params": {
+          "probability": 0.8733818707750808
+        }
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": "insufficient_calibration_class_objects",
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800737334",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5C(67%)-4C-newstructure",
+      "source_protocol_id": "5C(67%)-4C-newstructure",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0723419,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/31"
+      ],
+      "domain_index": 50,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.6128402828782977
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/31"
+        ],
+        "quantiles": {
+          "0.05": 0.9940440942010375,
+          "0.5": 1.0287258771459962,
+          "0.95": 1.0646176930012234
+        },
+        "params": {
+          "location": 0.028321024030447006,
+          "scale": 0.020849719643592834
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "physical_cycle",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/31"
+        ],
+        "distribution_kind": "discrete_survival",
+        "params": {
+          "grid": [
+            100.0,
+            200.0,
+            400.0,
+            600.0,
+            800.0,
+            1000.0,
+            1500.0,
+            2000.0,
+            2500.0,
+            3000.0
+          ],
+          "survival": [
+            0.9885410601273179,
+            0.9801804635021555,
+            0.9645563272806761,
+            0.9364559711817144,
+            0.9248985486892894,
+            0.9094687787526599,
+            0.8461483045995228,
+            0.755354474624132,
+            0.31595728259159206,
+            0.1391234830117716
+          ],
+          "median": 2500.0,
+          "median_status": "within_support",
+          "horizon": 3000.0,
+          "threshold_probability": 0.8608765169882284
+        }
+      },
+      "threshold_risk": {
+        "support": "supported",
+        "target_definition": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+        "unit": "probability",
+        "horizon": 3000.0,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat#batch/39/cycles/31"
+        ],
+        "distribution_kind": "bernoulli",
+        "params": {
+          "probability": 0.8608765169882284
+        }
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  }
+]

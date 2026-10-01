@@ -1,0 +1,77 @@
+{
+  "schema_version": "matr-real-lifetime-development-acceptance-v2",
+  "status": "completed_development_proof_not_validated_deployment",
+  "runs": 15,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "final_accessed": false,
+  "validated_deployment": false,
+  "query_prefixes": [
+    50,
+    100,
+    200
+  ],
+  "model_input_manifest": "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.json",
+  "prior_final_exclusions": {
+    "manifest_sha256": "ec1da6d221ce99de505c61a886da019e7480726afe23a30bf07ab4afe33e0a27",
+    "physical_cell_ids": [
+      "matr:el150800737229",
+      "matr:el150800737259",
+      "matr:el150800737275",
+      "matr:el150800737287",
+      "matr:el150800737387",
+      "matr:el150800739477"
+    ],
+    "prior_final_identity_count": 6,
+    "identity_matching": "MATR barcode namespace casefold",
+    "numerical_arrays_opened": false
+  },
+  "population": {
+    "train": 79,
+    "dev": 23,
+    "calibration": 21,
+    "final": 0,
+    "objects": 123,
+    "rows": 368
+  },
+  "censor_rows": {
+    "right": 240,
+    "exact": 128,
+    "interval": 0
+  },
+  "exact_source_policies": 68,
+  "rul_min_independent_train_objects": 2,
+  "rul_supported_train_domains": 17,
+  "rul_evaluable_dev_domains": 6,
+  "rul_evaluable_dev_objects": 8,
+  "concordance": "unavailable_no_comparable_independent_same_query_event_pairs",
+  "calibration": "CQR unbounded; no fitted lifetime calibration; never probability-calibration claim",
+  "packages": [
+    "M1_matr_lifetime_masked_seed0",
+    "M2_matr_lifetime_masked_seed0"
+  ],
+  "overlap_receipt": "model_lab/reports/v2/matr_lifetime_development_masked_20261002/overlap_receipt.json",
+  "superseded_diagnostic": "matr_lifetime_development_20261002/diagnostic_status.json",
+  "all_real_active_heads": {
+    "M2_joint": [
+      "rul",
+      "soh"
+    ],
+    "M2_no_domain_adapter": [
+      "rul",
+      "soh"
+    ],
+    "M2_no_history": [
+      "rul",
+      "soh"
+    ],
+    "M2_single_task": [
+      "soh"
+    ]
+  },
+  "package_replay_receipt": "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json",
+  "unit_metadata_correction": "unit_metadata_correction.json"
+}

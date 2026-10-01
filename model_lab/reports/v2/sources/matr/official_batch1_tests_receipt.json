@@ -1,0 +1,9 @@
+{
+  "requested_url": "https://data.matr.io/1/api/v1/edp/projects/5c48dd2bc625d700019f3204/batches/5c86c0b5fa2ede00015ddf67/tests",
+  "resolved_url": "https://data.matr.io/1/api/v1/edp/projects/5c48dd2bc625d700019f3204/batches/5c86c0b5fa2ede00015ddf67/tests",
+  "http_status": 200,
+  "retrieved_at": "2026-10-01T17:54:31.461513+00:00",
+  "bytes": 463120,
+  "sha256": "d5b26dfba5885d4ababc0f2de3330761bff6a72b24b9d3edff668895d5e02cc8",
+  "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/matr/official_batch1_tests.json"
+}

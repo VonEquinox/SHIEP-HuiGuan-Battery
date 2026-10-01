@@ -21,7 +21,7 @@ class SafePackage:
             if sha256_file(self.path/name)!=digest:raise ValueError("package integrity failure")
         self.record=json.loads((self.path/"run.json").read_text())
         self.model_version=self.model_version or self.record["run_id"]
-        if self.record["family"]=="M1":self.model=DomainBaseline.from_dict(json.loads((self.path/"model.json").read_text()))
+        if self.record["family"]=="M1":self.model=DomainBaseline.from_dict(json.loads((self.path/"model.json").read_text()),n_features=len(self.record["preprocessor"]["feature_mean"]))
         else:self.model=MultiTaskModel.load(self.record["spec"],self.path/"weights.npz",self.record["seed"],self.record["survival_grid"],self.record["label_support"],self.record.get("label_support_by_domain"))
         self.calibration=json.loads((self.path/"calibration.json").read_text()) if (self.path/"calibration.json").exists() else {}
 
@@ -40,6 +40,8 @@ class SafePackage:
         score=float(np.linalg.norm((x[0]-mean)/scale)/np.sqrt(len(mean)))
         profile={"schema_version":PREDICTION_SCHEMA,"model_version":self.model_version,"data_namespace":query["data_namespace"],
                  "query":query,"support":{"status":"supported","reasons":[],"ood_score":{"kind":"uncalibrated_feature_distance","value":score}},"heads":{}}
+        if "evidence_status" in self.record:
+            profile.update(evidence_status=self.record["evidence_status"],validated_deployment=bool(self.record.get("validated_deployment",False)))
         allowed=query.get("allowed_heads",["soh","rul","threshold_risk","efficiency","fault"])
         for task in ("soh","efficiency"):
             q=predictions[f"{task}_quantiles"][0]
@@ -69,19 +71,26 @@ class SafePackage:
             base={"support":"supported","target_definition":self.record["target_definitions"].get("rul"),"unit":"physical_cycle", "horizon":summary["horizon"],
                   "calibration_version":None,"evidence_refs":query.get("evidence_refs",[])}
             profile["heads"]["rul"]={**base,"distribution_kind":"discrete_survival","params":summary}
-            profile["heads"]["threshold_risk"]={**base,"distribution_kind":"bernoulli","params":{"probability":summary["threshold_probability"]}}
+            profile["heads"]["threshold_risk"]={**base,"unit":"probability","distribution_kind":"bernoulli","params":{"probability":summary["threshold_probability"]}}
             for task in ("rul", "threshold_risk"):
                 if task not in allowed:
                     profile["heads"][task] = {"support":"unsupported","reason":"head_not_authorized", "target_definition":None, "unit":None,"horizon":None,"distribution_kind":None,"calibration_version":None,"evidence_refs":[]}
         else:
+            survival_reason="no_verified_physical_time_threshold_labels"
+            if self.record["family"]=="M1":
+                survival_reason=self.model.models.get(domain_key(query),{}).get("survival_support",{}).get("reason") or survival_reason
+            elif self.record.get("spec",{}).get("single_task"):
+                survival_reason="single_task_soh_ablation"
+            elif self.record.get("config",{}).get("min_survival_objects",1)>1 and domain_key(query) in self.record.get("label_support_by_domain",{}):
+                survival_reason="too_few_independent_survival_objects"
             for task in ("rul","threshold_risk"):
-                profile["heads"][task]={"support":"unsupported","reason":"no_verified_physical_time_threshold_labels","target_definition":None,
+                profile["heads"][task]={"support":"unsupported","reason":"head_not_authorized" if task not in allowed else survival_reason,"target_definition":None,
                     "unit":None,"horizon":None,"distribution_kind":None,"calibration_version":None,"evidence_refs":[]}
         prob=predictions["fault_probability"][0]
         fault_calibration=self.calibration.get("fault")
         if fault_calibration:prob=apply_fault_calibration([prob],[domain_key(query)],fault_calibration)[0]
         profile["heads"]["fault"]={"support":"supported" if "fault" in allowed and np.isfinite(prob) else "unsupported",
-            "reason":None if "fault" in allowed and np.isfinite(prob) else "missing_confirmed_fault_labels",
+            "reason":None if "fault" in allowed and np.isfinite(prob) else "head_not_authorized" if "fault" not in allowed else "missing_confirmed_fault_labels",
             "target_definition":self.record["target_definitions"].get("fault"),"unit":"probability","horizon":None,
             "distribution_kind":"bernoulli" if "fault" in allowed and np.isfinite(prob) else None,"params":{"probability":float(prob)} if "fault" in allowed and np.isfinite(prob) else None,
             "calibration_version":fault_calibration["version"] if fault_calibration and fault_calibration["domains"].get(domain_key(query),{}).get("status")=="fitted" else None,

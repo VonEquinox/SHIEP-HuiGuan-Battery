@@ -1,0 +1,1955 @@
+{
+  "run_id": "M2_no_domain_adapter_seed1",
+  "split": "dev",
+  "data_namespace": "experimental",
+  "dataset_sha256": "258346f1e6b189c41ef60f6a6c8af47146339c6b4e2cd3b7a47327752229f066",
+  "model_sha256": "627c85ce4937bf31512c5fe393b91d80f843d4650a1fc5a1de1717a760bebf28",
+  "metrics": {
+    "matr::LFP::3.6C(2%)-4.85C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460635": {
+              "mae": 0.020314480120857643,
+              "rmse": 0.02040648450640451,
+              "rows": 3
+            }
+          },
+          "mae": 0.020314480120857643,
+          "rmse": 0.02040648450640451,
+          "worst_object": "matr:el150800460635",
+          "pinball": 0.004965867437358498,
+          "nll_original_scale": -2.352573162251808,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 1.0674945908050475,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.00048208210902849516,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.001680479442448593,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.2789146806004773,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.0938179024660018,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.08687351245965998,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.07671424736819678,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.0708651659922748,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.05333418870059128,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.02750157887565344,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.006689294077015912,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::4.65C(69%)-6C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460501": {
+              "mae": 0.026228242788298124,
+              "rmse": 0.028909908716286452,
+              "rows": 3
+            }
+          },
+          "mae": 0.026228242788298124,
+          "rmse": 0.028909908716286452,
+          "worst_object": "matr:el150800460501",
+          "pinball": 0.006123672654938038,
+          "nll_original_scale": -2.068841232077151,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 0.9966956757556056,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.0006666003460438878,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.0020873015692216422,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.25298822542555693,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.04121799937655152,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.03700327954303506,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.03191625651841592,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.029374034537127936,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.02201825522659569,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.010480662026160539,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.0025047784261690974,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::4.8C(80%)-4.8C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460597": {
+              "mae": 0.008600727634038815,
+              "rmse": 0.008858068259538684,
+              "rows": 3
+            }
+          },
+          "mae": 0.008600727634038815,
+          "rmse": 0.008858068259538684,
+          "worst_object": "matr:el150800460597",
+          "pinball": 0.003342018789199297,
+          "nll_original_scale": -2.399034436100316,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 1.2610434334451077,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.0005576593827539209,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.001990902853280361,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.32650219874580294,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.16007052108831554,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.14881127156387128,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.1322051692622496,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.12045584225535422,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.08968276390039868,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.04664574152236231,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.010388062759686808,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::4.8C(80%)-4.8C-newstructure": {
+      "independent_objects": 2,
+      "rows": 6,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 2,
+          "rows": 6,
+          "per_object": {
+            "matr:el150800737277": {
+              "mae": 0.00936273670344919,
+              "rmse": 0.00962673156016623,
+              "rows": 3
+            },
+            "matr:el150800739484": {
+              "mae": 0.004902350131319381,
+              "rmse": 0.005059152885454362,
+              "rows": 3
+            }
+          },
+          "mae": 0.007132543417384285,
+          "rmse": 0.007342942222810296,
+          "worst_object": "matr:el150800737277",
+          "pinball": 0.0023380738208385807,
+          "nll_original_scale": -2.879933662525449,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 2,
+          "rows": 6,
+          "nll": 0.149475816541542,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 1.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 8.199149122704444e-05,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.00027370570450020455,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.004109341702560838,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.012446312555920599,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.014519630343741301,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.020660123864047236,
+              "n_known": 4,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.020979540664091995,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::4C(13%)-5C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460466": {
+              "mae": 0.012166395109264094,
+              "rmse": 0.014279094782025449,
+              "rows": 3
+            }
+          },
+          "mae": 0.012166395109264094,
+          "rmse": 0.014279094782025449,
+          "worst_object": "matr:el150800460466",
+          "pinball": 0.003773425250062226,
+          "nll_original_scale": -2.4002071638974445,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 1.120921874215541,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.0006061146348864699,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.0019521472999722957,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.27515634639809283,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.12519651085984831,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.11606974357959086,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.10249533790885035,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.0947388793727058,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.07196358673048929,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.036752693314518255,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.009312696406391966,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::4C(4%)-4.85C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460449": {
+              "mae": 0.019182437869898816,
+              "rmse": 0.019208998584905723,
+              "rows": 3
+            }
+          },
+          "mae": 0.019182437869898816,
+          "rmse": 0.019208998584905723,
+          "worst_object": "matr:el150800460449",
+          "pinball": 0.0046979121795424905,
+          "nll_original_scale": -2.4194685429079623,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 1.1433524480619286,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.0004481828526442406,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.0015208153071412645,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.28340993244554086,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.13262572122001612,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.12400902454018914,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.11059316230744502,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.10281328562968452,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.07861196802359889,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.04099416896856811,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.010400024102067857,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::5.3C(54%)-4C-newstructure": {
+      "independent_objects": 2,
+      "rows": 6,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 2,
+          "rows": 6,
+          "per_object": {
+            "matr:el150800737313": {
+              "mae": 0.016908073970528736,
+              "rmse": 0.017085424172594066,
+              "rows": 3
+            },
+            "matr:el150800737378": {
+              "mae": 0.007595035438179816,
+              "rmse": 0.007834281282231376,
+              "rows": 3
+            }
+          },
+          "mae": 0.012251554704354276,
+          "rmse": 0.01245985272741272,
+          "worst_object": "matr:el150800737313",
+          "pinball": 0.003168636519941874,
+          "nll_original_scale": -2.7377323156031323,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 2,
+          "rows": 6,
+          "nll": 0.11587519417275652,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 1.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 6.785415143679399e-05,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.00021177011517884082,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.0028151353960502324,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.008423725311438972,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.009969504071008191,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.013068922358882188,
+              "n_known": 4,
+              "n_known_objects": 2
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::5.4C(70%)-3C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800464881": {
+              "mae": 0.02583603910095485,
+              "rmse": 0.025916373298451905,
+              "rows": 3
+            }
+          },
+          "mae": 0.02583603910095485,
+          "rmse": 0.025916373298451905,
+          "worst_object": "matr:el150800464881",
+          "pinball": 0.005319469996089082,
+          "nll_original_scale": -2.0602225937553684,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::5.6C(19%)-4.6C-newstructure": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800737276": {
+              "mae": 0.02722419382809038,
+              "rmse": 0.027370312823337836,
+              "rows": 3
+            }
+          },
+          "mae": 0.02722419382809038,
+          "rmse": 0.027370312823337836,
+          "worst_object": "matr:el150800737276",
+          "pinball": 0.005756869846456324,
+          "nll_original_scale": -1.8529945588370218,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 0.12519202496718443,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 1.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 7.426131329731223e-05,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.0002436605046737016,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.00445324290648105,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.013853916581791468,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::5.6C(36%)-4.3C-newstructure": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800737365": {
+              "mae": 0.01934311088541485,
+              "rmse": 0.019512356973061494,
+              "rows": 3
+            }
+          },
+          "mae": 0.01934311088541485,
+          "rmse": 0.019512356973061494,
+          "worst_object": "matr:el150800737365",
+          "pinball": 0.004282167929238345,
+          "nll_original_scale": -2.4885590850296406,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 0.10710828311123011,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 1.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 5.8516271317305564e-05,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.00018107420522616224,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.0029424411788672917,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.009359222392190133,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.010097363529849527,
+              "n_known": 2,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::5.6C(5%)-4.75C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460526": {
+              "mae": 0.0175149926332487,
+              "rmse": 0.01798069617137336,
+              "rows": 3
+            }
+          },
+          "mae": 0.0175149926332487,
+          "rmse": 0.01798069617137336,
+          "worst_object": "matr:el150800460526",
+          "pinball": 0.004515708937577576,
+          "nll_original_scale": -2.382177360003588,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 1.0562928962961553,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.0006348465690573848,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.001957553078110351,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.23969964114280207,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.1173461775622114,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.10938365996858611,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.09728967968580805,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.09063150180688324,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.06945795192583161,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.03631910678458711,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.009450052691640922,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::5.6C(58%)-3.5C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460627": {
+              "mae": 0.024834818604812514,
+              "rmse": 0.024856283016911892,
+              "rows": 3
+            }
+          },
+          "mae": 0.024834818604812514,
+          "rmse": 0.024856283016911892,
+          "worst_object": "matr:el150800460627",
+          "pinball": 0.005617853089914593,
+          "nll_original_scale": -2.254506509133485,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 1.3585668577176175,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.00043042925833954954,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.0015039160735551254,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.33099899868922217,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.2150263001280955,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.2025470730184381,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.18296988158516933,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.16927228246604442,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.13012680330893459,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.06804055735697685,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.0164758192393308,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::5.9C(15%)-4.6C-newstructure": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800737386": {
+              "mae": 0.02850465660133365,
+              "rmse": 0.028594172884951242,
+              "rows": 3
+            }
+          },
+          "mae": 0.02850465660133365,
+          "rmse": 0.028594172884951242,
+          "worst_object": "matr:el150800737386",
+          "pinball": 0.006218364513916964,
+          "nll_original_scale": -1.7844884367206302,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::5C(67%)-4C-newstructure": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800737334": {
+              "mae": 0.008240706150889565,
+              "rmse": 0.008560577164568855,
+              "rows": 3
+            }
+          },
+          "mae": 0.008240706150889565,
+          "rmse": 0.008560577164568855,
+          "worst_object": "matr:el150800737334",
+          "pinball": 0.0025416639012065655,
+          "nll_original_scale": -2.842902845664076,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 0.13427904146407055,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 1.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 5.9811401969708855e-05,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.0001860190443833112,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.0023425158851065205,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.007307141090418189,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.008706181640231283,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.011976592927432084,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.0158957969096221,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::6C(40%)-3C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460617": {
+              "mae": 0.026494053461405875,
+              "rmse": 0.02651169261430323,
+              "rows": 3
+            }
+          },
+          "mae": 0.026494053461405875,
+          "rmse": 0.02651169261430323,
+          "worst_object": "matr:el150800460617",
+          "pinball": 0.005447166875887734,
+          "nll_original_scale": -2.0591075546807063,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::6C(52%)-3.5C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460678": {
+              "mae": 0.034650242911124396,
+              "rmse": 0.034686203503821,
+              "rows": 3
+            }
+          },
+          "mae": 0.034650242911124396,
+          "rmse": 0.034686203503821,
+          "worst_object": "matr:el150800460678",
+          "pinball": 0.007199461147218192,
+          "nll_original_scale": -1.8190643651596794,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "nll": 1.2443624016412504,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.0,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.0004492434132871079,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.0015777349359373872,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.4497850711631113,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.1417244057497209,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.13221085540454985,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.11811929818841836,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.1091254625787522,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.08329832336171224,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.04297602662810469,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.010540449215514365,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": null,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {},
+          "comparable_landmark_pairs": 0,
+          "comparable_independent_object_pairs": 0
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::6C(60%)-3C": {
+      "independent_objects": 2,
+      "rows": 6,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 2,
+          "rows": 6,
+          "per_object": {
+            "matr:el150800460599": {
+              "mae": 0.025156272271271596,
+              "rmse": 0.02554443891962434,
+              "rows": 3
+            },
+            "matr:el150800460640": {
+              "mae": 0.03105663986330102,
+              "rmse": 0.03107822739894378,
+              "rows": 3
+            }
+          },
+          "mae": 0.02810645606728631,
+          "rmse": 0.02831133315928406,
+          "worst_object": "matr:el150800460640",
+          "pinball": 0.006192073021642452,
+          "nll_original_scale": -1.9433395897531924,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "evaluated",
+          "independent_objects": 2,
+          "rows": 6,
+          "nll": 1.7154885164598452,
+          "nll_scope": "equal object weight over its eligible fixed-prefix landmarks",
+          "censoring_fraction": 0.5,
+          "brier": [
+            {
+              "horizon": 100.0,
+              "known_status_brier": 0.00036012080323450594,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 200.0,
+              "known_status_brier": 0.001215254215616848,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 400.0,
+              "known_status_brier": 0.05978427766412735,
+              "n_known": 6,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 600.0,
+              "known_status_brier": 0.14055001395507452,
+              "n_known": 5,
+              "n_known_objects": 2
+            },
+            {
+              "horizon": 800.0,
+              "known_status_brier": 0.1507760413551192,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1000.0,
+              "known_status_brier": 0.13406780965440143,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 1500.0,
+              "known_status_brier": 0.12314052115187109,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2000.0,
+              "known_status_brier": 0.0932781185133376,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 2500.0,
+              "known_status_brier": 0.04720445135977946,
+              "n_known": 3,
+              "n_known_objects": 1
+            },
+            {
+              "horizon": 3000.0,
+              "known_status_brier": 0.011570076659853892,
+              "n_known": 3,
+              "n_known_objects": 1
+            }
+          ],
+          "brier_scope": "object-averaged observed known status; no IPCW guarantee",
+          "concordance": 1.0,
+          "concordance_scope": "same physical-cycle query only; excludes within-object pairs",
+          "concordance_by_query": {
+            "50.0": {
+              "comparable_landmark_pairs": 1,
+              "concordant_weight": 1.0,
+              "concordance": 1.0
+            },
+            "100.0": {
+              "comparable_landmark_pairs": 1,
+              "concordant_weight": 1.0,
+              "concordance": 1.0
+            },
+            "200.0": {
+              "comparable_landmark_pairs": 1,
+              "concordant_weight": 1.0,
+              "concordance": 1.0
+            }
+          },
+          "comparable_landmark_pairs": 3,
+          "comparable_independent_object_pairs": 1
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::7C(30%)-3.6C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460525": {
+              "mae": 0.03491960297754715,
+              "rmse": 0.03519137426926909,
+              "rows": 3
+            }
+          },
+          "mae": 0.03491960297754715,
+          "rmse": 0.03519137426926909,
+          "worst_object": "matr:el150800460525",
+          "pinball": 0.008591088054951878,
+          "nll_original_scale": -1.300031634690542,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::7C(40%)-3.6C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460642": {
+              "mae": 0.04186512978122151,
+              "rmse": 0.04190529604177234,
+              "rows": 3
+            }
+          },
+          "mae": 0.04186512978122151,
+          "rmse": 0.04190529604177234,
+          "worst_object": "matr:el150800460642",
+          "pinball": 0.012222421796118502,
+          "nll_original_scale": -0.2397436713379942,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "matr::LFP::7C(40%)-3C": {
+      "independent_objects": 1,
+      "rows": 3,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 3,
+          "per_object": {
+            "matr:el150800460506": {
+              "mae": 0.02877522860094217,
+              "rmse": 0.02881772447247516,
+              "rows": 3
+            }
+          },
+          "mae": 0.02877522860094217,
+          "rmse": 0.02881772447247516,
+          "worst_object": "matr:el150800460506",
+          "pinball": 0.0059316458782439655,
+          "nll_original_scale": -1.9744536583912253,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    }
+  },
+  "supported_protocols": [
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "1C(4%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "2C(10%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "2C(2%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.6C(22%)-5.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.6C(9%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.7C(31%)-5.9C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(24%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(55%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(8%)-4.85C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.65C(19%)-4.85C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.65C(44%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.8C(80%)-4.8C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.8C(80%)-4.8C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.9C(27%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.9C(61%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4C(31%)-5"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4C(40%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(10%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(58%)-4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(66%)-3.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(71%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.3C(54%)-4C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(50%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(50%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(60%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(60%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(70%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(80%)-5.4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(19%)-4.6C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(25%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(36%)-4.3C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(47%)-4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(65%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.9C(15%)-4.6C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.9C(60%)-3.1C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5C(67%)-4C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(20%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(30%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(4%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(40%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(50%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(50%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(30%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(40%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(15%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(25%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(35%)-3.6C"
+    }
+  ],
+  "no_model_selection_on_this_split": false
+}

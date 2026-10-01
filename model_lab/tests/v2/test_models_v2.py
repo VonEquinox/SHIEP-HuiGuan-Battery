@@ -107,6 +107,9 @@ def test_multitask_never_infers_missing_domain_head():
     output=model.predict(arrays,rows)
     assert np.isfinite(output["soh_quantiles"][:4]).all() and np.isnan(output["soh_quantiles"][4:]).all()
     assert np.isnan(output["fault_probability"][:4]).all() and np.isfinite(output["fault_probability"][4:]).all()
+    unseen=[{**row,"protocol_id":"unseen-dev-only-policy"} for row in rows]
+    rejected=model.predict(arrays,unseen)
+    assert all(np.isnan(value).all() for value in rejected.values())
 
 
 def test_fixed_task_weights_do_not_change_when_other_labels_missing():
@@ -116,3 +119,41 @@ def test_fixed_task_weights_do_not_change_when_other_labels_missing():
     first,_=masked_loss(output,labels,torch.ones(n),[10,20,30],domain_denominator=2)
     both,_=masked_loss(output,{**labels,"y_fault":torch.zeros(n)},torch.ones(n),[10,20,30],domain_denominator=2)
     assert both-first==pytest.approx(np.log(2))
+
+
+def test_survival_support_counts_objects_not_repeated_landmarks():
+    from model_lab.modeling.v2.baselines import DomainBaseline
+    n=12
+    rows=[{"source_id":"matr","physical_cell_id":"one-real-object","chemistry":"LFP","protocol_id":"policy-a"} for _ in range(n)]
+    arrays={"features":np.zeros((n,3)),"y_soh":np.full(n,np.nan),"y_efficiency":np.full(n,np.nan),"y_fault":np.full(n,-1.),
+            "survival_kind":np.zeros(n),"survival_lower":np.full(n,400.),"survival_upper":np.full(n,400.)}
+    model=DomainBaseline(use_ngboost=False,min_survival_objects=2).fit(arrays,rows)
+    support=model.models["matr::LFP::policy-a"]["survival_support"]
+    assert support["independent_training_objects"]==1
+    assert support["status"]=="unsupported" and support["reason"]=="too_few_independent_survival_objects"
+    assert np.isnan(model.predict(arrays,rows)["hazard"]).all()
+    assert DomainBaseline.from_dict(model.to_dict()).min_survival_objects==2
+
+
+def test_survival_brier_event_boundary_and_query_comparability():
+    from model_lab.modeling.v2.metrics import survival_metrics
+    arrays={"survival_kind":np.array([1.,0.,2.]),"survival_lower":np.array([10.,10.,10.]),"survival_upper":np.array([10.,0.,20.])}
+    prediction={"hazard":np.tile([.2,.5],(3,1))}
+    metrics=survival_metrics(arrays,prediction,[10,20],np.array(["exact","right","interval"]),[50,50,50])
+    assert metrics["brier"][0]["known_status_brier"]==pytest.approx((.8**2+.2**2+.2**2)/3)
+    assert metrics["brier"][0]["n_known_objects"]==3
+    # Different landmark origins cannot be pooled into comparable RUL ranks.
+    other={"survival_kind":np.array([1.,1.]),"survival_lower":np.array([10.,100.]),"survival_upper":np.array([10.,100.])}
+    metrics=survival_metrics(other,{"hazard":prediction["hazard"][:2]},[10,20],np.array(["a","b"]),[50,100])
+    assert metrics["concordance"] is None and metrics["comparable_landmark_pairs"]==0
+
+
+def test_m2_survival_domain_minimum_uses_independent_objects():
+    n=3
+    rows=[{"source_id":"matr","physical_cell_id":"single-cell","chemistry":"LFP","protocol_id":"one-policy"} for _ in range(n)]
+    arrays={"features":np.zeros((n,3),np.float32),"sequences":np.zeros((n,1,16,5),np.float32),"sequence_mask":np.zeros((n,1,16),np.float32),"domain":np.zeros(n,int),
+            "y_soh":np.full(n,np.nan,np.float32),"y_efficiency":np.full(n,np.nan,np.float32),"y_fault":np.full(n,-1,np.float32),
+            "survival_kind":np.zeros(n,np.float32),"survival_lower":np.full(n,100,np.float32),"survival_upper":np.zeros(n,np.float32)}
+    model=MultiTaskModel({"n_features":3,"n_domains":1}).fit(arrays,rows,epochs=1,min_survival_objects=2)
+    assert model.label_support_by_domain["matr::LFP::one-policy"]["rul"] is False
+    assert np.isnan(model.predict(arrays,rows)["hazard"]).all()

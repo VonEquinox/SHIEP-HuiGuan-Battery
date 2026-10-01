@@ -7,30 +7,33 @@
   "github_blob_sha": "87df41fbd5eab26bcea4b60a5be674eb87853d26",
   "full_source_local_only": true,
   "processing_facts": {
-    "continuation_first_batch_indices_matlab": [
+    "continuation_2017_06_30_indices_matlab": [
       8,
       9,
       10,
       16,
       17
     ],
-    "continuation_first_batch_indices_python": [
+    "continuation_2017_06_30_indices_python": [
       7,
       8,
       9,
       15,
       16
     ],
-    "continuation_following_batch_indices_matlab": [
+    "continuation_2017_05_12_indices_matlab": [
       1,
       2,
       3,
       4,
       5
     ],
-    "continuation_requires_verified_barcode_capacity_cycle_identity": true,
     "survival_threshold_Ah": 0.88,
     "threshold_operator": "strictly_less_than"
   },
-  "scope": "Author source read as text for identity and threshold verification; not executed; full source is not distributed with this implementation."
+  "implementation_identity_guards": {
+    "requires_verified_barcode_capacity_cycle_identity": true,
+    "channel_equals_struct_index_assumed": false
+  },
+  "scope": "Author source read as text for index and threshold verification; not executed; full source is not distributed with this implementation. Identity guards are this implementation's additional requirements."
 }

@@ -36,3 +36,13 @@ def test_ch_selection_path_traversal_is_rejected(tmp_path):
     inventory.write_text(json.dumps({"selected": [{"path": "../outside.csv"}]}))
     with pytest.raises(ValueError, match="unsafe"):
         _ch_paths(tmp_path, inventory)
+
+
+def test_corrected_matr_requires_three_original_batches_before_output(tmp_path):
+    registry = tmp_path / "registry.yaml"
+    registry.write_text("sources:\n  - source_id: matr\n    license_status: declared_official_platform_license\n    landing_url: https://data.matr.io\n    raw_receipts: []\n")
+    out = tmp_path / "data/derived/v2/new"
+    args = build_parser().parse_args(["--kind", "matr-corrected", "--out", str(out), "--source-registry", str(registry)])
+    with pytest.raises(ValueError, match="all three"):
+        prepare(args)
+    assert not out.exists()

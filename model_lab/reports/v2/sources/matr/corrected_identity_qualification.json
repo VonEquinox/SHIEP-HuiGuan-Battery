@@ -1,0 +1,1315 @@
+{
+  "status": "verified_before_numeric_targets",
+  "raw_records": 140,
+  "independent_physical_barcodes": 135,
+  "verified_continuations": [
+    {
+      "first_record_id": "2017-05-12:record-1",
+      "second_record_id": "2017-06-30:record-8",
+      "physical_cell_id": "matr:el150800460514",
+      "expected_second_raw_cycle_count": 662,
+      "author_evidence": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m"
+    },
+    {
+      "first_record_id": "2017-05-12:record-2",
+      "second_record_id": "2017-06-30:record-9",
+      "physical_cell_id": "matr:el150800460486",
+      "expected_second_raw_cycle_count": 981,
+      "author_evidence": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m"
+    },
+    {
+      "first_record_id": "2017-05-12:record-3",
+      "second_record_id": "2017-06-30:record-10",
+      "physical_cell_id": "matr:el150800460623",
+      "expected_second_raw_cycle_count": 1060,
+      "author_evidence": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m"
+    },
+    {
+      "first_record_id": "2017-05-12:record-4",
+      "second_record_id": "2017-06-30:record-16",
+      "physical_cell_id": "matr:el150800464977",
+      "expected_second_raw_cycle_count": 208,
+      "author_evidence": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m"
+    },
+    {
+      "first_record_id": "2017-05-12:record-5",
+      "second_record_id": "2017-06-30:record-17",
+      "physical_cell_id": "matr:el150800464865",
+      "expected_second_raw_cycle_count": 482,
+      "author_evidence": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m"
+    }
+  ],
+  "official_metadata_crosschecks": [
+    {
+      "source_record_id": "2017-05-12:record-1",
+      "physical_cell_id": "matr:el150800460514",
+      "original_barcode": "EL150800460514",
+      "original_channel": "1",
+      "official_test_id": "5c86c24dfa2ede00015de0e3",
+      "official_name": "2017-05-12_3_6C-80per_3_6C_CH1",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-2",
+      "physical_cell_id": "matr:el150800460486",
+      "original_barcode": "EL150800460486",
+      "original_channel": "2",
+      "official_test_id": "5c86c210fa2ede00015de0a7",
+      "official_name": "2017-05-12_3_6C-80per_3_6C_CH2",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-3",
+      "physical_cell_id": "matr:el150800460623",
+      "original_barcode": "EL150800460623",
+      "original_channel": "3",
+      "official_test_id": "5c86c1fffa2ede00015de09d",
+      "official_name": "2017-05-12_3_6C-80per_3_6C_CH3",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-4",
+      "physical_cell_id": "matr:el150800464977",
+      "original_barcode": "EL150800464977",
+      "original_channel": "5",
+      "official_test_id": "5c86c18afa2ede00015de039",
+      "official_name": "2017-05-12_4C-80per_4C_CH5",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-5",
+      "physical_cell_id": "matr:el150800464865",
+      "original_barcode": "EL150800464865",
+      "original_channel": "6",
+      "official_test_id": "5c86c1acfa2ede00015de04d",
+      "official_name": "2017-05-12_4C-80per_4C_CH6",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-6",
+      "physical_cell_id": "matr:el150800464883",
+      "original_barcode": "EL150800464883",
+      "original_channel": "7",
+      "official_test_id": "5c86c266fa2ede00015de0f7",
+      "official_name": "2017-05-12_4_4C-80per_4_4C_CH7",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-7",
+      "physical_cell_id": "matr:el150800463886",
+      "original_barcode": "EL150800463886",
+      "original_channel": "10",
+      "official_test_id": "5c86c16ffa2ede00015de025",
+      "official_name": "2017-05-12_4_8C-80per_4_8C_CH10",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-8",
+      "physical_cell_id": "matr:el150800465027",
+      "original_barcode": "EL150800465027",
+      "original_channel": "9",
+      "official_test_id": "5c86c277fa2ede00015de10b",
+      "official_name": "2017-05-12_4_8C-80per_4_8C_CH9",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-9",
+      "physical_cell_id": "matr:el150800464898",
+      "original_barcode": "EL150800464898",
+      "original_channel": "19",
+      "official_test_id": "5c86c179fa2ede00015de02f",
+      "official_name": "2017-05-12_5_4C-40per_3_6C_CH19",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-10",
+      "physical_cell_id": "matr:el150800460468",
+      "original_barcode": "EL150800460468",
+      "original_channel": "20",
+      "official_test_id": "5c86c22afa2ede00015de0bb",
+      "official_name": "2017-05-12_5_4C-40per_3_6C_CH20",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-11",
+      "physical_cell_id": "matr:el150800463980",
+      "original_barcode": "EL150800463980",
+      "original_channel": "13",
+      "official_test_id": "5c86c1cffa2ede00015de075",
+      "official_name": "2017-05-12_5_4C-50per_3C_CH13",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-12",
+      "physical_cell_id": "matr:el150800463882",
+      "original_barcode": "EL150800463882",
+      "original_channel": "14",
+      "official_test_id": "5c86c29efa2ede00015de133",
+      "official_name": "2017-05-12_5_4C-50per_3C_CH14",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-13",
+      "physical_cell_id": "matr:el150800460472",
+      "original_barcode": "EL150800460472",
+      "original_channel": "21",
+      "official_test_id": "5c86c1dafa2ede00015de07f",
+      "official_name": "2017-05-12_5_4C-50per_3_6C_CH21",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-14",
+      "physical_cell_id": "matr:el150800460658",
+      "original_barcode": "EL150800460658",
+      "original_channel": "22",
+      "official_test_id": "5c86c108fa2ede00015ddfb7",
+      "official_name": "2017-05-12_5_4C-50per_3_6C_CH22",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-15",
+      "physical_cell_id": "matr:el150800463838",
+      "original_barcode": "EL150800463838",
+      "original_channel": "15",
+      "official_test_id": "5c86c21dfa2ede00015de0b1",
+      "official_name": "2017-05-12_5_4C-60per_3C_CH15",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-16",
+      "physical_cell_id": "matr:el150800453113",
+      "original_barcode": "EL150800453113",
+      "original_channel": "16",
+      "official_test_id": "5c86c283fa2ede00015de115",
+      "official_name": "2017-05-12_5_4C-60per_3C_CH16",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-17",
+      "physical_cell_id": "matr:el150800460653",
+      "original_barcode": "EL150800460653",
+      "original_channel": "23",
+      "official_test_id": "5c86c133fa2ede00015ddfdf",
+      "official_name": "2017-05-12_5_4C-60per_3_6C_CH23",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-18",
+      "physical_cell_id": "matr:el150800460522",
+      "original_barcode": "EL150800460522",
+      "original_channel": "24",
+      "official_test_id": "5c86c13dfa2ede00015ddfe9",
+      "official_name": "2017-05-12_5_4C-60per_3_6C_CH24",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-19",
+      "physical_cell_id": "matr:el150800453240",
+      "original_barcode": "EL150800453240",
+      "original_channel": "17",
+      "official_test_id": "5c86c292fa2ede00015de129",
+      "official_name": "2017-05-12_5_4C-70per_3C_CH17",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-20",
+      "physical_cell_id": "matr:el150800464881",
+      "original_barcode": "EL150800464881",
+      "original_channel": "18",
+      "official_test_id": "5c86c1c3fa2ede00015de06b",
+      "official_name": "2017-05-12_5_4C-70per_3C_CH18",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-21",
+      "physical_cell_id": "matr:el150800464002",
+      "original_barcode": "EL150800464002",
+      "original_channel": "11",
+      "official_test_id": "5c86c0e3fa2ede00015ddf99",
+      "official_name": "2017-05-12_5_4C-80per_5_4C_CH11",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-22",
+      "physical_cell_id": "matr:el150800463871",
+      "original_barcode": "EL150800463871",
+      "original_channel": "12",
+      "official_test_id": "5c86c0d6fa2ede00015ddf8f",
+      "official_name": "2017-05-12_5_4C-80per_5_4C_CH12",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-23",
+      "physical_cell_id": "matr:el150800460433",
+      "original_barcode": "EL150800460433",
+      "original_channel": "31",
+      "official_test_id": "5c86c154fa2ede00015de007",
+      "official_name": "2017-05-12_6C-30per_3_6C_CH31",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-24",
+      "physical_cell_id": "matr:el150800460477",
+      "original_barcode": "EL150800460477",
+      "original_channel": "32",
+      "official_test_id": "5c86c11ffa2ede00015ddfd5",
+      "official_name": "2017-05-12_6C-30per_3_6C_CH32",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-25",
+      "physical_cell_id": "matr:el150800460630",
+      "original_barcode": "EL150800460630",
+      "original_channel": "25",
+      "official_test_id": "5c86c0f4fa2ede00015ddfa3",
+      "official_name": "2017-05-12_6C-40per_3C_CH25",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-26",
+      "physical_cell_id": "matr:el150800460617",
+      "original_barcode": "EL150800460617",
+      "original_channel": "26",
+      "official_test_id": "5c86c19cfa2ede00015de043",
+      "official_name": "2017-05-12_6C-40per_3C_CH26",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-27",
+      "physical_cell_id": "matr:el150800460659",
+      "original_barcode": "EL150800460659",
+      "original_channel": "33",
+      "official_test_id": "5c86c0fcfa2ede00015ddfad",
+      "official_name": "2017-05-12_6C-40per_3_6C_CH33",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-28",
+      "physical_cell_id": "matr:el150800463198",
+      "original_barcode": "EL150800463198",
+      "original_channel": "34",
+      "official_test_id": "5c86c0c6fa2ede00015ddf7b",
+      "official_name": "2017-05-12_6C-40per_3_6C_CH34",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-29",
+      "physical_cell_id": "matr:el150800460507",
+      "original_barcode": "EL150800460507",
+      "original_channel": "27",
+      "official_test_id": "5c86c145fa2ede00015ddff3",
+      "official_name": "2017-05-12_6C-50per_3C_CH27",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-30",
+      "physical_cell_id": "matr:el150800460644",
+      "original_barcode": "EL150800460644",
+      "original_channel": "28",
+      "official_test_id": "5c86c257fa2ede00015de0ed",
+      "official_name": "2017-05-12_6C-50per_3C_CH28",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-31",
+      "physical_cell_id": "matr:el150800460615",
+      "original_barcode": "EL150800460615",
+      "original_channel": "35",
+      "official_test_id": "5c86c1b9fa2ede00015de061",
+      "official_name": "2017-05-12_6C-50per_3_6C_CH35",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-32",
+      "physical_cell_id": "matr:el150800460481",
+      "original_barcode": "EL150800460481",
+      "original_channel": "36",
+      "official_test_id": "5c86c0bdfa2ede00015ddf71",
+      "official_name": "2017-05-12_6C-50per_3_6C_CH36",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-33",
+      "physical_cell_id": "matr:el150800460640",
+      "original_barcode": "EL150800460640",
+      "original_channel": "29",
+      "official_test_id": "5c86c238fa2ede00015de0cf",
+      "official_name": "2017-05-12_6C-60per_3C_CH29",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-34",
+      "physical_cell_id": "matr:el150800460436",
+      "original_barcode": "EL150800460436",
+      "original_channel": "30",
+      "official_test_id": "5c86c1e1fa2ede00015de089",
+      "official_name": "2017-05-12_6C-60per_3C_CH30",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-35",
+      "physical_cell_id": "matr:el150800460525",
+      "original_barcode": "EL150800460525",
+      "original_channel": "39",
+      "official_test_id": "5c86c164fa2ede00015de01b",
+      "official_name": "2017-05-12_7C-30per_3_6C_CH39",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-36",
+      "physical_cell_id": "matr:el150800460622",
+      "original_barcode": "EL150800460622",
+      "original_channel": "40",
+      "official_test_id": "5c86c115fa2ede00015ddfcb",
+      "official_name": "2017-05-12_7C-30per_3_6C_CH40",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-37",
+      "physical_cell_id": "matr:el150800460506",
+      "original_barcode": "EL150800460506",
+      "original_channel": "37",
+      "official_test_id": "5c86c0ccfa2ede00015ddf85",
+      "official_name": "2017-05-12_7C-40per_3C_CH37",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-38",
+      "physical_cell_id": "matr:el150800460601",
+      "original_barcode": "EL150800460601",
+      "original_channel": "38",
+      "official_test_id": "5c86c230fa2ede00015de0c5",
+      "official_name": "2017-05-12_7C-40per_3C_CH38",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-39",
+      "physical_cell_id": "matr:el150800453773",
+      "original_barcode": "EL150800453773",
+      "original_channel": "41",
+      "official_test_id": "5c86c288fa2ede00015de11f",
+      "official_name": "2017-05-12_7C-40per_3_6C_CH41",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-40",
+      "physical_cell_id": "matr:el150800460642",
+      "original_barcode": "EL150800460642",
+      "original_channel": "42",
+      "official_test_id": "5c86c23dfa2ede00015de0d9",
+      "official_name": "2017-05-12_7C-40per_3_6C_CH42",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-41",
+      "physical_cell_id": "matr:el150800463229",
+      "original_barcode": "EL150800463229",
+      "original_channel": "43",
+      "official_test_id": "5c86c15dfa2ede00015de011",
+      "official_name": "2017-05-12_8C-15per_3_6C_CH43",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-42",
+      "physical_cell_id": "matr:el150800460647",
+      "original_barcode": "EL150800460647",
+      "original_channel": "44",
+      "official_test_id": "5c86c1ebfa2ede00015de093",
+      "official_name": "2017-05-12_8C-15per_3_6C_CH44",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-43",
+      "physical_cell_id": "matr:el150800460618",
+      "original_barcode": "EL150800460618",
+      "original_channel": "45",
+      "official_test_id": "5c86c10efa2ede00015ddfc1",
+      "official_name": "2017-05-12_8C-25per_3_6C_CH45",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-44",
+      "physical_cell_id": "matr:el150800460636",
+      "original_barcode": "EL150800460636",
+      "original_channel": "46",
+      "official_test_id": "5c86c1b2fa2ede00015de057",
+      "official_name": "2017-05-12_8C-25per_3_6C_CH46",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-45",
+      "physical_cell_id": "matr:el150800460485",
+      "original_barcode": "EL150800460485",
+      "original_channel": "47",
+      "official_test_id": "5c86c26bfa2ede00015de101",
+      "official_name": "2017-05-12_8C-35per_3_6C_CH47",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-05-12:record-46",
+      "physical_cell_id": "matr:el150800460656",
+      "original_barcode": "EL150800460656",
+      "original_channel": "48",
+      "official_test_id": "5c86c14bfa2ede00015ddffd",
+      "official_name": "2017-05-12_8C-35per_3_6C_CH48",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-1",
+      "physical_cell_id": "matr:el150800460518",
+      "original_barcode": "el150800460518",
+      "original_channel": "9",
+      "official_test_id": "5c86bf40fa2ede00015dddb5",
+      "official_name": "2017-06-30_1C-4per_6C_CH9",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-2",
+      "physical_cell_id": "matr:el150800460605",
+      "original_barcode": "el150800460605",
+      "original_channel": "10",
+      "official_test_id": "5c86bf48fa2ede00015dddc9",
+      "official_name": "2017-06-30_2C-10per_6C_CH10",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-3",
+      "physical_cell_id": "matr:el150800460602",
+      "original_barcode": "el150800460602",
+      "original_channel": "11",
+      "official_test_id": "5c86bf35fa2ede00015ddda1",
+      "official_name": "2017-06-30_2C-2per_5C_CH11",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-4",
+      "physical_cell_id": "matr:el150800460673",
+      "original_barcode": "el150800460673",
+      "original_channel": "12",
+      "official_test_id": "5c86c014fa2ede00015ddef5",
+      "official_name": "2017-06-30_2C-7per_5_5C_CH12",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-5",
+      "physical_cell_id": "matr:el150800460655",
+      "original_barcode": "el150800460655",
+      "original_channel": "13",
+      "official_test_id": "5c86bf3bfa2ede00015dddab",
+      "official_name": "2017-06-30_3_6C-22per_5_5C_CH13",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-6",
+      "physical_cell_id": "matr:el150800460635",
+      "original_barcode": "el150800460635",
+      "original_channel": "14",
+      "official_test_id": "5c86bf46fa2ede00015dddbf",
+      "official_name": "2017-06-30_3_6C-2per_4_85C_CH14",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-7",
+      "physical_cell_id": "matr:el150800460634",
+      "original_barcode": "el150800460634",
+      "original_channel": "15",
+      "official_test_id": "5c86bfcafa2ede00015dde7d",
+      "official_name": "2017-06-30_3_6C-30per_6C_CH15",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-8",
+      "physical_cell_id": "matr:el150800460514",
+      "original_barcode": "EL150800460514",
+      "original_channel": "1",
+      "official_test_id": "5c86bf72fa2ede00015dde05",
+      "official_name": "2017-06-30_3_6C-80per_3_6C_CH1",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-9",
+      "physical_cell_id": "matr:el150800460486",
+      "original_barcode": "EL150800460486",
+      "original_channel": "2",
+      "official_test_id": "5c86bf51fa2ede00015dddd3",
+      "official_name": "2017-06-30_3_6C-80per_3_6C_CH2",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-10",
+      "physical_cell_id": "matr:el150800460623",
+      "original_barcode": "EL150800460623",
+      "original_channel": "3",
+      "official_test_id": "5c86bfdbfa2ede00015dde9b",
+      "official_name": "2017-06-30_3_6C-80per_3_6C_CH3",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-11",
+      "physical_cell_id": "matr:el150800460451",
+      "original_barcode": "el150800460451",
+      "original_channel": "16",
+      "official_test_id": "5c86bfeefa2ede00015ddeb9",
+      "official_name": "2017-06-30_3_6C-9per_5C_CH16",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-12",
+      "physical_cell_id": "matr:el150800460466",
+      "original_barcode": "el150800460466",
+      "original_channel": "27",
+      "official_test_id": "5c86bf2ffa2ede00015ddd97",
+      "official_name": "2017-06-30_4C-13per_5C_CH27",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-13",
+      "physical_cell_id": "matr:el150800460510",
+      "original_barcode": "el150800460510",
+      "original_channel": "28",
+      "official_test_id": "5c86c052fa2ede00015ddf59",
+      "official_name": "2017-06-30_4C-31per_5_5C_CH28",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-14",
+      "physical_cell_id": "matr:el150800463208",
+      "original_barcode": "el150800463208",
+      "original_channel": "29",
+      "official_test_id": "5c86c02cfa2ede00015ddf1d",
+      "official_name": "2017-06-30_4C-40per_6C_CH29",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-15",
+      "physical_cell_id": "matr:el150800460449",
+      "original_barcode": "el150800460449",
+      "original_channel": "30",
+      "official_test_id": "5c86c026fa2ede00015ddf13",
+      "official_name": "2017-06-30_4C-4per_4_85C_CH30",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-16",
+      "physical_cell_id": "matr:el150800464977",
+      "original_barcode": "EL150800464977",
+      "original_channel": "5",
+      "official_test_id": "5c86bfccfa2ede00015dde87",
+      "official_name": "2017-06-30_4C-80per_4C_CH5",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-17",
+      "physical_cell_id": "matr:el150800464865",
+      "original_barcode": "EL150800464865",
+      "original_channel": "6",
+      "official_test_id": "5c86c006fa2ede00015ddee1",
+      "official_name": "2017-06-30_4C-80per_4C_CH6",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-18",
+      "physical_cell_id": "matr:el150800460478",
+      "original_barcode": "el150800460478",
+      "original_channel": "17",
+      "official_test_id": "5c86bf7efa2ede00015dde19",
+      "official_name": "2017-06-30_4_4C-24per_5C_CH17",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-19",
+      "physical_cell_id": "matr:el150800460480",
+      "original_barcode": "el150800460480",
+      "original_channel": "18",
+      "official_test_id": "5c86c033fa2ede00015ddf27",
+      "official_name": "2017-06-30_4_4C-47per_5_5C_CH18",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-20",
+      "physical_cell_id": "matr:el150800440551",
+      "original_barcode": "el150800440551",
+      "original_channel": "19",
+      "official_test_id": "5c86c001fa2ede00015dded7",
+      "official_name": "2017-06-30_4_4C-55per_6C_CH19",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-21",
+      "physical_cell_id": "matr:el150800460652",
+      "original_barcode": "el150800460652",
+      "original_channel": "20",
+      "official_test_id": "5c86bf97fa2ede00015dde41",
+      "official_name": "2017-06-30_4_4C-8per_4_85C_CH20",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-22",
+      "physical_cell_id": "matr:el150800460603",
+      "original_barcode": "el150800460603",
+      "original_channel": "21",
+      "official_test_id": "5c86c04cfa2ede00015ddf4f",
+      "official_name": "2017-06-30_4_65C-19per_4_85C_CH21",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-23",
+      "physical_cell_id": "matr:el150800463245",
+      "original_barcode": "el150800463245",
+      "original_channel": "22",
+      "official_test_id": "5c86bf28fa2ede00015ddd8d",
+      "official_name": "2017-06-30_4_65C-44per_5C_CH22",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-24",
+      "physical_cell_id": "matr:el150800460501",
+      "original_barcode": "el150800460501",
+      "original_channel": "23",
+      "official_test_id": "5c86bf91fa2ede00015dde37",
+      "official_name": "2017-06-30_4_65C-69per_6C_CH23",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-25",
+      "physical_cell_id": "matr:el150800460597",
+      "original_barcode": "el150800460597",
+      "original_channel": "4",
+      "official_test_id": "5c86c020fa2ede00015ddf09",
+      "official_name": "2017-06-30_4_8C-80per_4_8C_CH4",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-26",
+      "physical_cell_id": "matr:el150800460611",
+      "original_barcode": "el150800460611",
+      "original_channel": "7",
+      "official_test_id": "5c86bffbfa2ede00015ddecd",
+      "official_name": "2017-06-30_4_8C-80per_4_8C_CH7",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-27",
+      "physical_cell_id": "matr:el150800460596",
+      "original_barcode": "el150800460596",
+      "original_channel": "8",
+      "official_test_id": "5c86bf8afa2ede00015dde2d",
+      "official_name": "2017-06-30_4_8C-80per_4_8C_CH8",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-28",
+      "physical_cell_id": "matr:el150800460614",
+      "original_barcode": "el150800460614",
+      "original_channel": "24",
+      "official_test_id": "5c86bf78fa2ede00015dde0f",
+      "official_name": "2017-06-30_4_9C-27per_4_75C_CH24",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-29",
+      "physical_cell_id": "matr:el150800460610",
+      "original_barcode": "el150800460610",
+      "original_channel": "25",
+      "official_test_id": "5c86bf84fa2ede00015dde23",
+      "official_name": "2017-06-30_4_9C-61per_4_5C_CH25",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-30",
+      "physical_cell_id": "matr:el150800460604",
+      "original_barcode": "el150800460604",
+      "original_channel": "26",
+      "official_test_id": "5c86bf6dfa2ede00015dddfb",
+      "official_name": "2017-06-30_4_9C-69per_4_25C_CH26",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-31",
+      "physical_cell_id": "matr:el150800460527",
+      "original_barcode": "el150800460527",
+      "original_channel": "31",
+      "official_test_id": "5c86bfb2fa2ede00015dde5f",
+      "official_name": "2017-06-30_5_2C-10per_4_75C_CH31",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-32",
+      "physical_cell_id": "matr:el150800460608",
+      "original_barcode": "el150800460608",
+      "original_channel": "32",
+      "official_test_id": "5c86bff4fa2ede00015ddec3",
+      "official_name": "2017-06-30_5_2C-37per_4_5C_CH32",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-33",
+      "physical_cell_id": "matr:el150800460631",
+      "original_barcode": "el150800460631",
+      "original_channel": "33",
+      "official_test_id": "5c86bfbafa2ede00015dde69",
+      "official_name": "2017-06-30_5_2C-50per_4_25C_CH33",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-34",
+      "physical_cell_id": "matr:el150800460641",
+      "original_barcode": "el150800460641",
+      "original_channel": "34",
+      "official_test_id": "5c86bfc0fa2ede00015dde73",
+      "official_name": "2017-06-30_5_2C-58per_4C_CH34",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-35",
+      "physical_cell_id": "matr:el150800460492",
+      "original_barcode": "el150800460492",
+      "original_channel": "35",
+      "official_test_id": "5c86c046fa2ede00015ddf45",
+      "official_name": "2017-06-30_5_2C-66per_3_5C_CH35",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-36",
+      "physical_cell_id": "matr:el150800460628",
+      "original_barcode": "el150800460628",
+      "original_channel": "36",
+      "official_test_id": "5c86bfe7fa2ede00015ddeaf",
+      "official_name": "2017-06-30_5_2C-71per_3C_CH36",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-37",
+      "physical_cell_id": "matr:el150800460528",
+      "original_barcode": "el150800460528",
+      "original_channel": "37",
+      "official_test_id": "5c86bfe2fa2ede00015ddea5",
+      "official_name": "2017-06-30_5_6C-25per_4_5C_CH37",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-38",
+      "physical_cell_id": "matr:el150800460511",
+      "original_barcode": "el150800460511",
+      "original_channel": "38",
+      "official_test_id": "5c86c040fa2ede00015ddf3b",
+      "official_name": "2017-06-30_5_6C-38per_4_25C_CH38",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-39",
+      "physical_cell_id": "matr:el150800460649",
+      "original_barcode": "el150800460649",
+      "original_channel": "39",
+      "official_test_id": "5c86bfa5fa2ede00015dde4b",
+      "official_name": "2017-06-30_5_6C-47per_4C_CH39",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-40",
+      "physical_cell_id": "matr:el150800460627",
+      "original_barcode": "el150800460627",
+      "original_channel": "40",
+      "official_test_id": "5c86c038fa2ede00015ddf31",
+      "official_name": "2017-06-30_5_6C-58per_3_5C_CH40",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-41",
+      "physical_cell_id": "matr:el150800460526",
+      "original_barcode": "el150800460526",
+      "original_channel": "41",
+      "official_test_id": "5c86bfd2fa2ede00015dde91",
+      "official_name": "2017-06-30_5_6C-5per_4_75C_CH41",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-42",
+      "physical_cell_id": "matr:el150800460513",
+      "original_barcode": "el150800460513",
+      "original_channel": "42",
+      "official_test_id": "5c86bf57fa2ede00015ddddd",
+      "official_name": "2017-06-30_5_6C-65per_3C_CH42",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-43",
+      "physical_cell_id": "matr:el150800460473",
+      "original_barcode": "el150800460473",
+      "original_channel": "43",
+      "official_test_id": "5c86bfacfa2ede00015dde55",
+      "official_name": "2017-06-30_6C-20per_4_5C_CH43",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-44",
+      "physical_cell_id": "matr:el150800460498",
+      "original_barcode": "el150800460498",
+      "original_channel": "44",
+      "official_test_id": "5c86c057fa2ede00015ddf63",
+      "official_name": "2017-06-30_6C-31per_4_25C_CH44",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-45",
+      "physical_cell_id": "matr:el150800460474",
+      "original_barcode": "el150800460474",
+      "original_channel": "45",
+      "official_test_id": "5c86bf5dfa2ede00015ddde7",
+      "official_name": "2017-06-30_6C-40per_4C_CH45",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-46",
+      "physical_cell_id": "matr:el150800460613",
+      "original_barcode": "el150800460613",
+      "original_channel": "46",
+      "official_test_id": "5c86c00ffa2ede00015ddeeb",
+      "official_name": "2017-06-30_6C-4per_4_75C_CH46",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-47",
+      "physical_cell_id": "matr:el150800460678",
+      "original_barcode": "el150800460678",
+      "original_channel": "47",
+      "official_test_id": "5c86c01afa2ede00015ddeff",
+      "official_name": "2017-06-30_6C-52per_3_5C_CH47",
+      "verified": true
+    },
+    {
+      "source_record_id": "2017-06-30:record-48",
+      "physical_cell_id": "matr:el150800460599",
+      "original_barcode": "el150800460599",
+      "original_channel": "48",
+      "official_test_id": "5c86bf67fa2ede00015dddf1",
+      "official_name": "2017-06-30_6C-60per_3C_CH48",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-1",
+      "physical_cell_id": "matr:el150800737329",
+      "original_barcode": "el150800737329",
+      "original_channel": "10",
+      "official_test_id": "5c86be59fa2ede00015ddcdf",
+      "official_name": "2018-04-12_batch8_CH10",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-2",
+      "physical_cell_id": "matr:el150800737313",
+      "original_barcode": "el150800737313",
+      "original_channel": "11",
+      "official_test_id": "5c86be14fa2ede00015ddc8f",
+      "official_name": "2018-04-12_batch8_CH11",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-3",
+      "physical_cell_id": "matr:el150800737294",
+      "original_barcode": "el150800737294",
+      "original_channel": "12",
+      "official_test_id": "5c86beabfa2ede00015ddd4d",
+      "official_name": "2018-04-12_batch8_CH12",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-4",
+      "physical_cell_id": "matr:el150800737280",
+      "original_barcode": "el150800737280",
+      "original_channel": "13",
+      "official_test_id": "5c86be38fa2ede00015ddcad",
+      "official_name": "2018-04-12_batch8_CH13",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-5",
+      "physical_cell_id": "matr:el150800739476",
+      "original_barcode": "el150800739476",
+      "original_channel": "14",
+      "official_test_id": "5c86be60fa2ede00015ddce9",
+      "official_name": "2018-04-12_batch8_CH14",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-6",
+      "physical_cell_id": "matr:el150800737213",
+      "original_barcode": "el150800737213",
+      "original_channel": "15",
+      "official_test_id": "5c86beb1fa2ede00015ddd57",
+      "official_name": "2018-04-12_batch8_CH15",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-7",
+      "physical_cell_id": "matr:el150800737229",
+      "original_barcode": "el150800737229",
+      "original_channel": "16",
+      "official_test_id": "5c86be72fa2ede00015ddd07",
+      "official_name": "2018-04-12_batch8_CH16",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-8",
+      "physical_cell_id": "matr:el150800737307",
+      "original_barcode": "el150800737307",
+      "original_channel": "17",
+      "official_test_id": "5c86bd71fa2ede00015ddbbd",
+      "official_name": "2018-04-12_batch8_CH17",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-9",
+      "physical_cell_id": "matr:el150800737233",
+      "original_barcode": "el150800737233",
+      "original_channel": "18",
+      "official_test_id": "5c86be78fa2ede00015ddd11",
+      "official_name": "2018-04-12_batch8_CH18",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-10",
+      "physical_cell_id": "matr:el150800737270",
+      "original_barcode": "el150800737270",
+      "original_channel": "19",
+      "official_test_id": "5c86bdd8fa2ede00015ddc35",
+      "official_name": "2018-04-12_batch8_CH19",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-11",
+      "physical_cell_id": "matr:el150800737277",
+      "original_barcode": "el150800737277",
+      "original_channel": "1",
+      "official_test_id": "5c86bdebfa2ede00015ddc53",
+      "official_name": "2018-04-12_batch8_CH1",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-12",
+      "physical_cell_id": "matr:el150800737276",
+      "original_barcode": "el150800737276",
+      "original_channel": "20",
+      "official_test_id": "5c86bde4fa2ede00015ddc49",
+      "official_name": "2018-04-12_batch8_CH20",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-13",
+      "physical_cell_id": "matr:el150800737314",
+      "original_barcode": "el150800737314",
+      "original_channel": "21",
+      "official_test_id": "5c86be99fa2ede00015ddd39",
+      "official_name": "2018-04-12_batch8_CH21",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-14",
+      "physical_cell_id": "matr:el150800737319",
+      "original_barcode": "el150800737319",
+      "original_channel": "22",
+      "official_test_id": "5c86bd8afa2ede00015ddbdb",
+      "official_name": "2018-04-12_batch8_CH22",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-15",
+      "physical_cell_id": "matr:el150800737387",
+      "original_barcode": "el150800737387",
+      "original_channel": "23",
+      "official_test_id": "5c86be4afa2ede00015ddccb",
+      "official_name": "2018-04-12_batch8_CH23",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-16",
+      "physical_cell_id": "matr:el150800737386",
+      "original_barcode": "el150800737386",
+      "original_channel": "24",
+      "official_test_id": "5c86bdf9fa2ede00015ddc67",
+      "official_name": "2018-04-12_batch8_CH24",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-17",
+      "physical_cell_id": "matr:el150800737345",
+      "original_barcode": "el150800737345",
+      "original_channel": "25",
+      "official_test_id": "5c86becefa2ede00015ddd75",
+      "official_name": "2018-04-12_batch8_CH25",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-18",
+      "physical_cell_id": "matr:el150800737378",
+      "original_barcode": "el150800737378",
+      "original_channel": "27",
+      "official_test_id": "5c86bea2fa2ede00015ddd43",
+      "official_name": "2018-04-12_batch8_CH27",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-19",
+      "physical_cell_id": "matr:el150800737274",
+      "original_barcode": "el150800737274",
+      "original_channel": "28",
+      "official_test_id": "5c86be52fa2ede00015ddcd5",
+      "official_name": "2018-04-12_batch8_CH28",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-20",
+      "physical_cell_id": "matr:el150800737275",
+      "original_barcode": "el150800737275",
+      "original_channel": "29",
+      "official_test_id": "5c86bdb2fa2ede00015ddc03",
+      "official_name": "2018-04-12_batch8_CH29",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-21",
+      "physical_cell_id": "matr:el150800737315",
+      "original_barcode": "el150800737315",
+      "original_channel": "2",
+      "official_test_id": "5c86be92fa2ede00015ddd2f",
+      "official_name": "2018-04-12_batch8_CH2",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-22",
+      "physical_cell_id": "matr:el150800737366",
+      "original_barcode": "el150800737366",
+      "original_channel": "30",
+      "official_test_id": "5c86be6cfa2ede00015ddcfd",
+      "official_name": "2018-04-12_batch8_CH30",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-23",
+      "physical_cell_id": "matr:el150800737285",
+      "original_barcode": "el150800737285",
+      "original_channel": "32",
+      "official_test_id": "5c86bd77fa2ede00015ddbc7",
+      "official_name": "2018-04-12_batch8_CH32",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-24",
+      "physical_cell_id": "matr:el150800737299",
+      "original_barcode": "el150800737299",
+      "original_channel": "33",
+      "official_test_id": "5c86bd84fa2ede00015ddbd1",
+      "official_name": "2018-04-12_batch8_CH33",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-25",
+      "physical_cell_id": "matr:el150800737368",
+      "original_barcode": "el150800737368",
+      "original_channel": "34",
+      "official_test_id": "5c86bdfffa2ede00015ddc71",
+      "official_name": "2018-04-12_batch8_CH34",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-26",
+      "physical_cell_id": "matr:el150800737259",
+      "original_barcode": "el150800737259",
+      "original_channel": "35",
+      "official_test_id": "5c86bddffa2ede00015ddc3f",
+      "official_name": "2018-04-12_batch8_CH35",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-27",
+      "physical_cell_id": "matr:el150800737287",
+      "original_barcode": "el150800737287",
+      "original_channel": "36",
+      "official_test_id": "5c86bdb9fa2ede00015ddc0d",
+      "official_name": "2018-04-12_batch8_CH36",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-28",
+      "physical_cell_id": "matr:el150800737251",
+      "original_barcode": "el150800737251",
+      "original_channel": "37",
+      "official_test_id": "5c86be3dfa2ede00015ddcb7",
+      "official_name": "2018-04-12_batch8_CH37",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-29",
+      "physical_cell_id": "matr:el150800737234",
+      "original_barcode": "el150800737234",
+      "original_channel": "38",
+      "official_test_id": "5c86bdbefa2ede00015ddc17",
+      "official_name": "2018-04-12_batch8_CH38",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-30",
+      "physical_cell_id": "matr:el150800737320",
+      "original_barcode": "el150800737320",
+      "original_channel": "39",
+      "official_test_id": "5c86bed4fa2ede00015ddd7f",
+      "official_name": "2018-04-12_batch8_CH39",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-31",
+      "physical_cell_id": "matr:el150800737380",
+      "original_barcode": "EL150800737380",
+      "original_channel": "3",
+      "official_test_id": "5c86be7ffa2ede00015ddd1b",
+      "official_name": "2018-04-12_batch8_CH3",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-32",
+      "physical_cell_id": "matr:el150800737279",
+      "original_barcode": "el150800737279",
+      "original_channel": "40",
+      "official_test_id": "5c86be05fa2ede00015ddc7b",
+      "official_name": "2018-04-12_batch8_CH40",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-33",
+      "physical_cell_id": "matr:el150800737297",
+      "original_barcode": "el150800737297",
+      "original_channel": "41",
+      "official_test_id": "5c86be22fa2ede00015ddc99",
+      "official_name": "2018-04-12_batch8_CH41",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-34",
+      "physical_cell_id": "matr:el150800737304",
+      "original_barcode": "el150800737304",
+      "original_channel": "42",
+      "official_test_id": "5c86be0dfa2ede00015ddc85",
+      "official_name": "2018-04-12_batch8_CH42",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-35",
+      "physical_cell_id": "matr:el150800737350",
+      "original_barcode": "el150800737350",
+      "original_channel": "43",
+      "official_test_id": "5c86bda5fa2ede00015ddbef",
+      "official_name": "2018-04-12_batch8_CH43",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-36",
+      "physical_cell_id": "matr:el150800739477",
+      "original_barcode": "el150800739477",
+      "original_channel": "44",
+      "official_test_id": "5c86bdc9fa2ede00015ddc21",
+      "official_name": "2018-04-12_batch8_CH44",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-37",
+      "physical_cell_id": "matr:el150800737365",
+      "original_barcode": "el150800737365",
+      "original_channel": "45",
+      "official_test_id": "5c86be44fa2ede00015ddcc1",
+      "official_name": "2018-04-12_batch8_CH45",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-38",
+      "physical_cell_id": "matr:el150800737364",
+      "original_barcode": "el150800737364",
+      "original_channel": "46",
+      "official_test_id": "5c86bd9dfa2ede00015ddbe5",
+      "official_name": "2018-04-12_batch8_CH46",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-39",
+      "physical_cell_id": "matr:el150800737334",
+      "original_barcode": "el150800737334",
+      "original_channel": "47",
+      "official_test_id": "5c86bec4fa2ede00015ddd6b",
+      "official_name": "2018-04-12_batch8_CH47",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-40",
+      "physical_cell_id": "matr:el150800737361",
+      "original_barcode": "el150800737361",
+      "original_channel": "48",
+      "official_test_id": "5c86bdd0fa2ede00015ddc2b",
+      "official_name": "2018-04-12_batch8_CH48",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-41",
+      "physical_cell_id": "matr:el150800737390",
+      "original_barcode": "el150800737390",
+      "original_channel": "4",
+      "official_test_id": "5c86be66fa2ede00015ddcf3",
+      "official_name": "2018-04-12_batch8_CH4",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-42",
+      "physical_cell_id": "matr:el150800739495",
+      "original_barcode": "el150800739495",
+      "original_channel": "5",
+      "official_test_id": "5c86bdaafa2ede00015ddbf9",
+      "official_name": "2018-04-12_batch8_CH5",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-43",
+      "physical_cell_id": "matr:el150800737377",
+      "original_barcode": "el150800737377",
+      "original_channel": "6",
+      "official_test_id": "5c86be8cfa2ede00015ddd25",
+      "official_name": "2018-04-12_batch8_CH6",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-44",
+      "physical_cell_id": "matr:el150800737367",
+      "original_barcode": "el150800737367",
+      "original_channel": "7",
+      "official_test_id": "5c86bdf3fa2ede00015ddc5d",
+      "official_name": "2018-04-12_batch8_CH7",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-45",
+      "physical_cell_id": "matr:el150800737369",
+      "original_barcode": "el150800737369",
+      "original_channel": "8",
+      "official_test_id": "5c86beb8fa2ede00015ddd61",
+      "official_name": "2018-04-12_batch8_CH8",
+      "verified": true
+    },
+    {
+      "source_record_id": "2018-04-12:record-46",
+      "physical_cell_id": "matr:el150800739484",
+      "original_barcode": "el150800739484",
+      "original_channel": "9",
+      "official_test_id": "5c86be2ffa2ede00015ddca3",
+      "official_name": "2018-04-12_batch8_CH9",
+      "verified": true
+    }
+  ],
+  "barcode_and_channel_verified_separately": true,
+  "batch_position_equals_channel_assumed": false,
+  "numeric_targets_inspected": false,
+  "split_counts": {
+    "train": 81,
+    "dev": 27,
+    "calibration": 27,
+    "final": 0
+  },
+  "inventory_path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/identity_inventory.json",
+  "split_path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/preparse_split_manifest.json"
+}

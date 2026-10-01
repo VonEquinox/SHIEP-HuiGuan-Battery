@@ -1,0 +1,278 @@
+{
+  "format": "battery_model_safe_v2",
+  "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+  "feature_schema": "battery_features_v2",
+  "data_namespace": "experimental",
+  "files": {
+    "run.json": "93d4d79a27b058be87c0c7ea2147e2923839744fcb62e1af2a55cf02c7716a16",
+    "weights.npz": "6ba0fe50d2faa676a875da3bb361b4cc3f53f3062c94fa0b1038d68fdedbe471",
+    "calibration.json": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589",
+    "reload_sample.npz": "04a8ae546d88ff47b3e202f05cdf3c42a807ee47bfb5cfe5376f53990cc85d8c",
+    "reload_sample_query.json": "306e222e75334d7a3778250d14ab50488cce2e3e7523ffb0e14e3133c0c2bca0",
+    "reload_domain_samples.npz": "67cec1443ffbdd82877e7d7183ddd112d3b1ea84d2e01e51fa73312ff83e77d0",
+    "reload_domain_queries.json": "775d34e84edf246ab0154792ea9886c79b0ad09741f781aabab944f43147642d",
+    "reload_domain_profiles.json": "559bc0b07eba6d0fd9bd3ca5af62932ad5a86714a652e1309aab32a82fa42ad4",
+    "reload_verification.json": "c0820888a6c44189c127c138dc6380896749fad7039ef30842e070a29305f832"
+  },
+  "support_domains": [
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "1C(4%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "2C(10%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "2C(2%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.6C(22%)-5.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.6C(9%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.7C(31%)-5.9C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(24%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(55%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(8%)-4.85C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.65C(19%)-4.85C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.65C(44%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.8C(80%)-4.8C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.8C(80%)-4.8C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.9C(27%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.9C(61%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4C(31%)-5"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4C(40%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(10%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(58%)-4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(66%)-3.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(71%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.3C(54%)-4C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(50%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(50%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(60%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(60%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(70%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(80%)-5.4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(19%)-4.6C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(25%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(36%)-4.3C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(47%)-4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(65%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.9C(15%)-4.6C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.9C(60%)-3.1C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5C(67%)-4C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(20%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(30%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(4%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(40%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(50%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(50%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(30%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(40%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(15%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(25%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(35%)-3.6C"
+    }
+  ],
+  "target_definitions": {
+    "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+    "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+    "efficiency": null,
+    "fault": null
+  },
+  "reload_verified": true,
+  "evidence_status": "development_only_research",
+  "validated_deployment": false
+}

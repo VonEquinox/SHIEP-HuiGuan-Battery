@@ -1,0 +1,3106 @@
+{
+  "manifest": {
+    "schema_version": "battery-data-v2",
+    "created_at": "2026-10-01T18:14:50.742566+00:00",
+    "parser_version": "v2-data-1.0.0",
+    "namespace": "experimental",
+    "tables": {
+      "identity_map": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/identity_map.parquet",
+        "sha256": "84d5a175404e1e31f0992ea7cfb4f5013b61ec58cb42294b799531ed6574c5e2",
+        "rows": 135
+      },
+      "cycles": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/cycles.parquet",
+        "sha256": "301f34241e4508dec5293a989715883ed6563f318fd94df97b266a45127f742e",
+        "rows": 113303
+      },
+      "segments": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/segments.parquet",
+        "sha256": "b350a914083ff2852097542ec07cd070b5018a5ec9a8d5331a2dbcc5ea4d09e7",
+        "rows": 4241
+      },
+      "targets": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/targets.parquet",
+        "sha256": "f2864f8566db2d27e3119d6c59a476c77ba61810c22ef2eee5da91191f665710",
+        "rows": 112401
+      }
+    },
+    "sources": [
+      {
+        "source_id": "matr",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat",
+        "bytes": 3025320241,
+        "sha256": "9d928ab978f0e3c70b31cb833a749fedd35094d01af76475d69b40aa3497f5ba",
+        "parser_version": "matr-hdf5-stream-v2.1",
+        "origin": "real_experimental",
+        "scope": "complete official corrected MATLAB batch",
+        "identity_inventory_before_measurement": true,
+        "curve_selection": "original_prefix_plus_preregistered_physical_cycle_landmarks",
+        "curve_landmarks": [
+          10,
+          100
+        ],
+        "max_segments_per_cell": 32,
+        "selected_raw_points": 4402612,
+        "author_paper_selection": {
+          "schema_version": "matr-verified-author-selection-v2",
+          "status": "verified_author_rules_applied",
+          "source_url": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m",
+          "source_sha256": "7914333f0a963a0742d9fff340f1d4bc2ad912f1b04a236b3ae6c39fedd3623d",
+          "optional_unfinished_batch1_excluded": true,
+          "selection_order": [
+            {
+              "combined_index_one": 1,
+              "physical_cell_id": "matr:el150800460514",
+              "source_record_id": "2017-05-12:record-1",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 2,
+              "physical_cell_id": "matr:el150800460486",
+              "source_record_id": "2017-05-12:record-2",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 3,
+              "physical_cell_id": "matr:el150800460623",
+              "source_record_id": "2017-05-12:record-3",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 4,
+              "physical_cell_id": "matr:el150800464977",
+              "source_record_id": "2017-05-12:record-4",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 5,
+              "physical_cell_id": "matr:el150800464865",
+              "source_record_id": "2017-05-12:record-5",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 6,
+              "physical_cell_id": "matr:el150800464883",
+              "source_record_id": "2017-05-12:record-6",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 7,
+              "physical_cell_id": "matr:el150800463886",
+              "source_record_id": "2017-05-12:record-7",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 8,
+              "physical_cell_id": "matr:el150800465027",
+              "source_record_id": "2017-05-12:record-8",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 9,
+              "physical_cell_id": "matr:el150800460468",
+              "source_record_id": "2017-05-12:record-10",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 10,
+              "physical_cell_id": "matr:el150800463882",
+              "source_record_id": "2017-05-12:record-12",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 11,
+              "physical_cell_id": "matr:el150800463838",
+              "source_record_id": "2017-05-12:record-15",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 12,
+              "physical_cell_id": "matr:el150800453113",
+              "source_record_id": "2017-05-12:record-16",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 13,
+              "physical_cell_id": "matr:el150800460653",
+              "source_record_id": "2017-05-12:record-17",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 14,
+              "physical_cell_id": "matr:el150800460522",
+              "source_record_id": "2017-05-12:record-18",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 15,
+              "physical_cell_id": "matr:el150800453240",
+              "source_record_id": "2017-05-12:record-19",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 16,
+              "physical_cell_id": "matr:el150800464881",
+              "source_record_id": "2017-05-12:record-20",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 17,
+              "physical_cell_id": "matr:el150800464002",
+              "source_record_id": "2017-05-12:record-21",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 18,
+              "physical_cell_id": "matr:el150800463871",
+              "source_record_id": "2017-05-12:record-22",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 19,
+              "physical_cell_id": "matr:el150800460477",
+              "source_record_id": "2017-05-12:record-24",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 20,
+              "physical_cell_id": "matr:el150800460630",
+              "source_record_id": "2017-05-12:record-25",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 21,
+              "physical_cell_id": "matr:el150800460617",
+              "source_record_id": "2017-05-12:record-26",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 22,
+              "physical_cell_id": "matr:el150800460659",
+              "source_record_id": "2017-05-12:record-27",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 23,
+              "physical_cell_id": "matr:el150800463198",
+              "source_record_id": "2017-05-12:record-28",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 24,
+              "physical_cell_id": "matr:el150800460507",
+              "source_record_id": "2017-05-12:record-29",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 25,
+              "physical_cell_id": "matr:el150800460644",
+              "source_record_id": "2017-05-12:record-30",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 26,
+              "physical_cell_id": "matr:el150800460615",
+              "source_record_id": "2017-05-12:record-31",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 27,
+              "physical_cell_id": "matr:el150800460481",
+              "source_record_id": "2017-05-12:record-32",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 28,
+              "physical_cell_id": "matr:el150800460640",
+              "source_record_id": "2017-05-12:record-33",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 29,
+              "physical_cell_id": "matr:el150800460436",
+              "source_record_id": "2017-05-12:record-34",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 30,
+              "physical_cell_id": "matr:el150800460525",
+              "source_record_id": "2017-05-12:record-35",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 31,
+              "physical_cell_id": "matr:el150800460622",
+              "source_record_id": "2017-05-12:record-36",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 32,
+              "physical_cell_id": "matr:el150800460506",
+              "source_record_id": "2017-05-12:record-37",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 33,
+              "physical_cell_id": "matr:el150800460601",
+              "source_record_id": "2017-05-12:record-38",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 34,
+              "physical_cell_id": "matr:el150800453773",
+              "source_record_id": "2017-05-12:record-39",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 35,
+              "physical_cell_id": "matr:el150800460642",
+              "source_record_id": "2017-05-12:record-40",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 36,
+              "physical_cell_id": "matr:el150800463229",
+              "source_record_id": "2017-05-12:record-41",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 37,
+              "physical_cell_id": "matr:el150800460647",
+              "source_record_id": "2017-05-12:record-42",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 38,
+              "physical_cell_id": "matr:el150800460618",
+              "source_record_id": "2017-05-12:record-43",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 39,
+              "physical_cell_id": "matr:el150800460636",
+              "source_record_id": "2017-05-12:record-44",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 40,
+              "physical_cell_id": "matr:el150800460485",
+              "source_record_id": "2017-05-12:record-45",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 41,
+              "physical_cell_id": "matr:el150800460656",
+              "source_record_id": "2017-05-12:record-46",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 42,
+              "physical_cell_id": "matr:el150800460518",
+              "source_record_id": "2017-06-30:record-1",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 43,
+              "physical_cell_id": "matr:el150800460605",
+              "source_record_id": "2017-06-30:record-2",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 44,
+              "physical_cell_id": "matr:el150800460602",
+              "source_record_id": "2017-06-30:record-3",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 45,
+              "physical_cell_id": "matr:el150800460673",
+              "source_record_id": "2017-06-30:record-4",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 46,
+              "physical_cell_id": "matr:el150800460655",
+              "source_record_id": "2017-06-30:record-5",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 47,
+              "physical_cell_id": "matr:el150800460635",
+              "source_record_id": "2017-06-30:record-6",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 48,
+              "physical_cell_id": "matr:el150800460634",
+              "source_record_id": "2017-06-30:record-7",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 49,
+              "physical_cell_id": "matr:el150800460451",
+              "source_record_id": "2017-06-30:record-11",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 50,
+              "physical_cell_id": "matr:el150800460466",
+              "source_record_id": "2017-06-30:record-12",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 51,
+              "physical_cell_id": "matr:el150800460510",
+              "source_record_id": "2017-06-30:record-13",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 52,
+              "physical_cell_id": "matr:el150800463208",
+              "source_record_id": "2017-06-30:record-14",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 53,
+              "physical_cell_id": "matr:el150800460449",
+              "source_record_id": "2017-06-30:record-15",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 54,
+              "physical_cell_id": "matr:el150800460478",
+              "source_record_id": "2017-06-30:record-18",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 55,
+              "physical_cell_id": "matr:el150800460480",
+              "source_record_id": "2017-06-30:record-19",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 56,
+              "physical_cell_id": "matr:el150800440551",
+              "source_record_id": "2017-06-30:record-20",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 57,
+              "physical_cell_id": "matr:el150800460652",
+              "source_record_id": "2017-06-30:record-21",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 58,
+              "physical_cell_id": "matr:el150800460603",
+              "source_record_id": "2017-06-30:record-22",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 59,
+              "physical_cell_id": "matr:el150800463245",
+              "source_record_id": "2017-06-30:record-23",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 60,
+              "physical_cell_id": "matr:el150800460501",
+              "source_record_id": "2017-06-30:record-24",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 61,
+              "physical_cell_id": "matr:el150800460597",
+              "source_record_id": "2017-06-30:record-25",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 62,
+              "physical_cell_id": "matr:el150800460611",
+              "source_record_id": "2017-06-30:record-26",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 63,
+              "physical_cell_id": "matr:el150800460596",
+              "source_record_id": "2017-06-30:record-27",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 64,
+              "physical_cell_id": "matr:el150800460614",
+              "source_record_id": "2017-06-30:record-28",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 65,
+              "physical_cell_id": "matr:el150800460610",
+              "source_record_id": "2017-06-30:record-29",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 66,
+              "physical_cell_id": "matr:el150800460604",
+              "source_record_id": "2017-06-30:record-30",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 67,
+              "physical_cell_id": "matr:el150800460527",
+              "source_record_id": "2017-06-30:record-31",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 68,
+              "physical_cell_id": "matr:el150800460608",
+              "source_record_id": "2017-06-30:record-32",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 69,
+              "physical_cell_id": "matr:el150800460631",
+              "source_record_id": "2017-06-30:record-33",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 70,
+              "physical_cell_id": "matr:el150800460641",
+              "source_record_id": "2017-06-30:record-34",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 71,
+              "physical_cell_id": "matr:el150800460492",
+              "source_record_id": "2017-06-30:record-35",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 72,
+              "physical_cell_id": "matr:el150800460628",
+              "source_record_id": "2017-06-30:record-36",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 73,
+              "physical_cell_id": "matr:el150800460528",
+              "source_record_id": "2017-06-30:record-37",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 74,
+              "physical_cell_id": "matr:el150800460511",
+              "source_record_id": "2017-06-30:record-38",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 75,
+              "physical_cell_id": "matr:el150800460649",
+              "source_record_id": "2017-06-30:record-39",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 76,
+              "physical_cell_id": "matr:el150800460627",
+              "source_record_id": "2017-06-30:record-40",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 77,
+              "physical_cell_id": "matr:el150800460526",
+              "source_record_id": "2017-06-30:record-41",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 78,
+              "physical_cell_id": "matr:el150800460513",
+              "source_record_id": "2017-06-30:record-42",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 79,
+              "physical_cell_id": "matr:el150800460473",
+              "source_record_id": "2017-06-30:record-43",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 80,
+              "physical_cell_id": "matr:el150800460498",
+              "source_record_id": "2017-06-30:record-44",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 81,
+              "physical_cell_id": "matr:el150800460474",
+              "source_record_id": "2017-06-30:record-45",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 82,
+              "physical_cell_id": "matr:el150800460613",
+              "source_record_id": "2017-06-30:record-46",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 83,
+              "physical_cell_id": "matr:el150800460678",
+              "source_record_id": "2017-06-30:record-47",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 84,
+              "physical_cell_id": "matr:el150800460599",
+              "source_record_id": "2017-06-30:record-48",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 85,
+              "physical_cell_id": "matr:el150800737329",
+              "source_record_id": "2018-04-12:record-1",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 86,
+              "physical_cell_id": "matr:el150800737313",
+              "source_record_id": "2018-04-12:record-2",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 87,
+              "physical_cell_id": "matr:el150800737280",
+              "source_record_id": "2018-04-12:record-4",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 88,
+              "physical_cell_id": "matr:el150800739476",
+              "source_record_id": "2018-04-12:record-5",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 89,
+              "physical_cell_id": "matr:el150800737213",
+              "source_record_id": "2018-04-12:record-6",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 90,
+              "physical_cell_id": "matr:el150800737229",
+              "source_record_id": "2018-04-12:record-7",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 91,
+              "physical_cell_id": "matr:el150800737307",
+              "source_record_id": "2018-04-12:record-8",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 92,
+              "physical_cell_id": "matr:el150800737233",
+              "source_record_id": "2018-04-12:record-9",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 93,
+              "physical_cell_id": "matr:el150800737270",
+              "source_record_id": "2018-04-12:record-10",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 94,
+              "physical_cell_id": "matr:el150800737277",
+              "source_record_id": "2018-04-12:record-11",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 95,
+              "physical_cell_id": "matr:el150800737276",
+              "source_record_id": "2018-04-12:record-12",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 96,
+              "physical_cell_id": "matr:el150800737314",
+              "source_record_id": "2018-04-12:record-13",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 97,
+              "physical_cell_id": "matr:el150800737319",
+              "source_record_id": "2018-04-12:record-14",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 98,
+              "physical_cell_id": "matr:el150800737387",
+              "source_record_id": "2018-04-12:record-15",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 99,
+              "physical_cell_id": "matr:el150800737386",
+              "source_record_id": "2018-04-12:record-16",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 100,
+              "physical_cell_id": "matr:el150800737345",
+              "source_record_id": "2018-04-12:record-17",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 101,
+              "physical_cell_id": "matr:el150800737378",
+              "source_record_id": "2018-04-12:record-18",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 102,
+              "physical_cell_id": "matr:el150800737274",
+              "source_record_id": "2018-04-12:record-19",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 103,
+              "physical_cell_id": "matr:el150800737275",
+              "source_record_id": "2018-04-12:record-20",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 104,
+              "physical_cell_id": "matr:el150800737315",
+              "source_record_id": "2018-04-12:record-21",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 105,
+              "physical_cell_id": "matr:el150800737366",
+              "source_record_id": "2018-04-12:record-22",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 106,
+              "physical_cell_id": "matr:el150800737285",
+              "source_record_id": "2018-04-12:record-23",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 107,
+              "physical_cell_id": "matr:el150800737368",
+              "source_record_id": "2018-04-12:record-25",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 108,
+              "physical_cell_id": "matr:el150800737259",
+              "source_record_id": "2018-04-12:record-26",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 109,
+              "physical_cell_id": "matr:el150800737287",
+              "source_record_id": "2018-04-12:record-27",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 110,
+              "physical_cell_id": "matr:el150800737251",
+              "source_record_id": "2018-04-12:record-28",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 111,
+              "physical_cell_id": "matr:el150800737234",
+              "source_record_id": "2018-04-12:record-29",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 112,
+              "physical_cell_id": "matr:el150800737320",
+              "source_record_id": "2018-04-12:record-30",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 113,
+              "physical_cell_id": "matr:el150800737380",
+              "source_record_id": "2018-04-12:record-31",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 114,
+              "physical_cell_id": "matr:el150800737279",
+              "source_record_id": "2018-04-12:record-32",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 115,
+              "physical_cell_id": "matr:el150800737304",
+              "source_record_id": "2018-04-12:record-34",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 116,
+              "physical_cell_id": "matr:el150800737350",
+              "source_record_id": "2018-04-12:record-35",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 117,
+              "physical_cell_id": "matr:el150800739477",
+              "source_record_id": "2018-04-12:record-36",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 118,
+              "physical_cell_id": "matr:el150800737365",
+              "source_record_id": "2018-04-12:record-37",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 119,
+              "physical_cell_id": "matr:el150800737334",
+              "source_record_id": "2018-04-12:record-39",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 120,
+              "physical_cell_id": "matr:el150800737361",
+              "source_record_id": "2018-04-12:record-40",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 121,
+              "physical_cell_id": "matr:el150800737390",
+              "source_record_id": "2018-04-12:record-41",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 122,
+              "physical_cell_id": "matr:el150800739495",
+              "source_record_id": "2018-04-12:record-42",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 123,
+              "physical_cell_id": "matr:el150800737369",
+              "source_record_id": "2018-04-12:record-45",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 124,
+              "physical_cell_id": "matr:el150800739484",
+              "source_record_id": "2018-04-12:record-46",
+              "author_split": "secondary_test"
+            }
+          ],
+          "physical_cell_ids": [
+            "matr:el150800460514",
+            "matr:el150800460486",
+            "matr:el150800460623",
+            "matr:el150800464977",
+            "matr:el150800464865",
+            "matr:el150800464883",
+            "matr:el150800463886",
+            "matr:el150800465027",
+            "matr:el150800460468",
+            "matr:el150800463882",
+            "matr:el150800463838",
+            "matr:el150800453113",
+            "matr:el150800460653",
+            "matr:el150800460522",
+            "matr:el150800453240",
+            "matr:el150800464881",
+            "matr:el150800464002",
+            "matr:el150800463871",
+            "matr:el150800460477",
+            "matr:el150800460630",
+            "matr:el150800460617",
+            "matr:el150800460659",
+            "matr:el150800463198",
+            "matr:el150800460507",
+            "matr:el150800460644",
+            "matr:el150800460615",
+            "matr:el150800460481",
+            "matr:el150800460640",
+            "matr:el150800460436",
+            "matr:el150800460525",
+            "matr:el150800460622",
+            "matr:el150800460506",
+            "matr:el150800460601",
+            "matr:el150800453773",
+            "matr:el150800460642",
+            "matr:el150800463229",
+            "matr:el150800460647",
+            "matr:el150800460618",
+            "matr:el150800460636",
+            "matr:el150800460485",
+            "matr:el150800460656",
+            "matr:el150800460518",
+            "matr:el150800460605",
+            "matr:el150800460602",
+            "matr:el150800460673",
+            "matr:el150800460655",
+            "matr:el150800460635",
+            "matr:el150800460634",
+            "matr:el150800460451",
+            "matr:el150800460466",
+            "matr:el150800460510",
+            "matr:el150800463208",
+            "matr:el150800460449",
+            "matr:el150800460478",
+            "matr:el150800460480",
+            "matr:el150800440551",
+            "matr:el150800460652",
+            "matr:el150800460603",
+            "matr:el150800463245",
+            "matr:el150800460501",
+            "matr:el150800460597",
+            "matr:el150800460611",
+            "matr:el150800460596",
+            "matr:el150800460614",
+            "matr:el150800460610",
+            "matr:el150800460604",
+            "matr:el150800460527",
+            "matr:el150800460608",
+            "matr:el150800460631",
+            "matr:el150800460641",
+            "matr:el150800460492",
+            "matr:el150800460628",
+            "matr:el150800460528",
+            "matr:el150800460511",
+            "matr:el150800460649",
+            "matr:el150800460627",
+            "matr:el150800460526",
+            "matr:el150800460513",
+            "matr:el150800460473",
+            "matr:el150800460498",
+            "matr:el150800460474",
+            "matr:el150800460613",
+            "matr:el150800460678",
+            "matr:el150800460599",
+            "matr:el150800737329",
+            "matr:el150800737313",
+            "matr:el150800737280",
+            "matr:el150800739476",
+            "matr:el150800737213",
+            "matr:el150800737229",
+            "matr:el150800737307",
+            "matr:el150800737233",
+            "matr:el150800737270",
+            "matr:el150800737277",
+            "matr:el150800737276",
+            "matr:el150800737314",
+            "matr:el150800737319",
+            "matr:el150800737387",
+            "matr:el150800737386",
+            "matr:el150800737345",
+            "matr:el150800737378",
+            "matr:el150800737274",
+            "matr:el150800737275",
+            "matr:el150800737315",
+            "matr:el150800737366",
+            "matr:el150800737285",
+            "matr:el150800737368",
+            "matr:el150800737259",
+            "matr:el150800737287",
+            "matr:el150800737251",
+            "matr:el150800737234",
+            "matr:el150800737320",
+            "matr:el150800737380",
+            "matr:el150800737279",
+            "matr:el150800737304",
+            "matr:el150800737350",
+            "matr:el150800739477",
+            "matr:el150800737365",
+            "matr:el150800737334",
+            "matr:el150800737361",
+            "matr:el150800737390",
+            "matr:el150800739495",
+            "matr:el150800737369",
+            "matr:el150800739484"
+          ],
+          "counts": {
+            "batch1": 41,
+            "batch2": 43,
+            "batch3": 40,
+            "total": 124
+          },
+          "exclusions": [
+            {
+              "source_record_id": "2018-04-12:record-38",
+              "reason": "author_original_record38_collection_problem_channel46"
+            },
+            {
+              "source_record_id": "2018-04-12:record-24",
+              "reason": "author_batch3_terminal_capacity_gt_0.885Ah"
+            },
+            {
+              "source_record_id": "2018-04-12:record-33",
+              "reason": "author_batch3_terminal_capacity_gt_0.885Ah"
+            },
+            {
+              "source_record_id": "2018-04-12:record-3",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 3
+            },
+            {
+              "source_record_id": "2018-04-12:record-43",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 40
+            },
+            {
+              "source_record_id": "2018-04-12:record-44",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 41
+            },
+            {
+              "source_record_id": "2017-05-12:record-9",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-11",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-13",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-14",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-23",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            }
+          ],
+          "paper_output_convention": "first_below_0.88_summary_position_if_terminal_below_else_raw_cycle_count_plus_one",
+          "survival_output_convention": "strict_0.88Ah_threshold_with_right_censoring"
+        }
+      },
+      {
+        "source_id": "matr",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat",
+        "bytes": 2007331155,
+        "sha256": "63ab200d09ecb237fee5ef3a5c5db76e3212e3206a0bd92f769e1427fed338b8",
+        "parser_version": "matr-hdf5-stream-v2.1",
+        "origin": "real_experimental",
+        "scope": "complete official corrected MATLAB batch",
+        "identity_inventory_before_measurement": true,
+        "curve_selection": "original_prefix_plus_preregistered_physical_cycle_landmarks",
+        "curve_landmarks": [
+          10,
+          100
+        ],
+        "max_segments_per_cell": 32,
+        "selected_raw_points": 4402612,
+        "author_paper_selection": {
+          "schema_version": "matr-verified-author-selection-v2",
+          "status": "verified_author_rules_applied",
+          "source_url": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m",
+          "source_sha256": "7914333f0a963a0742d9fff340f1d4bc2ad912f1b04a236b3ae6c39fedd3623d",
+          "optional_unfinished_batch1_excluded": true,
+          "selection_order": [
+            {
+              "combined_index_one": 1,
+              "physical_cell_id": "matr:el150800460514",
+              "source_record_id": "2017-05-12:record-1",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 2,
+              "physical_cell_id": "matr:el150800460486",
+              "source_record_id": "2017-05-12:record-2",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 3,
+              "physical_cell_id": "matr:el150800460623",
+              "source_record_id": "2017-05-12:record-3",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 4,
+              "physical_cell_id": "matr:el150800464977",
+              "source_record_id": "2017-05-12:record-4",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 5,
+              "physical_cell_id": "matr:el150800464865",
+              "source_record_id": "2017-05-12:record-5",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 6,
+              "physical_cell_id": "matr:el150800464883",
+              "source_record_id": "2017-05-12:record-6",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 7,
+              "physical_cell_id": "matr:el150800463886",
+              "source_record_id": "2017-05-12:record-7",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 8,
+              "physical_cell_id": "matr:el150800465027",
+              "source_record_id": "2017-05-12:record-8",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 9,
+              "physical_cell_id": "matr:el150800460468",
+              "source_record_id": "2017-05-12:record-10",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 10,
+              "physical_cell_id": "matr:el150800463882",
+              "source_record_id": "2017-05-12:record-12",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 11,
+              "physical_cell_id": "matr:el150800463838",
+              "source_record_id": "2017-05-12:record-15",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 12,
+              "physical_cell_id": "matr:el150800453113",
+              "source_record_id": "2017-05-12:record-16",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 13,
+              "physical_cell_id": "matr:el150800460653",
+              "source_record_id": "2017-05-12:record-17",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 14,
+              "physical_cell_id": "matr:el150800460522",
+              "source_record_id": "2017-05-12:record-18",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 15,
+              "physical_cell_id": "matr:el150800453240",
+              "source_record_id": "2017-05-12:record-19",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 16,
+              "physical_cell_id": "matr:el150800464881",
+              "source_record_id": "2017-05-12:record-20",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 17,
+              "physical_cell_id": "matr:el150800464002",
+              "source_record_id": "2017-05-12:record-21",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 18,
+              "physical_cell_id": "matr:el150800463871",
+              "source_record_id": "2017-05-12:record-22",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 19,
+              "physical_cell_id": "matr:el150800460477",
+              "source_record_id": "2017-05-12:record-24",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 20,
+              "physical_cell_id": "matr:el150800460630",
+              "source_record_id": "2017-05-12:record-25",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 21,
+              "physical_cell_id": "matr:el150800460617",
+              "source_record_id": "2017-05-12:record-26",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 22,
+              "physical_cell_id": "matr:el150800460659",
+              "source_record_id": "2017-05-12:record-27",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 23,
+              "physical_cell_id": "matr:el150800463198",
+              "source_record_id": "2017-05-12:record-28",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 24,
+              "physical_cell_id": "matr:el150800460507",
+              "source_record_id": "2017-05-12:record-29",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 25,
+              "physical_cell_id": "matr:el150800460644",
+              "source_record_id": "2017-05-12:record-30",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 26,
+              "physical_cell_id": "matr:el150800460615",
+              "source_record_id": "2017-05-12:record-31",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 27,
+              "physical_cell_id": "matr:el150800460481",
+              "source_record_id": "2017-05-12:record-32",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 28,
+              "physical_cell_id": "matr:el150800460640",
+              "source_record_id": "2017-05-12:record-33",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 29,
+              "physical_cell_id": "matr:el150800460436",
+              "source_record_id": "2017-05-12:record-34",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 30,
+              "physical_cell_id": "matr:el150800460525",
+              "source_record_id": "2017-05-12:record-35",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 31,
+              "physical_cell_id": "matr:el150800460622",
+              "source_record_id": "2017-05-12:record-36",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 32,
+              "physical_cell_id": "matr:el150800460506",
+              "source_record_id": "2017-05-12:record-37",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 33,
+              "physical_cell_id": "matr:el150800460601",
+              "source_record_id": "2017-05-12:record-38",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 34,
+              "physical_cell_id": "matr:el150800453773",
+              "source_record_id": "2017-05-12:record-39",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 35,
+              "physical_cell_id": "matr:el150800460642",
+              "source_record_id": "2017-05-12:record-40",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 36,
+              "physical_cell_id": "matr:el150800463229",
+              "source_record_id": "2017-05-12:record-41",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 37,
+              "physical_cell_id": "matr:el150800460647",
+              "source_record_id": "2017-05-12:record-42",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 38,
+              "physical_cell_id": "matr:el150800460618",
+              "source_record_id": "2017-05-12:record-43",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 39,
+              "physical_cell_id": "matr:el150800460636",
+              "source_record_id": "2017-05-12:record-44",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 40,
+              "physical_cell_id": "matr:el150800460485",
+              "source_record_id": "2017-05-12:record-45",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 41,
+              "physical_cell_id": "matr:el150800460656",
+              "source_record_id": "2017-05-12:record-46",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 42,
+              "physical_cell_id": "matr:el150800460518",
+              "source_record_id": "2017-06-30:record-1",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 43,
+              "physical_cell_id": "matr:el150800460605",
+              "source_record_id": "2017-06-30:record-2",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 44,
+              "physical_cell_id": "matr:el150800460602",
+              "source_record_id": "2017-06-30:record-3",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 45,
+              "physical_cell_id": "matr:el150800460673",
+              "source_record_id": "2017-06-30:record-4",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 46,
+              "physical_cell_id": "matr:el150800460655",
+              "source_record_id": "2017-06-30:record-5",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 47,
+              "physical_cell_id": "matr:el150800460635",
+              "source_record_id": "2017-06-30:record-6",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 48,
+              "physical_cell_id": "matr:el150800460634",
+              "source_record_id": "2017-06-30:record-7",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 49,
+              "physical_cell_id": "matr:el150800460451",
+              "source_record_id": "2017-06-30:record-11",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 50,
+              "physical_cell_id": "matr:el150800460466",
+              "source_record_id": "2017-06-30:record-12",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 51,
+              "physical_cell_id": "matr:el150800460510",
+              "source_record_id": "2017-06-30:record-13",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 52,
+              "physical_cell_id": "matr:el150800463208",
+              "source_record_id": "2017-06-30:record-14",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 53,
+              "physical_cell_id": "matr:el150800460449",
+              "source_record_id": "2017-06-30:record-15",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 54,
+              "physical_cell_id": "matr:el150800460478",
+              "source_record_id": "2017-06-30:record-18",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 55,
+              "physical_cell_id": "matr:el150800460480",
+              "source_record_id": "2017-06-30:record-19",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 56,
+              "physical_cell_id": "matr:el150800440551",
+              "source_record_id": "2017-06-30:record-20",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 57,
+              "physical_cell_id": "matr:el150800460652",
+              "source_record_id": "2017-06-30:record-21",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 58,
+              "physical_cell_id": "matr:el150800460603",
+              "source_record_id": "2017-06-30:record-22",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 59,
+              "physical_cell_id": "matr:el150800463245",
+              "source_record_id": "2017-06-30:record-23",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 60,
+              "physical_cell_id": "matr:el150800460501",
+              "source_record_id": "2017-06-30:record-24",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 61,
+              "physical_cell_id": "matr:el150800460597",
+              "source_record_id": "2017-06-30:record-25",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 62,
+              "physical_cell_id": "matr:el150800460611",
+              "source_record_id": "2017-06-30:record-26",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 63,
+              "physical_cell_id": "matr:el150800460596",
+              "source_record_id": "2017-06-30:record-27",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 64,
+              "physical_cell_id": "matr:el150800460614",
+              "source_record_id": "2017-06-30:record-28",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 65,
+              "physical_cell_id": "matr:el150800460610",
+              "source_record_id": "2017-06-30:record-29",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 66,
+              "physical_cell_id": "matr:el150800460604",
+              "source_record_id": "2017-06-30:record-30",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 67,
+              "physical_cell_id": "matr:el150800460527",
+              "source_record_id": "2017-06-30:record-31",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 68,
+              "physical_cell_id": "matr:el150800460608",
+              "source_record_id": "2017-06-30:record-32",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 69,
+              "physical_cell_id": "matr:el150800460631",
+              "source_record_id": "2017-06-30:record-33",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 70,
+              "physical_cell_id": "matr:el150800460641",
+              "source_record_id": "2017-06-30:record-34",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 71,
+              "physical_cell_id": "matr:el150800460492",
+              "source_record_id": "2017-06-30:record-35",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 72,
+              "physical_cell_id": "matr:el150800460628",
+              "source_record_id": "2017-06-30:record-36",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 73,
+              "physical_cell_id": "matr:el150800460528",
+              "source_record_id": "2017-06-30:record-37",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 74,
+              "physical_cell_id": "matr:el150800460511",
+              "source_record_id": "2017-06-30:record-38",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 75,
+              "physical_cell_id": "matr:el150800460649",
+              "source_record_id": "2017-06-30:record-39",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 76,
+              "physical_cell_id": "matr:el150800460627",
+              "source_record_id": "2017-06-30:record-40",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 77,
+              "physical_cell_id": "matr:el150800460526",
+              "source_record_id": "2017-06-30:record-41",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 78,
+              "physical_cell_id": "matr:el150800460513",
+              "source_record_id": "2017-06-30:record-42",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 79,
+              "physical_cell_id": "matr:el150800460473",
+              "source_record_id": "2017-06-30:record-43",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 80,
+              "physical_cell_id": "matr:el150800460498",
+              "source_record_id": "2017-06-30:record-44",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 81,
+              "physical_cell_id": "matr:el150800460474",
+              "source_record_id": "2017-06-30:record-45",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 82,
+              "physical_cell_id": "matr:el150800460613",
+              "source_record_id": "2017-06-30:record-46",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 83,
+              "physical_cell_id": "matr:el150800460678",
+              "source_record_id": "2017-06-30:record-47",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 84,
+              "physical_cell_id": "matr:el150800460599",
+              "source_record_id": "2017-06-30:record-48",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 85,
+              "physical_cell_id": "matr:el150800737329",
+              "source_record_id": "2018-04-12:record-1",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 86,
+              "physical_cell_id": "matr:el150800737313",
+              "source_record_id": "2018-04-12:record-2",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 87,
+              "physical_cell_id": "matr:el150800737280",
+              "source_record_id": "2018-04-12:record-4",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 88,
+              "physical_cell_id": "matr:el150800739476",
+              "source_record_id": "2018-04-12:record-5",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 89,
+              "physical_cell_id": "matr:el150800737213",
+              "source_record_id": "2018-04-12:record-6",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 90,
+              "physical_cell_id": "matr:el150800737229",
+              "source_record_id": "2018-04-12:record-7",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 91,
+              "physical_cell_id": "matr:el150800737307",
+              "source_record_id": "2018-04-12:record-8",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 92,
+              "physical_cell_id": "matr:el150800737233",
+              "source_record_id": "2018-04-12:record-9",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 93,
+              "physical_cell_id": "matr:el150800737270",
+              "source_record_id": "2018-04-12:record-10",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 94,
+              "physical_cell_id": "matr:el150800737277",
+              "source_record_id": "2018-04-12:record-11",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 95,
+              "physical_cell_id": "matr:el150800737276",
+              "source_record_id": "2018-04-12:record-12",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 96,
+              "physical_cell_id": "matr:el150800737314",
+              "source_record_id": "2018-04-12:record-13",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 97,
+              "physical_cell_id": "matr:el150800737319",
+              "source_record_id": "2018-04-12:record-14",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 98,
+              "physical_cell_id": "matr:el150800737387",
+              "source_record_id": "2018-04-12:record-15",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 99,
+              "physical_cell_id": "matr:el150800737386",
+              "source_record_id": "2018-04-12:record-16",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 100,
+              "physical_cell_id": "matr:el150800737345",
+              "source_record_id": "2018-04-12:record-17",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 101,
+              "physical_cell_id": "matr:el150800737378",
+              "source_record_id": "2018-04-12:record-18",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 102,
+              "physical_cell_id": "matr:el150800737274",
+              "source_record_id": "2018-04-12:record-19",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 103,
+              "physical_cell_id": "matr:el150800737275",
+              "source_record_id": "2018-04-12:record-20",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 104,
+              "physical_cell_id": "matr:el150800737315",
+              "source_record_id": "2018-04-12:record-21",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 105,
+              "physical_cell_id": "matr:el150800737366",
+              "source_record_id": "2018-04-12:record-22",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 106,
+              "physical_cell_id": "matr:el150800737285",
+              "source_record_id": "2018-04-12:record-23",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 107,
+              "physical_cell_id": "matr:el150800737368",
+              "source_record_id": "2018-04-12:record-25",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 108,
+              "physical_cell_id": "matr:el150800737259",
+              "source_record_id": "2018-04-12:record-26",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 109,
+              "physical_cell_id": "matr:el150800737287",
+              "source_record_id": "2018-04-12:record-27",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 110,
+              "physical_cell_id": "matr:el150800737251",
+              "source_record_id": "2018-04-12:record-28",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 111,
+              "physical_cell_id": "matr:el150800737234",
+              "source_record_id": "2018-04-12:record-29",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 112,
+              "physical_cell_id": "matr:el150800737320",
+              "source_record_id": "2018-04-12:record-30",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 113,
+              "physical_cell_id": "matr:el150800737380",
+              "source_record_id": "2018-04-12:record-31",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 114,
+              "physical_cell_id": "matr:el150800737279",
+              "source_record_id": "2018-04-12:record-32",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 115,
+              "physical_cell_id": "matr:el150800737304",
+              "source_record_id": "2018-04-12:record-34",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 116,
+              "physical_cell_id": "matr:el150800737350",
+              "source_record_id": "2018-04-12:record-35",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 117,
+              "physical_cell_id": "matr:el150800739477",
+              "source_record_id": "2018-04-12:record-36",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 118,
+              "physical_cell_id": "matr:el150800737365",
+              "source_record_id": "2018-04-12:record-37",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 119,
+              "physical_cell_id": "matr:el150800737334",
+              "source_record_id": "2018-04-12:record-39",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 120,
+              "physical_cell_id": "matr:el150800737361",
+              "source_record_id": "2018-04-12:record-40",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 121,
+              "physical_cell_id": "matr:el150800737390",
+              "source_record_id": "2018-04-12:record-41",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 122,
+              "physical_cell_id": "matr:el150800739495",
+              "source_record_id": "2018-04-12:record-42",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 123,
+              "physical_cell_id": "matr:el150800737369",
+              "source_record_id": "2018-04-12:record-45",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 124,
+              "physical_cell_id": "matr:el150800739484",
+              "source_record_id": "2018-04-12:record-46",
+              "author_split": "secondary_test"
+            }
+          ],
+          "physical_cell_ids": [
+            "matr:el150800460514",
+            "matr:el150800460486",
+            "matr:el150800460623",
+            "matr:el150800464977",
+            "matr:el150800464865",
+            "matr:el150800464883",
+            "matr:el150800463886",
+            "matr:el150800465027",
+            "matr:el150800460468",
+            "matr:el150800463882",
+            "matr:el150800463838",
+            "matr:el150800453113",
+            "matr:el150800460653",
+            "matr:el150800460522",
+            "matr:el150800453240",
+            "matr:el150800464881",
+            "matr:el150800464002",
+            "matr:el150800463871",
+            "matr:el150800460477",
+            "matr:el150800460630",
+            "matr:el150800460617",
+            "matr:el150800460659",
+            "matr:el150800463198",
+            "matr:el150800460507",
+            "matr:el150800460644",
+            "matr:el150800460615",
+            "matr:el150800460481",
+            "matr:el150800460640",
+            "matr:el150800460436",
+            "matr:el150800460525",
+            "matr:el150800460622",
+            "matr:el150800460506",
+            "matr:el150800460601",
+            "matr:el150800453773",
+            "matr:el150800460642",
+            "matr:el150800463229",
+            "matr:el150800460647",
+            "matr:el150800460618",
+            "matr:el150800460636",
+            "matr:el150800460485",
+            "matr:el150800460656",
+            "matr:el150800460518",
+            "matr:el150800460605",
+            "matr:el150800460602",
+            "matr:el150800460673",
+            "matr:el150800460655",
+            "matr:el150800460635",
+            "matr:el150800460634",
+            "matr:el150800460451",
+            "matr:el150800460466",
+            "matr:el150800460510",
+            "matr:el150800463208",
+            "matr:el150800460449",
+            "matr:el150800460478",
+            "matr:el150800460480",
+            "matr:el150800440551",
+            "matr:el150800460652",
+            "matr:el150800460603",
+            "matr:el150800463245",
+            "matr:el150800460501",
+            "matr:el150800460597",
+            "matr:el150800460611",
+            "matr:el150800460596",
+            "matr:el150800460614",
+            "matr:el150800460610",
+            "matr:el150800460604",
+            "matr:el150800460527",
+            "matr:el150800460608",
+            "matr:el150800460631",
+            "matr:el150800460641",
+            "matr:el150800460492",
+            "matr:el150800460628",
+            "matr:el150800460528",
+            "matr:el150800460511",
+            "matr:el150800460649",
+            "matr:el150800460627",
+            "matr:el150800460526",
+            "matr:el150800460513",
+            "matr:el150800460473",
+            "matr:el150800460498",
+            "matr:el150800460474",
+            "matr:el150800460613",
+            "matr:el150800460678",
+            "matr:el150800460599",
+            "matr:el150800737329",
+            "matr:el150800737313",
+            "matr:el150800737280",
+            "matr:el150800739476",
+            "matr:el150800737213",
+            "matr:el150800737229",
+            "matr:el150800737307",
+            "matr:el150800737233",
+            "matr:el150800737270",
+            "matr:el150800737277",
+            "matr:el150800737276",
+            "matr:el150800737314",
+            "matr:el150800737319",
+            "matr:el150800737387",
+            "matr:el150800737386",
+            "matr:el150800737345",
+            "matr:el150800737378",
+            "matr:el150800737274",
+            "matr:el150800737275",
+            "matr:el150800737315",
+            "matr:el150800737366",
+            "matr:el150800737285",
+            "matr:el150800737368",
+            "matr:el150800737259",
+            "matr:el150800737287",
+            "matr:el150800737251",
+            "matr:el150800737234",
+            "matr:el150800737320",
+            "matr:el150800737380",
+            "matr:el150800737279",
+            "matr:el150800737304",
+            "matr:el150800737350",
+            "matr:el150800739477",
+            "matr:el150800737365",
+            "matr:el150800737334",
+            "matr:el150800737361",
+            "matr:el150800737390",
+            "matr:el150800739495",
+            "matr:el150800737369",
+            "matr:el150800739484"
+          ],
+          "counts": {
+            "batch1": 41,
+            "batch2": 43,
+            "batch3": 40,
+            "total": 124
+          },
+          "exclusions": [
+            {
+              "source_record_id": "2018-04-12:record-38",
+              "reason": "author_original_record38_collection_problem_channel46"
+            },
+            {
+              "source_record_id": "2018-04-12:record-24",
+              "reason": "author_batch3_terminal_capacity_gt_0.885Ah"
+            },
+            {
+              "source_record_id": "2018-04-12:record-33",
+              "reason": "author_batch3_terminal_capacity_gt_0.885Ah"
+            },
+            {
+              "source_record_id": "2018-04-12:record-3",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 3
+            },
+            {
+              "source_record_id": "2018-04-12:record-43",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 40
+            },
+            {
+              "source_record_id": "2018-04-12:record-44",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 41
+            },
+            {
+              "source_record_id": "2017-05-12:record-9",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-11",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-13",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-14",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-23",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            }
+          ],
+          "paper_output_convention": "first_below_0.88_summary_position_if_terminal_below_else_raw_cycle_count_plus_one",
+          "survival_output_convention": "strict_0.88Ah_threshold_with_right_censoring"
+        }
+      },
+      {
+        "source_id": "matr",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat",
+        "bytes": 3236690412,
+        "sha256": "62c30e413b63e6144720e016deed3661fac8468641794a5807b123fe84717998",
+        "parser_version": "matr-hdf5-stream-v2.1",
+        "origin": "real_experimental",
+        "scope": "complete official corrected MATLAB batch",
+        "identity_inventory_before_measurement": true,
+        "curve_selection": "original_prefix_plus_preregistered_physical_cycle_landmarks",
+        "curve_landmarks": [
+          10,
+          100
+        ],
+        "max_segments_per_cell": 32,
+        "selected_raw_points": 4402612,
+        "author_paper_selection": {
+          "schema_version": "matr-verified-author-selection-v2",
+          "status": "verified_author_rules_applied",
+          "source_url": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m",
+          "source_sha256": "7914333f0a963a0742d9fff340f1d4bc2ad912f1b04a236b3ae6c39fedd3623d",
+          "optional_unfinished_batch1_excluded": true,
+          "selection_order": [
+            {
+              "combined_index_one": 1,
+              "physical_cell_id": "matr:el150800460514",
+              "source_record_id": "2017-05-12:record-1",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 2,
+              "physical_cell_id": "matr:el150800460486",
+              "source_record_id": "2017-05-12:record-2",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 3,
+              "physical_cell_id": "matr:el150800460623",
+              "source_record_id": "2017-05-12:record-3",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 4,
+              "physical_cell_id": "matr:el150800464977",
+              "source_record_id": "2017-05-12:record-4",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 5,
+              "physical_cell_id": "matr:el150800464865",
+              "source_record_id": "2017-05-12:record-5",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 6,
+              "physical_cell_id": "matr:el150800464883",
+              "source_record_id": "2017-05-12:record-6",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 7,
+              "physical_cell_id": "matr:el150800463886",
+              "source_record_id": "2017-05-12:record-7",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 8,
+              "physical_cell_id": "matr:el150800465027",
+              "source_record_id": "2017-05-12:record-8",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 9,
+              "physical_cell_id": "matr:el150800460468",
+              "source_record_id": "2017-05-12:record-10",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 10,
+              "physical_cell_id": "matr:el150800463882",
+              "source_record_id": "2017-05-12:record-12",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 11,
+              "physical_cell_id": "matr:el150800463838",
+              "source_record_id": "2017-05-12:record-15",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 12,
+              "physical_cell_id": "matr:el150800453113",
+              "source_record_id": "2017-05-12:record-16",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 13,
+              "physical_cell_id": "matr:el150800460653",
+              "source_record_id": "2017-05-12:record-17",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 14,
+              "physical_cell_id": "matr:el150800460522",
+              "source_record_id": "2017-05-12:record-18",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 15,
+              "physical_cell_id": "matr:el150800453240",
+              "source_record_id": "2017-05-12:record-19",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 16,
+              "physical_cell_id": "matr:el150800464881",
+              "source_record_id": "2017-05-12:record-20",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 17,
+              "physical_cell_id": "matr:el150800464002",
+              "source_record_id": "2017-05-12:record-21",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 18,
+              "physical_cell_id": "matr:el150800463871",
+              "source_record_id": "2017-05-12:record-22",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 19,
+              "physical_cell_id": "matr:el150800460477",
+              "source_record_id": "2017-05-12:record-24",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 20,
+              "physical_cell_id": "matr:el150800460630",
+              "source_record_id": "2017-05-12:record-25",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 21,
+              "physical_cell_id": "matr:el150800460617",
+              "source_record_id": "2017-05-12:record-26",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 22,
+              "physical_cell_id": "matr:el150800460659",
+              "source_record_id": "2017-05-12:record-27",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 23,
+              "physical_cell_id": "matr:el150800463198",
+              "source_record_id": "2017-05-12:record-28",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 24,
+              "physical_cell_id": "matr:el150800460507",
+              "source_record_id": "2017-05-12:record-29",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 25,
+              "physical_cell_id": "matr:el150800460644",
+              "source_record_id": "2017-05-12:record-30",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 26,
+              "physical_cell_id": "matr:el150800460615",
+              "source_record_id": "2017-05-12:record-31",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 27,
+              "physical_cell_id": "matr:el150800460481",
+              "source_record_id": "2017-05-12:record-32",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 28,
+              "physical_cell_id": "matr:el150800460640",
+              "source_record_id": "2017-05-12:record-33",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 29,
+              "physical_cell_id": "matr:el150800460436",
+              "source_record_id": "2017-05-12:record-34",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 30,
+              "physical_cell_id": "matr:el150800460525",
+              "source_record_id": "2017-05-12:record-35",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 31,
+              "physical_cell_id": "matr:el150800460622",
+              "source_record_id": "2017-05-12:record-36",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 32,
+              "physical_cell_id": "matr:el150800460506",
+              "source_record_id": "2017-05-12:record-37",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 33,
+              "physical_cell_id": "matr:el150800460601",
+              "source_record_id": "2017-05-12:record-38",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 34,
+              "physical_cell_id": "matr:el150800453773",
+              "source_record_id": "2017-05-12:record-39",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 35,
+              "physical_cell_id": "matr:el150800460642",
+              "source_record_id": "2017-05-12:record-40",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 36,
+              "physical_cell_id": "matr:el150800463229",
+              "source_record_id": "2017-05-12:record-41",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 37,
+              "physical_cell_id": "matr:el150800460647",
+              "source_record_id": "2017-05-12:record-42",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 38,
+              "physical_cell_id": "matr:el150800460618",
+              "source_record_id": "2017-05-12:record-43",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 39,
+              "physical_cell_id": "matr:el150800460636",
+              "source_record_id": "2017-05-12:record-44",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 40,
+              "physical_cell_id": "matr:el150800460485",
+              "source_record_id": "2017-05-12:record-45",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 41,
+              "physical_cell_id": "matr:el150800460656",
+              "source_record_id": "2017-05-12:record-46",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 42,
+              "physical_cell_id": "matr:el150800460518",
+              "source_record_id": "2017-06-30:record-1",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 43,
+              "physical_cell_id": "matr:el150800460605",
+              "source_record_id": "2017-06-30:record-2",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 44,
+              "physical_cell_id": "matr:el150800460602",
+              "source_record_id": "2017-06-30:record-3",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 45,
+              "physical_cell_id": "matr:el150800460673",
+              "source_record_id": "2017-06-30:record-4",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 46,
+              "physical_cell_id": "matr:el150800460655",
+              "source_record_id": "2017-06-30:record-5",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 47,
+              "physical_cell_id": "matr:el150800460635",
+              "source_record_id": "2017-06-30:record-6",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 48,
+              "physical_cell_id": "matr:el150800460634",
+              "source_record_id": "2017-06-30:record-7",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 49,
+              "physical_cell_id": "matr:el150800460451",
+              "source_record_id": "2017-06-30:record-11",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 50,
+              "physical_cell_id": "matr:el150800460466",
+              "source_record_id": "2017-06-30:record-12",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 51,
+              "physical_cell_id": "matr:el150800460510",
+              "source_record_id": "2017-06-30:record-13",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 52,
+              "physical_cell_id": "matr:el150800463208",
+              "source_record_id": "2017-06-30:record-14",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 53,
+              "physical_cell_id": "matr:el150800460449",
+              "source_record_id": "2017-06-30:record-15",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 54,
+              "physical_cell_id": "matr:el150800460478",
+              "source_record_id": "2017-06-30:record-18",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 55,
+              "physical_cell_id": "matr:el150800460480",
+              "source_record_id": "2017-06-30:record-19",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 56,
+              "physical_cell_id": "matr:el150800440551",
+              "source_record_id": "2017-06-30:record-20",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 57,
+              "physical_cell_id": "matr:el150800460652",
+              "source_record_id": "2017-06-30:record-21",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 58,
+              "physical_cell_id": "matr:el150800460603",
+              "source_record_id": "2017-06-30:record-22",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 59,
+              "physical_cell_id": "matr:el150800463245",
+              "source_record_id": "2017-06-30:record-23",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 60,
+              "physical_cell_id": "matr:el150800460501",
+              "source_record_id": "2017-06-30:record-24",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 61,
+              "physical_cell_id": "matr:el150800460597",
+              "source_record_id": "2017-06-30:record-25",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 62,
+              "physical_cell_id": "matr:el150800460611",
+              "source_record_id": "2017-06-30:record-26",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 63,
+              "physical_cell_id": "matr:el150800460596",
+              "source_record_id": "2017-06-30:record-27",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 64,
+              "physical_cell_id": "matr:el150800460614",
+              "source_record_id": "2017-06-30:record-28",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 65,
+              "physical_cell_id": "matr:el150800460610",
+              "source_record_id": "2017-06-30:record-29",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 66,
+              "physical_cell_id": "matr:el150800460604",
+              "source_record_id": "2017-06-30:record-30",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 67,
+              "physical_cell_id": "matr:el150800460527",
+              "source_record_id": "2017-06-30:record-31",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 68,
+              "physical_cell_id": "matr:el150800460608",
+              "source_record_id": "2017-06-30:record-32",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 69,
+              "physical_cell_id": "matr:el150800460631",
+              "source_record_id": "2017-06-30:record-33",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 70,
+              "physical_cell_id": "matr:el150800460641",
+              "source_record_id": "2017-06-30:record-34",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 71,
+              "physical_cell_id": "matr:el150800460492",
+              "source_record_id": "2017-06-30:record-35",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 72,
+              "physical_cell_id": "matr:el150800460628",
+              "source_record_id": "2017-06-30:record-36",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 73,
+              "physical_cell_id": "matr:el150800460528",
+              "source_record_id": "2017-06-30:record-37",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 74,
+              "physical_cell_id": "matr:el150800460511",
+              "source_record_id": "2017-06-30:record-38",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 75,
+              "physical_cell_id": "matr:el150800460649",
+              "source_record_id": "2017-06-30:record-39",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 76,
+              "physical_cell_id": "matr:el150800460627",
+              "source_record_id": "2017-06-30:record-40",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 77,
+              "physical_cell_id": "matr:el150800460526",
+              "source_record_id": "2017-06-30:record-41",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 78,
+              "physical_cell_id": "matr:el150800460513",
+              "source_record_id": "2017-06-30:record-42",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 79,
+              "physical_cell_id": "matr:el150800460473",
+              "source_record_id": "2017-06-30:record-43",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 80,
+              "physical_cell_id": "matr:el150800460498",
+              "source_record_id": "2017-06-30:record-44",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 81,
+              "physical_cell_id": "matr:el150800460474",
+              "source_record_id": "2017-06-30:record-45",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 82,
+              "physical_cell_id": "matr:el150800460613",
+              "source_record_id": "2017-06-30:record-46",
+              "author_split": "train"
+            },
+            {
+              "combined_index_one": 83,
+              "physical_cell_id": "matr:el150800460678",
+              "source_record_id": "2017-06-30:record-47",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 84,
+              "physical_cell_id": "matr:el150800460599",
+              "source_record_id": "2017-06-30:record-48",
+              "author_split": "primary_test"
+            },
+            {
+              "combined_index_one": 85,
+              "physical_cell_id": "matr:el150800737329",
+              "source_record_id": "2018-04-12:record-1",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 86,
+              "physical_cell_id": "matr:el150800737313",
+              "source_record_id": "2018-04-12:record-2",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 87,
+              "physical_cell_id": "matr:el150800737280",
+              "source_record_id": "2018-04-12:record-4",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 88,
+              "physical_cell_id": "matr:el150800739476",
+              "source_record_id": "2018-04-12:record-5",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 89,
+              "physical_cell_id": "matr:el150800737213",
+              "source_record_id": "2018-04-12:record-6",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 90,
+              "physical_cell_id": "matr:el150800737229",
+              "source_record_id": "2018-04-12:record-7",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 91,
+              "physical_cell_id": "matr:el150800737307",
+              "source_record_id": "2018-04-12:record-8",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 92,
+              "physical_cell_id": "matr:el150800737233",
+              "source_record_id": "2018-04-12:record-9",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 93,
+              "physical_cell_id": "matr:el150800737270",
+              "source_record_id": "2018-04-12:record-10",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 94,
+              "physical_cell_id": "matr:el150800737277",
+              "source_record_id": "2018-04-12:record-11",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 95,
+              "physical_cell_id": "matr:el150800737276",
+              "source_record_id": "2018-04-12:record-12",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 96,
+              "physical_cell_id": "matr:el150800737314",
+              "source_record_id": "2018-04-12:record-13",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 97,
+              "physical_cell_id": "matr:el150800737319",
+              "source_record_id": "2018-04-12:record-14",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 98,
+              "physical_cell_id": "matr:el150800737387",
+              "source_record_id": "2018-04-12:record-15",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 99,
+              "physical_cell_id": "matr:el150800737386",
+              "source_record_id": "2018-04-12:record-16",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 100,
+              "physical_cell_id": "matr:el150800737345",
+              "source_record_id": "2018-04-12:record-17",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 101,
+              "physical_cell_id": "matr:el150800737378",
+              "source_record_id": "2018-04-12:record-18",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 102,
+              "physical_cell_id": "matr:el150800737274",
+              "source_record_id": "2018-04-12:record-19",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 103,
+              "physical_cell_id": "matr:el150800737275",
+              "source_record_id": "2018-04-12:record-20",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 104,
+              "physical_cell_id": "matr:el150800737315",
+              "source_record_id": "2018-04-12:record-21",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 105,
+              "physical_cell_id": "matr:el150800737366",
+              "source_record_id": "2018-04-12:record-22",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 106,
+              "physical_cell_id": "matr:el150800737285",
+              "source_record_id": "2018-04-12:record-23",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 107,
+              "physical_cell_id": "matr:el150800737368",
+              "source_record_id": "2018-04-12:record-25",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 108,
+              "physical_cell_id": "matr:el150800737259",
+              "source_record_id": "2018-04-12:record-26",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 109,
+              "physical_cell_id": "matr:el150800737287",
+              "source_record_id": "2018-04-12:record-27",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 110,
+              "physical_cell_id": "matr:el150800737251",
+              "source_record_id": "2018-04-12:record-28",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 111,
+              "physical_cell_id": "matr:el150800737234",
+              "source_record_id": "2018-04-12:record-29",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 112,
+              "physical_cell_id": "matr:el150800737320",
+              "source_record_id": "2018-04-12:record-30",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 113,
+              "physical_cell_id": "matr:el150800737380",
+              "source_record_id": "2018-04-12:record-31",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 114,
+              "physical_cell_id": "matr:el150800737279",
+              "source_record_id": "2018-04-12:record-32",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 115,
+              "physical_cell_id": "matr:el150800737304",
+              "source_record_id": "2018-04-12:record-34",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 116,
+              "physical_cell_id": "matr:el150800737350",
+              "source_record_id": "2018-04-12:record-35",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 117,
+              "physical_cell_id": "matr:el150800739477",
+              "source_record_id": "2018-04-12:record-36",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 118,
+              "physical_cell_id": "matr:el150800737365",
+              "source_record_id": "2018-04-12:record-37",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 119,
+              "physical_cell_id": "matr:el150800737334",
+              "source_record_id": "2018-04-12:record-39",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 120,
+              "physical_cell_id": "matr:el150800737361",
+              "source_record_id": "2018-04-12:record-40",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 121,
+              "physical_cell_id": "matr:el150800737390",
+              "source_record_id": "2018-04-12:record-41",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 122,
+              "physical_cell_id": "matr:el150800739495",
+              "source_record_id": "2018-04-12:record-42",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 123,
+              "physical_cell_id": "matr:el150800737369",
+              "source_record_id": "2018-04-12:record-45",
+              "author_split": "secondary_test"
+            },
+            {
+              "combined_index_one": 124,
+              "physical_cell_id": "matr:el150800739484",
+              "source_record_id": "2018-04-12:record-46",
+              "author_split": "secondary_test"
+            }
+          ],
+          "physical_cell_ids": [
+            "matr:el150800460514",
+            "matr:el150800460486",
+            "matr:el150800460623",
+            "matr:el150800464977",
+            "matr:el150800464865",
+            "matr:el150800464883",
+            "matr:el150800463886",
+            "matr:el150800465027",
+            "matr:el150800460468",
+            "matr:el150800463882",
+            "matr:el150800463838",
+            "matr:el150800453113",
+            "matr:el150800460653",
+            "matr:el150800460522",
+            "matr:el150800453240",
+            "matr:el150800464881",
+            "matr:el150800464002",
+            "matr:el150800463871",
+            "matr:el150800460477",
+            "matr:el150800460630",
+            "matr:el150800460617",
+            "matr:el150800460659",
+            "matr:el150800463198",
+            "matr:el150800460507",
+            "matr:el150800460644",
+            "matr:el150800460615",
+            "matr:el150800460481",
+            "matr:el150800460640",
+            "matr:el150800460436",
+            "matr:el150800460525",
+            "matr:el150800460622",
+            "matr:el150800460506",
+            "matr:el150800460601",
+            "matr:el150800453773",
+            "matr:el150800460642",
+            "matr:el150800463229",
+            "matr:el150800460647",
+            "matr:el150800460618",
+            "matr:el150800460636",
+            "matr:el150800460485",
+            "matr:el150800460656",
+            "matr:el150800460518",
+            "matr:el150800460605",
+            "matr:el150800460602",
+            "matr:el150800460673",
+            "matr:el150800460655",
+            "matr:el150800460635",
+            "matr:el150800460634",
+            "matr:el150800460451",
+            "matr:el150800460466",
+            "matr:el150800460510",
+            "matr:el150800463208",
+            "matr:el150800460449",
+            "matr:el150800460478",
+            "matr:el150800460480",
+            "matr:el150800440551",
+            "matr:el150800460652",
+            "matr:el150800460603",
+            "matr:el150800463245",
+            "matr:el150800460501",
+            "matr:el150800460597",
+            "matr:el150800460611",
+            "matr:el150800460596",
+            "matr:el150800460614",
+            "matr:el150800460610",
+            "matr:el150800460604",
+            "matr:el150800460527",
+            "matr:el150800460608",
+            "matr:el150800460631",
+            "matr:el150800460641",
+            "matr:el150800460492",
+            "matr:el150800460628",
+            "matr:el150800460528",
+            "matr:el150800460511",
+            "matr:el150800460649",
+            "matr:el150800460627",
+            "matr:el150800460526",
+            "matr:el150800460513",
+            "matr:el150800460473",
+            "matr:el150800460498",
+            "matr:el150800460474",
+            "matr:el150800460613",
+            "matr:el150800460678",
+            "matr:el150800460599",
+            "matr:el150800737329",
+            "matr:el150800737313",
+            "matr:el150800737280",
+            "matr:el150800739476",
+            "matr:el150800737213",
+            "matr:el150800737229",
+            "matr:el150800737307",
+            "matr:el150800737233",
+            "matr:el150800737270",
+            "matr:el150800737277",
+            "matr:el150800737276",
+            "matr:el150800737314",
+            "matr:el150800737319",
+            "matr:el150800737387",
+            "matr:el150800737386",
+            "matr:el150800737345",
+            "matr:el150800737378",
+            "matr:el150800737274",
+            "matr:el150800737275",
+            "matr:el150800737315",
+            "matr:el150800737366",
+            "matr:el150800737285",
+            "matr:el150800737368",
+            "matr:el150800737259",
+            "matr:el150800737287",
+            "matr:el150800737251",
+            "matr:el150800737234",
+            "matr:el150800737320",
+            "matr:el150800737380",
+            "matr:el150800737279",
+            "matr:el150800737304",
+            "matr:el150800737350",
+            "matr:el150800739477",
+            "matr:el150800737365",
+            "matr:el150800737334",
+            "matr:el150800737361",
+            "matr:el150800737390",
+            "matr:el150800739495",
+            "matr:el150800737369",
+            "matr:el150800739484"
+          ],
+          "counts": {
+            "batch1": 41,
+            "batch2": 43,
+            "batch3": 40,
+            "total": 124
+          },
+          "exclusions": [
+            {
+              "source_record_id": "2018-04-12:record-38",
+              "reason": "author_original_record38_collection_problem_channel46"
+            },
+            {
+              "source_record_id": "2018-04-12:record-24",
+              "reason": "author_batch3_terminal_capacity_gt_0.885Ah"
+            },
+            {
+              "source_record_id": "2018-04-12:record-33",
+              "reason": "author_batch3_terminal_capacity_gt_0.885Ah"
+            },
+            {
+              "source_record_id": "2018-04-12:record-3",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 3
+            },
+            {
+              "source_record_id": "2018-04-12:record-43",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 40
+            },
+            {
+              "source_record_id": "2018-04-12:record-44",
+              "reason": "author_noise_position_after_terminal_filter",
+              "filtered_index_one": 41
+            },
+            {
+              "source_record_id": "2017-05-12:record-9",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-11",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-13",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-14",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            },
+            {
+              "source_record_id": "2017-05-12:record-23",
+              "reason": "author_optional_unfinished_batch1_exclusion"
+            }
+          ],
+          "paper_output_convention": "first_below_0.88_summary_position_if_terminal_below_else_raw_cycle_count_plus_one",
+          "survival_output_convention": "strict_0.88Ah_threshold_with_right_censoring"
+        }
+      }
+    ],
+    "quality_report": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/quality_report.json",
+    "split_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/split_manifest.json",
+    "target_units": {
+      "soh": "ratio",
+      "capacity": "Ah",
+      "rul": "cycle",
+      "efficiency": "ratio"
+    },
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ],
+    "split_created_before_parser": true,
+    "task_manifests": {
+      "paper_reproduction": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/paper_reproduction.json",
+      "survival_all_valid": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_corrected_development_20261002/survival_all_valid.json"
+    }
+  },
+  "manifest_sha256": "aba563c30547007dbf6460958c074bf8f60f9680d0f33472b809764054ce9de6",
+  "split": {
+    "schema_version": "physical-split-v2",
+    "group_column": "physical_cell_id",
+    "seed": 20261001,
+    "ratios": [
+      0.6,
+      0.2,
+      0.2,
+      0.0
+    ],
+    "assignments": {
+      "matr:el150800739495": "train",
+      "matr:el150800737329": "train",
+      "matr:el150800460611": "train",
+      "matr:el150800460647": "train",
+      "matr:el150800460613": "train",
+      "matr:el150800460507": "train",
+      "matr:el150800465027": "train",
+      "matr:el150800463245": "train",
+      "matr:el150800460510": "train",
+      "matr:el150800464002": "train",
+      "matr:el150800737279": "train",
+      "matr:el150800463882": "train",
+      "matr:el150800737377": "train",
+      "matr:el150800737364": "train",
+      "matr:el150800460615": "train",
+      "matr:el150800737320": "train",
+      "matr:el150800737345": "train",
+      "matr:el150800460602": "train",
+      "matr:el150800460528": "train",
+      "matr:el150800460451": "train",
+      "matr:el150800737270": "train",
+      "matr:el150800463208": "train",
+      "matr:el150800737304": "train",
+      "matr:el150800460610": "train",
+      "matr:el150800453113": "train",
+      "matr:el150800737297": "train",
+      "matr:el150800460596": "train",
+      "matr:el150800737315": "train",
+      "matr:el150800737233": "train",
+      "matr:el150800460603": "train",
+      "matr:el150800460652": "train",
+      "matr:el150800460478": "train",
+      "matr:el150800737285": "train",
+      "matr:el150800460614": "train",
+      "matr:el150800737368": "train",
+      "matr:el150800737369": "train",
+      "matr:el150800463980": "train",
+      "matr:el150800464865": "train",
+      "matr:el150800737280": "train",
+      "matr:el150800460485": "train",
+      "matr:el150800464898": "train",
+      "matr:el150800460655": "train",
+      "matr:el150800460641": "train",
+      "matr:el150800460473": "train",
+      "matr:el150800460659": "train",
+      "matr:el150800440551": "train",
+      "matr:el150800737294": "train",
+      "matr:el150800737319": "train",
+      "matr:el150800460601": "train",
+      "matr:el150800460636": "train",
+      "matr:el150800460477": "train",
+      "matr:el150800463198": "train",
+      "matr:el150800460527": "train",
+      "matr:el150800460630": "train",
+      "matr:el150800453240": "train",
+      "matr:el150800463229": "train",
+      "matr:el150800737274": "train",
+      "matr:el150800463838": "train",
+      "matr:el150800460649": "train",
+      "matr:el150800460513": "train",
+      "matr:el150800460492": "train",
+      "matr:el150800460472": "train",
+      "matr:el150800453773": "train",
+      "matr:el150800737314": "train",
+      "matr:el150800737367": "train",
+      "matr:el150800460618": "train",
+      "matr:el150800737390": "train",
+      "matr:el150800460628": "train",
+      "matr:el150800460605": "train",
+      "matr:el150800460653": "train",
+      "matr:el150800460622": "train",
+      "matr:el150800737234": "train",
+      "matr:el150800737213": "train",
+      "matr:el150800737361": "train",
+      "matr:el150800460658": "train",
+      "matr:el150800460518": "train",
+      "matr:el150800737366": "train",
+      "matr:el150800460522": "train",
+      "matr:el150800460433": "train",
+      "matr:el150800737380": "train",
+      "matr:el150800460481": "train",
+      "matr:el150800737365": "dev",
+      "matr:el150800737378": "dev",
+      "matr:el150800460501": "dev",
+      "matr:el150800464881": "dev",
+      "matr:el150800460449": "dev",
+      "matr:el150800460599": "dev",
+      "matr:el150800737276": "dev",
+      "matr:el150800460466": "dev",
+      "matr:el150800464977": "dev",
+      "matr:el150800460623": "dev",
+      "matr:el150800460640": "dev",
+      "matr:el150800460525": "dev",
+      "matr:el150800460642": "dev",
+      "matr:el150800460627": "dev",
+      "matr:el150800737334": "dev",
+      "matr:el150800460678": "dev",
+      "matr:el150800460635": "dev",
+      "matr:el150800739484": "dev",
+      "matr:el150800460506": "dev",
+      "matr:el150800737313": "dev",
+      "matr:el150800460526": "dev",
+      "matr:el150800737386": "dev",
+      "matr:el150800737277": "dev",
+      "matr:el150800737229": "dev",
+      "matr:el150800460617": "dev",
+      "matr:el150800737275": "dev",
+      "matr:el150800460597": "dev",
+      "matr:el150800460604": "calibration",
+      "matr:el150800460514": "calibration",
+      "matr:el150800737299": "calibration",
+      "matr:el150800460644": "calibration",
+      "matr:el150800460673": "calibration",
+      "matr:el150800464883": "calibration",
+      "matr:el150800460608": "calibration",
+      "matr:el150800739477": "calibration",
+      "matr:el150800460480": "calibration",
+      "matr:el150800460511": "calibration",
+      "matr:el150800460474": "calibration",
+      "matr:el150800460436": "calibration",
+      "matr:el150800460631": "calibration",
+      "matr:el150800460498": "calibration",
+      "matr:el150800463886": "calibration",
+      "matr:el150800737259": "calibration",
+      "matr:el150800737287": "calibration",
+      "matr:el150800463871": "calibration",
+      "matr:el150800737307": "calibration",
+      "matr:el150800460468": "calibration",
+      "matr:el150800460656": "calibration",
+      "matr:el150800460634": "calibration",
+      "matr:el150800737387": "calibration",
+      "matr:el150800737350": "calibration",
+      "matr:el150800739476": "calibration",
+      "matr:el150800460486": "calibration",
+      "matr:el150800737251": "calibration"
+    },
+    "counts": {
+      "train": 81,
+      "dev": 27,
+      "calibration": 27,
+      "final": 0
+    },
+    "final_policy": "development_only_no_final_objects_or_scoring",
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ]
+  },
+  "audit": {
+    "schema_version": "data-audit-v2",
+    "manifest_sha256": "aba563c30547007dbf6460958c074bf8f60f9680d0f33472b809764054ce9de6",
+    "passed": true,
+    "checks": [
+      "identity_map: hash verified, 135 rows",
+      "cycles: hash verified, 113303 rows",
+      "segments: hash verified, 4241 rows",
+      "targets: hash verified, 112401 rows"
+    ],
+    "failures": [],
+    "registered_objects": 135,
+    "independent_objects": 135,
+    "measured_objects": 134,
+    "group_column": "physical_cell_id",
+    "split_counts": {
+      "train": 81,
+      "dev": 27,
+      "calibration": 27,
+      "final": 0
+    },
+    "scope": "structural provenance, grouped split and explicit query dependency audit; not proof of scientific model performance"
+  },
+  "raw_qualification": "originalbarcode/channel verified against official metadata before numeric targets",
+  "actual_author_selection_counts": {
+    "batch1": 41,
+    "batch2": 43,
+    "batch3": 40,
+    "total": 124
+  },
+  "actual_survival_counts": {
+    "exact": 43,
+    "right_censored": 91
+  },
+  "unavailable_original_curve100_objects": 1,
+  "development_only_no_model_scores": true
+}

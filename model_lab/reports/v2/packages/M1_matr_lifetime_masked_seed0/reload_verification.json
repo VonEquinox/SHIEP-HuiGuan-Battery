@@ -1,0 +1,147 @@
+{
+  "passed": true,
+  "dev_rows": 69,
+  "absolute_tolerance": 1e-07,
+  "heads": [
+    "efficiency_quantiles",
+    "fault_probability",
+    "hazard",
+    "soh_normal_transformed",
+    "soh_quantiles"
+  ],
+  "sample_profile": {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "matr_lifetime_development_masked_20261002:M1_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800464881",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(70%)-3C",
+      "source_protocol_id": "5.4C(70%)-3C",
+      "query_time": 50,
+      "visible_cutoff": 49,
+      "feature_max_time": 49.0,
+      "available_at": 49,
+      "time_basis": "verified_physical_cycle",
+      "physical_cycles_known": true,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0886388,
+      "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "unit": "ratio",
+      "survival_time_unit": "cycle",
+      "survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "source_survival_target_definition_id": "matr-corrected-physical-nominal-80pct-0.88Ah-v2",
+      "survival_threshold_Ah": 0.88,
+      "survival_threshold_operator": "strictly_less_than",
+      "identity_basis": "original_corrected_mat_barcode",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/summary",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/24",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/25",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/26",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/27",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/28",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/29",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/30",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/31"
+      ],
+      "domain_index": 38,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.2371579051332829
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "target_definition": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/summary",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/24",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/25",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/26",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/27",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/28",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/29",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/30",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat#batch/20/cycles/31"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "too_few_independent_survival_objects",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    },
+    "evidence_status": "development_only_research",
+    "validated_deployment": false
+  },
+  "metadata_review": "threshold_risk unit probability; numerical weights unchanged"
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "prediction-unit-metadata-correction-v2",
+  "reason": "Threshold-risk probability is dimensionless probability; its horizon remains physical cycles. Correct RUL base unit inheritance before Phase 17 finalized.",
+  "no_training_rerun": true,
+  "no_numerical_model_or_metric_change": true,
+  "old_four_packages_untouched": true,
+  "packages": [
+    {
+      "package": "M1_matr_lifetime_masked_seed0",
+      "supported_domain_risk_unit_corrections": 6,
+      "old_unit": "physical_cycle",
+      "new_unit": "probability",
+      "horizon_still_physical_cycles": true,
+      "all_numeric_profile_values_unchanged": true,
+      "model_sha256_before": "313eb3603804533ce501cf1178732ba559cf674b854259d2e8961ee22b60d62d",
+      "model_sha256_after": "313eb3603804533ce501cf1178732ba559cf674b854259d2e8961ee22b60d62d",
+      "previous_manifest_sha256": "854082316ab6d0c0177efb0923ef3de0f787be43abe2904abe59225f2c959aa3",
+      "corrected_manifest_sha256": "7bae52d413428fa0362086169df726584b23b45c640b53066572cfba97d743af"
+    },
+    {
+      "package": "M2_matr_lifetime_masked_seed0",
+      "supported_domain_risk_unit_corrections": 6,
+      "old_unit": "physical_cycle",
+      "new_unit": "probability",
+      "horizon_still_physical_cycles": true,
+      "all_numeric_profile_values_unchanged": true,
+      "model_sha256_before": "6ba0fe50d2faa676a875da3bb361b4cc3f53f3062c94fa0b1038d68fdedbe471",
+      "model_sha256_after": "6ba0fe50d2faa676a875da3bb361b4cc3f53f3062c94fa0b1038d68fdedbe471",
+      "previous_manifest_sha256": "10a22bdabd723f832e3960ce7e84fa8fbf8b37d956c607f65777d242a3dda004",
+      "corrected_manifest_sha256": "013fbe84a3ddaf184daa48770b64fac89ff226a91eaec1febb64dc5b36e1a6e2"
+    }
+  ],
+  "current_replay_receipt": "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json",
+  "previous_replay_receipt_preserved": "model_lab/reports/v2/package_replay_with_lifetime_20261002.json"
+}

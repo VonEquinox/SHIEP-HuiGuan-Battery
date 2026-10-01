@@ -19,7 +19,7 @@
     "2017-05-12_batchdata_updated_struct_errorcorrect.mat"
   ],
   "bytes": 8269341808,
-  "sha256": "cc90c837d8dec1a7ea1a8db54ea40b1fff18e8ce74bb3dfb90ef6b82cdee9b8c",
+  "sha256": null,
   "author_checksum": [],
   "parser_version": "v2-data-1.0.0",
   "status": "parsed",
@@ -753,17 +753,58 @@
         }
       },
       "transport_destination": "https://data.matr.io/assetstore/d1/e8/d1e8cab0fe2f46f4bad43a0fe2c28a02"
+    },
+    {
+      "status": "verified",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat",
+      "resolved_download_url": "https://data.matr.io/1/api/v1/file/5c86bf13fa2ede00015ddd82/download",
+      "transport_destination": "https://data.matr.io/assetstore/f7/eb/f7eb42ebc0584cba855a98d127fc6842",
+      "original_filename": "2017-06-30_batchdata_updated_struct_errorcorrect.mat",
+      "bytes": 2007331155,
+      "sha256": "63ab200d09ecb237fee5ef3a5c5db76e3212e3206a0bd92f769e1427fed338b8",
+      "author_checksum": null,
+      "retrieved_at": "2026-10-01T17:56:57.365722+00:00",
+      "attempts": 1,
+      "prior_errors": [],
+      "parse_status": "full_summary_and_bounded_original_curves_parsed"
+    },
+    {
+      "status": "verified",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat",
+      "resolved_download_url": "https://data.matr.io/1/api/v1/file/5c86c0b5fa2ede00015ddf66/download",
+      "transport_destination": "https://data.matr.io/assetstore/17/63/1763448875b148d79e032c24f8937c23",
+      "original_filename": "2017-05-12_batchdata_updated_struct_errorcorrect.mat",
+      "bytes": 3025320241,
+      "sha256": "9d928ab978f0e3c70b31cb833a749fedd35094d01af76475d69b40aa3497f5ba",
+      "author_checksum": null,
+      "retrieved_at": "2026-10-01T17:59:56.489472+00:00",
+      "attempts": 1,
+      "prior_errors": [],
+      "parse_status": "full_summary_and_bounded_original_curves_parsed"
+    },
+    {
+      "status": "verified",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat",
+      "resolved_download_url": "https://data.matr.io/1/api/v1/file/5c86bd64fa2ede00015ddbb2/download",
+      "transport_destination": "https://data.matr.io/assetstore/52/f5/52f5b9a1ab3a46ad952ee29eb99495b0",
+      "original_filename": "2018-04-12_batchdata_updated_struct_errorcorrect.mat",
+      "bytes": 3236690412,
+      "sha256": "62c30e413b63e6144720e016deed3661fac8468641794a5807b123fe84717998",
+      "author_checksum": null,
+      "retrieved_at": "2026-10-01T17:58:18.275124+00:00",
+      "attempts": 1,
+      "prior_errors": [],
+      "parse_status": "full_summary_and_bounded_original_curves_parsed"
     }
   ],
-  "raw_scope": "inspected_and_parsed_subset; original_all_files_not_claimed",
-  "raw_verified_bytes": 111327527,
+  "raw_scope": "all three corrected MATLAB originals verified; all134 measurable physical-cell summaries and <=32 native curves per object parsed; all135 identities retained;124 author-selection objects qualified; no model reproduction claimed",
+  "raw_verified_bytes": 8380669335,
   "raw_sha256": {
-    "2017-06-30_4_65C-44per_5C_CH22.csv": "cc90c837d8dec1a7ea1a8db54ea40b1fff18e8ce74bb3dfb90ef6b82cdee9b8c"
+    "2017-06-30_4_65C-44per_5C_CH22.csv": "cc90c837d8dec1a7ea1a8db54ea40b1fff18e8ce74bb3dfb90ef6b82cdee9b8c",
+    "2017-06-30_batchdata_updated_struct_errorcorrect.mat": "63ab200d09ecb237fee5ef3a5c5db76e3212e3206a0bd92f769e1427fed338b8",
+    "2017-05-12_batchdata_updated_struct_errorcorrect.mat": "9d928ab978f0e3c70b31cb833a749fedd35094d01af76475d69b40aa3497f5ba",
+    "2018-04-12_batchdata_updated_struct_errorcorrect.mat": "62c30e413b63e6144720e016deed3661fac8468641794a5807b123fe84717998"
   },
-  "unfetched_official_files": [
-    "2018-04-12_batchdata_updated_struct_errorcorrect.mat",
-    "2017-06-30_batchdata_updated_struct_errorcorrect.mat",
-    "2017-05-12_batchdata_updated_struct_errorcorrect.mat"
-  ],
-  "parsed_manifest": "model_lab/data/derived/v2/matr_official_summary_20261002/manifest.json"
+  "unfetched_official_files": [],
+  "parsed_manifest": "model_lab/data/derived/v2/matr_corrected_development_20261002/manifest.json"
 }

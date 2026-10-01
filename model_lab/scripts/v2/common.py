@@ -25,7 +25,7 @@ def get_model(run):
     from model_lab.modeling.v2.baselines import DomainBaseline
     from model_lab.modeling.v2.multitask import MultiTaskModel
     manifest=json.loads((Path(run)/"run.json").read_text())
-    if manifest["family"]=="M1":model=DomainBaseline.from_dict(json.loads((Path(run)/"model.json").read_text()))
+    if manifest["family"]=="M1":model=DomainBaseline.from_dict(json.loads((Path(run)/"model.json").read_text()),n_features=len(manifest["preprocessor"]["feature_mean"]))
     else:model=MultiTaskModel.load(manifest["spec"],Path(run)/"weights.npz",manifest["seed"],manifest["survival_grid"],manifest["label_support"],manifest.get("label_support_by_domain"))
     return manifest,model
 

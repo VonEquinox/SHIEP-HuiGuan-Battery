@@ -9,6 +9,16 @@ from model_lab.modeling.v2.prediction import load_package
 from .common import get_model,subset,write_json,resolve_dataset_path
 
 
+def inference_query(row, record):
+    # Keep target definitions, but do not ship an object's future label state
+    # or label availability as part of a supposedly label-free reload input.
+    hidden={"survival_censor_type","survival_label_observed_at","survival_label_available_at",
+            "target_observed_at","target_available_at"}
+    return {**{k:v for k,v in row.items() if k not in hidden},
+            "feature_schema":record["feature_schema"],"data_namespace":record["data_namespace"],
+            "allowed_heads":["soh","rul","threshold_risk","efficiency","fault"]}
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument("--run-id",required=True);parser.add_argument("--out",required=True)
     args=parser.parse_args();run=Path(args.run_id);out=Path(args.out)
@@ -22,6 +32,8 @@ def main():
     manifest={"format":"battery_model_safe_v2","model_version":f"{run.parent.name}:{record['run_id']}","feature_schema":record["feature_schema"],
               "data_namespace":record["data_namespace"],"files":{name:sha256_file(out/name) for name in names},
               "support_domains":record["support_domains"],"target_definitions":record["target_definitions"],"reload_verified":False}
+    if "evidence_status" in record:
+        manifest.update(evidence_status=record["evidence_status"],validated_deployment=bool(record.get("validated_deployment",False)))
     write_json(out/"manifest.json",manifest)
     package=load_package(out)
     dataset,arrays=load_dataset(resolve_dataset_path(record));dv,rows=subset(arrays,dataset["rows"],"dev")
@@ -30,7 +42,7 @@ def main():
     reloaded=package.model.predict(preprocess(dv,record["preprocessor"],record["ablation"]=="no_history"),rows)
     for key,value in live.items():
         if not np.allclose(value,reloaded[key],equal_nan=True,atol=1e-7):raise ValueError(f"reload mismatch: {key}")
-    sample=rows[0];query={**sample,"feature_schema":record["feature_schema"],"data_namespace":record["data_namespace"],"allowed_heads":["soh","rul","threshold_risk","efficiency","fault"]}
+    sample=rows[0];query=inference_query(sample,record)
     sample_arrays={k:dv[k][:1] for k in ("features","sequences","sequence_mask","domain")}
     np.savez_compressed(out/"reload_sample.npz",**sample_arrays)
     write_json(out/"reload_sample_query.json",query)
@@ -45,7 +57,7 @@ def main():
         key=(row["source_id"],row["chemistry"],row["protocol_id"])
         if key not in seen:seen.add(key);domain_indices.append(i)
     domain_arrays={k:dv[k][domain_indices] for k in ("features","sequences","sequence_mask","domain")}
-    domain_queries=[{**rows[i],"feature_schema":record["feature_schema"],"data_namespace":record["data_namespace"],"allowed_heads":["soh","rul","threshold_risk","efficiency","fault"]} for i in domain_indices]
+    domain_queries=[inference_query(rows[i],record) for i in domain_indices]
     np.savez_compressed(out/"reload_domain_samples.npz",**domain_arrays)
     write_json(out/"reload_domain_queries.json",domain_queries)
     write_json(out/"reload_domain_profiles.json",[package.predict(q,{k:v[j:j+1] for k,v in domain_arrays.items()}) for j,q in enumerate(domain_queries)])

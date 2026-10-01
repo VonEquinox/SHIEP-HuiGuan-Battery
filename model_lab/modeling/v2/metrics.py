@@ -41,25 +41,43 @@ def regression_metrics(y,q,groups,normal=None,task="soh",intervals=None):
     return result
 
 
-def survival_metrics(arrays,predictions,grid,groups):
+def survival_metrics(arrays,predictions,grid,groups,query_times=None):
     kind=np.asarray(arrays["survival_kind"]);hazard=predictions["hazard"]
     valid=(kind>=0)&np.isfinite(hazard).all(axis=1)
     if not valid.any():return {"status":"unavailable","reason":"no verified physical-time survival targets"}
     lower,upper=arrays["survival_lower"][valid],arrays["survival_upper"][valid];kind=kind[valid];h=hazard[valid]
+    valid_groups=np.asarray(groups)[valid]
+    times=np.zeros(len(kind)) if query_times is None else np.asarray(query_times)[valid]
+    unique,counts=np.unique(valid_groups,return_counts=True);sizes=dict(zip(unique,counts))
+    weights=np.asarray([1./sizes[group] for group in valid_groups])
     survival=survival_from_hazard(h);brier=[]
     for i,t in enumerate(grid):
         # Only known survival states are scored. No censored future is treated as failure.
         known=((kind>0)&(upper<=t))|(lower>=t)
-        if known.any():brier.append({"horizon":float(t),"known_status_brier":float(((survival[known,i]-(lower[known]>=t))**2).mean()),"n_known":int(known.sum())})
-    comparable=concordant=0.;risk=1-survival[:,-1]
+        # S(t)=P(T>t): an exact event at t is dead at t, while a
+        # right censor or open interval lower boundary at t is alive there.
+        alive=(lower>t)|((lower==t)&(kind!=1))
+        if known.any():
+            error=(survival[known,i]-alive[known])**2
+            brier.append({"horizon":float(t),"known_status_brier":float(np.mean([error[valid_groups[known]==g].mean() for g in set(valid_groups[known])])),
+                          "n_known":int(known.sum()),"n_known_objects":len(set(valid_groups[known]))})
+    comparable=concordant=0.;risk=1-survival[:,-1];pairs=set();by_query={}
     for a in range(len(kind)):
         for b in range(a+1,len(kind)):
-            if groups[valid][a]==groups[valid][b]:continue
-            if kind[a]>0 and upper[a]<lower[b]:comparable+=1;concordant+=float(risk[a]>risk[b])+.5*float(risk[a]==risk[b])
-            elif kind[b]>0 and upper[b]<lower[a]:comparable+=1;concordant+=float(risk[b]>risk[a])+.5*float(risk[a]==risk[b])
-    return {"status":"evaluated","nll":censored_nll(h,lower,upper,kind,grid),"censoring_fraction":float((kind==0).mean()),
-            "brier":brier,"brier_scope":"observed known status; no IPCW guarantee", "concordance":concordant/comparable if comparable else None,
-            "comparable_object_pairs":int(comparable)}
+            if valid_groups[a]==valid_groups[b] or times[a]!=times[b]:continue
+            value=None
+            if kind[a]>0 and upper[a]<lower[b]:value=float(risk[a]>risk[b])+.5*float(risk[a]==risk[b])
+            elif kind[b]>0 and upper[b]<lower[a]:value=float(risk[b]>risk[a])+.5*float(risk[a]==risk[b])
+            if value is not None:
+                comparable+=1;concordant+=value;pairs.add(tuple(sorted((str(valid_groups[a]),str(valid_groups[b])))))
+                entry=by_query.setdefault(str(float(times[a])),{"comparable_landmark_pairs":0,"concordant_weight":0.})
+                entry["comparable_landmark_pairs"]+=1;entry["concordant_weight"]+=value
+    for entry in by_query.values():entry["concordance"]=entry["concordant_weight"]/entry["comparable_landmark_pairs"]
+    return {"status":"evaluated","independent_objects":len(unique),"rows":len(kind),"nll":censored_nll(h,lower,upper,kind,grid,weights),
+            "nll_scope":"equal object weight over its eligible fixed-prefix landmarks","censoring_fraction":float((kind==0).mean()),
+            "brier":brier,"brier_scope":"object-averaged observed known status; no IPCW guarantee", "concordance":concordant/comparable if comparable else None,
+            "concordance_scope":"same physical-cycle query only; excludes within-object pairs", "concordance_by_query":by_query,
+            "comparable_landmark_pairs":int(comparable),"comparable_independent_object_pairs":len(pairs)}
 
 
 def evaluate_predictions(arrays,predictions,rows,grid,calibration=None):
@@ -73,7 +91,7 @@ def evaluate_predictions(arrays,predictions,rows,grid,calibration=None):
             cal=calibration.get(task) if calibration else None
             band=apply_cqr(p[f"{task}_quantiles"],domains[ix],cal) if cal else None
             record["heads"][task]=regression_metrics(a[f"y_{task}"],p[f"{task}_quantiles"],groups[ix],p.get(f"{task}_normal_transformed"),task,band)
-        record["heads"]["rul"]=survival_metrics(a,p,grid,groups[ix])
+        record["heads"]["rul"]=survival_metrics(a,p,grid,groups[ix],[rows[i]["query_time"] for i in ix])
         y=a["y_fault"];prob=p["fault_probability"]
         if calibration and "fault" in calibration:prob=apply_fault_calibration(prob,domains[ix],calibration["fault"])
         valid=(y>=0)&np.isfinite(prob)

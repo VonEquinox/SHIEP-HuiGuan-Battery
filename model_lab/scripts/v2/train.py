@@ -21,6 +21,8 @@ def main():
     parser.add_argument("--ablation",choices=["joint","no_domain_adapter","no_history","single_task"])
     args=parser.parse_args();config=yaml.safe_load(Path(args.config).read_text())
     manifest,arrays=load_dataset(config["dataset_manifest"]);rows=manifest["rows"]
+    if config.get("development_only") and any(r["split"]=="final" for r in rows):
+        raise ValueError("development-only proof must not include final feature or label arrays")
     train_ix=np.flatnonzero([r["split"]=="train" for r in rows])
     transform=fit_preprocessor(arrays["features"],arrays["sequences"],arrays["sequence_mask"],train_ix)
     families=[args.family] if args.family else config.get("families",["M1","M2"])
@@ -53,17 +55,20 @@ def main():
                         "train_objects":sorted({r["physical_cell_id"] for r in rows if r["split"]=="train"}),
                         "dev_objects":sorted({r["physical_cell_id"] for r in rows if r["split"]=="dev"}),
                         "final_accessed":False,"calibration_accessed":False}
+                if config.get("development_only"):
+                    record.update(evidence_status="development_only_research",validated_deployment=False)
                 write_json(run/"run.json",record)
                 try:
                     transformed=preprocess(arrays,transform,no_history=ablation=="no_history")
                     tr,trrows=subset(transformed,rows,"train");dv,dvrows=subset(transformed,rows,"dev")
                     if family=="M1":
-                        model=DomainBaseline(seed,config.get("m1_estimators",100),record["survival_grid"],config.get("ngboost",True)).fit(tr,trrows)
+                        model=DomainBaseline(seed,config.get("m1_estimators",100),record["survival_grid"],config.get("ngboost",True),config.get("min_survival_objects",1)).fit(tr,trrows)
                         write_json(run/"model.json",model.to_dict())
+                        record["survival_training_support"]={key:value.get("survival_support",{}) for key,value in model.models.items()}
                     else:
                         spec={"n_features":tr["features"].shape[1],"n_domains":len(manifest["domains"]),"width":128,"adapter_width":32,
                               "domain_adapter":ablation!="no_domain_adapter","history":ablation!="no_history","single_task":ablation=="single_task"}
-                        model=MultiTaskModel(spec,seed,record["survival_grid"]).fit(tr,trrows,config.get("epochs",12),config.get("batch_size",8),config.get("learning_rate",.001),config.get("loss_contract","available_task_mean_v1"),config.get("task_weights"))
+                        model=MultiTaskModel(spec,seed,record["survival_grid"]).fit(tr,trrows,config.get("epochs",12),config.get("batch_size",8),config.get("learning_rate",.001),config.get("loss_contract","available_task_mean_v1"),config.get("task_weights"),config.get("min_survival_objects",1))
                         model.save(run/"weights.npz");record.update(spec=spec,label_support=model.label_support,label_support_by_domain=model.label_support_by_domain,training_history=model.history)
                     prediction_started=time.perf_counter();predictions=model.predict(dv,dvrows)
                     record["dev_inference_ms_per_row"]=(time.perf_counter()-prediction_started)*1000/max(1,len(dvrows))

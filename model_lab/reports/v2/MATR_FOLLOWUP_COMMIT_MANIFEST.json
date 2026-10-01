@@ -1,0 +1,1236 @@
+{
+  "schema_version": "model-data-followup-commit-manifest-v2",
+  "phase": "17-real-MATR-streamed-qualification-and-masked-lifetime-development-proof",
+  "ordinary": [
+    "model_lab/configs/model_v2_matr_lifetime.yaml",
+    "model_lab/configs/model_v2_matr_lifetime_masked.yaml",
+    "model_lab/docs/MATR_LIFETIME_PROTOCOL.md",
+    "model_lab/docs/V2_IMPLEMENTATION.md",
+    "model_lab/modeling/v2/baselines.py",
+    "model_lab/modeling/v2/data.py",
+    "model_lab/modeling/v2/lifetime_features.py",
+    "model_lab/modeling/v2/matr_stream.py",
+    "model_lab/modeling/v2/metrics.py",
+    "model_lab/modeling/v2/multitask.py",
+    "model_lab/modeling/v2/prediction.py",
+    "model_lab/modeling/v2/safe_numeric.py",
+    "model_lab/reports/v2/MATR_FOLLOWUP_COMMIT_MANIFEST.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/model.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/model.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/model.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/budgeted_feature_receipt.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/dev_summary.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/diagnostic_status.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/feature_receipt.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/matrix.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/preregistration.json",
+    "model_lab/reports/v2/matr_lifetime_development_20261002/training_environment.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/BENCHMARK.md",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/model.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/model.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/model.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/calibrate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/calibration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/dev_metrics.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/evaluate_execution.log",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/run.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/dev_summary.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/feature_receipt.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/matrix.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/overlap_receipt.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/preregistration.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/research_acceptance.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/training_environment.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/unit_metadata_correction.json",
+    "model_lab/reports/v2/package_replay_with_lifetime_20261002.json",
+    "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/calibration.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/manifest.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/model.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_domain_profiles.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_domain_queries.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_sample_query.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_verification.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/run.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/calibration.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/manifest.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_domain_profiles.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_domain_queries.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_sample_query.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_verification.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/run.json",
+    "model_lab/reports/v2/sources/DELIVERY.md",
+    "model_lab/reports/v2/sources/local_cache_relocation_20261002.json",
+    "model_lab/reports/v2/sources/matr/author_LoadData_metadata.json",
+    "model_lab/reports/v2/sources/matr/author_processing_evidence.json",
+    "model_lab/reports/v2/sources/matr/corrected_download_plan.json",
+    "model_lab/reports/v2/sources/matr/corrected_identity_qualification.json",
+    "model_lab/reports/v2/sources/matr/corrected_parse_qualification.json",
+    "model_lab/reports/v2/sources/matr/download_receipt_corrected_2017-05-12.json",
+    "model_lab/reports/v2/sources/matr/download_receipt_corrected_2017-06-30.json",
+    "model_lab/reports/v2/sources/matr/download_receipt_corrected_2018-04-12.json",
+    "model_lab/reports/v2/sources/matr/official_batch1_tests.json",
+    "model_lab/reports/v2/sources/matr/official_batch1_tests_receipt.json",
+    "model_lab/reports/v2/sources/matr/registry_record.json",
+    "model_lab/reports/v2/sources/matr_corrected_data_receipt.json",
+    "model_lab/reports/v2/sources/source_registry.yaml",
+    "model_lab/scripts/v2/common.py",
+    "model_lab/scripts/v2/evaluate.py",
+    "model_lab/scripts/v2/export.py",
+    "model_lab/scripts/v2/lifetime_features.py",
+    "model_lab/scripts/v2/prepare_official_subsets.py",
+    "model_lab/scripts/v2/train.py",
+    "model_lab/tests/v2/test_lifetime_features_v2.py",
+    "model_lab/tests/v2/test_matr_stream_v2.py",
+    "model_lab/tests/v2/test_models_v2.py",
+    "model_lab/tests/v2/test_prepare_official_subsets_v2.py",
+    "model_lab/tests/v2/test_safe_numeric_v2.py"
+  ],
+  "force_add": [
+    "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.json",
+    "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.npz",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_domain_samples.npz",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_sample.npz",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_domain_samples.npz",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_sample.npz",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/weights.npz"
+  ],
+  "files_excluding_this_manifest": {
+    "model_lab/configs/model_v2_matr_lifetime.yaml": {
+      "bytes": 756,
+      "sha256": "e2e376100964caa75e3d770700f950b30824c1079c80be73afab243e6d3075bf"
+    },
+    "model_lab/configs/model_v2_matr_lifetime_masked.yaml": {
+      "bytes": 843,
+      "sha256": "879c027e074f49195f858e911c6b995118c0b3afc5a5f65f15e1e464b2e15984"
+    },
+    "model_lab/docs/MATR_LIFETIME_PROTOCOL.md": {
+      "bytes": 8806,
+      "sha256": "641c116cfe1a34d4a0f8e74189f6951becb37f46f2b194a8185362d3299c5f9f"
+    },
+    "model_lab/docs/V2_IMPLEMENTATION.md": {
+      "bytes": 28193,
+      "sha256": "cc865cf0dc9c13e39e99a01404aa4c0fddd5433b863632ad72db4dcbc24b95d8"
+    },
+    "model_lab/modeling/v2/baselines.py": {
+      "bytes": 9941,
+      "sha256": "6ce0ca64e087b7cfe0e30352bcbe5f5c2795b5acb3f1703719e5f31b345cb13b"
+    },
+    "model_lab/modeling/v2/data.py": {
+      "bytes": 54853,
+      "sha256": "fcfe61acb5cc1b2c07b08c25b3428a626a013c1b87014cc5b4d7f09be364bf45"
+    },
+    "model_lab/modeling/v2/lifetime_features.py": {
+      "bytes": 24052,
+      "sha256": "5c0f63c16acce95aaa70c61c0f929361e3c29bcd16fd0941548ab310a7148ceb"
+    },
+    "model_lab/modeling/v2/matr_stream.py": {
+      "bytes": 36286,
+      "sha256": "4e0c0a98914dc7ad6ba68b4e9857fd334daed48bfa6ba9af0af2ad1318d267ff"
+    },
+    "model_lab/modeling/v2/metrics.py": {
+      "bytes": 7929,
+      "sha256": "ca3883bcd0eea957e259c815a0a8510b202ffd15adc6dc5bddb7c421080b8fb3"
+    },
+    "model_lab/modeling/v2/multitask.py": {
+      "bytes": 11956,
+      "sha256": "406c55f6d5279f19f7dd145cde625aaed86a8638a69027712b8e88409dcfe281"
+    },
+    "model_lab/modeling/v2/prediction.py": {
+      "bytes": 8743,
+      "sha256": "a4c42eba41f0b7031c3acec3a8223c1ca220b440357160958f48e456397001ee"
+    },
+    "model_lab/modeling/v2/safe_numeric.py": {
+      "bytes": 16190,
+      "sha256": "bdd5ee90483247d35132ea0511b249618e79b6563133d7b82a25f867fd8077d2"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/calibrate_execution.log": {
+      "bytes": 14899,
+      "sha256": "021a7de2ee018c0e3c638c9aeeb7cf62142f42c694ebe124933f39980d94dcee"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/calibration.json": {
+      "bytes": 19085,
+      "sha256": "328071c88b1d9442dc61f027fd494a26dd92e36c8ecd2c1b831204b9fc558a6f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/dev_metrics.json": {
+      "bytes": 32058,
+      "sha256": "6341d4707401ec4a0376aea4c5f3d74f3bfa19653e83c68b8b934369df91cffd"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/evaluate_execution.log": {
+      "bytes": 21667,
+      "sha256": "de8582d1ae3068233bd597c4c5f550d7c8fc0047c82465b2707c063de1bd2fa0"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/model.json": {
+      "bytes": 2545493,
+      "sha256": "9e0fc84acc7c8f0a810a4b1e890b57530c720d17244ef5b498f5744ce7bb689f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed0/run.json": {
+      "bytes": 49469,
+      "sha256": "ed244b020cd89a2284ef2681d992d38c377b3574c4c48bf833b2104b42aa8b23"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/calibrate_execution.log": {
+      "bytes": 14899,
+      "sha256": "934f9c9529171ffb782efd8cb40a4cd88c2db6f25bff0411fa0fd5971d1f4010"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/calibration.json": {
+      "bytes": 19085,
+      "sha256": "328071c88b1d9442dc61f027fd494a26dd92e36c8ecd2c1b831204b9fc558a6f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/dev_metrics.json": {
+      "bytes": 32060,
+      "sha256": "b7839b2429edd833bc699c8dd4e84ec6d1935057f6de7872c67f19ec4d47b6c8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/evaluate_execution.log": {
+      "bytes": 21669,
+      "sha256": "263f3bc8e6d158f5c8e5193fc79a7d1f15427aa4a816b7d03917ffd129af6b26"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/model.json": {
+      "bytes": 2539037,
+      "sha256": "5dc597af265cd5806616bd83e5eb6c5b175ee3ff1e073cd8a56fe0f7be523a12"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed1/run.json": {
+      "bytes": 49470,
+      "sha256": "8271debf798f168409042d562c8b22751f941417f4b272ed3ebadb2f0bb67209"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/calibrate_execution.log": {
+      "bytes": 14899,
+      "sha256": "d47083f67c1d40afaa1aad0bc65e83291c4f998c98b0ef580effe46f03725f5b"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/calibration.json": {
+      "bytes": 19085,
+      "sha256": "328071c88b1d9442dc61f027fd494a26dd92e36c8ecd2c1b831204b9fc558a6f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/dev_metrics.json": {
+      "bytes": 32060,
+      "sha256": "2cde386b8acc1bf42ba692f9e33e29fe9f4256b8f4ee3320dd4622d1b2c330a7"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/evaluate_execution.log": {
+      "bytes": 21669,
+      "sha256": "611d70eb5cde6eb88c5fbaac0adcc24040d4a6e4c768e1fb50c2ee60a7a23525"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/model.json": {
+      "bytes": 2542939,
+      "sha256": "3219c492a5402826852953b2a583afd2c2adf23313561b92a16c4abde5723c24"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M1_joint_seed2/run.json": {
+      "bytes": 49470,
+      "sha256": "9b2701c1011e2dda3b1303452bdaee87a4347183609016309787f31577f3fb18"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/calibrate_execution.log": {
+      "bytes": 15214,
+      "sha256": "453f52739e31ab03ae82de38019b846feb2da89a70da51c45231908eba1a9b37"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/dev_metrics.json": {
+      "bytes": 60036,
+      "sha256": "d5e1df19fabfc6e6af53dcb5c9fc5f6ecbf1be31ec7c244df7e601a4a85fccab"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/evaluate_execution.log": {
+      "bytes": 39165,
+      "sha256": "ef64f593ecc0368ffdcf72b15569a515463759c4d9cc504e4416aaebc7c42880"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed0/run.json": {
+      "bytes": 48041,
+      "sha256": "09ad92641574ae2a21462cd5c3c193a15079f50ebe6e9ca806f9e325144d5621"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/calibrate_execution.log": {
+      "bytes": 15214,
+      "sha256": "1513ba9d03738eff3281c24f1d573675ebdfa5856d4c6376359814c15835264a"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/dev_metrics.json": {
+      "bytes": 59982,
+      "sha256": "c4f17d069a5b14067d293b1dabe6c4334d023d3deb41206b55b8078f56689f8f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/evaluate_execution.log": {
+      "bytes": 39111,
+      "sha256": "84413214683351a7895ee04e6a8e4e3cb114a0e0f99e55a1579ef52dc18f83eb"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed1/run.json": {
+      "bytes": 48044,
+      "sha256": "1e5129340bc110ee431effcec80d8160b59f1fac40b32bfefaf346611fac8cb8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/calibrate_execution.log": {
+      "bytes": 15214,
+      "sha256": "fa84c3c58563a73814023edd37d16cc1b22298fe9ab65df6290901a11a4c5c15"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/dev_metrics.json": {
+      "bytes": 60064,
+      "sha256": "9c7867fc933bb36790eac7a85bb359ffe92b9c2ad8ed07d856d33039a84c753f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/evaluate_execution.log": {
+      "bytes": 39193,
+      "sha256": "0592354ae73bca3852a1ab190e35749db2968201860e4772c0b54c7e17323b3a"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_joint_seed2/run.json": {
+      "bytes": 48040,
+      "sha256": "2b234b4da111aba1bfc556981caf1b8b9edcd173c1ddf21ae0951a296398265a"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/calibrate_execution.log": {
+      "bytes": 15226,
+      "sha256": "49fc63d7f6e16ee770f30449bee8c3ee54199ddfebabdd4cee8b6bcb8a2519e7"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/dev_metrics.json": {
+      "bytes": 60005,
+      "sha256": "eeecdb1207a5d2043d85ba011aba3684b1cf3c2b816c378ad8e3ad4f514319f2"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/evaluate_execution.log": {
+      "bytes": 39134,
+      "sha256": "1bcd7407a8ce3d3839afd07f91e787c937009800f031a4a7b78fb3c47530aac9"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed0/run.json": {
+      "bytes": 48061,
+      "sha256": "bf153e2328c58005efd37b61041ba9c15ce129c8d0a6a724e4f503d0dc32d27e"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/calibrate_execution.log": {
+      "bytes": 15226,
+      "sha256": "31283c34c6cdf07758a8c312c083b2c6bb2fe0bb17e796e446f985facb18e3ff"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/dev_metrics.json": {
+      "bytes": 60009,
+      "sha256": "e8413c008793adcb81be153c655c225f99e001b17594e415af93fb754d188fe9"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/evaluate_execution.log": {
+      "bytes": 39138,
+      "sha256": "917fbcaaff59fd57a30f5ec283c36fc5eb17b1754f3bc154982e19ed7cec4d87"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed1/run.json": {
+      "bytes": 48065,
+      "sha256": "e50269817ddcaefc719f66dd7b5c3de931a24e3f8f250a1c2a38062ccdde9535"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/calibrate_execution.log": {
+      "bytes": 15226,
+      "sha256": "dc3dd9731a4b41e9851d88a7681f7c727c7e2f83b5c1c1c1a32191e61f887024"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/dev_metrics.json": {
+      "bytes": 59993,
+      "sha256": "233bf69303a5089dd207b7913258fba336fc19150368d637e5ceadd8f4cbaeec"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/evaluate_execution.log": {
+      "bytes": 39122,
+      "sha256": "a23690c725e98b3fd003967a05657968a86794d22b8eb30caa068b9cfc799510"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_domain_adapter_seed2/run.json": {
+      "bytes": 48055,
+      "sha256": "1d19fdeb3aafa1d1aa6b65a887ed6dfda30227efa9501eaeaac8a9fc112b498d"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/calibrate_execution.log": {
+      "bytes": 15219,
+      "sha256": "46234cef15c999664d9516016d9cc011ba462c9703e7acb67b22dda63a0ad27e"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/dev_metrics.json": {
+      "bytes": 60019,
+      "sha256": "3e465bbe069171553f6d10a420b6daa32bf52c7f6dc36a4ad111d39463ca6d57"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/evaluate_execution.log": {
+      "bytes": 39148,
+      "sha256": "a9b954481d0cae358fcffda2152565115c31c94013f599dc7d9ff08a105241dc"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed0/run.json": {
+      "bytes": 48049,
+      "sha256": "ab16bd8809f278c02dca8eed1f4ddaf69999eb8a1d16402d24c5736ded592fb7"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/calibrate_execution.log": {
+      "bytes": 15219,
+      "sha256": "a6fb06fe91c7d841ff2c11b1b5d1eac728efa898ce6bb144affad9431751b089"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/dev_metrics.json": {
+      "bytes": 60024,
+      "sha256": "f253df192e82997875af4684890617b1040757f4292674855a61dbca31d1824d"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/evaluate_execution.log": {
+      "bytes": 39153,
+      "sha256": "34b546c4b3372ddb9ff79ee0535302cf8b376c5da93fe77e8d3fa0789fa502ca"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed1/run.json": {
+      "bytes": 48055,
+      "sha256": "80dbd8f3c47d54842608de39691a0ba57d9fa08952d0bf4d23d9adfdf3b92feb"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/calibrate_execution.log": {
+      "bytes": 15219,
+      "sha256": "273898e376d0d34ed14c724e0ba06a2c1dc3717ff5ccca3d4c9d6b81b855f95f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/dev_metrics.json": {
+      "bytes": 60059,
+      "sha256": "79538e33efe1b3a7fb03651b7a42628c311156a13b64d05e9f0e83345462bc4a"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/evaluate_execution.log": {
+      "bytes": 39188,
+      "sha256": "1b2b9e4537b0028250cd7266e478c16a1b5c91ddc1d1182155f4ff5b0bf94f40"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_no_history_seed2/run.json": {
+      "bytes": 48055,
+      "sha256": "c86c393e5c2fc706057a179a1f44d1c9cc89d3cb2d56266cac71c7c83b417bbb"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/calibrate_execution.log": {
+      "bytes": 15220,
+      "sha256": "a0e8a4bc73cb6d097dae9a4c5d8dff430975095b580633342d5982cdce1596a1"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/dev_metrics.json": {
+      "bytes": 30498,
+      "sha256": "32dd85bb4f29b78a3cc382cf8130de00a6420ed754e68ae1a2b96c2a02718be6"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/evaluate_execution.log": {
+      "bytes": 21309,
+      "sha256": "89d59c547313a68d009623579101c892bae3031c91dc5edd8295d14b8160e5f4"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed0/run.json": {
+      "bytes": 47888,
+      "sha256": "db7368fc364d5b7b124db9ea3a315b9e7ed30d6dbbb6a7275a7e1a4c22583454"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/calibrate_execution.log": {
+      "bytes": 15220,
+      "sha256": "b99d0af6d73e40e0eba95578ecc904f3139b99900615bfa99b60d1c2a89228aa"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/dev_metrics.json": {
+      "bytes": 30506,
+      "sha256": "4efff23e2a0986961e7eaa5638e95c8d8d1208e470ecf83cb745502ebeaa7948"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/evaluate_execution.log": {
+      "bytes": 21317,
+      "sha256": "df9268e863bf818259898254fd5d3f6e75f11411a7015b40293c76a34d9ca783"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed1/run.json": {
+      "bytes": 47890,
+      "sha256": "1211e427f8b711d4dd77d760af33ae42894545c7210fa6efdeb41e585b8a35d5"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/calibrate_execution.log": {
+      "bytes": 15220,
+      "sha256": "0e78a939231fccc54b7c5a73521ce13c5495db85b0e515598677c427704b66bc"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/calibration.json": {
+      "bytes": 19700,
+      "sha256": "aa414e342dd70d184dce48297c72fd2854c5dce6256faa23b9a91aa5674c5da8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/dev_metrics.json": {
+      "bytes": 30499,
+      "sha256": "ebdb378fc8dd782801e4bd7d2f7f72c9dae3a88d2d5331e7ffe5932db1b7ef48"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/evaluate_execution.log": {
+      "bytes": 21310,
+      "sha256": "a8699f47d539ed998610626ec9eb80527c2f0f48b4e0ef0fc91338adbb430f3d"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/M2_single_task_seed2/run.json": {
+      "bytes": 47885,
+      "sha256": "8ed6ce61918cc1e52f044b8b41b3741c1e7dac50d0600fd3f2a29b397433bd71"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/budgeted_feature_receipt.json": {
+      "bytes": 5917,
+      "sha256": "83bef4e263f05e830e715318e2d51859255d80d3d2a860ef5cd40720302731e2"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/dev_summary.json": {
+      "bytes": 927696,
+      "sha256": "cce6b5da2324473e954161b4aab379bff0da14aa7d48106b56cec360f4308b2c"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/diagnostic_status.json": {
+      "bytes": 560,
+      "sha256": "d444af0d695b8046574a9bba46f6ccebd7b2087563a23fa886599c02e1b65f4d"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/feature_receipt.json": {
+      "bytes": 6286,
+      "sha256": "1eb44196c4153ffe18af1838b20861e1436e8111d04d4f3dac3663ab00ca9465"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/matrix.json": {
+      "bytes": 677483,
+      "sha256": "714359fb806fd1d77365a7e12b9c0f7f16cd8b27861382f02b26e52475763931"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/preregistration.json": {
+      "bytes": 3429,
+      "sha256": "2dde5ba71601e5bb0d365d4a35a4e517bd8c4b3e58ff4591fb98b483416f3fe8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_20261002/training_environment.json": {
+      "bytes": 305,
+      "sha256": "b01b8588d8136b9a562cf1d2463935992d9d774dede1dd51d94065d027cebcab"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/BENCHMARK.md": {
+      "bytes": 8240,
+      "sha256": "4e7433771cb91ba676a5a103ae3bd8d6058a3122292953a776ae6a88c9d3e051"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/calibrate_execution.log": {
+      "bytes": 14899,
+      "sha256": "021a7de2ee018c0e3c638c9aeeb7cf62142f42c694ebe124933f39980d94dcee"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/calibration.json": {
+      "bytes": 19085,
+      "sha256": "328071c88b1d9442dc61f027fd494a26dd92e36c8ecd2c1b831204b9fc558a6f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/dev_metrics.json": {
+      "bytes": 32058,
+      "sha256": "b814a84958ca703be88da634bb73e4feb4f31ff7160373e4f7e6d0874ec59b59"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/evaluate_execution.log": {
+      "bytes": 21667,
+      "sha256": "8dbec9701f17d4cc405daebe8fe93b8c010e026f0f4c70174368942173115a83"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/model.json": {
+      "bytes": 2545518,
+      "sha256": "313eb3603804533ce501cf1178732ba559cf674b854259d2e8961ee22b60d62d"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed0/run.json": {
+      "bytes": 49477,
+      "sha256": "8615f94495c7dd798b9cf83418a0751d1f278ce75ba23d1a021991e5ea3540e6"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/calibrate_execution.log": {
+      "bytes": 14899,
+      "sha256": "934f9c9529171ffb782efd8cb40a4cd88c2db6f25bff0411fa0fd5971d1f4010"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/calibration.json": {
+      "bytes": 19085,
+      "sha256": "328071c88b1d9442dc61f027fd494a26dd92e36c8ecd2c1b831204b9fc558a6f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/dev_metrics.json": {
+      "bytes": 32061,
+      "sha256": "71901bcde81122b96b2e57da135ba51ab7ed6bad16e52ce610fe784c3e0f73cc"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/evaluate_execution.log": {
+      "bytes": 21670,
+      "sha256": "d57bf3fbe3c59d61be78763c9c59e1155c940654ebd918be214b14a49280de50"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/model.json": {
+      "bytes": 2539107,
+      "sha256": "0220f290221e0e4fca70b9d8c546a70a50683e2b371ce2f95a854f62b06d52ad"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed1/run.json": {
+      "bytes": 49477,
+      "sha256": "5a883e28bafbafbf3a0f9f2510d5801636ee330a1f3f42cf02958fc0789574e9"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/calibrate_execution.log": {
+      "bytes": 14899,
+      "sha256": "d47083f67c1d40afaa1aad0bc65e83291c4f998c98b0ef580effe46f03725f5b"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/calibration.json": {
+      "bytes": 19085,
+      "sha256": "328071c88b1d9442dc61f027fd494a26dd92e36c8ecd2c1b831204b9fc558a6f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/dev_metrics.json": {
+      "bytes": 32061,
+      "sha256": "32217b75d87c57e2f011332ec4021da32c0d2abeaacb070a1797da2d064a86ce"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/evaluate_execution.log": {
+      "bytes": 21670,
+      "sha256": "9800d136bc7697bff920bc923b28192c1d28adb2cb0680995d7a8423d2395b8a"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/model.json": {
+      "bytes": 2543019,
+      "sha256": "3b95773b3bf221353d5e93dd8d9e02c98df67da36a52154166b40204b3c37fed"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M1_joint_seed2/run.json": {
+      "bytes": 49477,
+      "sha256": "796fbee1b848bb9f1b2fca1a77dca97d846efe91f1f4ec8be461b501f076fdf8"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/calibrate_execution.log": {
+      "bytes": 14983,
+      "sha256": "308e8f47bf953901a20ad389a47c8f3ddad399f9a0d629aaaa8fdbc8f30dcac4"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/dev_metrics.json": {
+      "bytes": 35678,
+      "sha256": "eafb3f4861c70cf3877035e955c3522e154ee23343ae19050a5fa63147e17655"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/evaluate_execution.log": {
+      "bytes": 24147,
+      "sha256": "67ce51cc252c03a4fdd999623ab695e0b172a98c72a573e6d1de81aa99e8f3e6"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed0/run.json": {
+      "bytes": 48047,
+      "sha256": "93d4d79a27b058be87c0c7ea2147e2923839744fcb62e1af2a55cf02c7716a16"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/calibrate_execution.log": {
+      "bytes": 14983,
+      "sha256": "0ee60292f41d1d4e6fb0b8a994da5eaf4a5b0dc1dba218ed3976cd99c557ea7b"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/dev_metrics.json": {
+      "bytes": 35647,
+      "sha256": "84d97313992f036f4f9969b58cc7b62ba36b2bd3e8433b77df96d78b34304130"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/evaluate_execution.log": {
+      "bytes": 24116,
+      "sha256": "42d581f6cbdba82e92dc677dab4907e62fd6ccaa72e8d46dba5084a1d3c46dbb"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed1/run.json": {
+      "bytes": 48051,
+      "sha256": "9952e656660db4a7d5f3df2f7f2674025f82766c59a138c0f4bc13e66b88a357"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/calibrate_execution.log": {
+      "bytes": 14983,
+      "sha256": "f0ffb94b9f7120767b9e4080853bc0d6ea24e9d3ef783fb8e79822b822347905"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/dev_metrics.json": {
+      "bytes": 35704,
+      "sha256": "7f43c3ab4bd018cd61aab9f5c531d0bfd612660e8394492e601092a8223628f2"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/evaluate_execution.log": {
+      "bytes": 24173,
+      "sha256": "d6e113a15f2664ca5f76eb7769f2795a8b7a7a58a6392ddcf3769af6a5aa8387"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_joint_seed2/run.json": {
+      "bytes": 48049,
+      "sha256": "988effabb6690988d44f0cf9c8344e2312ecea95f4d420532a72de1a42053f1a"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/calibrate_execution.log": {
+      "bytes": 14995,
+      "sha256": "066450caae71671cb0fcda039a62789f049023e01b977412893d1ce78d23a1ba"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/dev_metrics.json": {
+      "bytes": 35648,
+      "sha256": "4acb59f756eee4f4083524ff7535974f4217d37076d68cc1572e507bce7d6b1b"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/evaluate_execution.log": {
+      "bytes": 24117,
+      "sha256": "285d86474d6e3f85605197c47110dcd0f31a3ccf2091f3cb66cceb320500f57b"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed0/run.json": {
+      "bytes": 48068,
+      "sha256": "aa1860fba0c5ac11ab4264909cf15216b3f06be35f58a7c9067e50b61ec98c2a"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/calibrate_execution.log": {
+      "bytes": 14995,
+      "sha256": "d0bbd86541e9f3fcc564cc879b937d72d3b913a87741d2a1ffb62d3c4fb5ae10"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/dev_metrics.json": {
+      "bytes": 35680,
+      "sha256": "3e336f61941cd61ef7c9b21750ee8d6555766df69f4211293823bd2b5315112b"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/evaluate_execution.log": {
+      "bytes": 24149,
+      "sha256": "53997de292d311700ecfd38b78a14307dfd0fe41a6fe8a6484272cbe8c0bd09f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed1/run.json": {
+      "bytes": 48072,
+      "sha256": "08e3e4d695ecc15fa0392df879c8e108a593a1b175962f004a3a2c029d342658"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/calibrate_execution.log": {
+      "bytes": 14995,
+      "sha256": "3c5c1fd4456678690b1cfb1dda32b36502edba0ae00370759cdc6c8ff99d4436"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/dev_metrics.json": {
+      "bytes": 35669,
+      "sha256": "e5fd0448856112071d0ba27b3b6e2762f4f29aeff9b3ca4459ae5a8487af29fd"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/evaluate_execution.log": {
+      "bytes": 24138,
+      "sha256": "a2eb0def35206fa1824c70f521973a35330226bc0d74186fd0fdfa31bfbfe98e"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_domain_adapter_seed2/run.json": {
+      "bytes": 48062,
+      "sha256": "e742ddef7e819fcbcba496dbc3c33cbbd6fbf58da762feb198d3a879a57ff7cd"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/calibrate_execution.log": {
+      "bytes": 14988,
+      "sha256": "59fb4a980bad38462171d1ab2a3ec41243ec4a077fd6fc31a50aec4f4054387f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/dev_metrics.json": {
+      "bytes": 35634,
+      "sha256": "bb1868692caa0f03116c1f94138dcee7572fbafa9c8b9c6632f69121175cbe0b"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/evaluate_execution.log": {
+      "bytes": 24103,
+      "sha256": "6655156b15d662ace82e8c5de3465ee88b447bdc5c23ad74dcf6f45bcfd735a4"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed0/run.json": {
+      "bytes": 48058,
+      "sha256": "779f62ccf04b12c685b95a90d41a94b66f691c810d69e1916f3b6d032b15e701"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/calibrate_execution.log": {
+      "bytes": 14988,
+      "sha256": "d3cda1406933df279d50d98eb38203d535f14307fbbefe1d4c7e4f92408b84d0"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/dev_metrics.json": {
+      "bytes": 35676,
+      "sha256": "f640e94525a5695d16ae752b3ff14466a45d3554448ae3199fbb0c6c981793bc"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/evaluate_execution.log": {
+      "bytes": 24145,
+      "sha256": "6179d460083fd8b2eefe2e3c46ba1b083042593b66f1debf7822168682bb7e09"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed1/run.json": {
+      "bytes": 48064,
+      "sha256": "e0a47e518d573192ebf27d003a595cfe79bbc5e72adf2b12a4912122657df835"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/calibrate_execution.log": {
+      "bytes": 14988,
+      "sha256": "1fcee400dc6edd8240268fe8e66c242baca2ac9cd42877a158a49086ae6a8df3"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/dev_metrics.json": {
+      "bytes": 35683,
+      "sha256": "601fe4f2e5099e775ebcd1dadd421727dd3130a08cee5166fbb79087f451c235"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/evaluate_execution.log": {
+      "bytes": 24152,
+      "sha256": "b8e09b579177a1b2958ad373d0584d84f5693b877ca0c1155a5122d885b0494f"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_no_history_seed2/run.json": {
+      "bytes": 48064,
+      "sha256": "838d28e5727b260ac674328ec6a610d67a182c0476421c5c12a94a41fc20b381"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/calibrate_execution.log": {
+      "bytes": 14989,
+      "sha256": "36e26b298f42f66c2ca89fc1dd524b1ab67febcf66a559072f97bc2ff9735554"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/dev_metrics.json": {
+      "bytes": 25409,
+      "sha256": "bdb9ef511db6ec56b9065a5b05029876e09411470e01adeae49d2ab26506504c"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/evaluate_execution.log": {
+      "bytes": 17808,
+      "sha256": "7f5265e10e3af9830d5a1d6e4f652ae8bdd7b3ccc20e72225bb68388db1ac116"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed0/run.json": {
+      "bytes": 47894,
+      "sha256": "cd3d81b4a380b3aadb24255a3cb060d272766c9530e960818672e01b27daf063"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/calibrate_execution.log": {
+      "bytes": 14989,
+      "sha256": "f134bc551c2d2d417373af69ef9ba24f24759c64801926d229b370befcf43466"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/dev_metrics.json": {
+      "bytes": 25420,
+      "sha256": "a4c999768352303066a3073f01a8578b2d8e25ace916ea795b29c06cf2e680af"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/evaluate_execution.log": {
+      "bytes": 17819,
+      "sha256": "4258d15518a1624d43c72212c2085383cb1abc27b949ac8e76df09054c9642b7"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed1/run.json": {
+      "bytes": 47896,
+      "sha256": "eb62fc3eff5cd2bee2841d1080db2f6a82b26742cd11cb458a982099c19866e2"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/calibrate_execution.log": {
+      "bytes": 14989,
+      "sha256": "c8b3b15b4f1427b359569caa6eb726b66d321017d1a3cb5d27cc86cbcf835ecf"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/dev_metrics.json": {
+      "bytes": 25414,
+      "sha256": "83eb5fea5fad7ec71255ab75a57c9b0a914c2415c8ad5af69977df77138d561d"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/evaluate_execution.log": {
+      "bytes": 17813,
+      "sha256": "07fda7918c39020b32542eac211ec2cce0c7dc048f2c966c6e0f519efa54cd89"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/M2_single_task_seed2/run.json": {
+      "bytes": 47892,
+      "sha256": "5efdd68390ccbbeeef6a2418d8f87aae06edcbec5e8de0763e61634d35676951"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/dev_summary.json": {
+      "bytes": 624367,
+      "sha256": "f7b79e2cc8b8c7418ff1baacd8db533405776af21e852e387385b1cb53084635"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/feature_receipt.json": {
+      "bytes": 5917,
+      "sha256": "83bef4e263f05e830e715318e2d51859255d80d3d2a860ef5cd40720302731e2"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/matrix.json": {
+      "bytes": 434557,
+      "sha256": "e9dd957ab854c5d1904acbfad7034b52ff2a90c4a019e0d05cbbcd12671a339e"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/overlap_receipt.json": {
+      "bytes": 648,
+      "sha256": "23a1b67182576885b67dfc9e89171c2835ef3435d3eebaff7b2bfedad3c64603"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/preregistration.json": {
+      "bytes": 3429,
+      "sha256": "9dd6cf4ca6794b4366c863a88843bda3cf4b7d182bdd3a52d89272e82eca9514"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/research_acceptance.json": {
+      "bytes": 2150,
+      "sha256": "af183eeffeb3a0a151fee8c8b730c0db269187c56b315439d34555f2420c3ade"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/training_environment.json": {
+      "bytes": 332,
+      "sha256": "810d29400eac82f2ad06489d21138062c5d1dd0222fd333f013bcb173dbe1067"
+    },
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/unit_metadata_correction.json": {
+      "bytes": 1931,
+      "sha256": "5237d538a57ed5f05f574854c63a20b6ceeb4fe19df4ebbbd09e40c40802f487"
+    },
+    "model_lab/reports/v2/package_replay_with_lifetime_20261002.json": {
+      "bytes": 19771,
+      "sha256": "bf2514a792a37999c4d0e8b007fa37daca01ceb08e73bbcfbafebe829d55fd75"
+    },
+    "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json": {
+      "bytes": 19771,
+      "sha256": "b91e18d01389443819549706d1a73f2a435f172260ac66ad48a0093942a44031"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/calibration.json": {
+      "bytes": 19085,
+      "sha256": "328071c88b1d9442dc61f027fd494a26dd92e36c8ecd2c1b831204b9fc558a6f"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/manifest.json": {
+      "bytes": 6734,
+      "sha256": "7bae52d413428fa0362086169df726584b23b45c640b53066572cfba97d743af"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/model.json": {
+      "bytes": 2545518,
+      "sha256": "313eb3603804533ce501cf1178732ba559cf674b854259d2e8961ee22b60d62d"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_domain_profiles.json": {
+      "bytes": 164051,
+      "sha256": "c0a6afaeab2ff56b1d4c8802f9a5279117d4e8ff7f986e9b504ca75d97e6e935"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_domain_queries.json": {
+      "bytes": 55650,
+      "sha256": "775d34e84edf246ab0154792ea9886c79b0ad09741f781aabab944f43147642d"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_sample_query.json": {
+      "bytes": 2683,
+      "sha256": "306e222e75334d7a3778250d14ab50488cce2e3e7523ffb0e14e3133c0c2bca0"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_verification.json": {
+      "bytes": 8385,
+      "sha256": "63e289026a6ffd5007aab19ff650a9d91e63328d4842d05eb284669567bcb4ec"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/run.json": {
+      "bytes": 49477,
+      "sha256": "8615f94495c7dd798b9cf83418a0751d1f278ce75ba23d1a021991e5ea3540e6"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/calibration.json": {
+      "bytes": 19249,
+      "sha256": "545730731b414160efedd53df03b803c70c52eff95565c896eac0f061e19f589"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/manifest.json": {
+      "bytes": 6735,
+      "sha256": "013fbe84a3ddaf184daa48770b64fac89ff226a91eaec1febb64dc5b36e1a6e2"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_domain_profiles.json": {
+      "bytes": 165904,
+      "sha256": "559bc0b07eba6d0fd9bd3ca5af62932ad5a86714a652e1309aab32a82fa42ad4"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_domain_queries.json": {
+      "bytes": 55650,
+      "sha256": "775d34e84edf246ab0154792ea9886c79b0ad09741f781aabab944f43147642d"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_sample_query.json": {
+      "bytes": 2683,
+      "sha256": "306e222e75334d7a3778250d14ab50488cce2e3e7523ffb0e14e3133c0c2bca0"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_verification.json": {
+      "bytes": 8911,
+      "sha256": "c0820888a6c44189c127c138dc6380896749fad7039ef30842e070a29305f832"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/run.json": {
+      "bytes": 48047,
+      "sha256": "93d4d79a27b058be87c0c7ea2147e2923839744fcb62e1af2a55cf02c7716a16"
+    },
+    "model_lab/reports/v2/sources/DELIVERY.md": {
+      "bytes": 17881,
+      "sha256": "ca567cd711059ce33e90a58eb488b3c2698cc939811b19dbbd09f0cee56995ca"
+    },
+    "model_lab/reports/v2/sources/local_cache_relocation_20261002.json": {
+      "bytes": 11645,
+      "sha256": "edd5f40b1ad7000d106adeb45b2fd292c31b2dc596d5f2da2cd916fea6ea6b89"
+    },
+    "model_lab/reports/v2/sources/matr/author_LoadData_metadata.json": {
+      "bytes": 6150,
+      "sha256": "d5920bb7fe64791aa204fb2f0cd69839dc32d21dd8313e9de505b69db494b9cf"
+    },
+    "model_lab/reports/v2/sources/matr/author_processing_evidence.json": {
+      "bytes": 1308,
+      "sha256": "9cf5be020859cb0de892a29e9a67db7bb120a15808d49f6fbc8b59f37416c3cf"
+    },
+    "model_lab/reports/v2/sources/matr/corrected_download_plan.json": {
+      "bytes": 1967,
+      "sha256": "b2a8d689a8f60c38583befcdd9c143e4679775c8de68c0b70d5cce5d18906aad"
+    },
+    "model_lab/reports/v2/sources/matr/corrected_identity_qualification.json": {
+      "bytes": 47131,
+      "sha256": "3dc38bbd123f1bcfa77de08e06d90117272202295a78db443992c8b32a9bc5b1"
+    },
+    "model_lab/reports/v2/sources/matr/corrected_parse_qualification.json": {
+      "bytes": 13309,
+      "sha256": "a5030a91311a3c57cab82c84c986f37815786078da1364b4fa972963c6d275af"
+    },
+    "model_lab/reports/v2/sources/matr/download_receipt_corrected_2017-05-12.json": {
+      "bytes": 682,
+      "sha256": "38eafb16a025a498f5e00daf571033bfa9671ce72a1835bed692aaf50cb5e076"
+    },
+    "model_lab/reports/v2/sources/matr/download_receipt_corrected_2017-06-30.json": {
+      "bytes": 682,
+      "sha256": "0e58240f3e9e9ff024bdb1412cae1a997ffef6e27da4be6d43cf13877474a34a"
+    },
+    "model_lab/reports/v2/sources/matr/download_receipt_corrected_2018-04-12.json": {
+      "bytes": 682,
+      "sha256": "aa692f37101953237d4f28ab3e52aa52813adea359d605d7aaf3b72fa8f11c2d"
+    },
+    "model_lab/reports/v2/sources/matr/official_batch1_tests.json": {
+      "bytes": 463120,
+      "sha256": "d5b26dfba5885d4ababc0f2de3330761bff6a72b24b9d3edff668895d5e02cc8"
+    },
+    "model_lab/reports/v2/sources/matr/official_batch1_tests_receipt.json": {
+      "bytes": 572,
+      "sha256": "6e6a9f6f2eb4804ab4c9e5c92db76a0d04fc0483703961458047a6a48de6a42f"
+    },
+    "model_lab/reports/v2/sources/matr/registry_record.json": {
+      "bytes": 28057,
+      "sha256": "775ae1a7f308c9a9980a7293e31170803825306c3088eecf619da61912e89931"
+    },
+    "model_lab/reports/v2/sources/matr_corrected_data_receipt.json": {
+      "bytes": 117677,
+      "sha256": "47594596c58ae99c3bb37633579f8b1b47cb06a6c6748524266f1f9a5975c7cf"
+    },
+    "model_lab/reports/v2/sources/source_registry.yaml": {
+      "bytes": 45217,
+      "sha256": "17162e46aa655fe13e84f9e68c09e6bccd0b01d6202a007b1628c6ef328bb46f"
+    },
+    "model_lab/scripts/v2/common.py": {
+      "bytes": 1744,
+      "sha256": "9a9bdf3ba23eeef4b6c9387863f99dbb09dc3fd11ecfe202792b1cc0c7c0c79f"
+    },
+    "model_lab/scripts/v2/evaluate.py": {
+      "bytes": 2839,
+      "sha256": "663c38582e39ab040968131d0642351f8e37a3fe6e4e5af1fa2d387dbb584251"
+    },
+    "model_lab/scripts/v2/export.py": {
+      "bytes": 4785,
+      "sha256": "545907d31998ef4b07209ff96ce5418d075c0249c4fde3f029a55b617e4006eb"
+    },
+    "model_lab/scripts/v2/lifetime_features.py": {
+      "bytes": 2596,
+      "sha256": "7293961a3479b81576ced0fcc99394ad8d5ca1f0e96dc98ed13334e972fb698d"
+    },
+    "model_lab/scripts/v2/prepare_official_subsets.py": {
+      "bytes": 15812,
+      "sha256": "9c82314cd3bd292b5a409a7319b4278dda39986a2d23a86de666338e21ca22e3"
+    },
+    "model_lab/scripts/v2/train.py": {
+      "bytes": 7333,
+      "sha256": "402c2874d8dc0565ab9dd504d66f1c86caab3e0aefb6830ddcdb7611cb5f56f8"
+    },
+    "model_lab/tests/v2/test_lifetime_features_v2.py": {
+      "bytes": 8825,
+      "sha256": "cb31b47bde96de434bca29cb5fe30520630b0e39fe930d3c809087df1b65affc"
+    },
+    "model_lab/tests/v2/test_matr_stream_v2.py": {
+      "bytes": 13391,
+      "sha256": "51d51630aeeaa86b0999a98124f97a75eca84f4fe55e77b65f3d34abdb039e57"
+    },
+    "model_lab/tests/v2/test_models_v2.py": {
+      "bytes": 10638,
+      "sha256": "0416d8f88905adab387863c483177b783c3dcbd2b5fb0b33431c6ff1d7e52fe2"
+    },
+    "model_lab/tests/v2/test_prepare_official_subsets_v2.py": {
+      "bytes": 2130,
+      "sha256": "8e51e73be555472566fc1a02ca238cf062351ea5decfab422cc8881a90ec6018"
+    },
+    "model_lab/tests/v2/test_safe_numeric_v2.py": {
+      "bytes": 7564,
+      "sha256": "85b46e5392c40ea11cceaf6f4ee16e4c83cd28d7aeee4fcb0228550af0c9d3a8"
+    },
+    "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.json": {
+      "bytes": 1081151,
+      "sha256": "258346f1e6b189c41ef60f6a6c8af47146339c6b4e2cd3b7a47327752229f066"
+    },
+    "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.npz": {
+      "bytes": 818798,
+      "sha256": "b2d220a7b631836bcc7cdba45a64971c3793fde7ccacb8ad47a8c7f27a1d0a26"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_domain_samples.npz": {
+      "bytes": 112960,
+      "sha256": "67cec1443ffbdd82877e7d7183ddd112d3b1ea84d2e01e51fa73312ff83e77d0"
+    },
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_sample.npz": {
+      "bytes": 6700,
+      "sha256": "04a8ae546d88ff47b3e202f05cdf3c42a807ee47bfb5cfe5376f53990cc85d8c"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_domain_samples.npz": {
+      "bytes": 112960,
+      "sha256": "67cec1443ffbdd82877e7d7183ddd112d3b1ea84d2e01e51fa73312ff83e77d0"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_sample.npz": {
+      "bytes": 6700,
+      "sha256": "04a8ae546d88ff47b3e202f05cdf3c42a807ee47bfb5cfe5376f53990cc85d8c"
+    },
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/weights.npz": {
+      "bytes": 2623069,
+      "sha256": "6ba0fe50d2faa676a875da3bb361b4cc3f53f3062c94fa0b1038d68fdedbe471"
+    }
+  },
+  "development_feature_bundle": {
+    "json": "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.json",
+    "npz": "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.npz",
+    "objects": 123,
+    "rows": 368,
+    "train": 79,
+    "dev": 23,
+    "calibration": 21,
+    "final": 0,
+    "source": "matr",
+    "license_receipt": "model_lab/reports/v2/sources/matr/registry_record.json"
+  },
+  "selected_research_safe_packages": [
+    "M1_matr_lifetime_masked_seed0",
+    "M2_matr_lifetime_masked_seed0"
+  ],
+  "completed_runs": {
+    "new_formal_development": 15,
+    "new_superseded_diagnostic": 15,
+    "final_accesses": 0
+  },
+  "not_staged": [
+    "All raw MAT/CSV/archive bulk",
+    "All final numerical feature bundles",
+    "Unfitted 32x256 lifetime feature bundle",
+    "Full official HTML/JavaScript and author source, preserved in ignored research cache",
+    "Incomplete M1_joint_seed0 and superseded initial lifetime export packages, preserved in ignored research cache",
+    "Other seeds M2 training weights (retained locally; fixed seed0 package is tracked)"
+  ],
+  "local_cache_relocation_receipt": "model_lab/reports/v2/sources/local_cache_relocation_20261002.json",
+  "independent_docs": [
+    "model_lab/docs/V2_IMPLEMENTATION.md",
+    "model_lab/docs/MATR_LIFETIME_PROTOCOL.md",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/BENCHMARK.md",
+    "model_lab/reports/v2/sources/DELIVERY.md"
+  ],
+  "notes": "Exact file paths stable. Parent commits on DEV; child performs no git add or commit. Historical hash/paths stay evidence; runtime package and array references reload relatively.",
+  "metadata_correction_ordinary": [
+    "model_lab/docs/V2_IMPLEMENTATION.md",
+    "model_lab/modeling/v2/prediction.py",
+    "model_lab/reports/v2/MATR_FOLLOWUP_COMMIT_MANIFEST.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/BENCHMARK.md",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/research_acceptance.json",
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/unit_metadata_correction.json",
+    "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/manifest.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_domain_profiles.json",
+    "model_lab/reports/v2/packages/M1_matr_lifetime_masked_seed0/reload_verification.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/manifest.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_domain_profiles.json",
+    "model_lab/reports/v2/packages/M2_matr_lifetime_masked_seed0/reload_verification.json"
+  ],
+  "metadata_correction_force_add": [],
+  "metadata_correction_scope": "Dimensionless threshold-risk unit only; two new research packages saved profiles/hash refreshed; every numeric profile value and model SHA unchanged; original four packages untouched. Amend Phase17 with exact correction paths.",
+  "latest_replay_receipt": "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json"
+}

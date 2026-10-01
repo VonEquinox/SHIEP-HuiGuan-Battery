@@ -1,0 +1,298 @@
+{
+  "schema_version": "matr-fixed-prefix-feature-receipt-v2",
+  "query_prefixes": [
+    50,
+    100,
+    200
+  ],
+  "objects_by_split": {
+    "train": 79,
+    "dev": 23,
+    "calibration": 21,
+    "final": 0
+  },
+  "rows": 368,
+  "rows_by_split": {
+    "calibration": 63,
+    "train": 236,
+    "dev": 69
+  },
+  "domains": 68,
+  "domain_object_counts": {
+    "matr::LFP::4.4C(80%)-4.4C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::4.8C(80%)-4.8C": {
+      "calibration": 1,
+      "train": 3,
+      "dev": 1
+    },
+    "matr::LFP::5.4C(40%)-3.6C": {
+      "train": 1,
+      "calibration": 1
+    },
+    "matr::LFP::5.4C(50%)-3C": {
+      "train": 2
+    },
+    "matr::LFP::5.4C(50%)-3.6C": {
+      "train": 2
+    },
+    "matr::LFP::5.4C(60%)-3C": {
+      "train": 2
+    },
+    "matr::LFP::5.4C(60%)-3.6C": {
+      "train": 2
+    },
+    "matr::LFP::5.4C(70%)-3C": {
+      "train": 1,
+      "dev": 1
+    },
+    "matr::LFP::5.4C(80%)-5.4C": {
+      "train": 1,
+      "calibration": 1
+    },
+    "matr::LFP::6C(30%)-3.6C": {
+      "train": 2
+    },
+    "matr::LFP::6C(40%)-3C": {
+      "train": 1,
+      "dev": 1
+    },
+    "matr::LFP::6C(40%)-3.6C": {
+      "train": 2
+    },
+    "matr::LFP::6C(50%)-3C": {
+      "train": 1,
+      "calibration": 1
+    },
+    "matr::LFP::6C(50%)-3.6C": {
+      "train": 2
+    },
+    "matr::LFP::6C(60%)-3C": {
+      "dev": 2,
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::7C(30%)-3.6C": {
+      "dev": 1,
+      "train": 1
+    },
+    "matr::LFP::7C(40%)-3C": {
+      "dev": 1,
+      "train": 1
+    },
+    "matr::LFP::7C(40%)-3.6C": {
+      "train": 1,
+      "dev": 1
+    },
+    "matr::LFP::8C(15%)-3.6C": {
+      "train": 2
+    },
+    "matr::LFP::8C(25%)-3.6C": {
+      "train": 2
+    },
+    "matr::LFP::8C(35%)-3.6C": {
+      "train": 1,
+      "calibration": 1
+    },
+    "matr::LFP::1C(4%)-6C": {
+      "train": 1
+    },
+    "matr::LFP::2C(10%)-6C": {
+      "train": 1
+    },
+    "matr::LFP::2C(2%)-5C": {
+      "train": 1
+    },
+    "matr::LFP::2C(7%)-5.5C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::3.6C(22%)-5.5C": {
+      "train": 1
+    },
+    "matr::LFP::3.6C(2%)-4.85C": {
+      "dev": 1,
+      "train": 0
+    },
+    "matr::LFP::3.6C(30%)-6C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::3.6C(9%)-5C": {
+      "train": 1
+    },
+    "matr::LFP::4C(13%)-5C": {
+      "dev": 1,
+      "train": 0
+    },
+    "matr::LFP::4C(31%)-5": {
+      "train": 1
+    },
+    "matr::LFP::4C(40%)-6C": {
+      "train": 1
+    },
+    "matr::LFP::4C(4%)-4.85C": {
+      "dev": 1,
+      "train": 0
+    },
+    "matr::LFP::4.4C(24%)-5C": {
+      "train": 1
+    },
+    "matr::LFP::4.4C(47%)-5.5C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::4.4C(55%)-6C": {
+      "train": 1
+    },
+    "matr::LFP::4.4C(8%)-4.85C": {
+      "train": 1
+    },
+    "matr::LFP::4.65C(19%)-4.85C": {
+      "train": 1
+    },
+    "matr::LFP::4.65C(44%)-5C": {
+      "train": 1
+    },
+    "matr::LFP::4.65C(69%)-6C": {
+      "dev": 1,
+      "train": 0
+    },
+    "matr::LFP::4.9C(27%)-4.75C": {
+      "train": 1
+    },
+    "matr::LFP::4.9C(61%)-4.5C": {
+      "train": 1
+    },
+    "matr::LFP::4.9C(69%)-4.25C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::5.2C(10%)-4.75C": {
+      "train": 1
+    },
+    "matr::LFP::5.2C(37%)-4.5C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::5.2C(50%)-4.25C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::5.2C(58%)-4C": {
+      "train": 1
+    },
+    "matr::LFP::5.2C(66%)-3.5C": {
+      "train": 1
+    },
+    "matr::LFP::5.2C(71%)-3C": {
+      "train": 1
+    },
+    "matr::LFP::5.6C(25%)-4.5C": {
+      "train": 1
+    },
+    "matr::LFP::5.6C(38%)-4.25C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::5.6C(47%)-4C": {
+      "train": 1
+    },
+    "matr::LFP::5.6C(58%)-3.5C": {
+      "dev": 1,
+      "train": 0
+    },
+    "matr::LFP::5.6C(5%)-4.75C": {
+      "dev": 1,
+      "train": 0
+    },
+    "matr::LFP::5.6C(65%)-3C": {
+      "train": 1
+    },
+    "matr::LFP::6C(20%)-4.5C": {
+      "train": 1
+    },
+    "matr::LFP::6C(31%)-4.25C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::6C(40%)-4C": {
+      "calibration": 1,
+      "train": 0
+    },
+    "matr::LFP::6C(4%)-4.75C": {
+      "train": 1
+    },
+    "matr::LFP::6C(52%)-3.5C": {
+      "dev": 1,
+      "train": 0
+    },
+    "matr::LFP::5C(67%)-4C-newstructure": {
+      "train": 6,
+      "dev": 1
+    },
+    "matr::LFP::5.3C(54%)-4C-newstructure": {
+      "dev": 2,
+      "train": 4,
+      "calibration": 1
+    },
+    "matr::LFP::5.6C(19%)-4.6C-newstructure": {
+      "train": 4,
+      "calibration": 1,
+      "dev": 1
+    },
+    "matr::LFP::5.6C(36%)-4.3C-newstructure": {
+      "train": 4,
+      "calibration": 1,
+      "dev": 1
+    },
+    "matr::LFP::4.8C(80%)-4.8C-newstructure": {
+      "calibration": 2,
+      "dev": 2,
+      "train": 3
+    },
+    "matr::LFP::5.9C(15%)-4.6C-newstructure": {
+      "dev": 1,
+      "train": 1
+    },
+    "matr::LFP::3.7C(31%)-5.9C-newstructure": {
+      "train": 2
+    },
+    "matr::LFP::5.9C(60%)-3.1C-newstructure": {
+      "train": 2
+    }
+  },
+  "censor_counts": {
+    "right": 240,
+    "exact": 128,
+    "interval": 0
+  },
+  "exclusion_counts": {
+    "previously_consumed_final_identity": 6,
+    "cycle_protocol_differs_from_exact_identity_policy": 5,
+    "event_already_occurred_at_query": 1,
+    "source_ordinal_is_not_verified_physical_cycle": 1
+  },
+  "development_only": true,
+  "no_final_fitting_or_evaluation": true,
+  "feature_manifest_sha256": "c0fa73aa2601d77e0085cd43c583d6936cab212a0ea3232f78828c7f5e8c1ed4",
+  "arrays_sha256": "7048f1061a006c8cf879435dbeed4ce30dd36e0b0e38a08337af7fcfb7e2c5f2",
+  "prior_final_identity_exclusion": {
+    "prior_final_identity_exclusions": {
+      "manifest_sha256": "ec1da6d221ce99de505c61a886da019e7480726afe23a30bf07ab4afe33e0a27",
+      "physical_cell_ids": [
+        "matr:el150800737229",
+        "matr:el150800737259",
+        "matr:el150800737275",
+        "matr:el150800737287",
+        "matr:el150800737387",
+        "matr:el150800739477"
+      ],
+      "prior_final_identity_count": 6,
+      "identity_matching": "MATR barcode namespace casefold",
+      "numerical_arrays_opened": false
+    }
+  }
+}

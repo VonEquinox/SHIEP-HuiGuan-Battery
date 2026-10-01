@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-KINDS = {"matr-summary": "matr", "matr-csv": "matr", "dyad": "dyad", "ch": "ch_batterygen"}
+KINDS = {"matr-summary": "matr", "matr-csv": "matr", "matr-corrected": "matr", "dyad": "dyad", "ch": "ch_batterygen"}
 
 
 def _file(value: str | None, name: str) -> Path:
@@ -131,6 +131,32 @@ def prepare(args: argparse.Namespace) -> dict[str, Any]:
         if isinstance(payload, dict):
             saved_sha = saved_sha or payload.get("sha256")
         receipts.extend([_verify_original(csv, sha256=saved_sha), _verify_original(metadata)])
+    elif args.kind == "matr-corrected":
+        from model_lab.modeling.v2.matr_stream import inventory_matr_hdf5, inventory_identity_frame
+        if not args.mat_files or len(args.mat_files) != 3 or not args.batch_tests_json or len(args.batch_tests_json) != 3:
+            raise ValueError("matr-corrected needs all three --mat-files and --batch-tests-json")
+        if args.max_segments > 32:
+            raise ValueError("corrected streaming parser permits at most 32 original curves per physical cell")
+        paths = [_file(path, "mat-files") for path in args.mat_files]
+        metadata_paths = [_file(path, "batch-tests-json") for path in args.batch_tests_json]
+        for path in paths:
+            saved = raw_receipts.get(path.name, {}).get("sha256")
+            if not saved:
+                raise ValueError("corrected original requires a verified official-download receipt in source registry")
+            receipts.append(_verify_original(path, sha256=saved))
+        inventory = inventory_matr_hdf5(paths, raw_sha256={row["path"]: row["sha256"] for row in receipts})
+        official_tests = {}
+        for metadata_path in metadata_paths:
+            for row in _json(metadata_path):
+                official_tests[(row["name"][:10], str(row["cellId"]).strip().casefold())] = row
+            receipts.append(_verify_original(metadata_path))
+        for row in inventory["records"]:
+            official_test = official_tests.get((row["batch_id"], row["source_identity"]))
+            if official_test is None or str(official_test.get("channel")) != str(row["original_channel"]):
+                raise ValueError("original MAT barcode/channel disagrees with official test metadata")
+            row.update(barcode_verified=True, original_channel_verified=True)
+        split = freeze_group_split(inventory_identity_frame(inventory), ratios=(.6, .2, .2, 0.))
+        split["final_policy"] = "development_only_no_final_objects_or_scoring"
     elif args.kind == "dyad":
         archive = _file(args.archive, "archive")
         labels = _file(args.labels_csv, "labels-csv")
@@ -160,12 +186,17 @@ def prepare(args: argparse.Namespace) -> dict[str, Any]:
 
     output.mkdir(parents=True, exist_ok=False)
     write_json(output / "preparse_split_manifest.json", split)
+    if args.kind == "matr-corrected":
+        write_json(output / "identity_inventory.json", inventory)
     if args.kind == "matr-summary":
         dataset, parsed_split = parse_matr_official(tests, max_cells=args.max_cells, reference_ordinal=args.reference_ordinal, query_stride=args.query_stride)
         if parsed_split["assignments"] != split["assignments"]:
             raise ValueError("parser identity split differs from frozen preparse split")
     elif args.kind == "matr-csv":
         dataset = parse_matr_csv(csv, test, max_segments=args.max_segments)
+    elif args.kind == "matr-corrected":
+        from model_lab.modeling.v2.matr_stream import parse_matr_hdf5
+        dataset = parse_matr_hdf5(paths, inventory, max_segments_per_cell=args.max_segments)
     elif args.kind == "dyad":
         conversion = convert_dyad_archive(archive, numeric_output, max_per_vehicle=args.max_per_vehicle)
         dataset = parse_table(conversion["table_path"], {"source_id": "dyad", "origin": "real_operational", "group_column": "physical_cell_id", "label_column": "fault_label", "label_only_columns": ["original_snippet_label"], "target_definition_id": "dyad-original-retrospective-vehicle-anomaly-v2", "sensor_level": "vehicle", "protocol_id": "vehicle_charging"})
@@ -193,6 +224,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--dry-list", action="store_true", help="print declared inputs only; do not open measurements or write output")
     for name in ("tests-json", "csv", "metadata-json", "archive", "labels-csv", "official-record", "numeric-out", "csv-root", "selection-json"):
         parser.add_argument("--" + name)
+    parser.add_argument("--mat-files", nargs="+", help="all three official corrected MATLAB files")
+    parser.add_argument("--batch-tests-json", nargs="+", help="official tests JSON for all three batches, for independent barcode/channel verification")
     for name, default in (("max-cells", 36), ("reference-ordinal", 10), ("query-stride", 10), ("max-segments", 32), ("max-per-vehicle", 8)):
         parser.add_argument("--" + name, type=int, default=default)
     return parser

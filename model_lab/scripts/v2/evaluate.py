@@ -14,6 +14,8 @@ def main():
     parser.add_argument("--manifest",help="Independently released final bundle; frozen training IDs must match")
     parser.add_argument("--authorize-final",action="store_true",help="Confirm development frozen before final comparison")
     args=parser.parse_args();run=Path(args.run_id);record,model=get_model(run)
+    if args.split=="final" and record.get("config",{}).get("development_only"):
+        raise ValueError("development-only proof cannot evaluate final")
     if args.split=="final" and not args.authorize_final:raise ValueError("final evaluation requires frozen-recipe authorization")
     if args.split=="final" and (run/"final_metrics.json").exists():raise ValueError("final comparison already consumed")
     path=Path(args.manifest) if args.manifest else resolve_dataset_path(record);manifest,arrays=load_dataset(path)

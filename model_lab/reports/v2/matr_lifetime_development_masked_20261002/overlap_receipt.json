@@ -1,0 +1,28 @@
+{
+  "old_matr_summary_to_new_corrected_feature_split": [
+    {
+      "prior_split": "calibration",
+      "new_split": "dev",
+      "independent_objects": 6
+    },
+    {
+      "prior_split": "dev",
+      "new_split": "dev",
+      "independent_objects": 1
+    },
+    {
+      "prior_split": "dev",
+      "new_split": "train",
+      "independent_objects": 5
+    },
+    {
+      "prior_split": "train",
+      "new_split": "train",
+      "independent_objects": 17
+    }
+  ],
+  "prior_final_overlap": 0,
+  "prior_nonfinal_overlap": 29,
+  "clean_independent_transfer_claim": false,
+  "prior_manifest_read": "JSON identities only; prior arrays not opened"
+}

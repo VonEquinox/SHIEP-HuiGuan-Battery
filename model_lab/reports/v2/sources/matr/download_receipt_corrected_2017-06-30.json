@@ -1,0 +1,13 @@
+{
+  "status": "verified",
+  "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat",
+  "resolved_download_url": "https://data.matr.io/1/api/v1/file/5c86bf13fa2ede00015ddd82/download",
+  "transport_destination": "https://data.matr.io/assetstore/f7/eb/f7eb42ebc0584cba855a98d127fc6842",
+  "original_filename": "2017-06-30_batchdata_updated_struct_errorcorrect.mat",
+  "bytes": 2007331155,
+  "sha256": "63ab200d09ecb237fee5ef3a5c5db76e3212e3206a0bd92f769e1427fed338b8",
+  "author_checksum": null,
+  "retrieved_at": "2026-10-01T17:56:57.365722+00:00",
+  "attempts": 1,
+  "prior_errors": []
+}

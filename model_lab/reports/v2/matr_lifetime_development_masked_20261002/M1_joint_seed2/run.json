@@ -1,0 +1,1399 @@
+{
+  "run_id": "M1_joint_seed2",
+  "family": "M1",
+  "ablation": "joint",
+  "seed": 2,
+  "status": "calibrated",
+  "dataset_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.json",
+  "dataset_sha256": "258346f1e6b189c41ef60f6a6c8af47146339c6b4e2cd3b7a47327752229f066",
+  "feature_schema": "battery_features_v2",
+  "domain_index": {
+    "matr::LFP::1C(4%)-6C": 0,
+    "matr::LFP::2C(10%)-6C": 1,
+    "matr::LFP::2C(2%)-5C": 2,
+    "matr::LFP::2C(7%)-5.5C": 3,
+    "matr::LFP::3.6C(2%)-4.85C": 4,
+    "matr::LFP::3.6C(22%)-5.5C": 5,
+    "matr::LFP::3.6C(30%)-6C": 6,
+    "matr::LFP::3.6C(9%)-5C": 7,
+    "matr::LFP::3.7C(31%)-5.9C-newstructure": 8,
+    "matr::LFP::4.4C(24%)-5C": 9,
+    "matr::LFP::4.4C(47%)-5.5C": 10,
+    "matr::LFP::4.4C(55%)-6C": 11,
+    "matr::LFP::4.4C(8%)-4.85C": 12,
+    "matr::LFP::4.4C(80%)-4.4C": 13,
+    "matr::LFP::4.65C(19%)-4.85C": 14,
+    "matr::LFP::4.65C(44%)-5C": 15,
+    "matr::LFP::4.65C(69%)-6C": 16,
+    "matr::LFP::4.8C(80%)-4.8C": 17,
+    "matr::LFP::4.8C(80%)-4.8C-newstructure": 18,
+    "matr::LFP::4.9C(27%)-4.75C": 19,
+    "matr::LFP::4.9C(61%)-4.5C": 20,
+    "matr::LFP::4.9C(69%)-4.25C": 21,
+    "matr::LFP::4C(13%)-5C": 22,
+    "matr::LFP::4C(31%)-5": 23,
+    "matr::LFP::4C(4%)-4.85C": 24,
+    "matr::LFP::4C(40%)-6C": 25,
+    "matr::LFP::5.2C(10%)-4.75C": 26,
+    "matr::LFP::5.2C(37%)-4.5C": 27,
+    "matr::LFP::5.2C(50%)-4.25C": 28,
+    "matr::LFP::5.2C(58%)-4C": 29,
+    "matr::LFP::5.2C(66%)-3.5C": 30,
+    "matr::LFP::5.2C(71%)-3C": 31,
+    "matr::LFP::5.3C(54%)-4C-newstructure": 32,
+    "matr::LFP::5.4C(40%)-3.6C": 33,
+    "matr::LFP::5.4C(50%)-3.6C": 34,
+    "matr::LFP::5.4C(50%)-3C": 35,
+    "matr::LFP::5.4C(60%)-3.6C": 36,
+    "matr::LFP::5.4C(60%)-3C": 37,
+    "matr::LFP::5.4C(70%)-3C": 38,
+    "matr::LFP::5.4C(80%)-5.4C": 39,
+    "matr::LFP::5.6C(19%)-4.6C-newstructure": 40,
+    "matr::LFP::5.6C(25%)-4.5C": 41,
+    "matr::LFP::5.6C(36%)-4.3C-newstructure": 42,
+    "matr::LFP::5.6C(38%)-4.25C": 43,
+    "matr::LFP::5.6C(47%)-4C": 44,
+    "matr::LFP::5.6C(5%)-4.75C": 45,
+    "matr::LFP::5.6C(58%)-3.5C": 46,
+    "matr::LFP::5.6C(65%)-3C": 47,
+    "matr::LFP::5.9C(15%)-4.6C-newstructure": 48,
+    "matr::LFP::5.9C(60%)-3.1C-newstructure": 49,
+    "matr::LFP::5C(67%)-4C-newstructure": 50,
+    "matr::LFP::6C(20%)-4.5C": 51,
+    "matr::LFP::6C(30%)-3.6C": 52,
+    "matr::LFP::6C(31%)-4.25C": 53,
+    "matr::LFP::6C(4%)-4.75C": 54,
+    "matr::LFP::6C(40%)-3.6C": 55,
+    "matr::LFP::6C(40%)-3C": 56,
+    "matr::LFP::6C(40%)-4C": 57,
+    "matr::LFP::6C(50%)-3.6C": 58,
+    "matr::LFP::6C(50%)-3C": 59,
+    "matr::LFP::6C(52%)-3.5C": 60,
+    "matr::LFP::6C(60%)-3C": 61,
+    "matr::LFP::7C(30%)-3.6C": 62,
+    "matr::LFP::7C(40%)-3.6C": 63,
+    "matr::LFP::7C(40%)-3C": 64,
+    "matr::LFP::8C(15%)-3.6C": 65,
+    "matr::LFP::8C(25%)-3.6C": 66,
+    "matr::LFP::8C(35%)-3.6C": 67
+  },
+  "target_definitions": {
+    "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+    "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+    "efficiency": null,
+    "fault": null
+  },
+  "target_definitions_by_domain": {
+    "matr::LFP::4.4C(80%)-4.4C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.8C(80%)-4.8C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.4C(40%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.4C(50%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.4C(50%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.4C(60%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.4C(60%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.4C(70%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.4C(80%)-5.4C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(30%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(40%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(40%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(50%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(50%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(60%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::7C(30%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::7C(40%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::7C(40%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::8C(15%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::8C(25%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::8C(35%)-3.6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::1C(4%)-6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::2C(10%)-6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::2C(2%)-5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::2C(7%)-5.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::3.6C(22%)-5.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::3.6C(2%)-4.85C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::3.6C(30%)-6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::3.6C(9%)-5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4C(13%)-5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4C(31%)-5": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4C(40%)-6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4C(4%)-4.85C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.4C(24%)-5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.4C(47%)-5.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.4C(55%)-6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.4C(8%)-4.85C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.65C(19%)-4.85C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.65C(44%)-5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.65C(69%)-6C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.9C(27%)-4.75C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.9C(61%)-4.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.9C(69%)-4.25C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.2C(10%)-4.75C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.2C(37%)-4.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.2C(50%)-4.25C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.2C(58%)-4C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.2C(66%)-3.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.2C(71%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.6C(25%)-4.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.6C(38%)-4.25C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.6C(47%)-4C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.6C(58%)-3.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.6C(5%)-4.75C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.6C(65%)-3C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(20%)-4.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(31%)-4.25C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(40%)-4C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(4%)-4.75C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::6C(52%)-3.5C": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5C(67%)-4C-newstructure": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.3C(54%)-4C-newstructure": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.6C(19%)-4.6C-newstructure": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.6C(36%)-4.3C-newstructure": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::4.8C(80%)-4.8C-newstructure": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.9C(15%)-4.6C-newstructure": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::3.7C(31%)-5.9C-newstructure": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::5.9C(60%)-3.1C-newstructure": {
+      "soh": "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2",
+      "rul": "matr-corrected-physical-nominal-80pct-0.88Ah-v2::threshold_Ah=0.88::operator=strictly_less_than::remaining_physical_cycles_at_query",
+      "efficiency": null,
+      "fault": null
+    }
+  },
+  "data_namespace": "experimental",
+  "survival_grid": [
+    100,
+    200,
+    400,
+    600,
+    800,
+    1000,
+    1500,
+    2000,
+    2500,
+    3000
+  ],
+  "preprocessor": {
+    "feature_mean": [
+      3.171239137649536,
+      0.5017321109771729,
+      1.99977445602417,
+      3.5998430252075195,
+      1.9894803762435913,
+      5.070866584777832,
+      32.91283416748047,
+      1.5964514017105103,
+      4603.0849609375,
+      0.5489274263381958,
+      0.36076536774635315,
+      0.9955176115036011,
+      -7.072935113683343e-05,
+      8.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "feature_scale": [
+      0.05168706923723221,
+      0.022772161290049553,
+      0.00015578934107907116,
+      0.00385799678042531,
+      0.2832834720611572,
+      0.8658491373062134,
+      1.2317886352539062,
+      0.4309041500091553,
+      15772.4169921875,
+      0.06856893002986908,
+      0.042440466582775116,
+      0.010929535143077374,
+      0.0001419398613506928,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "sequence_mean": [
+      3.1691744327545166,
+      -0.038340479135513306,
+      32.879032135009766,
+      0.5,
+      0.18590274453163147
+    ],
+    "sequence_scale": [
+      0.5041707158088684,
+      2.687528371810913,
+      1.9760122299194336,
+      0.2932031750679016,
+      0.9336414337158203
+    ],
+    "fitted_split": "train",
+    "feature_min": [
+      2.7214388847351074,
+      0.4285314679145813,
+      1.9988765716552734,
+      3.5581345558166504,
+      0.001989778596907854,
+      0.12734583020210266,
+      29.201705932617188,
+      0.20853149890899658,
+      2521.195068359375,
+      0.0,
+      0.015625,
+      0.9072851538658142,
+      -0.0012994327116757631,
+      8.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "feature_max": [
+      3.2239017486572266,
+      0.5437074303627014,
+      2.0002641677856445,
+      3.6004257202148438,
+      2.4249234199523926,
+      7.274449825286865,
+      37.22390365600586,
+      2.577631950378418,
+      175167.921875,
+      0.609375,
+      0.40625,
+      1.0026895999908447,
+      0.00018685392569750547,
+      8.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "code": {
+    "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+    "modeling/v2/baselines.py": "6ce0ca64e087b7cfe0e30352bcbe5f5c2795b5acb3f1703719e5f31b345cb13b",
+    "modeling/v2/calibration.py": "4d1723005955b03d1f84f573e649350e88ddbf7d648914e9bf903bee9d20570b",
+    "modeling/v2/contracts.py": "8442f44fbc0a0f08abbf9221a90574c406366f7cc77ce2e68dae4906ffe0bd5d",
+    "modeling/v2/data.py": "fcfe61acb5cc1b2c07b08c25b3428a626a013c1b87014cc5b4d7f09be364bf45",
+    "modeling/v2/features.py": "a512857c9081034f13c38efd00dee5c7c89627e90e9f79dfe3fd5c73a18e265d",
+    "modeling/v2/generated_fault.py": "9c872ee205f0e51f7bf4e09655f1fb963a51ec88cbbdf74c9eaa2ae081388bf0",
+    "modeling/v2/lifetime_features.py": "5c0f63c16acce95aaa70c61c0f929361e3c29bcd16fd0941548ab310a7148ceb",
+    "modeling/v2/matr_stream.py": "4e0c0a98914dc7ad6ba68b4e9857fd334daed48bfa6ba9af0af2ad1318d267ff",
+    "modeling/v2/metrics.py": "ca3883bcd0eea957e259c815a0a8510b202ffd15adc6dc5bddb7c421080b8fb3",
+    "modeling/v2/multitask.py": "406c55f6d5279f19f7dd145cde625aaed86a8638a69027712b8e88409dcfe281",
+    "modeling/v2/prediction.py": "1bffaec755c7ba1de867e56373ce3b639ad64cc90b21d0f299bbfe63a10e5857",
+    "modeling/v2/safe_numeric.py": "bdd5ee90483247d35132ea0511b249618e79b6563133d7b82a25f867fd8077d2",
+    "modeling/v2/sources.py": "87ca02774452aaeb4865509b8b2dc65257c8b7f1a84bba4eea056ad7f32cc489",
+    "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+    "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+    "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+    "scripts/v2/benchmark_generated.py": "be95b280fddf3200f5477d13f27824b617b50d43fa377aaac8893c0060261b19",
+    "scripts/v2/calibrate.py": "4a8bf24cd2be234960c7d7a18d8c00804f5806794a3ff915c159bf6bd55b6b3a",
+    "scripts/v2/common.py": "9a9bdf3ba23eeef4b6c9387863f99dbb09dc3fd11ecfe202792b1cc0c7c0c79f",
+    "scripts/v2/evaluate.py": "663c38582e39ab040968131d0642351f8e37a3fe6e4e5af1fa2d387dbb584251",
+    "scripts/v2/export.py": "115794ffa8c8a5463f28da224d96af57cb72e4781adcdf7937c8c8a050a012ce",
+    "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+    "scripts/v2/ingest.py": "781bcb4095edea81f0d6825288e4eb2130a9b67bcfdbe85f10f782e92a8aeb96",
+    "scripts/v2/lifetime_features.py": "7293961a3479b81576ced0fcc99394ad8d5ca1f0e96dc98ed13334e972fb698d",
+    "scripts/v2/prepare_official_subsets.py": "9c82314cd3bd292b5a409a7319b4278dda39986a2d23a86de666338e21ca22e3",
+    "scripts/v2/summarize.py": "dfde4241dda610c5aea959a2ee462f707c72df691f369ca9b3aeabbed3ca8aa1",
+    "scripts/v2/train.py": "402c2874d8dc0565ab9dd504d66f1c86caab3e0aefb6830ddcdb7611cb5f56f8",
+    "scripts/v2/verify_package.py": "1cc5e04823577de1b65f488f86337b7119fee4096799de0a48c0935c09ebd702"
+  },
+  "config": {
+    "dataset_manifest": "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.json",
+    "output_dir": "model_lab/reports/v2/matr_lifetime_development_masked_20261002",
+    "families": [
+      "M1",
+      "M2"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "ablations": [
+      "joint",
+      "no_domain_adapter",
+      "no_history",
+      "single_task"
+    ],
+    "development_only": true,
+    "ngboost": true,
+    "m1_estimators": 80,
+    "min_survival_objects": 2,
+    "epochs": 12,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "loss_contract": "fixed_domain_object_task_v2",
+    "task_weights": {
+      "soh": 1.0,
+      "efficiency": 1.0,
+      "rul": 1.0,
+      "fault": 1.0
+    },
+    "calibration_alpha": 0.2,
+    "survival_grid": [
+      100,
+      200,
+      400,
+      600,
+      800,
+      1000,
+      1500,
+      2000,
+      2500,
+      3000
+    ]
+  },
+  "support_domains": [
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "1C(4%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "2C(10%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "2C(2%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.6C(22%)-5.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.6C(9%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "3.7C(31%)-5.9C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(24%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(55%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.4C(8%)-4.85C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.65C(19%)-4.85C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.65C(44%)-5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.8C(80%)-4.8C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.8C(80%)-4.8C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.9C(27%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4.9C(61%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4C(31%)-5"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "4C(40%)-6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(10%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(58%)-4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(66%)-3.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.2C(71%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.3C(54%)-4C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(50%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(50%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(60%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(60%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(70%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.4C(80%)-5.4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(19%)-4.6C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(25%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(36%)-4.3C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(47%)-4C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.6C(65%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.9C(15%)-4.6C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5.9C(60%)-3.1C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "5C(67%)-4C-newstructure"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(20%)-4.5C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(30%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(4%)-4.75C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(40%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(50%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "6C(50%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(30%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(40%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "7C(40%)-3C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(15%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(25%)-3.6C"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "8C(35%)-3.6C"
+    }
+  ],
+  "train_objects": [
+    "matr:el150800440551",
+    "matr:el150800453113",
+    "matr:el150800453240",
+    "matr:el150800453773",
+    "matr:el150800460433",
+    "matr:el150800460451",
+    "matr:el150800460472",
+    "matr:el150800460473",
+    "matr:el150800460477",
+    "matr:el150800460478",
+    "matr:el150800460481",
+    "matr:el150800460485",
+    "matr:el150800460492",
+    "matr:el150800460507",
+    "matr:el150800460510",
+    "matr:el150800460513",
+    "matr:el150800460518",
+    "matr:el150800460522",
+    "matr:el150800460527",
+    "matr:el150800460528",
+    "matr:el150800460596",
+    "matr:el150800460601",
+    "matr:el150800460602",
+    "matr:el150800460603",
+    "matr:el150800460605",
+    "matr:el150800460610",
+    "matr:el150800460611",
+    "matr:el150800460613",
+    "matr:el150800460614",
+    "matr:el150800460615",
+    "matr:el150800460618",
+    "matr:el150800460622",
+    "matr:el150800460628",
+    "matr:el150800460630",
+    "matr:el150800460636",
+    "matr:el150800460641",
+    "matr:el150800460647",
+    "matr:el150800460649",
+    "matr:el150800460652",
+    "matr:el150800460653",
+    "matr:el150800460655",
+    "matr:el150800460658",
+    "matr:el150800460659",
+    "matr:el150800463198",
+    "matr:el150800463208",
+    "matr:el150800463229",
+    "matr:el150800463245",
+    "matr:el150800463838",
+    "matr:el150800463882",
+    "matr:el150800463980",
+    "matr:el150800464002",
+    "matr:el150800464898",
+    "matr:el150800465027",
+    "matr:el150800737213",
+    "matr:el150800737233",
+    "matr:el150800737234",
+    "matr:el150800737270",
+    "matr:el150800737274",
+    "matr:el150800737279",
+    "matr:el150800737280",
+    "matr:el150800737285",
+    "matr:el150800737294",
+    "matr:el150800737297",
+    "matr:el150800737304",
+    "matr:el150800737314",
+    "matr:el150800737315",
+    "matr:el150800737319",
+    "matr:el150800737320",
+    "matr:el150800737329",
+    "matr:el150800737345",
+    "matr:el150800737361",
+    "matr:el150800737366",
+    "matr:el150800737367",
+    "matr:el150800737368",
+    "matr:el150800737369",
+    "matr:el150800737377",
+    "matr:el150800737380",
+    "matr:el150800737390",
+    "matr:el150800739495"
+  ],
+  "dev_objects": [
+    "matr:el150800460449",
+    "matr:el150800460466",
+    "matr:el150800460501",
+    "matr:el150800460506",
+    "matr:el150800460525",
+    "matr:el150800460526",
+    "matr:el150800460597",
+    "matr:el150800460599",
+    "matr:el150800460617",
+    "matr:el150800460627",
+    "matr:el150800460635",
+    "matr:el150800460640",
+    "matr:el150800460642",
+    "matr:el150800460678",
+    "matr:el150800464881",
+    "matr:el150800737276",
+    "matr:el150800737277",
+    "matr:el150800737313",
+    "matr:el150800737334",
+    "matr:el150800737365",
+    "matr:el150800737378",
+    "matr:el150800737386",
+    "matr:el150800739484"
+  ],
+  "final_accessed": false,
+  "calibration_accessed": true,
+  "evidence_status": "development_only_research",
+  "validated_deployment": false,
+  "survival_training_support": {
+    "matr::LFP::1C(4%)-6C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::2C(10%)-6C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::2C(2%)-5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::3.6C(22%)-5.5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::3.6C(9%)-5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::3.7C(31%)-5.9C-newstructure": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::4.4C(24%)-5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::4.4C(55%)-6C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::4.4C(8%)-4.85C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::4.65C(19%)-4.85C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::4.65C(44%)-5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::4.8C(80%)-4.8C": {
+      "independent_training_objects": 3,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::4.8C(80%)-4.8C-newstructure": {
+      "independent_training_objects": 3,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::4.9C(27%)-4.75C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::4.9C(61%)-4.5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::4C(31%)-5": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::4C(40%)-6C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.2C(10%)-4.75C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.2C(58%)-4C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.2C(66%)-3.5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.2C(71%)-3C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.3C(54%)-4C-newstructure": {
+      "independent_training_objects": 4,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::5.4C(40%)-3.6C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.4C(50%)-3.6C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::5.4C(50%)-3C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::5.4C(60%)-3.6C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::5.4C(60%)-3C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::5.4C(70%)-3C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.4C(80%)-5.4C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.6C(19%)-4.6C-newstructure": {
+      "independent_training_objects": 4,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::5.6C(25%)-4.5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.6C(36%)-4.3C-newstructure": {
+      "independent_training_objects": 4,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::5.6C(47%)-4C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.6C(65%)-3C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.9C(15%)-4.6C-newstructure": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::5.9C(60%)-3.1C-newstructure": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::5C(67%)-4C-newstructure": {
+      "independent_training_objects": 6,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::6C(20%)-4.5C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::6C(30%)-3.6C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::6C(4%)-4.75C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::6C(40%)-3.6C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::6C(40%)-3C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::6C(50%)-3.6C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::6C(50%)-3C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::7C(30%)-3.6C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::7C(40%)-3.6C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::7C(40%)-3C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    },
+    "matr::LFP::8C(15%)-3.6C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::8C(25%)-3.6C": {
+      "independent_training_objects": 2,
+      "minimum_training_objects": 2,
+      "status": "supported",
+      "reason": null
+    },
+    "matr::LFP::8C(35%)-3.6C": {
+      "independent_training_objects": 1,
+      "minimum_training_objects": 2,
+      "status": "unsupported",
+      "reason": "too_few_independent_survival_objects"
+    }
+  },
+  "dev_inference_ms_per_row": 0.4716105067400613,
+  "elapsed_seconds": 1.2685552079929039,
+  "model_sha256": "3b95773b3bf221353d5e93dd8d9e02c98df67da36a52154166b40204b3c37fed",
+  "calibration_sha256": "328071c88b1d9442dc61f027fd494a26dd92e36c8ecd2c1b831204b9fc558a6f"
+}

@@ -7,6 +7,7 @@ import numpy as np
 from scipy.special import expit, logit
 from sklearn.ensemble import GradientBoostingRegressor, GradientBoostingClassifier
 from .survival import DiscreteHazardBaseline
+from .safe_numeric import validate_baseline_dict,validate_gb_dict
 
 
 def object_weights(groups):
@@ -47,6 +48,9 @@ def gb_to_dict(model):
 
 
 def predict_gb(model, x):
+    x=np.asarray(x)
+    if x.ndim!=2 or not np.isfinite(x).all():raise ValueError("finite two-dimensional features required")
+    validate_gb_dict(model,n_features=x.shape[1])
     value = np.full(len(x), model["initial"])
     for tree in model["trees"]:
         value += model["learning_rate"] * predict_tree(tree, x)
@@ -97,8 +101,10 @@ def inverse(y, task):
 
 
 class DomainBaseline:
-    def __init__(self, seed=0, n_estimators=100, survival_grid=None, use_ngboost=True):
+    def __init__(self, seed=0, n_estimators=100, survival_grid=None, use_ngboost=True, min_survival_objects=1):
         self.seed, self.n_estimators, self.use_ngboost = seed,n_estimators,use_ngboost
+        if type(min_survival_objects) is not int or min_survival_objects<1:raise ValueError("positive integer independent survival-object requirement")
+        self.min_survival_objects=int(min_survival_objects)
         self.grid = survival_grid or [50,100,150,200,300,400,600,800,1000]
         self.models = {}
 
@@ -129,11 +135,16 @@ class DomainBaseline:
                 if self.use_ngboost:
                     models[task]["distribution"] = fit_ngboost(x[valid],label,weights[valid],self.seed,self.n_estimators)
             kind = arrays["survival_kind"][ix]
-            if np.any(kind >= 0):
-                valid = kind >= 0
+            valid = kind >= 0
+            independent_survival_objects=len({rows[i]["physical_cell_id"] for i in ix[valid]})
+            models["survival_support"]={"independent_training_objects":independent_survival_objects,
+                "minimum_training_objects":self.min_survival_objects,"status":"unsupported",
+                "reason":"no_verified_physical_time_threshold_labels" if not independent_survival_objects else "too_few_independent_survival_objects"}
+            if independent_survival_objects>=self.min_survival_objects:
                 survival = DiscreteHazardBaseline(self.grid).fit(x[valid],arrays["survival_lower"][ix][valid],
                     arrays["survival_upper"][ix][valid],kind[valid],weights[valid])
                 models["survival"] = survival.to_dict()
+                models["survival_support"].update(status="supported",reason=None)
             fault = arrays["y_fault"][ix]
             valid = fault >= 0
             if valid.sum() >= 8 and len(np.unique(fault[valid])) == 2:
@@ -167,10 +178,11 @@ class DomainBaseline:
         return output
 
     def to_dict(self):
-        return {"kind":"M1", "seed":self.seed,"survival_grid":self.grid,"domains":self.models}
+        return {"kind":"M1", "seed":self.seed,"survival_grid":self.grid,"min_survival_objects":self.min_survival_objects,"domains":self.models}
 
     @classmethod
-    def from_dict(cls,obj):
-        model = cls(obj["seed"],survival_grid=obj["survival_grid"])
+    def from_dict(cls,obj,*,n_features=None):
+        validate_baseline_dict(obj,n_features=n_features)
+        model = cls(obj["seed"],survival_grid=obj["survival_grid"],min_survival_objects=obj.get("min_survival_objects",1))
         model.models = obj["domains"]
         return model

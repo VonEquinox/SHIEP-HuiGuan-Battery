@@ -104,7 +104,7 @@ class MultiTaskModel:
         self.model = TemporalMultiTask(n_survival_bins=len(self.grid),**spec)
         self.label_support = {}
 
-    def fit(self,arrays,rows,epochs=12,batch_size=8,learning_rate=.001,loss_contract="available_task_mean_v1",task_weights=None):
+    def fit(self,arrays,rows,epochs=12,batch_size=8,learning_rate=.001,loss_contract="available_task_mean_v1",task_weights=None,min_survival_objects=1):
         torch.set_num_threads(2)
         optimizer = torch.optim.Adam(self.model.parameters(),lr=learning_rate)
         rng = np.random.default_rng(self.seed)
@@ -121,7 +121,9 @@ class MultiTaskModel:
         for key in {domain_key(r) for r in rows}:
             ix=np.asarray([domain_key(r)==key for r in rows])
             local={k:bool(np.any(np.isfinite(arrays[f"y_{k}"][ix]))) for k in ("soh","efficiency")}
-            local.update(rul=bool(np.any(arrays["survival_kind"][ix]>=0)),fault=bool(np.any(arrays["y_fault"][ix]>=0)))
+            valid_survival=ix&(arrays["survival_kind"]>=0)
+            local.update(rul=len({rows[i]["physical_cell_id"] for i in np.flatnonzero(valid_survival)})>=min_survival_objects,
+                         fault=bool(np.any(arrays["y_fault"][ix]>=0)))
             if self.spec.get("single_task"):local.update(efficiency=False,rul=False,fault=False)
             self.label_support_by_domain[key]=local
         self.history = []
@@ -166,7 +168,11 @@ class MultiTaskModel:
         result["hazard"] = expit(outputs["hazard_logits"]) if self.label_support.get("rul") else np.full_like(outputs["hazard_logits"],np.nan)
         result["fault_probability"] = expit(outputs["fault_logits"]) if self.label_support.get("fault") else np.full_like(outputs["fault_logits"],np.nan)
         for i,row in enumerate(rows):
-            support=getattr(self,"label_support_by_domain",{}).get(domain_key(row),self.label_support)
+            by_domain=getattr(self,"label_support_by_domain",{})
+            # A feature bundle may enumerate dev-only policies so their domain
+            # indices exist, but that does not make their heads trained. Legacy
+            # wrappers without any domain map retain their explicit global map.
+            support=by_domain.get(domain_key(row),{}) if by_domain else self.label_support
             for task in ("soh","efficiency"):
                 if not support.get(task):
                     result[f"{task}_quantiles"][i]=np.nan

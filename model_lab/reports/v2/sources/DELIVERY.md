@@ -7,7 +7,7 @@
 | 来源 | 官方元数据与许可记录 | 实际下载/复用与解析 | 本次结果 |
 |---|---|---|---|
 | XJTU | Zenodo 10963339；具体记录声明 CC BY 4.0，保留原始文件 MD5 | 复用只读原始 MAT；先按文件名排除全部 `-5`，冻结 21 个可开发对象为 11/3/4/3 | 初始仅打开 18 个 train/dev/calibration 对象：12,170 条记录、581 个曲线片段、1,972 个 RPT 参考 SOH 标签；3 个新 V2 final 在模型配方冻结后单独写入新目录 |
-| MATR | 从官方项目页当前 SPA 中读取 API 路由、原始项目 ID、批次 `structFileId`；官方 API HTTP 200；平台声明 CC BY 4.0 | 下载完整原始 Arbin 单电芯 CSV 111,327,527 bytes；获取官方 2018 批次的原始条码与容量图测量 JSON | 单电芯 542 个明确物理周期、32 条完整原始曲线；容量摘要包注册 36 个条码，35 个有可用测量、38,198 个容量观测、3,801 个统计查询；不是论文完整复现 |
+| MATR | 从官方项目页当前 SPA 中读取 API 路由、原始项目 ID、批次 `structFileId`；官方 API HTTP 200；平台声明 CC BY 4.0 | 下载完整原始 Arbin 单电芯 CSV 111,327,527 bytes、获取官方 2018 容量图 JSON；追加完整 corrected MAT 三批 8,269,341,808 bytes | 单电芯 542 周期、32 曲线；摘要包 36 注册/35 有测量对象；完整 MAT 135 身份/134 有测量对象、113,303 物理周期、4,241 原始曲线，作者筛选实际 124；模型论文复现仍未声明 |
 | DyAD | Figshare 23659323；具体记录声明 CC BY 4.0；保留每个包作者 MD5 | 下载最小 `battery_brand3.tar.gz` 55,469,605 bytes，通过 MD5 与 SHA256；100 个车辆标签来自实际 CSV | 在隔离转换进程中，按原始包顺序每车取 8 个片段，共 800 个真实运行片段、100 个独立车辆；按车辆冻结 60/15/10/15 |
 | CH-BatteryGen | GitHub Releases 的当前 HTML 与实际 lazy asset 链接；README 声明 CC BY-NC-SA 4.0，并含学术/非商业用途限制 | 下载完整 `V1.0.7z` 386,457,534 bytes 和故障详情 XLSX 13,437 bytes；SHA256 与官方 HEAD 大小核对，作者未发布校验和 | 从实际发布包读取 96 个 CSV，每个故障类别 24 个，LFP/NCM 分别保留；按重复 VIN token 合并为 48 个保守根组、29/7/5/7 |
 
@@ -21,7 +21,7 @@
 
 XJTU 的源记录 ordinal 和官方 MATR 容量图的 ordinal 不是已经核验的物理循环数，因此这两种输入不提供 RUL。MATR 原始 Arbin CSV 则含明确 `Cycle_Index`，支持该原始测量任务的 0.88 Ah 阈值与生存事件/删失标记。未到阈值时保留右删失，末次记录加 1 不成为死亡事件。原始容量未强制单调化。
 
-MATR 容量图单独使用第 10 个可见容量观测作固定参考，保留 `soh_nominal` 与参考 SOH 的不同定义。未知充电策略保留 `unknown`。缺曲线的对象走容量历史统计输入，曲线数组为空并有质量标记；不生成虚构电压、电流或温度。完整 corrected MATLAB 三批文件仅解析了官方下载元数据，未下载/复现；`paper_reproduction.json` 显式为 blocked，不能用当前容量摘要成绩冒充论文复现。
+MATR 容量图单独使用第 10 个可见容量观测作固定参考，保留 `soh_nominal` 与参考 SOH 的不同定义。未知充电策略保留 `unknown`。缺曲线的对象走容量历史统计输入，曲线数组为空并有质量标记；不生成虚构电压、电流或温度。最初 corrected MATLAB 三批文件仅有官方下载元数据，容量摘要包的 `paper_reproduction.json` 显式为 blocked，不能用其成绩冒充论文复现。追加的三批完整原始下载与流式资格核验见后文；既有摘要包和所有模型记录保持冻结。
 
 MATLAB 续测修复单测覆盖作者一基索引 `[8,9,10,16,17]` 对应 Python `[7,8,9,15,16]`，要求原始条码匹配与容量/周期连续性，拒绝仅凭可重复通道号合并。两次测量的原始曲线、各自路径与周期 offset 都保留，原先第一条曲线不会被第二条记录的 offset 移位。
 
@@ -85,7 +85,44 @@ uv run python -m model_lab.scripts.v2.prepare_official_subsets --kind ch \
 
 DyAD 先从原标签 CSV 仅读取 `car` 身份列，冻结车辆 split，再做限定静态数值转换；CH 先从精确文件路径冻结保守 VIN 根 split，再解析数值 CSV。MATR 容量摘要只使用 2018 独立批次，继续保留未知协议和 ordinal 的限制。CLI 只准备新数据包，不训练、校准或评价任何模型；`--dry-list` 仅显示参数，不打开测量文件或写输出。
 
-此补交只执行 `uv run pytest model_lab/tests/v2/test_prepare_official_subsets_v2.py -q` 对应的根环境测试：4 个轻量守卫测试全部通过；另运行 CLI `--help` 检查。测试覆盖 dry-list 不打开缺失原始文件、不建输出目录，拒绝既有/非 V2 输出，原始依赖缺失明确报错，以及 CH 选择路径越界拒绝。没有重解析实际原始数据、运行训练或消费 final，也没有修改冻结表、manifest 或训练记录。
+首次此补交执行 `uv run pytest model_lab/tests/v2/test_prepare_official_subsets_v2.py -q` 对应的根环境测试：4 个轻量守卫测试全部通过；另运行 CLI `--help` 检查。追加 corrected 分支后补充三批原始依赖守卫，现为 5 passed。测试覆盖 dry-list 不打开缺失原始文件、不建输出目录，拒绝既有/非 V2 输出，原始依赖缺失明确报错，以及 CH 选择路径越界拒绝。初始 CLI 补交没有重解析实际原始数据、运行训练或消费 final；后续新 corrected 数值资格核验单独见下文，已有冻结表、manifest 或训练记录均未修改。
+
+## 追加 corrected MATR 原始批次资格核验
+
+获得追加指令后，用官方当前文件元数据中已经解析的 `structFileId` 启动最多两个网络下载进程，每文件上限 4 GiB、剩余磁盘保留至少 70 GiB、代理 7897。三个文件全部完成真实下载、官方元数据大小核对和额外 SHA256，成功后只读；官方没有发布文件摘要，不将本地 SHA256 冒称作者摘要。网络进程已结束，共 8,269,341,808 bytes，回执为本目录 MATR 下的 `download_receipt_corrected_*.json`。
+
+| corrected 原始文件日期 | bytes | SHA256 |
+|---|---:|---|
+| 2017-05-12 | 3,025,320,241 | `9d928ab978f0e3c70b31cb833a749fedd35094d01af76475d69b40aa3497f5ba` |
+| 2017-06-30 | 2,007,331,155 | `63ab200d09ecb237fee5ef3a5c5db76e3212e3206a0bd92f769e1427fed338b8` |
+| 2018-04-12 | 3,236,690,412 | `62c30e413b63e6144720e016deed3661fac8468641794a5807b123fe84717998` |
+
+新增 HDF5 流式解析由子 Agent 在独立 `matr_stream.py` 中完成，不递归展开整个 8.269 GB 包。实际 schema 检查确认 B2 的 48 个 MATLAB struct 含 `barcode/channel_id/policy/policy_readable/summary/cycles/cycle_life`；条码与通道是 MATLAB MCOS 字符串对象引用，先还原原始身份后冻结 split。官方 B1/B2 同一条码所在通道和作者 MATLAB 续测位置不同，没有使用通道号等于 struct 下标的假设。MCOS 仅读取限定字符串对象/属性表和 UTF-16 数值负载，不执行 MATLAB 类；结构参考原始 matio `src/mcos.c`，不是 pickle 反序列化。
+
+MCOS 原始字符串已通过限定对象/属性表还原；140 个原始 struct 的条码、通道均逐一与官方三批 tests JSON 独立核对成功，五对续测条码完全匹配，合并为 135 个独立物理对象。身份清单与 81/27/27/0 的 development-only split 已在任何数值目标读取前写入 `matr_corrected_development_20261002`。对应小型报告为 `corrected_identity_qualification.json`。后续寿命拟合将由独立 feature builder 在投影前排除既有容量摘要 final 六条码；资格包保留完整原始身份，不重写原实验结果。
+
+完整新包的身份、数据写出及审计均通过：135 个注册物理对象，排除原始收集问题对象的数值后为 134 个有测量对象；113,303 条原始物理周期摘要、4,241 条原始曲线、112,143 个参考 SOH 标签、134 个严格 0.88 Ah 生存标签、124 个单独命名的作者输出约定标签。按真实数值执行作者顺序筛选后为 B1 41、B2 43、B3 40，共 124，不是硬设定这个数；11 项排除原因保留。实际生存标签为 43 个精确事件与 91 个右删失，91 个末次记录加一不成为真实死亡事件；其末次观察只能作为删失下界，不能训练为点 RUL 标签。
+
+曲线物理周期 10 支持 134 对象、周期 100 支持 133 对象；原始缺失/不合法曲线记录原因，不补出虚构 100 周期曲线。原生 Qd/Qc 数组分别为 `discharge_capacity_Ah/charge_capacity_Ah`，并保留完整 V/I/T 与源时间字段；所有续测曲线保留原路径、源周期及修复后的可用周期。摘要中的 QCharge、IR、Tmax/Tmin/Tavg、chargetime 也保留。独立新包 manifest/audit 与回执位于 `matr_corrected_development_20261002`、`matr_corrected_data_receipt.json` 和 `corrected_parse_qualification.json`；这完成数据资格，并不表示已完成模型论文复现。
+
+流式解析 10 个测试通过，含 MCOS 原始字符串、预算/链接拒绝、140 原始/135 物理/134 可测量的完整范围 fixture、五组续测的双路径与可用周期、作者按已过滤列表索引顺序处理、实际 124 作者视图，以及区分右删失与作者 n+1 输出。没有为此次资格核验运行训练或评价任何 final；后续模型实验另行预登记和记录。
+
+完整批次重放入口如下；默认不允许已存在输出目录，流式读取不超过每对象 32 条原始曲线，并保留真实物理周期 10 与 100 的曲线 landmark（若存在）。
+
+```bash
+uv run python -m model_lab.scripts.v2.prepare_official_subsets --kind matr-corrected \
+  --mat-files \
+    model_lab/data/raw/matr/2017-05-12_batchdata_updated_struct_errorcorrect.mat \
+    model_lab/data/raw/matr/2017-06-30_batchdata_updated_struct_errorcorrect.mat \
+    model_lab/data/raw/matr/2018-04-12_batchdata_updated_struct_errorcorrect.mat \
+  --batch-tests-json \
+    model_lab/reports/v2/sources/matr/official_batch1_tests.json \
+    model_lab/reports/v2/sources/matr/official_batch2_tests.json \
+    model_lab/reports/v2/sources/matr/official_batch3_tests.json \
+  --max-segments 32 --out model_lab/data/derived/v2/replay_matr_corrected_development
+```
+
+追加代码复核还发现原官方容量图/CSV 两个入口遗漏严格小于阈值的显式参数，现统一使用 `inclusive=False`；仅针对边界语义运行 `test_survival_censoring_and_target_basis`，1 passed。此改动只影响后续新解析，未重写既有冻结输出或重评分任何 final。
 
 ## 验证
 
