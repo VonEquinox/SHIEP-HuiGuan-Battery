@@ -1,0 +1,2082 @@
+{
+  "label": "Bounded synthetic/replay diagnosis smoke; no statistical generalization claim",
+  "live_cloud": true,
+  "sealed_access": false,
+  "frozen_config": {
+    "llm_model": "deepseek-flash",
+    "agent_version": "single-agent-v2.0",
+    "numerical_model": "none-bound-unverified-synthetic-signals",
+    "max_body_skills": 4,
+    "max_tool_calls": 12,
+    "report_provider_call_budget": 1,
+    "root_count_per_arm": 2,
+    "sealed_access": false
+  },
+  "arms": [
+    {
+      "arm": "A0",
+      "label": "synthetic/replay diagnosis experiment",
+      "root_count": 2,
+      "records": [
+        {
+          "root_scenario_id": "bounded-smoke-evolution-0",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-cceefcdb6d0bf8be",
+            "asset_id": "cloud-smoke-asset-0",
+            "installation_id": "cloud-smoke-installation-0",
+            "visible_cutoff": "2026-09-01T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-0"
+                ]
+              }
+            ],
+            "hypotheses": [],
+            "unknowns": [
+              "No numerical prediction supplied",
+              "Root cause is not independently confirmed"
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied"
+              ]
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-0"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v0"
+          },
+          "context_snapshot_id": "context-0-17027192618e1c4e",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 1,
+            "grounded_fact_count": 1,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "rule_baseline",
+            "cloud_report_valid": false,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [],
+            "tool_call_count": 1,
+            "llm_model": null,
+            "llm_usage": {},
+            "llm_request_count": 0,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-0-17027192618e1c4e"
+          },
+          "update_state": "no_update"
+        },
+        {
+          "root_scenario_id": "bounded-smoke-evolution-1",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-63c64b1b90aba0e8",
+            "asset_id": "cloud-smoke-asset-1",
+            "installation_id": "cloud-smoke-installation-1",
+            "visible_cutoff": "2026-09-02T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-1"
+                ]
+              }
+            ],
+            "hypotheses": [],
+            "unknowns": [
+              "No numerical prediction supplied",
+              "Root cause is not independently confirmed"
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied"
+              ]
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-1"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v0"
+          },
+          "context_snapshot_id": "context-0-17027192618e1c4e",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 1,
+            "grounded_fact_count": 1,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "rule_baseline",
+            "cloud_report_valid": false,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [],
+            "tool_call_count": 1,
+            "llm_model": null,
+            "llm_usage": {},
+            "llm_request_count": 0,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-0-17027192618e1c4e"
+          },
+          "update_state": "no_update"
+        }
+      ],
+      "frozen_config": {
+        "llm_model": "deepseek-flash",
+        "agent_version": "single-agent-v2.0",
+        "numerical_model": "none-bound-unverified-synthetic-signals",
+        "max_body_skills": 4,
+        "max_tool_calls": 12,
+        "report_provider_call_budget": 1,
+        "root_count_per_arm": 2,
+        "sealed_access": false
+      },
+      "frozen_config_sha256": "13a43a287f512eab54171d3de95c2adcbfab5f4fdf8946202c91f545236b0ad2",
+      "selection_eligible": true,
+      "generalization_verified": false,
+      "metrics": {
+        "diagnosis_accuracy": 1.0,
+        "grounded_assertion_ratio": 1.0,
+        "mean_test_count": 1.0,
+        "unsafe_test_count": 0,
+        "independently_labeled_root_count": 2,
+        "misses": 0,
+        "false_alarms": 0
+      },
+      "final_context_snapshot": {
+        "context_snapshot_id": "context-0-17027192618e1c4e",
+        "context_version": "context_v0",
+        "version": 0,
+        "memories": [],
+        "skills": {},
+        "created_at": "2026-10-01T16:31:22.602131+00:00",
+        "changes": [],
+        "parent_snapshot_id": null
+      }
+    },
+    {
+      "arm": "A1",
+      "label": "synthetic/replay diagnosis experiment",
+      "root_count": 2,
+      "records": [
+        {
+          "root_scenario_id": "bounded-smoke-evolution-0",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-cceefcdb6d0bf8be",
+            "asset_id": "cloud-smoke-asset-0",
+            "installation_id": "cloud-smoke-installation-0",
+            "visible_cutoff": "2026-09-01T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-0"
+                ]
+              }
+            ],
+            "hypotheses": [
+              {
+                "code": "acquisition_bias",
+                "level": "suspected",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "physical_state_difference",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              }
+            ],
+            "unknowns": [
+              "No numerical prediction or calibrated probability model is available.",
+              "Root cause is not independently confirmed.",
+              "Whether the disagreement reflects acquisition bias, physical state difference, or data handling issue remains unresolved.",
+              "Units, timestamps, duplicate fingerprints, and raw quality codes are not fully visible in this round."
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied",
+                "Visible evidence is limited to one categorical channel-review observation"
+              ],
+              "chemistry": "LFP",
+              "protocol_id": "DEMO-PROTOCOL-READONLY"
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Catalogue test distinguishes acquisition bias from physical state difference; authorized and selected in ranked tests.",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Channel records disagree with independent readings and cause is unverified; inspection is needed before any physical conclusion."
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-0"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v0"
+          },
+          "context_snapshot_id": "context-0-17027192618e1c4e",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 1,
+            "grounded_fact_count": 1,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "cloud",
+            "cloud_report_valid": true,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [
+              {
+                "skill_id": "data-quality",
+                "name": "data-quality",
+                "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+                "version": "1.0.0",
+                "route_score": 2
+              }
+            ],
+            "tool_call_count": 1,
+            "llm_model": "deepseek-flash",
+            "llm_usage": {
+              "prompt_tokens": 3943,
+              "completion_tokens": 3335,
+              "total_tokens": 7278
+            },
+            "llm_request_count": 1,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-0-17027192618e1c4e"
+          },
+          "update_state": "no_update"
+        },
+        {
+          "root_scenario_id": "bounded-smoke-evolution-1",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-63c64b1b90aba0e8",
+            "asset_id": "cloud-smoke-asset-1",
+            "installation_id": "cloud-smoke-installation-1",
+            "visible_cutoff": "2026-09-02T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "A channel-review flag (categorical value 1) was recorded at 2026-09-02T12:00:00Z for installation cloud-smoke-installation-1: synthetic channel records disagree with independent readings, and the cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-1"
+                ]
+              },
+              {
+                "claim": "Only one categorical channel-quality observation is visible at the cutoff; no raw channel values, units, quality codes, timestamps per channel, or duplicate fingerprints are provided for the affected channels.",
+                "evidence_ids": [
+                  "smoke-ev-1"
+                ]
+              }
+            ],
+            "hypotheses": [
+              {
+                "code": "acquisition_or_transmission_discrepancy",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-1"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "physical_state_change_reflected_in_channels",
+                "level": "insufficient_evidence",
+                "supports": [],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "protocol_or_identity_mismatch",
+                "level": "insufficient_evidence",
+                "supports": [],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              }
+            ],
+            "unknowns": [
+              "No numerical prediction or calibrated probability source was supplied; fault probabilities are therefore left null.",
+              "The root cause of the channel/independent-reading disagreement is not independently confirmed.",
+              "Per-channel raw quality codes, units, sampling times and duplicate/source fingerprints are not visible, so unit, timing and duplication faults cannot be ruled in or out.",
+              "Whether the discrepancy originates on the acquisition side or reflects a physical state difference is unresolved.",
+              "Installation identity and measurement conditions beyond the declared installation_id and protocol_id are not visible."
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied",
+                "Evidence consists of a single categorical channel-review flag without raw channel, unit or timing records"
+              ]
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Catalogue test distinguishes acquisition bias from a physical state difference, which is exactly the unresolved split implied by smoke-ev-1; ranking supplied it as the selected test with no likelihood model available.",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Disagreement between channel records and independent readings is unresolved and affects whether the data are usable; no calibrated probability or confirmed root cause is available, and human dispatch confirmation remains required."
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-1"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v0"
+          },
+          "context_snapshot_id": "context-0-17027192618e1c4e",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 2,
+            "grounded_fact_count": 2,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "cloud",
+            "cloud_report_valid": true,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [
+              {
+                "skill_id": "data-quality",
+                "name": "data-quality",
+                "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+                "version": "1.0.0",
+                "route_score": 2
+              }
+            ],
+            "tool_call_count": 1,
+            "llm_model": "deepseek-flash",
+            "llm_usage": {
+              "prompt_tokens": 3944,
+              "completion_tokens": 1654,
+              "total_tokens": 5598
+            },
+            "llm_request_count": 1,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-0-17027192618e1c4e"
+          },
+          "update_state": "no_update"
+        }
+      ],
+      "frozen_config": {
+        "llm_model": "deepseek-flash",
+        "agent_version": "single-agent-v2.0",
+        "numerical_model": "none-bound-unverified-synthetic-signals",
+        "max_body_skills": 4,
+        "max_tool_calls": 12,
+        "report_provider_call_budget": 1,
+        "root_count_per_arm": 2,
+        "sealed_access": false
+      },
+      "frozen_config_sha256": "13a43a287f512eab54171d3de95c2adcbfab5f4fdf8946202c91f545236b0ad2",
+      "selection_eligible": true,
+      "generalization_verified": false,
+      "metrics": {
+        "diagnosis_accuracy": 1.0,
+        "grounded_assertion_ratio": 1.0,
+        "mean_test_count": 1.0,
+        "unsafe_test_count": 0,
+        "independently_labeled_root_count": 2,
+        "misses": 0,
+        "false_alarms": 0
+      },
+      "final_context_snapshot": {
+        "context_snapshot_id": "context-0-17027192618e1c4e",
+        "context_version": "context_v0",
+        "version": 0,
+        "memories": [],
+        "skills": {},
+        "created_at": "2026-10-01T16:31:22.603300+00:00",
+        "changes": [],
+        "parent_snapshot_id": null
+      }
+    },
+    {
+      "arm": "A2",
+      "label": "synthetic/replay diagnosis experiment",
+      "root_count": 2,
+      "records": [
+        {
+          "root_scenario_id": "bounded-smoke-evolution-0",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-cceefcdb6d0bf8be",
+            "asset_id": "cloud-smoke-asset-0",
+            "installation_id": "cloud-smoke-installation-0",
+            "visible_cutoff": "2026-09-01T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; the cause of the disagreement remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-0"
+                ]
+              },
+              {
+                "claim": "Observation is a categorical channel-review flag (value=1) at the visible cutoff; no units or numeric measurement are attached to it.",
+                "evidence_ids": [
+                  "smoke-ev-0"
+                ]
+              }
+            ],
+            "hypotheses": [
+              {
+                "code": "acquisition_or_transmission_issue",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "protocol_or_identity_mismatch",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "real_state_change",
+                "level": "insufficient_evidence",
+                "supports": [],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              }
+            ],
+            "unknowns": [
+              "No numerical prediction supplied",
+              "Root cause is not independently confirmed",
+              "Raw quality codes, units, sampling timestamps and source fingerprints behind the channel disagreement are not visible",
+              "Whether the disagreeing records belong to the same installation identity and measurement conditions is unverified",
+              "No calibrated probability model is available, so no fault probabilities can be stated"
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "chemistry": "LFP",
+              "protocol_id": "DEMO-PROTOCOL-READONLY",
+              "reasons": [
+                "No numerical prediction supplied",
+                "Single categorical observation without units, timestamps or quality codes"
+              ]
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Only catalogue test distinguishing acquisition bias from a physical state difference; resolves whether the channel disagreement is an acquisition artefact before any root-cause claim.",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Contradicted channel evidence with an unverified cause warrants data-quality inspection; no corroborated physical fault is confirmed and no calibrated probability exists."
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-0"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v0"
+          },
+          "context_snapshot_id": "context-0-17027192618e1c4e",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 2,
+            "grounded_fact_count": 2,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "cloud",
+            "cloud_report_valid": true,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [
+              {
+                "skill_id": "data-quality",
+                "name": "data-quality",
+                "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+                "version": "1.0.0",
+                "route_score": 2
+              }
+            ],
+            "tool_call_count": 1,
+            "llm_model": "deepseek-flash",
+            "llm_usage": {
+              "prompt_tokens": 3943,
+              "completion_tokens": 994,
+              "total_tokens": 4937
+            },
+            "llm_request_count": 1,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-0-17027192618e1c4e"
+          },
+          "update_state": "active"
+        },
+        {
+          "root_scenario_id": "bounded-smoke-evolution-1",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-63c64b1b90aba0e8",
+            "asset_id": "cloud-smoke-asset-1",
+            "installation_id": "cloud-smoke-installation-1",
+            "visible_cutoff": "2026-09-02T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-1"
+                ]
+              }
+            ],
+            "hypotheses": [
+              {
+                "code": "real_state_change",
+                "level": "insufficient_evidence",
+                "supports": [],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "acquisition_or_transmission_issue",
+                "level": "insufficient_evidence",
+                "supports": [],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "protocol_or_identity_mismatch",
+                "level": "insufficient_evidence",
+                "supports": [],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              }
+            ],
+            "unknowns": [
+              "No numerical prediction supplied",
+              "Root cause is not independently confirmed",
+              "Units and sampling frequency not provided in observations",
+              "No independent quality codes or raw channel details available"
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied",
+                "Units and sampling frequency not provided",
+                "No independent quality codes or raw channel details available"
+              ]
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-1"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v1"
+          },
+          "context_snapshot_id": "context-1-1a83726bcf5b055e",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 1,
+            "grounded_fact_count": 1,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "cloud",
+            "cloud_report_valid": true,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [
+              {
+                "skill_id": "data-quality",
+                "name": "data-quality",
+                "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+                "version": "1.0.0",
+                "route_score": 2
+              }
+            ],
+            "tool_call_count": 1,
+            "llm_model": "deepseek-flash",
+            "llm_usage": {
+              "prompt_tokens": 3944,
+              "completion_tokens": 2944,
+              "total_tokens": 6888
+            },
+            "llm_request_count": 1,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-1-1a83726bcf5b055e"
+          },
+          "update_state": "active"
+        }
+      ],
+      "frozen_config": {
+        "llm_model": "deepseek-flash",
+        "agent_version": "single-agent-v2.0",
+        "numerical_model": "none-bound-unverified-synthetic-signals",
+        "max_body_skills": 4,
+        "max_tool_calls": 12,
+        "report_provider_call_budget": 1,
+        "root_count_per_arm": 2,
+        "sealed_access": false
+      },
+      "frozen_config_sha256": "13a43a287f512eab54171d3de95c2adcbfab5f4fdf8946202c91f545236b0ad2",
+      "selection_eligible": true,
+      "generalization_verified": false,
+      "metrics": {
+        "diagnosis_accuracy": 1.0,
+        "grounded_assertion_ratio": 1.0,
+        "mean_test_count": 1.0,
+        "unsafe_test_count": 0,
+        "independently_labeled_root_count": 2,
+        "misses": 0,
+        "false_alarms": 0
+      },
+      "final_context_snapshot": {
+        "context_snapshot_id": "context-2-1329ff0f2118af7e",
+        "context_version": "context_v2",
+        "version": 2,
+        "memories": [
+          {
+            "memory_id": "episode-bounded-smoke-evolution-0",
+            "version": 1,
+            "scope": {
+              "installation_id": "cloud-smoke-installation-0"
+            },
+            "trigger": "inspection episode",
+            "insight": "复核尚未确认根因；请保留单体差异和采集偏差两种可能，不能把人员描述视为已证实规律。",
+            "supporting_case_ids": [
+              "bounded-smoke-evolution-0"
+            ],
+            "counterexamples": [],
+            "source_trust": "reported",
+            "helpful_count": 0,
+            "harmful_count": 0,
+            "last_used": null,
+            "expires_at": null,
+            "state": "active",
+            "source_scope": "evolution",
+            "raw_feedback_id": null,
+            "available_at": "2026-09-01T12:00:00Z",
+            "origin": "synthetic_replay"
+          },
+          {
+            "memory_id": "episode-bounded-smoke-evolution-1",
+            "version": 1,
+            "scope": {
+              "installation_id": "cloud-smoke-installation-1"
+            },
+            "trigger": "inspection episode",
+            "insight": "复核尚未确认根因；请保留单体差异和采集偏差两种可能，不能把人员描述视为已证实规律。",
+            "supporting_case_ids": [
+              "bounded-smoke-evolution-1"
+            ],
+            "counterexamples": [],
+            "source_trust": "reported",
+            "helpful_count": 0,
+            "harmful_count": 0,
+            "last_used": null,
+            "expires_at": null,
+            "state": "active",
+            "source_scope": "evolution",
+            "raw_feedback_id": null,
+            "available_at": "2026-09-02T12:00:00Z",
+            "origin": "synthetic_replay"
+          }
+        ],
+        "skills": {},
+        "created_at": "2026-10-01T16:32:03.960974+00:00",
+        "changes": [
+          {
+            "operation": "ADD",
+            "memory_id": "episode-bounded-smoke-evolution-1",
+            "item": {
+              "insight": "复核尚未确认根因；请保留单体差异和采集偏差两种可能，不能把人员描述视为已证实规律。",
+              "trigger": "inspection episode",
+              "scope": {
+                "installation_id": "cloud-smoke-installation-1"
+              },
+              "supporting_case_ids": [
+                "bounded-smoke-evolution-1"
+              ],
+              "source_trust": "reported",
+              "origin": "synthetic_replay",
+              "available_at": "2026-09-02T12:00:00Z"
+            }
+          }
+        ],
+        "parent_snapshot_id": "context-1-1a83726bcf5b055e"
+      }
+    },
+    {
+      "arm": "A3",
+      "label": "synthetic/replay diagnosis experiment",
+      "root_count": 2,
+      "records": [
+        {
+          "root_scenario_id": "bounded-smoke-evolution-0",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-cceefcdb6d0bf8be",
+            "asset_id": "cloud-smoke-asset-0",
+            "installation_id": "cloud-smoke-installation-0",
+            "visible_cutoff": "2026-09-01T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-0"
+                ]
+              },
+              {
+                "claim": "Recorded disagreement is a categorical channel-review flag at the visible cutoff; no unit, timestamp, duplicate or raw quality-code detail is provided in the visible observation.",
+                "evidence_ids": [
+                  "smoke-ev-0"
+                ]
+              }
+            ],
+            "hypotheses": [
+              {
+                "code": "physical_state_change",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "acquisition_or_transmission_issue",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "protocol_or_identity_mismatch",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              }
+            ],
+            "unknowns": [
+              "No numerical prediction supplied; no calibrated fault probability available",
+              "Root cause is not independently confirmed",
+              "Channel units, sampling alignment and mapping between the two disagreeing sources are not visible",
+              "Presence of missing/null codes, duplicate uploads or source fingerprints is not visible",
+              "Whether both sources belong to the same verified installation identity and measurement conditions is not established"
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied",
+                "Chemistry declared as LFP but no physical model parameters or validated measurement conditions are visible"
+              ],
+              "chemistry": "LFP",
+              "protocol_id": "DEMO-PROTOCOL-READONLY"
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Distinguishes acquisition bias from a genuine physical state difference for the recorded channel disagreement; likelihood unavailable, cost/time already reflected in ranking.",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Single conflicting synthetic channel record with unverified cause; no confirmed root cause or calibrated probability, so inspection is warranted rather than urgent review. Independent safety protections remain authoritative."
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-0"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v0"
+          },
+          "context_snapshot_id": "context-0-17027192618e1c4e",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 2,
+            "grounded_fact_count": 2,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "cloud",
+            "cloud_report_valid": true,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [
+              {
+                "skill_id": "data-quality",
+                "name": "data-quality",
+                "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+                "version": "1.0.0",
+                "route_score": 2
+              }
+            ],
+            "tool_call_count": 1,
+            "llm_model": "deepseek-flash",
+            "llm_usage": {
+              "prompt_tokens": 3943,
+              "completion_tokens": 1008,
+              "total_tokens": 4951
+            },
+            "llm_request_count": 1,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-0-17027192618e1c4e"
+          },
+          "update_state": "active"
+        },
+        {
+          "root_scenario_id": "bounded-smoke-evolution-1",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-63c64b1b90aba0e8",
+            "asset_id": "cloud-smoke-asset-1",
+            "installation_id": "cloud-smoke-installation-1",
+            "visible_cutoff": "2026-09-02T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-1"
+                ]
+              },
+              {
+                "claim": "Only one categorical observation is visible at cutoff 2026-09-02T12:00:00Z (round 1); no numerical prediction or calibrated probability model is supplied.",
+                "evidence_ids": [
+                  "smoke-ev-1"
+                ]
+              }
+            ],
+            "hypotheses": [
+              {
+                "code": "acquisition_or_transmission_issue",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-1"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "physical_state_difference",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-1"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "protocol_or_identity_mismatch",
+                "level": "insufficient_evidence",
+                "supports": [],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              }
+            ],
+            "unknowns": [
+              "No numerical prediction supplied",
+              "Root cause is not independently confirmed",
+              "Unit, timestamp, missingness, duplicate and installation-identity checks have not been completed for this observation",
+              "Reporting personnel descriptions are not treated as confirmed regularities"
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied",
+                "Single categorical observation; no field-level unit, timestamp, duplicate or identity verification available"
+              ],
+              "chemistry": "LFP",
+              "protocol_id": "DEMO-PROTOCOL-READONLY"
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable. Resolves channel acquisition versus physical state difference under authorized instrumentation qualification.",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Channel records conflict with independent readings and root cause is unverified; data-quality verification is required before any physical root-cause confirmation. Independent safety protections remain authoritative."
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-1"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v1"
+          },
+          "context_snapshot_id": "context-1-395ed4eae9576759",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 2,
+            "grounded_fact_count": 2,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "cloud",
+            "cloud_report_valid": true,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [
+              {
+                "skill_id": "data-quality",
+                "name": "data-quality",
+                "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+                "version": "1.0.0",
+                "route_score": 2
+              }
+            ],
+            "tool_call_count": 1,
+            "llm_model": "deepseek-flash",
+            "llm_usage": {
+              "prompt_tokens": 4135,
+              "completion_tokens": 1101,
+              "total_tokens": 5236
+            },
+            "llm_request_count": 1,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-1-395ed4eae9576759"
+          },
+          "update_state": "active"
+        }
+      ],
+      "frozen_config": {
+        "llm_model": "deepseek-flash",
+        "agent_version": "single-agent-v2.0",
+        "numerical_model": "none-bound-unverified-synthetic-signals",
+        "max_body_skills": 4,
+        "max_tool_calls": 12,
+        "report_provider_call_budget": 1,
+        "root_count_per_arm": 2,
+        "sealed_access": false
+      },
+      "frozen_config_sha256": "13a43a287f512eab54171d3de95c2adcbfab5f4fdf8946202c91f545236b0ad2",
+      "selection_eligible": true,
+      "generalization_verified": false,
+      "metrics": {
+        "diagnosis_accuracy": 1.0,
+        "grounded_assertion_ratio": 1.0,
+        "mean_test_count": 1.0,
+        "unsafe_test_count": 0,
+        "independently_labeled_root_count": 2,
+        "misses": 0,
+        "false_alarms": 0
+      },
+      "final_context_snapshot": {
+        "context_snapshot_id": "context-2-0317dfb0d368139f",
+        "context_version": "context_v2",
+        "version": 2,
+        "memories": [
+          {
+            "memory_id": "memory-1c2a376e1254d1aa",
+            "version": 1,
+            "scope": {
+              "chemistry": "LFP"
+            },
+            "trigger": "inspection feedback",
+            "insight": "复核尚未确认根因；请保留单体差异和采集偏差两种可能，不能把人员描述视为已证实规律。",
+            "supporting_case_ids": [
+              "bounded-smoke-evolution-0"
+            ],
+            "counterexamples": [],
+            "source_trust": "reported",
+            "helpful_count": 0,
+            "harmful_count": 0,
+            "last_used": null,
+            "expires_at": null,
+            "state": "active",
+            "source_scope": "evolution",
+            "raw_feedback_id": "smoke-feedback-0",
+            "available_at": "2026-09-01T12:00:00Z",
+            "origin": "expert_synthetic"
+          },
+          {
+            "memory_id": "memory-ffe4bd89fd00d790",
+            "version": 1,
+            "scope": {
+              "chemistry": "LFP"
+            },
+            "trigger": "inspection feedback",
+            "insight": "复核尚未确认根因；请保留单体差异和采集偏差两种可能，不能把人员描述视为已证实规律。",
+            "supporting_case_ids": [
+              "bounded-smoke-evolution-1"
+            ],
+            "counterexamples": [],
+            "source_trust": "reported",
+            "helpful_count": 0,
+            "harmful_count": 0,
+            "last_used": null,
+            "expires_at": null,
+            "state": "active",
+            "source_scope": "evolution",
+            "raw_feedback_id": "smoke-feedback-1",
+            "available_at": "2026-09-02T12:00:00Z",
+            "origin": "expert_synthetic"
+          }
+        ],
+        "skills": {},
+        "created_at": "2026-10-01T16:32:13.913352+00:00",
+        "changes": [
+          {
+            "operation": "ADD",
+            "memory_id": "memory-ffe4bd89fd00d790",
+            "item": {
+              "insight": "复核尚未确认根因；请保留单体差异和采集偏差两种可能，不能把人员描述视为已证实规律。",
+              "source_trust": "reported",
+              "supporting_case_ids": [
+                "bounded-smoke-evolution-1"
+              ],
+              "memory_id": "memory-ffe4bd89fd00d790",
+              "scope": {
+                "chemistry": "LFP"
+              },
+              "trigger": "inspection feedback",
+              "raw_feedback_id": "smoke-feedback-1",
+              "available_at": "2026-09-02T12:00:00Z",
+              "origin": "expert_synthetic"
+            }
+          }
+        ],
+        "parent_snapshot_id": "context-1-395ed4eae9576759"
+      }
+    },
+    {
+      "arm": "A4",
+      "label": "synthetic/replay diagnosis experiment",
+      "root_count": 2,
+      "records": [
+        {
+          "root_scenario_id": "bounded-smoke-evolution-0",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-cceefcdb6d0bf8be",
+            "asset_id": "cloud-smoke-asset-0",
+            "installation_id": "cloud-smoke-installation-0",
+            "visible_cutoff": "2026-09-01T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-0"
+                ]
+              }
+            ],
+            "hypotheses": [
+              {
+                "code": "acquisition_or_transmission_issue",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "physical_state_difference",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "protocol_or_identity_mismatch",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-0"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              }
+            ],
+            "unknowns": [
+              "No numerical prediction supplied",
+              "Root cause is not independently confirmed",
+              "Channel-to-source mapping behind the reported disagreement is not visible",
+              "Unit, timestamp and sampling alignment for the disagreeing records are not visible"
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied"
+              ]
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Catalogue test distinguishes acquisition bias from a physical state difference for the reported channel disagreement; likelihood unavailable, so prioritisation is on coverage only.",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Channel records disagree with independent readings and the cause is unverified; inspection is warranted, while independent safety protections remain authoritative and no root cause is confirmed."
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-0"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v0"
+          },
+          "context_snapshot_id": "context-0-17027192618e1c4e",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 1,
+            "grounded_fact_count": 1,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "cloud",
+            "cloud_report_valid": true,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [
+              {
+                "skill_id": "data-quality",
+                "name": "data-quality",
+                "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+                "version": "1.0.0",
+                "route_score": 2
+              }
+            ],
+            "tool_call_count": 1,
+            "llm_model": "deepseek-flash",
+            "llm_usage": {
+              "prompt_tokens": 3943,
+              "completion_tokens": 789,
+              "total_tokens": 4732
+            },
+            "llm_request_count": 1,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-0-17027192618e1c4e"
+          },
+          "update_state": "active",
+          "gepa_result": {
+            "state": "candidate_ready",
+            "chosen": {
+              "candidate": {
+                "candidate_id": "dq-instructions-root-cause-nuance",
+                "skill_id": "data-quality",
+                "fields": {
+                  "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. Until root cause is independently confirmed, retain competing possibilities, including cell-to-cell/physical-state difference and acquisition bias. Do not treat personnel descriptions as confirmed patterns."
+                },
+                "reason": "Observed feedback explicitly asks to keep both single-unit/cell-difference and acquisition-bias possibilities open while root cause remains unconfirmed, and not to treat personnel descriptions as verified rules.",
+                "supporting_root_ids": [
+                  "bounded-smoke-evolution-0"
+                ]
+              },
+              "metrics": {
+                "score": 1.0,
+                "hard_failures": [],
+                "semantic_expert_validation": "not_performed",
+                "metric": "strict_structure_boundary_pass"
+              },
+              "state": "passed",
+              "rollouts_reserved": 1
+            },
+            "rollouts": 2,
+            "rollout_budget": 2,
+            "proposal_root_count": 1,
+            "selection_root_count": 1,
+            "split": "dev",
+            "generalization_verified": false,
+            "activation_update": {
+              "operation": "SKILL_REVISE",
+              "skill_id": "data-quality",
+              "fields": {
+                "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. Until root cause is independently confirmed, retain competing possibilities, including cell-to-cell/physical-state difference and acquisition bias. Do not treat personnel descriptions as confirmed patterns."
+              }
+            },
+            "regression": {
+              "passed": true,
+              "hard_failures": [],
+              "split": "dev",
+              "metrics": {
+                "score": 1.0,
+                "hard_failures": [],
+                "semantic_expert_validation": "not_performed",
+                "metric": "strict_structure_boundary_pass"
+              }
+            },
+            "activation": "active"
+          }
+        },
+        {
+          "root_scenario_id": "bounded-smoke-evolution-1",
+          "split": "evolution",
+          "report": {
+            "report_id": "report-63c64b1b90aba0e8",
+            "asset_id": "cloud-smoke-asset-1",
+            "installation_id": "cloud-smoke-installation-1",
+            "visible_cutoff": "2026-09-02T12:00:00Z",
+            "round": 1,
+            "status": "insufficient_evidence",
+            "facts": [
+              {
+                "claim": "Synthetic channel records disagree with independent readings; cause remains unverified.",
+                "evidence_ids": [
+                  "smoke-ev-1"
+                ]
+              }
+            ],
+            "hypotheses": [
+              {
+                "code": "acquisition_bias",
+                "level": "insufficient_evidence",
+                "supports": [
+                  "smoke-ev-1"
+                ],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              },
+              {
+                "code": "physical_state_difference",
+                "level": "insufficient_evidence",
+                "supports": [],
+                "contradicts": [],
+                "probability": null,
+                "probability_source": null
+              }
+            ],
+            "unknowns": [
+              "Root cause is not independently confirmed",
+              "Whether disagreement reflects acquisition bias or physical cell-to-cell/state difference",
+              "No numerical prediction supplied; probability model unavailable"
+            ],
+            "applicability": {
+              "status": "insufficient_data",
+              "reasons": [
+                "No numerical prediction supplied",
+                "Only one synthetic channel-review observation at the visible cutoff",
+                "Competing explanations remain unresolved"
+              ]
+            },
+            "suggested_tests": [
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "authorization": "authorized"
+              }
+            ],
+            "priority": {
+              "class": "needs_inspection",
+              "reason": "Channel records disagree with independent readings; preserve acquisition bias and physical-state difference until inspection."
+            },
+            "proposal_id": null,
+            "citations": [
+              "smoke-ev-1"
+            ],
+            "agent_version": "single-agent-v2.0",
+            "context_version": "context_v2"
+          },
+          "context_snapshot_id": "context-2-3a9caf5108564e75",
+          "metrics": {
+            "diagnosis_correct": 1,
+            "fact_count": 1,
+            "grounded_fact_count": 1,
+            "test_count": 1,
+            "acceptable_test_selected": 1,
+            "unsafe_test_count": 0,
+            "tool_rejection_count": 0,
+            "missed": 0,
+            "false_alarm": 0,
+            "label_provenance": "independent_replay_truth"
+          },
+          "run": {
+            "state": "WAIT_FOR_MEASUREMENT",
+            "states": [
+              {
+                "state": "COLLECT"
+              },
+              {
+                "state": "CHECK_SUPPORT"
+              },
+              {
+                "state": "ROUTE_SKILLS"
+              },
+              {
+                "state": "BUILD_HYPOTHESES"
+              },
+              {
+                "state": "CALL_TOOLS"
+              },
+              {
+                "state": "VALIDATE_REPORT"
+              },
+              {
+                "state": "REPORT_READY"
+              },
+              {
+                "state": "WAIT_FOR_MEASUREMENT"
+              }
+            ],
+            "execution_mode": "cloud",
+            "cloud_report_valid": true,
+            "status": "completed",
+            "errors": [],
+            "selected_skills": [
+              {
+                "skill_id": "data-quality",
+                "name": "data-quality",
+                "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+                "version": "1.0.0",
+                "route_score": 2
+              }
+            ],
+            "tool_call_count": 1,
+            "llm_model": "deepseek-flash",
+            "llm_usage": {
+              "prompt_tokens": 4182,
+              "completion_tokens": 2633,
+              "total_tokens": 6815
+            },
+            "llm_request_count": 1,
+            "llm_failed_request_count": 0,
+            "context_snapshot_id": "context-2-3a9caf5108564e75"
+          },
+          "update_state": "active",
+          "gepa_result": {
+            "state": "candidate_ready",
+            "chosen": {
+              "candidate": {
+                "candidate_id": "cand-data-quality-instructions-1",
+                "skill_id": "data-quality",
+                "fields": {
+                  "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. When root cause remains unconfirmed, keep competing explanations open, including cell-to-cell/state difference and acquisition bias. Do not treat operator or personnel descriptions as confirmed patterns until independently verified."
+                },
+                "reason": "Feedback explicitly asks to preserve both cell-to-cell difference and acquisition bias as unresolved possibilities and not to treat personnel descriptions as confirmed rules. This tightens the existing instruction to cover that case without changing permissions, safety rules, splits, or labels.",
+                "supporting_root_ids": [
+                  "bounded-smoke-evolution-1"
+                ]
+              },
+              "metrics": {
+                "score": 1.0,
+                "hard_failures": [],
+                "semantic_expert_validation": "not_performed",
+                "metric": "strict_structure_boundary_pass"
+              },
+              "state": "passed",
+              "rollouts_reserved": 1
+            },
+            "rollouts": 2,
+            "rollout_budget": 2,
+            "proposal_root_count": 1,
+            "selection_root_count": 1,
+            "split": "dev",
+            "generalization_verified": false,
+            "activation_update": {
+              "operation": "SKILL_REVISE",
+              "skill_id": "data-quality",
+              "fields": {
+                "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. When root cause remains unconfirmed, keep competing explanations open, including cell-to-cell/state difference and acquisition bias. Do not treat operator or personnel descriptions as confirmed patterns until independently verified."
+              }
+            },
+            "regression": {
+              "passed": true,
+              "hard_failures": [],
+              "split": "dev",
+              "metrics": {
+                "score": 1.0,
+                "hard_failures": [],
+                "semantic_expert_validation": "not_performed",
+                "metric": "strict_structure_boundary_pass"
+              }
+            },
+            "activation": "active"
+          }
+        }
+      ],
+      "frozen_config": {
+        "llm_model": "deepseek-flash",
+        "agent_version": "single-agent-v2.0",
+        "numerical_model": "none-bound-unverified-synthetic-signals",
+        "max_body_skills": 4,
+        "max_tool_calls": 12,
+        "report_provider_call_budget": 1,
+        "root_count_per_arm": 2,
+        "sealed_access": false
+      },
+      "frozen_config_sha256": "13a43a287f512eab54171d3de95c2adcbfab5f4fdf8946202c91f545236b0ad2",
+      "selection_eligible": true,
+      "generalization_verified": false,
+      "metrics": {
+        "diagnosis_accuracy": 1.0,
+        "grounded_assertion_ratio": 1.0,
+        "mean_test_count": 1.0,
+        "unsafe_test_count": 0,
+        "independently_labeled_root_count": 2,
+        "misses": 0,
+        "false_alarms": 0
+      },
+      "final_context_snapshot": {
+        "context_snapshot_id": "context-4-2c75213e419ab942",
+        "context_version": "context_v4",
+        "version": 4,
+        "memories": [
+          {
+            "memory_id": "memory-1c2a376e1254d1aa",
+            "version": 1,
+            "scope": {
+              "chemistry": "LFP"
+            },
+            "trigger": "inspection feedback",
+            "insight": "复核尚未确认根因；请保留单体差异和采集偏差两种可能，不能把人员描述视为已证实规律。",
+            "supporting_case_ids": [
+              "bounded-smoke-evolution-0"
+            ],
+            "counterexamples": [],
+            "source_trust": "reported",
+            "helpful_count": 0,
+            "harmful_count": 0,
+            "last_used": null,
+            "expires_at": null,
+            "state": "active",
+            "source_scope": "evolution",
+            "raw_feedback_id": "smoke-feedback-0",
+            "available_at": "2026-09-01T12:00:00Z",
+            "origin": "expert_synthetic"
+          },
+          {
+            "memory_id": "memory-ffe4bd89fd00d790",
+            "version": 1,
+            "scope": {
+              "chemistry": "LFP"
+            },
+            "trigger": "inspection feedback",
+            "insight": "复核尚未确认根因；请保留单体差异和采集偏差两种可能，不能把人员描述视为已证实规律。",
+            "supporting_case_ids": [
+              "bounded-smoke-evolution-1"
+            ],
+            "counterexamples": [],
+            "source_trust": "reported",
+            "helpful_count": 0,
+            "harmful_count": 0,
+            "last_used": null,
+            "expires_at": null,
+            "state": "active",
+            "source_scope": "evolution",
+            "raw_feedback_id": "smoke-feedback-1",
+            "available_at": "2026-09-02T12:00:00Z",
+            "origin": "expert_synthetic"
+          }
+        ],
+        "skills": {
+          "data-quality": {
+            "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. When root cause remains unconfirmed, keep competing explanations open, including cell-to-cell/state difference and acquisition bias. Do not treat operator or personnel descriptions as confirmed patterns until independently verified."
+          }
+        },
+        "created_at": "2026-10-01T16:33:31.441287+00:00",
+        "changes": [
+          {
+            "operation": "SKILL_REVISE",
+            "skill_id": "data-quality",
+            "fields": {
+              "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. When root cause remains unconfirmed, keep competing explanations open, including cell-to-cell/state difference and acquisition bias. Do not treat operator or personnel descriptions as confirmed patterns until independently verified."
+            }
+          }
+        ],
+        "parent_snapshot_id": "context-3-6cfb002ec0d86f24"
+      }
+    }
+  ],
+  "gepa": [
+    {
+      "state": "candidate_ready",
+      "chosen": {
+        "candidate": {
+          "candidate_id": "dq-instructions-root-cause-nuance",
+          "skill_id": "data-quality",
+          "fields": {
+            "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. Until root cause is independently confirmed, retain competing possibilities, including cell-to-cell/physical-state difference and acquisition bias. Do not treat personnel descriptions as confirmed patterns."
+          },
+          "reason": "Observed feedback explicitly asks to keep both single-unit/cell-difference and acquisition-bias possibilities open while root cause remains unconfirmed, and not to treat personnel descriptions as verified rules.",
+          "supporting_root_ids": [
+            "bounded-smoke-evolution-0"
+          ]
+        },
+        "metrics": {
+          "score": 1.0,
+          "hard_failures": [],
+          "semantic_expert_validation": "not_performed",
+          "metric": "strict_structure_boundary_pass"
+        },
+        "state": "passed",
+        "rollouts_reserved": 1
+      },
+      "candidates": [
+        {
+          "candidate": {
+            "candidate_id": "baseline",
+            "skill_id": "data-quality",
+            "fields": {
+              "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts."
+            }
+          },
+          "metrics": {
+            "score": 1.0,
+            "hard_failures": [],
+            "semantic_expert_validation": "not_performed",
+            "metric": "strict_structure_boundary_pass"
+          },
+          "state": "passed",
+          "rollouts_reserved": 1
+        },
+        {
+          "candidate": {
+            "candidate_id": "dq-instructions-root-cause-nuance",
+            "skill_id": "data-quality",
+            "fields": {
+              "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. Until root cause is independently confirmed, retain competing possibilities, including cell-to-cell/physical-state difference and acquisition bias. Do not treat personnel descriptions as confirmed patterns."
+            },
+            "reason": "Observed feedback explicitly asks to keep both single-unit/cell-difference and acquisition-bias possibilities open while root cause remains unconfirmed, and not to treat personnel descriptions as verified rules.",
+            "supporting_root_ids": [
+              "bounded-smoke-evolution-0"
+            ]
+          },
+          "metrics": {
+            "score": 1.0,
+            "hard_failures": [],
+            "semantic_expert_validation": "not_performed",
+            "metric": "strict_structure_boundary_pass"
+          },
+          "state": "passed",
+          "rollouts_reserved": 1
+        }
+      ],
+      "rollouts": 2,
+      "rollout_budget": 2,
+      "proposal_root_count": 1,
+      "selection_root_count": 1,
+      "split": "dev",
+      "generalization_verified": false,
+      "activation_update": {
+        "operation": "SKILL_REVISE",
+        "skill_id": "data-quality",
+        "fields": {
+          "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. Until root cause is independently confirmed, retain competing possibilities, including cell-to-cell/physical-state difference and acquisition bias. Do not treat personnel descriptions as confirmed patterns."
+        }
+      },
+      "regression": {
+        "passed": true,
+        "hard_failures": [],
+        "split": "dev",
+        "metrics": {
+          "score": 1.0,
+          "hard_failures": [],
+          "semantic_expert_validation": "not_performed",
+          "metric": "strict_structure_boundary_pass"
+        }
+      },
+      "activation": "active"
+    },
+    {
+      "state": "candidate_ready",
+      "chosen": {
+        "candidate": {
+          "candidate_id": "cand-data-quality-instructions-1",
+          "skill_id": "data-quality",
+          "fields": {
+            "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. When root cause remains unconfirmed, keep competing explanations open, including cell-to-cell/state difference and acquisition bias. Do not treat operator or personnel descriptions as confirmed patterns until independently verified."
+          },
+          "reason": "Feedback explicitly asks to preserve both cell-to-cell difference and acquisition bias as unresolved possibilities and not to treat personnel descriptions as confirmed rules. This tightens the existing instruction to cover that case without changing permissions, safety rules, splits, or labels.",
+          "supporting_root_ids": [
+            "bounded-smoke-evolution-1"
+          ]
+        },
+        "metrics": {
+          "score": 1.0,
+          "hard_failures": [],
+          "semantic_expert_validation": "not_performed",
+          "metric": "strict_structure_boundary_pass"
+        },
+        "state": "passed",
+        "rollouts_reserved": 1
+      },
+      "candidates": [
+        {
+          "candidate": {
+            "candidate_id": "baseline",
+            "skill_id": "data-quality",
+            "fields": {
+              "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts."
+            }
+          },
+          "metrics": {
+            "score": 1.0,
+            "hard_failures": [],
+            "semantic_expert_validation": "not_performed",
+            "metric": "strict_structure_boundary_pass"
+          },
+          "state": "passed",
+          "rollouts_reserved": 1
+        },
+        {
+          "candidate": {
+            "candidate_id": "cand-data-quality-instructions-1",
+            "skill_id": "data-quality",
+            "fields": {
+              "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. When root cause remains unconfirmed, keep competing explanations open, including cell-to-cell/state difference and acquisition bias. Do not treat operator or personnel descriptions as confirmed patterns until independently verified."
+            },
+            "reason": "Feedback explicitly asks to preserve both cell-to-cell difference and acquisition bias as unresolved possibilities and not to treat personnel descriptions as confirmed rules. This tightens the existing instruction to cover that case without changing permissions, safety rules, splits, or labels.",
+            "supporting_root_ids": [
+              "bounded-smoke-evolution-1"
+            ]
+          },
+          "metrics": {
+            "score": 1.0,
+            "hard_failures": [],
+            "semantic_expert_validation": "not_performed",
+            "metric": "strict_structure_boundary_pass"
+          },
+          "state": "passed",
+          "rollouts_reserved": 1
+        }
+      ],
+      "rollouts": 2,
+      "rollout_budget": 2,
+      "proposal_root_count": 1,
+      "selection_root_count": 1,
+      "split": "dev",
+      "generalization_verified": false,
+      "activation_update": {
+        "operation": "SKILL_REVISE",
+        "skill_id": "data-quality",
+        "fields": {
+          "instructions": "Retain counterevidence and distinguish reported feedback from confirmed facts. When root cause remains unconfirmed, keep competing explanations open, including cell-to-cell/state difference and acquisition bias. Do not treat operator or personnel descriptions as confirmed patterns until independently verified."
+        }
+      },
+      "regression": {
+        "passed": true,
+        "hard_failures": [],
+        "split": "dev",
+        "metrics": {
+          "score": 1.0,
+          "hard_failures": [],
+          "semantic_expert_validation": "not_performed",
+          "metric": "strict_structure_boundary_pass"
+        }
+      },
+      "activation": "active"
+    }
+  ],
+  "provider_requests": 14,
+  "provider_failed_requests": 0,
+  "provider_usage": {
+    "prompt_tokens": 50530,
+    "completion_tokens": 26072,
+    "total_tokens": 76602
+  },
+  "limits": {
+    "root_count_per_arm": 2,
+    "maximum_report_rollouts": 14,
+    "maximum_gepa_proposals": 2,
+    "semantic_expert_validation": "not_performed",
+    "real_field_feedback": false
+  }
+}

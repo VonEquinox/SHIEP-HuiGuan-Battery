@@ -22,7 +22,7 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
 |---|---|---|
 | D/M | 官方源注册、解析、概率/生存/联合模型及评测 | `model_lab/docs/V2_IMPLEMENTATION.md` |
 | S | 16 Skill、2400 根情景、回放/隐藏视图/数值 fixture | `docs/V2_CONTENT_IMPLEMENTATION.md` |
-| A/E | 单 Agent、VOI、群组、ACE/GEPA/回放实验 | `battery_platform/docs/V2_AGENT_IMPLEMENTATION.md` |
+| A/E | 单 Agent、VOI、群组、ACE/GEPA/回放实验 | `docs/V2_AGENT_IMPLEMENTATION.md` |
 | O | 人工审批、检查轮次、资格约束排程 | 后端与调度独立记录 |
 | C | 独立碳/经济、鲁棒/Pareto、台账 | `battery_platform/docs/V2_CARBON_IMPLEMENTATION.md` |
 | F/W | Web 专业页面与测试小程序 | Web 与小程序独立记录 |
@@ -96,3 +96,19 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
 - 实际探针：本机没有微信开发者工具 CLI，只检测到微信客户端；未伪造原生编译、真机预览或视频。
 - 完整闭环代码已经提供；设备验证仍需实际开发者工具、账号和网络条件。
   独立说明见 `battery_platform/docs/V2_MINIPROGRAM_IMPLEMENTATION.md`。
+
+## 提交 07：单 Agent 与无权重 Context 进化
+
+- 完成一个固定执行器、渐进 Skill 路由、程序工具白名单、JSON 报告、引用/数值/身份/时间验证，
+  云端 OpenAI 兼容客户端记录累计调用和用量；审批、正式分配及 Carbon 不属于工具权限。
+- 实现有概率任务模型时的 Bayes VOI，以及无似然时的规则排名；首轮只提出需审批的检查，
+  不把未分配资格/新轮次授权当成已经具备的执行许可。
+- 实现可解释群组聚合/拆分、原文 span 抽取、ACE 局部更新、CAS 快照、自动隔离/生效/回滚，
+  及 GEPA 风格局部文本候选与独立开发选择预算。
+- 实现 A0–A4 先预测后反馈回放、多轮授权揭示桥接和封存里程碑隔离。
+- 验证：28 项核心测试通过。实际云端 smoke 为每组两个合成根事件，A1–A4 共八个报告严格通过；
+  14 个真实提供方请求、零请求失败、76,602 tokens，包括候选生成与选择。
+- 另一次真实工具调用报告通过，包含六次程序工具调用和可见的缺失预测失败；
+  早期只记录最后一个提供方请求的 12,320 tokens，未冒充总成本。
+- 两个根事件的小实验各组得分相同，不证明诊断泛化改善或现实运维收益。
+  全部结果和限制见 `docs/V2_AGENT_IMPLEMENTATION.md`、`battery_platform/reports/v2_agent/`。

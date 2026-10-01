@@ -1,0 +1,612 @@
+{
+  "report": {
+    "report_id": "report-38ef891c5583b722",
+    "asset_id": "live-synthetic-asset",
+    "installation_id": "live-synthetic-installation",
+    "visible_cutoff": "2026-09-01T12:00:00Z",
+    "round": 1,
+    "status": "insufficient_evidence",
+    "facts": [
+      {
+        "claim": "Synthetic channel records disagree with independent readings; cause not yet confirmed.",
+        "evidence_ids": [
+          "ev-channel"
+        ]
+      },
+      {
+        "claim": "Asset metadata (get_asset_context) reports chemistry LFP for this installation; no model_id or measurement protocol was retrievable, so model applicability cannot be checked.",
+        "evidence_ids": [
+          "ev-channel"
+        ]
+      }
+    ],
+    "hypotheses": [
+      {
+        "code": "acquisition_bias",
+        "level": "suspected",
+        "supports": [
+          "ev-channel"
+        ],
+        "contradicts": [],
+        "probability": null,
+        "probability_source": null
+      },
+      {
+        "code": "physical_cell_difference",
+        "level": "insufficient_evidence",
+        "supports": [],
+        "contradicts": [],
+        "probability": null,
+        "probability_source": null
+      },
+      {
+        "code": "channel_time_misalignment",
+        "level": "insufficient_evidence",
+        "supports": [],
+        "contradicts": [],
+        "probability": null,
+        "probability_source": null
+      }
+    ],
+    "unknowns": [
+      "Root cause of the channel/independent-reading disagreement is not independently confirmed",
+      "No channel mapping or measurement-quality codes were retrievable for this installation",
+      "The independent reading lacks visible instrument, time, condition and measurement-error details",
+      "model_id and measurement protocol were not available, so domain applicability could not be established",
+      "No numerical prediction was supplied and read_prediction failed (authorized_tool_failed); no calibrated fault probability exists",
+      "get_peer_anomalies returned no groups; cross-asset causality not established"
+    ],
+    "applicability": {
+      "status": "insufficient_data",
+      "reasons": [
+        "No numerical prediction supplied",
+        "Model applicability domain (model_id, protocol) not retrievable",
+        "Only a single visible observation; no independent reference details available"
+      ]
+    },
+    "suggested_tests": [
+      {
+        "test_id": "T_CHANNEL_CHECK",
+        "reason": "Authorized catalogue check that distinguishes acquisition_bias from physical_cell_difference; likelihood unavailable so ranking is cost/coverage based, and results must be revealed by the environment.",
+        "authorization": "authorized"
+      }
+    ],
+    "priority": {
+      "class": "needs_inspection",
+      "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+    },
+    "proposal_id": null,
+    "citations": [
+      "ev-channel"
+    ],
+    "agent_version": "single-agent-v2.0",
+    "context_version": "context_v0"
+  },
+  "run": {
+    "state": "WAIT_FOR_MEASUREMENT",
+    "states": [
+      {
+        "state": "COLLECT"
+      },
+      {
+        "state": "CHECK_SUPPORT"
+      },
+      {
+        "state": "ROUTE_SKILLS"
+      },
+      {
+        "state": "BUILD_HYPOTHESES"
+      },
+      {
+        "state": "CALL_TOOLS"
+      },
+      {
+        "state": "VALIDATE_REPORT"
+      },
+      {
+        "state": "REPORT_READY"
+      },
+      {
+        "state": "WAIT_FOR_MEASUREMENT"
+      }
+    ],
+    "execution_mode": "cloud",
+    "cloud_report_valid": true,
+    "status": "completed_with_problem_report",
+    "errors": [
+      "tool failed; unavailable evidence must not be fabricated"
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "chemistry-eligibility",
+        "version": "1.0.0",
+        "schema_version": "skill-manifest-v1",
+        "origin": "expert_synthetic",
+        "synthetic": true,
+        "license_status": "approved_synthetic",
+        "authorship": "AI-assisted project synthesis; not expert-authored",
+        "generation_method": "project_catalog_with_visible_cold_start_examples",
+        "supported_chemistries": [
+          "LFP",
+          "NCM",
+          "unknown"
+        ],
+        "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+        "required_inputs": [
+          "installation_id",
+          "chemistry",
+          "model_id",
+          "protocol"
+        ],
+        "allowed_tools": [
+          "get_asset_context",
+          "read_prediction",
+          "search_knowledge",
+          "load_skill",
+          "append_report"
+        ],
+        "forbidden_claims": [
+          "infer_unknown_chemistry",
+          "unsupported_model_prediction",
+          "transfer_voltage_window_without_validation"
+        ],
+        "references": [
+          "knowledge-skill-chemistry-eligibility"
+        ],
+        "source_refs": [
+          {
+            "source_id": "project-doc02",
+            "locator": "03.1–03.3",
+            "source_type": "project_requirement"
+          }
+        ],
+        "editable_sections": [
+          "evidence_checklist",
+          "pitfalls",
+          "test_hints"
+        ],
+        "permission_invariants": [
+          "human_dispatch_confirmation",
+          "no_carbon_tools",
+          "no_oracle",
+          "no_new_tools"
+        ],
+        "candidate_count": 3,
+        "hard_negative_count": 2,
+        "tests": [
+          "chemistry-eligibility-positive-01",
+          "chemistry-eligibility-negative-01",
+          "chemistry-eligibility-negative-02",
+          "chemistry-eligibility-insufficient-01"
+        ],
+        "example_case_ids": [
+          "r-0017f5093b4a54c9",
+          "r-0065363c7f39a61e",
+          "r-0179697865f9b80a",
+          "r-01c03caea228c93a"
+        ],
+        "example_split": "cold_start",
+        "cloud_supplemental_note_count": 3,
+        "expert_review": "not_performed",
+        "route_keywords": [
+          "chemistry",
+          "domain",
+          "LFP",
+          "NCM",
+          "unknown",
+          "unsupported",
+          "体系",
+          "协议"
+        ],
+        "files": {
+          "SKILL.md": "e72ce36c2e339e7b2795f3993a19249b32fee7934b525245ae9bf2993e490690",
+          "checks/contract.json": "59d95af0f657895f537d61c0a17a31480888d4c46fcc3a6a681e48497b52fa98",
+          "examples/insufficient-01.json": "455853e786db3941abea0015934e4e3d4641f0a5d1fe5a7eaf73209066fcd128",
+          "examples/negative-01.json": "8d39902576188521e65325c043424676e4540c5f53d9516887816d43c10561fe",
+          "examples/negative-02.json": "0e66d99e74ab87c9a85de86e70a5f60553535673731dad7281b95d9b3a8c9714",
+          "examples/positive-01.json": "466a2a5b7fde33222bac806233e275ecd4863a4637eb93b6d4fca5dd6baf9eaa",
+          "references/evidence.md": "4ced16b1e96242707c1b05e4bf8643d83d204bd2f401b0f22a6a478670f213fc"
+        }
+      },
+      {
+        "skill_id": "sensor-anomaly",
+        "version": "1.0.0",
+        "schema_version": "skill-manifest-v1",
+        "origin": "expert_synthetic",
+        "synthetic": true,
+        "license_status": "approved_synthetic",
+        "authorship": "AI-assisted project synthesis; not expert-authored",
+        "generation_method": "project_catalog_with_visible_cold_start_examples",
+        "supported_chemistries": [
+          "LFP",
+          "NCM",
+          "unknown"
+        ],
+        "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+        "required_inputs": [
+          "installation_id",
+          "channel_mapping",
+          "observations",
+          "measurement_quality"
+        ],
+        "allowed_tools": [
+          "get_asset_context",
+          "get_signal_evidence",
+          "get_peer_anomalies",
+          "search_knowledge",
+          "search_memory",
+          "rank_tests",
+          "append_report"
+        ],
+        "forbidden_claims": [
+          "correlated_measurements_are_independent",
+          "all_clear_after_sensor_fix",
+          "cell_failure_from_channel_difference"
+        ],
+        "references": [
+          "knowledge-skill-sensor-anomaly"
+        ],
+        "source_refs": [
+          {
+            "source_id": "project-doc02",
+            "locator": "03.1–03.3",
+            "source_type": "project_requirement"
+          }
+        ],
+        "editable_sections": [
+          "evidence_checklist",
+          "pitfalls",
+          "test_hints"
+        ],
+        "permission_invariants": [
+          "human_dispatch_confirmation",
+          "no_carbon_tools",
+          "no_oracle",
+          "no_new_tools"
+        ],
+        "candidate_count": 3,
+        "hard_negative_count": 2,
+        "tests": [
+          "sensor-anomaly-positive-01",
+          "sensor-anomaly-negative-01",
+          "sensor-anomaly-negative-02",
+          "sensor-anomaly-insufficient-01"
+        ],
+        "example_case_ids": [
+          "r-0017f5093b4a54c9",
+          "r-0065363c7f39a61e",
+          "r-0179697865f9b80a",
+          "r-01c03caea228c93a"
+        ],
+        "example_split": "cold_start",
+        "cloud_supplemental_note_count": 3,
+        "expert_review": "not_performed",
+        "route_keywords": [
+          "sensor",
+          "channel",
+          "bias",
+          "drift",
+          "alignment",
+          "传感",
+          "偏置",
+          "断线"
+        ],
+        "files": {
+          "SKILL.md": "00426e8ecadf1dfb3b4410d295c51636f784c67cf0dbb7a2cb0efbc135adcd4d",
+          "checks/contract.json": "1ba4073036501a8c65674a8c2012a1b8b855d01024d8764b3838767774163a4c",
+          "examples/insufficient-01.json": "bbe1b03986127b5e57d4ababb64ff288022015908d71e5ae546ec7cb731b9b8d",
+          "examples/negative-01.json": "9ecff28ba0bbc9ff84629c7c39a26b2c3442d4a41861dee4189ef1ca439411b7",
+          "examples/negative-02.json": "1e9dde81b33265f10c165ccb5b271d0bbd6cce916b24a848d0f706ddc32917e7",
+          "examples/positive-01.json": "b7cb401b6543246ff07a1966c6cdfb6a194b2dee3d228750a68c3695ade4a916",
+          "references/evidence.md": "2003af217a5ba170bd8f8eb4664e01e8c9fa32e0780dc04ac793ec8019b0b930"
+        }
+      },
+      {
+        "skill_id": "active-test-selection",
+        "version": "1.0.0",
+        "schema_version": "skill-manifest-v1",
+        "origin": "expert_synthetic",
+        "synthetic": true,
+        "license_status": "approved_synthetic",
+        "authorship": "AI-assisted project synthesis; not expert-authored",
+        "generation_method": "project_catalog_with_visible_cold_start_examples",
+        "supported_chemistries": [
+          "LFP",
+          "NCM",
+          "unknown"
+        ],
+        "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+        "required_inputs": [
+          "installation_id",
+          "visible_evidence",
+          "test_catalog",
+          "authorization",
+          "resource_constraints"
+        ],
+        "allowed_tools": [
+          "get_asset_context",
+          "get_signal_evidence",
+          "read_prediction",
+          "search_memory",
+          "rank_tests",
+          "propose_work_order",
+          "append_report"
+        ],
+        "forbidden_claims": [
+          "fabricated_test_likelihood",
+          "future_branch_query",
+          "confidence_gain_from_round_number",
+          "execute_unauthorized_test"
+        ],
+        "references": [
+          "knowledge-skill-active-test-selection"
+        ],
+        "source_refs": [
+          {
+            "source_id": "project-doc02",
+            "locator": "03.1–03.3",
+            "source_type": "project_requirement"
+          }
+        ],
+        "editable_sections": [
+          "evidence_checklist",
+          "pitfalls",
+          "test_hints"
+        ],
+        "permission_invariants": [
+          "human_dispatch_confirmation",
+          "no_carbon_tools",
+          "no_oracle",
+          "no_new_tools"
+        ],
+        "candidate_count": 3,
+        "hard_negative_count": 2,
+        "tests": [
+          "active-test-selection-positive-01",
+          "active-test-selection-negative-01",
+          "active-test-selection-negative-02",
+          "active-test-selection-insufficient-01"
+        ],
+        "example_case_ids": [
+          "r-0017f5093b4a54c9",
+          "r-0065363c7f39a61e",
+          "r-0179697865f9b80a",
+          "r-01c03caea228c93a"
+        ],
+        "example_split": "cold_start",
+        "cloud_supplemental_note_count": 3,
+        "expert_review": "not_performed",
+        "route_keywords": [
+          "test",
+          "cost",
+          "uncertain",
+          "inconclusive",
+          "rank",
+          "检查",
+          "补测",
+          "未解决"
+        ],
+        "files": {
+          "SKILL.md": "732cf62d9980c9b9f188727b0cce0a74acff006c153cd8eacb3a7a0aef5cda0e",
+          "checks/contract.json": "3943abf1678e42e1dcf29192aed8440917aac0074827b274309a0660dfc78d9d",
+          "examples/insufficient-01.json": "ac36238aa5c524c0b270487bdd8d1c625d261c98054b5e996038393ed4c04add",
+          "examples/negative-01.json": "c1ff961f0efcfe68d69648d14750a9abe210230e7ba5a166f4554e9aceccfd14",
+          "examples/negative-02.json": "47bd859c76f3c03bbd777ddec6549b118b3b6d7c9c6e4c6b70538da5d1263d86",
+          "examples/positive-01.json": "44e66f150c9cc941c74fc93f10c27e20ba5b6e39510ccf0927b0571baa4b4ee3",
+          "references/evidence.md": "374802e4463c7153d3e11209fec411d87169a7d57860a3fa5536712c7181fe0e"
+        }
+      },
+      {
+        "skill_id": "capacity-loss",
+        "version": "1.0.0",
+        "schema_version": "skill-manifest-v1",
+        "origin": "expert_synthetic",
+        "synthetic": true,
+        "license_status": "approved_synthetic",
+        "authorship": "AI-assisted project synthesis; not expert-authored",
+        "generation_method": "project_catalog_with_visible_cold_start_examples",
+        "supported_chemistries": [
+          "LFP",
+          "NCM",
+          "unknown"
+        ],
+        "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+        "required_inputs": [
+          "installation_id",
+          "capacity_measurement",
+          "soc",
+          "cutoff_conditions",
+          "protocol"
+        ],
+        "allowed_tools": [
+          "get_asset_context",
+          "get_signal_evidence",
+          "read_prediction",
+          "search_knowledge",
+          "rank_tests",
+          "append_report"
+        ],
+        "forbidden_claims": [
+          "estimated_capacity_is_measured",
+          "irreversible_loss_from_partial_discharge",
+          "fabricated_capacity_numeric"
+        ],
+        "references": [
+          "knowledge-skill-capacity-loss"
+        ],
+        "source_refs": [
+          {
+            "source_id": "project-doc02",
+            "locator": "03.1–03.3",
+            "source_type": "project_requirement"
+          }
+        ],
+        "editable_sections": [
+          "evidence_checklist",
+          "pitfalls",
+          "test_hints"
+        ],
+        "permission_invariants": [
+          "human_dispatch_confirmation",
+          "no_carbon_tools",
+          "no_oracle",
+          "no_new_tools"
+        ],
+        "candidate_count": 3,
+        "hard_negative_count": 2,
+        "tests": [
+          "capacity-loss-positive-01",
+          "capacity-loss-negative-01",
+          "capacity-loss-negative-02",
+          "capacity-loss-insufficient-01"
+        ],
+        "example_case_ids": [
+          "r-0017f5093b4a54c9",
+          "r-0065363c7f39a61e",
+          "r-0179697865f9b80a",
+          "r-01c03caea228c93a"
+        ],
+        "example_split": "cold_start",
+        "cloud_supplemental_note_count": 3,
+        "expert_review": "not_performed",
+        "route_keywords": [
+          "capacity",
+          "degradation",
+          "cutoff",
+          "soc",
+          "容量",
+          "截止",
+          "退化"
+        ],
+        "files": {
+          "SKILL.md": "5a321a0e3976c2699e23dd72e3b1b1c91ea17f8356f682c72586ebd2a557510e",
+          "checks/contract.json": "4bf79844faaad8b79693e29f1f8c0772338e4b5dd2b3b5802e24b9afed6b3236",
+          "examples/insufficient-01.json": "4909b2f0d074524564ae2e8c7b484f9f5b936716fbeaff701f138f170e9e2e0a",
+          "examples/negative-01.json": "c8353855ceb9cf845405b7c875659e7f9ee21e57af56d0b2040ec1119085ba51",
+          "examples/negative-02.json": "e1ff51e3ed1dc03812e5f3c16b68aca127d286e1523fb7bcc421052d041d9057",
+          "examples/positive-01.json": "0ff642c0a647b256641be5e2c89d9fa3eff7af85773f6a7ab2ef56ca2c1c96c8",
+          "references/evidence.md": "784430219e7760108c0b42a1f2a3614f5bcd68841b582fceebbfa3b209f62dee"
+        }
+      }
+    ],
+    "tool_call_count": 6,
+    "llm_model": "deepseek-flash",
+    "llm_usage": {
+      "prompt_tokens": 10988,
+      "completion_tokens": 1332,
+      "total_tokens": 12320,
+      "prompt_tokens_details": {
+        "cached_tokens": 10368
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 657
+      },
+      "prompt_cache_hit_tokens": 10368,
+      "prompt_cache_miss_tokens": 620
+    },
+    "context_snapshot_id": "context-0-17027192618e1c4e"
+  },
+  "context_snapshot": {
+    "context_snapshot_id": "context-0-17027192618e1c4e",
+    "context_version": "context_v0",
+    "version": 0,
+    "memories": [],
+    "skills": {},
+    "created_at": "2026-10-01T16:18:53.459791+00:00",
+    "changes": [],
+    "parent_snapshot_id": null
+  },
+  "tool_trace": [
+    {
+      "name": "rank_tests",
+      "arguments": {},
+      "status": "completed",
+      "result": {
+        "ranked": [
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "method": "rule",
+            "rule_score": 1.6,
+            "test_cost": 0.0,
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+          }
+        ],
+        "selected": [
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "method": "rule",
+            "rule_score": 1.6,
+            "test_cost": 0.0,
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+          }
+        ],
+        "excluded": [],
+        "pending_authorization": [],
+        "probability_model_available": false
+      }
+    },
+    {
+      "name": "get_asset_context",
+      "arguments": {
+        "installation_id": "live-synthetic-installation"
+      },
+      "status": "completed",
+      "result": {
+        "asset": {
+          "chemistry": "LFP"
+        },
+        "asset_id": "live-synthetic-asset",
+        "installation_id": "live-synthetic-installation"
+      }
+    },
+    {
+      "name": "get_signal_evidence",
+      "arguments": {
+        "installation_id": "live-synthetic-installation",
+        "metrics": [
+          "channel_voltage",
+          "independent_reading",
+          "measurement_quality",
+          "timestamp_alignment"
+        ]
+      },
+      "status": "completed",
+      "result": {
+        "observations": [
+          {
+            "evidence_id": "ev-channel",
+            "measured_at": "2026-09-01T11:00:00Z",
+            "summary": "Synthetic channel records disagree with independent readings; cause not yet confirmed."
+          }
+        ]
+      }
+    },
+    {
+      "name": "get_peer_anomalies",
+      "arguments": {
+        "installation_id": "live-synthetic-installation"
+      },
+      "status": "completed",
+      "result": {
+        "groups": [],
+        "causality": "not_established"
+      }
+    },
+    {
+      "name": "search_memory",
+      "arguments": {
+        "query": "synthetic channel records disagree with independent readings"
+      },
+      "status": "completed",
+      "result": []
+    },
+    {
+      "name": "read_prediction",
+      "arguments": {
+        "prediction_id": "latest"
+      },
+      "status": "rejected",
+      "error": "tool_failed"
+    }
+  ]
+}
