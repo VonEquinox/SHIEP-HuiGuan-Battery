@@ -81,3 +81,19 @@ smoke 固定一份 JSON provider 调用/报告、最多四份 Skill 正文、相
 这两类云端实验证明真实接口、结构边界和小规模更新链可以执行。两根事件的困难度很低，所有组都保持“证据不足”，各组评分相同；这不能证明 ACE/GEPA 改善泛化、真实故障根因准确率、真实部署漏报率或员工运维收益。`grounded_assertion_ratio` 是引用结构检查，不是独立语义判分。没有专家盲评、真实现场根因标签或完整封存评测，本次也没有训练新的故障概率模型。早期 smoke 未保存整包内容 checksum，固定的是记录中的模型/工具/上下文配置标识；长期比较还需冻结整个发布包的内容 hash。
 
 正式自动激活在后端取消/输入版本/CAS 检查后的短事务执行。首次运行真实设备、扩大回放样本、使用真实多通道群组数据和独立语义评价仍需要各自完整证据，不能把这里的合成 smoke 改名为真实运维自进化实验。
+
+## 后续补齐：可执行 GEPA 服务与时间隔离回归
+
+新增 `app.agent.gepa_service.GEPAService` 与 `make_batch_optimizer`，使 API 作业和 A4 可以复用同一套真实候选生成/独立 dev 选择服务。`optimize(events, store)` 不修改输入 store，返回 `activation_update/regression/candidateevaluation/rollouts/budget/provider_usage/provider_requests` 等暂存结果；最终持久化仍由后端取消检查与 base snapshot CAS 后完成。Replay callback 只允许在内存 ContextStore 中暂存激活，下一根事件可以看到经过自动 gate 的文本。
+
+默认需要 50 个**不同根事件**，不足时明确 `no_update/awaiting_distinct_feedback_batch`；实验可以显式选择较小 batch。剩余预算按 `max_rollouts - direct_root_count - 已用 GEPA rollouts` 计算，至少需要基线与候选各一次独立选择评价。schema 失败的候选也保留占用的 selection rollout 预算；实际 provider 请求/token 另计，不把预算预留伪装成已经发生的云端调用。
+
+`DevSelectionScorer` 从固定 dev 根集合稳定选择、排除提案来源根，并冻结 Skill 正文及 selection 内容 checksum。oracle 内容只在 scorer 内用于预定义指标，生成器只能看到已完成的 report、tool trace 和反馈；sealed 文件不参与服务选择。评分明确由初始状态正确性、引用存在比例、可接受首项检查及检查数量构成，并保留权限/格式 hard failures；它仍不是专家盲评或真实部署效果证据。
+
+服务在候选生成前后、每个 dev 根执行前后及暂存激活前检查取消。激活使用**生成开始时**捕获的 version，不能改为结束时的最新 version，从而防止旧候选覆盖并发新增经验。独立测试检查不修改传入 store、合格候选的暂存激活、默认 50 阈值、预算耗尽、失败候选预算与实际费用区别、封存/重复根拒绝和调用中取消。
+
+此外修正两条跨模块回归：Memory `REVISE/CONFLICT` 必须更新本次来源的 `available_at/raw_feedback_id`，避免用第一次反馈时间暴露后续修正；含 `time_basis=source_record_ordinal/source_id` 的模型 query 可使用数值 `available_at/reference_cutoff`，但仍须不晚于来源 cutoff，平台最外层 publication availability 继续是 ISO 时间。
+
+真实分支回放不得在初始报告后直接学习 oracle 的未来反馈。`ReplayEvaluator.evaluate` 可接收 evaluator-only 环境和明确冻结的虚拟检查授权，先冻结报告、按所选已授权检查揭示，再只学习 `visible_feedback`。没有分支环境时，引用未揭示观察的反馈返回 `no_update`。固定 Memory 对照可设置 `allow_context_updates=False`；dev/selection/sealed 始终不写 Context。已有 API 接受测试验证了后到 Memory 修正不会进入旧 cutoff 的诊断。
+
+该补齐阶段运行了核心、GEPA 服务及真实 API Memory 回归组合测试；加入固定上下文开关后最终结果为 **37 passed, 17 deselected in 3.38s**（前次为 36 passed in 4.75s）。这里的 provider 计数 stub 仅用于检查计账程序，不冒充新增云端实验；更大的实际 protocol 实验由独立实验记录文档保存。`context_changes` 汇总所有成功 ACE/Skill 更新，避免只展示最后一个快照的局部 changes。

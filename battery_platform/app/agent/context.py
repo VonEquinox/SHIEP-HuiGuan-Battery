@@ -146,10 +146,12 @@ class ContextStore:
                         record = memory_by_id[mid]
                         record["version"] += 1
                         if operation == "REVISE":
-                            if not set(item) <= {"insight", "trigger", "scope", "source_trust", "counterexamples", "supporting_case_ids", "expires_at", "helpful_count", "harmful_count"}:
+                            if not set(item) <= {"insight", "trigger", "scope", "source_trust", "counterexamples", "supporting_case_ids", "expires_at", "helpful_count", "harmful_count", "available_at", "raw_feedback_id"}:
                                 raise ValueError("revision contains immutable or permission fields")
                             if item.get("source_trust", record["source_trust"]) not in {"reported", "measurement_supported", "independently_verified", "contradicted"}:
                                 raise ValueError("invalid revised memory trust")
+                            record["revision_provenance"] = {"previous_version": record["version"] - 1,
+                                "previous_available_at": record.get("available_at"), "previous_feedback_id": record.get("raw_feedback_id")}
                             record.update(item)
                         elif operation == "DEPRECATE":
                             record.update(state="deprecated", deprecation_reason=update.get("reason", "superseded"))
@@ -158,6 +160,8 @@ class ContextStore:
                             record.setdefault("conflicts", []).append({"insight": item.get("insight", ""),
                                                                        "source_trust": item.get("source_trust", "reported"),
                                                                        "supporting_case_ids": item.get("supporting_case_ids", [])})
+                            record["available_at"] = item.get("available_at", now())
+                            record["raw_feedback_id"] = item.get("raw_feedback_id")
                 memories = list(memory_by_id.values())
             except (ValueError, KeyError, TypeError) as exc:
                 reason = str(exc)
@@ -249,7 +253,8 @@ def evolve_context(store: ContextStore, feedback: dict[str, Any], previous_repor
             insight += " | Intervention occurred; absence after intervention is not a false-positive label."
         old = next((m for m in snapshot["memories"] if m["memory_id"] == mid), None)
         item = {"insight": insight, "source_trust": feedback.get("verification_status", "reported"),
-                "supporting_case_ids": [str(root_id)]}
+                "supporting_case_ids": [str(root_id)], "raw_feedback_id": fid,
+                "available_at": feedback.get("available_at", feedback.get("measured_at", now()))}
         if old:
             op = ("NO_UPDATE" if old["insight"] == insight and old["source_trust"] == item["source_trust"] and not feedback.get("contradicts_previous")
                   else "CONFLICT" if feedback.get("contradicts_previous") else "REVISE")

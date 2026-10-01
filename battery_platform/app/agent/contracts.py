@@ -90,9 +90,11 @@ def public_context(value: Any, *, cutoff: str, installation_id: str) -> Any:
         if isinstance(item, dict):
             if item.get("installation_id") is not None and str(item["installation_id"]) != str(installation_id):
                 return None
+            source_ordinal_query = (item.get("time_basis") == "source_record_ordinal" and bool(item.get("source_id"))
+                                    and isinstance(item.get("visible_cutoff"), (int, float)))
             for key in ("measured_at", "available_at", "received_at", "visible_at", "query_time", "visible_cutoff", "timestamp"):
                 if item.get(key) is not None:
-                    if key in {"query_time", "visible_cutoff"} and isinstance(item[key], (int, float)):
+                    if (key in {"query_time", "visible_cutoff"} or key == "available_at" and source_ordinal_query) and isinstance(item[key], (int, float)):
                         # Numerical-model source coordinates (cycles/sample time)
                         # are separate from server ISO observation availability.
                         if not any(k in item for k in ("feature_max_time", "feature_schema", "source_id", "physical_cell_id", "allowed_heads")):
@@ -103,8 +105,10 @@ def public_context(value: Any, *, cutoff: str, installation_id: str) -> Any:
                     if parse_time(item[key]) > deadline:
                         return None
             if isinstance(item.get("visible_cutoff"), (int, float)):
-                if item.get("feature_max_time") is not None and float(item["feature_max_time"]) > item["visible_cutoff"]:
-                    return None
+                for key in ("feature_max_time", "reference_cutoff", "available_at"):
+                    if item.get(key) is not None and isinstance(item[key], (int, float)):
+                        if not math.isfinite(float(item[key])) or float(item[key]) > item["visible_cutoff"]:
+                            return None
                 if isinstance(item.get("query_time"), (int, float)) and item["query_time"] < item["visible_cutoff"]:
                     raise ValueError("source cutoff cannot follow the model query coordinate")
             return {k: cleaned for k, val in item.items()

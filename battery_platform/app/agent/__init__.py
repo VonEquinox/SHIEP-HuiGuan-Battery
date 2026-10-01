@@ -8,8 +8,10 @@ from .llm import LLMError, OpenAICompatibleClient
 from .skills import SkillLibrary
 from .tools import ToolError, ToolRegistry
 from .evaluation import ARMS, GEPASearch, ReplayEvaluator, score_report, validate_skill_candidate
+from .gepa_service import DevSelectionScorer, GEPAService, make_batch_optimizer
 
 __all__ = ["AgentExecutor", "AgentReport", "ContextConflict", "ContextStore", "EDITABLE_SKILL_FIELDS",
            "LLMError", "OpenAICompatibleClient", "SkillLibrary", "TOOL_WHITELIST", "ToolError",
            "ToolRegistry", "evolve_context", "extract_feedback", "public_context", "run_agent", "validate_report",
-           "ARMS", "GEPASearch", "ReplayEvaluator", "score_report", "validate_skill_candidate"]
+           "ARMS", "GEPASearch", "ReplayEvaluator", "score_report", "validate_skill_candidate",
+           "DevSelectionScorer", "GEPAService", "make_batch_optimizer"]

@@ -51,6 +51,11 @@ def test_model_source_cycle_cutoff_is_separate_from_iso_availability():
     assert result["query"]["query_time"] == 24 and not result["observations"]
     value["query"]["feature_max_time"] = 24.0
     assert "query" not in public_context(value, cutoff=CUTOFF, installation_id="installation-a")
+    value["query"] = {"query_time": 24.0, "visible_cutoff": 23.0, "feature_max_time": 23.0,
+                      "available_at": 23.0, "reference_cutoff": 20.0, "source_id": "MATR", "time_basis": "source_record_ordinal"}
+    assert public_context(value, cutoff=CUTOFF, installation_id="installation-a")["query"]["available_at"] == 23
+    value["query"]["available_at"] = 24
+    assert "query" not in public_context(value, cutoff=CUTOFF, installation_id="installation-a")
 
 
 def test_rule_executor_preserves_unknown_probability_and_next_round():
@@ -198,6 +203,16 @@ def test_memory_immediate_retrieval_conflicts_and_cas(tmp_path):
     assert second["snapshot"]["memories"][0]["state"] == "conflicted"
     # A new instance observes persisted state without a long-running write lock.
     assert ContextStore(tmp_path / "context.json").snapshot()["version"] == 2
+
+
+def test_memory_revision_carries_new_feedback_availability():
+    store = ContextStore()
+    base = {"root_scenario_id": "root1", "installation_id": "installation-a", "split": "evolution"}
+    evolve_context(store, {**base, "feedback_id": "f-early", "free_text": "early observation", "available_at": "2026-09-01T10:00:00Z"})
+    evolve_context(store, {**base, "feedback_id": "f-later", "free_text": "later hidden observation", "available_at": "2026-09-02T10:00:00Z"})
+    latest = store.snapshot()["memories"][0]
+    assert latest["raw_feedback_id"] == "f-later" and latest["available_at"] == "2026-09-02T10:00:00Z"
+    assert not store.search("later", scope={"installation_id": "installation-a"}, cutoff=CUTOFF)
 
 
 def test_skill_updates_autoactivate_or_quarantine_and_rollback():

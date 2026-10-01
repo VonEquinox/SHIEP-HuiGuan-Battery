@@ -13,7 +13,7 @@ from typing import Any, Callable
 
 from .context import ContextStore, evolve_context
 from .contracts import EDITABLE_SKILL_FIELDS, FORBIDDEN_CONTEXT_KEYS, public_context
-from .executor import run_agent
+from .executor import run_agent, _evidence_ids
 
 ARMS = {
     "A0": {"llm": False, "memory": False, "ace": False, "gepa": False},
@@ -44,6 +44,8 @@ def _check_events(events: list[dict[str, Any]], scopes: set[str]) -> set[str]:
 
 
 def validate_skill_candidate(candidate: dict[str, Any], skill_id: str) -> dict[str, Any]:
+    if not isinstance(candidate, dict):
+        raise ValueError("candidate must be an object")
     if set(candidate) - {"candidate_id", "skill_id", "fields", "reason", "supporting_root_ids"}:
         raise ValueError("candidate modifies noneditable metadata")
     if candidate.get("skill_id") != skill_id:
@@ -66,7 +68,10 @@ class GEPASearch:
                feedback_events: list[dict[str, Any]], selection_events: list[dict[str, Any]],
                evaluate: Callable[[dict[str, Any], list[dict[str, Any]]], dict[str, Any]],
                propose: Callable[[dict[str, Any]], list[dict[str, Any]]] | None = None,
-               llm: Any = None) -> dict[str, Any]:
+               llm: Any = None, cancelled: Callable[[], bool] | None = None) -> dict[str, Any]:
+        cancelled = cancelled or (lambda: False)
+        if cancelled():
+            raise RuntimeError("evolution cancelled")
         feedback_roots = _check_events(feedback_events, {"evolution"})
         selection_roots = _check_events(selection_events, {"selection", "dev"})
         if feedback_roots & selection_roots:
@@ -88,6 +93,8 @@ class GEPASearch:
             candidates = answer.get("candidates", [])
         else:
             return {"state": "no_update", "reason": "No candidate proposer configured", "rollouts": 0, "candidates": []}
+        if not isinstance(candidates, list):
+            raise ValueError("candidate proposal must be an array")
         evaluations, rollouts = [], 0
         baseline_candidate = {"candidate_id": "baseline", "skill_id": skill_id, "fields": current_fields}
         chosen = None
@@ -95,13 +102,19 @@ class GEPASearch:
         # Failed candidates consume the same reserved evaluation budget. The
         # evaluator cannot signal a falsely cheap failure by omitting its costs.
         for candidate in [baseline_candidate, *candidates[:self.candidate_budget]]:
+            if cancelled():
+                raise RuntimeError("evolution cancelled")
             reserved = len(selection_events)
             if rollouts + reserved > self.rollout_budget:
                 break
             rollouts += reserved
             try:
                 checked = validate_skill_candidate(candidate, skill_id)
+                if not set(checked.get("supporting_root_ids", [])) <= feedback_roots:
+                    raise ValueError("candidate cites an unavailable proposal root")
                 metrics = evaluate(checked, copy.deepcopy(selection_events))
+                if cancelled():
+                    raise RuntimeError("evolution cancelled")
                 score = float(metrics["score"])
                 if not math.isfinite(score):
                     raise ValueError("invalid dev score")
@@ -114,7 +127,9 @@ class GEPASearch:
                 elif not failures and baseline_score is not None and score >= baseline_score and (chosen is None or score > chosen["metrics"]["score"]):
                     chosen = evaluation
             except Exception:
-                evaluation = {"candidate_id": candidate.get("candidate_id", "invalid"), "state": "rejected", "reason": "candidate schema/evaluation failed", "rollouts_reserved": reserved}
+                if cancelled():
+                    raise RuntimeError("evolution cancelled") from None
+                evaluation = {"candidate_id": candidate.get("candidate_id", "invalid") if isinstance(candidate, dict) else "invalid", "state": "rejected", "reason": "candidate schema/evaluation failed", "rollouts_reserved": reserved}
             evaluations.append(evaluation)
         return {"state": "candidate_ready" if chosen else "no_update", "chosen": chosen,
                 "candidates": evaluations, "rollouts": rollouts, "rollout_budget": self.rollout_budget,
@@ -182,7 +197,9 @@ class ReplayEvaluator:
                  runner: Callable[..., dict[str, Any]] = run_agent,
                  frozen_config: dict[str, Any] | None = None, milestone: bool = False,
                  batch_optimizer: Callable[[list[dict[str, Any]], ContextStore], Any] | None = None,
-                 batch_size: int = 50) -> dict[str, Any]:
+                 batch_size: int = 50, replay_environment: Any = None,
+                 replay_authorized_test_ids: list[str] | None = None,
+                 allow_context_updates: bool = True) -> dict[str, Any]:
         if arm not in ARMS:
             raise ValueError("unknown experiment arm")
         roots = _check_events(cases, {"dev", "selection", "evolution", "sealed"})
@@ -197,6 +214,14 @@ class ReplayEvaluator:
         records, feedback_batch = [], []
         for case in cases:
             visible = _public_case(case)
+            replay_session = None
+            if case["split"] == "evolution" and replay_environment is not None:
+                if not replay_authorized_test_ids:
+                    raise ValueError("branch replay requires explicit frozen virtual test grants")
+                replay_session = replay_environment.begin(_root(case))
+                visible = _public_case(replay_session.visible)
+                visible["authorization"] = {"authorized_test_ids": replay_authorized_test_ids,
+                                            "qualifications": ["instrumentation"], "round_budget": 3, "human_approved": True}
             visible["context_snapshot"] = store.snapshot()
             result = runner(visible, llm=(llm if ARMS[arm]["llm"] else False),
                             skill_library=(skill_library if arm != "A0" else None), context_store=store)
@@ -207,9 +232,27 @@ class ReplayEvaluator:
                       "metrics": metrics, "run": result.get("run", {}), "update_state": "no_update"}
             # Dev/selection are read-only, avoiding order-dependent tuning of the
             # set used to compare candidates. Sealed labels never leave scorer.
-            if case["split"] == "evolution" and ARMS[arm]["memory"]:
+            if case["split"] == "evolution" and ARMS[arm]["memory"] and allow_context_updates:
                 feedback = copy.deepcopy(case.get("feedback", case.get("expected_feedback", {})))
+                if replay_session is not None:
+                    eligible_tests = [t["test_id"] for t in report.get("suggested_tests", []) if t["authorization"] == "authorized" and t["test_id"] in replay_authorized_test_ids]
+                    if eligible_tests:
+                        chosen_test = eligible_tests[0]
+                        replay_environment.authorize(replay_session, chosen_test, approved_by="synthetic_evaluator")
+                        try:
+                            record["revealed"] = replay_environment.reveal(replay_session, chosen_test)
+                        except (PermissionError, ValueError):
+                            record["replay_boundary_error"] = "selected_branch_not_reachable"
+                    reachable_feedback = replay_environment.visible_feedback(replay_session)
+                    feedback = copy.deepcopy(reachable_feedback[0]) if reachable_feedback else {}
+                elif not set(feedback.get("evidence_ids", [])) <= _evidence_ids(visible):
+                    feedback = {}
+                    record["update_reason"] = "feedback_requires_unrevealed_observations"
+                if not feedback:
+                    records.append(record)
+                    continue
                 feedback.update(root_scenario_id=_root(case), split="evolution", installation_id=visible["installation_id"])
+                feedback.setdefault("available_at", feedback.get("observed_at", visible["visible_cutoff"]))
                 if ARMS[arm]["ace"]:
                     updated = evolve_context(store, feedback, report)
                 else:
@@ -241,7 +284,8 @@ class ReplayEvaluator:
                             "independently_labeled_root_count": len(labeled),
                             "misses": sum(r["metrics"]["missed"] for r in labeled) if labeled else None,
                             "false_alarms": sum(r["metrics"]["false_alarm"] for r in labeled) if labeled else None},
-                "final_context_snapshot": store.snapshot()}
+                "final_context_snapshot": store.snapshot(),
+                "context_changes": [update for entry in store.audit() if entry.get("state") == "active" for update in entry.get("updates", [])]}
 
     def replay_session(self, arm: str, environment: Any, case_id: str, *,
                        authorized_test_ids: list[str], llm: Any = None, skill_library: Any = None,
