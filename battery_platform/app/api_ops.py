@@ -4,7 +4,7 @@ import io
 import uuid
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Query
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Query, Request
 from fastapi.responses import FileResponse
 from PIL import Image, UnidentifiedImageError
 from . import schemas as S
@@ -350,6 +350,9 @@ def transition(
             identifier,
             {"from": before, "to": target, "note": data.note},
         )
+        if target == "VERIFIED":
+            from .api_evolution import order_verified
+            order_verified(c, identifier, user["id"])
         affected = {order["created_by"], user["id"]}
         if data.assignee_id:
             affected.add(data.assignee_id)
@@ -369,14 +372,13 @@ def transition(
 @router.post("/orders/{identifier}/attachments", status_code=201)
 async def upload_attachment(
     identifier: int,
+    request: Request,
     file: UploadFile = File(...),
     user=Depends(allow("admin", "dispatcher", "technician")),
 ):
     with tx() as c:
         o = require(c, "orders", identifier)
         order_access(o, user, True)
-        if o["status"] in ("CLOSED", "CANCELLED"):
-            raise HTTPException(409, "已结束工单禁止修改证据")
     contents = await file.read(5 * 1024 * 1024 + 1)
     if not contents or len(contents) > 5 * 1024 * 1024:
         raise HTTPException(413, "证据文件须为1字节至5MiB")
@@ -414,6 +416,15 @@ async def upload_attachment(
             raise HTTPException(415, "图片类型、内容或尺寸不合法")
     else:
         raise HTTPException(415, "证据仅支持PNG、JPEG、UTF-8文本；不接受可执行内容")
+    key = request.headers.get("idempotency-key")
+    from .api_v2 import replay, remember
+    submission = {"order_id": identifier, "file_name": name, "mime": mime,
+                  "size": len(contents), "sha256": hashlib.sha256(contents).hexdigest()}
+    if key:
+        with tx() as c:
+            previous = replay(c, user, f"attachment:{identifier}", key, submission)
+            if previous:
+                return previous
     storage = uuid.uuid4().hex + suffix
     path = RUNTIME / "attachments" / storage
     try:
@@ -422,6 +433,11 @@ async def upload_attachment(
         with tx() as c:
             o = require(c, "orders", identifier)
             order_access(o, user, True)
+            if key:
+                previous = replay(c, user, f"attachment:{identifier}", key, submission)
+                if previous:
+                    path.unlink(missing_ok=True)
+                    return previous
             if o["status"] in ("CLOSED", "CANCELLED"):
                 raise HTTPException(409, "工单状态已改变")
             count = one(
@@ -453,6 +469,8 @@ async def upload_attachment(
                 identifier,
                 {"attachment_id": aid},
             )
+            if key:
+                remember(c, user, f"attachment:{identifier}", key, submission, {"id": aid})
     except BaseException:
         path.unlink(missing_ok=True)
         raise
@@ -501,7 +519,7 @@ def people(user=Depends(current_user)):
 @router.post("/personnel")
 def save_person(data: S.PersonnelUpdate, user=Depends(allow("admin", "dispatcher"))):
     if not data.skills or any(
-        s not in ("battery", "electrical", "sensor", "inspection") for s in data.skills
+        s not in ("battery", "electrical", "sensor", "inspection", "instrumentation") for s in data.skills
     ):
         raise HTTPException(422, "技能标签无效")
     with tx() as c:

@@ -44,6 +44,9 @@ def origin_check(request: Request):
 
 
 def current_user(request: Request):
+    if request.headers.get("authorization", "").lower().startswith("bearer "):
+        from .api_v2 import mobile_current_user
+        return mobile_current_user(request)
     token = request.cookies.get("hg_session", "")
     with tx() as c:
         session = one(

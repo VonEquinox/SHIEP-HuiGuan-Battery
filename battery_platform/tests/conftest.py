@@ -7,9 +7,9 @@ import shutil
 import tempfile
 from pathlib import Path
 
-os.environ["BATTERY_RUNTIME"] = tempfile.mkdtemp(
-    prefix="test-api-", dir=str(Path(__file__).resolve().parents[1] / "runtime")
-)
+test_runtime_root = Path(__file__).resolve().parents[1] / "runtime"
+test_runtime_root.mkdir(parents=True, exist_ok=True)
+os.environ["BATTERY_RUNTIME"] = tempfile.mkdtemp(prefix="test-api-", dir=str(test_runtime_root))
 os.environ["BATTERY_DISABLE_WORKER"] = "1"
 atexit.register(shutil.rmtree, os.environ["BATTERY_RUNTIME"], True)
 
@@ -49,8 +49,17 @@ def clean_database():
         "users",
     ]
     with tx() as c:
+        execute(c, "PRAGMA defer_foreign_keys=ON")
+        core_tables = set(order) | {"schema_version", "schema_migrations", "sqlite_sequence"}
+        from app.db import rows
+        extra_tables = rows(c, "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
+        for table in extra_tables:
+            if table["name"] not in core_tables:
+                c.exec_driver_sql('DELETE FROM "' + table["name"].replace('"', '""') + '"')
         for table in order:
             execute(c, f"DELETE FROM {table}")
+        if any(t["name"] == "dispatch_resources" for t in extra_tables):
+            execute(c, "INSERT INTO dispatch_resources(id,payload,updated_at) VALUES(1,'{}','')")
         for role, name in [
             ("admin", "admin"),
             ("dispatcher", "dispatch"),

@@ -229,6 +229,20 @@ def complete(c, job, result, request):
     audit(c, actor, "job_succeeded", "job", job["id"], {"kind": job["kind"]})
 
 
+def extension_handler(kind):
+    if kind == "carbon_solve":
+        from .carbon import jobs as module
+    elif kind in ("dispatch", "dispatch_solve"):
+        from .dispatch import jobs as module
+    else:
+        try:
+            from .v2_jobs import V2_JOB_HANDLERS
+        except ImportError:
+            return None
+        return V2_JOB_HANDLERS.get(kind)
+    return {name: getattr(module, name) for name in ("snapshot", "compute", "complete")}
+
+
 class JobSupervisor:
     def __init__(self):
         self.stop_event = threading.Event()
@@ -247,11 +261,16 @@ class JobSupervisor:
                 "Another app worker is active for this runtime; only one server process is supported"
             )
         with tx() as c:
+            interrupted = rows(c, "SELECT * FROM jobs WHERE status='running'")
             execute(
                 c,
                 "UPDATE jobs SET status='interrupted',error='进程中断；没有自动重放任务',finished_at=:t WHERE status='running'",
                 {"t": now()},
             )
+            for job in interrupted:
+                handler = extension_handler(job["kind"])
+                if handler and handler.get("lifecycle"):
+                    handler["lifecycle"](c, job, "interrupted", "进程中断；没有自动重放任务")
         self.thread = threading.Thread(
             target=self.loop, name="battery-job-supervisor", daemon=True
         )
@@ -273,6 +292,9 @@ class JobSupervisor:
     def loop(self):
         while not self.stop_event.is_set():
             with tx() as c:
+                from .api_evolution import schedule_pending_feedback, schedule_context_gepa
+                schedule_pending_feedback(c)
+                schedule_context_gepa(c)
                 job = one(
                     c, "SELECT * FROM jobs WHERE status='queued' ORDER BY id LIMIT 1"
                 )
@@ -292,6 +314,10 @@ class JobSupervisor:
         folder.mkdir(exist_ok=True, mode=0o700)
         status = "failed"
         try:
+            handler = extension_handler(job["kind"])
+            if handler:
+                self.run_extension(job, handler)
+                return
             if not ML_PYTHON.is_file():
                 raise RuntimeError("研究模型 Python 环境缺失；未使用模拟推理")
             with tx() as c:
@@ -415,3 +441,49 @@ class JobSupervisor:
                 )
         finally:
             self.child = None
+
+    def run_extension(self, job, handler):
+        request, result = None, None
+        def cancelled():
+            if self.stop_event.is_set():
+                return True
+            with tx() as c:
+                current = require(c, "jobs", job["id"])
+                return bool(current["cancel_requested"] or current["status"] != "running")
+
+        status = "failed"
+        try:
+            with tx() as c:
+                request = handler["snapshot"](c, job)
+            if cancelled():
+                raise InterruptedError("作业已取消或服务正在停止")
+            result = handler["compute"](request, cancelled)
+            with tx() as c:
+                current = require(c, "jobs", job["id"])
+                if self.stop_event.is_set() or current["cancel_requested"] or current["status"] != "running":
+                    raise InterruptedError("结果发布前作业已取消或中断")
+                summary = handler["complete"](c, job, result, request)
+                execute(c, "UPDATE jobs SET status='succeeded',progress=100,result=:r,finished_at=:t WHERE id=:i",
+                        {"r": js(summary or {}), "t": now(), "i": job["id"]})
+                audit(c, job["created_by"], "job_succeeded", "job", job["id"], {"kind": job["kind"]})
+        except BaseException as error:
+            with tx() as c:
+                current = require(c, "jobs", job["id"])
+                if current["cancel_requested"]:
+                    status = "cancelled"
+                elif self.stop_event.is_set() or isinstance(error, InterruptedError):
+                    status = "interrupted"
+                execute(c, "UPDATE jobs SET status=:s,error=:e,finished_at=:t WHERE id=:i",
+                        {"s": status, "e": str(error)[-4000:], "t": now(), "i": job["id"]})
+                if handler.get("accounting"):
+                    try:
+                        with c.begin_nested():
+                            # Costs survive a cancelled/failed publication;
+                            # this hook must never publish a business result.
+                            handler["accounting"](c, job, result, request, error)
+                    except Exception as accounting_error:
+                        audit(c, job["created_by"], "job_accounting_failed", "job", job["id"],
+                              {"error_type": type(accounting_error).__name__})
+                if handler.get("lifecycle"):
+                    handler["lifecycle"](c, job, status, str(error)[-1000:])
+                audit(c, job["created_by"], "job_" + status, "job", job["id"], {"reason": str(error)[-500:]})

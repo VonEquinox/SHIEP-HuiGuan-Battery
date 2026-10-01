@@ -1,0 +1,28 @@
+{
+  "provenance": "self_synthetic",
+  "model": "deepseek-flash",
+  "attempts": [
+    {
+      "attempt": 1,
+      "cloud_report_valid": true,
+      "provider_requests": 2,
+      "failed_provider_requests": 0,
+      "provider_usage": {"prompt_tokens": 12278, "completion_tokens": 1487, "total_tokens": 13765},
+      "script_result": "verification assertion used the wrong execution_mode literal; successful report not exported",
+      "evidence_source": "actual process stdout; complete first report was not retained"
+    },
+    {
+      "attempt": 2,
+      "cloud_report_valid": true,
+      "provider_requests": 2,
+      "failed_provider_requests": 0,
+      "provider_usage": {"prompt_tokens": 16052, "completion_tokens": 2220, "total_tokens": 18272},
+      "script_result": "passed after checking execution_mode=cloud and cloud_report_valid=true",
+      "artifact": "cloud_api.json"
+    }
+  ],
+  "total_provider_requests": 4,
+  "total_failed_provider_requests": 0,
+  "total_tokens": 32037,
+  "generalization_verified": false
+}

@@ -1,0 +1,905 @@
+{
+  "created_at": "2026-10-01T17:11:22.026084+00:00",
+  "provider_model": "deepseek-flash",
+  "provenance": "self_synthetic",
+  "scope": "real HTTP API and real cloud executor; no approval or physical control",
+  "http_submit_status": 202,
+  "http_detail_status": 200,
+  "request_id_present": true,
+  "job_status": "succeeded",
+  "execution": {
+    "run_id": 1,
+    "session_id": 1,
+    "report_id": 1,
+    "report_version": 1,
+    "status": "insufficient_evidence",
+    "proposal_id": 1,
+    "execution_mode": "cloud",
+    "run": {
+      "state": "WAIT_FOR_MEASUREMENT",
+      "states": [
+        {
+          "state": "COLLECT"
+        },
+        {
+          "state": "CHECK_SUPPORT"
+        },
+        {
+          "state": "ROUTE_SKILLS"
+        },
+        {
+          "state": "BUILD_HYPOTHESES"
+        },
+        {
+          "state": "CALL_TOOLS"
+        },
+        {
+          "state": "VALIDATE_REPORT"
+        },
+        {
+          "state": "REPORT_READY"
+        },
+        {
+          "state": "WAIT_FOR_MEASUREMENT"
+        }
+      ],
+      "execution_mode": "cloud",
+      "cloud_report_valid": true,
+      "status": "completed",
+      "errors": [],
+      "selected_skills": [],
+      "tool_call_count": 7,
+      "llm_model": "deepseek-flash",
+      "llm_usage": {
+        "prompt_tokens": 16052,
+        "completion_tokens": 2220,
+        "total_tokens": 18272
+      },
+      "llm_request_count": 2,
+      "llm_failed_request_count": 0,
+      "context_snapshot_id": "context-0-10638a2fc9692bb8"
+    }
+  },
+  "report": {
+    "id": 1,
+    "agent_run_id": 1,
+    "session_id": 1,
+    "asset_id": 4,
+    "installation_id": "6a20c0f6-812b-4ba8-9d8c-d1371831c6cc",
+    "round": 1,
+    "report_version": 1,
+    "context_snapshot_id": 1,
+    "report": {
+      "report_id": "report-e2dd096a287800f8",
+      "asset_id": 4,
+      "installation_id": "6a20c0f6-812b-4ba8-9d8c-d1371831c6cc",
+      "visible_cutoff": "2026-10-01T17:11:10.957786+00:00",
+      "round": 1,
+      "status": "insufficient_evidence",
+      "facts": [
+        {
+          "claim": "可见观察仅有一条合成传感器事件记录：observed_symptoms = 演示场景：温度监测异常（合成传感器事件），provenance=simulated，且标记 synthetic=true、not_model_result=true；该记录未被独立仪表或第二次采集确认。",
+          "evidence_ids": [
+            "event-1"
+          ]
+        },
+        {
+          "claim": "资产身份为 id=4、code=CELL-001、kind=cell、parent_id=3、provenance=simulated、location=001号槽位、installation_id=6a20c0f6-812b-4ba8-9d8c-d1371831c6cc、active=1、version=1；元数据未声明化学体系或型号，也未声明温度传感器位置与单位。",
+          "evidence_ids": [
+            "asset-context:6a20c0f6-812b-4ba8-9d8c-d1371831c6cc"
+          ]
+        },
+        {
+          "claim": "适用指南要求：温度异常需区分绝对温度、温升、空间差异与时间变化，并核对环境/负载共因与同期成员是否有独立传感；异常数值本身不构成热失控概率。",
+          "evidence_ids": [
+            "knowledge-skill-thermal-anomaly"
+          ]
+        },
+        {
+          "claim": "适用指南要求：先分别记录采集链路偏置/漂移/断线/错误映射与时间错位候选；共用同一传感器的重复读数不构成独立证据；采集问题被支持后仍需逐项核对未排除的真实单体异常。",
+          "evidence_ids": [
+            "knowledge-skill-sensor-anomaly",
+            "knowledge-skill-data-quality"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "code": "measurement_condition",
+          "level": "insufficient_evidence",
+          "supports": [
+            "knowledge-skill-sensor-anomaly",
+            "knowledge-skill-data-quality"
+          ],
+          "contradicts": [],
+          "probability": null,
+          "probability_source": null
+        },
+        {
+          "code": "persistent_state_difference",
+          "level": "insufficient_evidence",
+          "supports": [
+            "knowledge-skill-thermal-anomaly"
+          ],
+          "contradicts": [
+            "event-1"
+          ],
+          "probability": null,
+          "probability_source": null
+        },
+        {
+          "code": "thermal_runaway",
+          "level": "unsupported",
+          "supports": [],
+          "contradicts": [
+            "knowledge-skill-thermal-anomaly",
+            "event-1"
+          ],
+          "probability": null,
+          "probability_source": null
+        }
+      ],
+      "unknowns": [
+        "No prediction before cutoff: 预测支持状态为 insufficient_data，模型未提供任何概率或分数。",
+        "Root cause is not independently confirmed：唯一证据为合成事件，无独立仪表、无重复采集、无质量码。",
+        "无同类分组异常记录（peer groups 为空），causality = not_established，无法比较同期成员独立传感。",
+        "温度观察的时间对齐、单位、采样频率、传感位置均未提供，无法与电压/电流等通道对齐比较。",
+        "化学体系与型号未声明，模型适用域无法判定。",
+        "环境与负载条件未提供，无法排除环境/负载共因。"
+      ],
+      "applicability": {
+        "status": "insufficient_data",
+        "reasons": [
+          "No prediction before cutoff",
+          "probability_model_available = false",
+          "证据为合成演示事件（synthetic=true, not_model_result=true），不构成物理实测确认"
+        ]
+      },
+      "suggested_tests": [
+        {
+          "test_id": "T_TIME_ALIGN",
+          "reason": "核对可见记录时间与身份映射；当前温度事件与资产/安装身份未做时间对齐，属目录内且记录评审性质。需人工授权后执行。",
+          "authorization": "required"
+        },
+        {
+          "test_id": "T_CHANNEL_CHECK",
+          "reason": "按虚拟规程独立读取并比较状态，用于区分采集条件与真实状态差异。需人工授权后执行。",
+          "authorization": "required"
+        },
+        {
+          "test_id": "T_REPEAT_SOURCE",
+          "reason": "重复同一采集源检查可重复性；注意共用同一传感器不算独立证据。需人工授权后执行。",
+          "authorization": "required"
+        }
+      ],
+      "priority": {
+        "class": "needs_inspection",
+        "reason": "存在单一合成温度监测异常事件但无独立确认、无预测输出；按目录内记录评审类测试待人工授权后核实，独立安全保护仍具权威性。"
+      },
+      "proposal_id": "1",
+      "citations": [
+        "event-1",
+        "asset-context:6a20c0f6-812b-4ba8-9d8c-d1371831c6cc",
+        "knowledge-skill-sensor-anomaly",
+        "knowledge-skill-thermal-anomaly",
+        "knowledge-skill-data-quality"
+      ],
+      "agent_version": "single-agent-v2.0",
+      "context_version": "context_v0"
+    },
+    "tool_trace": [
+      {
+        "name": "rank_tests",
+        "arguments": {},
+        "status": "completed",
+        "result": {
+          "ranked": [],
+          "selected": [],
+          "excluded": [],
+          "pending_authorization": [
+            {
+              "test_id": "T_TIME_ALIGN",
+              "method": "rule",
+              "rule_score": 0.9230769230769231,
+              "test_cost": 1.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            },
+            {
+              "test_id": "T_CHANNEL_CHECK",
+              "method": "rule",
+              "rule_score": 0.6153846153846154,
+              "test_cost": 2.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            },
+            {
+              "test_id": "T_REPEAT_SOURCE",
+              "method": "rule",
+              "rule_score": 0.48,
+              "test_cost": 3.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            },
+            {
+              "test_id": "T_RESTRICTED_CHECK",
+              "method": "rule",
+              "rule_score": 0.375,
+              "test_cost": 4.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            },
+            {
+              "test_id": "T_CAPACITY_REVIEW",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_COMMUNICATION_CHECK",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_CONNECTION_VISUAL",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_COOLING_REVIEW",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_ENVIRONMENT_REVIEW",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_SENSOR_COMPARE",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            }
+          ],
+          "stop_reason": "authorization_required",
+          "probability_model_available": false
+        }
+      },
+      {
+        "name": "get_asset_context",
+        "arguments": {
+          "installation_id": "6a20c0f6-812b-4ba8-9d8c-d1371831c6cc"
+        },
+        "status": "completed",
+        "result": {
+          "evidence_id": "asset-context:6a20c0f6-812b-4ba8-9d8c-d1371831c6cc",
+          "asset": {
+            "id": 4,
+            "code": "CELL-001",
+            "name": "电芯 001",
+            "kind": "cell",
+            "parent_id": 3,
+            "provenance": "simulated",
+            "location": "001号槽位",
+            "installation_id": "6a20c0f6-812b-4ba8-9d8c-d1371831c6cc",
+            "active": 1,
+            "version": 1,
+            "created_at": "2026-10-01T17:11:10.933608+00:00"
+          },
+          "asset_id": 4,
+          "installation_id": "6a20c0f6-812b-4ba8-9d8c-d1371831c6cc"
+        }
+      },
+      {
+        "name": "get_signal_evidence",
+        "arguments": {
+          "installation_id": "6a20c0f6-812b-4ba8-9d8c-d1371831c6cc",
+          "metrics": [
+            "temperature",
+            "voltage",
+            "current"
+          ]
+        },
+        "status": "completed",
+        "result": {
+          "observations": [
+            {
+              "evidence_id": "event-1",
+              "installation_id": "6a20c0f6-812b-4ba8-9d8c-d1371831c6cc",
+              "measured_at": "2026-10-01T17:11:10.934517+00:00",
+              "available_at": "2026-10-01T17:11:10.934517+00:00",
+              "observed_symptoms": [
+                "演示场景：温度监测异常（合成传感器事件）"
+              ],
+              "provenance": "simulated",
+              "evidence": {
+                "synthetic": true,
+                "not_model_result": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "get_peer_anomalies",
+        "arguments": {
+          "installation_id": "6a20c0f6-812b-4ba8-9d8c-d1371831c6cc"
+        },
+        "status": "completed",
+        "result": {
+          "groups": [],
+          "causality": "not_established"
+        }
+      },
+      {
+        "name": "rank_tests",
+        "arguments": {},
+        "status": "completed",
+        "result": {
+          "ranked": [],
+          "selected": [],
+          "excluded": [],
+          "pending_authorization": [
+            {
+              "test_id": "T_TIME_ALIGN",
+              "method": "rule",
+              "rule_score": 0.9230769230769231,
+              "test_cost": 1.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            },
+            {
+              "test_id": "T_CHANNEL_CHECK",
+              "method": "rule",
+              "rule_score": 0.6153846153846154,
+              "test_cost": 2.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            },
+            {
+              "test_id": "T_REPEAT_SOURCE",
+              "method": "rule",
+              "rule_score": 0.48,
+              "test_cost": 3.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            },
+            {
+              "test_id": "T_RESTRICTED_CHECK",
+              "method": "rule",
+              "rule_score": 0.375,
+              "test_cost": 4.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            },
+            {
+              "test_id": "T_CAPACITY_REVIEW",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_COMMUNICATION_CHECK",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_CONNECTION_VISUAL",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_COOLING_REVIEW",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_ENVIRONMENT_REVIEW",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery"
+              ]
+            },
+            {
+              "test_id": "T_SENSOR_COMPARE",
+              "method": "rule",
+              "rule_score": 0.0,
+              "test_cost": 0.0,
+              "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+              "reasons": [
+                "requires_new_authorization"
+              ],
+              "execution_eligible": false,
+              "required_qualifications": [
+                "battery",
+                "instrumentation"
+              ]
+            }
+          ],
+          "stop_reason": "authorization_required",
+          "probability_model_available": false
+        }
+      },
+      {
+        "name": "search_memory",
+        "arguments": {
+          "query": "CELL-001 temperature monitoring anomaly"
+        },
+        "status": "completed",
+        "result": []
+      },
+      {
+        "name": "search_knowledge",
+        "arguments": {
+          "query": "temperature monitoring anomaly cell synthetic sensor event"
+        },
+        "status": "completed",
+        "result": [
+          {
+            "evidence_id": "knowledge-skill-sensor-anomaly",
+            "origin": "expert_synthetic",
+            "synthetic": true,
+            "license_status": "approved_synthetic",
+            "authorship": "AI-assisted project synthesis; not expert-authored",
+            "source_refs": [
+              {
+                "source_id": "project-doc02",
+                "locator": "03.1–03.3",
+                "source_type": "project_requirement"
+              }
+            ],
+            "skill_id": "sensor-anomaly",
+            "version": "1.0.0",
+            "title": "采集异常与剩余故障",
+            "content": {
+              "checklist": [
+                "偏置/漂移/断线与错误映射、时间错位分别记录候选。",
+                "两个通道共用同一传感器时，重复结果不视为独立证据。",
+                "独立参考必须明确仪表、时间、条件与测量误差。",
+                "采集问题得到支持后逐项核对其他未排除异常，避免混合故障整体解除。"
+              ],
+              "candidates": [
+                {
+                  "name": "采集链路异常",
+                  "support": "质量码、独立仪表或时间日志支持偏置/断线/错位",
+                  "countercondition": "独立仪表一致且通道质量合格"
+                },
+                {
+                  "name": "真实物理差异",
+                  "support": "独立同条件观察支持异常仍存在",
+                  "countercondition": "只有共享传感器的重复记录"
+                },
+                {
+                  "name": "混合采集与单体问题",
+                  "support": "修正采集后某个独立单体异常仍存在",
+                  "countercondition": "剩余异常均无可追溯独立证据"
+                }
+              ],
+              "hard_negatives": [
+                "修好一个时间错位不能自动解除组内全部单体异常。",
+                "共用仪表重复测量不能无限提高故障置信度。"
+              ]
+            },
+            "text": "根据独立可见观察检查电池采集通道的偏置、漂移、断线和时间错位，同时保留未排除的真实单体问题。\n偏置/漂移/断线与错误映射、时间错位分别记录候选。\n两个通道共用同一传感器时，重复结果不视为独立证据。\n独立参考必须明确仪表、时间、条件与测量误差。\n采集问题得到支持后逐项核对其他未排除异常，避免混合故障整体解除。\n修好一个时间错位不能自动解除组内全部单体异常。\n共用仪表重复测量不能无限提高故障置信度。",
+            "scope": {
+              "chemistries": [
+                "LFP",
+                "NCM",
+                "unknown"
+              ],
+              "purpose": "synthetic_and_replay_diagnostic_guidance"
+            },
+            "not_authorized_for": [
+              "physical_test_execution",
+              "safety_thresholds",
+              "real_causal_ground_truth",
+              "carbon_calculation"
+            ]
+          },
+          {
+            "evidence_id": "knowledge-skill-thermal-anomaly",
+            "origin": "expert_synthetic",
+            "synthetic": true,
+            "license_status": "approved_synthetic",
+            "authorship": "AI-assisted project synthesis; not expert-authored",
+            "source_refs": [
+              {
+                "source_id": "project-doc02",
+                "locator": "03.1–03.3",
+                "source_type": "project_requirement"
+              }
+            ],
+            "skill_id": "thermal-anomaly",
+            "version": "1.0.0",
+            "title": "温度异常与合规转交",
+            "content": {
+              "checklist": [
+                "区分绝对温度、温升、空间差异和时间变化，明确传感位置及单位。",
+                "核对环境与负载是否共同变化，以及同期成员是否有独立传感。",
+                "异常数值、老化数据和模型分数均不是热失控概率。",
+                "只引用资产适用且获批的 SOP ID；资料未获批时不编操作步骤或安全阈值。"
+              ],
+              "candidates": [
+                {
+                  "name": "负载或环境共因",
+                  "support": "同期环境/负载变化与多个独立温度观察一致",
+                  "countercondition": "同环境只有单体异常且独立测量支持"
+                },
+                {
+                  "name": "局部热状态差异",
+                  "support": "独立测量支持同条件下局部变化",
+                  "countercondition": "传感位置、负载或环境未对齐"
+                },
+                {
+                  "name": "温度采集偏差",
+                  "support": "温度通道偏置/漂移与独立仪表不一致",
+                  "countercondition": "独立传感仍重复支持局部异常"
+                }
+              ],
+              "hard_negatives": [
+                "寿命模型或 SOH 不能提供已验证热失控概率。",
+                "环境升温且全部电芯在适用范围内不能仅因相关就认定共因故障。"
+              ]
+            },
+            "text": "汇总电池温度异常的可见证据与环境、负载、测量候选；需要安全处理时仅引用已获批流程。\n区分绝对温度、温升、空间差异和时间变化，明确传感位置及单位。\n核对环境与负载是否共同变化，以及同期成员是否有独立传感。\n异常数值、老化数据和模型分数均不是热失控概率。\n只引用资产适用且获批的 SOP ID；资料未获批时不编操作步骤或安全阈值。\n寿命模型或 SOH 不能提供已验证热失控概率。\n环境升温且全部电芯在适用范围内不能仅因相关就认定共因故障。",
+            "scope": {
+              "chemistries": [
+                "LFP",
+                "NCM",
+                "unknown"
+              ],
+              "purpose": "synthetic_and_replay_diagnostic_guidance"
+            },
+            "not_authorized_for": [
+              "physical_test_execution",
+              "safety_thresholds",
+              "real_causal_ground_truth",
+              "carbon_calculation"
+            ]
+          },
+          {
+            "evidence_id": "knowledge-skill-charging-anomaly",
+            "origin": "expert_synthetic",
+            "synthetic": true,
+            "license_status": "approved_synthetic",
+            "authorship": "AI-assisted project synthesis; not expert-authored",
+            "source_refs": [
+              {
+                "source_id": "project-doc02",
+                "locator": "03.1–03.3",
+                "source_type": "project_requirement"
+              }
+            ],
+            "skill_id": "charging-anomaly",
+            "version": "1.0.0",
+            "title": "充电阶段与策略差异",
+            "content": {
+              "checklist": [
+                "按资产声明的 CC/CV 或多阶段策略分段，不把阶段切换本身当故障。",
+                "比较起始 SOC、温度、功率限制与软件/策略版本。",
+                "时长变化应关联可见电流/电压/控制指令，不能靠曲线外观确诊。",
+                "策略未知或不支持体系时先转 chemistry-eligibility 处理。"
+              ],
+              "candidates": [
+                {
+                  "name": "正常策略或功率限制",
+                  "support": "阶段变化符合已声明策略或现场限制",
+                  "countercondition": "控制指令与独立电流/电压矛盾"
+                },
+                {
+                  "name": "真实充电响应异常",
+                  "support": "可比起点与策略下独立观察持续异常",
+                  "countercondition": "SOC/温度/策略不同或数据缺测"
+                },
+                {
+                  "name": "采集或协议差异",
+                  "support": "阶段缺测、时钟不齐或策略版本改变",
+                  "countercondition": "对齐后独立重复仍支持异常"
+                }
+              ],
+              "hard_negatives": [
+                "多阶段快充出现多个平台不能直接判充电器故障。",
+                "低温功率限制或不同起始 SOC 的充电时长不能直接确认退化。"
+              ]
+            },
+            "text": "在已知充电策略与体系下分析阶段、时长和曲线差异，排除正常多阶段快充与协议/状态变化。\n按资产声明的 CC/CV 或多阶段策略分段，不把阶段切换本身当故障。\n比较起始 SOC、温度、功率限制与软件/策略版本。\n时长变化应关联可见电流/电压/控制指令，不能靠曲线外观确诊。\n策略未知或不支持体系时先转 chemistry-eligibility 处理。\n多阶段快充出现多个平台不能直接判充电器故障。\n低温功率限制或不同起始 SOC 的充电时长不能直接确认退化。",
+            "scope": {
+              "chemistries": [
+                "LFP",
+                "NCM",
+                "unknown"
+              ],
+              "purpose": "synthetic_and_replay_diagnostic_guidance"
+            },
+            "not_authorized_for": [
+              "physical_test_execution",
+              "safety_thresholds",
+              "real_causal_ground_truth",
+              "carbon_calculation"
+            ]
+          },
+          {
+            "evidence_id": "knowledge-skill-data-quality",
+            "origin": "expert_synthetic",
+            "synthetic": true,
+            "license_status": "approved_synthetic",
+            "authorship": "AI-assisted project synthesis; not expert-authored",
+            "source_refs": [
+              {
+                "source_id": "project-doc02",
+                "locator": "03.1–03.3",
+                "source_type": "project_requirement"
+              }
+            ],
+            "skill_id": "data-quality",
+            "version": "1.0.0",
+            "title": "数据质量与安装身份",
+            "content": {
+              "checklist": [
+                "先比较物理实体、安装身份和观察时间；换新后的序列不能承接旧安装历史。",
+                "保留 value=0；只有显式 missing/null 或质量码才表示缺失。",
+                "逐字段核对单位和采样频率；先对齐时间再比较通道。",
+                "重复上传按观察 ID 与来源指纹去重，重复不是独立确认。"
+              ],
+              "candidates": [
+                {
+                  "name": "真实状态变化",
+                  "support": "同安装、同协议且质量合格的独立观察一致",
+                  "countercondition": "单位、采样时间、映射或缺测尚未排除"
+                },
+                {
+                  "name": "采集或传输问题",
+                  "support": "缺失码、时间错位、重复指纹或通道断续有直接记录",
+                  "countercondition": "独立仪表支持同一变化且传输完整"
+                },
+                {
+                  "name": "协议或身份不匹配",
+                  "support": "安装 ID、测量条件或单位不同",
+                  "countercondition": "已验证同实体、同协议且可转换的单位"
+                }
+              ],
+              "hard_negatives": [
+                "零电流静置记录不能直接删除为缺测。",
+                "换新后的正常容量不能作为旧电池报警的假阳性证据。"
+              ]
+            },
+            "text": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。\n先比较物理实体、安装身份和观察时间；换新后的序列不能承接旧安装历史。\n保留 value=0；只有显式 missing/null 或质量码才表示缺失。\n逐字段核对单位和采样频率；先对齐时间再比较通道。\n重复上传按观察 ID 与来源指纹去重，重复不是独立确认。\n零电流静置记录不能直接删除为缺测。\n换新后的正常容量不能作为旧电池报警的假阳性证据。",
+            "scope": {
+              "chemistries": [
+                "LFP",
+                "NCM",
+                "unknown"
+              ],
+              "purpose": "synthetic_and_replay_diagnostic_guidance"
+            },
+            "not_authorized_for": [
+              "physical_test_execution",
+              "safety_thresholds",
+              "real_causal_ground_truth",
+              "carbon_calculation"
+            ]
+          },
+          {
+            "evidence_id": "knowledge-skill-chemistry-eligibility",
+            "origin": "expert_synthetic",
+            "synthetic": true,
+            "license_status": "approved_synthetic",
+            "authorship": "AI-assisted project synthesis; not expert-authored",
+            "source_refs": [
+              {
+                "source_id": "project-doc02",
+                "locator": "03.1–03.3",
+                "source_type": "project_requirement"
+              }
+            ],
+            "skill_id": "chemistry-eligibility",
+            "version": "1.0.0",
+            "title": "体系与模型适用性",
+            "content": {
+              "checklist": [
+                "从资产元数据读取体系与型号，不能从电压数值猜体系。",
+                "读取模型随附适用域、输入协议、版本及拒判理由。",
+                "将体系已知、体系缺失、协议/域不支持分别处理。",
+                "未知体系与不支持域是不同状态；两者都不能强行给数值预测。"
+              ],
+              "candidates": [
+                {
+                  "name": "适用域内输入",
+                  "support": "型号、体系与输入协议均在模型声明范围内",
+                  "countercondition": "任何必需条件缺失或版本声明不支持"
+                },
+                {
+                  "name": "元数据不足",
+                  "support": "chemistry/model/protocol 任一未确认",
+                  "countercondition": "有可追溯资产登记且模型声明完整"
+                },
+                {
+                  "name": "域外输入",
+                  "support": "可见模型声明明确排除当前体系或协议",
+                  "countercondition": "已有该体系与协议的独立校准"
+                }
+              ],
+              "hard_negatives": [
+                "NCM 的电压窗口不能移植到不支持该窗口的 LFP 模型。",
+                "相近的额定电压或资产名称不能补全未知化学体系。"
+              ]
+            },
+            "text": "在调用或解释电池数值模型前核对化学体系、型号和测量协议，识别缺失或不支持的输入域。\n从资产元数据读取体系与型号，不能从电压数值猜体系。\n读取模型随附适用域、输入协议、版本及拒判理由。\n将体系已知、体系缺失、协议/域不支持分别处理。\n未知体系与不支持域是不同状态；两者都不能强行给数值预测。\nNCM 的电压窗口不能移植到不支持该窗口的 LFP 模型。\n相近的额定电压或资产名称不能补全未知化学体系。",
+            "scope": {
+              "chemistries": [
+                "LFP",
+                "NCM",
+                "unknown"
+              ],
+              "purpose": "synthetic_and_replay_diagnostic_guidance"
+            },
+            "not_authorized_for": [
+              "physical_test_execution",
+              "safety_thresholds",
+              "real_causal_ground_truth",
+              "carbon_calculation"
+            ]
+          }
+        ]
+      }
+    ],
+    "provenance": "self_synthetic",
+    "status": "insufficient_evidence",
+    "created_at": "2026-10-01T17:11:22.015503+00:00"
+  },
+  "formal_orders_before_approval": 0,
+  "pending_proposals": 1,
+  "temporary_database_removed": true
+}

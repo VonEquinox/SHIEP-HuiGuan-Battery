@@ -1,0 +1,566 @@
+"""Automatic, source-tagged context changes with short transactional activation."""
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+import os
+import re
+from pathlib import Path
+
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
+
+from .config import APP_ROOT, REPO_ROOT
+from .contracts import v2 as S
+from .db import audit, execute, insert, js, now, obj, one, rows, tx
+from .services import public, require
+from .api_v2 import authenticated, roles, response, fingerprint, replay, remember, page, ensure_context, save_evidence_version
+
+router = APIRouter(prefix="/api/v2")
+EVOLUTION_JSON = ("source_feedback_ids", "case_ids", "changes", "validation", "metrics")
+SNAPSHOT_JSON = ("content", "changes", "validation")
+
+
+def sync_skills(c):
+    from .agent import SkillLibrary
+    root = REPO_ROOT / "content_v1"
+    if not (root / "skills").is_dir():
+        return
+    library = SkillLibrary(root)
+    context = ensure_context(c)
+    for metadata in library.skill_metadata():
+        if one(c, "SELECT id FROM skill_versions WHERE skill_id=:s LIMIT 1", {"s": metadata["skill_id"]}):
+            continue
+        skill = library.load_skill(metadata["skill_id"])
+        insert(c, "skill_versions", {"skill_id": metadata["skill_id"], "version": 1, "state": "active", "content": js(skill),
+               "source_trust": "synthetic_expert_rules", "origin": "self_synthetic", "root_scenario_ids": js(metadata.get("cold_start_root_ids", [])),
+               "context_snapshot_id": context["id"], "created_at": now()})
+
+
+@router.get("/skills")
+def skills(request: Request, cursor: int = Query(0, ge=0), limit: int = Query(50, ge=1, le=100), state: str = "", skill_id: str = "",
+           user=Depends(roles("admin", "researcher", "dispatcher", "viewer"))):
+    predicates, values = [], {}
+    for field, value in (("state", state), ("skill_id", skill_id)):
+        if value:
+            predicates.append(f"{field}=:{field}")
+            values[field] = value
+    with tx() as c:
+        sync_skills(c)
+        return response(request, **page(c, "skill_versions", cursor=cursor, limit=limit, predicates=predicates, values=values, json_fields=("content", "root_scenario_ids")), approval_required=False)
+
+
+@router.get("/memories")
+def memories(request: Request, cursor: int = Query(0, ge=0), limit: int = Query(50, ge=1, le=100), state: str = "", origin: str = "",
+             user=Depends(roles("admin", "researcher", "dispatcher", "viewer"))):
+    predicates, values = [], {}
+    for field, value in (("state", state), ("origin", origin)):
+        if value:
+            predicates.append(f"{field}=:{field}")
+            values[field] = value
+    with tx() as c:
+        context = ensure_context(c)
+        return response(request, **page(c, "memory_items", cursor=cursor, limit=limit, predicates=predicates, values=values,
+                        json_fields=("scope", "supporting_case_ids", "counterexamples")), current_version=context["context_version"], approval_required=False)
+
+
+@router.get("/context-snapshots")
+def contexts(request: Request, cursor: int = Query(0, ge=0), limit: int = Query(50, ge=1, le=100), user=Depends(roles("admin", "researcher", "dispatcher", "viewer"))):
+    with tx() as c:
+        current = ensure_context(c)
+        return response(request, **page(c, "context_snapshots", cursor=cursor, limit=limit, json_fields=SNAPSHOT_JSON), current_version=current["context_version"])
+
+
+@router.get("/context-snapshots/{identifier}")
+def context_detail(identifier: int, request: Request, user=Depends(roles("admin", "researcher", "dispatcher", "viewer"))):
+    with tx() as c:
+        return response(request, **public(require(c, "context_snapshots", identifier), SNAPSHOT_JSON))
+
+
+@router.post("/context-snapshots/rollback")
+def rollback(data: S.ContextRollback, request: Request, user=Depends(roles("admin", "researcher"))):
+    key = request.headers.get("idempotency-key", "")
+    body = data.model_dump()
+    with tx() as c:
+        old = replay(c, user, "context_rollback", key, body)
+        if old:
+            return response(request, **old)
+        current = ensure_context(c)
+        target = require(c, "context_snapshots", data.snapshot_id)
+        if current["context_version"] != data.base_version or target["id"] == current["id"] or target["state"] == "quarantined":
+            raise HTTPException(409, "活动上下文已经变化或回滚对象无效")
+        snapshot = obj(target["content"])
+        snapshot["version"] = one(c, "SELECT coalesce(max(context_version),0)+1 n FROM context_snapshots")["n"]
+        snapshot["context_version"] = f"context_v{snapshot['version']}"
+        snapshot["context_snapshot_id"] = f"rollback-{snapshot['version']}-{fingerprint(snapshot)[:12]}"
+        snapshot["parent_snapshot_id"] = obj(current["content"])["context_snapshot_id"]
+        change = {"operation": "ROLLBACK", "from_snapshot_id": current["id"], "restore_snapshot_id": target["id"], "reason": data.reason}
+        identifier = publish_snapshot(c, current, snapshot, [change], {"passed": True, "trigger": "manual_operational_rollback"}, user["id"])
+        audit(c, user["id"], "context_rollback", "context_snapshot", identifier, change)
+        return response(request, **remember(c, user, "context_rollback", key, body, {"snapshot_id": identifier, "context_version": snapshot["version"], "state": "active"}))
+
+
+@router.get("/evolution/runs")
+def evolution_runs(request: Request, cursor: int = Query(0, ge=0), limit: int = Query(50, ge=1, le=100), status: str = "", split: str = "",
+                   user=Depends(roles("admin", "researcher", "dispatcher", "viewer"))):
+    predicates, values = [], {}
+    for field, value in (("status", status), ("split", split)):
+        if value:
+            predicates.append(f"{field}=:{field}")
+            values[field] = value
+    with tx() as c:
+        return response(request, **page(c, "evolution_runs", cursor=cursor, limit=limit, predicates=predicates, values=values, json_fields=EVOLUTION_JSON))
+
+
+@router.get("/evolution/runs/{identifier}")
+def evolution_run_detail(identifier: int, request: Request, user=Depends(roles("admin", "researcher", "dispatcher", "viewer"))):
+    with tx() as c:
+        run = public(require(c, "evolution_runs", identifier), EVOLUTION_JSON)
+        if run["job_id"]:
+            run["job"] = public(require(c, "jobs", run["job_id"]), ("result", "payload"))
+        run["evaluations"] = [public(v, ("metrics", "protocol", "budget")) for v in rows(c, "SELECT * FROM evaluation_runs WHERE evolution_run_id=:i ORDER BY id", {"i": identifier})]
+        return response(request, **run)
+
+
+@router.post("/evolution/experiments", status_code=202)
+def experiment(data: S.EvolutionExperiment, request: Request, user=Depends(roles("admin", "researcher"))):
+    from .jobs import enqueue
+    body = data.model_dump()
+    key = request.headers.get("idempotency-key", "")
+    if len(set(data.case_ids)) != len(data.case_ids) or len(data.case_ids) > data.max_rollouts:
+        raise HTTPException(422, "根事件不能重复，且事件数不能超过 rollout 预算")
+    if data.activate and data.split != "evolution":
+        raise HTTPException(403, "dev 和封存标签不能激活到运行上下文")
+    if data.split == "sealed_test" and data.method in ("ace", "reflexion", "gepa"):
+        raise HTTPException(403, "封存评测只允许冻结版本只读重放，不产生候选或反思")
+    with tx() as c:
+        previous = replay(c, user, "evolution_experiment", key, body)
+        if previous:
+            return response(request, **previous)
+        current = ensure_context(c)
+        if current["context_version"] != data.base_version:
+            raise HTTPException(409, "上下文版本已变化，请刷新实验配置")
+        job_id = enqueue(c, "evolution_experiment", body, user, "experiment-" + fingerprint(key))
+        identifier = insert(c, "evolution_runs", {"job_id": job_id, "method": data.method, "status": "queued", "base_context_version": data.base_version,
+                  "source_feedback_ids": "[]", "case_ids": js(data.case_ids), "split": data.split, "changes": "[]", "validation": "{}", "metrics": "{}",
+                  "provenance": "self_synthetic_replay", "created_by": user["id"], "created_at": now()})
+        audit(c, user["id"], "evolution_experiment_enqueue", "evolution_run", identifier, {"split": data.split, "max_rollouts": data.max_rollouts, "activate": data.activate})
+        result = {"id": identifier, "evolution_run_id": identifier, "job_id": job_id}
+        return response(request, **remember(c, user, "evolution_experiment", key, body, result))
+
+
+def publish_snapshot(c, base, snapshot, changes, validation, actor):
+    current = ensure_context(c)
+    if current["id"] != base["id"]:
+        raise HTTPException(409, "上下文 CAS 冲突，旧候选不会覆盖新经验")
+    # ContextStore versions begin at its base, while operational rollback can make
+    # the global version larger; publication preserves a monotonically unique ID.
+    version = one(c, "SELECT coalesce(max(context_version),-1)+1 n FROM context_snapshots")["n"]
+    snapshot = copy.deepcopy(snapshot)
+    snapshot["version"] = version
+    snapshot["context_version"] = f"context_v{version}"
+    execute(c, "UPDATE context_snapshots SET state='superseded' WHERE id=:i", {"i": base["id"]})
+    identifier = insert(c, "context_snapshots", {"context_version": version, "parent_id": base["id"], "content": js(snapshot), "changes": js(changes),
+                "state": "active", "validation": js(validation), "provenance": "source_tagged_context_only", "created_at": now(), "created_by": actor})
+    old = obj(base["content"])
+    old_memories = {m["memory_id"]: m for m in old.get("memories", [])}
+    for memory in snapshot.get("memories", []):
+        previous = old_memories.get(memory["memory_id"])
+        if memory == previous:
+            continue
+        stored = one(c, "SELECT max(version) n FROM memory_items WHERE memory_key=:k", {"k": memory["memory_id"]})["n"]
+        memory_version = (stored or 0) + 1
+        execute(c, "UPDATE memory_items SET state='superseded' WHERE memory_key=:k AND state IN ('active','conflicted')", {"k": memory["memory_id"]})
+        insert(c, "memory_items", {"memory_key": memory["memory_id"], "version": memory_version, "state": memory.get("state", "active"),
+               "scope": js(memory.get("scope", {})), "trigger": memory.get("trigger", ""), "insight": memory["insight"], "supporting_case_ids": js(memory.get("supporting_case_ids", [])),
+               "counterexamples": js(memory.get("counterexamples", []) + memory.get("conflicts", [])), "source_trust": memory.get("source_trust", "reported"), "origin": memory.get("origin", "measured_declared"),
+               "helpful_count": memory.get("helpful_count", 0), "harmful_count": memory.get("harmful_count", 0), "last_used": memory.get("last_used"), "expires_at": memory.get("expires_at"),
+               "context_snapshot_id": identifier, "created_at": now()})
+    # Rollback also deactivates entries absent from the restored snapshot.
+    for memory_id in set(old_memories) - {m["memory_id"] for m in snapshot.get("memories", [])}:
+        execute(c, "UPDATE memory_items SET state='deprecated' WHERE memory_key=:k AND state IN ('active','conflicted')", {"k": memory_id})
+    for skill_id, fields in snapshot.get("skills", {}).items():
+        if fields == old.get("skills", {}).get(skill_id):
+            continue
+        previous = one(c, "SELECT * FROM skill_versions WHERE skill_id=:s ORDER BY version DESC LIMIT 1", {"s": skill_id})
+        execute(c, "UPDATE skill_versions SET state='superseded' WHERE skill_id=:s AND state='active'", {"s": skill_id})
+        content = obj(previous["content"]) if previous else {"manifest": {"skill_id": skill_id}}
+        content["context_overrides"] = fields
+        insert(c, "skill_versions", {"skill_id": skill_id, "version": previous["version"] + 1 if previous else 1, "state": "active", "content": js(content),
+               "source_trust": "automatic_dev_regression", "origin": "self_synthetic", "root_scenario_ids": "[]", "context_snapshot_id": identifier, "created_at": now()})
+    return identifier
+
+
+def feedback_snapshot(c, job):
+    payload = obj(job["payload"])
+    table = "inspection_observations" if payload.get("observation_id") else "diagnostic_feedback"
+    identifier = payload.get("observation_id", payload.get("feedback_id"))
+    record = require(c, table, identifier)
+    expected = payload.get("observation_version", payload.get("feedback_version"))
+    if record["version"] != expected:
+        raise HTTPException(409, "反馈版本已更新，抽取旧版本取消发布")
+    fields = ("measurements", "performed_actions", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items", "assertion_targets", "candidate_facts")
+    feedback = public(record, fields)
+    session = require(c, "diagnostic_sessions", record["session_id"])
+    feedback["installation_id"] = session["installation_id"]
+    feedback["feedback_id"] = f"{table}:{identifier}"
+    feedback["root_scenario_id"] = f"order:{record['order_id']}" if record.get("order_id") else f"session:{session['id']}"
+    feedback["corrected_claim_ids"] = feedback.get("assertion_targets", [])
+    previous = one(c, "SELECT * FROM agent_reports WHERE session_id=:s AND created_at<=:cutoff ORDER BY id DESC LIMIT 1", {"s": session["id"], "cutoff": record["available_at"]})
+    base = ensure_context(c)
+    return {"kind": "feedback_extract", "table": table, "record": record, "feedback": feedback, "previous_report": obj(previous["report"]) if previous else {},
+            "base": base, "preserve_corrected_facts": payload.get("preserve_corrected_facts", False)}
+
+
+def feedback_compute(request, cancelled):
+    from .agent import ContextStore, extract_feedback, evolve_context
+    if cancelled():
+        raise RuntimeError("任务取消")
+    feedback = request["feedback"]
+    extracted = extract_feedback(feedback)
+    if request["preserve_corrected_facts"]:
+        extracted["candidate_facts"] = feedback["candidate_facts"]
+    # A declared reading or prose never becomes independently verified solely
+    # because an extraction model restated it.
+    for fact in extracted["candidate_facts"]:
+        if fact.get("kind") == "observation" and feedback.get("calibration_status") != "calibrated":
+            fact["trust"] = "reported"
+    malicious = bool(re.search(r"忽略.{0,8}(规则|指令)|自动批准|绕过.{0,8}(权限|审批)|ignore.{0,12}(rules|instructions)|carbon_|execute\s+shell", feedback["free_text"], re.I))
+    if malicious:
+        return {"extracted": extracted, "state": "quarantined", "updates": [], "reason": "feedback attempts to change immutable permissions; original retained as reported evidence"}
+    store = ContextStore(initial_snapshot=obj(request["base"]["content"]))
+    staged = evolve_context(store, {**feedback, "candidate_facts": extracted["candidate_facts"]}, request["previous_report"])
+    if cancelled():
+        raise RuntimeError("任务取消")
+    return {"extracted": extracted, "state": staged["state"], "updates": staged["updates"], "reason": staged.get("reason")}
+
+
+def feedback_complete(c, job, result, request):
+    from .agent import ContextStore, evolve_context
+    current_record = require(c, request["table"], request["record"]["id"])
+    if current_record["version"] != request["record"]["version"]:
+        raise HTTPException(409, "抽取期间反馈被修正，拒绝覆盖")
+    execute(c, f"UPDATE {request['table']} SET candidate_facts=:f,extraction_status=:s,version=version+1 WHERE id=:i",
+            {"f": js(result["extracted"]["candidate_facts"]), "s": "quarantined" if result["state"] == "quarantined" else "succeeded", "i": current_record["id"]})
+    save_evidence_version(c, request["table"], current_record["id"], job["created_by"], "automatic extraction publication")
+    base = ensure_context(c)
+    updates = result["updates"]
+    activation = {"state": result["state"], "snapshot": obj(base["content"]), "reason": result.get("reason")}
+    if result["state"] != "quarantined":
+        store = ContextStore(initial_snapshot=obj(base["content"]))
+        # Recompute a local delta against the newest snapshot after a CAS conflict;
+        # source facts remain immutable and no cloud call runs in this transaction.
+        if base["id"] != request["base"]["id"]:
+            staged = evolve_context(store, {**request["feedback"], "candidate_facts": result["extracted"]["candidate_facts"]}, request["previous_report"])
+            updates, activation = staged["updates"], staged
+        else:
+            activation = store.apply(updates, expected_version=base["context_version"])
+    snapshot_id = base["id"]
+    if activation["state"] == "active":
+        snapshot_id = publish_snapshot(c, base, activation["snapshot"], updates, {"passed": True, "source_validation": True, "permission_widening": False}, job["created_by"])
+    evolution_id = insert(c, "evolution_runs", {"job_id": job["id"], "method": "ace", "status": activation["state"], "base_context_version": base["context_version"],
+                   "result_snapshot_id": snapshot_id, "source_feedback_ids": js([request["feedback"]["feedback_id"]]), "case_ids": js([request["feedback"]["root_scenario_id"]]),
+                   "split": "operational", "changes": js(updates), "validation": js({"passed": activation["state"] != "quarantined", "reason": activation.get("reason"), "raw_text_preserved": True}),
+                   "metrics": js({"candidate_fact_count": len(result["extracted"]["candidate_facts"]), "generalization_verified": False}), "provenance": request["feedback"]["provenance"],
+                   "created_by": job["created_by"], "created_at": now(), "finished_at": now()})
+    audit(c, job["created_by"], "context_feedback_auto_update", "evolution_run", evolution_id, {"state": activation["state"], "snapshot_id": snapshot_id, "approval_required": False})
+    return {"evolution_run_id": evolution_id, "extraction_status": "quarantined" if activation["state"] == "quarantined" else "succeeded", "update_state": activation["state"], "context_snapshot_id": snapshot_id,
+            "candidate_fact_count": len(result["extracted"]["candidate_facts"]), "approval_required": False}
+
+
+def order_verified(c, order_id, actor_id):
+    """Optional V1 verification hook; it verifies a case, never approves memory."""
+    from .jobs import enqueue
+    order = require(c, "orders", order_id)
+    if order["verified_by"] != actor_id or actor_id in (order["assignee_id"], order["resolved_by"]):
+        raise HTTPException(403, "检查事实必须独立验收")
+    observations = rows(c, "SELECT * FROM inspection_observations WHERE order_id=:o", {"o": order_id})
+    for observation in observations:
+        execute(c, "UPDATE inspection_observations SET verification_status='independently_verified',extraction_status='verification_pending',version=version+1 WHERE id=:i", {"i": observation["id"]})
+        save_evidence_version(c, "inspection_observations", observation["id"], actor_id, "independent V1 verification")
+    schedule_pending_feedback(c)
+
+
+def schedule_pending_feedback(c):
+    """Bounded background admission; a full compute queue never blocks acceptance."""
+    from .jobs import enqueue
+    if one(c, "SELECT count(*) n FROM jobs WHERE status IN ('queued','running')")["n"] >= 12:
+        return None
+    pending = rows(c, """SELECT i.id,i.version,o.verified_by FROM inspection_observations i JOIN orders o ON o.id=i.order_id
+                       WHERE i.extraction_status='verification_pending' AND o.verified_by IS NOT NULL ORDER BY i.id LIMIT 200""")
+    if not pending:
+        return None
+    actor = pending[0]["verified_by"]
+    pending = [record for record in pending if record["verified_by"] == actor]
+    ids = [record["id"] for record in pending]
+    job_id = enqueue(c, "feedback_verified_batch", {"observation_ids": ids}, {"id": actor}, "verified-batch-" + fingerprint([[r["id"], r["version"]] for r in pending]))
+    for identifier in ids:
+        execute(c, "UPDATE inspection_observations SET extraction_status='queued_verification' WHERE id=:i", {"i": identifier})
+    return job_id
+
+
+def schedule_context_gepa(c):
+    """Automatically admit a bounded batch of distinct, completed feedback roots."""
+    from .jobs import enqueue
+    if one(c, "SELECT count(*) n FROM jobs WHERE status IN ('queued','running')")["n"] >= 12:
+        return None
+    try:
+        batch_size = max(1, min(200, int(os.environ.get("BATTERY_GEPA_BATCH_SIZE", "50"))))
+    except ValueError:
+        batch_size = 50
+    consumed = set()
+    for job in rows(c, "SELECT payload FROM jobs WHERE kind='context_gepa'"):
+        consumed.update(obj(job["payload"]).get("root_ids", []))
+    eligible = {}
+    for event in rows(c, "SELECT * FROM evolution_runs WHERE method='ace' AND split='operational' AND status IN ('active','no_update') ORDER BY id"):
+        root_ids, feedback_ids = obj(event["case_ids"], []), obj(event["source_feedback_ids"], [])
+        if root_ids and feedback_ids and root_ids[0] not in consumed:
+            eligible[root_ids[0]] = {"root_id": root_ids[0], "feedback_id": feedback_ids[0], "actor_id": event["created_by"]}
+    if len(eligible) < batch_size:
+        return None
+    selected = [eligible[root_id] for root_id in sorted(eligible)[:batch_size]]
+    current = ensure_context(c)
+    root_ids = [event["root_id"] for event in selected]
+    actor = selected[0]["actor_id"]
+    job_id = enqueue(c, "context_gepa", {"root_ids": root_ids, "feedback_ids": [event["feedback_id"] for event in selected],
+                     "batch_size": batch_size, "max_rollouts": 200, "selection_count": 5}, {"id": actor}, "auto-gepa-" + fingerprint(root_ids))
+    identifier = insert(c, "evolution_runs", {"job_id": job_id, "method": "gepa", "status": "queued", "base_context_version": current["context_version"],
+               "source_feedback_ids": js([event["feedback_id"] for event in selected]), "case_ids": js(root_ids), "split": "operational",
+               "changes": "[]", "validation": js({"automatic": True, "distinct_root_count": len(root_ids)}), "metrics": "{}",
+               "provenance": "source_tagged_operational_with_synthetic_selection", "created_by": actor, "created_at": now()})
+    audit(c, actor, "context_gepa_auto_enqueue", "evolution_run", identifier, {"root_count": len(root_ids), "selection_split": "dev", "approval_required": False})
+    return job_id
+
+
+def evolution_snapshot(c, job):
+    payload = obj(job["payload"])
+    run = one(c, "SELECT * FROM evolution_runs WHERE job_id=:j", {"j": job["id"]})
+    base = ensure_context(c)
+    if base["context_version"] != payload["base_version"]:
+        raise HTTPException(409, "实验上下文已变化，请重新提交")
+    execute(c, "UPDATE evolution_runs SET status='running' WHERE id=:i", {"i": run["id"]})
+    return {"kind": "evolution_experiment", "payload": payload, "run": run, "base": base}
+
+
+def _evaluation_cases(case_ids, split):
+    # Hidden labels remain in this scorer-only loader, outside the Agent context.
+    directory = REPO_ROOT / "content_v1"
+    split_directory = "evaluation/sealed" if split == "sealed_test" else "evaluation/dev" if split == "dev" else "streams"
+    candidates = sorted((directory / split_directory).glob("*.jsonl"))
+    records = {}
+    for file in candidates:
+        if file.is_file():
+            for line in file.read_text().splitlines():
+                case = json.loads(line)
+                records[case.get("case_id", case.get("root_scenario_id"))] = case
+    if not records:
+        raise RuntimeError("合成案例包未就绪，未使用虚构评测成绩")
+    assignments = json.loads((directory / "manifests/splits.json").read_text())["root_assignments"]
+    labels = {item["case_id"]: item for item in (json.loads(line) for line in (directory / "oracle/labels.jsonl").read_text().splitlines()) if item["case_id"] in case_ids}
+    result = []
+    for identifier in case_ids:
+        if identifier not in records:
+            raise ValueError(f"未登记案例: {identifier}")
+        case = copy.deepcopy(records[identifier])
+        requested_split = "sealed" if split == "sealed_test" else split
+        actual_split = "sealed" if assignments[identifier] in ("sealed", "sealed_test") else assignments[identifier]
+        if actual_split != requested_split:
+            raise ValueError("案例实际根级 split 与实验请求不一致")
+        case["split"] = requested_split
+        oracle = labels[identifier]
+        case["asset"] = case.get("asset_context", {})
+        case["hidden_truth"] = oracle["hidden_truth"]
+        case["expected_behavior"] = oracle["expected_behavior"]
+        case["feedback"] = next(iter(oracle.get("feedback_events", [])), {})
+        case["initial_visible"]["asset_id"] = case["asset"]["asset_id"]
+        case["initial_visible"]["installation_id"] = case["asset"]["installation_id"]
+        case["initial_visible"]["asset"] = case["asset"]
+        case["initial_visible"]["visible_cutoff"] = case["initial_visible"].get("cutoff")
+        case["test_catalog"] = json.loads((directory / "manifests/test_catalog.json").read_text())["tests"]
+        for observation in case["initial_visible"].get("observations", []):
+            observation["evidence_id"] = observation.get("observation_id")
+            observation["installation_id"] = case["asset"]["installation_id"]
+            observation["measured_at"] = observation["timestamp"]
+        result.append(case)
+    return result
+
+
+def evolution_compute(request, cancelled):
+    from .agent import ReplayEvaluator, SkillLibrary, run_agent
+    payload = request["payload"]
+    cases = _evaluation_cases(payload["case_ids"], payload["split"])
+    method_arm = {"no_memory": "A1", "fixed": "A2", "reflexion": "A2", "ace": "A3", "gepa": "A4"}
+    library = SkillLibrary(REPO_ROOT / "content_v1")
+    if cancelled():
+        raise RuntimeError("任务取消")
+    optimizer = None
+    if payload["method"] == "gepa" and payload["split"] == "evolution":
+        from .agent.gepa_service import make_batch_optimizer
+        optimizer = make_batch_optimizer(REPO_ROOT / "content_v1", max_rollouts=payload["max_rollouts"], direct_root_count=len(cases),
+                                         batch_size=min(50, len(cases)), cancelled=cancelled)
+    replay_environment = None
+    if payload["split"] == "evolution":
+        from tools.content.replay import EvaluatorReplay
+        replay_environment = EvaluatorReplay(REPO_ROOT / "content_v1", oracle_access=True)
+    direct_runs = []
+    def tracked_runner(*args, **kwargs):
+        if cancelled():
+            raise RuntimeError("实验已取消")
+        result = run_agent(*args, **kwargs)
+        direct_runs.append(result.get("run", {}))
+        return result
+    try:
+        evaluation = ReplayEvaluator().evaluate(method_arm[payload["method"]], cases, initial_snapshot=obj(request["base"]["content"]), skill_library=library,
+                                frozen_config={"base_context_version": payload["base_version"], "method": payload["method"], "case_ids": payload["case_ids"], "max_rollouts": payload["max_rollouts"]},
+                                milestone=payload["split"] == "sealed_test", batch_optimizer=optimizer, batch_size=min(50, len(cases)), runner=tracked_runner,
+                                replay_environment=replay_environment, replay_authorized_test_ids=["T_TIME_ALIGN", "T_CHANNEL_CHECK"] if replay_environment else [],
+                                allow_context_updates=payload["method"] != "fixed")
+    finally:
+        staged = optimizer.service.accounting() if optimizer else {}
+        direct_count, search_count = len(direct_runs), staged.get("rollouts", 0)
+        request["_accounting"] = {**_provider_metrics(direct_runs, [staged]), "rollouts": direct_count + search_count,
+                                 "budget": {"rollouts": direct_count + search_count, "direct_root_count": direct_count,
+                                            "gepa_rollouts_used": search_count, "max_rollouts": payload["max_rollouts"],
+                                            "remaining_rollouts": payload["max_rollouts"] - direct_count - search_count},
+                                 "selection_root_ids": staged.get("selection_root_ids", []), "source_root_ids": payload["case_ids"]}
+    if cancelled():
+        raise RuntimeError("任务取消")
+    evaluation["requested_method"] = payload["method"]
+    search_runs = [record["gepa_result"] for record in evaluation["records"] if "gepa_result" in record]
+    search_rollouts = optimizer.service.rollouts if optimizer else 0
+    evaluation["rollouts"] = len(cases) + search_rollouts
+    evaluation["budget"] = {"rollouts": evaluation["rollouts"], "direct_root_count": len(cases), "gepa_rollouts_used": search_rollouts,
+                            "max_rollouts": payload["max_rollouts"], "remaining_rollouts": payload["max_rollouts"] - evaluation["rollouts"]}
+    evaluation["gepa_status"] = ("candidate_selection_executed" if search_rollouts else
+                                 "no_update" if search_runs else "awaiting_reachable_feedback_batch" if optimizer else
+                                 "read_only_no_feedback_batch" if payload["method"] == "gepa" else "not_requested")
+    direct_runs = [record.get("run", {}) for record in evaluation["records"]]
+    evaluation["provider_metrics"] = _provider_metrics(direct_runs, search_runs)
+    evaluation["gepa_telemetry"] = {"runs": search_runs, "rollouts": search_rollouts,
+                                    "selection_root_ids": sorted({root for run in search_runs for root in run.get("selection_root_ids", [])})}
+    # The worker may receive cancellation after compute returns but before its
+    # publication transaction; retain the complete successful compute costs.
+    request["_accounting"] = {**evaluation["provider_metrics"], "rollouts": evaluation["rollouts"], "budget": evaluation["budget"],
+                             "selection_root_ids": evaluation["gepa_telemetry"]["selection_root_ids"], "source_root_ids": payload["case_ids"]}
+    return evaluation
+
+
+def _provider_metrics(direct_runs, search_runs):
+    usage = {}
+    for record in [run.get("llm_usage", {}) for run in direct_runs] + [run.get("provider_usage", {}) for run in search_runs]:
+        for field, value in record.items():
+            usage[field] = usage.get(field, 0) + value
+    return {"provider_requests": sum(run.get("llm_request_count", 0) for run in direct_runs) + sum(run.get("provider_requests", 0) for run in search_runs),
+            "provider_failed_requests": sum(run.get("llm_failed_request_count", 0) for run in direct_runs) + sum(run.get("provider_failed_requests", 0) for run in search_runs),
+            "provider_unknown_usage_requests": sum(run.get("llm_unknown_usage_request_count", 0) for run in direct_runs) + sum(run.get("provider_unknown_usage_requests", 0) for run in search_runs),
+            "provider_usage": usage}
+
+
+def evolution_complete(c, job, result, request):
+    base = ensure_context(c)
+    run = request["run"]
+    payload = request["payload"]
+    state = "succeeded"
+    snapshot_id = None
+    changes = result.get("context_changes", result["final_context_snapshot"].get("changes", []))
+    if payload["activate"]:
+        if base["id"] != request["base"]["id"]:
+            state = "conflicted"
+        elif changes:
+            snapshot_id = publish_snapshot(c, base, result["final_context_snapshot"], changes, {"passed": True, "source_split": "evolution", "generalization_verified": False}, job["created_by"])
+            state = "active"
+    metrics = {**result["metrics"], "root_count": result["root_count"], "generalization_verified": False, "label": result["label"], "gepa_status": result["gepa_status"],
+               **result.get("provider_metrics", {}), "gepa_telemetry": result.get("gepa_telemetry", {})}
+    validation = {"passed": state != "conflicted", "case_split_verified": True, "selection_eligible": result["selection_eligible"], "frozen_config_sha256": result["frozen_config_sha256"]}
+    execute(c, "UPDATE evolution_runs SET status=:s,result_snapshot_id=:snapshot,changes=:changes,validation=:validation,metrics=:metrics,finished_at=:t WHERE id=:i",
+            {"s": state, "snapshot": snapshot_id, "changes": js(changes), "validation": js(validation), "metrics": js(metrics), "t": now(), "i": run["id"]})
+    evaluation_id = insert(c, "evaluation_runs", {"evolution_run_id": run["id"], "split": payload["split"], "sample_count": result["root_count"], "metrics": js(metrics),
+                "protocol": js(result["frozen_config"]), "budget": js(result["budget"]), "created_at": now()})
+    audit(c, job["created_by"], "evolution_experiment_complete", "evolution_run", run["id"], {"status": state, "split": payload["split"], "snapshot_id": snapshot_id})
+    # Store reports and scores in job result, never evaluator hidden labels.
+    return {"evolution_run_id": run["id"], "evaluation_id": evaluation_id, "status": state, "context_snapshot_id": snapshot_id, "metrics": metrics,
+            "records": result["records"], "budget": result["budget"]}
+
+
+def gepa_snapshot(c, job):
+    payload = obj(job["payload"])
+    base = ensure_context(c)
+    run = one(c, "SELECT * FROM evolution_runs WHERE job_id=:j", {"j": job["id"]})
+    events = []
+    for root_id, feedback_id in zip(payload["root_ids"], payload["feedback_ids"]):
+        table, identifier = feedback_id.split(":", 1)
+        if table not in ("inspection_observations", "diagnostic_feedback"):
+            raise RuntimeError("GEPA 来源不是已完成反馈")
+        feedback = public(require(c, table, int(identifier)), ("measurements", "performed_actions", "candidate_facts", "assertion_targets", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items"))
+        if feedback["extraction_status"] not in ("succeeded", "corrected"):
+            raise HTTPException(409, "GEPA 来源反馈尚未完成安全抽取")
+        report = one(c, "SELECT * FROM agent_reports WHERE session_id=:s AND created_at<=:cutoff ORDER BY id DESC LIMIT 1", {"s": feedback["session_id"], "cutoff": feedback["available_at"]})
+        if report is None:
+            raise RuntimeError("反馈来源缺少可观察的原报告")
+        events.append({"root_scenario_id": root_id, "case_id": root_id, "split": "operational", "report": obj(report["report"]),
+                       "tool_trace": obj(report["tool_trace"], []), "feedback": {**feedback, "feedback_id": feedback_id, "root_scenario_id": root_id}})
+    execute(c, "UPDATE evolution_runs SET status='running',base_context_version=:v WHERE id=:i", {"v": base["context_version"], "i": run["id"]})
+    return {"kind": "context_gepa", "payload": payload, "base": base, "run": run, "feedback_events": events}
+
+
+def gepa_compute(request, cancelled):
+    from .agent import ContextStore
+    from .agent.gepa_service import GEPAService
+    payload = request["payload"]
+    service = GEPAService(REPO_ROOT / "content_v1", max_rollouts=payload["max_rollouts"], batch_size=payload["batch_size"],
+                          selection_count=payload["selection_count"], cancelled=cancelled)
+    try:
+        return service.optimize(request["feedback_events"], ContextStore(initial_snapshot=obj(request["base"]["content"])))
+    finally:
+        request["_accounting"] = service.accounting()
+
+
+def evolution_accounting(c, job, result, request, error):
+    """Persist spent compute costs on failure/cancel; never publish business state."""
+    source = (request or {}).get("_accounting") or ({**result, **result.get("provider_metrics", {})} if result else {})
+    fields = {"rollouts", "budget", "provider_usage", "provider_requests", "provider_failed_requests", "provider_unknown_usage_requests", "selection_root_ids", "source_root_ids"}
+    accounting = {field: source[field] for field in fields if field in source}
+    if not accounting:
+        return
+    accounting.update(accounting_only=True, terminal_error_type=type(error).__name__ if error else None)
+    record = one(c, "SELECT * FROM evolution_runs WHERE job_id=:j", {"j": job["id"]})
+    if record:
+        metrics = {**obj(record["metrics"]), **accounting, "generalization_verified": False}
+        execute(c, "UPDATE evolution_runs SET metrics=:m WHERE id=:i", {"m": js(metrics), "i": record["id"]})
+        audit(c, job["created_by"], "evolution_terminal_accounting", "evolution_run", record["id"], accounting)
+
+
+def gepa_complete(c, job, result, request):
+    from .agent import ContextStore
+    current = ensure_context(c)
+    state, snapshot_id = result.get("state", "no_update"), None
+    update = result.get("activation_update")
+    regression = result.get("regression")
+    if update:
+        captured = obj(request["base"]["content"])
+        source_changed = False
+        for event in request["feedback_events"]:
+            source = event["feedback"]
+            table, identifier = source["feedback_id"].split(":", 1)
+            if require(c, table, int(identifier))["version"] != source["version"]:
+                source_changed = True
+                break
+        if (source_changed or current["id"] != request["base"]["id"] or result.get("base_context_version") != captured["version"]
+                or result.get("base_context_snapshot_id") != captured["context_snapshot_id"]):
+            state = "conflicted"
+        else:
+            applied = ContextStore(initial_snapshot=obj(current["content"])).apply([update], expected_version=current["context_version"], source_scope="evolution", regression=regression)
+            state = applied["state"]
+            if state == "active":
+                snapshot_id = publish_snapshot(c, current, applied["snapshot"], [update], {"passed": True, "regression": regression, "automatic": True}, job["created_by"])
+    metrics = {"candidate_evaluation": result.get("candidateevaluation", result.get("candidates", [])), "rollouts": result.get("rollouts", 0),
+               "budget": result.get("budget", {}), "provider_usage": result.get("provider_usage", {}), "provider_requests": result.get("provider_requests", 0),
+               "provider_failed_requests": result.get("provider_failed_requests", 0),
+               "provider_unknown_usage_requests": result.get("provider_unknown_usage_requests", 0),
+               "selection_root_ids": result.get("selection_root_ids", []), "generalization_verified": False}
+    validation = {"passed": state not in ("quarantined", "conflicted", "failed"), "reason": result.get("reason"), "regression": regression,
+                  "source_root_count": len(request["feedback_events"]), "approval_required": False}
+    execute(c, "UPDATE evolution_runs SET status=:s,result_snapshot_id=:snapshot,changes=:changes,validation=:validation,metrics=:metrics,finished_at=:t WHERE id=:i",
+            {"s": state, "snapshot": snapshot_id, "changes": js([update] if update else []), "validation": js(validation), "metrics": js(metrics), "t": now(), "i": request["run"]["id"]})
+    audit(c, job["created_by"], "context_gepa_auto_complete", "evolution_run", request["run"]["id"], {"status": state, "snapshot_id": snapshot_id, "approval_required": False})
+    return {"evolution_run_id": request["run"]["id"], "state": state, "context_snapshot_id": snapshot_id, "metrics": metrics, "validation": validation}

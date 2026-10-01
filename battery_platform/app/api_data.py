@@ -21,7 +21,7 @@ from .config import MAX_UPLOAD, MAX_SAMPLES, SCHEMA
 from .db import tx, rows, one, execute, insert, js, obj, now, audit
 from .security import allow, current_user
 from .services import require, public, create_dataset, register_frozen
-from .jobs import enqueue, choose_samples
+from .jobs import enqueue, choose_samples, extension_handler
 
 router = APIRouter(prefix="/api")
 
@@ -445,6 +445,9 @@ def cancel(identifier: int, user=Depends(allow("admin", "researcher"))):
                 "UPDATE jobs SET status='cancelled',cancel_requested=1,finished_at=:t WHERE id=:i",
                 {"t": now(), "i": identifier},
             )
+            handler = extension_handler(j["kind"])
+            if handler and handler.get("lifecycle"):
+                handler["lifecycle"](c, j, "cancelled", "作业在开始前已取消")
         else:
             execute(
                 c, "UPDATE jobs SET cancel_requested=1 WHERE id=:i", {"i": identifier}
