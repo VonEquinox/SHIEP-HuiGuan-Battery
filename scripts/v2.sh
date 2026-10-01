@@ -8,6 +8,8 @@ export BATTERY_ML_PYTHON="${BATTERY_ML_PYTHON:-$repo_root/.venv/bin/python}"
 export BATTERY_LLM_PROXY="${BATTERY_LLM_PROXY:-http://127.0.0.1:7897}"
 export NO_PROXY="${NO_PROXY:-127.0.0.1,localhost,::1}"
 if [[ -f .env ]]; then set -a; source .env; set +a; fi
+if [[ "$BATTERY_RUNTIME" != /* ]]; then export BATTERY_RUNTIME="$repo_root/$BATTERY_RUNTIME"; fi
+if [[ "$BATTERY_ML_PYTHON" != /* ]]; then export BATTERY_ML_PYTHON="$repo_root/$BATTERY_ML_PYTHON"; fi
 case "${1:-help}" in
   install)
     export HTTPS_PROXY="${HTTPS_PROXY:-http://127.0.0.1:7897}"
@@ -20,7 +22,7 @@ case "${1:-help}" in
     cd battery_platform
     exec "$repo_root/.venv/bin/python" -m uvicorn app.main:app --host "${BATTERY_HOST:-127.0.0.1}" --port "${BATTERY_PORT:-8787}" --workers 1
     ;;
-  test) exec "$repo_root/.venv/bin/python" -m pytest "${@:2}" ;;
+  test) exec env BATTERY_LLM_API_KEY= "$repo_root/.venv/bin/python" -m pytest "${@:2}" ;;
   bootstrap|user|demo|status|backup|restore)
     command="$1"; shift
     cd battery_platform

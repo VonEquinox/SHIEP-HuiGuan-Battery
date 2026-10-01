@@ -1,9 +1,14 @@
 from __future__ import annotations
 import os
+import sys
 from pathlib import Path
 
 APP_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = APP_ROOT.parent
+# The research package is part of this checkout; launchers may start in the app
+# directory. Resolve this one trusted project path independently of the cwd.
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 MODEL_ROOT = REPO_ROOT / "model_lab"
 RUNTIME = Path(os.environ.get("BATTERY_RUNTIME", str(APP_ROOT / "runtime"))).resolve()
 PORT = int(os.environ.get("BATTERY_PORT", "8787"))
