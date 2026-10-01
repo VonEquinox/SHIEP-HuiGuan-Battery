@@ -9,6 +9,7 @@ __pycache__/
 !.env.example
 *.tsbuildinfo
 /runtime/
+/battery_platform/reports/v2_agent/*/CANCEL
 # Original project files are preserved on the original branch.
 /源程序或源文件/
 /需求文档/

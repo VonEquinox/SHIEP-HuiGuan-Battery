@@ -1,0 +1,668 @@
+{
+  "schema_version": "committed-checkout-v2",
+  "revision": "cc8eb1ab8ef3be4a8428866a1e9a509b1ff7f469",
+  "contains_local_credentials": false,
+  "requires_raw_or_final_data": false,
+  "dependency_runtime": "existing root UV interpreter",
+  "package_replay": {
+    "schema_version": "safe-package-replay-v2",
+    "packages": [
+      {
+        "package_id": "M1_joint_seed0_complete",
+        "manifest_sha256": "be9c393d484ca2ce78f7b2726019204a4c04aa436ab4e00b82074cc298e805a9",
+        "model_version": "M1_joint_seed0",
+        "passed": true,
+        "absolute_tolerance": 1e-07,
+        "no_raw_or_final_data_required": true,
+        "samples": [
+          {
+            "source_id": "xjtu",
+            "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          }
+        ]
+      },
+      {
+        "package_id": "M1_matr_lifetime_masked_seed0",
+        "manifest_sha256": "7bae52d413428fa0362086169df726584b23b45c640b53066572cfba97d743af",
+        "model_version": "matr_lifetime_development_masked_20261002:M1_joint_seed0",
+        "passed": true,
+        "absolute_tolerance": 1e-07,
+        "no_raw_or_final_data_required": true,
+        "samples": [
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800464881",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800464881",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460617",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460640",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460525",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460506",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460642",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460635",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460466",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460449",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460501",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460597",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460627",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460526",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460678",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737313",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737277",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737276",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737386",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737365",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737334",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          }
+        ]
+      },
+      {
+        "package_id": "M1_multisource_seed0",
+        "manifest_sha256": "e6fa8ee621667c5937e33e95003b08895d9d1cff23063943480653c3b30bfeb0",
+        "model_version": "multisource_fixed_loss_20261002:M1_joint_seed0",
+        "passed": true,
+        "absolute_tolerance": 1e-07,
+        "no_raw_or_final_data_required": true,
+        "samples": [
+          {
+            "source_id": "xjtu",
+            "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "xjtu",
+            "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "xjtu",
+            "physical_cell_id": "xjtu:Batch-6/Sim_satellite_battery-2",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737234",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "dyad",
+            "physical_cell_id": "dyad:brand3:vehicle-432",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "supported"
+            }
+          }
+        ]
+      },
+      {
+        "package_id": "M2_joint_seed0",
+        "manifest_sha256": "7c224048da33af9627bbe53a768091c196a28443e27c0e2abfba81b6007511e4",
+        "model_version": "M2_joint_seed0",
+        "passed": true,
+        "absolute_tolerance": 1e-07,
+        "no_raw_or_final_data_required": true,
+        "samples": [
+          {
+            "source_id": "xjtu",
+            "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          }
+        ]
+      },
+      {
+        "package_id": "M2_matr_lifetime_masked_seed0",
+        "manifest_sha256": "013fbe84a3ddaf184daa48770b64fac89ff226a91eaec1febb64dc5b36e1a6e2",
+        "model_version": "matr_lifetime_development_masked_20261002:M2_joint_seed0",
+        "passed": true,
+        "absolute_tolerance": 1e-07,
+        "no_raw_or_final_data_required": true,
+        "samples": [
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800464881",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800464881",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460617",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460640",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460525",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460506",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460642",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460635",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460466",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460449",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460501",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460597",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460627",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460526",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800460678",
+            "heads": {
+              "soh": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "efficiency": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737313",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737277",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737276",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737386",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737365",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737334",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "supported",
+              "threshold_risk": "supported",
+              "fault": "unsupported"
+            }
+          }
+        ]
+      },
+      {
+        "package_id": "M2_multisource_seed0",
+        "manifest_sha256": "cce92f9c2245a7f8b2b2bddc6401f30bec12d8c46dc48e5420c5a8c165538414",
+        "model_version": "multisource_fixed_loss_20261002:M2_joint_seed0",
+        "passed": true,
+        "absolute_tolerance": 1e-07,
+        "no_raw_or_final_data_required": true,
+        "samples": [
+          {
+            "source_id": "xjtu",
+            "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "xjtu",
+            "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "xjtu",
+            "physical_cell_id": "xjtu:Batch-6/Sim_satellite_battery-2",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "matr",
+            "physical_cell_id": "matr:el150800737234",
+            "heads": {
+              "soh": "supported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "unsupported"
+            }
+          },
+          {
+            "source_id": "dyad",
+            "physical_cell_id": "dyad:brand3:vehicle-432",
+            "heads": {
+              "soh": "unsupported",
+              "efficiency": "unsupported",
+              "rul": "unsupported",
+              "threshold_risk": "unsupported",
+              "fault": "supported"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "api_regression": "...                                                                      [100%]\n3 passed, 6 deselected in 3.42s",
+  "temporary_archive_removed": true
+}

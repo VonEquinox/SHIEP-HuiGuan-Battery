@@ -1,0 +1,102 @@
+{
+  "schema_version": "v2-final-validation",
+  "verified_code_revision": "cc8eb1ab8ef3be4a8428866a1e9a509b1ff7f469",
+  "recorded_at": "2026-10-01T19:24:08.385810+00:00",
+  "python": {
+    "command": "env BATTERY_LLM_API_KEY= .venv/bin/python -m pytest -q",
+    "passed": 517,
+    "failed": 0,
+    "seconds": 67.37,
+    "cloud_calls_enabled": false
+  },
+  "frontend_build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 1604,
+    "js_bytes_decimal_kb": 446.43
+  },
+  "browser_contract": {
+    "command": "PLAYWRIGHT_CHANNEL=chrome npx playwright test e2e/v2.contract.spec.ts --config playwright.v2.config.ts",
+    "passed": 13,
+    "seconds": 6.7,
+    "api_interception": true
+  },
+  "browser_live": {
+    "command": "PLAYWRIGHT_CHANNEL=chrome npx playwright test e2e/v2.integration.spec.ts --config playwright.config.ts",
+    "passed": 1,
+    "seconds": 13.2,
+    "api_interception": false,
+    "execution_mode": "rule_baseline"
+  },
+  "new_package_inputs": {
+    "passed": 14,
+    "seconds": 3.61,
+    "real_numeric_api_cases": 2,
+    "sources": [
+      "matr"
+    ],
+    "package_families": [
+      "matr_lifetime",
+      "multisource"
+    ]
+  },
+  "miniprogram": {
+    "node_passed": 11,
+    "pages": 7,
+    "bindings": 59,
+    "syntax": "passed",
+    "native_compilation": "not_run",
+    "phone_preview": "not_run",
+    "video": "not_recorded"
+  },
+  "uv_frozen_check": {
+    "installed_packages_checked": 88,
+    "changes_required": false,
+    "runtime": "existing UV Python 3.12 environment"
+  },
+  "checkout_replay": {
+    "artifact": "battery_platform/reports/v2_integration/committed_checkout.json",
+    "revision": "cc8eb1ab8ef3be4a8428866a1e9a509b1ff7f469",
+    "packages": 6,
+    "saved_profiles": 54,
+    "absolute_tolerance": 1e-07,
+    "real_api_passed": 3,
+    "deselected": 6,
+    "api_seconds": 3.42,
+    "requires_raw_or_final": false
+  },
+  "shell_syntax": {
+    "passed": true,
+    "files": [
+      "scripts/v2.sh",
+      "battery_platform/manage.sh",
+      "battery_platform/scripts/browser_server.sh"
+    ]
+  },
+  "screenshots": [
+    {
+      "path": "docs/evidence/v2/actual-diagnostic-report.png",
+      "sha256": "f173a39eea9725e22931c1c19e556a5c284b35b0bf923c8dcc94f2891000a4e5",
+      "bytes": 238810
+    },
+    {
+      "path": "docs/evidence/v2/actual-numeric-profile.png",
+      "sha256": "f0e73dd54d27192972c42e83e432020981a8656e9396fc8455776d9c23376139",
+      "bytes": 260584
+    }
+  ],
+  "research_and_external_limits": [
+    "No proven context-evolution generalization gain",
+    "Professional semantic blind review pending",
+    "New lifetime packages not validated for deployment",
+    "M2 negative transfer retained",
+    "Native WeChat device validation and video unavailable"
+  ],
+  "secret_scan": {
+    "scope": "new_or_changed_upload_candidates_since_baseline",
+    "files_checked": 1240,
+    "matches": 0,
+    "largest_bytes": 16596026,
+    "local_credentials_tracked": false
+  }
+}

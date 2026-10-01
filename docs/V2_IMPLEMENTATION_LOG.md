@@ -288,3 +288,19 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
 - 独立记录：Agent FINAL_REVIEW/IMPLEMENTATION、后台 IMPLEMENTATION、WEB IMPLEMENTATION、
   REPLAY_SPLIT_FIX、MODEL_BINDING_FIX。独立团队审阅与手工边界测试、真实服务测试分别说明，
   未完成的专业语义盲评、现场能力与微信原生验证仍明确列出，不由软件回归代替。
+
+## 提交 19：干净Git归档、最终证据与运行文档
+
+- 增加根README与最终独立交付验收文档，汇总已实现范围、真实测试、负研究结果、外部验证限制、
+  18阶段Commit索引和安装入口；本提交另归档其自身操作，Git提供实际提交身份。
+- 新验证脚本从已提交 `cc8eb1ab` 创建临时git archive，排除本机.env/runtime/raw/final，
+  复用UV解释器，仅执行归档内模型/开发输入/服务代码；六个精确必需包完整54输出按1e-7通过，
+  真实XJTU/MATR/多源API **3 passed, 6 deselected in3.42s**，临时归档随后删除。
+- 提交机器可读最终/归档回执和两张已目视核验的真实Chrome截图；图中实验来源、95.32%SOH、
+  unsupported、无界校准与rule_baseline都保留，不替换成宣传数值。
+- 旧manage.sh现读取根.env并解析相对runtime/解释器。无配置保留V1默认，运行手册明确新旧目录；
+  bash-n通过，独立只读团队复核脚本语法、参数和全部README文档链接。
+- 本轮新/改候选文件1238份逐字节检查用户测试Key，0匹配；最大候选16,596,026bytes。
+  uv冻结检查88包无需变化；原始大包/final/凭据不stage，试验取消marker保留本机并明确忽略。
+- 最终代码验证仍为517 Python、13界面合同、1真实Chrome、11小程序行为；无需再次云端计费或重评分。
+  GitHub推送由下一实际发布回执记录，不在本阶段提前冒称已上传。

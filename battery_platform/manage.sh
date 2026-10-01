@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")"
+platform_repo_root="$(cd .. && pwd)"
+if [[ -f "$platform_repo_root/.env" ]]; then set -a; source "$platform_repo_root/.env"; set +a; fi
+if [[ -n "${BATTERY_RUNTIME:-}" && "$BATTERY_RUNTIME" != /* ]]; then
+ export BATTERY_RUNTIME="$platform_repo_root/$BATTERY_RUNTIME"
+fi
+if [[ -n "${BATTERY_ML_PYTHON:-}" && "$BATTERY_ML_PYTHON" != /* ]]; then
+ export BATTERY_ML_PYTHON="$platform_repo_root/$BATTERY_ML_PYTHON"
+fi
 export PYTHONDONTWRITEBYTECODE=1
 export UV_CACHE_DIR="$PWD/runtime/package-cache"
 platform_python="../.venv/bin/python"
