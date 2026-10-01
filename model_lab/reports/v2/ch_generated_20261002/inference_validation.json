@@ -1,0 +1,163 @@
+{
+  "schema_version": "ch-generated-json-reload-verification-v2",
+  "namespace": "demo_synthetic",
+  "origin": "public_generated",
+  "evidence_status": "exploratory_generated_only",
+  "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization.",
+  "validation_scope": "Reload each shipped numerical JSON model, reproduce every saved train/dev/exploratory-final VIN prediction and metric, check calibration/training root isolation. No retraining.",
+  "runs": [
+    {
+      "seed": 0,
+      "model_sha256": "86e561799d5fd581abc90101bff79035cc8776239465b4535c3361e2937c96cc",
+      "max_prediction_abs_difference": 0.0,
+      "all_saved_metrics_reproduced": true,
+      "chemistry_calibration": {
+        "LFP": {
+          "status": "fitted",
+          "temperature": 1.808123369402675,
+          "independent_calibration_VINs": 5,
+          "class_counts": {
+            "high_resistance": 1,
+            "low_capacity": 1,
+            "normal": 2,
+            "self_discharge": 1
+          },
+          "fit_calibration_dev_final_root_sets_disjoint": true
+        },
+        "NCM": {
+          "status": "fitted",
+          "temperature": 0.6020480600657714,
+          "independent_calibration_VINs": 5,
+          "class_counts": {
+            "high_resistance": 1,
+            "low_capacity": 1,
+            "normal": 2,
+            "self_discharge": 1
+          },
+          "fit_calibration_dev_final_root_sets_disjoint": true
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "model_sha256": "c6451839731944013547e0ba69bd54b0f5d6a5ceb75284b4935734a751d97b44",
+      "max_prediction_abs_difference": 0.0,
+      "all_saved_metrics_reproduced": true,
+      "chemistry_calibration": {
+        "LFP": {
+          "status": "fitted",
+          "temperature": 1.4880584624548134,
+          "independent_calibration_VINs": 5,
+          "class_counts": {
+            "high_resistance": 1,
+            "low_capacity": 1,
+            "normal": 2,
+            "self_discharge": 1
+          },
+          "fit_calibration_dev_final_root_sets_disjoint": true
+        },
+        "NCM": {
+          "status": "fitted",
+          "temperature": 1.1104152080771381,
+          "independent_calibration_VINs": 5,
+          "class_counts": {
+            "high_resistance": 1,
+            "low_capacity": 1,
+            "normal": 2,
+            "self_discharge": 1
+          },
+          "fit_calibration_dev_final_root_sets_disjoint": true
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "model_sha256": "9d0904f06e565dce4b4fccaf692b584f02ccaaef35af12b15961c7acdc9199d8",
+      "max_prediction_abs_difference": 0.0,
+      "all_saved_metrics_reproduced": true,
+      "chemistry_calibration": {
+        "LFP": {
+          "status": "fitted",
+          "temperature": 1.3542510169706152,
+          "independent_calibration_VINs": 5,
+          "class_counts": {
+            "high_resistance": 1,
+            "low_capacity": 1,
+            "normal": 2,
+            "self_discharge": 1
+          },
+          "fit_calibration_dev_final_root_sets_disjoint": true
+        },
+        "NCM": {
+          "status": "fitted",
+          "temperature": 0.8156219641572015,
+          "independent_calibration_VINs": 5,
+          "class_counts": {
+            "high_resistance": 1,
+            "low_capacity": 1,
+            "normal": 2,
+            "self_discharge": 1
+          },
+          "fit_calibration_dev_final_root_sets_disjoint": true
+        }
+      }
+    }
+  ],
+  "counts_by_split_and_class": {
+    "train": {
+      "segment_rows": 58,
+      "conservative_VIN_roots": 29,
+      "class_counts_independent_roots": {
+        "high_resistance": 8,
+        "low_capacity": 9,
+        "normal": 7,
+        "self_discharge": 5
+      }
+    },
+    "dev": {
+      "segment_rows": 14,
+      "conservative_VIN_roots": 7,
+      "class_counts_independent_roots": {
+        "high_resistance": 0,
+        "low_capacity": 1,
+        "normal": 3,
+        "self_discharge": 3
+      }
+    },
+    "calibration": {
+      "segment_rows": 10,
+      "conservative_VIN_roots": 5,
+      "class_counts_independent_roots": {
+        "high_resistance": 1,
+        "low_capacity": 1,
+        "normal": 2,
+        "self_discharge": 1
+      }
+    },
+    "final": {
+      "segment_rows": 14,
+      "conservative_VIN_roots": 7,
+      "class_counts_independent_roots": {
+        "high_resistance": 3,
+        "low_capacity": 1,
+        "normal": 0,
+        "self_discharge": 3
+      }
+    }
+  },
+  "raw_member_hash_audit": {
+    "published_segment_rows": 96,
+    "distinct_raw_member_sha256": 95,
+    "cross_split_identical_raw_member_groups": 0,
+    "within_train_duplicate": {
+      "chemistry": "NCM",
+      "class_name": "low_capacity",
+      "VIN_roots": [
+        "vin_75",
+        "vin_79"
+      ],
+      "sha256": "d730ae73277bc97285aa28035bb6e1de70740c880f05006ba39e98111e1316ab"
+    },
+    "policy": "Original fixed split and training were retained; this audit is evidence, not retuning. Identical byte checks do not recover unknown generation mother identity."
+  }
+}

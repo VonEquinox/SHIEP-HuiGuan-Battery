@@ -1,0 +1,34 @@
+{
+  "source_id": "xjtu",
+  "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+  "split": "dev",
+  "chemistry": "NCM",
+  "protocol_id": "RW_battery",
+  "query_time": 32.0,
+  "visible_cutoff": 31.0,
+  "feature_max_time": 21.0,
+  "available_at": 31.0,
+  "reference_cutoff": 21.0,
+  "reference_capacity_Ah": 1.878,
+  "target_definition": "xjtu-rpt-reference-soh-v2",
+  "unit": "ratio",
+  "target_observed_at": 32.0,
+  "target_available_at": 32.0,
+  "evidence_refs": [
+    "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+    "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+    "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+    "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21"
+  ],
+  "survival_time_unit": null,
+  "domain_index": 3,
+  "feature_schema": "battery_features_v2",
+  "data_namespace": "experimental",
+  "allowed_heads": [
+    "soh",
+    "rul",
+    "threshold_risk",
+    "efficiency",
+    "fault"
+  ]
+}

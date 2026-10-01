@@ -1,0 +1,16 @@
+dataset_manifest: model_lab/data/derived/v2/multisource_features_20261002_v2/features.json
+output_dir: model_lab/reports/v2/multisource_fixed_loss_20261002
+families: [M1, M2]
+seeds: [0, 1, 2]
+ablations: [joint, no_domain_adapter, no_history, single_task]
+ngboost: true
+m1_estimators: 80
+epochs: 12
+batch_size: 8
+learning_rate: 0.001
+calibration_alpha: 0.2
+survival_grid: [50, 100, 150, 200, 300, 400, 600, 800, 1000]
+# XJTU consumed final objects are entirely absent. MATR/DyAD final are first-use only.
+
+loss_contract: fixed_domain_object_task_v2
+task_weights: {soh: 1.0, efficiency: 1.0, rul: 1.0, fault: 1.0}

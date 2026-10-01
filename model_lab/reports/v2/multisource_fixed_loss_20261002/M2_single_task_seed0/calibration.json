@@ -1,0 +1,139 @@
+{
+  "soh": {
+    "method": "object_max_cqr",
+    "alpha": 0.2,
+    "version": "cqr-v2",
+    "domains": {
+      "dyad::unknown::vehicle_charging": {
+        "independent_objects": 0,
+        "resolution": 1.0,
+        "rank": 1,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      },
+      "matr::LFP::unknown": {
+        "independent_objects": 6,
+        "resolution": 0.14285714285714285,
+        "rank": 6,
+        "correction": 0.20229652243871765,
+        "status": "finite",
+        "object_ids": [
+          "matr:el150800737276",
+          "matr:el150800737313",
+          "matr:el150800737334",
+          "matr:el150800737378",
+          "matr:el150800737386",
+          "matr:el150800739484"
+        ],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      },
+      "xjtu::NCM::R3_battery": {
+        "independent_objects": 3,
+        "resolution": 0.25,
+        "rank": 4,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [
+          "xjtu:Batch-4/R3_battery-3",
+          "xjtu:Batch-4/R3_battery-4",
+          "xjtu:Batch-4/R3_battery-8"
+        ],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      },
+      "xjtu::NCM::Sim_satellite_battery": {
+        "independent_objects": 1,
+        "resolution": 0.5,
+        "rank": 2,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [
+          "xjtu:Batch-6/Sim_satellite_battery-8"
+        ],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      }
+    }
+  },
+  "efficiency": {
+    "method": "object_max_cqr",
+    "alpha": 0.2,
+    "version": "cqr-v2",
+    "domains": {
+      "dyad::unknown::vehicle_charging": {
+        "independent_objects": 0,
+        "resolution": 1.0,
+        "rank": 1,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      },
+      "matr::LFP::unknown": {
+        "independent_objects": 0,
+        "resolution": 1.0,
+        "rank": 1,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      },
+      "xjtu::NCM::R3_battery": {
+        "independent_objects": 0,
+        "resolution": 1.0,
+        "rank": 1,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      },
+      "xjtu::NCM::Sim_satellite_battery": {
+        "independent_objects": 0,
+        "resolution": 1.0,
+        "rank": 1,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      }
+    }
+  },
+  "fault": {
+    "method": "first_object_landmark_platt",
+    "version": "fault-platt-v2",
+    "domains": {
+      "dyad::unknown::vehicle_charging": {
+        "independent_objects": 0,
+        "class_counts": {},
+        "landmark": "first frozen input row per object",
+        "status": "insufficient_calibration_class_objects",
+        "coef": null,
+        "intercept": null
+      },
+      "matr::LFP::unknown": {
+        "independent_objects": 0,
+        "class_counts": {},
+        "landmark": "first frozen input row per object",
+        "status": "insufficient_calibration_class_objects",
+        "coef": null,
+        "intercept": null
+      },
+      "xjtu::NCM::R3_battery": {
+        "independent_objects": 0,
+        "class_counts": {},
+        "landmark": "first frozen input row per object",
+        "status": "insufficient_calibration_class_objects",
+        "coef": null,
+        "intercept": null
+      },
+      "xjtu::NCM::Sim_satellite_battery": {
+        "independent_objects": 0,
+        "class_counts": {},
+        "landmark": "first frozen input row per object",
+        "status": "insufficient_calibration_class_objects",
+        "coef": null,
+        "intercept": null
+      }
+    }
+  }
+}

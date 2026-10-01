@@ -1,0 +1,168 @@
+{
+  "dyad::unknown::vehicle_charging": {
+    "independent_objects": 15,
+    "rows": 120,
+    "heads": {
+      "soh": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "efficiency": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "rul": {
+        "status": "unavailable",
+        "reason": "no verified physical-time survival targets"
+      },
+      "fault": {
+        "status": "evaluated",
+        "aucpr": 0.75,
+        "snippet_aucpr": 0.8063478978879463,
+        "metric_unit": "first frozen landmark per independent vehicle",
+        "class_counts": {
+          "0": 13,
+          "1": 2
+        },
+        "false_positive_rate_at_recall_0_9": 0.15384615384615385,
+        "threshold_at_recall_0_9": 0.01934427193143379,
+        "calibration_error": 0.1510027187349743
+      }
+    }
+  },
+  "matr::LFP::unknown": {
+    "independent_objects": 6,
+    "rows": 48,
+    "heads": {
+      "soh": {
+        "status": "evaluated",
+        "independent_objects": 6,
+        "rows": 48,
+        "per_object": {
+          "matr:el150800737213": {
+            "mae": 0.06642313426563676,
+            "rmse": 0.18521942354244808,
+            "rows": 8
+          },
+          "matr:el150800737234": {
+            "mae": 0.017016983735124294,
+            "rmse": 0.025299632051241503,
+            "rows": 8
+          },
+          "matr:el150800737361": {
+            "mae": 0.0036089547070691785,
+            "rmse": 0.009169081854150548,
+            "rows": 8
+          },
+          "matr:el150800737365": {
+            "mae": 0.00359863779846413,
+            "rmse": 0.008413221870048811,
+            "rows": 8
+          },
+          "matr:el150800737366": {
+            "mae": 0.00922570407375499,
+            "rmse": 0.017768483912903543,
+            "rows": 8
+          },
+          "matr:el150800737390": {
+            "mae": 0.0027997930145830102,
+            "rmse": 0.004959912113106679,
+            "rows": 8
+          }
+        },
+        "mae": 0.01711220126577206,
+        "rmse": 0.041804959223983196,
+        "worst_object": "matr:el150800737213",
+        "pinball": 0.0051795419500602026,
+        "nll_original_scale": -1.8880022544165473
+      },
+      "efficiency": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "rul": {
+        "status": "unavailable",
+        "reason": "no verified physical-time survival targets"
+      },
+      "fault": {
+        "status": "unavailable",
+        "reason": "missing confirmed labels or only one class"
+      }
+    }
+  },
+  "xjtu::NCM::RW_battery": {
+    "independent_objects": 1,
+    "rows": 8,
+    "heads": {
+      "soh": {
+        "status": "evaluated",
+        "independent_objects": 1,
+        "rows": 8,
+        "per_object": {
+          "xjtu:Batch-5/RW_battery-3": {
+            "mae": 0.007447637703698454,
+            "rmse": 0.010094677269690992,
+            "rows": 8
+          }
+        },
+        "mae": 0.007447637703698454,
+        "rmse": 0.010094677269690992,
+        "worst_object": "xjtu:Batch-5/RW_battery-3",
+        "pinball": 0.003160325571575233,
+        "nll_original_scale": -3.2589297630145184
+      },
+      "efficiency": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "rul": {
+        "status": "unavailable",
+        "reason": "no verified physical-time survival targets"
+      },
+      "fault": {
+        "status": "unavailable",
+        "reason": "missing confirmed labels or only one class"
+      }
+    }
+  },
+  "xjtu::NCM::Sim_satellite_battery": {
+    "independent_objects": 2,
+    "rows": 16,
+    "heads": {
+      "soh": {
+        "status": "evaluated",
+        "independent_objects": 2,
+        "rows": 16,
+        "per_object": {
+          "xjtu:Batch-6/Sim_satellite_battery-2": {
+            "mae": 0.006239054778221134,
+            "rmse": 0.008061305492404098,
+            "rows": 8
+          },
+          "xjtu:Batch-6/Sim_satellite_battery-4": {
+            "mae": 0.0030284051595673156,
+            "rmse": 0.0055186978937883605,
+            "rows": 8
+          }
+        },
+        "mae": 0.004633729968894225,
+        "rmse": 0.006790001693096229,
+        "worst_object": "xjtu:Batch-6/Sim_satellite_battery-2",
+        "pinball": 0.002244167903292499,
+        "nll_original_scale": -3.3987610175622667
+      },
+      "efficiency": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "rul": {
+        "status": "unavailable",
+        "reason": "no verified physical-time survival targets"
+      },
+      "fault": {
+        "status": "unavailable",
+        "reason": "missing confirmed labels or only one class"
+      }
+    }
+  }
+}

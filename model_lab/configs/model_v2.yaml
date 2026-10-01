@@ -1,0 +1,11 @@
+dataset_manifest: model_lab/data/derived/v2/xjtu_features_protocol/features.json
+output_dir: model_lab/reports/v2/xjtu_development_20261002
+families: [M1, M2]
+seeds: [0, 1, 2]
+ablations: [joint, no_domain_adapter, no_history, single_task]
+ngboost: true
+m1_estimators: 80
+epochs: 12
+batch_size: 4
+learning_rate: 0.001
+survival_grid: [50, 100, 150, 200, 300, 400, 600, 800, 1000]

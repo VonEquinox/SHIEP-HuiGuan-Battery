@@ -1,0 +1,1012 @@
+{
+  "manifest": {
+    "schema_version": "battery-data-v2",
+    "created_at": "2026-10-01T16:54:30.087754+00:00",
+    "parser_version": "v2-data-1.0.0",
+    "namespace": "demo_synthetic",
+    "tables": {
+      "identity_map": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/ch_batterygen_20261002/identity_map.parquet",
+        "sha256": "100835e54127e515bb9c9c67149ccf1a7909752f8c65a8850fda95ef83734ed3",
+        "rows": 96
+      },
+      "cycles": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/ch_batterygen_20261002/cycles.parquet",
+        "sha256": "8b67fb02ed63cfcf022800db6620efeab96f816e75acdf7d89e6642268562a66",
+        "rows": 0
+      },
+      "segments": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/ch_batterygen_20261002/segments.parquet",
+        "sha256": "5c438ee6331c5ffa31f1094627e01bdd9692ae21f15ec4a0a0864934c077af31",
+        "rows": 96
+      },
+      "targets": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/ch_batterygen_20261002/targets.parquet",
+        "sha256": "4094be79c8544eaa512ccb9b0aaa6c516025e29e33cea7e4fa5d111bbb06cc83",
+        "rows": 96
+      }
+    },
+    "sources": [
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_41/vin_41_charge_1.csv",
+        "sha256": "f0527cd209bdb14f13a4bd48423193b18521b4d1c1195d0f5645e3d77bc26764",
+        "bytes": 429874,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_42/vin_42_charge_1.csv",
+        "sha256": "41da0ec0d98016781c83f3cdf9adebc8ba535f55deefcc4f33aef16037086b3b",
+        "bytes": 177338,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_43/vin_43_charge_1.csv",
+        "sha256": "af797cec5401783bf0ede97d4d7b552d2b4036ca226d2b9f068a289bef31248f",
+        "bytes": 171595,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_44/vin_44_charge_1.csv",
+        "sha256": "8a0afb7516aed784c4e6f144d69aab096b7cd6aedacf3a6bf70d13d4923fe76c",
+        "bytes": 152895,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_45/vin_45_charge_1.csv",
+        "sha256": "649183edc5386e3cd882562aa1e826b93f0e3582322b7b4fee9c359c47480535",
+        "bytes": 531624,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_46/vin_46_charge_1.csv",
+        "sha256": "46a98151d73e356abdea816e9eda400923ccf003de9dfabe7001ad96e0ea59af",
+        "bytes": 927773,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_47/vin_47_charge_1.csv",
+        "sha256": "4c877b7ca285aa4e436c843bc367be7d2a92c06fe8d64d103658b497d07a608a",
+        "bytes": 189494,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_48/vin_48_charge_1.csv",
+        "sha256": "30045406f42d32a1241501f1b4efe8ae763e8ee797c2510a45770c8bec6e7f34",
+        "bytes": 57732,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_49/vin_49_charge_1.csv",
+        "sha256": "72e9336f8f67899818cf7fa896b5783d3dec43ce65eb8c7d8a74bd59b920ee63",
+        "bytes": 222582,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_50/vin_50_charge_1.csv",
+        "sha256": "13e1f612767507595faec2b8c5cc9b4a8ee8a1b3cc24fbfc91c6f6a266103a68",
+        "bytes": 389480,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_51/vin_51_charge_1.csv",
+        "sha256": "1606c635cc443a9660f8cd623bef704e300a2c579e0cc3d1c6b5e219899dc96c",
+        "bytes": 34968,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/high_resistance/vin_52/vin_52_charge_1.csv",
+        "sha256": "cdea34b4241aa33516329213e21f88e4b401264d8a4e92d4b8fd19f75611538a",
+        "bytes": 332666,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_71/vin_71_charge_1.csv",
+        "sha256": "4564208cdda047b78fd9d3cd9bd8b89524eebef26968fe79cd011f8d3524e478",
+        "bytes": 440040,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_72/vin_72_charge_1.csv",
+        "sha256": "a05045f894d9367ee643849feb7776f593a455ec816caeb24849b6dfd67a55d0",
+        "bytes": 37290,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_73/vin_73_charge_1.csv",
+        "sha256": "f931b7583169ef92ba1d92d1a1323d65b7310541b1e9b468c5b1e4372d8eaa0b",
+        "bytes": 362242,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_74/vin_74_charge_1.csv",
+        "sha256": "ab28d57a30ad8bff634100e60474e1ffa4e456593461ce833d64969fa25317c5",
+        "bytes": 381932,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_75/vin_75_charge_1.csv",
+        "sha256": "5c32b11b957c0f3313fe1bf4fee719d36573af339cdb133ede33e6d04f0e080e",
+        "bytes": 506810,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_76/vin_76_charge_1.csv",
+        "sha256": "a655faf8d378222c708ad6ca7f68ab38cc52899124a0f25eabe046079b0b3396",
+        "bytes": 130980,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_77/vin_77_charge_1.csv",
+        "sha256": "fbab0e9d4d5b667ea0ff0987cff547d801cbb7a26c0dcff3a84e0784ef9f6e10",
+        "bytes": 133406,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_78/vin_78_charge_1.csv",
+        "sha256": "28221ae7bdf562719d378704c3d039977e691a26cd2e6dbaacdb4d35d51dffc9",
+        "bytes": 260869,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_79/vin_79_charge_1.csv",
+        "sha256": "5e03f0c8afa06ddf05373e6a888009297fdd47ad2c5b71e38e567415ca2fc604",
+        "bytes": 42304,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_80/vin_80_charge_1.csv",
+        "sha256": "2731e432842654be0e4d95176637d0a5a2f57ab432337852744aadb7220d2e78",
+        "bytes": 252858,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_81/vin_81_charge_1.csv",
+        "sha256": "5a9e319f4e7240ce5f5fb948331e93cefd1447706d8a5d59277de8c5812b1342",
+        "bytes": 55417,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/low_capacity/vin_82/vin_82_charge_1.csv",
+        "sha256": "b0ce510ee37c71b36cad632b5e899456c907ffd8dfb3ad6b80f536422ab1b0ae",
+        "bytes": 21871,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_101/vin_101_charge_1.csv",
+        "sha256": "c31d6bfa6bad06d7d6f920abc623413ac1b3bf1f814e8eeeff77e792a990bcfd",
+        "bytes": 290197,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_102/vin_102_charge_1.csv",
+        "sha256": "b710a4b772cdc8bf3776965741f4f272c6d0e72e3e9f7a19e5de8f3795622929",
+        "bytes": 827868,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_103/vin_103_charge_1.csv",
+        "sha256": "b69fc41a311e6695bb8a03e388eede2c92464af7f6edb844f6bc646b333851ed",
+        "bytes": 2202385,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_104/vin_104_charge_1.csv",
+        "sha256": "7b274823737ce7087e2a5d8690720743df343398b6916aa417e08bfeb8770c44",
+        "bytes": 1203503,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_105/vin_105_charge_1.csv",
+        "sha256": "664b2e64f039d80057b85c0394ada512add57fec85f2eda451bee397f6ba20bf",
+        "bytes": 123700,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_106/vin_106_charge_1.csv",
+        "sha256": "8f43fb83b49c0c8c4c7fd36813154104208b24d9415110096889b0dba6f59009",
+        "bytes": 1980356,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_107/vin_107_charge_1.csv",
+        "sha256": "8a06e2af0dd547055ff8e7eeb4d63f258f4b1e3e09f10e8a55017990d341d782",
+        "bytes": 1813275,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_108/vin_108_charge_1.csv",
+        "sha256": "ba2cd6bc48a3f1657e8d80cdf8b886346922db1ba43c6bb79759f356e5811db2",
+        "bytes": 529295,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_109/vin_109_charge_1.csv",
+        "sha256": "1c22ae404d65bd3455abb70db53e679ed47b1419474b132b62c053698a07681d",
+        "bytes": 1809708,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_110/vin_110_charge_1.csv",
+        "sha256": "1d7e61ebe1e8cecffa2c9b1e91eaac0c2400b5b9ce2720e00078f8fd86364da5",
+        "bytes": 1779606,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_111/vin_111_charge_1.csv",
+        "sha256": "e5b89de9f001faf59b273833aa414e3f7d2c40b836a7145dd746128d83338fb1",
+        "bytes": 32857,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/normal/vin_112/vin_112_charge_1.csv",
+        "sha256": "a7eb3c1aab1db8d9562ec1b22549af61e996249e18dc2f866f2edd1246f0e593",
+        "bytes": 91030,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_1/vin_1_charge_1.csv",
+        "sha256": "fbc6ccf74ca8f34900f53edc1cbe12778b76231a965c3cf3f4d3cdfaefeda218",
+        "bytes": 2688619,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_10/vin_10_charge_1.csv",
+        "sha256": "a08b2496b5cb2c2602d5116e8630f558bc99fe3d21204b4f7eecbf3925811c4d",
+        "bytes": 277078,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_11/vin_11_charge_1.csv",
+        "sha256": "e6362955ed7a0eea1748061762ce67b86453287b27b004cc87049fc57c971d3f",
+        "bytes": 398836,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_12/vin_12_charge_1.csv",
+        "sha256": "3c45a24012a6b280d0e285e32f009378185cbbe6bcca85c5c100344e9e57c763",
+        "bytes": 288134,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_2/vin_2_charge_1.csv",
+        "sha256": "682351eb6dcd39acc26735a90a3bdb7d1c9ab573f992380d3d35a3aea4deaa05",
+        "bytes": 161871,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_3/vin_3_charge_1.csv",
+        "sha256": "63891ceb5279b7e955838687ec135fc38a29fb04e4fec5b0a376cfd586301319",
+        "bytes": 524463,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_4/vin_4_charge_1.csv",
+        "sha256": "df41ddcf10bdd4c1e228cb951b7e30cbb1a4ac096af25bee3baa126811f28bd1",
+        "bytes": 2412340,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_5/vin_5_charge_1.csv",
+        "sha256": "ef0288cefbd8438a8817961f1fe77f603bf6da78b07e5a592618324cd4edc704",
+        "bytes": 2088661,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_6/vin_6_charge_1.csv",
+        "sha256": "2899c6e200c8d49d2af7adb22f762adfe359500bd925a74ba4213a46ff96966c",
+        "bytes": 1831047,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_7/vin_7_charge_1.csv",
+        "sha256": "fe3fb56962fe5a20080b5b4b4c1b77c73fb5b54ccf7aa6d2275fec025a02e1d6",
+        "bytes": 1573016,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_8/vin_8_charge_1.csv",
+        "sha256": "6b211140f2077e2c969091c00c653c7556a142e7ea9242c5dc4215359df9fddb",
+        "bytes": 1408673,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/LFP/self_discharge/vin_9/vin_9_charge_1.csv",
+        "sha256": "d602c023f4a9d5c809597aa573df4b2d432c4d2cbb49739bc3a5cb64fecbccd4",
+        "bytes": 1848845,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_41/vin_41_charge_1.csv",
+        "sha256": "bf0c0ee4520eba85a8fbb6877adb41a5c4a4d2379bf89bf161126e5759ddc7ec",
+        "bytes": 109520,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_42/vin_42_charge_1.csv",
+        "sha256": "039aa37e5c0ae5209b7afdfd432f0bf03e8e37a3aa1b44fa05f27820d190433c",
+        "bytes": 109765,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_43/vin_43_charge_1.csv",
+        "sha256": "81619451a8cf754e42db3b29b29f030e446e9f90049d8876ffce668d3dd7bafa",
+        "bytes": 105347,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_44/vin_44_charge_1.csv",
+        "sha256": "9040fd5053ca376565dc1eb08358f4bf3bf7b80d02cd4d26a5109efe6d3c5ccb",
+        "bytes": 886300,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_45/vin_45_charge_1.csv",
+        "sha256": "d12b99f349938d7bc07c05ccc2663993f5a1b502feed15b911349ef69e611bae",
+        "bytes": 109751,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_46/vin_46_charge_1.csv",
+        "sha256": "632430830805b4dbfa0ea573a2f5ed089e79b305e6e305f7d6a495facc45d2ec",
+        "bytes": 143372,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_47/vin_47_charge_1.csv",
+        "sha256": "ccac91d141cce967cd2597b6999760737d5f66bf56a48003bf8bd16baa6d7c09",
+        "bytes": 105448,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_48/vin_48_charge_1.csv",
+        "sha256": "b820021e9e4994ab6e4b80b16110255b7d3c47702831f91ff73e95c6099d1b39",
+        "bytes": 234089,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_49/vin_49_charge_1.csv",
+        "sha256": "725fcc494f8251b5ec2ef5dd5e819ab5b2301de8fb9174b6003ed546bc981a97",
+        "bytes": 465277,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_50/vin_50_charge_1.csv",
+        "sha256": "14f6e7755b615c9148a18c9565c90513bb183bf0c6c8062af77b982448de2877",
+        "bytes": 224129,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_51/vin_51_charge_1.csv",
+        "sha256": "0a7667ddb0f43a45c2ff257b456503c0408feda10fa5051c8b5e6a870a616fff",
+        "bytes": 144240,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/high_resistance/vin_52/vin_52_charge_1.csv",
+        "sha256": "8ddc2a89bbd22b126bb05429737ef761f3f3ff675c3c5d2136bf4611de1dba39",
+        "bytes": 109804,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_71/vin_71_charge_1.csv",
+        "sha256": "3a32e9fb24ae0432356b24f055eef71dd67020aedf5ad5fa823f15056a25dc5e",
+        "bytes": 1293218,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_72/vin_72_charge_1.csv",
+        "sha256": "407735716b482e3da6683e1eb127979dbb49a804fe2e24b50c4aaf261074121b",
+        "bytes": 541049,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_73/vin_73_charge_1.csv",
+        "sha256": "f464b421fb2463ae0c559d17844ce0e97f6026facb2e0d0ceb51c6e57de14e28",
+        "bytes": 110829,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_74/vin_74_charge_1.csv",
+        "sha256": "5702f71c4f9b18dae33b77795b7a3a2e273eb5c42838110942ab25e201fb9cb6",
+        "bytes": 409623,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_75/vin_75_charge_1.csv",
+        "sha256": "d730ae73277bc97285aa28035bb6e1de70740c880f05006ba39e98111e1316ab",
+        "bytes": 63128,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_76/vin_76_charge_1.csv",
+        "sha256": "8d7167c8aa994d25014af70a18b302cf1f3fb734fffcb5d1097d9c33dcc18ff9",
+        "bytes": 118728,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_77/vin_77_charge_1.csv",
+        "sha256": "2f49dd231a675d46a26ced7df38dc66a7e8ea6502578f03bad1a0018dd7492ac",
+        "bytes": 438174,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_78/vin_78_charge_1.csv",
+        "sha256": "9952bfd411fcd6f088c8923b40343279cba060bf03d002fb488a22b302d17e0b",
+        "bytes": 755777,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_79/vin_79_charge_1.csv",
+        "sha256": "d730ae73277bc97285aa28035bb6e1de70740c880f05006ba39e98111e1316ab",
+        "bytes": 63128,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_80/vin_80_charge_1.csv",
+        "sha256": "f488d86e06ac732654ab56a19a694421045c7815d4a1bd2aea274f855e87004c",
+        "bytes": 525188,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_81/vin_81_charge_1.csv",
+        "sha256": "85338555b1270908e92b3691146bd0648dc809f50deaf232cb16a44771df1620",
+        "bytes": 221350,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/low_capacity/vin_82/vin_82_charge_1.csv",
+        "sha256": "ca5f7c554f07e9cf1a709d5224d8c06fdc1b9df18fb5309301dec495f3b7b95e",
+        "bytes": 837073,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_101/vin_101_charge_1.csv",
+        "sha256": "e222701d8a23a528b1393babf57655c599a3b8e7f357dd97bae2baf67df71e6c",
+        "bytes": 110860,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_102/vin_102_charge_1.csv",
+        "sha256": "c6791f12292cba39076a598188df38902abc9f6313eb4fa25139bbc16ac55243",
+        "bytes": 110939,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_103/vin_103_charge_1.csv",
+        "sha256": "15be619baf5795d204a753309defa6b99af3b9fef1c6fc1e7860a3f478f31ae9",
+        "bytes": 110942,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_104/vin_104_charge_1.csv",
+        "sha256": "43b7f307607ad0ee68b59dc9d9d932945c21df2ec2f0922b86b7ae0705b0ff03",
+        "bytes": 288731,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_105/vin_105_charge_1.csv",
+        "sha256": "095fdf6f702c3e2a456be7fff882ada427f3207aec1fb23ceb591a1787a209f9",
+        "bytes": 243840,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_106/vin_106_charge_1.csv",
+        "sha256": "17138d55ebaddd3b7de398ffe46d8646f6ba34e90f890f026eaa8379c7878cc0",
+        "bytes": 145597,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_107/vin_107_charge_1.csv",
+        "sha256": "31e1adf468e8d1c92df25d4d811e754be1bbf895297ed9e85ab40985a242819f",
+        "bytes": 239548,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_108/vin_108_charge_1.csv",
+        "sha256": "aeb591642396a23cfd9ad349f7a1446970e9583b353af6244f1157c1ce675d3e",
+        "bytes": 110994,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_109/vin_109_charge_1.csv",
+        "sha256": "3d9a0cf27dba955ba4b3eb78babc35b6905d60d37d1ebd04d16dd8e2c8655548",
+        "bytes": 110952,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_110/vin_110_charge_1.csv",
+        "sha256": "fe2d76c2fc9c68e99b26263bbeb49c6f63df15e1050d54565293e7bd51de3cee",
+        "bytes": 110970,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_111/vin_111_charge_1.csv",
+        "sha256": "697696707fb4f8ca3dd7d43ddc67251effbb2350954da3a1d34bc83a61007a98",
+        "bytes": 110779,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/normal/vin_112/vin_112_charge_1.csv",
+        "sha256": "685d8be954cbd956eba8f8920fba218c91ae95a7c62f994282c985825d64d02b",
+        "bytes": 111860,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_1/vin_1_charge_1.csv",
+        "sha256": "274faeb3f1ca82227db9ec14036c1eeeb42d1c063bc2ea8267156c19eebb79a0",
+        "bytes": 436908,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_10/vin_10_charge_1.csv",
+        "sha256": "609114108ef670ef5f53f99929f56da7dd29cc28ac113a6a7e6fcecc38a867c7",
+        "bytes": 110733,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_11/vin_11_charge_1.csv",
+        "sha256": "67ae00cd82fe438b9c5b43a6239097cfa507fab1dd242cdee0b99427546222eb",
+        "bytes": 110836,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_12/vin_12_charge_1.csv",
+        "sha256": "21b4fe40c7ce25c7d629e278f488f5b8728a34b07e4ed6689dc8c1eee18beac0",
+        "bytes": 110753,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_2/vin_2_charge_1.csv",
+        "sha256": "4602a2e3334e44d8d0faae606392ae7099727f69ce71355ac82bd8c62adb70dc",
+        "bytes": 111988,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_3/vin_3_charge_1.csv",
+        "sha256": "769bccda5fb7e7492203b2d203c14175810bc000dd83ab7ef921b01e2eece731",
+        "bytes": 110731,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_4/vin_4_charge_1.csv",
+        "sha256": "1e7ae32e4ea92771a53d2bfe888a621a4eeb5ff0b8a8a8ca33e7d1b426fa2a7c",
+        "bytes": 187905,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_5/vin_5_charge_1.csv",
+        "sha256": "6686ef5a4d910bd3d38d106c3fd4719e8710c44e4f4080d6d043014c4aa680e5",
+        "bytes": 137822,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_6/vin_6_charge_1.csv",
+        "sha256": "17351bea711ca0be9618ecb6e5e03f82b97408312f37de6f2098c5004f530c9c",
+        "bytes": 110802,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_7/vin_7_charge_1.csv",
+        "sha256": "fc677d15df96b58c7f3cc223dcd0e5372760ea51e0ec47735a2f56293c480300",
+        "bytes": 110819,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_8/vin_8_charge_1.csv",
+        "sha256": "3d8e4043a50ce9d28112f07df2627e6b0c7192ed7733b9810688cbc85f5575d2",
+        "bytes": 112013,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      },
+      {
+        "source_id": "ch_batterygen",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/extracted_balanced_20261002/NCM/self_discharge/vin_9/vin_9_charge_1.csv",
+        "sha256": "f7642d88645a02e3376653b6fd99774b3775ff6df7583d15ad5586a5a3d47504",
+        "bytes": 110760,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "public_generated"
+      }
+    ],
+    "quality_report": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/ch_batterygen_20261002/quality_report.json",
+    "split_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/ch_batterygen_20261002/split_manifest.json",
+    "target_units": {
+      "soh": "ratio",
+      "capacity": "Ah",
+      "rul": "cycle",
+      "efficiency": "ratio"
+    },
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ],
+    "split_created_before_parser": true
+  },
+  "manifest_sha256": "638aef24ed43949fd1b73ca96857424e9fda4e696db69e4815e084fef2ff6e8c",
+  "split": {
+    "schema_version": "physical-split-v2",
+    "group_column": "root_scenario_id",
+    "seed": 20261001,
+    "ratios": [
+      0.6,
+      0.15,
+      0.1,
+      0.15
+    ],
+    "assignments": {
+      "ch_batterygen:LFP:high_resistance:vin_41": "final",
+      "ch_batterygen:LFP:high_resistance:vin_42": "final",
+      "ch_batterygen:LFP:high_resistance:vin_43": "train",
+      "ch_batterygen:LFP:high_resistance:vin_44": "train",
+      "ch_batterygen:LFP:high_resistance:vin_45": "train",
+      "ch_batterygen:LFP:high_resistance:vin_46": "train",
+      "ch_batterygen:LFP:high_resistance:vin_47": "train",
+      "ch_batterygen:LFP:high_resistance:vin_48": "train",
+      "ch_batterygen:LFP:high_resistance:vin_49": "train",
+      "ch_batterygen:LFP:high_resistance:vin_50": "calibration",
+      "ch_batterygen:LFP:high_resistance:vin_51": "final",
+      "ch_batterygen:LFP:high_resistance:vin_52": "train",
+      "ch_batterygen:LFP:low_capacity:vin_71": "train",
+      "ch_batterygen:LFP:low_capacity:vin_72": "dev",
+      "ch_batterygen:LFP:low_capacity:vin_73": "calibration",
+      "ch_batterygen:LFP:low_capacity:vin_74": "train",
+      "ch_batterygen:LFP:low_capacity:vin_75": "train",
+      "ch_batterygen:LFP:low_capacity:vin_76": "train",
+      "ch_batterygen:LFP:low_capacity:vin_77": "final",
+      "ch_batterygen:LFP:low_capacity:vin_78": "train",
+      "ch_batterygen:LFP:low_capacity:vin_79": "train",
+      "ch_batterygen:LFP:low_capacity:vin_80": "train",
+      "ch_batterygen:LFP:low_capacity:vin_81": "train",
+      "ch_batterygen:LFP:low_capacity:vin_82": "train",
+      "ch_batterygen:LFP:normal:vin_101": "calibration",
+      "ch_batterygen:LFP:normal:vin_102": "dev",
+      "ch_batterygen:LFP:normal:vin_103": "train",
+      "ch_batterygen:LFP:normal:vin_104": "train",
+      "ch_batterygen:LFP:normal:vin_105": "train",
+      "ch_batterygen:LFP:normal:vin_106": "train",
+      "ch_batterygen:LFP:normal:vin_107": "train",
+      "ch_batterygen:LFP:normal:vin_108": "calibration",
+      "ch_batterygen:LFP:normal:vin_109": "dev",
+      "ch_batterygen:LFP:normal:vin_110": "train",
+      "ch_batterygen:LFP:normal:vin_111": "train",
+      "ch_batterygen:LFP:normal:vin_112": "dev",
+      "ch_batterygen:LFP:self_discharge:vin_1": "dev",
+      "ch_batterygen:LFP:self_discharge:vin_10": "train",
+      "ch_batterygen:LFP:self_discharge:vin_11": "train",
+      "ch_batterygen:LFP:self_discharge:vin_12": "dev",
+      "ch_batterygen:LFP:self_discharge:vin_2": "train",
+      "ch_batterygen:LFP:self_discharge:vin_3": "final",
+      "ch_batterygen:LFP:self_discharge:vin_4": "train",
+      "ch_batterygen:LFP:self_discharge:vin_5": "final",
+      "ch_batterygen:LFP:self_discharge:vin_6": "calibration",
+      "ch_batterygen:LFP:self_discharge:vin_7": "final",
+      "ch_batterygen:LFP:self_discharge:vin_8": "train",
+      "ch_batterygen:LFP:self_discharge:vin_9": "dev",
+      "ch_batterygen:NCM:high_resistance:vin_41": "final",
+      "ch_batterygen:NCM:high_resistance:vin_42": "final",
+      "ch_batterygen:NCM:high_resistance:vin_43": "train",
+      "ch_batterygen:NCM:high_resistance:vin_44": "train",
+      "ch_batterygen:NCM:high_resistance:vin_45": "train",
+      "ch_batterygen:NCM:high_resistance:vin_46": "train",
+      "ch_batterygen:NCM:high_resistance:vin_47": "train",
+      "ch_batterygen:NCM:high_resistance:vin_48": "train",
+      "ch_batterygen:NCM:high_resistance:vin_49": "train",
+      "ch_batterygen:NCM:high_resistance:vin_50": "calibration",
+      "ch_batterygen:NCM:high_resistance:vin_51": "final",
+      "ch_batterygen:NCM:high_resistance:vin_52": "train",
+      "ch_batterygen:NCM:low_capacity:vin_71": "train",
+      "ch_batterygen:NCM:low_capacity:vin_72": "dev",
+      "ch_batterygen:NCM:low_capacity:vin_73": "calibration",
+      "ch_batterygen:NCM:low_capacity:vin_74": "train",
+      "ch_batterygen:NCM:low_capacity:vin_75": "train",
+      "ch_batterygen:NCM:low_capacity:vin_76": "train",
+      "ch_batterygen:NCM:low_capacity:vin_77": "final",
+      "ch_batterygen:NCM:low_capacity:vin_78": "train",
+      "ch_batterygen:NCM:low_capacity:vin_79": "train",
+      "ch_batterygen:NCM:low_capacity:vin_80": "train",
+      "ch_batterygen:NCM:low_capacity:vin_81": "train",
+      "ch_batterygen:NCM:low_capacity:vin_82": "train",
+      "ch_batterygen:NCM:normal:vin_101": "calibration",
+      "ch_batterygen:NCM:normal:vin_102": "dev",
+      "ch_batterygen:NCM:normal:vin_103": "train",
+      "ch_batterygen:NCM:normal:vin_104": "train",
+      "ch_batterygen:NCM:normal:vin_105": "train",
+      "ch_batterygen:NCM:normal:vin_106": "train",
+      "ch_batterygen:NCM:normal:vin_107": "train",
+      "ch_batterygen:NCM:normal:vin_108": "calibration",
+      "ch_batterygen:NCM:normal:vin_109": "dev",
+      "ch_batterygen:NCM:normal:vin_110": "train",
+      "ch_batterygen:NCM:normal:vin_111": "train",
+      "ch_batterygen:NCM:normal:vin_112": "dev",
+      "ch_batterygen:NCM:self_discharge:vin_1": "dev",
+      "ch_batterygen:NCM:self_discharge:vin_10": "train",
+      "ch_batterygen:NCM:self_discharge:vin_11": "train",
+      "ch_batterygen:NCM:self_discharge:vin_12": "dev",
+      "ch_batterygen:NCM:self_discharge:vin_2": "train",
+      "ch_batterygen:NCM:self_discharge:vin_3": "final",
+      "ch_batterygen:NCM:self_discharge:vin_4": "train",
+      "ch_batterygen:NCM:self_discharge:vin_5": "final",
+      "ch_batterygen:NCM:self_discharge:vin_6": "calibration",
+      "ch_batterygen:NCM:self_discharge:vin_7": "final",
+      "ch_batterygen:NCM:self_discharge:vin_8": "train",
+      "ch_batterygen:NCM:self_discharge:vin_9": "dev"
+    },
+    "counts": {
+      "train": 29,
+      "dev": 7,
+      "calibration": 5,
+      "final": 7
+    },
+    "final_policy": "sealed until preregistered comparison; not for selection",
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ],
+    "root_assignments": {
+      "ch_batterygen:conservative-vin_79": "train",
+      "ch_batterygen:conservative-vin_106": "train",
+      "ch_batterygen:conservative-vin_48": "train",
+      "ch_batterygen:conservative-vin_105": "train",
+      "ch_batterygen:conservative-vin_75": "train",
+      "ch_batterygen:conservative-vin_78": "train",
+      "ch_batterygen:conservative-vin_49": "train",
+      "ch_batterygen:conservative-vin_80": "train",
+      "ch_batterygen:conservative-vin_103": "train",
+      "ch_batterygen:conservative-vin_43": "train",
+      "ch_batterygen:conservative-vin_110": "train",
+      "ch_batterygen:conservative-vin_11": "train",
+      "ch_batterygen:conservative-vin_45": "train",
+      "ch_batterygen:conservative-vin_8": "train",
+      "ch_batterygen:conservative-vin_104": "train",
+      "ch_batterygen:conservative-vin_74": "train",
+      "ch_batterygen:conservative-vin_111": "train",
+      "ch_batterygen:conservative-vin_81": "train",
+      "ch_batterygen:conservative-vin_4": "train",
+      "ch_batterygen:conservative-vin_2": "train",
+      "ch_batterygen:conservative-vin_44": "train",
+      "ch_batterygen:conservative-vin_46": "train",
+      "ch_batterygen:conservative-vin_10": "train",
+      "ch_batterygen:conservative-vin_71": "train",
+      "ch_batterygen:conservative-vin_82": "train",
+      "ch_batterygen:conservative-vin_52": "train",
+      "ch_batterygen:conservative-vin_76": "train",
+      "ch_batterygen:conservative-vin_47": "train",
+      "ch_batterygen:conservative-vin_107": "train",
+      "ch_batterygen:conservative-vin_12": "dev",
+      "ch_batterygen:conservative-vin_102": "dev",
+      "ch_batterygen:conservative-vin_112": "dev",
+      "ch_batterygen:conservative-vin_109": "dev",
+      "ch_batterygen:conservative-vin_72": "dev",
+      "ch_batterygen:conservative-vin_1": "dev",
+      "ch_batterygen:conservative-vin_9": "dev",
+      "ch_batterygen:conservative-vin_73": "calibration",
+      "ch_batterygen:conservative-vin_50": "calibration",
+      "ch_batterygen:conservative-vin_101": "calibration",
+      "ch_batterygen:conservative-vin_108": "calibration",
+      "ch_batterygen:conservative-vin_6": "calibration",
+      "ch_batterygen:conservative-vin_5": "final",
+      "ch_batterygen:conservative-vin_42": "final",
+      "ch_batterygen:conservative-vin_7": "final",
+      "ch_batterygen:conservative-vin_3": "final",
+      "ch_batterygen:conservative-vin_51": "final",
+      "ch_batterygen:conservative-vin_77": "final",
+      "ch_batterygen:conservative-vin_41": "final"
+    },
+    "independent_root_count": 48,
+    "generation_parent_overlap": "unavailable_original_generator_mother_ids_not_published",
+    "final_benchmark_eligibility": "exploratory_only_mother_overlap_unknown"
+  },
+  "audit": {
+    "schema_version": "data-audit-v2",
+    "manifest_sha256": "638aef24ed43949fd1b73ca96857424e9fda4e696db69e4815e084fef2ff6e8c",
+    "passed": true,
+    "checks": [
+      "identity_map: hash verified, 96 rows",
+      "cycles: hash verified, 0 rows",
+      "segments: hash verified, 96 rows",
+      "targets: hash verified, 96 rows"
+    ],
+    "failures": [],
+    "registered_objects": 96,
+    "independent_objects": 48,
+    "measured_objects": 96,
+    "group_column": "root_scenario_id",
+    "split_counts": {
+      "train": 29,
+      "dev": 7,
+      "calibration": 5,
+      "final": 7
+    },
+    "scope": "structural provenance, grouped split and explicit query dependency audit; not proof of scientific model performance"
+  }
+}

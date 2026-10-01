@@ -1,0 +1,2367 @@
+{
+  "split": "final",
+  "runs": [
+    {
+      "run_id": "M1_joint_seed0",
+      "family": "M1",
+      "ablation": "joint",
+      "seed": 0,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 0.3333333333333333,
+              "snippet_aucpr": 0.3435336335491134,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.14285714285714285,
+              "threshold_at_recall_0_9": 0.5126213013196601,
+              "calibration_error": 0.15760331677325667
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.13403700428727833,
+                  "rmse": 0.2616250144133915,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.0005986183976225273,
+                  "rmse": 0.000998814332289641,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.0036374021299035164,
+                  "rmse": 0.008123848591715555,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.003818096900669435,
+                  "rmse": 0.007292532955515739,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.0019789296719222443,
+                  "rmse": 0.0036969073732829698,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.0035323782681334626,
+                  "rmse": 0.006855655892771374,
+                  "rows": 8
+                }
+              },
+              "mae": 0.02460040494258826,
+              "rmse": 0.04809879559316113,
+              "worst_object": "matr:el150800737229",
+              "pinball": 0.00728728384439857,
+              "nll_original_scale": -1.620958606488152,
+              "interval_coverage": 0.9583333333333334,
+              "trajectory_coverage": 0.6666666666666666,
+              "interval_mean_width": 0.14143316155276603,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M1_joint_seed1",
+      "family": "M1",
+      "ablation": "joint",
+      "seed": 1,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 0.3333333333333333,
+              "snippet_aucpr": 0.3435336335491134,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.14285714285714285,
+              "threshold_at_recall_0_9": 0.5126213013196601,
+              "calibration_error": 0.15760331677325667
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.13338215851310242,
+                  "rmse": 0.2594496452898973,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.0005452773714438586,
+                  "rmse": 0.000982079950599007,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.003553453440571952,
+                  "rmse": 0.008119867816397681,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.004563908872505032,
+                  "rmse": 0.008156758683748853,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.0018957866275064045,
+                  "rmse": 0.0036643730976023857,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.0032491869665926404,
+                  "rmse": 0.0067744492186010705,
+                  "rows": 8
+                }
+              },
+              "mae": 0.024531628631953722,
+              "rmse": 0.04785786234280772,
+              "worst_object": "matr:el150800737229",
+              "pinball": 0.007496946974551719,
+              "nll_original_scale": -1.6209586064881527,
+              "interval_coverage": 0.9583333333333334,
+              "trajectory_coverage": 0.6666666666666666,
+              "interval_mean_width": 0.1268702102480468,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M1_joint_seed2",
+      "family": "M1",
+      "ablation": "joint",
+      "seed": 2,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 0.3333333333333333,
+              "snippet_aucpr": 0.34723429144385026,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.14285714285714285,
+              "threshold_at_recall_0_9": 0.5126213013196601,
+              "calibration_error": 0.15760331677325667
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.1325522254434433,
+                  "rmse": 0.25854557682218476,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.0005986183976225273,
+                  "rmse": 0.000998814332289641,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.003553453440571952,
+                  "rmse": 0.008119867816397681,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.004632551924760628,
+                  "rmse": 0.00839945715086314,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.0019789296719222443,
+                  "rmse": 0.0036969073732829698,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.003394431309401952,
+                  "rmse": 0.006804451688956365,
+                  "rows": 8
+                }
+              },
+              "mae": 0.024451701697953774,
+              "rmse": 0.04776084586399577,
+              "worst_object": "matr:el150800737229",
+              "pinball": 0.006992835605678416,
+              "nll_original_scale": -1.6209243235214164,
+              "interval_coverage": 0.9583333333333334,
+              "trajectory_coverage": 0.6666666666666666,
+              "interval_mean_width": 0.13427665867971936,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_joint_seed0",
+      "family": "M2",
+      "ablation": "joint",
+      "seed": 0,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 0.5,
+              "snippet_aucpr": 0.22524533661615195,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.07142857142857142,
+              "threshold_at_recall_0_9": 0.4486899673938751,
+              "calibration_error": 0.05066296470661959
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.06190834563429777,
+                  "rmse": 0.08023927568171078,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.11489198030332731,
+                  "rmse": 0.21734709687177228,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.11753335493724185,
+                  "rmse": 0.20178360916997598,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.11548989312703078,
+                  "rmse": 0.2094956974211469,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.11725156771703167,
+                  "rmse": 0.22277530480588753,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.11855664123534863,
+                  "rmse": 0.2106227231142905,
+                  "rows": 8
+                }
+              },
+              "mae": 0.10760529715904632,
+              "rmse": 0.19037728451079736,
+              "worst_object": "matr:el150800739477",
+              "pinball": 0.027225487754917402,
+              "nll_original_scale": -0.6847464032828059,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 0.794285247868907,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_joint_seed1",
+      "family": "M2",
+      "ablation": "joint",
+      "seed": 1,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 1.0,
+              "snippet_aucpr": 0.32804254011718603,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.0,
+              "threshold_at_recall_0_9": 0.5140594244003296,
+              "calibration_error": 0.13819570218523344
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.07191513462811942,
+                  "rmse": 0.0880677468554084,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.09478440233703365,
+                  "rmse": 0.24143386640039957,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.0967446568953665,
+                  "rmse": 0.2325397632892423,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.09574571845902718,
+                  "rmse": 0.23471859867146047,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.09593082118689616,
+                  "rmse": 0.2381423967565611,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.09803116359208684,
+                  "rmse": 0.23919963462729285,
+                  "rows": 8
+                }
+              },
+              "mae": 0.09219198284975495,
+              "rmse": 0.21235033443339413,
+              "worst_object": "matr:el150800739477",
+              "pinball": 0.03858435348095319,
+              "nll_original_scale": 2.6727093114625533,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 1.3134635471624372,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_joint_seed2",
+      "family": "M2",
+      "ablation": "joint",
+      "seed": 2,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 1.0,
+              "snippet_aucpr": 0.33094635627530367,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.0,
+              "threshold_at_recall_0_9": 0.4230786859989166,
+              "calibration_error": 0.09201531559228898
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.06443801560178733,
+                  "rmse": 0.08295507920237051,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.10194068998758554,
+                  "rmse": 0.22268756271573048,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.1072464640745883,
+                  "rmse": 0.21352966027463896,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.10401449207013742,
+                  "rmse": 0.2163828208072685,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.10152685207288802,
+                  "rmse": 0.22247503044696512,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.10770909610718041,
+                  "rmse": 0.22024828049642098,
+                  "rows": 8
+                }
+              },
+              "mae": 0.09781260165236116,
+              "rmse": 0.19637973899056574,
+              "worst_object": "matr:el150800739477",
+              "pinball": 0.02640922177675131,
+              "nll_original_scale": -1.317865434033546,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 1.0680731230060665,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_no_domain_adapter_seed0",
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "seed": 0,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 0.5,
+              "snippet_aucpr": 0.22920181856319793,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.07142857142857142,
+              "threshold_at_recall_0_9": 0.4438241422176361,
+              "calibration_error": 0.1298142870267232
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.06801325198325761,
+                  "rmse": 0.08508965818582123,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.10579622709039853,
+                  "rmse": 0.22210892434529447,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.11238486162632114,
+                  "rmse": 0.21570984097945836,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.1079245692654911,
+                  "rmse": 0.21651753527229092,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.1045254423233498,
+                  "rmse": 0.22060864385194692,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.11187326489336376,
+                  "rmse": 0.22136253811557854,
+                  "rows": 8
+                }
+              },
+              "mae": 0.10175293619703034,
+              "rmse": 0.19689952345839842,
+              "worst_object": "matr:el150800737275",
+              "pinball": 0.024750975492519534,
+              "nll_original_scale": -1.2665261643538854,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 0.8771284408759668,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_no_domain_adapter_seed1",
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "seed": 1,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 0.5,
+              "snippet_aucpr": 0.30508906688030396,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.07142857142857142,
+              "threshold_at_recall_0_9": 0.43042635917663574,
+              "calibration_error": 0.047252728169163066
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.05641475110693836,
+                  "rmse": 0.08379549642157105,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.11598974331805487,
+                  "rmse": 0.2476566482280747,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.1116309718274204,
+                  "rmse": 0.23891784112556144,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.11448747208534767,
+                  "rmse": 0.24069480404314814,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.11662311676805145,
+                  "rmse": 0.24467109254318764,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.11440380494180719,
+                  "rmse": 0.24524953697158008,
+                  "rows": 8
+                }
+              },
+              "mae": 0.10492497667460332,
+              "rmse": 0.2168309032221872,
+              "worst_object": "matr:el150800737387",
+              "pinball": 0.037232092729488526,
+              "nll_original_scale": 0.1974234421503526,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 1.271037426488608,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_no_domain_adapter_seed2",
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "seed": 2,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 1.0,
+              "snippet_aucpr": 0.28367308294633875,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.0,
+              "threshold_at_recall_0_9": 0.4949020743370056,
+              "calibration_error": 0.09185090611378352
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.06075366267753961,
+                  "rmse": 0.0813782608694574,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.1042576184211656,
+                  "rmse": 0.23233854521465466,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.1063735635788693,
+                  "rmse": 0.22391700785686142,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.10555598401111772,
+                  "rmse": 0.22585617754573187,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.10544032852719845,
+                  "rmse": 0.230666331099219,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.10804249145141741,
+                  "rmse": 0.2302595585462107,
+                  "rows": 8
+                }
+              },
+              "mae": 0.09840394144455135,
+              "rmse": 0.2040693135220225,
+              "worst_object": "matr:el150800739477",
+              "pinball": 0.026472024500655233,
+              "nll_original_scale": -0.2198121262319049,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 1.0769405670021255,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_no_history_seed0",
+      "family": "M2",
+      "ablation": "no_history",
+      "seed": 0,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 0.5,
+              "snippet_aucpr": 0.18218382141629524,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.07142857142857142,
+              "threshold_at_recall_0_9": 0.5685139298439026,
+              "calibration_error": 0.12926017412294943
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.10142668508714286,
+                  "rmse": 0.10897308689632425,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.12882682853168098,
+                  "rmse": 0.22628522747293647,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.13514723055785743,
+                  "rmse": 0.22390611340105873,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.13122546844905464,
+                  "rmse": 0.22194546073419288,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.12855838411277382,
+                  "rmse": 0.22210536847803897,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.13516363673633186,
+                  "rmse": 0.22816770430179711,
+                  "rows": 8
+                }
+              },
+              "mae": 0.12672470557914026,
+              "rmse": 0.2052304935473914,
+              "worst_object": "matr:el150800739477",
+              "pinball": 0.0397381063919414,
+              "nll_original_scale": -0.31358226330617084,
+              "interval_coverage": 0.9583333333333334,
+              "trajectory_coverage": 0.6666666666666666,
+              "interval_mean_width": 1.1167678338861167,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_no_history_seed1",
+      "family": "M2",
+      "ablation": "no_history",
+      "seed": 1,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 1.0,
+              "snippet_aucpr": 0.25224108769190734,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.0,
+              "threshold_at_recall_0_9": 0.5610679984092712,
+              "calibration_error": 0.13958651100595793
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.06771660039878691,
+                  "rmse": 0.08609950615160963,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.09718125313520432,
+                  "rmse": 0.23643701706745326,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.10197610502469939,
+                  "rmse": 0.23205946593845553,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.09891914670694274,
+                  "rmse": 0.23084817903375876,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.097381092607975,
+                  "rmse": 0.23174075070301464,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.10247398262250823,
+                  "rmse": 0.23689283594967028,
+                  "rows": 8
+                }
+              },
+              "mae": 0.09427469674935278,
+              "rmse": 0.20901295914066034,
+              "worst_object": "matr:el150800739477",
+              "pinball": 0.038227915533605224,
+              "nll_original_scale": 0.6917212947735076,
+              "interval_coverage": 0.9583333333333334,
+              "trajectory_coverage": 0.6666666666666666,
+              "interval_mean_width": 1.3108492303873194,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_no_history_seed2",
+      "family": "M2",
+      "ablation": "no_history",
+      "seed": 2,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "evaluated",
+              "aucpr": 1.0,
+              "snippet_aucpr": 0.20836840102675935,
+              "metric_unit": "first frozen landmark per independent vehicle",
+              "class_counts": {
+                "0": 14,
+                "1": 1
+              },
+              "false_positive_rate_at_recall_0_9": 0.0,
+              "threshold_at_recall_0_9": 0.5671991109848022,
+              "calibration_error": 0.07951859906315803
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.09591440752769503,
+                  "rmse": 0.10435067658648062,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.12331455097223315,
+                  "rmse": 0.22724114591023095,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.1296349529984096,
+                  "rmse": 0.22453423634794345,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.1257131908896068,
+                  "rmse": 0.22268822035441468,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.12304610655332598,
+                  "rmse": 0.22296645228898718,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.12965135917688403,
+                  "rmse": 0.22889928578867663,
+                  "rows": 8
+                }
+              },
+              "mae": 0.12121242801969241,
+              "rmse": 0.20511333621278893,
+              "worst_object": "matr:el150800739477",
+              "pinball": 0.04025663745674113,
+              "nll_original_scale": -0.32380779986725267,
+              "interval_coverage": 0.9583333333333334,
+              "trajectory_coverage": 0.6666666666666666,
+              "interval_mean_width": 1.190866458654966,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_single_task_seed0",
+      "family": "M2",
+      "ablation": "single_task",
+      "seed": 0,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.09478445340756408,
+                  "rmse": 0.10150098510627208,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.11961430446144711,
+                  "rmse": 0.22780551325841322,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.1252845061612633,
+                  "rmse": 0.22263060740864613,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.12181786352927362,
+                  "rmse": 0.2225453723843444,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.12016352489571883,
+                  "rmse": 0.22478352588462713,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.12549256429226574,
+                  "rmse": 0.22790274768354146,
+                  "rows": 8
+                }
+              },
+              "mae": 0.11785953612458877,
+              "rmse": 0.20452812528764075,
+              "worst_object": "matr:el150800739477",
+              "pinball": 0.028689276647971027,
+              "nll_original_scale": -0.7331343496374599,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 0.8393033348985522,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_single_task_seed1",
+      "family": "M2",
+      "ablation": "single_task",
+      "seed": 1,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.0732305917705302,
+                  "rmse": 0.08813376393137835,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.10076423925176908,
+                  "rmse": 0.22515073065692148,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.10776512474962849,
+                  "rmse": 0.21692082622247072,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.10328158204401885,
+                  "rmse": 0.21906770363121644,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.10023998094947859,
+                  "rmse": 0.22383867641489372,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.1074772823754136,
+                  "rmse": 0.22335347274228326,
+                  "rows": 8
+                }
+              },
+              "mae": 0.09879313352347315,
+              "rmse": 0.19941086226652735,
+              "worst_object": "matr:el150800737275",
+              "pinball": 0.031531929377915,
+              "nll_original_scale": -1.1511507697931143,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 1.1328660042003351,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    },
+    {
+      "run_id": "M2_single_task_seed2",
+      "family": "M2",
+      "ablation": "single_task",
+      "seed": 2,
+      "status": "calibrated",
+      "evaluation_status": "evaluated",
+      "metrics": {
+        "dyad::unknown::vehicle_charging": {
+          "independent_objects": 15,
+          "rows": 120,
+          "heads": {
+            "soh": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        },
+        "matr::LFP::unknown": {
+          "independent_objects": 6,
+          "rows": 48,
+          "heads": {
+            "soh": {
+              "status": "evaluated",
+              "independent_objects": 6,
+              "rows": 48,
+              "per_object": {
+                "matr:el150800737229": {
+                  "mae": 0.07355479094521405,
+                  "rmse": 0.09027882353228206,
+                  "rows": 8
+                },
+                "matr:el150800737259": {
+                  "mae": 0.12951906261058677,
+                  "rmse": 0.23088328907933917,
+                  "rows": 8
+                },
+                "matr:el150800737275": {
+                  "mae": 0.12838921834651962,
+                  "rmse": 0.21785856266527373,
+                  "rows": 8
+                },
+                "matr:el150800737287": {
+                  "mae": 0.12941559791154283,
+                  "rmse": 0.22344235292703143,
+                  "rows": 8
+                },
+                "matr:el150800737387": {
+                  "mae": 0.13245546083247373,
+                  "rmse": 0.23375195049919031,
+                  "rows": 8
+                },
+                "matr:el150800739477": {
+                  "mae": 0.12987819844333998,
+                  "rmse": 0.22570996774402446,
+                  "rows": 8
+                }
+              },
+              "mae": 0.12053538818161284,
+              "rmse": 0.2036541577411902,
+              "worst_object": "matr:el150800737387",
+              "pinball": 0.03198701941052748,
+              "nll_original_scale": 0.1287515181342396,
+              "interval_coverage": 1.0,
+              "trajectory_coverage": 1.0,
+              "interval_mean_width": 0.9044705117071761,
+              "interval_status": "finite"
+            },
+            "efficiency": {
+              "status": "unavailable",
+              "reason": "no supported legal labels"
+            },
+            "rul": {
+              "status": "unavailable",
+              "reason": "no verified physical-time survival targets"
+            },
+            "fault": {
+              "status": "unavailable",
+              "reason": "missing confirmed labels or only one class"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": [
+    {
+      "family": "M1",
+      "ablation": "joint",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M1",
+      "ablation": "joint",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M1",
+      "ablation": "joint",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M1",
+      "ablation": "joint",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {
+        "aucpr": {
+          "mean": 0.3333333333333333,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "snippet_aucpr": {
+          "mean": 0.3447671861806924,
+          "standard_deviation": 0.002136575831705026,
+          "n_seeds": 3
+        },
+        "false_positive_rate_at_recall_0_9": {
+          "mean": 0.14285714285714285,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "threshold_at_recall_0_9": {
+          "mean": 0.5126213013196601,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "calibration_error": {
+          "mean": 0.15760331677325667,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M1",
+      "ablation": "joint",
+      "domain": "matr::LFP::unknown",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {
+        "mae": {
+          "mean": 0.024527911757498588,
+          "standard_deviation": 7.442126784725186e-05,
+          "n_seeds": 3
+        },
+        "rmse": {
+          "mean": 0.047905834599988206,
+          "standard_deviation": 0.00017400720661794072,
+          "n_seeds": 3
+        },
+        "pinball": {
+          "mean": 0.007259022141542902,
+          "standard_deviation": 0.0002532412109887636,
+          "n_seeds": 3
+        },
+        "nll_original_scale": {
+          "mean": -1.6209471788325738,
+          "standard_deviation": 1.97932800736608e-05,
+          "n_seeds": 3
+        },
+        "interval_coverage": {
+          "mean": 0.9583333333333334,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "trajectory_coverage": {
+          "mean": 0.6666666666666666,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "interval_mean_width": {
+          "mean": 0.13419334349351072,
+          "standard_deviation": 0.007281833130544512,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M1",
+      "ablation": "joint",
+      "domain": "matr::LFP::unknown",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M1",
+      "ablation": "joint",
+      "domain": "matr::LFP::unknown",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M1",
+      "ablation": "joint",
+      "domain": "matr::LFP::unknown",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "joint",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "joint",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "joint",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "joint",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {
+        "aucpr": {
+          "mean": 0.8333333333333334,
+          "standard_deviation": 0.28867513459481287,
+          "n_seeds": 3
+        },
+        "snippet_aucpr": {
+          "mean": 0.2947447443362139,
+          "standard_deviation": 0.060205762117504905,
+          "n_seeds": 3
+        },
+        "false_positive_rate_at_recall_0_9": {
+          "mean": 0.023809523809523808,
+          "standard_deviation": 0.041239304942116126,
+          "n_seeds": 3
+        },
+        "threshold_at_recall_0_9": {
+          "mean": 0.4619426925977071,
+          "standard_deviation": 0.04691587933752066,
+          "n_seeds": 3
+        },
+        "calibration_error": {
+          "mean": 0.09362466082804734,
+          "standard_deviation": 0.04378855474539981,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M2",
+      "ablation": "joint",
+      "domain": "matr::LFP::unknown",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {
+        "mae": {
+          "mean": 0.09920329388705414,
+          "standard_deviation": 0.007800197636469093,
+          "n_seeds": 3
+        },
+        "rmse": {
+          "mean": 0.19970245264491907,
+          "standard_deviation": 0.011357114521164786,
+          "n_seeds": 3
+        },
+        "pinball": {
+          "mean": 0.03073968767087397,
+          "standard_deviation": 0.006805928209336864,
+          "n_seeds": 3
+        },
+        "nll_original_scale": {
+          "mean": 0.22336582471540045,
+          "standard_deviation": 2.1446847236430147,
+          "n_seeds": 3
+        },
+        "interval_coverage": {
+          "mean": 1.0,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "trajectory_coverage": {
+          "mean": 1.0,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "interval_mean_width": {
+          "mean": 1.05860730601247,
+          "standard_deviation": 0.25971855513776404,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M2",
+      "ablation": "joint",
+      "domain": "matr::LFP::unknown",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "joint",
+      "domain": "matr::LFP::unknown",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "joint",
+      "domain": "matr::LFP::unknown",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {
+        "aucpr": {
+          "mean": 0.6666666666666666,
+          "standard_deviation": 0.28867513459481287,
+          "n_seeds": 3
+        },
+        "snippet_aucpr": {
+          "mean": 0.2726546561299469,
+          "standard_deviation": 0.039125093117035076,
+          "n_seeds": 3
+        },
+        "false_positive_rate_at_recall_0_9": {
+          "mean": 0.047619047619047616,
+          "standard_deviation": 0.041239304942116126,
+          "n_seeds": 3
+        },
+        "threshold_at_recall_0_9": {
+          "mean": 0.45638419191042584,
+          "standard_deviation": 0.03402345657887067,
+          "n_seeds": 3
+        },
+        "calibration_error": {
+          "mean": 0.08963930710322326,
+          "standard_deviation": 0.04132518757229331,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "domain": "matr::LFP::unknown",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {
+        "mae": {
+          "mean": 0.10169395143872834,
+          "standard_deviation": 0.003260917741860212,
+          "n_seeds": 3
+        },
+        "rmse": {
+          "mean": 0.20593324673420269,
+          "standard_deviation": 0.010095576263230027,
+          "n_seeds": 3
+        },
+        "pinball": {
+          "mean": 0.02948503090755443,
+          "standard_deviation": 0.0067641132143654165,
+          "n_seeds": 3
+        },
+        "nll_original_scale": {
+          "mean": -0.42963828281181254,
+          "standard_deviation": 0.7541931944699583,
+          "n_seeds": 3
+        },
+        "interval_coverage": {
+          "mean": 1.0,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "trajectory_coverage": {
+          "mean": 1.0,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "interval_mean_width": {
+          "mean": 1.0750354781222333,
+          "standard_deviation": 0.19696140296851364,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "domain": "matr::LFP::unknown",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "domain": "matr::LFP::unknown",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_domain_adapter",
+      "domain": "matr::LFP::unknown",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_history",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_history",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_history",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_history",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {
+        "aucpr": {
+          "mean": 0.8333333333333334,
+          "standard_deviation": 0.28867513459481287,
+          "n_seeds": 3
+        },
+        "snippet_aucpr": {
+          "mean": 0.21426443671165396,
+          "standard_deviation": 0.03539883567437165,
+          "n_seeds": 3
+        },
+        "false_positive_rate_at_recall_0_9": {
+          "mean": 0.023809523809523808,
+          "standard_deviation": 0.041239304942116126,
+          "n_seeds": 3
+        },
+        "threshold_at_recall_0_9": {
+          "mean": 0.5655936797459921,
+          "standard_deviation": 0.003974107551289799,
+          "n_seeds": 3
+        },
+        "calibration_error": {
+          "mean": 0.11612176139735512,
+          "standard_deviation": 0.03211700372081796,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M2",
+      "ablation": "no_history",
+      "domain": "matr::LFP::unknown",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {
+        "mae": {
+          "mean": 0.1140706101160618,
+          "standard_deviation": 0.01736389761804029,
+          "n_seeds": 3
+        },
+        "rmse": {
+          "mean": 0.20645226296694688,
+          "standard_deviation": 0.0022184014809803533,
+          "n_seeds": 3
+        },
+        "pinball": {
+          "mean": 0.03940755312742925,
+          "standard_deviation": 0.001053981620268015,
+          "n_seeds": 3
+        },
+        "nll_original_scale": {
+          "mean": 0.018110410533361376,
+          "standard_deviation": 0.5833865424609864,
+          "n_seeds": 3
+        },
+        "interval_coverage": {
+          "mean": 0.9583333333333334,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "trajectory_coverage": {
+          "mean": 0.6666666666666666,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "interval_mean_width": {
+          "mean": 1.2061611743094673,
+          "standard_deviation": 0.09794050930119928,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M2",
+      "ablation": "no_history",
+      "domain": "matr::LFP::unknown",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_history",
+      "domain": "matr::LFP::unknown",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "no_history",
+      "domain": "matr::LFP::unknown",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "single_task",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "single_task",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "single_task",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "single_task",
+      "domain": "dyad::unknown::vehicle_charging",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 15,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "single_task",
+      "domain": "matr::LFP::unknown",
+      "head": "soh",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {
+        "mae": {
+          "mean": 0.11239601927655825,
+          "standard_deviation": 0.011856176519704165,
+          "n_seeds": 3
+        },
+        "rmse": {
+          "mean": 0.20253104843178613,
+          "standard_deviation": 0.0027372661721992383,
+          "n_seeds": 3
+        },
+        "pinball": {
+          "mean": 0.030736075145471168,
+          "standard_deviation": 0.001787124730250363,
+          "n_seeds": 3
+        },
+        "nll_original_scale": {
+          "mean": -0.5851778670987782,
+          "standard_deviation": 0.652652899483587,
+          "n_seeds": 3
+        },
+        "interval_coverage": {
+          "mean": 1.0,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "trajectory_coverage": {
+          "mean": 1.0,
+          "standard_deviation": 0.0,
+          "n_seeds": 3
+        },
+        "interval_mean_width": {
+          "mean": 0.9588799502686878,
+          "standard_deviation": 0.1541591724657705,
+          "n_seeds": 3
+        }
+      }
+    },
+    {
+      "family": "M2",
+      "ablation": "single_task",
+      "domain": "matr::LFP::unknown",
+      "head": "efficiency",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "single_task",
+      "domain": "matr::LFP::unknown",
+      "head": "rul",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    },
+    {
+      "family": "M2",
+      "ablation": "single_task",
+      "domain": "matr::LFP::unknown",
+      "head": "fault",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "independent_objects": 6,
+      "metrics": {}
+    }
+  ],
+  "selection": "all preregistered seeds; no best-seed replacement",
+  "limitations": [
+    "Head support and target definitions are source-specific; unavailable labels never become synthetic supervision",
+    "MATR summary-only views do not establish early-cycle curve or physical RUL transfer",
+    "Vehicle anomaly labels do not identify individual cell root causes",
+    "CQR intervals are unbounded when too few independent calibration objects",
+    "No protected XJTU holdout is included; final results are not used for further selection"
+  ]
+}

@@ -1,0 +1,52 @@
+schema_version: battery-data-config-v2
+seed: 20261001
+proxy: http://127.0.0.1:7897
+max_download_bytes: 4294967296
+min_free_bytes: 75161927680
+source_registry: reports/v2/sources/source_registry.yaml
+source_report_dir: reports/v2/sources
+# 21 independent development objects. Four calibration objects imply coarse
+# finite-sample conformal resolution (1/5), never a promised 95% interval.
+split_ratios: [0.5238095238095238, 0.14285714285714285, 0.19047619047619047, 0.14285714285714285]
+sources:
+  xjtu:
+    raw_root: data/raw/xjtu/extracted/Battery Dataset
+    derived_dir: data/derived/v2/xjtu_development_20261001
+    max_segments_per_cell: 32
+    files:
+      - Batch-4/R3_battery-1.mat
+      - Batch-4/R3_battery-2.mat
+      - Batch-4/R3_battery-3.mat
+      - Batch-4/R3_battery-4.mat
+      - Batch-4/R3_battery-6.mat
+      - Batch-4/R3_battery-7.mat
+      - Batch-4/R3_battery-8.mat
+      - Batch-5/RW_battery-1.mat
+      - Batch-5/RW_battery-2.mat
+      - Batch-5/RW_battery-3.mat
+      - Batch-5/RW_battery-4.mat
+      - Batch-5/RW_battery-6.mat
+      - Batch-5/RW_battery-7.mat
+      - Batch-5/RW_battery-8.mat
+      - Batch-6/Sim_satellite_battery-1.mat
+      - Batch-6/Sim_satellite_battery-2.mat
+      - Batch-6/Sim_satellite_battery-3.mat
+      - Batch-6/Sim_satellite_battery-4.mat
+      - Batch-6/Sim_satellite_battery-6.mat
+      - Batch-6/Sim_satellite_battery-7.mat
+      - Batch-6/Sim_satellite_battery-8.mat
+  matr:
+    raw_root: data/raw/matr
+    derived_dir: data/derived/v2/matr
+    files: []
+    verified_paper_exclusion_record_ids: []
+  dyad:
+    raw_root: data/raw/dyad
+    derived_dir: data/derived/v2/dyad
+    files: []
+    table_contract: null
+  ch_batterygen:
+    raw_root: data/raw/ch_batterygen
+    derived_dir: data/derived/v2/ch_batterygen
+    files: []
+    table_contract: null

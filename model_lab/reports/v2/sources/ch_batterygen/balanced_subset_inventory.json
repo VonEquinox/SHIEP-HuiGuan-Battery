@@ -1,0 +1,484 @@
+{
+  "selected": [
+    {
+      "path": "LFP/high_resistance/vin_41/vin_41_charge_1.csv",
+      "bytes": 429874,
+      "crc": "02D4AE3F"
+    },
+    {
+      "path": "LFP/high_resistance/vin_42/vin_42_charge_1.csv",
+      "bytes": 177338,
+      "crc": "C2A8F501"
+    },
+    {
+      "path": "LFP/high_resistance/vin_43/vin_43_charge_1.csv",
+      "bytes": 171595,
+      "crc": "B367277C"
+    },
+    {
+      "path": "LFP/high_resistance/vin_44/vin_44_charge_1.csv",
+      "bytes": 152895,
+      "crc": "D8CBFCFA"
+    },
+    {
+      "path": "LFP/high_resistance/vin_45/vin_45_charge_1.csv",
+      "bytes": 531624,
+      "crc": "B6A495B4"
+    },
+    {
+      "path": "LFP/high_resistance/vin_46/vin_46_charge_1.csv",
+      "bytes": 927773,
+      "crc": "5153C02A"
+    },
+    {
+      "path": "LFP/high_resistance/vin_47/vin_47_charge_1.csv",
+      "bytes": 189494,
+      "crc": "1A9DF9F0"
+    },
+    {
+      "path": "LFP/high_resistance/vin_48/vin_48_charge_1.csv",
+      "bytes": 57732,
+      "crc": "8D931FB5"
+    },
+    {
+      "path": "LFP/high_resistance/vin_49/vin_49_charge_1.csv",
+      "bytes": 222582,
+      "crc": "BA87D635"
+    },
+    {
+      "path": "LFP/high_resistance/vin_50/vin_50_charge_1.csv",
+      "bytes": 389480,
+      "crc": "CE730F51"
+    },
+    {
+      "path": "LFP/high_resistance/vin_51/vin_51_charge_1.csv",
+      "bytes": 34968,
+      "crc": "28CCC9FE"
+    },
+    {
+      "path": "LFP/high_resistance/vin_52/vin_52_charge_1.csv",
+      "bytes": 332666,
+      "crc": "1DA9BBA0"
+    },
+    {
+      "path": "LFP/low_capacity/vin_71/vin_71_charge_1.csv",
+      "bytes": 440040,
+      "crc": "D277B7CC"
+    },
+    {
+      "path": "LFP/low_capacity/vin_72/vin_72_charge_1.csv",
+      "bytes": 37290,
+      "crc": "1BAA89B9"
+    },
+    {
+      "path": "LFP/low_capacity/vin_73/vin_73_charge_1.csv",
+      "bytes": 362242,
+      "crc": "FED310B9"
+    },
+    {
+      "path": "LFP/low_capacity/vin_74/vin_74_charge_1.csv",
+      "bytes": 381932,
+      "crc": "488FCD22"
+    },
+    {
+      "path": "LFP/low_capacity/vin_75/vin_75_charge_1.csv",
+      "bytes": 506810,
+      "crc": "A45C6D86"
+    },
+    {
+      "path": "LFP/low_capacity/vin_76/vin_76_charge_1.csv",
+      "bytes": 130980,
+      "crc": "8520F6EF"
+    },
+    {
+      "path": "LFP/low_capacity/vin_77/vin_77_charge_1.csv",
+      "bytes": 133406,
+      "crc": "5DEE980E"
+    },
+    {
+      "path": "LFP/low_capacity/vin_78/vin_78_charge_1.csv",
+      "bytes": 260869,
+      "crc": "BED40A86"
+    },
+    {
+      "path": "LFP/low_capacity/vin_79/vin_79_charge_1.csv",
+      "bytes": 42304,
+      "crc": "29FD0D8E"
+    },
+    {
+      "path": "LFP/low_capacity/vin_80/vin_80_charge_1.csv",
+      "bytes": 252858,
+      "crc": "5754D2C5"
+    },
+    {
+      "path": "LFP/low_capacity/vin_81/vin_81_charge_1.csv",
+      "bytes": 55417,
+      "crc": "8C10D53C"
+    },
+    {
+      "path": "LFP/low_capacity/vin_82/vin_82_charge_1.csv",
+      "bytes": 21871,
+      "crc": "A0096CEF"
+    },
+    {
+      "path": "LFP/normal/vin_101/vin_101_charge_1.csv",
+      "bytes": 290197,
+      "crc": "E9787205"
+    },
+    {
+      "path": "LFP/normal/vin_102/vin_102_charge_1.csv",
+      "bytes": 827868,
+      "crc": "8F7DA35A"
+    },
+    {
+      "path": "LFP/normal/vin_103/vin_103_charge_1.csv",
+      "bytes": 2202385,
+      "crc": "379F475F"
+    },
+    {
+      "path": "LFP/normal/vin_104/vin_104_charge_1.csv",
+      "bytes": 1203503,
+      "crc": "7F09253F"
+    },
+    {
+      "path": "LFP/normal/vin_105/vin_105_charge_1.csv",
+      "bytes": 123700,
+      "crc": "98043EE7"
+    },
+    {
+      "path": "LFP/normal/vin_106/vin_106_charge_1.csv",
+      "bytes": 1980356,
+      "crc": "B1444F05"
+    },
+    {
+      "path": "LFP/normal/vin_107/vin_107_charge_1.csv",
+      "bytes": 1813275,
+      "crc": "18A84A6E"
+    },
+    {
+      "path": "LFP/normal/vin_108/vin_108_charge_1.csv",
+      "bytes": 529295,
+      "crc": "988F168B"
+    },
+    {
+      "path": "LFP/normal/vin_109/vin_109_charge_1.csv",
+      "bytes": 1809708,
+      "crc": "82B0DD48"
+    },
+    {
+      "path": "LFP/normal/vin_110/vin_110_charge_1.csv",
+      "bytes": 1779606,
+      "crc": "66A9AB11"
+    },
+    {
+      "path": "LFP/normal/vin_111/vin_111_charge_1.csv",
+      "bytes": 32857,
+      "crc": "9874661D"
+    },
+    {
+      "path": "LFP/normal/vin_112/vin_112_charge_1.csv",
+      "bytes": 91030,
+      "crc": "3CDA63CE"
+    },
+    {
+      "path": "LFP/self_discharge/vin_1/vin_1_charge_1.csv",
+      "bytes": 2688619,
+      "crc": "2CEAC50F"
+    },
+    {
+      "path": "LFP/self_discharge/vin_2/vin_2_charge_1.csv",
+      "bytes": 161871,
+      "crc": "168101CF"
+    },
+    {
+      "path": "LFP/self_discharge/vin_3/vin_3_charge_1.csv",
+      "bytes": 524463,
+      "crc": "E55825B2"
+    },
+    {
+      "path": "LFP/self_discharge/vin_4/vin_4_charge_1.csv",
+      "bytes": 2412340,
+      "crc": "2A6E9E36"
+    },
+    {
+      "path": "LFP/self_discharge/vin_5/vin_5_charge_1.csv",
+      "bytes": 2088661,
+      "crc": "E1DFA4CB"
+    },
+    {
+      "path": "LFP/self_discharge/vin_6/vin_6_charge_1.csv",
+      "bytes": 1831047,
+      "crc": "4DB8EF95"
+    },
+    {
+      "path": "LFP/self_discharge/vin_7/vin_7_charge_1.csv",
+      "bytes": 1573016,
+      "crc": "A714073E"
+    },
+    {
+      "path": "LFP/self_discharge/vin_8/vin_8_charge_1.csv",
+      "bytes": 1408673,
+      "crc": "CC8C1137"
+    },
+    {
+      "path": "LFP/self_discharge/vin_9/vin_9_charge_1.csv",
+      "bytes": 1848845,
+      "crc": "A020F44B"
+    },
+    {
+      "path": "LFP/self_discharge/vin_10/vin_10_charge_1.csv",
+      "bytes": 277078,
+      "crc": "5858D356"
+    },
+    {
+      "path": "LFP/self_discharge/vin_11/vin_11_charge_1.csv",
+      "bytes": 398836,
+      "crc": "96863031"
+    },
+    {
+      "path": "LFP/self_discharge/vin_12/vin_12_charge_1.csv",
+      "bytes": 288134,
+      "crc": "2DDC3316"
+    },
+    {
+      "path": "NCM/high_resistance/vin_41/vin_41_charge_1.csv",
+      "bytes": 109520,
+      "crc": "C6B64D84"
+    },
+    {
+      "path": "NCM/high_resistance/vin_42/vin_42_charge_1.csv",
+      "bytes": 109765,
+      "crc": "B2AB5FF1"
+    },
+    {
+      "path": "NCM/high_resistance/vin_43/vin_43_charge_1.csv",
+      "bytes": 105347,
+      "crc": "610F0EB6"
+    },
+    {
+      "path": "NCM/high_resistance/vin_44/vin_44_charge_1.csv",
+      "bytes": 886300,
+      "crc": "021475E8"
+    },
+    {
+      "path": "NCM/high_resistance/vin_45/vin_45_charge_1.csv",
+      "bytes": 109751,
+      "crc": "D4BDED5F"
+    },
+    {
+      "path": "NCM/high_resistance/vin_46/vin_46_charge_1.csv",
+      "bytes": 143372,
+      "crc": "88C6FF38"
+    },
+    {
+      "path": "NCM/high_resistance/vin_47/vin_47_charge_1.csv",
+      "bytes": 105448,
+      "crc": "2E58D232"
+    },
+    {
+      "path": "NCM/high_resistance/vin_48/vin_48_charge_1.csv",
+      "bytes": 234089,
+      "crc": "F4715E63"
+    },
+    {
+      "path": "NCM/high_resistance/vin_49/vin_49_charge_1.csv",
+      "bytes": 465277,
+      "crc": "E2E0BF55"
+    },
+    {
+      "path": "NCM/high_resistance/vin_50/vin_50_charge_1.csv",
+      "bytes": 224129,
+      "crc": "5882FC97"
+    },
+    {
+      "path": "NCM/high_resistance/vin_51/vin_51_charge_1.csv",
+      "bytes": 144240,
+      "crc": "294293A7"
+    },
+    {
+      "path": "NCM/high_resistance/vin_52/vin_52_charge_1.csv",
+      "bytes": 109804,
+      "crc": "FE8A5C92"
+    },
+    {
+      "path": "NCM/low_capacity/vin_71/vin_71_charge_1.csv",
+      "bytes": 1293218,
+      "crc": "95A8BFFB"
+    },
+    {
+      "path": "NCM/low_capacity/vin_72/vin_72_charge_1.csv",
+      "bytes": 541049,
+      "crc": "83D7DEE4"
+    },
+    {
+      "path": "NCM/low_capacity/vin_73/vin_73_charge_1.csv",
+      "bytes": 110829,
+      "crc": "5F406102"
+    },
+    {
+      "path": "NCM/low_capacity/vin_74/vin_74_charge_1.csv",
+      "bytes": 409623,
+      "crc": "738BBF8E"
+    },
+    {
+      "path": "NCM/low_capacity/vin_75/vin_75_charge_1.csv",
+      "bytes": 63128,
+      "crc": "4A8170A0"
+    },
+    {
+      "path": "NCM/low_capacity/vin_76/vin_76_charge_1.csv",
+      "bytes": 118728,
+      "crc": "3CBF91A3"
+    },
+    {
+      "path": "NCM/low_capacity/vin_77/vin_77_charge_1.csv",
+      "bytes": 438174,
+      "crc": "E535CC43"
+    },
+    {
+      "path": "NCM/low_capacity/vin_78/vin_78_charge_1.csv",
+      "bytes": 755777,
+      "crc": "1A73E844"
+    },
+    {
+      "path": "NCM/low_capacity/vin_79/vin_79_charge_1.csv",
+      "bytes": 63128,
+      "crc": "4A8170A0"
+    },
+    {
+      "path": "NCM/low_capacity/vin_80/vin_80_charge_1.csv",
+      "bytes": 525188,
+      "crc": "0352C23F"
+    },
+    {
+      "path": "NCM/low_capacity/vin_81/vin_81_charge_1.csv",
+      "bytes": 221350,
+      "crc": "B9B88416"
+    },
+    {
+      "path": "NCM/low_capacity/vin_82/vin_82_charge_1.csv",
+      "bytes": 837073,
+      "crc": "2EB46A2F"
+    },
+    {
+      "path": "NCM/normal/vin_101/vin_101_charge_1.csv",
+      "bytes": 110860,
+      "crc": "A42125AB"
+    },
+    {
+      "path": "NCM/normal/vin_102/vin_102_charge_1.csv",
+      "bytes": 110939,
+      "crc": "B4EF3A07"
+    },
+    {
+      "path": "NCM/normal/vin_103/vin_103_charge_1.csv",
+      "bytes": 110942,
+      "crc": "EE4403EE"
+    },
+    {
+      "path": "NCM/normal/vin_104/vin_104_charge_1.csv",
+      "bytes": 288731,
+      "crc": "9DFEF7C1"
+    },
+    {
+      "path": "NCM/normal/vin_105/vin_105_charge_1.csv",
+      "bytes": 243840,
+      "crc": "0B17262D"
+    },
+    {
+      "path": "NCM/normal/vin_106/vin_106_charge_1.csv",
+      "bytes": 145597,
+      "crc": "4ADFA1DA"
+    },
+    {
+      "path": "NCM/normal/vin_107/vin_107_charge_1.csv",
+      "bytes": 239548,
+      "crc": "CAFA1D58"
+    },
+    {
+      "path": "NCM/normal/vin_108/vin_108_charge_1.csv",
+      "bytes": 110994,
+      "crc": "BD7A7BD9"
+    },
+    {
+      "path": "NCM/normal/vin_109/vin_109_charge_1.csv",
+      "bytes": 110952,
+      "crc": "B2350649"
+    },
+    {
+      "path": "NCM/normal/vin_110/vin_110_charge_1.csv",
+      "bytes": 110970,
+      "crc": "DEE60F4E"
+    },
+    {
+      "path": "NCM/normal/vin_111/vin_111_charge_1.csv",
+      "bytes": 110779,
+      "crc": "E1297560"
+    },
+    {
+      "path": "NCM/normal/vin_112/vin_112_charge_1.csv",
+      "bytes": 111860,
+      "crc": "32681399"
+    },
+    {
+      "path": "NCM/self_discharge/vin_1/vin_1_charge_1.csv",
+      "bytes": 436908,
+      "crc": "8F0BE8BB"
+    },
+    {
+      "path": "NCM/self_discharge/vin_2/vin_2_charge_1.csv",
+      "bytes": 111988,
+      "crc": "6C583F29"
+    },
+    {
+      "path": "NCM/self_discharge/vin_3/vin_3_charge_1.csv",
+      "bytes": 110731,
+      "crc": "33B6914F"
+    },
+    {
+      "path": "NCM/self_discharge/vin_4/vin_4_charge_1.csv",
+      "bytes": 187905,
+      "crc": "B6EA4190"
+    },
+    {
+      "path": "NCM/self_discharge/vin_5/vin_5_charge_1.csv",
+      "bytes": 137822,
+      "crc": "6FF6CE5C"
+    },
+    {
+      "path": "NCM/self_discharge/vin_6/vin_6_charge_1.csv",
+      "bytes": 110802,
+      "crc": "BF0E4C3E"
+    },
+    {
+      "path": "NCM/self_discharge/vin_7/vin_7_charge_1.csv",
+      "bytes": 110819,
+      "crc": "F9507261"
+    },
+    {
+      "path": "NCM/self_discharge/vin_8/vin_8_charge_1.csv",
+      "bytes": 112013,
+      "crc": "F75B4580"
+    },
+    {
+      "path": "NCM/self_discharge/vin_9/vin_9_charge_1.csv",
+      "bytes": 110760,
+      "crc": "C009C088"
+    },
+    {
+      "path": "NCM/self_discharge/vin_10/vin_10_charge_1.csv",
+      "bytes": 110733,
+      "crc": "D42B7030"
+    },
+    {
+      "path": "NCM/self_discharge/vin_11/vin_11_charge_1.csv",
+      "bytes": 110836,
+      "crc": "31042AB0"
+    },
+    {
+      "path": "NCM/self_discharge/vin_12/vin_12_charge_1.csv",
+      "bytes": 110753,
+      "crc": "B3A4EB98"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "status": "superseded_before_final",
+  "reason": "available-task minibatch averaging changed task weights when labels were absent; corrected fixed source/object/time weights and task lambdas in separately preregistered run",
+  "final_accessed": false,
+  "replacement": "model_lab/reports/v2/multisource_fixed_loss_20261002"
+}

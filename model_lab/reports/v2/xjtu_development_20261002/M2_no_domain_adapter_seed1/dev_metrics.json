@@ -1,0 +1,77 @@
+{
+  "xjtu::NCM::RW_battery": {
+    "independent_objects": 1,
+    "rows": 8,
+    "heads": {
+      "soh": {
+        "status": "evaluated",
+        "independent_objects": 1,
+        "rows": 8,
+        "per_object": {
+          "xjtu:Batch-5/RW_battery-3": {
+            "mae": 0.06104405684780462,
+            "rmse": 0.06295210548835636,
+            "rows": 8
+          }
+        },
+        "mae": 0.06104405684780462,
+        "rmse": 0.06295210548835636,
+        "worst_object": "xjtu:Batch-5/RW_battery-3",
+        "pinball": 0.01362064901572254,
+        "nll_original_scale": -1.0392766392350992
+      },
+      "efficiency": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "rul": {
+        "status": "unavailable",
+        "reason": "no verified physical-time survival targets"
+      },
+      "fault": {
+        "status": "unavailable",
+        "reason": "missing confirmed labels or only one class"
+      }
+    }
+  },
+  "xjtu::NCM::Sim_satellite_battery": {
+    "independent_objects": 2,
+    "rows": 16,
+    "heads": {
+      "soh": {
+        "status": "evaluated",
+        "independent_objects": 2,
+        "rows": 16,
+        "per_object": {
+          "xjtu:Batch-6/Sim_satellite_battery-2": {
+            "mae": 0.06723035570988768,
+            "rmse": 0.07133842295776764,
+            "rows": 8
+          },
+          "xjtu:Batch-6/Sim_satellite_battery-4": {
+            "mae": 0.06960930909221112,
+            "rmse": 0.07174223297616254,
+            "rows": 8
+          }
+        },
+        "mae": 0.0684198324010494,
+        "rmse": 0.07154032796696509,
+        "worst_object": "xjtu:Batch-6/Sim_satellite_battery-4",
+        "pinball": 0.019273082468465784,
+        "nll_original_scale": -0.10046837010888068
+      },
+      "efficiency": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "rul": {
+        "status": "unavailable",
+        "reason": "no verified physical-time survival targets"
+      },
+      "fault": {
+        "status": "unavailable",
+        "reason": "missing confirmed labels or only one class"
+      }
+    }
+  }
+}

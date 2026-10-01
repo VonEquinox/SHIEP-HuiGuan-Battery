@@ -1,0 +1,31 @@
+[
+  {
+    "status": "verified",
+    "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/V1.0.7z",
+    "resolved_download_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases/download/v1.0.0/V1.0.7z",
+    "original_filename": "V1.0.7z",
+    "bytes": 386457534,
+    "sha256": "2bce2a26720519833f8a0b73e7af95bb6ab8ac997cc62afc3d320c67fd02be21",
+    "author_checksum": null,
+    "retrieved_at": "2026-10-01T16:35:38.356791+00:00",
+    "attempts": 3,
+    "prior_errors": [
+      "ChunkedEncodingError: ('Connection broken: IncompleteRead(143565312 bytes read, 242892222 more expected)', IncompleteRead(143565312 bytes read, 242892222 more expected))",
+      "ChunkedEncodingError: ('Connection broken: IncompleteRead(160370176 bytes read, 83481022 more expected)', IncompleteRead(160370176 bytes read, 83481022 more expected))"
+    ],
+    "transport_destination": "https://release-assets.githubusercontent.com/github-production-release-asset/1057020910/972aaeeb-5767-4274-817d-4ad10a2bca89"
+  },
+  {
+    "status": "verified",
+    "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/faults.details.-.LFP.batteries.xlsx",
+    "resolved_download_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases/download/v1.0.0/faults.details.-.LFP.batteries.xlsx",
+    "original_filename": "faults.details.-.LFP.batteries.xlsx",
+    "bytes": 13437,
+    "sha256": "583411788a3c5b90d43d27de87493d36dfff93da01493e69f503e6c0a84e3e6b",
+    "author_checksum": null,
+    "retrieved_at": "2026-10-01T16:35:39.707309+00:00",
+    "attempts": 1,
+    "prior_errors": [],
+    "transport_destination": "https://release-assets.githubusercontent.com/github-production-release-asset/1057020910/61c49a32-9e63-434f-89a2-4c93327fe954"
+  }
+]

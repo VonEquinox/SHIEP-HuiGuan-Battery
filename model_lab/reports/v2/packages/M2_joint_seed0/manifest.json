@@ -1,0 +1,38 @@
+{
+  "format": "battery_model_safe_v2",
+  "model_version": "M2_joint_seed0",
+  "feature_schema": "battery_features_v2",
+  "data_namespace": "experimental",
+  "files": {
+    "run.json": "f8521bc0280ad550cdff446fc0567bd2c21e0d29a01bfcc15bf9f1ddcefa7ffa",
+    "weights.npz": "956e54bf2b6a8e36438685d9ed107c5abb0acc8b8463d82a127c75b1f41a50b0",
+    "calibration.json": "f0ef4036b3aed9cd6dda535753b42ed4e4ac34576c5027b40e2df48a68174027",
+    "reload_sample.npz": "125a46499a1d539fa37c0323030d2c5dd7a7a3b962834da9fb10d3d8d4474ed4",
+    "reload_sample_query.json": "2e606a0150f75bb81f41b998aef427abfeea57239ccf9ce927a2c0e86cf0753e",
+    "reload_verification.json": "a643a9b6ec0b7559b137d11f5a69b03e91f9bf389046eaa30c81c8197ec3d0d5"
+  },
+  "support_domains": [
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "R3_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "Sim_satellite_battery"
+    }
+  ],
+  "target_definitions": {
+    "soh": "xjtu-rpt-reference-soh-v2",
+    "rul": null,
+    "efficiency": null,
+    "fault": null
+  },
+  "reload_verified": true
+}

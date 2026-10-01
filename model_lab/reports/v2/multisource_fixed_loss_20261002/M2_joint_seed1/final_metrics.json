@@ -1,0 +1,132 @@
+{
+  "run_id": "M2_joint_seed1",
+  "split": "final",
+  "data_namespace": "experimental",
+  "dataset_sha256": "ec1da6d221ce99de505c61a886da019e7480726afe23a30bf07ab4afe33e0a27",
+  "model_sha256": "f18b11a1d0618e6d9ede3b8ef81368da1463078af02596b2ea1c91a31794ff5b",
+  "metrics": {
+    "dyad::unknown::vehicle_charging": {
+      "independent_objects": 15,
+      "rows": 120,
+      "heads": {
+        "soh": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "evaluated",
+          "aucpr": 1.0,
+          "snippet_aucpr": 0.32804254011718603,
+          "metric_unit": "first frozen landmark per independent vehicle",
+          "class_counts": {
+            "0": 14,
+            "1": 1
+          },
+          "false_positive_rate_at_recall_0_9": 0.0,
+          "threshold_at_recall_0_9": 0.5140594244003296,
+          "calibration_error": 0.13819570218523344
+        }
+      }
+    },
+    "matr::LFP::unknown": {
+      "independent_objects": 6,
+      "rows": 48,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 6,
+          "rows": 48,
+          "per_object": {
+            "matr:el150800737229": {
+              "mae": 0.07191513462811942,
+              "rmse": 0.0880677468554084,
+              "rows": 8
+            },
+            "matr:el150800737259": {
+              "mae": 0.09478440233703365,
+              "rmse": 0.24143386640039957,
+              "rows": 8
+            },
+            "matr:el150800737275": {
+              "mae": 0.0967446568953665,
+              "rmse": 0.2325397632892423,
+              "rows": 8
+            },
+            "matr:el150800737287": {
+              "mae": 0.09574571845902718,
+              "rmse": 0.23471859867146047,
+              "rows": 8
+            },
+            "matr:el150800737387": {
+              "mae": 0.09593082118689616,
+              "rmse": 0.2381423967565611,
+              "rows": 8
+            },
+            "matr:el150800739477": {
+              "mae": 0.09803116359208684,
+              "rmse": 0.23919963462729285,
+              "rows": 8
+            }
+          },
+          "mae": 0.09219198284975495,
+          "rmse": 0.21235033443339413,
+          "worst_object": "matr:el150800739477",
+          "pinball": 0.03858435348095319,
+          "nll_original_scale": 2.6727093114625533,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": 1.3134635471624372,
+          "interval_status": "finite"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    }
+  },
+  "supported_protocols": [
+    {
+      "source_id": "dyad",
+      "chemistry": "unknown",
+      "protocol_id": "vehicle_charging"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "unknown"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "R3_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "Sim_satellite_battery"
+    }
+  ],
+  "no_model_selection_on_this_split": true
+}

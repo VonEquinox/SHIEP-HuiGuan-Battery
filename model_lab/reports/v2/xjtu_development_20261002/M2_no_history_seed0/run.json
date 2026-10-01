@@ -1,0 +1,377 @@
+{
+  "run_id": "M2_no_history_seed0",
+  "family": "M2",
+  "ablation": "no_history",
+  "seed": 0,
+  "status": "calibrated",
+  "dataset_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/xjtu_features_protocol/features.json",
+  "dataset_sha256": "e2c8f3ba731c19756d0b7626678df6c7d2f37dd7f876af7844b5cdad80d5640c",
+  "feature_schema": "battery_features_v2",
+  "domain_index": {
+    "xjtu::NCM::R3_battery": 0,
+    "xjtu::NCM::RW_battery": 1,
+    "xjtu::NCM::Sim_satellite_battery": 2
+  },
+  "target_definitions": {
+    "soh": "xjtu-rpt-reference-soh-v2",
+    "rul": null,
+    "efficiency": null,
+    "fault": null
+  },
+  "data_namespace": "experimental",
+  "survival_grid": [
+    50,
+    100,
+    150,
+    200,
+    300,
+    400,
+    600,
+    800,
+    1000
+  ],
+  "preprocessor": {
+    "feature_mean": [
+      3.3315536975860596,
+      0.14898176491260529,
+      2.5512373447418213,
+      3.535783290863037,
+      0.15909641981124878,
+      0.15910886228084564,
+      24.7313232421875,
+      0.3603973686695099,
+      2488.283935546875,
+      0.0,
+      0.3181818127632141,
+      0.9628276824951172,
+      -0.00028960773488506675,
+      298.9090881347656,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.125,
+      0.0,
+      1.0
+    ],
+    "feature_scale": [
+      0.2539021968841553,
+      0.07820416241884232,
+      0.17744292318820953,
+      0.44563624262809753,
+      0.23289333283901215,
+      0.23291157186031342,
+      1.8130791187286377,
+      0.12759637832641602,
+      3203.35986328125,
+      1.0,
+      0.46577051281929016,
+      0.060688793659210205,
+      0.0007334250258281827,
+      279.54620361328125,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.33071890473365784,
+      1.0,
+      1.0
+    ],
+    "sequence_mean": [
+      3.8281266689300537,
+      0.0010809486266225576,
+      24.25589370727539,
+      0.5,
+      -0.000256420491496101
+    ],
+    "sequence_scale": [
+      0.3891795575618744,
+      0.6343209147453308,
+      2.6317555904388428,
+      0.2897382974624634,
+      0.7390572428703308
+    ],
+    "fitted_split": "train",
+    "feature_min": [
+      3.0589661598205566,
+      0.0019039326580241323,
+      2.4972000122070312,
+      3.111799955368042,
+      0.0,
+      0.0,
+      20.23788070678711,
+      0.046187400817871094,
+      300.0,
+      0.0,
+      0.0,
+      0.787714958190918,
+      -0.00270700640976429,
+      6.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "feature_max": [
+      4.191573619842529,
+      0.2599234879016876,
+      4.188854694366455,
+      4.197199821472168,
+      0.5000784397125244,
+      0.5001000165939331,
+      28.637405395507812,
+      0.5068566203117371,
+      7236.83984375,
+      0.0,
+      1.0,
+      1.0364025831222534,
+      0.0014599960995838046,
+      1074.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ]
+  },
+  "code": {
+    "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+    "modeling/v2/baselines.py": "7198853cf90c85f12d4b6ca1f542b4f3e0a454a3da095f6b8ac320f76b6dd967",
+    "modeling/v2/calibration.py": "8b97f3ebfa306fb886c3d38e6ea28dfa05c3ca2634f012b424e7916f88a7e298",
+    "modeling/v2/contracts.py": "4c9103ebbb54766856435db3ca23891b554158475b6163ee22036f88019edb89",
+    "modeling/v2/data.py": "249329722fc29911565b1c9c54960ee9002a97b0c724fd236cbde06e11310841",
+    "modeling/v2/features.py": "a4b0c37e4ae1e4a1e02e2d695a5bf9f45ef2d5c698efb32ac9b00dff8f62e1ed",
+    "modeling/v2/metrics.py": "f6a3d97a2f9d7d2721fa8481aa8d6b7f5f38648f6e2947d32ae84c4c933b384d",
+    "modeling/v2/multitask.py": "64d01f11ac3b1a32480425e015dc611e29394be6b083413af1b6089254a1755e",
+    "modeling/v2/prediction.py": "446d251fe0e2bfc36d256b6fed272b92e90f8d6d3bde0d45da86023ee51ff72e",
+    "modeling/v2/sources.py": "b97306ce381eee77f3227be95e336771432a318231d432582b09241e646d19a2",
+    "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+    "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+    "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+    "scripts/v2/calibrate.py": "a8cbb381ba14756d85381bf5c30d2e401401ef6ea8f6456321877c613b5a16e0",
+    "scripts/v2/common.py": "f7a81f902788ca5ee904eec7420f58617f0d8399c57c942e1fcbcf81ea78ad55",
+    "scripts/v2/evaluate.py": "b220e042e4f89ce927a9b982c2a129b6873d8a888f54a6776f619f6d29029b33",
+    "scripts/v2/export.py": "0e0a89fad99ba3084ae6e0111998c6e8583b50671455f5575d58afe82657e6ce",
+    "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+    "scripts/v2/ingest.py": "887521c4975f96fe5f5d35899119068612d934751af5d046faba94fdd14336a7",
+    "scripts/v2/train.py": "22bf545e84e89f00743fbc7a5bd4003e9b148a0d07208dd74543c223586be9bc"
+  },
+  "config": {
+    "dataset_manifest": "model_lab/data/derived/v2/xjtu_features_protocol/features.json",
+    "output_dir": "model_lab/reports/v2/xjtu_development_20261002",
+    "families": [
+      "M1",
+      "M2"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "ablations": [
+      "joint",
+      "no_domain_adapter",
+      "no_history",
+      "single_task"
+    ],
+    "ngboost": true,
+    "m1_estimators": 80,
+    "epochs": 12,
+    "batch_size": 4,
+    "learning_rate": 0.001,
+    "survival_grid": [
+      50,
+      100,
+      150,
+      200,
+      300,
+      400,
+      600,
+      800,
+      1000
+    ]
+  },
+  "support_domains": [
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "R3_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "Sim_satellite_battery"
+    }
+  ],
+  "train_objects": [
+    "xjtu:Batch-4/R3_battery-1",
+    "xjtu:Batch-4/R3_battery-6",
+    "xjtu:Batch-5/RW_battery-1",
+    "xjtu:Batch-5/RW_battery-4",
+    "xjtu:Batch-5/RW_battery-6",
+    "xjtu:Batch-5/RW_battery-7",
+    "xjtu:Batch-5/RW_battery-8",
+    "xjtu:Batch-6/Sim_satellite_battery-1",
+    "xjtu:Batch-6/Sim_satellite_battery-3",
+    "xjtu:Batch-6/Sim_satellite_battery-6",
+    "xjtu:Batch-6/Sim_satellite_battery-7"
+  ],
+  "dev_objects": [
+    "xjtu:Batch-5/RW_battery-3",
+    "xjtu:Batch-6/Sim_satellite_battery-2",
+    "xjtu:Batch-6/Sim_satellite_battery-4"
+  ],
+  "final_accessed": true,
+  "calibration_accessed": true,
+  "spec": {
+    "n_features": 30,
+    "n_domains": 3,
+    "width": 128,
+    "adapter_width": 32,
+    "domain_adapter": true,
+    "history": false,
+    "single_task": false
+  },
+  "label_support": {
+    "soh": true,
+    "efficiency": false,
+    "rul": false,
+    "fault": false
+  },
+  "training_history": [
+    {
+      "epoch": 1,
+      "loss": 0.7717466183345426,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 2,
+      "loss": -0.31764601238749246,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 3,
+      "loss": 0.16678197648037563,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 4,
+      "loss": 1.3839413977482102,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 5,
+      "loss": 5.353083271194588,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 6,
+      "loss": -0.8809628479436717,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 7,
+      "loss": -0.2271362847902558,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 8,
+      "loss": -0.9710737661543217,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 9,
+      "loss": -0.9076768684793602,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 10,
+      "loss": -0.9253617091612383,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 11,
+      "loss": -0.39671293104236777,
+      "active_heads": [
+        "soh"
+      ]
+    },
+    {
+      "epoch": 12,
+      "loss": -0.7142202413894914,
+      "active_heads": [
+        "soh"
+      ]
+    }
+  ],
+  "dev_inference_ms_per_row": 14.188987833525365,
+  "elapsed_seconds": 27.932345291017555,
+  "model_sha256": "da4a83f9e9f448e1bda191955e497c1a15e39fb1f9c1747b3e76b78689fa3dc9",
+  "calibration_sha256": "f0ef4036b3aed9cd6dda535753b42ed4e4ac34576c5027b40e2df48a68174027"
+}

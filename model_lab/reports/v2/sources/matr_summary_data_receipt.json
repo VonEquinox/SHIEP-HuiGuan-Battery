@@ -1,0 +1,141 @@
+{
+  "manifest": {
+    "schema_version": "battery-data-v2",
+    "created_at": "2026-10-01T16:45:29.215497+00:00",
+    "parser_version": "v2-data-1.0.0",
+    "namespace": "experimental",
+    "tables": {
+      "identity_map": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_official_summary_20261002/identity_map.parquet",
+        "sha256": "a50e2ffde4ee3f78c89bb6f641614bd86387be1784be46e7c26de3f6aff35bd4",
+        "rows": 36
+      },
+      "cycles": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_official_summary_20261002/cycles.parquet",
+        "sha256": "1fc13834de3c5b28483f4a64a606a9f3d5f50451c7dd9578cb2a86b40dfb05d8",
+        "rows": 38198
+      },
+      "segments": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_official_summary_20261002/segments.parquet",
+        "sha256": "e572da5f23965cd1785f4bdb4cee1eadffd1286f2449e60d5aa41b5a3673d635",
+        "rows": 3801
+      },
+      "targets": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_official_summary_20261002/targets.parquet",
+        "sha256": "069c7158788ebfff611692d8ad66cce13d4a6d41a8f79f645860a483aec2e792",
+        "rows": 37918
+      }
+    },
+    "sources": [
+      {
+        "source_id": "matr",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/matr/official_batch3_tests.json",
+        "sha256": "7df19aea50a60994c6b87d774240a1f911829bb23af408e8834ff13eea28ca8b",
+        "bytes": 599244,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "real_experimental",
+        "scope": "official capacity summary chart measurements; not imported corrected MATLAB raw batch",
+        "missing_curves": true
+      }
+    ],
+    "quality_report": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_official_summary_20261002/quality_report.json",
+    "split_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_official_summary_20261002/split_manifest.json",
+    "target_units": {
+      "soh": "ratio",
+      "capacity": "Ah",
+      "rul": "cycle",
+      "efficiency": "ratio"
+    },
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ],
+    "split_created_before_parser": true
+  },
+  "manifest_sha256": "45b3c2a7019258ab5b4baa51525ad39ef4eec1fa62c76ceea0230c479631eae3",
+  "split": {
+    "schema_version": "physical-split-v2",
+    "group_column": "physical_cell_id",
+    "seed": 20261001,
+    "ratios": [
+      0.5,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666
+    ],
+    "assignments": {
+      "matr:el150800739495": "train",
+      "matr:el150800737329": "train",
+      "matr:el150800737377": "train",
+      "matr:el150800737364": "train",
+      "matr:el150800737345": "train",
+      "matr:el150800737270": "train",
+      "matr:el150800737304": "train",
+      "matr:el150800737297": "train",
+      "matr:el150800737315": "train",
+      "matr:el150800737233": "train",
+      "matr:el150800737285": "train",
+      "matr:el150800737368": "train",
+      "matr:el150800737369": "train",
+      "matr:el150800737280": "train",
+      "matr:el150800737294": "train",
+      "matr:el150800737274": "train",
+      "matr:el150800737314": "train",
+      "matr:el150800737367": "train",
+      "matr:el150800737390": "dev",
+      "matr:el150800737234": "dev",
+      "matr:el150800737213": "dev",
+      "matr:el150800737361": "dev",
+      "matr:el150800737366": "dev",
+      "matr:el150800737365": "dev",
+      "matr:el150800737378": "calibration",
+      "matr:el150800737276": "calibration",
+      "matr:el150800737334": "calibration",
+      "matr:el150800739484": "calibration",
+      "matr:el150800737313": "calibration",
+      "matr:el150800737386": "calibration",
+      "matr:el150800737229": "final",
+      "matr:el150800737275": "final",
+      "matr:el150800739477": "final",
+      "matr:el150800737259": "final",
+      "matr:el150800737287": "final",
+      "matr:el150800737387": "final"
+    },
+    "counts": {
+      "train": 18,
+      "dev": 6,
+      "calibration": 6,
+      "final": 6
+    },
+    "final_policy": "sealed until preregistered comparison; not for selection",
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ]
+  },
+  "audit": {
+    "schema_version": "data-audit-v2",
+    "manifest_sha256": "45b3c2a7019258ab5b4baa51525ad39ef4eec1fa62c76ceea0230c479631eae3",
+    "passed": true,
+    "checks": [
+      "identity_map: hash verified, 36 rows",
+      "cycles: hash verified, 38198 rows",
+      "segments: hash verified, 3801 rows",
+      "targets: hash verified, 37918 rows"
+    ],
+    "failures": [],
+    "registered_objects": 36,
+    "independent_objects": 36,
+    "measured_objects": 35,
+    "group_column": "physical_cell_id",
+    "split_counts": {
+      "train": 18,
+      "dev": 6,
+      "calibration": 6,
+      "final": 6
+    },
+    "scope": "structural provenance, grouped split and explicit query dependency audit; not proof of scientific model performance"
+  }
+}

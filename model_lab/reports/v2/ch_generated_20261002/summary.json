@@ -1,0 +1,2382 @@
+{
+  "schema_version": "ch-generated-fault-benchmark-v2",
+  "created_at": "2026-10-01T17:34:44.852641+00:00",
+  "namespace": "demo_synthetic",
+  "origin": "public_generated",
+  "source_id": "ch_batterygen",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "independent_unit": "conservative shared published VIN root; generator mother identity unknown",
+  "dataset_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/ch_batterygen_20261002/manifest.json",
+  "dataset_manifest_sha256": "638aef24ed43949fd1b73ca96857424e9fda4e696db69e4815e084fef2ff6e8c",
+  "split_manifest_sha256": "7ef5a0e3c84399bc17986a3878075e4043705c1bfe976bd4431ae519bc29f8b0",
+  "counts": {
+    "train": {
+      "segment_rows": 58,
+      "conservative_VIN_roots": 29
+    },
+    "dev": {
+      "segment_rows": 14,
+      "conservative_VIN_roots": 7
+    },
+    "calibration": {
+      "segment_rows": 10,
+      "conservative_VIN_roots": 5
+    },
+    "final": {
+      "segment_rows": 14,
+      "conservative_VIN_roots": 7
+    }
+  },
+  "final_status": "opened_exploratory_only",
+  "selection_policy": "fixed hyperparameters and seeds; no final or calibration rows used to fit GBDT",
+  "primary_metric": "macro AUPRC on evaluable classes at one first frozen charge landmark per VIN",
+  "metric_limitation": "Missing classes have null AUPRC; all-four-class macro is null unless all four are evaluable. Seed spread is not an independent-VIN confidence interval.",
+  "evidence_status": "exploratory_generated_only",
+  "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization.",
+  "aggregate_metrics": {
+    "train": {
+      "LFP": {
+        "macro_auprc": {
+          "mean": 1.0,
+          "std_across_seeds": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": 1.0,
+          "std_across_seeds": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_brier": {
+          "mean": 0.0933880805854586,
+          "std_across_seeds": 0.03627840130645793,
+          "values": [
+            0.13350703186340704,
+            0.08376770033931447,
+            0.06288950955365424
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 0.2868490505235329,
+          "std_across_seeds": 0.0722739418781159,
+          "values": [
+            0.3661183242845544,
+            0.2698155054894672,
+            0.22461332179657706
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.24525519065792786,
+          "std_across_seeds": 0.0537744800014399,
+          "values": [
+            0.30396064054290217,
+            0.2334223776666275,
+            0.19838255376425393
+          ],
+          "seeds_with_metric": 3
+        }
+      },
+      "NCM": {
+        "macro_auprc": {
+          "mean": 1.0,
+          "std_across_seeds": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": 1.0,
+          "std_across_seeds": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_brier": {
+          "mean": 0.0024174678299491745,
+          "std_across_seeds": 0.003362832777076453,
+          "values": [
+            5.752985296168707e-05,
+            0.006267954342287104,
+            0.0009269192945987313
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 0.02725239975813597,
+          "std_across_seeds": 0.028469278189609867,
+          "values": [
+            0.004013965562375835,
+            0.059008180185799765,
+            0.018735053526232313
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.026355917796400546,
+          "std_across_seeds": 0.027213412299005105,
+          "values": [
+            0.003995680484415454,
+            0.05665630448057263,
+            0.018415768424213552
+          ],
+          "seeds_with_metric": 3
+        }
+      },
+      "pooled_conservative_VIN": {
+        "macro_auprc": {
+          "mean": 1.0,
+          "std_across_seeds": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": 1.0,
+          "std_across_seeds": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_brier": {
+          "mean": 0.02819762420221468,
+          "std_across_seeds": 0.008407035095104138,
+          "values": [
+            0.03425192863046203,
+            0.03174217553495699,
+            0.018598768441225013
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 0.14718306077239093,
+          "std_across_seeds": 0.027764039373495406,
+          "values": [
+            0.16790197587498737,
+            0.15801055203543482,
+            0.11563665440675056
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.1358055542271643,
+          "std_across_seeds": 0.024151778643881523,
+          "values": [
+            0.15397816051365903,
+            0.14503934107360011,
+            0.10839916109423373
+          ],
+          "seeds_with_metric": 3
+        }
+      }
+    },
+    "dev": {
+      "LFP": {
+        "macro_auprc": {
+          "mean": 0.4549382716049383,
+          "std_across_seeds": 0.014143752144925404,
+          "values": [
+            0.4518518518518519,
+            0.4703703703703703,
+            0.4425925925925926
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": null,
+          "std_across_seeds": null,
+          "values": [
+            null,
+            null,
+            null
+          ],
+          "seeds_with_metric": 0
+        },
+        "multiclass_brier": {
+          "mean": 0.8270556333789815,
+          "std_across_seeds": 0.0519575789721107,
+          "values": [
+            0.8213334760077389,
+            0.7781959937893589,
+            0.8816374303398471
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 1.3581712606034142,
+          "std_across_seeds": 0.05729113741039951,
+          "values": [
+            1.3650273661112997,
+            1.2977605807713364,
+            1.411725834927607
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.3439672708841875,
+          "std_across_seeds": 0.05987186004625232,
+          "values": [
+            0.31117806595695857,
+            0.30765238031686715,
+            0.41307136637873676
+          ],
+          "seeds_with_metric": 3
+        }
+      },
+      "NCM": {
+        "macro_auprc": {
+          "mean": 0.7462962962962963,
+          "std_across_seeds": 0.00962250448649373,
+          "values": [
+            0.7407407407407408,
+            0.7574074074074074,
+            0.7407407407407408
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": null,
+          "std_across_seeds": null,
+          "values": [
+            null,
+            null,
+            null
+          ],
+          "seeds_with_metric": 0
+        },
+        "multiclass_brier": {
+          "mean": 0.7337136980444985,
+          "std_across_seeds": 0.053949112609627495,
+          "values": [
+            0.7943519207193759,
+            0.6910349259313647,
+            0.7157542474827547
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 1.7321222866961017,
+          "std_across_seeds": 0.3155628294335073,
+          "values": [
+            2.0822494654190957,
+            1.4696623681228567,
+            1.6444550265463522
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.3979772776547253,
+          "std_across_seeds": 0.060958979071087174,
+          "values": [
+            0.4683339179631648,
+            0.36465758677254884,
+            0.36094032822846234
+          ],
+          "seeds_with_metric": 3
+        }
+      },
+      "pooled_conservative_VIN": {
+        "macro_auprc": {
+          "mean": 0.7018518518518518,
+          "std_across_seeds": 0.0,
+          "values": [
+            0.7018518518518518,
+            0.7018518518518518,
+            0.7018518518518518
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": null,
+          "std_across_seeds": null,
+          "values": [
+            null,
+            null,
+            null
+          ],
+          "seeds_with_metric": 0
+        },
+        "multiclass_brier": {
+          "mean": 0.6711731419912343,
+          "std_across_seeds": 0.012701965499638965,
+          "values": [
+            0.6757402431072698,
+            0.656819126732098,
+            0.6809600561343351
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 1.2811100765573737,
+          "std_across_seeds": 0.027969448795139133,
+          "values": [
+            1.3047349486428927,
+            1.250227005231251,
+            1.2883682757979773
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.3993267591195955,
+          "std_across_seeds": 0.09158592432657509,
+          "values": [
+            0.34756133435218745,
+            0.5050733377617052,
+            0.3453456052448939
+          ],
+          "seeds_with_metric": 3
+        }
+      }
+    },
+    "final": {
+      "LFP": {
+        "macro_auprc": {
+          "mean": 0.9635802469135802,
+          "std_across_seeds": 0.041422466839031155,
+          "values": [
+            0.9185185185185185,
+            1.0,
+            0.9722222222222222
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": null,
+          "std_across_seeds": null,
+          "values": [
+            null,
+            null,
+            null
+          ],
+          "seeds_with_metric": 0
+        },
+        "multiclass_brier": {
+          "mean": 0.5519501295609984,
+          "std_across_seeds": 0.03245184677058343,
+          "values": [
+            0.5806485333354743,
+            0.5167341221103953,
+            0.5584677332371255
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 0.9726975461385186,
+          "std_across_seeds": 0.05560795715576462,
+          "values": [
+            1.0321172156800746,
+            0.9219111354428765,
+            0.9640642872926044
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.41068697090819856,
+          "std_across_seeds": 0.04538020660656556,
+          "values": [
+            0.3965327617871229,
+            0.4614574036181487,
+            0.3740707473193242
+          ],
+          "seeds_with_metric": 3
+        }
+      },
+      "NCM": {
+        "macro_auprc": {
+          "mean": 0.8518518518518517,
+          "std_across_seeds": 0.02777777777777779,
+          "values": [
+            0.8796296296296297,
+            0.8518518518518517,
+            0.8240740740740741
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": null,
+          "std_across_seeds": null,
+          "values": [
+            null,
+            null,
+            null
+          ],
+          "seeds_with_metric": 0
+        },
+        "multiclass_brier": {
+          "mean": 0.9974961354447675,
+          "std_across_seeds": 0.15378213401978308,
+          "values": [
+            1.1523132713153623,
+            0.8447703345923092,
+            0.9954048004266308
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 1.7790200439414416,
+          "std_across_seeds": 0.314411006340962,
+          "values": [
+            2.0872940606798696,
+            1.4588118795537817,
+            1.7909541915906737
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.5508884655291338,
+          "std_across_seeds": 0.09032886972080492,
+          "values": [
+            0.6549648442740996,
+            0.5047988260252296,
+            0.49290172628807216
+          ],
+          "seeds_with_metric": 3
+        }
+      },
+      "pooled_conservative_VIN": {
+        "macro_auprc": {
+          "mean": 0.9382716049382717,
+          "std_across_seeds": 0.06024451017266399,
+          "values": [
+            0.8796296296296297,
+            1.0,
+            0.9351851851851851
+          ],
+          "seeds_with_metric": 3
+        },
+        "macro_auprc_all_four_classes": {
+          "mean": null,
+          "std_across_seeds": null,
+          "values": [
+            null,
+            null,
+            null
+          ],
+          "seeds_with_metric": 0
+        },
+        "multiclass_brier": {
+          "mean": 0.626704161927886,
+          "std_across_seeds": 0.07332206122419492,
+          "values": [
+            0.705412435016296,
+            0.5603337252531155,
+            0.6143663255142465
+          ],
+          "seeds_with_metric": 3
+        },
+        "multiclass_log_loss": {
+          "mean": 1.061820864915859,
+          "std_across_seeds": 0.09913454696231462,
+          "values": [
+            1.1675467321870985,
+            0.9709554426284214,
+            1.0469604199320568
+          ],
+          "seeds_with_metric": 3
+        },
+        "top_label_ece_10_bins": {
+          "mean": 0.4032753798393564,
+          "std_across_seeds": 0.08979661928391267,
+          "values": [
+            0.4938123314545345,
+            0.3142378724113039,
+            0.4017759356522307
+          ],
+          "seeds_with_metric": 3
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "namespace": "demo_synthetic",
+      "origin": "public_generated",
+      "evidence_status": "exploratory_generated_only",
+      "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization.",
+      "model_path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/ch_generated_20261002/seed0/model.json",
+      "metrics": {
+        "train": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 0.029073411043668833,
+                "ece_10_bins": 0.14389743840450026,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.648140191135023
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 0.04778781707059958,
+                "ece_10_bins": 0.19020832991688935,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.6087472528203318
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 0.026451112210345996,
+                "ece_10_bins": 0.13161240169401794,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.6267356587003585
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 0.03019469153879263,
+                "ece_10_bins": 0.1422031110703968,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.6009882542172141
+              }
+            },
+            "multiclass_brier": 0.13350703186340704,
+            "multiclass_log_loss": 0.3661183242845544,
+            "top_label_ece_10_bins": 0.30396064054290217,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 9.128006089531782e-06,
+                "ece_10_bins": 0.0020451974921811777,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9943025056035856
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 2.6476907651854553e-06,
+                "ece_10_bins": 0.0010051673777197552,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9936130058845398
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 2.4441447446693424e-05,
+                "ece_10_bins": 0.0026607547398340165,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9793834307607697
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 2.1312708660276428e-05,
+                "ece_10_bins": 0.0022802413590962372,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9874551782299582
+              }
+            },
+            "multiclass_brier": 5.752985296168707e-05,
+            "multiclass_log_loss": 0.004013965562375835,
+            "top_label_ece_10_bins": 0.003995680484415454,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 0.007467491371060944,
+                "ece_10_bins": 0.07297131794834072,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.8212213483693043
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 0.01206274863130903,
+                "ece_10_bins": 0.09560674864730453,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.8042265814098191
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 0.006904691306439542,
+                "ece_10_bins": 0.06713657821692601,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.8030595447305642
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 0.007816997321652518,
+                "ece_10_bins": 0.07224167621474652,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7942217162235862
+              }
+            },
+            "multiclass_brier": 0.03425192863046203,
+            "multiclass_log_loss": 0.16790197587498737,
+            "top_label_ece_10_bins": 0.15397816051365903,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "train",
+          "final_policy": "final remains excluded from selection"
+        },
+        "dev": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.4518518518518519,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.010464021675512344,
+                "ece_10_bins": 0.09727071030783407,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.13292767975503736,
+                "ece_10_bins": 0.26992342631222,
+                "status": "evaluated",
+                "auprc": 0.5,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.16666666666666666,
+                "threshold_at_recall_0_9": 0.27861672562691014
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.313311937171406,
+                "ece_10_bins": 0.36609105472472653,
+                "status": "evaluated",
+                "auprc": 0.4444444444444445,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.2616075873706248
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.36462983740578314,
+                "ece_10_bins": 0.38765725546095026,
+                "status": "evaluated",
+                "auprc": 0.41111111111111115,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.10989477120693217
+              }
+            },
+            "multiclass_brier": 0.8213334760077389,
+            "multiclass_log_loss": 1.3650273661112997,
+            "top_label_ece_10_bins": 0.31117806595695857,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.7407407407407408,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.16920728745545496,
+                "ece_10_bins": 0.21426625244801092,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.00011057310355934057,
+                "ece_10_bins": 0.008247534977425747,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9997378819926165
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.2607204117224018,
+                "ece_10_bins": 0.3457800793732505,
+                "status": "evaluated",
+                "auprc": 0.5888888888888889,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.5,
+                "threshold_at_recall_0_9": 0.41703291846705065
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.36431364843795977,
+                "ece_10_bins": 0.39632444873588646,
+                "status": "evaluated",
+                "auprc": 0.6333333333333333,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.000872269657263114
+              }
+            },
+            "multiclass_brier": 0.7943519207193759,
+            "multiclass_log_loss": 2.0822494654190957,
+            "top_label_ece_10_bins": 0.4683339179631648,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.7018518518518518,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.055909554598344534,
+                "ece_10_bins": 0.1557684813779225,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.033953941938057446,
+                "ece_10_bins": 0.13908548064482285,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.6391773038097633
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.22940620137417064,
+                "ece_10_bins": 0.43907403849477866,
+                "status": "evaluated",
+                "auprc": 0.6388888888888888,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.4754701523788375
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.3564705451966973,
+                "ece_10_bins": 0.4625010632527493,
+                "status": "evaluated",
+                "auprc": 0.4666666666666667,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.05538352043209764
+              }
+            },
+            "multiclass_brier": 0.6757402431072698,
+            "multiclass_log_loss": 1.3047349486428927,
+            "top_label_ece_10_bins": 0.34756133435218745,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "dev",
+          "final_policy": "final remains excluded from selection"
+        },
+        "final": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.9185185185185185,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.1337791249845706,
+                "ece_10_bins": 0.3070264194933146,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.3944100933527059
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.11733218868353819,
+                "ece_10_bins": 0.17450290580317676,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.4600530480941967
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.0839604403078236,
+                "ece_10_bins": 0.21219186363801495,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.24557677935954197,
+                "ece_10_bins": 0.3394897094288616,
+                "status": "evaluated",
+                "auprc": 0.7555555555555555,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.5,
+                "threshold_at_recall_0_9": 0.16932053061644803
+              }
+            },
+            "multiclass_brier": 0.5806485333354743,
+            "multiclass_log_loss": 1.0321172156800746,
+            "top_label_ece_10_bins": 0.3965327617871229,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.8796296296296297,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.4428712963673534,
+                "ece_10_bins": 0.4908339780630644,
+                "status": "evaluated",
+                "auprc": 0.6388888888888888,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.015274360431722029
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.0014148340717265433,
+                "ece_10_bins": 0.01939985775475131,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9984484144249588
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.4862501793367194,
+                "ece_10_bins": 0.6061332599487201,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.22177696153956283,
+                "ece_10_bins": 0.3091938281447779,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.1702893313100753
+              }
+            },
+            "multiclass_brier": 1.1523132713153623,
+            "multiclass_log_loss": 2.0872940606798696,
+            "top_label_ece_10_bins": 0.6549648442740996,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.8796296296296297,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.25254282060311456,
+                "ece_10_bins": 0.30992134547343575,
+                "status": "evaluated",
+                "auprc": 0.6388888888888888,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.24040624833518573
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.03256576684116945,
+                "ece_10_bins": 0.1624895461730387,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7292507312595777
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.19630157614742938,
+                "ece_10_bins": 0.4091625617933675,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.2240022714245828,
+                "ece_10_bins": 0.34869664563012776,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.2087489941710648
+              }
+            },
+            "multiclass_brier": 0.705412435016296,
+            "multiclass_log_loss": 1.1675467321870985,
+            "top_label_ece_10_bins": 0.4938123314545345,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "final",
+          "final_policy": "explicitly opened exploratory final; excluded from selection"
+        }
+      },
+      "code_version": {
+        "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+        "modeling/v2/baselines.py": "7198853cf90c85f12d4b6ca1f542b4f3e0a454a3da095f6b8ac320f76b6dd967",
+        "modeling/v2/calibration.py": "4d1723005955b03d1f84f573e649350e88ddbf7d648914e9bf903bee9d20570b",
+        "modeling/v2/contracts.py": "8442f44fbc0a0f08abbf9221a90574c406366f7cc77ce2e68dae4906ffe0bd5d",
+        "modeling/v2/data.py": "1604a809016b1094146329bb55608fdaefe5d94cf9ca2cb04c8818350d033ced",
+        "modeling/v2/features.py": "a512857c9081034f13c38efd00dee5c7c89627e90e9f79dfe3fd5c73a18e265d",
+        "modeling/v2/generated_fault.py": "9c872ee205f0e51f7bf4e09655f1fb963a51ec88cbbdf74c9eaa2ae081388bf0",
+        "modeling/v2/metrics.py": "2840a7fe1973440e85892e7896b4d3a04fed0db1e53da12ce14f14d8e29fe916",
+        "modeling/v2/multitask.py": "acdc8ce757814f82367cd6735efa4174676e20b197a14bc77a5e1b7541fb0b1d",
+        "modeling/v2/prediction.py": "292dff02ff5d51a78532e715ed2774878208798ab785d83d3a3f0a69af67ad36",
+        "modeling/v2/sources.py": "87ca02774452aaeb4865509b8b2dc65257c8b7f1a84bba4eea056ad7f32cc489",
+        "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+        "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+        "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+        "scripts/v2/benchmark_generated.py": "be95b280fddf3200f5477d13f27824b617b50d43fa377aaac8893c0060261b19",
+        "scripts/v2/calibrate.py": "4a8bf24cd2be234960c7d7a18d8c00804f5806794a3ff915c159bf6bd55b6b3a",
+        "scripts/v2/common.py": "1f73758662e2c250581d8d5dd18a8522bf0e5ca4b494e444e23fbe70420d1a47",
+        "scripts/v2/evaluate.py": "a939762b16f9d5df8a48cd4efdc9a2acbe81e6cd7d6b2f472bc161ed8f2de57f",
+        "scripts/v2/export.py": "efb4b687621847debaa24216ab4d11c9867bd8d6e2d7a5bae77ce8dfb57382d6",
+        "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+        "scripts/v2/ingest.py": "781bcb4095edea81f0d6825288e4eb2130a9b67bcfdbe85f10f782e92a8aeb96",
+        "scripts/v2/summarize.py": "dfde4241dda610c5aea959a2ee462f707c72df691f369ca9b3aeabbed3ca8aa1",
+        "scripts/v2/train.py": "3ea76809d8fc404ff58bea7c5b01c51bbc9ebf5fcc06286ee2c696ad0884a36d"
+      },
+      "fit_split": "train",
+      "calibration_split": "calibration"
+    },
+    {
+      "seed": 1,
+      "namespace": "demo_synthetic",
+      "origin": "public_generated",
+      "evidence_status": "exploratory_generated_only",
+      "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization.",
+      "model_path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/ch_generated_20261002/seed1/model.json",
+      "metrics": {
+        "train": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 0.016810943391115912,
+                "ece_10_bins": 0.10904604654904061,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.705079565170909
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 0.029546491583708895,
+                "ece_10_bins": 0.14524668697903453,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.6701707691404513
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 0.016469046590319596,
+                "ece_10_bins": 0.100960653506727,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7352399069463106
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 0.02094121877417008,
+                "ece_10_bins": 0.11159136829845274,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.6494543405214825
+              }
+            },
+            "multiclass_brier": 0.08376770033931447,
+            "multiclass_log_loss": 0.2698155054894672,
+            "top_label_ece_10_bins": 0.2334223776666275,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 0.0013650956825423015,
+                "ece_10_bins": 0.029629030736844225,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9299853090262524
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 0.0005592248587930479,
+                "ece_10_bins": 0.018743863633711416,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9183462350197081
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 0.0020646710315842783,
+                "ece_10_bins": 0.03510746805570923,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9027764069931352
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 0.0022789627693674775,
+                "ece_10_bins": 0.0298322465348805,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.848512432160048
+              }
+            },
+            "multiclass_brier": 0.006267954342287104,
+            "multiclass_log_loss": 0.059008180185799765,
+            "top_label_ece_10_bins": 0.05665630448057263,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 0.006620837475626642,
+                "ece_10_bins": 0.06933753864294243,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.8202469157876283
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 0.009199249634487526,
+                "ece_10_bins": 0.08199527530637298,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.8258386192889458
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 0.0070873787453754455,
+                "ece_10_bins": 0.06803406078121811,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.819008156969723
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 0.008834709679467373,
+                "ece_10_bins": 0.07071180741666662,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7532656648661814
+              }
+            },
+            "multiclass_brier": 0.03174217553495699,
+            "multiclass_log_loss": 0.15801055203543482,
+            "top_label_ece_10_bins": 0.14503934107360011,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "train",
+          "final_policy": "final remains excluded from selection"
+        },
+        "dev": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.4703703703703703,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.012734143348277127,
+                "ece_10_bins": 0.09989886876424184,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.12280810407418531,
+                "ece_10_bins": 0.25979338315585954,
+                "status": "evaluated",
+                "auprc": 0.5,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.16666666666666666,
+                "threshold_at_recall_0_9": 0.3607902118590065
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.28464025236048834,
+                "ece_10_bins": 0.3778592341742998,
+                "status": "evaluated",
+                "auprc": 0.4444444444444445,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.26773631248288693
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.35801349400640825,
+                "ece_10_bins": 0.3859893337380289,
+                "status": "evaluated",
+                "auprc": 0.4666666666666667,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.11258097375078642
+              }
+            },
+            "multiclass_brier": 0.7781959937893589,
+            "multiclass_log_loss": 1.2977605807713364,
+            "top_label_ece_10_bins": 0.30765238031686715,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.7574074074074074,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.11198857374114778,
+                "ece_10_bins": 0.18873801928573403,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.0021065308674177116,
+                "ece_10_bins": 0.040277542601543946,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9837843731933761
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.23052848290634723,
+                "ece_10_bins": 0.26338777751775944,
+                "status": "evaluated",
+                "auprc": 0.6388888888888888,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.4802688481922734
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.34641133841645194,
+                "ece_10_bins": 0.4641099220867015,
+                "status": "evaluated",
+                "auprc": 0.6333333333333333,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.01184057879710618
+              }
+            },
+            "multiclass_brier": 0.6910349259313647,
+            "multiclass_log_loss": 1.4696623681228567,
+            "top_label_ece_10_bins": 0.36465758677254884,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.7018518518518518,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.04202899000602483,
+                "ece_10_bins": 0.14431844402498795,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.03504258745148077,
+                "ece_10_bins": 0.15003546287870173,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.6722872925261913
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.2308884415572589,
+                "ece_10_bins": 0.32772034813294204,
+                "status": "evaluated",
+                "auprc": 0.6388888888888888,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.3914480203644445
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.3488591077173333,
+                "ece_10_bins": 0.4763081331077808,
+                "status": "evaluated",
+                "auprc": 0.4666666666666667,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.06533444420945278
+              }
+            },
+            "multiclass_brier": 0.656819126732098,
+            "multiclass_log_loss": 1.250227005231251,
+            "top_label_ece_10_bins": 0.5050733377617052,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "dev",
+          "final_policy": "final remains excluded from selection"
+        },
+        "final": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.10488271437868489,
+                "ece_10_bins": 0.2798799541419459,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.5088195360353518
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.09048831799111137,
+                "ece_10_bins": 0.2669746470225612,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.5371770230128203
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.08488554835079727,
+                "ece_10_bins": 0.1990988441816857,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.23647754138980176,
+                "ece_10_bins": 0.3185837709756123,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.15839242384019112
+              }
+            },
+            "multiclass_brier": 0.5167341221103953,
+            "multiclass_log_loss": 0.9219111354428765,
+            "top_label_ece_10_bins": 0.4614574036181487,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.8518518518518517,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.3628041045048226,
+                "ece_10_bins": 0.41746232815269496,
+                "status": "evaluated",
+                "auprc": 0.5555555555555556,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.04489382396997721
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.009159848317400663,
+                "ece_10_bins": 0.07315606158474516,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9704598703356107
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.29347333815321675,
+                "ece_10_bins": 0.467718075030382,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.17933304361686905,
+                "ece_10_bins": 0.2637808986170609,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.16982444446623654
+              }
+            },
+            "multiclass_brier": 0.8447703345923092,
+            "multiclass_log_loss": 1.4588118795537817,
+            "top_label_ece_10_bins": 0.5047988260252296,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.19914618579526436,
+                "ece_10_bins": 0.23726644502527788,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.2967659465015404
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.033999175557636194,
+                "ece_10_bins": 0.17006535430365316,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7538184466742155
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.1305156467305583,
+                "ece_10_bins": 0.3334084596060338,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.1966727171696567,
+                "ece_10_bins": 0.327439976842836,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.28300250958162093
+              }
+            },
+            "multiclass_brier": 0.5603337252531155,
+            "multiclass_log_loss": 0.9709554426284214,
+            "top_label_ece_10_bins": 0.3142378724113039,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "final",
+          "final_policy": "explicitly opened exploratory final; excluded from selection"
+        }
+      },
+      "code_version": {
+        "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+        "modeling/v2/baselines.py": "7198853cf90c85f12d4b6ca1f542b4f3e0a454a3da095f6b8ac320f76b6dd967",
+        "modeling/v2/calibration.py": "4d1723005955b03d1f84f573e649350e88ddbf7d648914e9bf903bee9d20570b",
+        "modeling/v2/contracts.py": "8442f44fbc0a0f08abbf9221a90574c406366f7cc77ce2e68dae4906ffe0bd5d",
+        "modeling/v2/data.py": "1604a809016b1094146329bb55608fdaefe5d94cf9ca2cb04c8818350d033ced",
+        "modeling/v2/features.py": "a512857c9081034f13c38efd00dee5c7c89627e90e9f79dfe3fd5c73a18e265d",
+        "modeling/v2/generated_fault.py": "9c872ee205f0e51f7bf4e09655f1fb963a51ec88cbbdf74c9eaa2ae081388bf0",
+        "modeling/v2/metrics.py": "2840a7fe1973440e85892e7896b4d3a04fed0db1e53da12ce14f14d8e29fe916",
+        "modeling/v2/multitask.py": "acdc8ce757814f82367cd6735efa4174676e20b197a14bc77a5e1b7541fb0b1d",
+        "modeling/v2/prediction.py": "292dff02ff5d51a78532e715ed2774878208798ab785d83d3a3f0a69af67ad36",
+        "modeling/v2/sources.py": "87ca02774452aaeb4865509b8b2dc65257c8b7f1a84bba4eea056ad7f32cc489",
+        "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+        "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+        "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+        "scripts/v2/benchmark_generated.py": "be95b280fddf3200f5477d13f27824b617b50d43fa377aaac8893c0060261b19",
+        "scripts/v2/calibrate.py": "4a8bf24cd2be234960c7d7a18d8c00804f5806794a3ff915c159bf6bd55b6b3a",
+        "scripts/v2/common.py": "1f73758662e2c250581d8d5dd18a8522bf0e5ca4b494e444e23fbe70420d1a47",
+        "scripts/v2/evaluate.py": "a939762b16f9d5df8a48cd4efdc9a2acbe81e6cd7d6b2f472bc161ed8f2de57f",
+        "scripts/v2/export.py": "efb4b687621847debaa24216ab4d11c9867bd8d6e2d7a5bae77ce8dfb57382d6",
+        "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+        "scripts/v2/ingest.py": "781bcb4095edea81f0d6825288e4eb2130a9b67bcfdbe85f10f782e92a8aeb96",
+        "scripts/v2/summarize.py": "dfde4241dda610c5aea959a2ee462f707c72df691f369ca9b3aeabbed3ca8aa1",
+        "scripts/v2/train.py": "3ea76809d8fc404ff58bea7c5b01c51bbc9ebf5fcc06286ee2c696ad0884a36d"
+      },
+      "fit_split": "train",
+      "calibration_split": "calibration"
+    },
+    {
+      "seed": 2,
+      "namespace": "demo_synthetic",
+      "origin": "public_generated",
+      "evidence_status": "exploratory_generated_only",
+      "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization.",
+      "model_path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/ch_generated_20261002/seed2/model.json",
+      "metrics": {
+        "train": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 0.011644322422414404,
+                "ece_10_bins": 0.08913753659113367,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7405005420041366
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 0.021989622290745595,
+                "ece_10_bins": 0.12769606950644735,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7177125573745836
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 0.01217196849498463,
+                "ece_10_bins": 0.0845219136108451,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7525047782351679
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 0.017083596345509607,
+                "ece_10_bins": 0.09540958782008194,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.6560189025725641
+              }
+            },
+            "multiclass_brier": 0.06288950955365424,
+            "multiclass_log_loss": 0.22461332179657706,
+            "top_label_ece_10_bins": 0.19838255376425393,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 0.00020062132756401243,
+                "ece_10_bins": 0.009785736372901746,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9657850828071207
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 3.68426001706841e-05,
+                "ece_10_bins": 0.004824069949705545,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9831772968449224
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 0.00032348777939193577,
+                "ece_10_bins": 0.01209145606281286,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9548447815244793
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 0.0003659675874720991,
+                "ece_10_bins": 0.010130274463006957,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9340023382485583
+              }
+            },
+            "multiclass_brier": 0.0009269192945987313,
+            "multiclass_log_loss": 0.018735053526232313,
+            "top_label_ece_10_bins": 0.018415768424213552,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 29,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 1.0,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": 1.0,
+            "evaluable_class_count": 4,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 8,
+                "negative_VINs": 21,
+                "small_positive_support": false,
+                "brier": 0.0035126869960156893,
+                "ece_10_bins": 0.04946163648201769,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.27586206896551724,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.8605356724535764
+              },
+              "low_capacity": {
+                "positive_VINs": 9,
+                "negative_VINs": 20,
+                "small_positive_support": false,
+                "brier": 0.005841465049718451,
+                "ece_10_bins": 0.06626006972807642,
+                "status": "evaluated",
+                "auprc": 1.0000000000000002,
+                "prevalence": 0.3103448275862069,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.8559840658915824
+              },
+              "normal": {
+                "positive_VINs": 7,
+                "negative_VINs": 22,
+                "small_positive_support": false,
+                "brier": 0.0038678259057749733,
+                "ece_10_bins": 0.048306684836829004,
+                "status": "evaluated",
+                "auprc": 0.9999999999999998,
+                "prevalence": 0.2413793103448276,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.8536747798798237
+              },
+              "self_discharge": {
+                "positive_VINs": 5,
+                "negative_VINs": 24,
+                "small_positive_support": false,
+                "brier": 0.0053767904897159,
+                "ece_10_bins": 0.05276993114154445,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.1724137931034483,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7978722704769946
+              }
+            },
+            "multiclass_brier": 0.018598768441225013,
+            "multiclass_log_loss": 0.11563665440675056,
+            "top_label_ece_10_bins": 0.10839916109423373,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "train",
+          "final_policy": "final remains excluded from selection"
+        },
+        "dev": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.4425925925925926,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.005249205278297092,
+                "ece_10_bins": 0.06648850134455578,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.15207237686542988,
+                "ece_10_bins": 0.2688293852809665,
+                "status": "evaluated",
+                "auprc": 0.5,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.16666666666666666,
+                "threshold_at_recall_0_9": 0.2899004095128366
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.3283148765467851,
+                "ece_10_bins": 0.5123715041094469,
+                "status": "evaluated",
+                "auprc": 0.4444444444444445,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.24070976381730963
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.39600097164933507,
+                "ece_10_bins": 0.5260835062123375,
+                "status": "evaluated",
+                "auprc": 0.38333333333333336,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.10076160997072162
+              }
+            },
+            "multiclass_brier": 0.8816374303398471,
+            "multiclass_log_loss": 1.411725834927607,
+            "top_label_ece_10_bins": 0.41307136637873676,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.7407407407407408,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.1456197568861546,
+                "ece_10_bins": 0.19966519050432716,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.0004998689501243701,
+                "ece_10_bins": 0.016888614977391057,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9975064134952213
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.22547899438680005,
+                "ece_10_bins": 0.23533476646140786,
+                "status": "evaluated",
+                "auprc": 0.5888888888888889,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.5,
+                "threshold_at_recall_0_9": 0.47251250976380127
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.34415562725967563,
+                "ece_10_bins": 0.4551212795421951,
+                "status": "evaluated",
+                "auprc": 0.6333333333333333,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.003519102100706071
+              }
+            },
+            "multiclass_brier": 0.7157542474827547,
+            "multiclass_log_loss": 1.6444550265463522,
+            "top_label_ece_10_bins": 0.36094032822846234,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.7018518518518518,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.04431838071708096,
+                "ece_10_bins": 0.13307684592444147,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.039588337484243764,
+                "ece_10_bins": 0.1428590001291788,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.643703411504029
+              },
+              "normal": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.23380690410511737,
+                "ece_10_bins": 0.3285202917534331,
+                "status": "evaluated",
+                "auprc": 0.6388888888888888,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.4252296745231131
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.36324643382789296,
+                "ece_10_bins": 0.4864919551340333,
+                "status": "evaluated",
+                "auprc": 0.4666666666666667,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.055713204881929324
+              }
+            },
+            "multiclass_brier": 0.6809600561343351,
+            "multiclass_log_loss": 1.2883682757979773,
+            "top_label_ece_10_bins": 0.3453456052448939,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "dev",
+          "final_policy": "final remains excluded from selection"
+        },
+        "final": {
+          "LFP": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.9722222222222222,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.11929658910105109,
+                "ece_10_bins": 0.2880306190078086,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.4540077305971342
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.10893232824879395,
+                "ece_10_bins": 0.1566518489380727,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.4948937094568533
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.0940526341143109,
+                "ece_10_bins": 0.20893310478216726,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.23618618177296952,
+                "ece_10_bins": 0.28472362354635117,
+                "status": "evaluated",
+                "auprc": 0.9166666666666665,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.16236194280743263
+              }
+            },
+            "multiclass_brier": 0.5584677332371255,
+            "multiclass_log_loss": 0.9640642872926044,
+            "top_label_ece_10_bins": 0.3740707473193242,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "NCM": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.8240740740740741,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.4162444618836113,
+                "ece_10_bins": 0.47023896560075484,
+                "status": "evaluated",
+                "auprc": 0.5555555555555556,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.75,
+                "threshold_at_recall_0_9": 0.011528484892447224
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.0011090827498142128,
+                "ece_10_bins": 0.0236260069524535,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.9910198791927652
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.3641104829673867,
+                "ece_10_bins": 0.50590514403885,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.21394077282581855,
+                "ece_10_bins": 0.2645667549292607,
+                "status": "evaluated",
+                "auprc": 0.9166666666666665,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.06348384748930787
+              }
+            },
+            "multiclass_brier": 0.9954048004266308,
+            "multiclass_log_loss": 1.7909541915906737,
+            "top_label_ece_10_bins": 0.49290172628807216,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "pooled_conservative_VIN": {
+            "status": "evaluated",
+            "independent_vins": 7,
+            "metric_unit": "first frozen charge landmark per conservative published VIN root",
+            "macro_auprc": 0.9351851851851851,
+            "macro_auprc_scope": "classes with both positive and negative independent VINs",
+            "macro_auprc_all_four_classes": null,
+            "evaluable_class_count": 3,
+            "per_class": {
+              "high_resistance": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.22521068695427687,
+                "ece_10_bins": 0.28201274104598295,
+                "status": "evaluated",
+                "auprc": 0.8055555555555556,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.25,
+                "threshold_at_recall_0_9": 0.2327681077447907
+              },
+              "low_capacity": {
+                "positive_VINs": 1,
+                "negative_VINs": 6,
+                "small_positive_support": true,
+                "brier": 0.03049044756896886,
+                "ece_10_bins": 0.15431822896042485,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.14285714285714285,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.7429567943248092
+              },
+              "normal": {
+                "positive_VINs": 0,
+                "negative_VINs": 7,
+                "small_positive_support": true,
+                "brier": 0.14957742690725404,
+                "ece_10_bins": 0.3574191244105086,
+                "status": "unavailable",
+                "auprc": null,
+                "reason": "no_positive_VINs"
+              },
+              "self_discharge": {
+                "positive_VINs": 3,
+                "negative_VINs": 4,
+                "small_positive_support": true,
+                "brier": 0.20908776408374682,
+                "ece_10_bins": 0.33429863058030734,
+                "status": "evaluated",
+                "auprc": 1.0,
+                "prevalence": 0.42857142857142855,
+                "false_positive_rate_at_recall_0_9": 0.0,
+                "threshold_at_recall_0_9": 0.22883239074054096
+              }
+            },
+            "multiclass_brier": 0.6143663255142465,
+            "multiclass_log_loss": 1.0469604199320568,
+            "top_label_ece_10_bins": 0.4017759356522307,
+            "evidence_status": "exploratory_generated_only",
+            "limitation": "Exploratory published-generated benchmark only. Original generator mother identities are unavailable; conservative shared VIN roots do not establish clean source independence or real-fleet generalization."
+          },
+          "split": "final",
+          "final_policy": "explicitly opened exploratory final; excluded from selection"
+        }
+      },
+      "code_version": {
+        "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+        "modeling/v2/baselines.py": "7198853cf90c85f12d4b6ca1f542b4f3e0a454a3da095f6b8ac320f76b6dd967",
+        "modeling/v2/calibration.py": "4d1723005955b03d1f84f573e649350e88ddbf7d648914e9bf903bee9d20570b",
+        "modeling/v2/contracts.py": "8442f44fbc0a0f08abbf9221a90574c406366f7cc77ce2e68dae4906ffe0bd5d",
+        "modeling/v2/data.py": "1604a809016b1094146329bb55608fdaefe5d94cf9ca2cb04c8818350d033ced",
+        "modeling/v2/features.py": "a512857c9081034f13c38efd00dee5c7c89627e90e9f79dfe3fd5c73a18e265d",
+        "modeling/v2/generated_fault.py": "9c872ee205f0e51f7bf4e09655f1fb963a51ec88cbbdf74c9eaa2ae081388bf0",
+        "modeling/v2/metrics.py": "2840a7fe1973440e85892e7896b4d3a04fed0db1e53da12ce14f14d8e29fe916",
+        "modeling/v2/multitask.py": "acdc8ce757814f82367cd6735efa4174676e20b197a14bc77a5e1b7541fb0b1d",
+        "modeling/v2/prediction.py": "292dff02ff5d51a78532e715ed2774878208798ab785d83d3a3f0a69af67ad36",
+        "modeling/v2/sources.py": "87ca02774452aaeb4865509b8b2dc65257c8b7f1a84bba4eea056ad7f32cc489",
+        "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+        "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+        "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+        "scripts/v2/benchmark_generated.py": "be95b280fddf3200f5477d13f27824b617b50d43fa377aaac8893c0060261b19",
+        "scripts/v2/calibrate.py": "4a8bf24cd2be234960c7d7a18d8c00804f5806794a3ff915c159bf6bd55b6b3a",
+        "scripts/v2/common.py": "1f73758662e2c250581d8d5dd18a8522bf0e5ca4b494e444e23fbe70420d1a47",
+        "scripts/v2/evaluate.py": "a939762b16f9d5df8a48cd4efdc9a2acbe81e6cd7d6b2f472bc161ed8f2de57f",
+        "scripts/v2/export.py": "efb4b687621847debaa24216ab4d11c9867bd8d6e2d7a5bae77ce8dfb57382d6",
+        "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+        "scripts/v2/ingest.py": "781bcb4095edea81f0d6825288e4eb2130a9b67bcfdbe85f10f782e92a8aeb96",
+        "scripts/v2/summarize.py": "dfde4241dda610c5aea959a2ee462f707c72df691f369ca9b3aeabbed3ca8aa1",
+        "scripts/v2/train.py": "3ea76809d8fc404ff58bea7c5b01c51bbc9ebf5fcc06286ee2c696ad0884a36d"
+      },
+      "fit_split": "train",
+      "calibration_split": "calibration"
+    }
+  ],
+  "code_version": {
+    "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+    "modeling/v2/baselines.py": "7198853cf90c85f12d4b6ca1f542b4f3e0a454a3da095f6b8ac320f76b6dd967",
+    "modeling/v2/calibration.py": "4d1723005955b03d1f84f573e649350e88ddbf7d648914e9bf903bee9d20570b",
+    "modeling/v2/contracts.py": "8442f44fbc0a0f08abbf9221a90574c406366f7cc77ce2e68dae4906ffe0bd5d",
+    "modeling/v2/data.py": "1604a809016b1094146329bb55608fdaefe5d94cf9ca2cb04c8818350d033ced",
+    "modeling/v2/features.py": "a512857c9081034f13c38efd00dee5c7c89627e90e9f79dfe3fd5c73a18e265d",
+    "modeling/v2/generated_fault.py": "9c872ee205f0e51f7bf4e09655f1fb963a51ec88cbbdf74c9eaa2ae081388bf0",
+    "modeling/v2/metrics.py": "2840a7fe1973440e85892e7896b4d3a04fed0db1e53da12ce14f14d8e29fe916",
+    "modeling/v2/multitask.py": "acdc8ce757814f82367cd6735efa4174676e20b197a14bc77a5e1b7541fb0b1d",
+    "modeling/v2/prediction.py": "292dff02ff5d51a78532e715ed2774878208798ab785d83d3a3f0a69af67ad36",
+    "modeling/v2/sources.py": "87ca02774452aaeb4865509b8b2dc65257c8b7f1a84bba4eea056ad7f32cc489",
+    "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+    "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+    "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+    "scripts/v2/benchmark_generated.py": "be95b280fddf3200f5477d13f27824b617b50d43fa377aaac8893c0060261b19",
+    "scripts/v2/calibrate.py": "4a8bf24cd2be234960c7d7a18d8c00804f5806794a3ff915c159bf6bd55b6b3a",
+    "scripts/v2/common.py": "1f73758662e2c250581d8d5dd18a8522bf0e5ca4b494e444e23fbe70420d1a47",
+    "scripts/v2/evaluate.py": "a939762b16f9d5df8a48cd4efdc9a2acbe81e6cd7d6b2f472bc161ed8f2de57f",
+    "scripts/v2/export.py": "efb4b687621847debaa24216ab4d11c9867bd8d6e2d7a5bae77ce8dfb57382d6",
+    "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+    "scripts/v2/ingest.py": "781bcb4095edea81f0d6825288e4eb2130a9b67bcfdbe85f10f782e92a8aeb96",
+    "scripts/v2/summarize.py": "dfde4241dda610c5aea959a2ee462f707c72df691f369ca9b3aeabbed3ca8aa1",
+    "scripts/v2/train.py": "3ea76809d8fc404ff58bea7c5b01c51bbc9ebf5fcc06286ee2c696ad0884a36d"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "source_id": "dyad",
+  "landing_url": "https://figshare.com/articles/dataset/Realistic_fault_detection_of_Li-ion_battery_via_dynamical_deep_learning_approach/23659323",
+  "metadata_api": "https://api.figshare.com/v2/articles/23659323",
+  "paper_doi": "10.1038/s41467-023-41226-5",
+  "origin": "real_operational",
+  "resolved_download_url": [
+    "https://ndownloader.figshare.com/files/41519169",
+    "https://ndownloader.figshare.com/files/41519265",
+    "https://ndownloader.figshare.com/files/41520222"
+  ],
+  "license_status": "declared_in_official_record",
+  "license_text_path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/dyad/license_metadata.json",
+  "retrieved_at": "2026-10-01T16:11:49.064248+00:00",
+  "original_filename": [
+    "battery_brand3.tar.gz",
+    "battery_brand2.tar.gz",
+    "battery_brand1.tar.gz"
+  ],
+  "bytes": 1484381511,
+  "sha256": "afb5fb2a762cceb5627c112ed2d8d981590274e7f44239321d64384e317b4fd0",
+  "author_checksum": [
+    "md5:038e953f199bc86f356e03c88098df99",
+    "md5:8e16ac45307edc13630bcf8b833f361e",
+    "md5:8d32af34063c0475587c07f6021861a1"
+  ],
+  "parser_version": "v2-data-1.0.0",
+  "status": "parsed",
+  "files": [
+    {
+      "name": "battery_brand3.tar.gz",
+      "bytes": 55469605,
+      "url": "https://ndownloader.figshare.com/files/41519169",
+      "author_checksum": "md5:038e953f199bc86f356e03c88098df99"
+    },
+    {
+      "name": "battery_brand2.tar.gz",
+      "bytes": 236920600,
+      "url": "https://ndownloader.figshare.com/files/41519265",
+      "author_checksum": "md5:8e16ac45307edc13630bcf8b833f361e"
+    },
+    {
+      "name": "battery_brand1.tar.gz",
+      "bytes": 1191991306,
+      "url": "https://ndownloader.figshare.com/files/41520222",
+      "author_checksum": "md5:8d32af34063c0475587c07f6021861a1"
+    }
+  ],
+  "metadata_receipts": [
+    {
+      "requested_url": "https://api.figshare.com/v2/articles/23659323",
+      "resolved_url": "https://api.figshare.com/v2/articles/23659323",
+      "http_status": 200,
+      "retrieved_at": "2026-10-01T16:11:50.396033+00:00",
+      "bytes": 6977,
+      "sha256": "9290abc2164ea770ea97852ac3f48f752807c3ae147be49f6e562a14316d7f6e",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/dyad/official_record.json"
+    }
+  ],
+  "errors": [],
+  "license": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "raw_receipts": [
+    {
+      "status": "verified",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/dyad/battery_brand3.tar.gz",
+      "resolved_download_url": "https://ndownloader.figshare.com/files/41519169",
+      "original_filename": "battery_brand3.tar.gz",
+      "bytes": 55469605,
+      "sha256": "afb5fb2a762cceb5627c112ed2d8d981590274e7f44239321d64384e317b4fd0",
+      "author_checksum": "md5:038e953f199bc86f356e03c88098df99",
+      "retrieved_at": "2026-10-01T16:23:38.299606+00:00",
+      "attempts": 1,
+      "prior_errors": [],
+      "transport_destination": "https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/41519169/battery_brand3.tar.gz"
+    }
+  ],
+  "raw_scope": "inspected_and_parsed_subset; original_all_files_not_claimed",
+  "raw_verified_bytes": 55469605,
+  "raw_sha256": {
+    "battery_brand3.tar.gz": "afb5fb2a762cceb5627c112ed2d8d981590274e7f44239321d64384e317b4fd0"
+  },
+  "unfetched_official_files": [
+    "battery_brand2.tar.gz",
+    "battery_brand1.tar.gz"
+  ],
+  "parsed_manifest": "model_lab/data/derived/v2/dyad_brand3_20261002/manifest.json"
+}

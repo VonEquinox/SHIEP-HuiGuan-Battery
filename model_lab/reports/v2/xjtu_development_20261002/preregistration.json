@@ -1,0 +1,41 @@
+{
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "ablations": [
+    "joint",
+    "no_domain_adapter",
+    "no_history",
+    "single_task"
+  ],
+  "dataset_manifest_sha256": "e2c8f3ba731c19756d0b7626678df6c7d2f37dd7f876af7844b5cdad80d5640c",
+  "config_sha256": "4c61b364d281d195d01089429a8699b142febc8cc732138562e60fbf56084562",
+  "code": {
+    "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+    "modeling/v2/baselines.py": "7198853cf90c85f12d4b6ca1f542b4f3e0a454a3da095f6b8ac320f76b6dd967",
+    "modeling/v2/calibration.py": "8b97f3ebfa306fb886c3d38e6ea28dfa05c3ca2634f012b424e7916f88a7e298",
+    "modeling/v2/contracts.py": "4c9103ebbb54766856435db3ca23891b554158475b6163ee22036f88019edb89",
+    "modeling/v2/data.py": "249329722fc29911565b1c9c54960ee9002a97b0c724fd236cbde06e11310841",
+    "modeling/v2/features.py": "a4b0c37e4ae1e4a1e02e2d695a5bf9f45ef2d5c698efb32ac9b00dff8f62e1ed",
+    "modeling/v2/metrics.py": "f6a3d97a2f9d7d2721fa8481aa8d6b7f5f38648f6e2947d32ae84c4c933b384d",
+    "modeling/v2/multitask.py": "64d01f11ac3b1a32480425e015dc611e29394be6b083413af1b6089254a1755e",
+    "modeling/v2/prediction.py": "446d251fe0e2bfc36d256b6fed272b92e90f8d6d3bde0d45da86023ee51ff72e",
+    "modeling/v2/sources.py": "b97306ce381eee77f3227be95e336771432a318231d432582b09241e646d19a2",
+    "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+    "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+    "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+    "scripts/v2/calibrate.py": "a8cbb381ba14756d85381bf5c30d2e401401ef6ea8f6456321877c613b5a16e0",
+    "scripts/v2/common.py": "f7a81f902788ca5ee904eec7420f58617f0d8399c57c942e1fcbcf81ea78ad55",
+    "scripts/v2/evaluate.py": "b220e042e4f89ce927a9b982c2a129b6873d8a888f54a6776f619f6d29029b33",
+    "scripts/v2/export.py": "0e0a89fad99ba3084ae6e0111998c6e8583b50671455f5575d58afe82657e6ce",
+    "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+    "scripts/v2/ingest.py": "887521c4975f96fe5f5d35899119068612d934751af5d046faba94fdd14336a7",
+    "scripts/v2/train.py": "22bf545e84e89f00743fbc7a5bd4003e9b148a0d07208dd74543c223586be9bc"
+  },
+  "selection_split": "dev",
+  "calibration_split": "calibration",
+  "final_split": "final",
+  "M0": "immutable existing V1; use original support only, no protected-cell scoring"
+}

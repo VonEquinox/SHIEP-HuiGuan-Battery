@@ -1,0 +1,140 @@
+{
+  "passed": true,
+  "dev_rows": 24,
+  "absolute_tolerance": 1e-07,
+  "heads": [
+    "efficiency_normal_transformed",
+    "efficiency_quantiles",
+    "fault_probability",
+    "hazard",
+    "soh_normal_transformed",
+    "soh_quantiles"
+  ],
+  "sample_profile": {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "xjtu",
+      "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+      "split": "dev",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery",
+      "query_time": 32.0,
+      "visible_cutoff": 31.0,
+      "feature_max_time": 21.0,
+      "available_at": 31.0,
+      "reference_cutoff": 21.0,
+      "reference_capacity_Ah": 1.878,
+      "target_definition": "xjtu-rpt-reference-soh-v2",
+      "unit": "ratio",
+      "target_observed_at": 32.0,
+      "target_available_at": 32.0,
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21"
+      ],
+      "survival_time_unit": null,
+      "domain_index": 1,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.6162067251423327
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "xjtu-rpt-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21"
+        ],
+        "quantiles": {
+          "0.05": 0.9136255948800863,
+          "0.5": 1.0096680342100948,
+          "0.95": 1.1158066772849964
+        },
+        "params": {
+          "location": 0.009621597826480865,
+          "scale": 0.06076894700527191
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.9,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": null,
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": "uncalibrated",
+        "evidence_refs": []
+      }
+    }
+  },
+  "contract_metadata_refresh": "Primary M1 quantile CQR and independent NGBoost alternative explicitly separated; model and prediction numbers unchanged."
+}

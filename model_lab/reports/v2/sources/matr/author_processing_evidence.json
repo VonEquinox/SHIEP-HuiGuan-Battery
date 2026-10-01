@@ -1,0 +1,36 @@
+{
+  "source_id": "matr",
+  "source_url": "https://raw.githubusercontent.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/master/LoadData.m",
+  "source_html_url": "https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation/blob/master/LoadData.m",
+  "bytes": 3573,
+  "sha256": "7914333f0a963a0742d9fff340f1d4bc2ad912f1b04a236b3ae6c39fedd3623d",
+  "github_blob_sha": "87df41fbd5eab26bcea4b60a5be674eb87853d26",
+  "full_source_local_only": true,
+  "processing_facts": {
+    "continuation_first_batch_indices_matlab": [
+      8,
+      9,
+      10,
+      16,
+      17
+    ],
+    "continuation_first_batch_indices_python": [
+      7,
+      8,
+      9,
+      15,
+      16
+    ],
+    "continuation_following_batch_indices_matlab": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "continuation_requires_verified_barcode_capacity_cycle_identity": true,
+    "survival_threshold_Ah": 0.88,
+    "threshold_operator": "strictly_less_than"
+  },
+  "scope": "Author source read as text for identity and threshold verification; not executed; full source is not distributed with this implementation."
+}

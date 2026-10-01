@@ -1,0 +1,58 @@
+{
+  "soh": {
+    "method": "object_max_cqr",
+    "alpha": 0.1,
+    "version": "cqr-v2",
+    "domains": {
+      "xjtu::NCM::R3_battery": {
+        "independent_objects": 3,
+        "resolution": 0.25,
+        "rank": 4,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [
+          "xjtu:Batch-4/R3_battery-3",
+          "xjtu:Batch-4/R3_battery-4",
+          "xjtu:Batch-4/R3_battery-8"
+        ],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      },
+      "xjtu::NCM::Sim_satellite_battery": {
+        "independent_objects": 1,
+        "resolution": 0.5,
+        "rank": 2,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [
+          "xjtu:Batch-6/Sim_satellite_battery-8"
+        ],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      }
+    }
+  },
+  "efficiency": {
+    "method": "object_max_cqr",
+    "alpha": 0.1,
+    "version": "cqr-v2",
+    "domains": {
+      "xjtu::NCM::R3_battery": {
+        "independent_objects": 0,
+        "resolution": 1.0,
+        "rank": 1,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      },
+      "xjtu::NCM::Sim_satellite_battery": {
+        "independent_objects": 0,
+        "resolution": 1.0,
+        "rank": 1,
+        "correction": null,
+        "status": "insufficient_calibration_objects",
+        "object_ids": [],
+        "coverage_scope": "specified trajectory set under within-domain exchangeability"
+      }
+    }
+  }
+}

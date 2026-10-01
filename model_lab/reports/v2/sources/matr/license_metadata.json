@@ -1,0 +1,9 @@
+{
+  "license": {
+    "label": "CC BY 4",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "source_url": "https://data.matr.io/1/api/v1/edp/configuration",
+  "project_id": "5c48dd2bc625d700019f3204",
+  "scope": "official dataset platform; author modeling code has separate licensing"
+}

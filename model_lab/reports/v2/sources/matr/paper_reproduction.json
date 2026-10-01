@@ -1,0 +1,7 @@
+{
+  "status": "blocked",
+  "reason": "Three corrected MATLAB batches resolved but not downloaded/parsed in this delivery. Official summary/one original Arbin CSV subsets do not constitute paper reproduction. Author LoadData.m preserved with original one-based exclusions and five continuation pairs.",
+  "raw_batch_downloads_resolved": true,
+  "author_filter_applied_to_summary_as_if_raw": false,
+  "author_EOF_plus_one_replaced_by_right_censor": true
+}

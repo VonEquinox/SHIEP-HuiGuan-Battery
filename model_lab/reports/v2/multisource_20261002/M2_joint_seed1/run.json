@@ -1,0 +1,564 @@
+{
+  "run_id": "M2_joint_seed1",
+  "family": "M2",
+  "ablation": "joint",
+  "seed": 1,
+  "status": "trained",
+  "dataset_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/multisource_features_20261002_v2/features.json",
+  "dataset_sha256": "ec1da6d221ce99de505c61a886da019e7480726afe23a30bf07ab4afe33e0a27",
+  "feature_schema": "battery_features_v2",
+  "domain_index": {
+    "dyad::unknown::vehicle_charging": 0,
+    "matr::LFP::unknown": 1,
+    "xjtu::NCM::R3_battery": 2,
+    "xjtu::NCM::RW_battery": 3,
+    "xjtu::NCM::Sim_satellite_battery": 4
+  },
+  "target_definitions": {
+    "soh": "source_specific_frozen_reference_soh_v2",
+    "rul": null,
+    "efficiency": null,
+    "fault": "dyad-original-retrospective-vehicle-anomaly-v2"
+  },
+  "target_definitions_by_domain": {
+    "xjtu::NCM::R3_battery": {
+      "soh": "xjtu-rpt-reference-soh-v2",
+      "rul": null,
+      "efficiency": null,
+      "fault": null
+    },
+    "xjtu::NCM::RW_battery": {
+      "soh": "xjtu-rpt-reference-soh-v2",
+      "rul": null,
+      "efficiency": null,
+      "fault": null
+    },
+    "xjtu::NCM::Sim_satellite_battery": {
+      "soh": "xjtu-rpt-reference-soh-v2",
+      "rul": null,
+      "efficiency": null,
+      "fault": null
+    },
+    "matr::LFP::unknown": {
+      "soh": "matr-official-chart-frozen-ordinal10-reference-soh-v2",
+      "rul": null,
+      "efficiency": null,
+      "fault": null
+    },
+    "dyad::unknown::vehicle_charging": {
+      "soh": null,
+      "rul": null,
+      "efficiency": null,
+      "fault": "dyad-original-retrospective-vehicle-anomaly-v2"
+    }
+  },
+  "data_namespace": "experimental",
+  "survival_grid": [
+    50,
+    100,
+    150,
+    200,
+    300,
+    400,
+    600,
+    800,
+    1000
+  ],
+  "preprocessor": {
+    "feature_mean": [
+      29.052431106567383,
+      0.2254018932580948,
+      -28.358243942260742,
+      5.299163341522217,
+      44.87700653076172,
+      2.387465476989746,
+      5.773415565490723,
+      2.7082433700561523,
+      311.0552673339844,
+      0.01885407045483589,
+      16.96096420288086,
+      14.966229438781738,
+      0.4942043125629425,
+      149.83770751953125,
+      8433.0986328125,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.1931818127632141,
+      0.0,
+      0.015625,
+      0.0,
+      0.3181818127632141
+    ],
+    "feature_scale": [
+      19.03394317626953,
+      0.24180620908737183,
+      35.1270637512207,
+      8.96024227142334,
+      35.095603942871094,
+      2.7874221801757812,
+      7.355488300323486,
+      1.7620314359664917,
+      1399.964111328125,
+      0.022716805338859558,
+      12.787885665893555,
+      11.087209701538086,
+      0.9928247332572937,
+      315.7119140625,
+      8855.1494140625,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      0.39479756355285645,
+      1.0,
+      0.12401959300041199,
+      1.0,
+      0.4657718241214752
+    ],
+    "sequence_mean": [
+      3.8281266689300537,
+      0.0010809486266225576,
+      24.25589370727539,
+      0.5,
+      -0.000256420491496101
+    ],
+    "sequence_scale": [
+      0.3891795575618744,
+      0.6343209147453308,
+      2.6317555904388428,
+      0.2897382974624634,
+      0.7390572428703308
+    ],
+    "fitted_split": "train",
+    "feature_min": [
+      0.0,
+      0.0,
+      -128.82061767578125,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.787714958190918,
+      -0.00270700640976429,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "feature_max": [
+      44.9836540222168,
+      1.0248459577560425,
+      4.188854694366455,
+      37.983646392822266,
+      97.96171569824219,
+      10.792245864868164,
+      28.637405395507812,
+      4.187803268432617,
+      7236.83984375,
+      0.09314239770174026,
+      37.0,
+      34.0,
+      5.685489177703857,
+      2238.0,
+      44269.87109375,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ]
+  },
+  "code": {
+    "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+    "modeling/v2/baselines.py": "7198853cf90c85f12d4b6ca1f542b4f3e0a454a3da095f6b8ac320f76b6dd967",
+    "modeling/v2/calibration.py": "4d1723005955b03d1f84f573e649350e88ddbf7d648914e9bf903bee9d20570b",
+    "modeling/v2/contracts.py": "8442f44fbc0a0f08abbf9221a90574c406366f7cc77ce2e68dae4906ffe0bd5d",
+    "modeling/v2/data.py": "978ba98d40c542c9d9b6343c3835b85424bc3d96cead65a65dd128ca7d4dd991",
+    "modeling/v2/features.py": "a512857c9081034f13c38efd00dee5c7c89627e90e9f79dfe3fd5c73a18e265d",
+    "modeling/v2/metrics.py": "2840a7fe1973440e85892e7896b4d3a04fed0db1e53da12ce14f14d8e29fe916",
+    "modeling/v2/multitask.py": "5f22e3964fd9265d388020b76b3ae57ddacb5d480aa382e2d95dfd02f729b238",
+    "modeling/v2/prediction.py": "adf9ec5d50929ab21688c0e1eeb25782ecfc1e4e97c85b184398165be2bdefb2",
+    "modeling/v2/sources.py": "0ebf466ac119f195c6449d2f93509470e59450bff096e9832c273a46ce221442",
+    "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+    "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+    "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+    "scripts/v2/calibrate.py": "4a8bf24cd2be234960c7d7a18d8c00804f5806794a3ff915c159bf6bd55b6b3a",
+    "scripts/v2/common.py": "1f73758662e2c250581d8d5dd18a8522bf0e5ca4b494e444e23fbe70420d1a47",
+    "scripts/v2/evaluate.py": "a939762b16f9d5df8a48cd4efdc9a2acbe81e6cd7d6b2f472bc161ed8f2de57f",
+    "scripts/v2/export.py": "2910363ac665afede91783df496ada1a6fd521cc1bf08f5ca791fa9c7dcf6301",
+    "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+    "scripts/v2/ingest.py": "32b4fc48d6cb5ddae5ca16590793358bdd2ed2133caef8e8b74e1cf73dda8d6d",
+    "scripts/v2/summarize.py": "8ff991ccad9d9ed62d388b8c954ba76b7a4544c996d5f7e345b161b3c5f58649",
+    "scripts/v2/train.py": "9b4a37067b7a343a2b162969c3969a37b5edfed091ded6d463f7eb79380aa93b"
+  },
+  "config": {
+    "dataset_manifest": "model_lab/data/derived/v2/multisource_features_20261002_v2/features.json",
+    "output_dir": "model_lab/reports/v2/multisource_20261002",
+    "families": [
+      "M1",
+      "M2"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "ablations": [
+      "joint",
+      "no_domain_adapter",
+      "no_history",
+      "single_task"
+    ],
+    "ngboost": true,
+    "m1_estimators": 80,
+    "epochs": 12,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "calibration_alpha": 0.2,
+    "survival_grid": [
+      50,
+      100,
+      150,
+      200,
+      300,
+      400,
+      600,
+      800,
+      1000
+    ]
+  },
+  "support_domains": [
+    {
+      "source_id": "dyad",
+      "chemistry": "unknown",
+      "protocol_id": "vehicle_charging"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "unknown"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "R3_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "Sim_satellite_battery"
+    }
+  ],
+  "train_objects": [
+    "dyad:brand3:vehicle-401",
+    "dyad:brand3:vehicle-408",
+    "dyad:brand3:vehicle-409",
+    "dyad:brand3:vehicle-410",
+    "dyad:brand3:vehicle-412",
+    "dyad:brand3:vehicle-417",
+    "dyad:brand3:vehicle-420",
+    "dyad:brand3:vehicle-421",
+    "dyad:brand3:vehicle-423",
+    "dyad:brand3:vehicle-424",
+    "dyad:brand3:vehicle-425",
+    "dyad:brand3:vehicle-426",
+    "dyad:brand3:vehicle-429",
+    "dyad:brand3:vehicle-431",
+    "dyad:brand3:vehicle-436",
+    "dyad:brand3:vehicle-437",
+    "dyad:brand3:vehicle-438",
+    "dyad:brand3:vehicle-439",
+    "dyad:brand3:vehicle-440",
+    "dyad:brand3:vehicle-442",
+    "dyad:brand3:vehicle-443",
+    "dyad:brand3:vehicle-445",
+    "dyad:brand3:vehicle-448",
+    "dyad:brand3:vehicle-450",
+    "dyad:brand3:vehicle-451",
+    "dyad:brand3:vehicle-452",
+    "dyad:brand3:vehicle-453",
+    "dyad:brand3:vehicle-455",
+    "dyad:brand3:vehicle-456",
+    "dyad:brand3:vehicle-457",
+    "dyad:brand3:vehicle-459",
+    "dyad:brand3:vehicle-460",
+    "dyad:brand3:vehicle-461",
+    "dyad:brand3:vehicle-462",
+    "dyad:brand3:vehicle-464",
+    "dyad:brand3:vehicle-465",
+    "dyad:brand3:vehicle-466",
+    "dyad:brand3:vehicle-467",
+    "dyad:brand3:vehicle-469",
+    "dyad:brand3:vehicle-472",
+    "dyad:brand3:vehicle-473",
+    "dyad:brand3:vehicle-474",
+    "dyad:brand3:vehicle-477",
+    "dyad:brand3:vehicle-479",
+    "dyad:brand3:vehicle-480",
+    "dyad:brand3:vehicle-481",
+    "dyad:brand3:vehicle-482",
+    "dyad:brand3:vehicle-483",
+    "dyad:brand3:vehicle-484",
+    "dyad:brand3:vehicle-486",
+    "dyad:brand3:vehicle-487",
+    "dyad:brand3:vehicle-489",
+    "dyad:brand3:vehicle-491",
+    "dyad:brand3:vehicle-492",
+    "dyad:brand3:vehicle-493",
+    "dyad:brand3:vehicle-494",
+    "dyad:brand3:vehicle-497",
+    "dyad:brand3:vehicle-498",
+    "dyad:brand3:vehicle-499",
+    "dyad:brand3:vehicle-500",
+    "matr:el150800737233",
+    "matr:el150800737270",
+    "matr:el150800737274",
+    "matr:el150800737280",
+    "matr:el150800737285",
+    "matr:el150800737294",
+    "matr:el150800737297",
+    "matr:el150800737304",
+    "matr:el150800737314",
+    "matr:el150800737315",
+    "matr:el150800737329",
+    "matr:el150800737345",
+    "matr:el150800737367",
+    "matr:el150800737368",
+    "matr:el150800737369",
+    "matr:el150800737377",
+    "matr:el150800739495",
+    "xjtu:Batch-4/R3_battery-1",
+    "xjtu:Batch-4/R3_battery-6",
+    "xjtu:Batch-5/RW_battery-1",
+    "xjtu:Batch-5/RW_battery-4",
+    "xjtu:Batch-5/RW_battery-6",
+    "xjtu:Batch-5/RW_battery-7",
+    "xjtu:Batch-5/RW_battery-8",
+    "xjtu:Batch-6/Sim_satellite_battery-1",
+    "xjtu:Batch-6/Sim_satellite_battery-3",
+    "xjtu:Batch-6/Sim_satellite_battery-6",
+    "xjtu:Batch-6/Sim_satellite_battery-7"
+  ],
+  "dev_objects": [
+    "dyad:brand3:vehicle-402",
+    "dyad:brand3:vehicle-404",
+    "dyad:brand3:vehicle-413",
+    "dyad:brand3:vehicle-428",
+    "dyad:brand3:vehicle-430",
+    "dyad:brand3:vehicle-432",
+    "dyad:brand3:vehicle-433",
+    "dyad:brand3:vehicle-434",
+    "dyad:brand3:vehicle-447",
+    "dyad:brand3:vehicle-449",
+    "dyad:brand3:vehicle-458",
+    "dyad:brand3:vehicle-468",
+    "dyad:brand3:vehicle-475",
+    "dyad:brand3:vehicle-488",
+    "dyad:brand3:vehicle-490",
+    "matr:el150800737213",
+    "matr:el150800737234",
+    "matr:el150800737361",
+    "matr:el150800737365",
+    "matr:el150800737366",
+    "matr:el150800737390",
+    "xjtu:Batch-5/RW_battery-3",
+    "xjtu:Batch-6/Sim_satellite_battery-2",
+    "xjtu:Batch-6/Sim_satellite_battery-4"
+  ],
+  "final_accessed": false,
+  "calibration_accessed": false,
+  "spec": {
+    "n_features": 30,
+    "n_domains": 5,
+    "width": 128,
+    "adapter_width": 32,
+    "domain_adapter": true,
+    "history": true,
+    "single_task": false
+  },
+  "label_support": {
+    "soh": true,
+    "efficiency": false,
+    "rul": false,
+    "fault": true
+  },
+  "label_support_by_domain": {
+    "xjtu::NCM::RW_battery": {
+      "soh": true,
+      "efficiency": false,
+      "rul": false,
+      "fault": false
+    },
+    "matr::LFP::unknown": {
+      "soh": true,
+      "efficiency": false,
+      "rul": false,
+      "fault": false
+    },
+    "dyad::unknown::vehicle_charging": {
+      "soh": false,
+      "efficiency": false,
+      "rul": false,
+      "fault": true
+    },
+    "xjtu::NCM::Sim_satellite_battery": {
+      "soh": true,
+      "efficiency": false,
+      "rul": false,
+      "fault": false
+    },
+    "xjtu::NCM::R3_battery": {
+      "soh": true,
+      "efficiency": false,
+      "rul": false,
+      "fault": false
+    }
+  },
+  "training_history": [
+    {
+      "epoch": 1,
+      "loss": 0.3677548557223583,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 2,
+      "loss": 0.41358742892572825,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 3,
+      "loss": 0.9846301206641577,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 4,
+      "loss": 0.09631287745485845,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 5,
+      "loss": -0.018566478636454452,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 6,
+      "loss": 0.2425773813050579,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 7,
+      "loss": -0.011419369161806324,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 8,
+      "loss": 0.1512209306132387,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 9,
+      "loss": 4.371790614487096,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 10,
+      "loss": -0.02657985526391051,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 11,
+      "loss": 0.29191444418393075,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    },
+    {
+      "epoch": 12,
+      "loss": 0.5741919704120267,
+      "active_heads": [
+        "fault",
+        "soh"
+      ]
+    }
+  ],
+  "dev_inference_ms_per_row": 1.455430989456848,
+  "elapsed_seconds": 24.046871833968908,
+  "model_sha256": "c535a29e7874f672b84c8584702fd55582e3a1f1130d1e7ba496d4566d2bdb76"
+}

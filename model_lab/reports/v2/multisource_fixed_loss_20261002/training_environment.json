@@ -1,0 +1,15 @@
+{
+  "python": "3.12.12",
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "ngboost": "0.5.11",
+    "torch": "2.14.1",
+    "h5py": "3.16.0",
+    "pyarrow": "23.0.1",
+    "PyYAML": "6.0.3"
+  },
+  "loss_contract": "fixed_domain_object_task_v2"
+}

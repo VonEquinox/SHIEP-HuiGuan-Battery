@@ -1,0 +1,42 @@
+{
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "ablations": [
+    "joint",
+    "no_domain_adapter",
+    "no_history",
+    "single_task"
+  ],
+  "dataset_manifest_sha256": "ec1da6d221ce99de505c61a886da019e7480726afe23a30bf07ab4afe33e0a27",
+  "config_sha256": "19a0b5852ace2bf948ac713cd61d4c9213c3c2e171d0db6579769cf78fde5128",
+  "code": {
+    "modeling/v2/__init__.py": "905397841e8e2fa5d4f794e709f01e49ed4593ed4c3fc33eb1c077307ba581c9",
+    "modeling/v2/baselines.py": "7198853cf90c85f12d4b6ca1f542b4f3e0a454a3da095f6b8ac320f76b6dd967",
+    "modeling/v2/calibration.py": "4d1723005955b03d1f84f573e649350e88ddbf7d648914e9bf903bee9d20570b",
+    "modeling/v2/contracts.py": "8442f44fbc0a0f08abbf9221a90574c406366f7cc77ce2e68dae4906ffe0bd5d",
+    "modeling/v2/data.py": "978ba98d40c542c9d9b6343c3835b85424bc3d96cead65a65dd128ca7d4dd991",
+    "modeling/v2/features.py": "a512857c9081034f13c38efd00dee5c7c89627e90e9f79dfe3fd5c73a18e265d",
+    "modeling/v2/metrics.py": "2840a7fe1973440e85892e7896b4d3a04fed0db1e53da12ce14f14d8e29fe916",
+    "modeling/v2/multitask.py": "5f22e3964fd9265d388020b76b3ae57ddacb5d480aa382e2d95dfd02f729b238",
+    "modeling/v2/prediction.py": "adf9ec5d50929ab21688c0e1eeb25782ecfc1e4e97c85b184398165be2bdefb2",
+    "modeling/v2/sources.py": "0ebf466ac119f195c6449d2f93509470e59450bff096e9832c273a46ce221442",
+    "modeling/v2/survival.py": "c347edda1628c700e33d36ed7b1457b4a2509fd724b9f9744288fa7340395f13",
+    "scripts/v2/__init__.py": "2abc7fcb102289512e0f07571e6a715db7ee0058687848aec14a314511267b99",
+    "scripts/v2/audit.py": "ce108dff973ccb5198fb019e7f72224634156d6d12056b6da7fd6d60f7d437c7",
+    "scripts/v2/calibrate.py": "4a8bf24cd2be234960c7d7a18d8c00804f5806794a3ff915c159bf6bd55b6b3a",
+    "scripts/v2/common.py": "1f73758662e2c250581d8d5dd18a8522bf0e5ca4b494e444e23fbe70420d1a47",
+    "scripts/v2/evaluate.py": "a939762b16f9d5df8a48cd4efdc9a2acbe81e6cd7d6b2f472bc161ed8f2de57f",
+    "scripts/v2/export.py": "2910363ac665afede91783df496ada1a6fd521cc1bf08f5ca791fa9c7dcf6301",
+    "scripts/v2/features.py": "bad4817708f463d07b5011e9a970526ec2352f5c0834145d8c957269b286ce2a",
+    "scripts/v2/ingest.py": "32b4fc48d6cb5ddae5ca16590793358bdd2ed2133caef8e8b74e1cf73dda8d6d",
+    "scripts/v2/summarize.py": "8ff991ccad9d9ed62d388b8c954ba76b7a4544c996d5f7e345b161b3c5f58649",
+    "scripts/v2/train.py": "9b4a37067b7a343a2b162969c3969a37b5edfed091ded6d463f7eb79380aa93b"
+  },
+  "selection_split": "dev",
+  "calibration_split": "calibration",
+  "final_split": "final",
+  "M0": "immutable existing V1; use original support only, no protected-cell scoring"
+}

@@ -1,0 +1,16 @@
+# CH authors' published generated records: separate from our expert synthesis.
+dataset_manifest: model_lab/data/derived/v2/ch_batterygen_20261002/manifest.json
+output_dir: model_lab/reports/v2/ch_generated_20261002
+namespace: demo_synthetic
+origin: public_generated
+seeds: [0, 1, 2]
+gbdt:
+  n_estimators: 80
+  learning_rate: 0.05
+  max_depth: 2
+  min_samples_leaf: 3
+  subsample: 0.8
+# No config field can unseal final. CLI --allow-exploratory-final is required.
+# Native published mean/std statistics; train-only imputation, per chemistry.
+# Calibration uses only first VIN landmarks in frozen calibration split.
+# Mother identities are unavailable: every reported score is exploratory.

@@ -1,0 +1,117 @@
+{
+  "source_id": "ch_batterygen",
+  "landing_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases",
+  "metadata_api": "https://api.github.com/repos/CH-BatteryGen/dataset-warehouse/releases",
+  "paper_doi": null,
+  "paper_url": "https://openreview.net/forum?id=jSM71b1JsV",
+  "origin": "public_generated",
+  "author_repository": "CH-BatteryGen/dataset-warehouse",
+  "resolved_download_url": [
+    "https://github.com/CH-BatteryGen/dataset-warehouse/releases/download/v1.0.0/V1.0.7z",
+    "https://github.com/CH-BatteryGen/dataset-warehouse/releases/download/v1.0.0/faults.details.-.LFP.batteries.xlsx"
+  ],
+  "license_status": "declared_noncommercial_readme_terms",
+  "license_text_path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/ch_batterygen/license_metadata.json",
+  "retrieved_at": "2026-10-01T16:15:55.302410+00:00",
+  "original_filename": [
+    "V1.0.7z",
+    "faults.details.-.LFP.batteries.xlsx"
+  ],
+  "bytes": null,
+  "sha256": null,
+  "author_checksum": [],
+  "parser_version": "v2-data-1.0.0",
+  "status": "parsed",
+  "files": [
+    {
+      "name": "V1.0.7z",
+      "bytes": null,
+      "url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases/download/v1.0.0/V1.0.7z",
+      "author_checksum": null
+    },
+    {
+      "name": "faults.details.-.LFP.batteries.xlsx",
+      "bytes": null,
+      "url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases/download/v1.0.0/faults.details.-.LFP.batteries.xlsx",
+      "author_checksum": null
+    }
+  ],
+  "metadata_receipts": [
+    {
+      "requested_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases",
+      "resolved_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases",
+      "http_status": 200,
+      "retrieved_at": "2026-10-01T16:15:57.643940+00:00",
+      "bytes": 216419,
+      "sha256": "0675f1bc42ca52a43e8d9062f448ccf1f9bd11e5bf9b9db9a880f6f58cd62c43",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/ch_batterygen/official_releases.html",
+      "local_only": true,
+      "retention": "local_snapshot_not_distributed; official URL and digest retained"
+    },
+    {
+      "requested_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases/expanded_assets/v1.0.0",
+      "resolved_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases/expanded_assets/v1.0.0",
+      "http_status": 200,
+      "retrieved_at": "2026-10-01T16:15:58.226777+00:00",
+      "bytes": 12576,
+      "sha256": "cae4e4d413da4858bee9d9dc3ecb300f447822dec7a818887563b902cb54583e",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/ch_batterygen/official_assets_0.html",
+      "local_only": true,
+      "retention": "local_snapshot_not_distributed; official URL and digest retained"
+    },
+    {
+      "requested_url": "https://github.com/CH-BatteryGen/dataset-warehouse",
+      "resolved_url": "https://github.com/CH-BatteryGen/dataset-warehouse",
+      "http_status": 200,
+      "retrieved_at": "2026-10-01T16:15:59.137322+00:00",
+      "bytes": 258861,
+      "sha256": "0ecacdc4151d429bec16253696f28cba8b4cdebbf05da52e662c2c1b9ffddc91",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/ch_batterygen/official_repository.html",
+      "local_only": true,
+      "retention": "local_snapshot_not_distributed; official URL and digest retained"
+    }
+  ],
+  "errors": [
+    "metadata request failed: HTTPError: 403 Client Error: rate limit exceeded for url: https://api.github.com/repos/CH-BatteryGen/dataset-warehouse/releases"
+  ],
+  "license": "CC BY-NC-SA 4.0; academic/non-commercial or specifically authorized use",
+  "raw_receipts": [
+    {
+      "status": "verified",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/V1.0.7z",
+      "resolved_download_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases/download/v1.0.0/V1.0.7z",
+      "original_filename": "V1.0.7z",
+      "bytes": 386457534,
+      "sha256": "2bce2a26720519833f8a0b73e7af95bb6ab8ac997cc62afc3d320c67fd02be21",
+      "author_checksum": null,
+      "retrieved_at": "2026-10-01T16:35:38.356791+00:00",
+      "attempts": 3,
+      "prior_errors": [
+        "ChunkedEncodingError: ('Connection broken: IncompleteRead(143565312 bytes read, 242892222 more expected)', IncompleteRead(143565312 bytes read, 242892222 more expected))",
+        "ChunkedEncodingError: ('Connection broken: IncompleteRead(160370176 bytes read, 83481022 more expected)', IncompleteRead(160370176 bytes read, 83481022 more expected))"
+      ],
+      "transport_destination": "https://release-assets.githubusercontent.com/github-production-release-asset/1057020910/972aaeeb-5767-4274-817d-4ad10a2bca89"
+    },
+    {
+      "status": "verified",
+      "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/faults.details.-.LFP.batteries.xlsx",
+      "resolved_download_url": "https://github.com/CH-BatteryGen/dataset-warehouse/releases/download/v1.0.0/faults.details.-.LFP.batteries.xlsx",
+      "original_filename": "faults.details.-.LFP.batteries.xlsx",
+      "bytes": 13437,
+      "sha256": "583411788a3c5b90d43d27de87493d36dfff93da01493e69f503e6c0a84e3e6b",
+      "author_checksum": null,
+      "retrieved_at": "2026-10-01T16:35:39.707309+00:00",
+      "attempts": 1,
+      "prior_errors": [],
+      "transport_destination": "https://release-assets.githubusercontent.com/github-production-release-asset/1057020910/61c49a32-9e63-434f-89a2-4c93327fe954"
+    }
+  ],
+  "raw_scope": "inspected_and_parsed_subset; original_all_files_not_claimed",
+  "raw_verified_bytes": 386470971,
+  "raw_sha256": {
+    "V1.0.7z": "2bce2a26720519833f8a0b73e7af95bb6ab8ac997cc62afc3d320c67fd02be21",
+    "faults.details.-.LFP.batteries.xlsx": "583411788a3c5b90d43d27de87493d36dfff93da01493e69f503e6c0a84e3e6b"
+  },
+  "unfetched_official_files": [],
+  "parsed_manifest": "model_lab/data/derived/v2/ch_batterygen_20261002/manifest.json"
+}

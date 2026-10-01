@@ -1,0 +1,110 @@
+{
+  "run_id": "M2_no_history_seed0",
+  "split": "final",
+  "data_namespace": "experimental",
+  "dataset_sha256": "4e8048913b376343da1891e205eb7300453fd0719ee5ebb432ae4a4b61fb3bed",
+  "model_sha256": "da4a83f9e9f448e1bda191955e497c1a15e39fb1f9c1747b3e76b78689fa3dc9",
+  "metrics": {
+    "xjtu::NCM::R3_battery": {
+      "independent_objects": 2,
+      "rows": 16,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 2,
+          "rows": 16,
+          "per_object": {
+            "xjtu:Batch-4/R3_battery-2": {
+              "mae": 0.04114203605503024,
+              "rmse": 0.05791954511995159,
+              "rows": 8
+            },
+            "xjtu:Batch-4/R3_battery-7": {
+              "mae": 0.04347775222702775,
+              "rmse": 0.05995711726051512,
+              "rows": 8
+            }
+          },
+          "mae": 0.042309894141028995,
+          "rmse": 0.05893833119023335,
+          "worst_object": "xjtu:Batch-4/R3_battery-7",
+          "pinball": 0.013622948653287269,
+          "nll_original_scale": -1.0877598425326902,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "xjtu::NCM::RW_battery": {
+      "independent_objects": 1,
+      "rows": 8,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 8,
+          "per_object": {
+            "xjtu:Batch-5/RW_battery-2": {
+              "mae": 0.061123573881756765,
+              "rmse": 0.06789962795364013,
+              "rows": 8
+            }
+          },
+          "mae": 0.061123573881756765,
+          "rmse": 0.06789962795364013,
+          "worst_object": "xjtu:Batch-5/RW_battery-2",
+          "pinball": 0.016598861053214606,
+          "nll_original_scale": -1.0522699654172472,
+          "interval_coverage": 1.0,
+          "trajectory_coverage": 1.0,
+          "interval_mean_width": null,
+          "interval_status": "unbounded_insufficient_calibration_objects"
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    }
+  },
+  "supported_protocols": [
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "R3_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "Sim_satellite_battery"
+    }
+  ],
+  "no_model_selection_on_this_split": true
+}

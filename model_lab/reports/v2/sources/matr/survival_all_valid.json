@@ -1,0 +1,29 @@
+{
+  "status": "parsed_single_actual_Arbin_cell",
+  "target_definition": "matr-arbin-nominal-80pct-0.88Ah-v2",
+  "source_chart_ordinal_not_physical": true,
+  "summary_only_survival": "unavailable",
+  "targets": [
+    {
+      "physical_cell_id": "matr:el150800463245",
+      "source_id": "matr",
+      "cycle_index": null,
+      "target_name": "rul",
+      "value": 513.0,
+      "unit": "cycle",
+      "target_definition_id": "matr-arbin-nominal-80pct-0.88Ah-v2",
+      "target_basis": "1.1Ah_nominal_80percent",
+      "reference_capacity_Ah": null,
+      "reference_cutoff": null,
+      "observed_at": 513.0,
+      "available_at": 513.0,
+      "label_status": "available",
+      "label_source": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_4_65C-44per_5C_CH22.csv",
+      "event": true,
+      "censor_type": "exact",
+      "lower_event_bound": 513.0,
+      "upper_event_bound": 513.0,
+      "threshold_Ah": 0.88
+    }
+  ]
+}

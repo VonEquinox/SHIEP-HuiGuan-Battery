@@ -1,0 +1,51 @@
+{
+  "format": "battery_model_safe_v2",
+  "model_version": "multisource_fixed_loss_20261002:M1_joint_seed0",
+  "feature_schema": "battery_features_v2",
+  "data_namespace": "experimental",
+  "files": {
+    "run.json": "edd2fb7593b819509c43e0133c88bba044864338a00729d363de30f984e774f7",
+    "model.json": "144e5cd298b182930ddad9dbc83a845f6520c419e2ccb5b9b5fdc28c69975740",
+    "calibration.json": "707ae59e3d7344fc98b30f30fe93e2d9bca7966d21f568a08603bd675c244263",
+    "reload_sample.npz": "7cf721e6d91da2519c0fe7c603872c07bd73b1b404f56cd51be15e12c31c2b1a",
+    "reload_sample_query.json": "c9583948ff94c670e373dd9d29395e053f7789c7cce6a55e17fe0512bef3207d",
+    "reload_domain_samples.npz": "3c5d02bab3c26c0af6550022fa821cdb6a80c96c6b12a1bb65888517649382b9",
+    "reload_domain_queries.json": "12f1e566651f73c1cc65aec5949adca1379447317e00f960ef51404f6e3cb3a9",
+    "reload_domain_profiles.json": "15bf2c3b74131a0f91e9c7cab8e4017eb06fca3f5b8ccf0fdcd00f121b0b896d",
+    "reload_verification.json": "dcff173d576d3599ee731fe726cd70600fb83109c3215d625b669456c295e83d"
+  },
+  "support_domains": [
+    {
+      "source_id": "dyad",
+      "chemistry": "unknown",
+      "protocol_id": "vehicle_charging"
+    },
+    {
+      "source_id": "matr",
+      "chemistry": "LFP",
+      "protocol_id": "unknown"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "R3_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "Sim_satellite_battery"
+    }
+  ],
+  "target_definitions": {
+    "soh": "source_specific_frozen_reference_soh_v2",
+    "rul": null,
+    "efficiency": null,
+    "fault": "dyad-original-retrospective-vehicle-anomaly-v2"
+  },
+  "reload_verified": true
+}

@@ -1,0 +1,481 @@
+[
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "multisource_fixed_loss_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "xjtu",
+      "physical_cell_id": "xjtu:Batch-5/RW_battery-3",
+      "split": "dev",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery",
+      "query_time": 32.0,
+      "visible_cutoff": 31.0,
+      "feature_max_time": 21.0,
+      "available_at": 31.0,
+      "reference_cutoff": 21.0,
+      "reference_capacity_Ah": 1.878,
+      "target_definition": "xjtu-rpt-reference-soh-v2",
+      "unit": "ratio",
+      "target_observed_at": 32.0,
+      "target_available_at": 32.0,
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21"
+      ],
+      "survival_time_unit": null,
+      "domain_index": 3,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 1.693379011563119
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "xjtu-rpt-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21"
+        ],
+        "quantiles": {
+          "0.05": 0.9484840805376598,
+          "0.5": 0.992209274171201,
+          "0.95": 1.0379502028049616
+        },
+        "params": {
+          "location": -0.007821232080459595,
+          "scale": 0.027400031685829163
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "uncalibrated_domain",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-5/RW_battery-3.mat#data/21"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": "dyad-original-retrospective-vehicle-anomaly-v2",
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": null,
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "multisource_fixed_loss_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "xjtu",
+      "physical_cell_id": "xjtu:Batch-6/Sim_satellite_battery-2",
+      "split": "dev",
+      "chemistry": "NCM",
+      "protocol_id": "Sim_satellite_battery",
+      "query_time": 7.0,
+      "visible_cutoff": 6.0,
+      "feature_max_time": 1.0,
+      "available_at": 6.0,
+      "reference_cutoff": 1.0,
+      "reference_capacity_Ah": 1.99,
+      "target_definition": "xjtu-rpt-reference-soh-v2",
+      "unit": "ratio",
+      "target_observed_at": 7.0,
+      "target_available_at": 7.0,
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1"
+      ],
+      "survival_time_unit": null,
+      "domain_index": 4,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 1.71283551134966
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "xjtu-rpt-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1"
+        ],
+        "quantiles": {
+          "0.05": 0.9328870969616104,
+          "0.5": 0.9654751321536642,
+          "0.95": 0.9992015473717012
+        },
+        "params": {
+          "location": -0.0351349338889122,
+          "scale": 0.020874904468655586
+        },
+        "calibrated_interval": {
+          "lower": null,
+          "upper": null,
+          "nominal_coverage": 0.8,
+          "status": "insufficient_calibration_objects",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1",
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/xjtu/extracted/Battery Dataset/Batch-6/Sim_satellite_battery-2.mat#data/1"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": "dyad-original-retrospective-vehicle-anomaly-v2",
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": "insufficient_calibration_class_objects",
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "multisource_fixed_loss_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "matr",
+      "physical_cell_id": "matr:el150800737234",
+      "split": "dev",
+      "chemistry": "LFP",
+      "protocol_id": "unknown",
+      "query_time": 11.0,
+      "visible_cutoff": 10.0,
+      "feature_max_time": 10.0,
+      "available_at": 10.0,
+      "reference_cutoff": 10.0,
+      "reference_capacity_Ah": 1.0525953,
+      "target_definition": "matr-official-chart-frozen-ordinal10-reference-soh-v2",
+      "unit": "ratio",
+      "target_observed_at": 11.0,
+      "target_available_at": 11.0,
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/matr/official_batch3_tests.json#test/5c86bdbefa2ede00015ddc17/summary/discharge_capacity/10"
+      ],
+      "survival_time_unit": null,
+      "domain_index": 1,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 1.4500752300614101
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "supported",
+        "target_definition": "matr-official-chart-frozen-ordinal10-reference-soh-v2",
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": "lognormal",
+        "calibration_version": "cqr-v2",
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/matr/official_batch3_tests.json#test/5c86bdbefa2ede00015ddc17/summary/discharge_capacity/10"
+        ],
+        "quantiles": {
+          "0.05": 0.8956422672326032,
+          "0.5": 0.9357058171878921,
+          "0.95": 0.9775614755482248
+        },
+        "params": {
+          "location": -0.06645414978265762,
+          "scale": 0.026604222133755684
+        },
+        "calibrated_interval": {
+          "lower": 0.7300882420171866,
+          "upper": 1.1431155007636415,
+          "nominal_coverage": 0.8,
+          "status": "finite",
+          "scope": "within-domain object exchangeability; unbounded if too few calibration objects"
+        }
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/reports/v2/sources/matr/official_batch3_tests.json#test/5c86bdbefa2ede00015ddc17/summary/discharge_capacity/10"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "unsupported",
+        "reason": "missing_confirmed_fault_labels",
+        "target_definition": "dyad-original-retrospective-vehicle-anomaly-v2",
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": null,
+        "params": null,
+        "calibration_version": null,
+        "calibration_status": "insufficient_calibration_class_objects",
+        "evidence_refs": []
+      }
+    }
+  },
+  {
+    "schema_version": "battery_prediction_v2",
+    "model_version": "multisource_fixed_loss_20261002:M2_joint_seed0",
+    "data_namespace": "experimental",
+    "query": {
+      "source_id": "dyad",
+      "physical_cell_id": "dyad:brand3:vehicle-432",
+      "split": "dev",
+      "chemistry": "unknown",
+      "chemistry_status": "unverified",
+      "protocol_id": "vehicle_charging",
+      "query_time": 45.0,
+      "visible_cutoff": 45.0,
+      "feature_max_time": 45.0,
+      "available_at": 45.0,
+      "time_basis": "source_charge_segment_number",
+      "reference_cutoff": null,
+      "target_definition": "dyad-original-retrospective-vehicle-anomaly-v2",
+      "unit": "class",
+      "target_observed_at": null,
+      "target_available_at": null,
+      "target_label_timing": "offline_retrospective_label",
+      "sensor_level": "vehicle",
+      "evidence_refs": [
+        "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/dyad/battery_brand3.tar.gz#battery_brand3/data/11416.pkl"
+      ],
+      "survival_time_unit": null,
+      "domain_index": 0,
+      "feature_schema": "battery_features_v2",
+      "data_namespace": "experimental",
+      "allowed_heads": [
+        "soh",
+        "rul",
+        "threshold_risk",
+        "efficiency",
+        "fault"
+      ]
+    },
+    "support": {
+      "status": "supported",
+      "reasons": [],
+      "ood_score": {
+        "kind": "uncalibrated_feature_distance",
+        "value": 0.49558523054494374
+      }
+    },
+    "heads": {
+      "soh": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/dyad/battery_brand3.tar.gz#battery_brand3/data/11416.pkl"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "efficiency": {
+        "support": "unsupported",
+        "target_definition": null,
+        "unit": "ratio",
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": [
+          "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/dyad/battery_brand3.tar.gz#battery_brand3/data/11416.pkl"
+        ],
+        "reason": "missing_legal_training_labels"
+      },
+      "rul": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "threshold_risk": {
+        "support": "unsupported",
+        "reason": "no_verified_physical_time_threshold_labels",
+        "target_definition": null,
+        "unit": null,
+        "horizon": null,
+        "distribution_kind": null,
+        "calibration_version": null,
+        "evidence_refs": []
+      },
+      "fault": {
+        "support": "supported",
+        "reason": null,
+        "target_definition": "dyad-original-retrospective-vehicle-anomaly-v2",
+        "unit": "probability",
+        "horizon": null,
+        "distribution_kind": "bernoulli",
+        "params": {
+          "probability": 0.00023771323321852833
+        },
+        "calibration_version": null,
+        "calibration_status": "insufficient_calibration_class_objects",
+        "evidence_refs": []
+      }
+    }
+  }
+]

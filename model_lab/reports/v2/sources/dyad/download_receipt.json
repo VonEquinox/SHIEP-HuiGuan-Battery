@@ -1,0 +1,13 @@
+{
+  "status": "verified",
+  "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/dyad/battery_brand3.tar.gz",
+  "resolved_download_url": "https://ndownloader.figshare.com/files/41519169",
+  "original_filename": "battery_brand3.tar.gz",
+  "bytes": 55469605,
+  "sha256": "afb5fb2a762cceb5627c112ed2d8d981590274e7f44239321d64384e317b4fd0",
+  "author_checksum": "md5:038e953f199bc86f356e03c88098df99",
+  "retrieved_at": "2026-10-01T16:23:38.299606+00:00",
+  "attempts": 1,
+  "prior_errors": [],
+  "transport_destination": "https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/41519169/battery_brand3.tar.gz"
+}

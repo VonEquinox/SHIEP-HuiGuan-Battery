@@ -1,0 +1,137 @@
+{
+  "archive": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/ch_batterygen/V1.0.7z",
+  "csv_members": 19478,
+  "uncompressed_bytes": 9283482402,
+  "buckets": {
+    "NCM/low_capacity": 600,
+    "LFP/low_capacity": 600,
+    "NCM/normal": 7586,
+    "LFP/normal": 8000,
+    "NCM/self_discharge": 713,
+    "LFP/self_discharge": 800,
+    "NCM/high_resistance": 579,
+    "LFP/high_resistance": 600
+  },
+  "selected": [
+    {
+      "path": "NCM/self_discharge/vin_10/vin_10_charge_1.csv",
+      "bytes": 110733,
+      "crc": "D42B7030"
+    },
+    {
+      "path": "LFP/self_discharge/vin_10/vin_10_charge_1.csv",
+      "bytes": 277078,
+      "crc": "5858D356"
+    },
+    {
+      "path": "NCM/self_discharge/vin_11/vin_11_charge_1.csv",
+      "bytes": 110836,
+      "crc": "31042AB0"
+    },
+    {
+      "path": "LFP/self_discharge/vin_11/vin_11_charge_1.csv",
+      "bytes": 398836,
+      "crc": "96863031"
+    },
+    {
+      "path": "NCM/self_discharge/vin_12/vin_12_charge_1.csv",
+      "bytes": 110753,
+      "crc": "B3A4EB98"
+    },
+    {
+      "path": "LFP/self_discharge/vin_12/vin_12_charge_1.csv",
+      "bytes": 288134,
+      "crc": "2DDC3316"
+    },
+    {
+      "path": "NCM/self_discharge/vin_1/vin_1_charge_1.csv",
+      "bytes": 436908,
+      "crc": "8F0BE8BB"
+    },
+    {
+      "path": "LFP/self_discharge/vin_1/vin_1_charge_1.csv",
+      "bytes": 2688619,
+      "crc": "2CEAC50F"
+    },
+    {
+      "path": "LFP/self_discharge/vin_2/vin_2_charge_1.csv",
+      "bytes": 161871,
+      "crc": "168101CF"
+    },
+    {
+      "path": "NCM/self_discharge/vin_2/vin_2_charge_1.csv",
+      "bytes": 111988,
+      "crc": "6C583F29"
+    },
+    {
+      "path": "LFP/self_discharge/vin_3/vin_3_charge_1.csv",
+      "bytes": 524463,
+      "crc": "E55825B2"
+    },
+    {
+      "path": "NCM/self_discharge/vin_3/vin_3_charge_1.csv",
+      "bytes": 110731,
+      "crc": "33B6914F"
+    },
+    {
+      "path": "LFP/self_discharge/vin_4/vin_4_charge_1.csv",
+      "bytes": 2412340,
+      "crc": "2A6E9E36"
+    },
+    {
+      "path": "NCM/self_discharge/vin_4/vin_4_charge_1.csv",
+      "bytes": 187905,
+      "crc": "B6EA4190"
+    },
+    {
+      "path": "NCM/self_discharge/vin_5/vin_5_charge_1.csv",
+      "bytes": 137822,
+      "crc": "6FF6CE5C"
+    },
+    {
+      "path": "LFP/self_discharge/vin_5/vin_5_charge_1.csv",
+      "bytes": 2088661,
+      "crc": "E1DFA4CB"
+    },
+    {
+      "path": "NCM/self_discharge/vin_6/vin_6_charge_1.csv",
+      "bytes": 110802,
+      "crc": "BF0E4C3E"
+    },
+    {
+      "path": "LFP/self_discharge/vin_6/vin_6_charge_1.csv",
+      "bytes": 1831047,
+      "crc": "4DB8EF95"
+    },
+    {
+      "path": "LFP/self_discharge/vin_7/vin_7_charge_1.csv",
+      "bytes": 1573016,
+      "crc": "A714073E"
+    },
+    {
+      "path": "NCM/self_discharge/vin_7/vin_7_charge_1.csv",
+      "bytes": 110819,
+      "crc": "F9507261"
+    },
+    {
+      "path": "LFP/self_discharge/vin_8/vin_8_charge_1.csv",
+      "bytes": 1408673,
+      "crc": "CC8C1137"
+    },
+    {
+      "path": "NCM/self_discharge/vin_8/vin_8_charge_1.csv",
+      "bytes": 112013,
+      "crc": "F75B4580"
+    },
+    {
+      "path": "LFP/self_discharge/vin_9/vin_9_charge_1.csv",
+      "bytes": 1848845,
+      "crc": "A020F44B"
+    },
+    {
+      "path": "NCM/self_discharge/vin_9/vin_9_charge_1.csv",
+      "bytes": 110760,
+      "crc": "C009C088"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "manifest": {
+    "schema_version": "battery-data-v2",
+    "created_at": "2026-10-01T16:50:19.374830+00:00",
+    "parser_version": "v2-data-1.0.0",
+    "namespace": "experimental",
+    "tables": {
+      "identity_map": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/dyad_brand3_20261002/identity_map.parquet",
+        "sha256": "1b9677bed875bfda8d7ecb51ce1b6f4e53e6feeca60056d09a8c19e15619e7e6",
+        "rows": 100
+      },
+      "cycles": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/dyad_brand3_20261002/cycles.parquet",
+        "sha256": "8b67fb02ed63cfcf022800db6620efeab96f816e75acdf7d89e6642268562a66",
+        "rows": 0
+      },
+      "segments": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/dyad_brand3_20261002/segments.parquet",
+        "sha256": "d6783cc6de1c2de7a15202f9bef4519c0d60e132a5fe3e5f852cd9f0d442a12c",
+        "rows": 800
+      },
+      "targets": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/dyad_brand3_20261002/targets.parquet",
+        "sha256": "b7df4f2ea63857006b33526a4908823ae6bbb4aaf1ce4baf262cfaac36589321",
+        "rows": 800
+      }
+    },
+    "sources": [
+      {
+        "source_id": "dyad",
+        "origin": "real_operational",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/dyad_brand3_numeric_20261002/snippets.parquet",
+        "sha256": "eb21e2a64355b60483c0a75d3fef6176f1755cbcc9f53ce9fa22e6ae22e7151e",
+        "parser_version": "v2-data-1.0.0"
+      }
+    ],
+    "quality_report": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/dyad_brand3_20261002/quality_report.json",
+    "split_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/dyad_brand3_20261002/split_manifest.json",
+    "target_units": {
+      "soh": "ratio",
+      "capacity": "Ah",
+      "rul": "cycle",
+      "efficiency": "ratio"
+    },
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ],
+    "split_created_before_parser": true
+  },
+  "manifest_sha256": "ac72a9cf0ec4da3e3ece1061cbc4c8022ccc53b498d7aac1215d4819c92b36db",
+  "split": {
+    "schema_version": "physical-split-v2",
+    "group_column": "physical_cell_id",
+    "seed": 20261001,
+    "ratios": [
+      0.6,
+      0.15,
+      0.1,
+      0.15
+    ],
+    "assignments": {
+      "dyad:brand3:vehicle-453": "train",
+      "dyad:brand3:vehicle-417": "train",
+      "dyad:brand3:vehicle-492": "train",
+      "dyad:brand3:vehicle-489": "train",
+      "dyad:brand3:vehicle-477": "train",
+      "dyad:brand3:vehicle-443": "train",
+      "dyad:brand3:vehicle-493": "train",
+      "dyad:brand3:vehicle-479": "train",
+      "dyad:brand3:vehicle-480": "train",
+      "dyad:brand3:vehicle-420": "train",
+      "dyad:brand3:vehicle-462": "train",
+      "dyad:brand3:vehicle-429": "train",
+      "dyad:brand3:vehicle-469": "train",
+      "dyad:brand3:vehicle-455": "train",
+      "dyad:brand3:vehicle-452": "train",
+      "dyad:brand3:vehicle-461": "train",
+      "dyad:brand3:vehicle-439": "train",
+      "dyad:brand3:vehicle-438": "train",
+      "dyad:brand3:vehicle-409": "train",
+      "dyad:brand3:vehicle-442": "train",
+      "dyad:brand3:vehicle-483": "train",
+      "dyad:brand3:vehicle-484": "train",
+      "dyad:brand3:vehicle-401": "train",
+      "dyad:brand3:vehicle-465": "train",
+      "dyad:brand3:vehicle-410": "train",
+      "dyad:brand3:vehicle-424": "train",
+      "dyad:brand3:vehicle-421": "train",
+      "dyad:brand3:vehicle-500": "train",
+      "dyad:brand3:vehicle-481": "train",
+      "dyad:brand3:vehicle-412": "train",
+      "dyad:brand3:vehicle-472": "train",
+      "dyad:brand3:vehicle-467": "train",
+      "dyad:brand3:vehicle-466": "train",
+      "dyad:brand3:vehicle-498": "train",
+      "dyad:brand3:vehicle-494": "train",
+      "dyad:brand3:vehicle-408": "train",
+      "dyad:brand3:vehicle-482": "train",
+      "dyad:brand3:vehicle-459": "train",
+      "dyad:brand3:vehicle-487": "train",
+      "dyad:brand3:vehicle-491": "train",
+      "dyad:brand3:vehicle-425": "train",
+      "dyad:brand3:vehicle-423": "train",
+      "dyad:brand3:vehicle-474": "train",
+      "dyad:brand3:vehicle-440": "train",
+      "dyad:brand3:vehicle-457": "train",
+      "dyad:brand3:vehicle-499": "train",
+      "dyad:brand3:vehicle-437": "train",
+      "dyad:brand3:vehicle-436": "train",
+      "dyad:brand3:vehicle-460": "train",
+      "dyad:brand3:vehicle-497": "train",
+      "dyad:brand3:vehicle-448": "train",
+      "dyad:brand3:vehicle-456": "train",
+      "dyad:brand3:vehicle-445": "train",
+      "dyad:brand3:vehicle-486": "train",
+      "dyad:brand3:vehicle-431": "train",
+      "dyad:brand3:vehicle-450": "train",
+      "dyad:brand3:vehicle-426": "train",
+      "dyad:brand3:vehicle-473": "train",
+      "dyad:brand3:vehicle-464": "train",
+      "dyad:brand3:vehicle-451": "train",
+      "dyad:brand3:vehicle-447": "dev",
+      "dyad:brand3:vehicle-490": "dev",
+      "dyad:brand3:vehicle-449": "dev",
+      "dyad:brand3:vehicle-413": "dev",
+      "dyad:brand3:vehicle-434": "dev",
+      "dyad:brand3:vehicle-488": "dev",
+      "dyad:brand3:vehicle-404": "dev",
+      "dyad:brand3:vehicle-432": "dev",
+      "dyad:brand3:vehicle-475": "dev",
+      "dyad:brand3:vehicle-402": "dev",
+      "dyad:brand3:vehicle-428": "dev",
+      "dyad:brand3:vehicle-468": "dev",
+      "dyad:brand3:vehicle-433": "dev",
+      "dyad:brand3:vehicle-430": "dev",
+      "dyad:brand3:vehicle-458": "dev",
+      "dyad:brand3:vehicle-415": "calibration",
+      "dyad:brand3:vehicle-419": "calibration",
+      "dyad:brand3:vehicle-416": "calibration",
+      "dyad:brand3:vehicle-476": "calibration",
+      "dyad:brand3:vehicle-470": "calibration",
+      "dyad:brand3:vehicle-446": "calibration",
+      "dyad:brand3:vehicle-478": "calibration",
+      "dyad:brand3:vehicle-485": "calibration",
+      "dyad:brand3:vehicle-427": "calibration",
+      "dyad:brand3:vehicle-496": "calibration",
+      "dyad:brand3:vehicle-422": "final",
+      "dyad:brand3:vehicle-406": "final",
+      "dyad:brand3:vehicle-407": "final",
+      "dyad:brand3:vehicle-403": "final",
+      "dyad:brand3:vehicle-441": "final",
+      "dyad:brand3:vehicle-414": "final",
+      "dyad:brand3:vehicle-435": "final",
+      "dyad:brand3:vehicle-418": "final",
+      "dyad:brand3:vehicle-405": "final",
+      "dyad:brand3:vehicle-463": "final",
+      "dyad:brand3:vehicle-471": "final",
+      "dyad:brand3:vehicle-495": "final",
+      "dyad:brand3:vehicle-411": "final",
+      "dyad:brand3:vehicle-454": "final",
+      "dyad:brand3:vehicle-444": "final"
+    },
+    "counts": {
+      "train": 60,
+      "dev": 15,
+      "calibration": 10,
+      "final": 15
+    },
+    "final_policy": "sealed until preregistered comparison; not for selection",
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ]
+  },
+  "audit": {
+    "schema_version": "data-audit-v2",
+    "manifest_sha256": "ac72a9cf0ec4da3e3ece1061cbc4c8022ccc53b498d7aac1215d4819c92b36db",
+    "passed": true,
+    "checks": [
+      "identity_map: hash verified, 100 rows",
+      "cycles: hash verified, 0 rows",
+      "segments: hash verified, 800 rows",
+      "targets: hash verified, 800 rows"
+    ],
+    "failures": [],
+    "registered_objects": 100,
+    "independent_objects": 100,
+    "measured_objects": 100,
+    "group_column": "physical_cell_id",
+    "split_counts": {
+      "train": 60,
+      "dev": 15,
+      "calibration": 10,
+      "final": 15
+    },
+    "scope": "structural provenance, grouped split and explicit query dependency audit; not proof of scientific model performance"
+  }
+}

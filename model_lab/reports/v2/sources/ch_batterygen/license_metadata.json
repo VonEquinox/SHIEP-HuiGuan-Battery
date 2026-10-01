@@ -1,0 +1,20 @@
+{
+  "license": {
+    "id": "CC-BY-NC-SA-4.0",
+    "name": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International"
+  },
+  "scope": "CH-BatteryGen published dataset; official README additional terms apply",
+  "source_url": "https://github.com/CH-BatteryGen/dataset-warehouse/blob/main/README.md",
+  "source_repository_url": "https://github.com/CH-BatteryGen/dataset-warehouse",
+  "source_html_sha256": "0ecacdc4151d429bec16253696f28cba8b4cdebbf05da52e662c2c1b9ffddc91",
+  "retrieved_at": "2026-10-01T16:15:59.137322+00:00",
+  "terms_summary": [
+    "Academic research, non-commercial use, or separately authorized purposes only.",
+    "Acknowledge the provider and respect its intellectual property rights.",
+    "Provider permission is required to transfer or distribute any part of the dataset, or use it commercially.",
+    "Respect privacy and applicable law; prohibited discriminatory, illegal or improper uses remain subject to provider terms."
+  ],
+  "terms_summary_is_paraphrase": true,
+  "full_source_snapshot_local_only": true,
+  "verification": "License declaration and terms observed in the official repository README HTML; refetch official source to review current terms."
+}

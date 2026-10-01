@@ -1,0 +1,105 @@
+{
+  "manifest": {
+    "schema_version": "battery-data-v2",
+    "created_at": "2026-10-01T16:45:29.707048+00:00",
+    "parser_version": "v2-data-1.0.0",
+    "namespace": "experimental",
+    "tables": {
+      "identity_map": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_arbin_cell_20261002/identity_map.parquet",
+        "sha256": "9142928a79faa4c2bd298ac58db64b71c8ea26fde018430c83f7e2f873c9c9e8",
+        "rows": 1
+      },
+      "cycles": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_arbin_cell_20261002/cycles.parquet",
+        "sha256": "af2e0c2814c4522a56b94e8bee6e2ee953f27c8cddaff5e644896f2f51090ff2",
+        "rows": 542
+      },
+      "segments": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_arbin_cell_20261002/segments.parquet",
+        "sha256": "01f1c9ce206b3dbd553739b9cae5910c5c8c78e35e1d54175d9c6de8e5d5a8d8",
+        "rows": 32
+      },
+      "targets": {
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_arbin_cell_20261002/targets.parquet",
+        "sha256": "344bbec964e12d2815b0546694f842252e5c9c1093a60658f2c097bda52d28a6",
+        "rows": 533
+      }
+    },
+    "sources": [
+      {
+        "source_id": "matr",
+        "path": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/raw/matr/2017-06-30_4_65C-44per_5C_CH22.csv",
+        "sha256": "cc90c837d8dec1a7ea1a8db54ea40b1fff18e8ce74bb3dfb90ef6b82cdee9b8c",
+        "bytes": 111327527,
+        "parser_version": "v2-data-1.0.0",
+        "origin": "real_experimental",
+        "source_test_id": "5c86bf28fa2ede00015ddd8d"
+      }
+    ],
+    "quality_report": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_arbin_cell_20261002/quality_report.json",
+    "split_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_arbin_cell_20261002/split_manifest.json",
+    "target_units": {
+      "soh": "ratio",
+      "capacity": "Ah",
+      "rul": "cycle",
+      "efficiency": "ratio"
+    },
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ],
+    "split_created_before_parser": true
+  },
+  "manifest_sha256": "e2c397b060899d42bc6206c0f377e7a56e1bb784912bc4c615e707d515f6cd51",
+  "split": {
+    "schema_version": "physical-split-v2",
+    "group_column": "physical_cell_id",
+    "seed": 20261001,
+    "ratios": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "assignments": {
+      "matr:el150800463245": "train"
+    },
+    "counts": {
+      "train": 1,
+      "dev": 0,
+      "calibration": 0,
+      "final": 0
+    },
+    "final_policy": "sealed until preregistered comparison; not for selection",
+    "protected_xjtu_cells": [
+      "Batch-4/R3_battery-5",
+      "Batch-5/RW_battery-5",
+      "Batch-6/Sim_satellite_battery-5"
+    ]
+  },
+  "audit": {
+    "schema_version": "data-audit-v2",
+    "manifest_sha256": "e2c397b060899d42bc6206c0f377e7a56e1bb784912bc4c615e707d515f6cd51",
+    "passed": true,
+    "checks": [
+      "identity_map: hash verified, 1 rows",
+      "cycles: hash verified, 542 rows",
+      "segments: hash verified, 32 rows",
+      "targets: hash verified, 533 rows"
+    ],
+    "failures": [],
+    "registered_objects": 1,
+    "independent_objects": 1,
+    "measured_objects": 1,
+    "group_column": "physical_cell_id",
+    "split_counts": {
+      "train": 1,
+      "dev": 0,
+      "calibration": 0,
+      "final": 0
+    },
+    "scope": "structural provenance, grouped split and explicit query dependency audit; not proof of scientific model performance"
+  }
+}

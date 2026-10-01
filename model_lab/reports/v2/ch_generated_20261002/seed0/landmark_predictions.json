@@ -1,0 +1,1298 @@
+{
+  "train": [
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_10",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_10",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_10:vin_10_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.10202913261043779,
+        0.22627670645429965,
+        0.07070590671804844,
+        0.6009882542172141
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_103",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_103",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_103:vin_103_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.1042706343943705,
+        0.1114734432621636,
+        0.6659414444973576,
+        0.11831447784610827
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_104",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_104",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_104:vin_104_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.058161120963944705,
+        0.060994615928328375,
+        0.7036102676164572,
+        0.17723399549126972
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_105",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_105",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_105:vin_105_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.08352225325394264,
+        0.1480588353143891,
+        0.6865253922552635,
+        0.08189351917640458
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_106",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_106",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_106:vin_106_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.0463108283836557,
+        0.07434552518613687,
+        0.8009259328499878,
+        0.07841771358021968
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_107",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_107",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_107:vin_107_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.04262220337905902,
+        0.07173913103862799,
+        0.8033702890147932,
+        0.08226837656751979
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_11",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_11",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_11:vin_11_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.08793422353181775,
+        0.17957689704006027,
+        0.09190127422148256,
+        0.6405876052066394
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_110",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_110",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_110:vin_110_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.043788241706110446,
+        0.0715146805383285,
+        0.7769827041362705,
+        0.10771437361929045
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_111",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_111",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_111:vin_111_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.08022622114595629,
+        0.22878510523427087,
+        0.6267356587003585,
+        0.06425301491941433
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_2",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_2",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_2:vin_2_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.05028210801980575,
+        0.07964221240363896,
+        0.17347139084323066,
+        0.6966042887333246
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_4",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_4",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_4:vin_4_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.09601731725866243,
+        0.07879511027968812,
+        0.19013831546786825,
+        0.6350492569937811
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_43",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_43",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_43:vin_43_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.673977898148464,
+        0.17831322222100174,
+        0.05766223857240485,
+        0.09004664105812939
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_44",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_44",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_44:vin_44_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.6872555406882004,
+        0.14012622567409302,
+        0.06226046702325677,
+        0.1103577666144498
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_45",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_45",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_45:vin_45_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.7664952930257204,
+        0.12590965890913355,
+        0.05000196942462098,
+        0.05759307864052504
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_46",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_46",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_46:vin_46_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.6704523210428585,
+        0.18194928477695077,
+        0.06310189223332174,
+        0.08449650194686908
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_47",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_47",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_47:vin_47_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.8292231515584031,
+        0.07010433921480995,
+        0.053711630498989,
+        0.046960878727797924
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_48",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_48",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_48:vin_48_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.648140191135023,
+        0.2236924195134407,
+        0.0637254332751967,
+        0.06444195607633972
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_49",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_49",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_49:vin_49_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.7982655640089719,
+        0.08507606644052199,
+        0.044409844195022585,
+        0.07224852535548357
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_52",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_52",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_52:vin_52_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.7586606824512904,
+        0.1105300683759921,
+        0.06350669437021876,
+        0.06730255480249896
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_71",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_71",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_71:vin_71_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.12790795482625228,
+        0.6087472528203318,
+        0.08150431224370917,
+        0.18184048010970677
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_74",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_74",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_74:vin_74_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.1156635776373852,
+        0.6814471765373883,
+        0.05034166186619762,
+        0.15254758395902893
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_75",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_75",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_75:vin_75_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.1633115082146371,
+        0.6443313241087547,
+        0.07762689741782063,
+        0.11473027025878751
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_76",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_76",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_76:vin_76_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.1546215745865776,
+        0.6579716618921766,
+        0.07492502253747753,
+        0.11248174098376816
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_78",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_78",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_78:vin_78_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.10343601667656932,
+        0.6906673400246086,
+        0.05643746925839773,
+        0.1494591740404242
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_79",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_79",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_79:vin_79_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.14915110736245926,
+        0.6484165495482361,
+        0.10281648573529292,
+        0.09961585735401167
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_8",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_8",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_8:vin_8_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.07139081646909363,
+        0.08192835397421525,
+        0.14412147577153397,
+        0.7025593537851572
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_80",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_80",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_80:vin_80_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.061810978887259775,
+        0.7407099767852738,
+        0.04982561241873062,
+        0.14765343190873595
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_81",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_81",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_81:vin_81_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.17500384442894118,
+        0.6631902182035645,
+        0.08234699608516834,
+        0.07945894128232588
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_82",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_82",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_82:vin_82_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.08803469205250111,
+        0.6773088342699656,
+        0.17630834801901882,
+        0.058348125658514514
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_10",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_10",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_10:vin_10_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.00138828398166936,
+        0.0001815983588162132,
+        0.010974939429556211,
+        0.9874551782299582
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_103",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_103",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_103:vin_103_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.0020068232370338166,
+        0.00037018462943531416,
+        0.995343223166594,
+        0.0022797689669367825
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_104",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_104",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_104:vin_104_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.00044938823404825815,
+        0.00042579826533345434,
+        0.9987582499220674,
+        0.0003665635785509893
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_105",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_105",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_105:vin_105_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.00443378150514551,
+        0.0006195144531939405,
+        0.9918062475022276,
+        0.0031404565394330458
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_106",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_106",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_106:vin_106_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.0015836554675060146,
+        9.782882778456365e-05,
+        0.997707265190071,
+        0.0006112505146383454
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_107",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_107",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_107:vin_107_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.00016128651827147748,
+        7.784128490049808e-05,
+        0.9989842722728409,
+        0.0007765999239870768
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_11",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_11",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_11:vin_11_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.001910343425664778,
+        0.00012272148709663945,
+        0.0013643278672081677,
+        0.9966026072200304
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_110",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_110",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_110:vin_110_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.00047201358213991854,
+        0.00037601864420439934,
+        0.9976044349153691,
+        0.0015475328582866448
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_111",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_111",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_111:vin_111_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "train",
+      "probabilities": [
+        0.0030527342778453453,
+        0.002047081272803081,
+        0.9793834307607697,
+        0.015516753688581878
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_2",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_2",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_2:vin_2_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.00012411823457076572,
+        7.268652542878058e-05,
+        0.001527554742817855,
+        0.9982756404971826
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_4",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_4",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_4:vin_4_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.009316181404920873,
+        0.0016467956075537887,
+        0.001578356757162257,
+        0.987458666230363
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_43",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_43",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_43:vin_43_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.9959992952102036,
+        0.00034618282819333195,
+        0.0032653131501100318,
+        0.0003892088114931184
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_44",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_44",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_44:vin_44_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.9964189133303646,
+        0.0028777024723083966,
+        0.00032466649750012366,
+        0.00037871769982681075
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_45",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_45",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_45:vin_45_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.9948720271814926,
+        0.0018760328055289152,
+        0.0017881617162652213,
+        0.0014637782967131504
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_46",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_46",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_46:vin_46_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.9953395342983061,
+        0.001461547670982919,
+        0.002679992788222249,
+        0.0005189252424888165
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_47",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_47",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_47:vin_47_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.9997510043400242,
+        4.949078030434855e-05,
+        0.00014955738460989995,
+        4.994749506145292e-05
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_48",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_48",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_48:vin_48_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.9943025056035856,
+        0.0028865823180370008,
+        0.002681213759177674,
+        0.00012969831919970812
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_49",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_49",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_49:vin_49_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.9986173405957954,
+        0.000690458488191291,
+        0.0004662847147703061,
+        0.00022591620124313955
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_52",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_52",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_52:vin_52_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "train",
+      "probabilities": [
+        0.9964544607263022,
+        0.0003495282028266601,
+        0.0026305112951610326,
+        0.0005654997757101499
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_71",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_71",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_71:vin_71_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.00017900591897424388,
+        0.9997059099993063,
+        8.148988279357456e-05,
+        3.359419892585528e-05
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_74",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_74",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_74:vin_74_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.00020275674618828386,
+        0.9995385891172172,
+        3.5186310690362806e-05,
+        0.00022346782590418972
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_75",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_75",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_75:vin_75_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.0004327941721592901,
+        0.9988816284688957,
+        9.764896936069697e-05,
+        0.0005879283895844119
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_76",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_76",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_76:vin_76_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.00035263900828150083,
+        0.9991658852163593,
+        3.7870346236168955e-05,
+        0.0004436054291230242
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_78",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_78",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_78:vin_78_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.0001627401200037134,
+        0.9994929399452598,
+        0.00023346777115224005,
+        0.00011085216358411826
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_79",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_79",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_79:vin_79_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.0004327941721592901,
+        0.9988816284688957,
+        9.764896936069697e-05,
+        0.0005879283895844119
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_8",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_8",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_8:vin_8_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "train",
+      "probabilities": [
+        0.0007582691638471004,
+        0.000530737084798701,
+        0.003676503046804402,
+        0.9950344907045497
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_80",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_80",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_80:vin_80_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.00015213175010376373,
+        0.9997081001090239,
+        0.00011949414729717778,
+        2.027399357512233e-05
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_81",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_81",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_81:vin_81_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.003361381099791788,
+        0.9936130058845398,
+        0.0021032639021404164,
+        0.0009223491135278508
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_82",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_82",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_82:vin_82_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "train",
+      "probabilities": [
+        0.0001326865390028529,
+        0.9989687908443527,
+        0.0008355577367295211,
+        6.296487991500933e-05
+      ]
+    }
+  ],
+  "dev": [
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_1",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_1",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_1:vin_1_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "dev",
+      "probabilities": [
+        0.12529982141594834,
+        0.08495498900012774,
+        0.6798504183769918,
+        0.10989477120693217
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_102",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_102",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_102:vin_102_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "dev",
+      "probabilities": [
+        0.06340329261046622,
+        0.11627390523176315,
+        0.2616075873706248,
+        0.5587152147871458
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_109",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_109",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_109:vin_109_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "dev",
+      "probabilities": [
+        0.10724485608977759,
+        0.1357574178443857,
+        0.5827206397856426,
+        0.17427708628019417
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_112",
+      "physical_cell_id": "ch_batterygen:LFP:normal:vin_112",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:normal:vin_112:vin_112_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "dev",
+      "probabilities": [
+        0.06003203414871248,
+        0.15244641649235086,
+        0.5339073862906244,
+        0.2536141630683123
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_12",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_12",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_12:vin_12_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "dev",
+      "probabilities": [
+        0.1117999352565257,
+        0.5816166142424744,
+        0.05984884031888662,
+        0.24673461018211337
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_72",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_72",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_72:vin_72_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "dev",
+      "probabilities": [
+        0.1466486038274435,
+        0.27861672562691014,
+        0.5201312251958659,
+        0.05460344534978052
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_9",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_9",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_9:vin_9_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "dev",
+      "probabilities": [
+        0.06646642880596475,
+        0.0970313670013483,
+        0.7213049630199648,
+        0.11519724117272219
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_1",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_1",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_1:vin_1_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "dev",
+      "probabilities": [
+        0.9653661872368586,
+        0.007411811557307915,
+        0.026349731548570406,
+        0.000872269657263114
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_102",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_102",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_102:vin_102_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "dev",
+      "probabilities": [
+        0.009038416669005362,
+        0.009625347010464315,
+        0.8048566013698736,
+        0.17647963495065674
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_109",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_109",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_109:vin_109_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "dev",
+      "probabilities": [
+        0.0010120785820138096,
+        0.001059517283572149,
+        0.9381619250753347,
+        0.05976647905907926
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_112",
+      "physical_cell_id": "ch_batterygen:NCM:normal:vin_112",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:normal:vin_112:vin_112_charge_1",
+      "class_name": "normal",
+      "label": 2,
+      "split": "dev",
+      "probabilities": [
+        0.5021758753705714,
+        0.020274011139866207,
+        0.41703291846705065,
+        0.06051719502251175
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_12",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_12",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_12:vin_12_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "dev",
+      "probabilities": [
+        0.013362912738659558,
+        0.005562564258319934,
+        0.7062734699938086,
+        0.274801053009212
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_72",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_72",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_72:vin_72_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "dev",
+      "probabilities": [
+        0.00012036618320441126,
+        0.9997378819926165,
+        8.626138912635746e-05,
+        5.5490435052514514e-05
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_9",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_9",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_9:vin_9_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "dev",
+      "probabilities": [
+        0.008787930355763285,
+        0.013537375585066194,
+        0.9714786874428378,
+        0.006196006616332665
+      ]
+    }
+  ],
+  "final": [
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_3",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_3",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_3:vin_3_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "final",
+      "probabilities": [
+        0.26071033596113774,
+        0.45876715075852265,
+        0.11120198266389154,
+        0.16932053061644803
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_41",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_41",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_41:vin_41_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "final",
+      "probabilities": [
+        0.59781435796725,
+        0.2382954776922071,
+        0.07244071377750654,
+        0.09144945056303634
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_42",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_42",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_42:vin_42_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "final",
+      "probabilities": [
+        0.3944100933527059,
+        0.346197655503963,
+        0.08890811324017492,
+        0.1704841379031562
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_5",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_5",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_5:vin_5_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "final",
+      "probabilities": [
+        0.06751667770639828,
+        0.09345806303848718,
+        0.34356059476802037,
+        0.49546466448709414
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_51",
+      "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_51",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:high_resistance:vin_51:vin_51_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "final",
+      "probabilities": [
+        0.4655381362386494,
+        0.3474732122334222,
+        0.10653689097534987,
+        0.08045176055257855
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_7",
+      "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_7",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:self_discharge:vin_7:vin_7_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "final",
+      "probabilities": [
+        0.06539734927465436,
+        0.1149161310068775,
+        0.6477767834082792,
+        0.17190973631018902
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_77",
+      "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_77",
+      "chemistry": "LFP",
+      "segment_id": "ch_batterygen:LFP:low_capacity:vin_77:vin_77_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "final",
+      "probabilities": [
+        0.21332316106961743,
+        0.4600530480941967,
+        0.11491796663288231,
+        0.2117058242033037
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_3",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_3",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_3:vin_3_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "final",
+      "probabilities": [
+        0.013236571027731658,
+        0.0007617833781508074,
+        0.7378241878684361,
+        0.24817745772568153
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_41",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_41",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_41:vin_41_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "final",
+      "probabilities": [
+        0.017809224440767824,
+        0.00110866496064489,
+        0.974936210320552,
+        0.006145900278035247
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_42",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_42",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_42:vin_42_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "final",
+      "probabilities": [
+        0.08662386411293668,
+        0.09640380799443822,
+        0.7957108631241715,
+        0.02126146476845368
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_5",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_5",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_5:vin_5_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "final",
+      "probabilities": [
+        0.5755418808791327,
+        0.022684139583656716,
+        0.23148464822713521,
+        0.1702893313100753
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_51",
+      "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_51",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:high_resistance:vin_51:vin_51_charge_1",
+      "class_name": "high_resistance",
+      "label": 0,
+      "split": "final",
+      "probabilities": [
+        0.015274360431722029,
+        0.007881076097852277,
+        0.9675757990322875,
+        0.009268764438138075
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_7",
+      "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_7",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:self_discharge:vin_7:vin_7_charge_1",
+      "class_name": "self_discharge",
+      "label": 3,
+      "split": "final",
+      "probabilities": [
+        0.005957970625360656,
+        0.005407946693475046,
+        0.5347165542691596,
+        0.4539175284120046
+      ]
+    },
+    {
+      "root_scenario_id": "ch_batterygen:conservative-vin_77",
+      "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_77",
+      "chemistry": "NCM",
+      "segment_id": "ch_batterygen:NCM:low_capacity:vin_77:vin_77_charge_1",
+      "class_name": "low_capacity",
+      "label": 1,
+      "split": "final",
+      "probabilities": [
+        0.0008020437991625518,
+        0.9984484144249588,
+        0.0006845567992986647,
+        6.498497657994148e-05
+      ]
+    }
+  ]
+}

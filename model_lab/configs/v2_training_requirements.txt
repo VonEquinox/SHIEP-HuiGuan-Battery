@@ -1,0 +1,10 @@
+# Exact environment used by xjtu_development_20261002. V1 runtime is separately pinned.
+numpy==2.5.3
+scipy==1.18.1
+pandas==2.3.3
+scikit-learn==1.9.1
+ngboost==0.5.11
+torch==2.14.1
+h5py==3.16.0
+pyarrow==23.0.1
+PyYAML==6.0.3
