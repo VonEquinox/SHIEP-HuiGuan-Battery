@@ -120,3 +120,7 @@ smoke 固定一份 JSON provider 调用/报告、最多四份 Skill 正文、相
 ```
 
 **57 passed in 9.46s**（核心 29、GEPA 服务 12、LLM 计账 8、API GEPA 8）。新验证均为离线/MockTransport，不额外花费云端调用，不声称新的诊断提升或真实部署结论。运行模块与 `active_tests` 在该结果后冻结，供独立实验文档 `docs/V2_AGENT_EXPERIMENT.md` 记录更大实际实验。
+
+## Post-pilot 通用数字词法修复
+
+独立手工中英文用例确认旧 Unicode `\w` 边界会将 `温度18.25` 错取为 `25`，并误抓 ID/时间碎片。完成完整 signed/scientific token 扫描、CJK 邻接、明确紧邻单位和 ID/date 过滤；来源文本共用同一规则，物理值比对容差未放宽。独立复查再补齐句末英文句点、范围双端点、千位分组和非有限指数拒绝。最终新 38 项手工回归及前述必要组合实际为 **95 passed in 11.95s**。详细独立证据见 [V2_REPORT_VALIDATION_FIX.md](V2_REPORT_VALIDATION_FIX.md)。这是后续软件修复：没有读取 sealed/pilot 数据、调用 LLM、改动冻结 artifact 或重评分原实验。

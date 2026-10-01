@@ -18,6 +18,46 @@ FORBIDDEN_CONTEXT_KEYS = frozenset({"hidden_truth", "hidden", "oracle", "branche
 EDITABLE_SKILL_FIELDS = frozenset({"instructions", "routing_description", "evidence_checklist",
                                   "retrieval_query_template", "inspection_selection_hints"})
 
+# Scan a complete signed/scientific number first. A boundary assertion inside
+# this expression would let regex backtracking reinterpret a decimal suffix.
+_NUMBER_VALUE = r"[-+]?(?:\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?|\.\d+)(?:[eE][-+]?\d+)?"
+_NUMBER_TOKEN = re.compile(rf"(?P<first>{_NUMBER_VALUE})(?:\s*[-–~～]\s*(?P<second>{_NUMBER_VALUE}))?")
+_DATE_TIME_TOKEN = re.compile(
+    r"(?<![0-9])(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}(?:[T ]\d{1,2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:?\d{2})?)?"
+    r"|\d{4}年\d{1,2}月\d{1,2}日|\d{1,2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:?\d{2})?)(?![0-9])")
+_COMPACT_UNIT = re.compile(r"(?:mAh|kWh|mWh|Ah|Wh|mV|kV|mA|kA|mW|kW|mΩ|kΩ|ohm|kohm|mohm|ms|min|Hz|kHz|MHz|Pa|kPa|MPa|kg|mg|mm|cm|km|um|nm|mL|mol|rpm|V|A|W|C|s|h|K|g|m|L)(?![A-Za-z0-9_])")
+
+
+def _text_numbers(text: str) -> list[float]:
+    """Physical-number tokens, with CJK adjacency but no ID/date fragments.
+
+    This checks literal cited values; it does not infer unit conversions or
+    validate the meaning of a textual conclusion.
+    """
+    text = text.replace("−", "-")
+    dates = [match.span() for match in _DATE_TIME_TOKEN.finditer(text)]
+    values = []
+    for match in _NUMBER_TOKEN.finditer(text):
+        start, end = match.span()
+        if any(start < stop and end > begin for begin, stop in dates):
+            continue
+        left = text[start - 1] if start else ""
+        right = text[end] if end < len(text) else ""
+        if left and (left.isascii() and (left.isalnum() or left in "_.-")):
+            continue
+        if right and right.isascii() and (right.isalnum() or right in "_.-"):
+            sentence_period = right == "." and (end + 1 == len(text) or not (text[end + 1].isascii() and (text[end + 1].isalnum() or text[end + 1] in "_.-")))
+            if not sentence_period and not _COMPACT_UNIT.match(text, end):
+                continue
+        for token in (match.group("first"), match.group("second")):
+            if token is None:
+                continue
+            value = float(token.replace(",", ""))
+            if not math.isfinite(value):
+                raise ValueError("nonfinite quantitative assertion or source")
+            values.append(value)
+    return values
+
 
 class Strict(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
@@ -140,19 +180,20 @@ def validate_report(report: dict[str, Any], *, evidence_ids: set[str], test_ids:
         if evidence_records is not None:
             # Quantitative assertions must repeat program/measurement numbers.
             # Text conclusions still require separate semantic/expert review.
-            numeric_tokens = re.findall(r"(?<![\w-])[-+]?\d+(?:\.\d+)?(?![\w-])", fact.claim)
+            numeric_tokens = _text_numbers(fact.claim)
             source_numbers: set[float] = set()
             def collect_numbers(value):
                 if isinstance(value, (int, float)) and not isinstance(value, bool):
                     source_numbers.add(float(value))
                 elif isinstance(value, dict):
-                    for child in value.values():
-                        collect_numbers(child)
+                    for key, child in value.items():
+                        if key != "id" and not key.endswith(("_id", "_ids")):
+                            collect_numbers(child)
                 elif isinstance(value, list):
                     for child in value:
                         collect_numbers(child)
                 elif isinstance(value, str):
-                    source_numbers.update(float(v) for v in re.findall(r"(?<![\w-])[-+]?\d+(?:\.\d+)?(?![\w-])", value))
+                    source_numbers.update(_text_numbers(value))
             for eid in fact.evidence_ids:
                 collect_numbers((evidence_records or {}).get(eid, {}))
             if any(not any(math.isclose(float(n), source, abs_tol=1e-9) for source in source_numbers) for n in numeric_tokens):

@@ -1,0 +1,18 @@
+{
+  "event": "post-pilot general-purpose numeric tokenizer correction",
+  "original_frozen_runtime_commit": "ce4f87fc987eb4739e4fe5972f115b92d4a4c052",
+  "original_protocol_sha256": "cc626a7d4681ad32007fd56b067d1ac8470271ffec334e6d7844761e76282b38",
+  "original_contracts_sha256": "4ef7608d7b56cd474e07305e24e7e46aa0ae633ac4c0fffda20fcbc2f6c84c63",
+  "post_fix_contracts_sha256": "ccf8a9759e5d67d49c3e85f2be0b030346515038236b0bff81f61b72f963f1d3",
+  "preserved_results_sha256": "c832e67ee2afb21a7651c4275d6cd3457af0a922e7a98ecf0b4ecb06c60a9cd3",
+  "preserved_summary_sha256": "7c51802f598ce8f5ef8942fa9b19dafb828458f4337f24509309c209a421ced7",
+  "preserved_audit_sha256": "3e8989a212573d15ce8ed3b80d5c6bc7ea10253ff5308082f7ac8b423fabf40f",
+  "previous_runtime_hash_check_was_successful": true,
+  "current_runtime_old_protocol_audit_rejected": true,
+  "additional_provider_calls": 0,
+  "sealed_scores_changed": false,
+  "optimizer_feedback_from_sealed": false,
+  "validation": "38 independent handwritten numeric lexer cases plus 57 required regressions = 95 passed in 11.95s; no pilot/sealed reads",
+  "interpretation": "Original measurements and program scores remain archived; the corrected production validator belongs to a later software version.",
+  "frozen_artifacts_commit": "6f9a9274d9960b1d7873d3eeb2312bce51ddf061"
+}
