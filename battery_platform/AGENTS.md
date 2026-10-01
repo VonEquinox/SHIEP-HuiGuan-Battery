@@ -1,5 +1,20 @@
 # Greenfield application boundaries
 
+## V2 authorization — 2026-10-01
+
+The current user explicitly authorizes implementing the two root V2 design
+documents with collaborating development agents on branch `DEV`, including
+new model_lab V2 modules, synthetic data/Skills, cloud OpenAI-compatible API
+tests, uv dependencies and incremental commits. This supersedes the earlier
+directory-only, no-commit and no-paid-service restrictions below for this task.
+Never commit credentials. Keep protected XJTU holdouts sealed, preserve V1
+artifacts/results and distinguish experimental from demo_synthetic data.
+The application itself still uses a single operational Agent, human approval
+for official dispatch, automatic validated context evolution and independent
+Carbon. Record every implementation commit in docs/V2_IMPLEMENTATION_LOG.md.
+
+## Historical V1 authorization
+
 The user explicitly authorized a complete greenfield application on 2026-09-25.
 Write only in `battery_platform/`. Do not inspect, copy, modify, or migrate the
 legacy application, SQL or previous product requirements. They are not inputs.
