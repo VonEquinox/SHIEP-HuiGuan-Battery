@@ -1,0 +1,26 @@
+<view class="screen">
+  <view class="card"><view class="row"><view class="title">{{order.title}}</view><view class="badge">{{order.status}}</view></view>
+    <view>{{order.asset.name}} · {{order.asset.code}}</view><view class="muted">工单 #{{orderId}} · 版本 {{order.version}} · 截止 {{order.due_at || '未指定'}}</view>
+    <view class="muted">任务要求：{{order.description || order.resolution || '以授权检查集合和报告为准'}}</view>
+    <view class="actions"><button wx:if="{{order.status === 'ASSIGNED'}}" data-action="accept" bindtap="transition" disabled="{{busy}}">接单</button><button wx:if="{{order.status === 'ACCEPTED'}}" data-action="start" bindtap="transition" disabled="{{busy}}">开始检查</button></view>
+  </view>
+  <view wx:if="{{legacy}}" class="warning">此任务没有 V2 已批准检查集合，按原工单流程处理；可查看原报告及上传证据，不伪造检查轮次。</view>
+  <button wx:if="{{legacy}}" class="secondary" data-page="inspection" bindtap="navigate">上传原工单本次证据</button>
+  <view wx:if="{{inspection}}" class="card"><view class="title">本轮授权</view>
+    <view>当前轮次 {{inspection.current_round || '无开放轮次'}} / {{inspection.max_rounds}}</view>
+    <view wx:for="{{inspection.assets}}" wx:key="asset_id" class="muted">{{item.name}} · {{item.installation_id}}</view>
+    <view wx:for="{{inspection.allowed_tests}}" wx:key="test_id" class="row"><view>{{item.label || item.test_id}}</view><view class="badge">已授权</view></view>
+    <view class="divider"></view><view class="status">{{verified ? '已核验当前安装身份' : '尚未扫码核验'}}</view>
+    <button class="secondary" data-page="scan" bindtap="navigate">扫码确认安装身份</button>
+    <button data-page="inspection" bindtap="navigate" disabled="{{!inspection.current_round || (order.status !== 'ACCEPTED' &amp;&amp; order.status !== 'IN_PROGRESS')}}">填写本轮观察与照片</button>
+    <button class="secondary" data-page="diagnosis" bindtap="navigate">查看往返诊断与下一步</button>
+    <button class="secondary" bindtap="submitRound" disabled="{{!inspection.current_round || !verified}}">提交完整本轮</button>
+  </view>
+  <view class="card"><view class="title">处理说明与独立复核</view>
+    <textarea value="{{note}}" bindinput="note" placeholder="填写处理结果或退回原因；本轮提交不等于最终验收"/>
+    <button wx:if="{{order.status === 'IN_PROGRESS'}}" data-action="resolve" bindtap="transition" disabled="{{busy || pending > 0}}">提交处理结果，等待独立验收</button>
+    <button wx:if="{{order.status === 'ASSIGNED' || order.status === 'ACCEPTED'}}" class="danger" data-action="reject" bindtap="transition" disabled="{{busy}}">填写原因并退回任务</button>
+    <view class="muted">处理后由 Web 调度或管理员独立验收。本人不能自验收。V1 处理提交需要本次开始后本人上传的证据附件。</view>
+    <view wx:for="{{events}}" wx:key="id" class="muted">{{item.created_at}} · {{item.actor}} · {{item.to_status}} · {{item.note}}</view>
+  </view><button class="secondary" data-page="outbox" bindtap="navigate">本工单待同步 · {{pending}}</button>
+</view>

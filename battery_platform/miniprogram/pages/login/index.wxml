@@ -1,0 +1,14 @@
+<view class="screen">
+  <view class="badge">TEST · 独立演示环境</view><view class="brand">现场检查</view>
+  <view class="subtitle">登录后查看本人获派任务。账号由平台创建，移动会话有效期由服务端控制。</view>
+  <view class="card"><view class="title">连接环境</view>
+    <label class="label">手机可访问的 HTTPS 后端地址</label><input value="{{apiBaseUrl}}" data-field="apiBaseUrl" bindinput="field" placeholder="https://battery-test.example.com"/>
+    <button class="secondary" bindtap="checkConnection">检查连接</button><view class="muted">{{connection}}</view>
+  </view>
+  <view class="card"><view class="title">{{mode}}</view>
+    <label class="label">技术员用户名</label><input value="{{username}}" data-field="username" bindinput="field" autocomplete="off"/>
+    <label class="label">密码</label><input password="true" value="{{password}}" data-field="password" bindinput="field"/>
+    <button loading="{{busy}}" disabled="{{busy}}" bindtap="login">登录测试平台</button>
+    <view class="muted">会话只保存在运行内存，重新打开需登录。此登录不代表微信身份认证。</view>
+  </view>
+</view>

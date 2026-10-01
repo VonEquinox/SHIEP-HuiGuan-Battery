@@ -1,0 +1,12 @@
+<view class="screen"><view class="row"><view class="brand">我的任务</view><view class="badge">{{username}}</view></view>
+  <view class="subtitle">按截止时间排序 · 仅本人获派工单</view>
+  <view class="actions"><button class="secondary" data-status="" bindtap="filter">全部</button><button class="secondary" data-status="ASSIGNED" bindtap="filter">待接单</button><button class="secondary" data-status="IN_PROGRESS" bindtap="filter">执行中</button></view>
+  <button class="secondary" bindtap="outbox">本地待同步 · {{pending}}</button>
+  <view wx:if="{{limitNotice}}" class="warning">{{limitNotice}}</view>
+  <view wx:for="{{tasks}}" wx:key="id" class="card" data-id="{{item.id}}" bindtap="open">
+    <view class="row"><view class="title">{{item.title}}</view><view class="status">{{item.status}}</view></view>
+    <view>{{item.asset_name}} · {{item.asset_code}}</view><view class="muted">工单 #{{item.id}} · 版本 {{item.version}}</view>
+    <view class="muted">截止：{{item.due_at || '未指定'}} · 优先级 {{item.priority || '未指定'}}</view>
+  </view><view wx:if="{{!tasks.length &amp;&amp; !busy}}" class="empty">当前没有符合筛选条件的获派任务。</view>
+  <button class="secondary" bindtap="logout">退出登录</button>
+</view>

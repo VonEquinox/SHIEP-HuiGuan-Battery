@@ -1,0 +1,20 @@
+<view class="screen"><view class="card"><view class="title">轮次与独立验收</view>
+  <view>工单状态 {{inspection.order.status}} · 当前开放轮 {{inspection.current_round || '暂无'}} / {{inspection.max_rounds}}</view>
+  <view class="muted">本轮提交不等于最终验收。独立验收记录和退回原因可在工单事件中查看。</view><button class="secondary" bindtap="order">查看处理与验收记录</button>
+  <button wx:if="{{inspection.current_round}}" bindtap="inspect">填写下一项已授权检查</button>
+</view>
+  <view wx:if="{{latestRun}}" class="card"><view class="title">重判作业 · {{latestRun.status}}</view><text class="json" selectable="true">{{latestRun.detail}}</text></view>
+  <view wx:for="{{reports}}" wx:key="id" class="card"><view class="row"><view class="title">Agent 报告 r{{item.report_version}}</view><view class="badge">{{item.report.status}}</view></view>
+    <view>{{item.summaryText}}</view><view class="muted">Context {{item.context_version || '未提供'}} · 生成 {{item.created_at}}</view>
+    <view class="label">可见事实与证据</view><view wx:for="{{item.factItems}}" wx:for-item="fact" wx:key="index" class="muted">{{fact.text}} · {{fact.references}}</view>
+    <view class="label">候选解释</view><view wx:for="{{item.hypothesisItems}}" wx:for-item="hypothesis" wx:key="index" class="muted">{{hypothesis.text}} · {{hypothesis.status}} · {{hypothesis.refs}}</view>
+    <view class="label">仍未知</view><view wx:for="{{item.unknownItems}}" wx:for-item="unknown" wx:key="index" class="warning">{{unknown}}</view>
+    <view class="label">下一步建议</view><view wx:for="{{item.nextTests}}" wx:for-item="test" wx:key="index" class="muted">{{test.text}} · {{test.reason}}</view>
+    <view class="muted">建议不自动扩大授权，追加检查仍以当前工单批准集合为准。</view>
+  </view>
+  <view wx:for="{{observations}}" wx:key="id" class="card"><view class="title">观察 #{{item.id}} · {{item.test_id}}</view><view class="muted">轮 {{item.round}} · {{item.measured_at}} · {{item.result}} · {{item.provenance}}</view>
+    <text class="json" selectable="true">{{item.measurementsText}}</text><view class="label">工程师原文</view><text selectable="true">{{item.free_text}}</text>
+    <view class="label">候选抽取 · {{item.extraction_status}}</view><text class="json" selectable="true">{{item.factsText}}</text>
+    <view class="muted">候选抽取保留 reported 状态，不能因为自动抽取就变成独立确认。</view>
+  </view><view wx:if="{{!reports.length &amp;&amp; !busy}}" class="empty">暂无可见报告，等待服务器作业或下拉刷新。</view>
+</view>

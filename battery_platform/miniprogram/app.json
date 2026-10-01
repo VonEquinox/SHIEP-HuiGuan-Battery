@@ -1,0 +1,6 @@
+{
+  "pages": ["pages/login/index", "pages/tasks/index", "pages/order/index", "pages/scan/index", "pages/inspection/index", "pages/diagnosis/index", "pages/outbox/index"],
+  "window": {"navigationBarTitleText": "慧管电池 · TEST", "navigationBarBackgroundColor": "#11243a", "navigationBarTextStyle": "white", "backgroundColor": "#f3f6fa"},
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

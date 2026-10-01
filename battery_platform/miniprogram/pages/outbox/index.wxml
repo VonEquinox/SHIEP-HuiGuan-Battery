@@ -1,0 +1,23 @@
+<view class="screen"><view class="warning">本机草稿与待同步记录按后端环境和登录账号隔离。服务器接收前不代表检查完成；同步失败会保留原文、数值与照片。</view>
+  <button bindtap="sync" loading="{{busy}}" disabled="{{busy}}">同步当前账号待提交记录</button>
+  <view wx:for="{{records}}" wx:key="id" class="card"><view class="title">{{item.label}}</view><view class="muted">工单 #{{item.order_id}} · {{item.kind}} · 尝试 {{item.attempts}} 次</view>
+    <view class="muted">提交 ID {{item.id}}</view><view wx:if="{{item.error}}" class="error">{{item.error.message}}</view>
+    <view wx:if="{{item.error.missing_fields.length}}" class="muted">缺少：{{item.error.missing_fields}}</view>
+    <text class="json" selectable="true">{{item.bodyText}}</text><text wx:if="{{item.result}}" class="json" selectable="true">{{item.resultText}}</text>
+    <button wx:if="{{item.status === 'queued'}}" class="secondary" data-id="{{item.id}}" bindtap="retry">立即重试同一提交</button>
+    <button wx:if="{{item.status === 'conflict' || item.status === 'blocked' || item.status === 'upload_uncertain'}}" class="secondary" data-id="{{item.id}}" bindtap="review">获取服务器记录并核对</button>
+    <button class="secondary" data-id="{{item.order_id}}" bindtap="openOrder">查看对应工单</button>
+  </view>
+  <view wx:if="{{review}}" class="card"><view class="title">核对服务器与本机版本</view><view class="muted">服务器工单版本 {{review.order.version}} · 状态 {{review.order.status}}</view>
+    <view class="label">本机待提交内容</view><text class="json" selectable="true">{{review.draftText}}</text>
+    <view class="label">服务器已到达观察</view><text class="json" selectable="true">{{review.serverObservations}}</text>
+    <button wx:if="{{review.item.status === 'conflict'}}" bindtap="rebase">已核对：保留原内容，创建新版本提交</button>
+    <button wx:if="{{(review.item.status === 'blocked' || review.item.status === 'conflict') &amp;&amp; review.item.kind === 'observation'}}" class="secondary" bindtap="editDraft">保留旧记录，恢复表单修正后重新提交</button>
+    <view class="muted">合并会创建新提交 ID 并保留旧记录。安装身份或轮次已改变时拒绝合并，请返回工单重新扫码和填写当前轮。</view>
+    <view wx:if="{{review.item.status === 'upload_uncertain'}}"><view class="label">服务器当前工单附件</view>
+      <view wx:for="{{review.attachments}}" wx:key="id" class="muted">#{{item.id}} · {{item.file_name}} · {{item.created_at}}</view>
+      <input value="{{attachmentId}}" bindinput="attachmentId" type="number" placeholder="核对照片后填已有附件 ID"/>
+      <button bindtap="reconcile">确认复用所核对的已有附件</button><button class="secondary" bindtap="notPresent">已核对未出现该照片，恢复上传</button>
+    </view>
+  </view><view wx:if="{{!records.length}}" class="empty">当前账号没有本地提交记录。</view>
+</view>

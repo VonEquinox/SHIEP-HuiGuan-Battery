@@ -1,0 +1,7 @@
+<view class="screen"><view class="card"><view class="title">安装身份核验</view>
+  <view class="muted">扫描调度员生成的签名二维码。服务器同时校验获派权限、工单范围、当前安装身份与有效期；二维码中显示的文字不作为客户端授权。</view>
+  <button bindtap="scan">扫描二维码</button><label class="label">无法使用相机时粘贴签名引用</label>
+  <textarea value="{{token}}" bindinput="token" placeholder="仅接受服务器签名 token，不接受手工修改的安装编号" maxlength="3000"/>
+  <button class="secondary" bindtap="verify" disabled="{{busy || !token}}" loading="{{busy}}">发送服务器核验</button>
+  <view wx:if="{{verified}}" class="warning">已核验 · {{verified.installation_id}}<button bindtap="done">返回本轮检查</button></view>
+</view></view>

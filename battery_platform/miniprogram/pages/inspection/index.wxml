@@ -1,0 +1,24 @@
+<view class="screen"><view wx:if="{{offline}}" class="warning">离线使用已缓存授权快照。草稿尚未提交，服务器同步时仍会核对版本、身份和授权。</view>
+  <view wx:if="{{legacy}}" class="warning">原工单证据上传：保留 V1 权限。此任务没有 V2 检查轮次，不提交虚构测试。</view>
+  <view wx:if="{{inspection &amp;&amp; !legacy}}" class="card"><view class="title">已授权的本轮检查</view>
+    <picker range="{{tests}}" range-key="test_id" value="{{testIndex}}" data-kind="test" bindchange="select"><view class="select">{{tests[testIndex].test_id || '无可执行授权测试'}}</view></picker>
+    <view class="muted">资格：{{tests[testIndex].required_qualifications}} · 耗时 {{tests[testIndex].duration_minutes}} 分钟 · 方法 {{tests[testIndex].sop_id}}</view>
+    <picker range="{{resultLabels}}" value="{{resultIndex}}" data-kind="result" bindchange="select"><view class="select">结果：{{resultLabels[resultIndex]}}</view></picker>
+    <label class="label">测量指标 / 数值（可留空，0 是有效值）</label><input value="{{form.metric}}" data-field="metric" bindinput="field" placeholder="例如 voltage_difference"/><input value="{{form.value}}" data-field="value" bindinput="field" placeholder="本次实际测量值"/>
+    <label class="label">单位 / 获批方法引用</label><input value="{{form.unit}}" data-field="unit" bindinput="field"/><input value="{{form.method}}" data-field="method" bindinput="field"/>
+    <label class="label">测量时间（ISO，含时区） / 仪表编号</label><input value="{{form.measured_at}}" data-field="measured_at" bindinput="field"/><input value="{{form.instrument_id}}" data-field="instrument_id" bindinput="field" placeholder="本次使用仪表 ID"/>
+    <picker range="{{calibrationLabels}}" value="{{calibrationIndex}}" data-kind="calibration_status" bindchange="select"><view class="select">校准：{{calibrationLabels[calibrationIndex]}}</view></picker>
+    <picker range="{{provenanceLabels}}" value="{{provenanceIndex}}" data-kind="provenance" bindchange="select"><view class="select">来源：{{provenanceLabels[provenanceIndex]}}</view></picker>
+  </view>
+  <view wx:if="{{!legacy}}" class="card"><view class="title">结构化与自由反馈</view>
+    <label class="label">实际症状 / 已执行动作（逐行或逗号分隔）</label><textarea value="{{form.observed_symptoms}}" data-field="observed_symptoms" bindinput="field"/><textarea value="{{form.performed_actions}}" data-field="performed_actions" bindinput="field"/>
+    <label class="label">支持候选 / 排除候选 / 仍未知（不自动成为独立确认）</label><input value="{{form.confirmed_hypotheses}}" data-field="confirmed_hypotheses" bindinput="field" placeholder="支持的候选 ID"/><input value="{{form.excluded_hypotheses}}" data-field="excluded_hypotheses" bindinput="field" placeholder="有反证的候选 ID"/><textarea value="{{form.unresolved_items}}" data-field="unresolved_items" bindinput="field" placeholder="仍无法确认的事项"/>
+    <label class="label">自由现场描述</label><textarea value="{{form.free_text}}" data-field="free_text" bindinput="field" maxlength="12000" placeholder="写明表单未覆盖的环境、仪表、接头或无法执行原因；原文完整保留"/>
+    <label class="label">报告断言位置（可选）</label><input value="{{form.assertion_targets}}" data-field="assertion_targets" bindinput="field" placeholder="如 r1.hypotheses[0]，请核对报告版本"/>
+  </view>
+  <view class="card"><view class="title">证据照片</view><view class="muted">照片是证据材料，不自动当作测量真值。保存在本机并在同步时上传；相机权限拒绝时可选文件。</view>
+    <view wx:for="{{files}}" wx:key="client_file_id" class="row"><image class="photo" src="{{item.path}}" mode="aspectFill"/><button class="secondary" data-id="{{item.client_file_id}}" bindtap="removePhoto">从草稿移除</button></view>
+    <view class="actions"><button class="secondary" bindtap="photo">拍照 / 相册</button><button class="secondary" bindtap="file">选择文件</button></view>
+  </view>
+  <button wx:if="{{!legacy}}" class="secondary" bindtap="saveDraft">保存本机草稿</button><button bindtap="queue" loading="{{busy}}" disabled="{{busy}}">保存待同步并尝试提交</button>
+</view>

@@ -1,0 +1,10 @@
+{
+  "description": "慧管电池 TEST 现场检查工程；请在开发者工具选择合法测试或开发 AppID",
+  "projectname": "huiguan-battery-test",
+  "appid": "",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "./",
+  "setting": {"urlCheck": true, "es6": true, "enhance": true, "postcss": true, "minified": true},
+  "packOptions": {"ignore": [{"type":"folder","value":"tests"},{"type":"folder","value":"scripts"},{"type":"file","value":"package.json"},{"type":"file","value":"README.md"}]},
+  "condition": {}
+}
