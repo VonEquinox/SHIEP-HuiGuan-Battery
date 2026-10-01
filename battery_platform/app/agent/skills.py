@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import hashlib
 import re
+import copy
 from pathlib import Path
 from typing import Any
 
@@ -47,6 +48,26 @@ class SkillLibrary:
     def skill_metadata(self) -> list[dict[str, Any]]:
         return list(self._metadata.values())
 
+    def with_context_overrides(self, overrides: dict[str, dict[str, Any]]) -> "SkillLibrary":
+        """Build a frozen routing index for one Context, without loading bodies."""
+        from .contracts import EDITABLE_SKILL_FIELDS
+        routed = copy.copy(self)
+        routed._metadata = copy.deepcopy(self._metadata)
+        for sid, fields in overrides.items():
+            if not isinstance(fields, dict) or not set(fields) <= EDITABLE_SKILL_FIELDS:
+                raise ValueError("routing overlay modifies immutable Skill fields")
+            description = fields.get("routing_description")
+            if description is None or sid not in routed._metadata:
+                continue
+            if not isinstance(description, str) or len(description) > 24000:
+                raise ValueError("routing description must be bounded text")
+            metadata = routed._metadata[sid]
+            metadata["description"] = description
+            words = re.findall(r"[A-Za-z][A-Za-z_-]+", description.lower())
+            cjk = [run[i:i + 2] for run in re.findall(r"[\u3400-\u9fff]{2,}", description) for i in range(len(run) - 1)]
+            metadata["_context_routing_terms"] = sorted(set(words + cjk))
+        return routed
+
     def route(self, context: dict[str, Any], max_skills: int | None = None) -> list[dict[str, Any]]:
         limit = min(self.max_skills, max_skills if max_skills is not None else self.max_skills)
         text = json.dumps(context.get("symptoms", context.get("observations", [])), ensure_ascii=False).lower()
@@ -60,7 +81,7 @@ class SkillLibrary:
             if required and any(k not in context or context[k] in (None, [], {}) for k in required):
                 continue
             keywords = manifest.get("route_keywords", sid.split("-"))
-            score = sum(str(k).lower() in text for k in keywords)
+            score = sum(str(k).lower() in text for k in keywords) + sum(k in text for k in manifest.get("_context_routing_terms", []))
             if score or not keywords:
                 scored.append((score, sid, manifest))
         return [{"skill_id": sid, "name": m["name"], "description": m["description"],

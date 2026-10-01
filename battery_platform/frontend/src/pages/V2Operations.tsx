@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { type User, useData } from "../api";
 import { Empty, Field, Notice, Panel, useAction } from "../components";
+import type {
+  CalibrationStatus,
+  Chemistry,
+  ComparisonContext,
+  ObservationCreate,
+  ObservationProvenance,
+  ObservationResult,
+} from "../contracts/v2";
 import {
   api,
   canDispatch,
@@ -533,17 +541,34 @@ function V2Inspection({ user, orders }: { user: User; orders: any[] }) {
     ),
     action = useAction();
   const [testId, setTestId] = useState(""),
-    [result, setResult] = useState("inconclusive"),
+    [result, setResult] = useState<ObservationResult>("inconclusive"),
     [freeText, setFreeText] = useState(""),
     [metric, setMetric] = useState(""),
     [value, setValue] = useState(""),
     [unit, setUnit] = useState(""),
     [method, setMethod] = useState(""),
     [instrument, setInstrument] = useState(""),
-    [calibration, setCalibration] = useState("unknown"),
-    [provenance, setProvenance] = useState("synthetic"),
+    [measuredAt, setMeasuredAt] = useState(""),
+    [calibration, setCalibration] = useState<CalibrationStatus>("unknown"),
+    [provenance, setProvenance] = useState<ObservationProvenance>("synthetic"),
     [attachmentIds, setAttachmentIds] = useState(""),
     [jobId, setJobId] = useState<number | null>(null);
+  const emptyComparison = {
+    chemistry: "" as Chemistry | "",
+    protocol_id: "",
+    load_condition: "",
+    temperature_condition: "",
+    source_cohort_id: "",
+  };
+  const [comparisonEnabled, setComparisonEnabled] = useState(false),
+    [comparison, setComparison] = useState(emptyComparison),
+    [normalReference, setNormalReference] = useState(false);
+  useEffect(() => {
+    setComparisonEnabled(false);
+    setComparison(emptyComparison);
+    setNormalReference(false);
+    setMeasuredAt("");
+  }, [orderId]);
   const d = inspection.data,
     o = d?.order || d,
     round =
@@ -584,30 +609,61 @@ function V2Inspection({ user, orders }: { user: User; orders: any[] }) {
             onSubmit={(e) => {
               e.preventDefault();
               void action.run(async () => {
+                if (
+                  measuredAt.trim() &&
+                  (!/(Z|[+-]\d{2}:\d{2})$/i.test(measuredAt.trim()) ||
+                    !Number.isFinite(new Date(measuredAt.trim()).getTime()))
+                )
+                  throw new Error(
+                    "测量记录时间须为有效的含时区时间，例如 2026-10-02T09:00:00+08:00",
+                  );
+                let comparisonContext: ComparisonContext | undefined;
+                if (comparisonEnabled) {
+                  if (!comparison.chemistry)
+                    throw new Error("请选择用于同工况比较的化学体系");
+                  comparisonContext = {
+                    ...comparison,
+                    chemistry: comparison.chemistry,
+                    protocol_id: comparison.protocol_id.trim(),
+                    load_condition: comparison.load_condition.trim(),
+                    temperature_condition:
+                      comparison.temperature_condition.trim(),
+                    source_cohort_id: comparison.source_cohort_id.trim(),
+                    reference_status: normalReference
+                      ? "declared_normal"
+                      : "not_reference",
+                  };
+                }
+                const observation: ObservationCreate = {
+                  installation_id: d.installation_id || o.installation_id,
+                  round,
+                  order_version: o.version || d.order_version,
+                  test_id: testId,
+                  measured_at: measuredAt.trim()
+                    ? new Date(measuredAt.trim()).toISOString()
+                    : new Date().toISOString(),
+                  instrument_id: instrument || "not_recorded",
+                  calibration_status: calibration,
+                  measurements:
+                    value === ""
+                      ? []
+                      : [{ metric, value: Number(value), unit, method }],
+                  free_text: freeText,
+                  result,
+                  provenance,
+                  attachment_ids: attachmentIds
+                    .split(",")
+                    .filter((v) => v.trim())
+                    .map(Number),
+                  client_submission_id: crypto.randomUUID(),
+                  ...(comparisonContext && {
+                    comparison_context: comparisonContext,
+                  }),
+                };
                 const response = await api(
                   `/v2/orders/${orderId}/observations`,
                   "POST",
-                  {
-                    installation_id: d.installation_id || o.installation_id,
-                    round,
-                    order_version: o.version || d.order_version,
-                    test_id: testId,
-                    measured_at: new Date().toISOString(),
-                    instrument_id: instrument || "not_recorded",
-                    calibration_status: calibration,
-                    measurements:
-                      value === ""
-                        ? []
-                        : [{ metric, value: Number(value), unit, method }],
-                    free_text: freeText,
-                    result,
-                    provenance,
-                    attachment_ids: attachmentIds
-                      .split(",")
-                      .filter((v) => v.trim())
-                      .map(Number),
-                    client_submission_id: crypto.randomUUID(),
-                  },
+                  observation,
                 );
                 setJobId(
                   response.rejudgment_job_id ||
@@ -615,6 +671,8 @@ function V2Inspection({ user, orders }: { user: User; orders: any[] }) {
                     response.extraction_job_id,
                 );
                 setFreeText("");
+                setNormalReference(false);
+                setMeasuredAt("");
                 await inspection.reload();
               }, "观察事实已保存；重判由后台处理");
             }}
@@ -640,7 +698,9 @@ function V2Inspection({ user, orders }: { user: User; orders: any[] }) {
               <Field label="测试结果状态">
                 <select
                   value={result}
-                  onChange={(e) => setResult(e.target.value)}
+                  onChange={(e) =>
+                    setResult(e.target.value as ObservationResult)
+                  }
                 >
                   {[
                     "observed",
@@ -692,7 +752,9 @@ function V2Inspection({ user, orders }: { user: User; orders: any[] }) {
               <Field label="仪器校准状态">
                 <select
                   value={calibration}
-                  onChange={(e) => setCalibration(e.target.value)}
+                  onChange={(e) =>
+                    setCalibration(e.target.value as CalibrationStatus)
+                  }
                 >
                   {["calibrated", "unknown", "expired", "not_applicable"].map(
                     (v) => (
@@ -704,7 +766,9 @@ function V2Inspection({ user, orders }: { user: User; orders: any[] }) {
               <Field label="观察来源">
                 <select
                   value={provenance}
-                  onChange={(e) => setProvenance(e.target.value)}
+                  onChange={(e) =>
+                    setProvenance(e.target.value as ObservationProvenance)
+                  }
                 >
                   <option value="synthetic">合成演示</option>
                   <option value="experimental_replay">实验回放</option>
@@ -717,10 +781,109 @@ function V2Inspection({ user, orders }: { user: User; orders: any[] }) {
                   onChange={(e) => setAttachmentIds(e.target.value)}
                 />
               </Field>
+              <Field label="测量记录时间（含时区，可选）">
+                <input
+                  value={measuredAt}
+                  onChange={(e) => setMeasuredAt(e.target.value)}
+                  required={comparisonEnabled}
+                  placeholder="2026-10-02T09:00:00+08:00"
+                />
+              </Field>
             </div>
+            <p>
+              比较时填写仪器或原记录时间以便精确对齐。未启用比较时可留空，按本次登记时间保存。
+            </p>
+            <fieldset className="v2-comparison">
+              <legend>同工况比较信息（可选）</legend>
+              <label className="v2-check-label">
+                <input
+                  type="checkbox"
+                  checked={comparisonEnabled}
+                  onChange={(e) => {
+                    setComparisonEnabled(e.target.checked);
+                    setNormalReference(false);
+                  }}
+                />
+                提供本次观察的可比条件
+              </label>
+              <p>
+                仅填写已有记录的条件；信息不足可不填，后台会保留为不支持数值比较。
+              </p>
+              {comparisonEnabled && (
+                <>
+                  <div className="form-grid">
+                    <Field label="比较化学体系">
+                      <select
+                        required
+                        value={comparison.chemistry}
+                        onChange={(e) =>
+                          setComparison({
+                            ...comparison,
+                            chemistry: e.target.value as Chemistry | "",
+                          })
+                        }
+                      >
+                        <option value="">选择记录中的化学体系</option>
+                        {[
+                          "LFP",
+                          "NCM",
+                          "NCA",
+                          "LCO",
+                          "LMO",
+                          "LTO",
+                          "unknown",
+                        ].map((v) => (
+                          <option key={v} value={v}>
+                            {v === "unknown" ? "记录为未知" : v}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
+                    {(
+                      [
+                        ["protocol_id", "比较运行协议"],
+                        ["load_condition", "比较负载条件"],
+                        ["temperature_condition", "比较温度条件"],
+                        ["source_cohort_id", "同源比较批次"],
+                      ] as const
+                    ).map(([key, label]) => (
+                      <Field label={label} key={key}>
+                        <input
+                          required
+                          maxLength={160}
+                          value={comparison[key]}
+                          onChange={(e) =>
+                            setComparison({
+                              ...comparison,
+                              [key]: e.target.value,
+                            })
+                          }
+                        />
+                      </Field>
+                    ))}
+                  </div>
+                  <label className="v2-check-label">
+                    <input
+                      type="checkbox"
+                      checked={normalReference}
+                      onChange={(e) => setNormalReference(e.target.checked)}
+                    />
+                    本次观察声明为正常参考（须有依据）
+                  </label>
+                  <p>
+                    未勾选时按非参考观察提交。正常参考须在原始文字中写明依据，声明不能替代独立复核。每次保存后需要重新声明。
+                  </p>
+                  <p>
+                    实验回放不参加站内残差比较；合成观察只用于演示。来源、仪器校准、授权和参考窗口资格由后台检查。
+                  </p>
+                </>
+              )}
+            </fieldset>
             <Field label="检查原始自由文字">
               <textarea
                 value={freeText}
+                required={comparisonEnabled && normalReference}
+                minLength={comparisonEnabled && normalReference ? 3 : undefined}
                 onChange={(e) => setFreeText(e.target.value)}
               />
             </Field>

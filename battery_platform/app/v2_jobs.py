@@ -16,15 +16,23 @@ from .config import APP_ROOT, REPO_ROOT, RUNTIME
 from .db import audit, execute, insert, js, now, obj, one, rows
 from .services import require, sha
 from .api_agent import agent_snapshot, agent_compute, agent_complete, incident_snapshot, incident_compute, incident_complete
-from .api_evolution import feedback_snapshot, feedback_compute, feedback_complete, evolution_snapshot, evolution_compute, evolution_complete, gepa_snapshot, gepa_compute, gepa_complete, evolution_accounting
+from .api_evolution import feedback_snapshot, feedback_compute, feedback_complete, evolution_snapshot, evolution_compute, evolution_complete, gepa_snapshot, gepa_compute, gepa_complete, evolution_accounting, context_regression_snapshot, context_regression_compute, context_regression_complete
 from .api_v2 import source_snapshot, source_compute, source_complete, fingerprint
 
 
 def lifecycle(c, job, status, error=None):
     if job["kind"] == "agent_run":
         execute(c, "UPDATE agent_runs SET status=:s,error=:e,finished_at=:t WHERE job_id=:j", {"s": status, "e": error, "t": now(), "j": job["id"]})
-    if job["kind"] in ("evolution_experiment", "context_gepa"):
+    if job["kind"] in ("evolution_experiment", "context_gepa", "context_regression"):
         execute(c, "UPDATE evolution_runs SET status=:s,validation=:v,finished_at=:t WHERE job_id=:j", {"s": status, "v": js({"passed": False, "reason": error}), "t": now(), "j": job["id"]})
+    if job["kind"] == "context_regression":
+        snapshot = one(c, "SELECT id,validation FROM context_snapshots WHERE id=:i", {"i": obj(job["payload"])["snapshot_id"]})
+        if snapshot:
+            validation = obj(snapshot["validation"])
+            check = validation.get("regression_check", {})
+            if check.get("job_id") == job["id"]:
+                validation["regression_check"] = {**check, "state": status, "reason": error, "finished_at": now()}
+                execute(c, "UPDATE context_snapshots SET validation=:v WHERE id=:i", {"v": js(validation), "i": snapshot["id"]})
     if job["kind"] == "feedback_extract":
         payload = obj(job["payload"])
         table = "inspection_observations" if payload.get("observation_id") else "diagnostic_feedback"
@@ -136,13 +144,63 @@ def registered_packages():
     return result
 
 
-def feature_bundle():
-    from model_lab.modeling.v2.contracts import load_dataset
-    file = REPO_ROOT / "model_lab/data/derived/v2/xjtu_features_protocol/features.json"
-    manifest, arrays = load_dataset(file)
-    if manifest.get("data_namespace") != "experimental" or any(row["split"] == "final" for row in manifest["rows"]):
+def feature_bundle(package_id=None, *, package=None):
+    """Resolve a package's development inputs before opening any numeric data."""
+    import numpy as np
+    from model_lab.modeling.v2.contracts import load_dataset, validate_training_manifest
+    root = (REPO_ROOT / "model_lab/data/derived/v2").resolve()
+    file = root / "xjtu_features_protocol/features.json"
+    if package_id is not None:
+        package = package or next((item for item in registered_packages() if item["package_id"] == package_id), None)
+        if not package or package["package_id"] != package_id:
+            raise ValueError("安全模型包不可用")
+        package_root = Path(package["path"])
+        if sha(package_root / "manifest.json") != package["manifest_hash"]:
+            raise ValueError("模型包版本已变化")
+        record = json.loads((package_root / "run.json").read_text())
+        declared = Path(record.get("dataset_manifest", ""))
+        # Historical runs retain original absolute provenance. Resolve only the
+        # matching V2 derived suffix inside this checkout, never an outside path.
+        parts = declared.parts
+        suffix = next((parts[i + 3:] for i in range(len(parts) - 2)
+                       if parts[i:i + 3] == ("data", "derived", "v2")), None)
+        file = root.joinpath(*suffix) if suffix is not None else None
+    metadata = json.loads(file.read_text()) if file is not None and file.is_file() and file.resolve().is_relative_to(root) else None
+    eligible = (metadata is not None and metadata.get("data_namespace") == "experimental"
+                and all(row.get("split") in ("train", "dev", "calibration") for row in metadata.get("rows", [])))
+    if eligible:
+        validate_training_manifest(metadata)
+        if Path(metadata["arrays_file"]).name != metadata["arrays_file"]:
+            raise ValueError("开发输入数组路径越界")
+        manifest, arrays = load_dataset(file)
+        manifest = {**manifest, "binding_input_source": "committed_development_bundle"}
+        return file, manifest, arrays
+    if package_id is None:
         raise ValueError("运行适配器仅使用无封存对象的开发特征包")
-    return file, manifest, arrays
+    # Multi-source studies can contain old final objects. Their exported,
+    # hash-checked development examples are a separate label-free input corpus.
+    queries = json.loads((package_root / "reload_domain_queries.json").read_text())
+    if not queries or any(row.get("split") != "dev" for row in queries):
+        raise ValueError("重载观察必须全部来自独立开发集合")
+    if any(row.get("source_id") == "xjtu" and str(row.get("physical_cell_id", "")).endswith("-5") for row in queries):
+        raise ValueError("受保护电芯不可成为运行输入")
+    with np.load(package_root / "reload_domain_samples.npz", allow_pickle=False) as archive:
+        if set(archive.files) != {"features", "sequences", "sequence_mask", "domain"}:
+            raise ValueError("重载输入不能包含标签")
+        arrays = {name: archive[name] for name in archive.files}
+    if any(len(value) != len(queries) for value in arrays.values()):
+        raise ValueError("重载输入和观察数量不一致")
+    manifest = {"schema_version": record["feature_schema"], "data_namespace": record["data_namespace"],
+                "rows": queries, "binding_input_source": "label_free_package_development_examples"}
+    return package_root / "manifest.json", manifest, arrays
+
+
+def inference_query(row, manifest):
+    hidden = {"target_observed_at", "target_available_at", "split", "survival_censor_type",
+              "survival_label_observed_at", "survival_label_available_at"}
+    return {**{key: value for key, value in row.items() if key not in hidden},
+            "feature_schema": manifest["schema_version"], "data_namespace": manifest["data_namespace"],
+            "allowed_heads": ["soh", "rul", "threshold_risk", "efficiency", "fault"]}
 
 
 def v2_inference_snapshot(c, job):
@@ -161,7 +219,7 @@ def v2_inference_compute(request, cancelled):
     from model_lab.modeling.v2.prediction import load_package
     if cancelled():
         raise InterruptedError("任务取消")
-    file, manifest, arrays = feature_bundle()
+    file, manifest, arrays = feature_bundle(request["binding"]["package_id"], package=request["package"])
     if sha(file) != request["binding"]["feature_manifest_hash"]:
         raise ValueError("开发特征清单已变化，旧绑定不可重用")
     index = request["binding"]["row_index"]
@@ -170,8 +228,7 @@ def v2_inference_compute(request, cancelled):
         raise ValueError("物理电芯映射不一致")
     # Labels are excluded even though the evaluator's safe bundle stores them.
     selected_arrays = {key: arrays[key][index:index + 1] for key in ("features", "sequences", "sequence_mask", "domain") if key in arrays}
-    query = {key: value for key, value in row.items() if key not in ("target_observed_at", "target_available_at", "split")}
-    query.update(feature_schema=manifest["schema_version"], data_namespace=manifest["data_namespace"], allowed_heads=["soh", "rul", "threshold_risk", "efficiency", "fault"])
+    query = inference_query(row, manifest)
     with (APP_ROOT / "runtime/model-compute.lock").open("a+") as lock:
         started = time.monotonic()
         while True:
@@ -216,6 +273,7 @@ V2_JOB_HANDLERS = {
     "feedback_verified_batch": _handler(verified_snapshot, verified_compute, verified_complete),
     "evolution_experiment": _handler(evolution_snapshot, evolution_compute, evolution_complete, evolution_accounting),
     "context_gepa": _handler(gepa_snapshot, gepa_compute, gepa_complete, evolution_accounting),
+    "context_regression": _handler(context_regression_snapshot, context_regression_compute, context_regression_complete, evolution_accounting),
     "source_ingest": _handler(source_snapshot, source_compute, source_complete),
     "v2_inference": _handler(v2_inference_snapshot, v2_inference_compute, v2_inference_complete),
     **{kind: _handler(model_snapshot, model_compute, model_complete) for kind in ("v2_training", "v2_calibration", "v2_evaluation", "v2_export")},

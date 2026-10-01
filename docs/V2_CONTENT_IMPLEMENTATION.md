@@ -22,7 +22,7 @@
 
 隐藏标签位于 `oracle/labels.jsonl`，未来观察位于 `oracle/observations.jsonl`，封存输入位于 `evaluation/sealed/`，Carbon/派单 golden cases 位于 `fixtures/`。`export_public` 复制许可通过的 Skill 资源和冷启动可见资料到一个必须为空的独立目录；不复制 oracle、evolution、dev/sealed 或任何 Carbon fixture。路径穿越和指向目录外的 symlink 被解析后的目录边界拒绝。
 
-`EvaluatorReplay` 构造时要求显式 `oracle_access=True`，不注册为 Agent 工具。它从当前状态选择合法测试；未授权、未知、尚不可达、要求新增授权却未记录批准的测试拒绝揭示。测试读取观察，默认不发生维修或容量恢复。重复调用返回原结果且 `new_evidence=False`，不能累积假独立置信度。未来工程师反馈只有对应 evidence_ids 实际被揭示后才返回。
+`EvaluatorReplay` 构造时要求显式 `oracle_access=True`，不注册为 Agent 工具。后置隔离修复进一步要求按 `allowed_splits` 授权（默认仅 cold_start），可用 `case_ids` 限定具体根；普通 evolution 不打开 dev/sealed 输入，只在共享 oracle 文件中先筛选原行，再解码该范围的标签与实际 branch.reveal 观察。它从当前状态选择合法测试；未授权、未知、尚不可达、要求新增授权却未记录批准的测试拒绝揭示。测试读取观察，默认不发生维修或容量恢复。重复调用返回原结果且 `new_evidence=False`，不能累积假独立置信度。未来工程师反馈只有对应 evidence_ids 实际被揭示后才返回。
 
 冷启动还提供 96 个已经到达的 `visible_feedback` 例子，时间早于 cutoff，只引用初始可见测量。这些员工描述保持 reported 状态，不能自动升级为确诊。反馈 Skill 示例保留自由原文、span、引用及适用边界；将未核验意见用于确诊/增权的更新拒绝。
 
@@ -67,3 +67,7 @@ store.load_skill("sensor-anomaly")
 集成中发现 fixture JSON Schema 将所有 kind 限定为 dispatch/carbon，但 Carbon 文件的 kind 表示 unit_conversion 等数学子类型；已将 schema 改为非空字符串，具体合法性仍由完整 fixture 数学校验器检查。另修复包 manifest 漏掉子 Skill manifest 的 hash、S09/S10 验证结果字段映射导致摘要为空、冻结报告初次仅结构检查的问题。最终生成进行 hash 真校验，不用静态通过标志替代结果。
 
 本文件记录的是程序验收和合成回放准备完成；没有独立专业盲审，没有真实设备现场闭环实验，也没有以平衡合成分布宣称真实部署 precision。完整实际 LLM 单 Agent 回放与上下文实验由运行时实施记录说明。阶段性提交的 Git hash 和后续检查结果由总负责人在统一提交后追加到主实施台账；本模块负责人未单独执行 commit。
+
+## 后置回放 split 隔离修复
+
+最终独立覆盖发现原通用 EvaluatorReplay 构造器会 eager 解码 cold/evolution/dev/sealed 全部案例及标签；虽然 evolution 没有将 sealed 发给 Agent 或评分，这仍不符合封存隔离。已改为按 allowed_splits 和 case_ids 选择文件/根，再按分支实际引用的 observation_id 选择观察。API 实验调用方同步显式授予 evolution；候选 selection 仍由独立 dev scorer 处理。修复通过八项手工隔离测试及三项原有授权/反馈/评分边界回归（11 passed, 6 deselected），没有运行全内容验证、调用模型、读取新的真实 sealed 输入或重评分已有实验。完整接口、读取/解码 spy 证据和限制见 `V2_REPLAY_SPLIT_FIX.md`；原 pilot 自己使用过滤环境，故其冻结结果不受该缺陷影响。

@@ -6,6 +6,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { type User, useData } from "../api";
+import type { IncidentNumericEvidence } from "../contracts/v2";
 import {
   Badge,
   Empty,
@@ -21,6 +22,7 @@ import {
   canDispatch,
   Evidence,
   listItems,
+  numberValue,
   Provenance,
   State,
   textValue,
@@ -196,6 +198,10 @@ export function RiskCenter({ user }: { user: User }) {
           actions={<button onClick={() => setExpanded(null)}>收起群组</button>}
         >
           <V2Read resource={detail}>
+            <GroupNumericEvidence
+              evidence={selected.evidence || {}}
+              provenance={selected.provenance}
+            />
             <Evidence title="共享证据、重复事件与数据问题" value={selected} />
             <form
               onSubmit={(e) => {
@@ -271,6 +277,218 @@ export function RiskCenter({ user }: { user: User }) {
         onComplete={() => void r.reload()}
       />
     </>
+  );
+}
+
+function GroupNumericEvidence({
+  evidence,
+  provenance,
+}: {
+  evidence: IncidentNumericEvidence;
+  provenance?: string;
+}) {
+  const numeric = evidence.numeric_analysis,
+    comparable = evidence.comparison,
+    support = evidence.numeric_support,
+    pairs = numeric?.qualified_pairs?.length
+      ? numeric.qualified_pairs.map((pair) => ({
+          ...pair,
+          ...numeric.pair_evidence?.find(
+            (candidate) =>
+              candidate.members.join("|") === pair.members.join("|"),
+          ),
+        }))
+      : numeric?.pair_evidence || [],
+    sources = Array.isArray(evidence.source_refs) ? evidence.source_refs : [],
+    residuals = Object.entries(numeric?.residuals || {}).flatMap(
+      ([installation, values]) =>
+        Object.entries(values).map(([timestamp, residual]) => ({
+          installation,
+          timestamp,
+          residual,
+        })),
+    );
+  return (
+    <section aria-label="同工况残差关联与来源资格">
+      <h3>同工况残差关联</h3>
+      <div className="v2-summary">
+        <State
+          value={
+            support?.status ||
+            (evidence.numeric_correlation_supported === true
+              ? "supported"
+              : "unsupported")
+          }
+        />
+        <Version value={numeric?.threshold_version} label="比较阈值" />
+        <Provenance value={provenance} />
+      </div>
+      <Notice>
+        残差相关只表示同步关联，不能确认共同根因；仍须检查采集通道、环境和单体原因。
+      </Notice>
+      {support?.reasons?.length ? (
+        <ul>
+          {support.reasons.map((reason) => (
+            <li key={reason}>{reason}</li>
+          ))}
+        </ul>
+      ) : evidence.numeric_correlation_supported !== true ? (
+        <p>
+          缺少合格的同工况参考或精确对齐测量，数值关联未支持；拓扑关联不代表因果。
+        </p>
+      ) : null}
+      {comparable && (
+        <div className="v2-summary">
+          <span>
+            指标 / 单位 / 方法 {textValue(comparable.metric)} /{" "}
+            {textValue(comparable.unit)} / {textValue(comparable.method)}
+          </span>
+          <span>
+            体系 / 协议 {textValue(comparable.chemistry)} /{" "}
+            {textValue(comparable.protocol_id)}
+          </span>
+          <span>负载 {textValue(comparable.load_condition)}</span>
+          <span>温度 {textValue(comparable.temperature_condition)}</span>
+          <span>同源批次 {textValue(comparable.source_cohort_id)}</span>
+          {comparable.origin && <Provenance value={comparable.origin} />}
+        </div>
+      )}
+      <p>
+        后台仅在当前安装、授权测量、有效校准与可比条件成立时比较。正常参考须明确声明并早于分析点；实验回放不参加站内比较，合成来源只用于演示。
+      </p>
+      {pairs.length > 0 && (
+        <div className="table-wrap">
+          <table aria-label="残差相关与精确对齐点">
+            <thead>
+              <tr>
+                <th>安装对</th>
+                <th>残差相关</th>
+                <th>精确对齐点</th>
+                <th>异常重叠点</th>
+                <th>关联依据</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pairs.map((pair, i) => (
+                <tr key={i}>
+                  <td>{pair.members.join(" / ")}</td>
+                  <td>
+                    {pair.correlation == null
+                      ? "未支持"
+                      : numberValue(pair.correlation)}
+                  </td>
+                  <td>{textValue(pair.aligned_points)}</td>
+                  <td>{textValue(pair.event_overlap)}</td>
+                  <td>
+                    {pair.shared_relations?.length
+                      ? pair.shared_relations.join("、")
+                      : "未达到群组阈值 / 未提供共享依据"}{" "}
+                    · 未确认因果
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      {numeric?.quality_flags &&
+        Object.keys(numeric.quality_flags).length > 0 && (
+          <div className="v2-record">
+            <strong>参考窗口与测量质量</strong>
+            {Object.entries(numeric.quality_flags).map(
+              ([installation, flags]) => (
+                <p key={installation}>
+                  安装 {installation}：
+                  {flags.length ? flags.join("、") : "未报告质量问题"}
+                </p>
+              ),
+            )}
+          </div>
+        )}
+      {evidence.measurement_rejections &&
+        Object.keys(evidence.measurement_rejections).length > 0 && (
+          <div className="v2-record">
+            <strong>未满足比较资格的观察</strong>
+            {Object.entries(evidence.measurement_rejections).map(
+              ([asset, reasons]) => (
+                <p key={asset}>
+                  资产 #{asset}：
+                  {reasons.length ? reasons.join("、") : "未报告不合格原因"}
+                </p>
+              ),
+            )}
+          </div>
+        )}
+      {residuals.length > 0 && (
+        <details>
+          <summary>查看按正常参考中位数与 MAD 计算的残差</summary>
+          <div className="table-wrap">
+            <table aria-label="服务端计算的标准化残差">
+              <thead>
+                <tr>
+                  <th>安装</th>
+                  <th>对齐时间</th>
+                  <th>标准化残差</th>
+                </tr>
+              </thead>
+              <tbody>
+                {residuals.map((row) => (
+                  <tr key={`${row.installation}-${row.timestamp}`}>
+                    <td>{row.installation}</td>
+                    <td>{row.timestamp}</td>
+                    <td>
+                      {row.residual == null
+                        ? "未支持"
+                        : numberValue(row.residual)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      )}
+      {sources.length > 0 && (
+        <div className="table-wrap">
+          <table aria-label="比较观察的来源与参考资格">
+            <thead>
+              <tr>
+                <th>原始观察 / 安装</th>
+                <th>参考资格</th>
+                <th>记录 / 可见时间</th>
+                <th>来源与信任</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sources.map((source, i) => (
+                <tr key={`${source.observation_id}-${i}`}>
+                  <td>
+                    #{source.observation_id} · v{source.version}
+                    <small>{source.installation_id}</small>
+                  </td>
+                  <td>
+                    {source.role === "reference"
+                      ? "使用者声明的早期正常参考"
+                      : "分析观察"}
+                  </td>
+                  <td>
+                    {source.measured_at}
+                    <small>可见于 {source.available_at}</small>
+                  </td>
+                  <td>
+                    <Provenance value={source.origin} />
+                    {source.source_trust === "reported"
+                      ? "声明证据 · 未独立复核"
+                      : textValue(source.source_trust)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      <Evidence title="来源与参考窗口资格" value={evidence.source_refs} />
+    </section>
   );
 }
 

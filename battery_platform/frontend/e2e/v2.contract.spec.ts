@@ -642,3 +642,336 @@ test("dispatch edits carry version and confirmation conflict cannot silently ass
   await screenshot(page, "dispatch-conflict");
   expect(errors).toEqual([]);
 });
+
+test("comparison metadata stays optional and normal reference requires an explicit fresh declaration", async ({
+  page,
+}) => {
+  const observations: any[] = [],
+    order = {
+      id: 42,
+      title: "合同检查工单",
+      status: "IN_PROGRESS",
+      version: 4,
+    };
+  const errors = await stub(page, "admin", (path, method, body) => {
+    if (path === "/orders") return [order];
+    if (path === "/v2/orders/42/inspection")
+      return {
+        order,
+        installation_id: "ins-contract-A",
+        current_round: 1,
+        allowed_tests: [{ test_id: "T_CHANNEL_CHECK", name: "独立通道检查" }],
+        observations: [],
+        reports: [],
+        rounds: [],
+      };
+    if (path === "/v2/orders/42/observations" && method === "POST") {
+      observations.push(body);
+      return { id: observations.length };
+    }
+  });
+  await page.goto("/operations?tab=v2");
+  await page
+    .getByLabel("查看检查轮次的工单", { exact: true })
+    .selectOption("42");
+  await page
+    .getByLabel("已授权测试", { exact: true })
+    .selectOption("T_CHANNEL_CHECK");
+  await expect(
+    page.getByLabel("提供本次观察的可比条件", { exact: true }),
+  ).not.toBeChecked();
+  await page.getByRole("button", { name: "提交本次观察", exact: true }).click();
+  await expect.poll(() => observations.length).toBe(1);
+  expect(observations[0]).not.toHaveProperty("comparison_context");
+  expect(observations[0].measurements).toEqual([]);
+  await page.getByLabel("提供本次观察的可比条件", { exact: true }).check();
+  await page
+    .getByLabel("测量记录时间（含时区，可选）", { exact: true })
+    .fill("2026-10-01T18:00:00+08:00");
+  const normal = page.getByLabel("本次观察声明为正常参考（须有依据）", {
+    exact: true,
+  });
+  await expect(normal).not.toBeChecked();
+  await page.getByLabel("比较化学体系", { exact: true }).selectOption("LFP");
+  await page.getByLabel("比较运行协议", { exact: true }).fill("合同协议1");
+  await page.getByLabel("比较负载条件", { exact: true }).fill("0.5C恒流");
+  await page.getByLabel("比较温度条件", { exact: true }).fill("25°C恒温箱");
+  await page
+    .getByLabel("同源比较批次", { exact: true })
+    .fill("contract-cohort");
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true);
+  await page.getByRole("button", { name: "提交本次观察", exact: true }).click();
+  await expect.poll(() => observations.length).toBe(2);
+  expect(observations[1].comparison_context).toEqual({
+    chemistry: "LFP",
+    protocol_id: "合同协议1",
+    load_condition: "0.5C恒流",
+    temperature_condition: "25°C恒温箱",
+    source_cohort_id: "contract-cohort",
+    reference_status: "not_reference",
+  });
+  expect(observations[1].measured_at).toBe("2026-10-01T10:00:00.000Z");
+  await normal.check();
+  await page
+    .getByLabel("测量记录时间（含时区，可选）", { exact: true })
+    .fill("2026-10-01T18:01:00+08:00");
+  await page
+    .getByLabel("检查原始自由文字", { exact: true })
+    .fill("参考依据：同一批次早期已记录的正常窗口，仍待独立复核。");
+  await page.getByRole("button", { name: "提交本次观察", exact: true }).click();
+  await expect.poll(() => observations.length).toBe(3);
+  expect(observations[2].comparison_context.reference_status).toBe(
+    "declared_normal",
+  );
+  await expect(normal).not.toBeChecked();
+  expect(errors).toEqual([]);
+});
+
+for (const supported of [false, true]) {
+  test(`residual group evidence keeps ${supported ? "supported correlation" : "unsupported data"} separate from causal confirmation`, async ({
+    page,
+  }) => {
+    const errors = await stub(page, "viewer", (path) => {
+      if (path === "/v2/incidents/9")
+        return {
+          id: 9,
+          version: 1,
+          members: [{ asset_id: 11 }, { asset_id: 12 }],
+          provenance: "self_synthetic",
+          evidence: {
+            numeric_correlation_supported: supported,
+            numeric_support: {
+              status: supported ? "supported" : "unsupported",
+              reasons: supported ? [] : ["normal_reference_insufficient"],
+            },
+            numeric_analysis: {
+              threshold_version: "contract-MAD-v1",
+              quality_flags: {
+                "ins-contract-A": supported ? [] : ["reference_insufficient"],
+              },
+              residuals: {
+                "ins-contract-A": {
+                  "2026-10-01T10:00:00Z": supported ? 3.5 : null,
+                },
+              },
+              pair_evidence: supported
+                ? [
+                    {
+                      members: ["ins-contract-A", "ins-contract-B"],
+                      correlation: 0.91,
+                      aligned_points: 3,
+                      event_overlap: 2,
+                      shared_relations: ["parent_id"],
+                      relation: "synchronous_association",
+                      causality: "not_established",
+                    },
+                  ]
+                : [],
+              qualified_pairs: supported
+                ? [
+                    {
+                      members: ["ins-contract-A", "ins-contract-B"],
+                      correlation: 0.91,
+                      aligned_points: 3,
+                      causality: "not_established",
+                    },
+                  ]
+                : [],
+            },
+            comparison: {
+              chemistry: "LFP",
+              protocol_id: "合同协议1",
+              metric: "voltage",
+              unit: "V",
+              method: "contract-method",
+              load_condition: "0.5C",
+              temperature_condition: "25°C",
+              source_cohort_id: "contract-cohort",
+              origin: "synthetic",
+            },
+            source_refs: [
+              {
+                observation_id: 101,
+                version: 1,
+                asset_id: 11,
+                installation_id: "ins-contract-A",
+                role: "reference",
+                measured_at: "2026-10-01T09:00:00Z",
+                available_at: "2026-10-01T09:01:00Z",
+                origin: "synthetic",
+                source_trust: "reported",
+              },
+            ],
+            confirmed_common_cause: false,
+          },
+        };
+    });
+    await page.goto("/risk");
+    await page
+      .getByRole("button", { name: "展开群组与依据", exact: true })
+      .click();
+    const evidence = page.getByRole("region", {
+      name: "同工况残差关联与来源资格",
+      exact: true,
+    });
+    await expect(evidence.getByText(/不能确认共同根因/)).toBeVisible();
+    await expect(evidence.getByText(/contract-cohort/)).toBeVisible();
+    await expect(evidence.getByText(/合成来源只用于演示/)).toBeVisible();
+    if (supported) {
+      await expect(
+        evidence.getByRole("table", {
+          name: "残差相关与精确对齐点",
+          exact: true,
+        }),
+      ).toContainText("0.91");
+    } else {
+      await expect(
+        evidence.getByText("normal_reference_insufficient", { exact: true }),
+      ).toBeVisible();
+      await expect(
+        evidence.getByRole("table", {
+          name: "残差相关与精确对齐点",
+          exact: true,
+        }),
+      ).toHaveCount(0);
+    }
+    await evidence
+      .getByText("查看按正常参考中位数与 MAD 计算的残差", { exact: true })
+      .click();
+    await expect(
+      evidence.getByRole("table", {
+        name: "服务端计算的标准化残差",
+        exact: true,
+      }),
+    ).toContainText(supported ? "3.5" : "未支持");
+    await evidence.getByText("来源与参考窗口资格", { exact: true }).click();
+    await expect(evidence.locator("pre")).toContainText("observation_id");
+    await expect(
+      evidence.getByRole("table", {
+        name: "比较观察的来源与参考资格",
+        exact: true,
+      }),
+    ).toContainText("使用者声明的早期正常参考");
+    await expect(
+      evidence.getByRole("table", {
+        name: "比较观察的来源与参考资格",
+        exact: true,
+      }),
+    ).toContainText("未独立复核");
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth,
+      ),
+    ).toBe(true);
+    expect(errors).toEqual([]);
+  });
+}
+
+test("verified physical cycle coordinates do not replace ordinal history or become calendar dates", async ({
+  page,
+}) => {
+  await stub(page, "viewer", (path) => {
+    if (path === "/v2/assets/11/prediction-profile")
+      return {
+        ...profile,
+        query: {
+          query_time: 120,
+          visible_cutoff: 120,
+          time_basis: "verified_physical_cycle",
+          physical_cycles_known: true,
+          source_time: {
+            query_cycle: 120,
+            visible_cutoff_cycle: 120,
+            feature_max_cycle: 119,
+            reference_cutoff_cycle: 5,
+          },
+        },
+      };
+  });
+  await page.goto("/assets/11");
+  await expect(page.getByText(/已核实物理循环编号，非日历时间/)).toBeVisible();
+  await expect(page.getByText(/物理循环编号：查询 120/)).toBeVisible();
+  await expect(page.getByText(/特征截止 119/)).toBeVisible();
+});
+
+test("switching safe packages uses each package input cohort and clears the prior observation", async ({
+  page,
+}) => {
+  const errors = await stub(page, "admin", (path) => {
+    if (path === "/assets/11") return { ...assets[0], version: 1 };
+    if (path === "/v2/model-packages")
+      return {
+        items: [
+          {
+            package_id: "package-A",
+            feature_rows: [
+              {
+                row_index: 4,
+                physical_cell_id: "source:A",
+                split: "dev",
+                visible_cutoff: 120,
+              },
+            ],
+            binding_input_source: "package_development_sample",
+          },
+          {
+            package_id: "package-B",
+            feature_rows: [
+              {
+                row_index: 7,
+                physical_cell_id: "source:B",
+                split: "dev",
+                visible_cutoff: 140,
+                time_basis: "verified_physical_cycle",
+                physical_cycles_known: true,
+              },
+            ],
+            binding_input_source: "label_free_package_development_examples",
+          },
+          {
+            package_id: "package-empty",
+            feature_rows: [],
+            binding_input_source: "unavailable",
+          },
+          { package_id: "legacy" },
+        ],
+        feature_rows: [
+          {
+            row_index: 0,
+            physical_cell_id: "xjtu:legacy",
+            split: "train",
+            visible_cutoff: 0,
+          },
+        ],
+      };
+  });
+  await page.goto("/assets/11");
+  const model = page.getByLabel("已验证的安全模型包", { exact: true }),
+    observation = page.getByLabel("开发集源物理对象与观测", { exact: true });
+  await model.selectOption("package-A");
+  await expect(observation).toContainText("源截止序号 120");
+  await observation.selectOption("4");
+  await model.selectOption("package-B");
+  await expect(observation).toHaveValue("");
+  await expect(observation.locator("option")).toHaveCount(2);
+  await expect(observation).toContainText("source:B");
+  await expect(observation).toContainText("源物理循环截止 140");
+  await expect(observation).not.toContainText("source:A");
+  await model.selectOption("package-empty");
+  await expect(observation.locator("option")).toHaveCount(1);
+  await expect(
+    page.getByRole("button", {
+      name: "绑定实验回放并执行 V2 推理",
+      exact: true,
+    }),
+  ).toBeDisabled();
+  await model.selectOption("legacy");
+  await expect(observation).toContainText("xjtu:legacy");
+  expect(errors).toEqual([]);
+});

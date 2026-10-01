@@ -37,6 +37,68 @@ def _snapshot(version: int, memories: list[dict[str, Any]], skills: dict[str, An
             "changes": changes, "parent_snapshot_id": parent}
 
 
+def memory_retrieval_kind(item: dict[str, Any]) -> tuple[str, str]:
+    """Classify recorded evidence, never prose sentiment or reward counters.
+
+    'positive' means a supported applicable experience, not a verified diagnosis
+    or a successful intervention. A conflicting bundle keeps both sides intact.
+    """
+    if item.get("state") == "conflicted":
+        return "counterexample", "recorded_conflict"
+    if item.get("source_trust") == "contradicted":
+        return "counterexample", "source_contradicted"
+    if isinstance(item.get("counterexamples"), list) and item["counterexamples"]:
+        return "counterexample", "explicit_counterexamples"
+    if isinstance(item.get("conflicts"), list) and item["conflicts"]:
+        return "counterexample", "explicit_conflicting_sources"
+    if (item.get("state") == "active" and item.get("source_trust") in ("measurement_supported", "independently_verified")
+            and isinstance(item.get("supporting_case_ids"), list) and item["supporting_case_ids"]
+            and all(isinstance(root, str) and root.strip() for root in item["supporting_case_ids"])):
+        return "positive", "source_supported_applicable_experience"
+    return "unclassified", "reported_or_category_not_established"
+
+
+def _retrieval_view(item: dict[str, Any]) -> dict[str, Any]:
+    kind, basis = memory_retrieval_kind(item)
+    return {**copy.deepcopy(item), "retrieval_kind": kind, "retrieval_basis": basis}
+
+
+class MemoryRetrievalBudget:
+    """One round's initial Context and tool lookups share six unique entries."""
+    def __init__(self):
+        self._accepted: dict[str, dict[str, Any]] = {}
+        self._excluded_by_budget = 0
+
+    def summary(self) -> dict[str, Any]:
+        counts = {kind: sum(item["retrieval_kind"] == kind for item in self._accepted.values())
+                  for kind in ("positive", "counterexample", "unclassified")}
+        return {"max_total": 6, "max_positive": 3, "max_counterexample": 3,
+                "counts": counts, "unique_retrieved": len(self._accepted), "remaining_total": 6 - len(self._accepted),
+                "excluded_by_budget": self._excluded_by_budget,
+                "policy": "unclassified_fill_only; never_borrow_above_class_cap; next_round_for_more"}
+
+    def admit(self, items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        if not isinstance(items, list):
+            raise ValueError("Memory lookup must return a list")
+        result, returned = [], set()
+        for item in items:
+            if not isinstance(item, dict) or not isinstance(item.get("memory_id"), str) or not item["memory_id"]:
+                raise ValueError("Memory lookup entry needs an identity")
+            mid = item["memory_id"]
+            if mid in returned:
+                continue
+            if mid not in self._accepted:
+                view = _retrieval_view(item)
+                kind, counts = view["retrieval_kind"], self.summary()["counts"]
+                if len(self._accepted) >= 6 or kind != "unclassified" and counts[kind] >= 3:
+                    self._excluded_by_budget += 1
+                    continue
+                self._accepted[mid] = view
+            returned.add(mid)
+            result.append(copy.deepcopy(self._accepted[mid]))
+        return result
+
+
 class ContextStore:
     def __init__(self, path: str | Path | None = None, *, initial_snapshot: dict[str, Any] | None = None):
         self.path = Path(path).resolve() if path is not None else None
@@ -210,6 +272,11 @@ class ContextStore:
 
     def search(self, query: str, *, scope: dict[str, Any] | None = None, cutoff: str | None = None,
                limit: int = 6, snapshot_id: str | None = None) -> list[dict[str, Any]]:
+        if type(limit) is not int or limit < 0:
+            raise ValueError("Memory retrieval limit must be a nonnegative integer")
+        limit = min(limit, 6)
+        if not limit:
+            return []
         scope, scored = scope or {}, []
         for item in self.snapshot(snapshot_id)["memories"]:
             if item["state"] not in {"active", "conflicted"}:
@@ -222,7 +289,25 @@ class ContextStore:
                 continue
             score = sum(word.lower() in (item["trigger"] + " " + item["insight"]).lower() for word in query.split())
             scored.append((score, item["memory_id"], item))
-        return [copy.deepcopy(item) for _, _, item in sorted(scored, key=lambda x: (-x[0], x[1]))[:min(limit, 6)]]
+        ordered = sorted(scored, key=lambda x: (-x[0], x[1]))
+        groups = {kind: [row for row in ordered if memory_retrieval_kind(row[2])[0] == kind]
+                  for kind in ("positive", "counterexample", "unclassified")}
+        selected, counts = [], {"positive": 0, "counterexample": 0}
+        # Reserve evidence from both classes. For an odd/small total, keep the
+        # counterexample first rather than letting high-score support crowd it out.
+        while len(selected) < limit:
+            added = False
+            for kind in ("counterexample", "positive"):
+                if len(selected) < limit and counts[kind] < 3 and groups[kind]:
+                    selected.append(groups[kind].pop(0))
+                    counts[kind] += 1
+                    added = True
+            if not added:
+                break
+        # Unknown/reported entries remain explicitly unclassified. A missing
+        # class does not permit four positives or four counterexamples.
+        selected += groups["unclassified"][:limit - len(selected)]
+        return [_retrieval_view(item) for _, _, item in sorted(selected, key=lambda x: (-x[0], x[1]))]
 
 
 def evolve_context(store: ContextStore, feedback: dict[str, Any], previous_report: dict[str, Any] | None = None,

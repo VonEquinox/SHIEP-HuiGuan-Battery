@@ -95,7 +95,7 @@ def rollback(data: S.ContextRollback, request: Request, user=Depends(roles("admi
         snapshot["context_snapshot_id"] = f"rollback-{snapshot['version']}-{fingerprint(snapshot)[:12]}"
         snapshot["parent_snapshot_id"] = obj(current["content"])["context_snapshot_id"]
         change = {"operation": "ROLLBACK", "from_snapshot_id": current["id"], "restore_snapshot_id": target["id"], "reason": data.reason}
-        identifier = publish_snapshot(c, current, snapshot, [change], {"passed": True, "trigger": "manual_operational_rollback"}, user["id"])
+        identifier = publish_snapshot(c, current, snapshot, [change], {"passed": True, "trigger": "manual_operational_rollback"}, user["id"], automatic_regression=False)
         audit(c, user["id"], "context_rollback", "context_snapshot", identifier, change)
         return response(request, **remember(c, user, "context_rollback", key, body, {"snapshot_id": identifier, "context_version": snapshot["version"], "state": "active"}))
 
@@ -149,7 +149,7 @@ def experiment(data: S.EvolutionExperiment, request: Request, user=Depends(roles
         return response(request, **remember(c, user, "evolution_experiment", key, body, result))
 
 
-def publish_snapshot(c, base, snapshot, changes, validation, actor):
+def publish_snapshot(c, base, snapshot, changes, validation, actor, *, automatic_regression=True):
     current = ensure_context(c)
     if current["id"] != base["id"]:
         raise HTTPException(409, "上下文 CAS 冲突，旧候选不会覆盖新经验")
@@ -169,12 +169,19 @@ def publish_snapshot(c, base, snapshot, changes, validation, actor):
         if memory == previous:
             continue
         stored = one(c, "SELECT max(version) n FROM memory_items WHERE memory_key=:k", {"k": memory["memory_id"]})["n"]
+        used = one(c, "SELECT last_used FROM memory_items WHERE memory_key=:k AND last_used IS NOT NULL ORDER BY last_used DESC LIMIT 1", {"k": memory["memory_id"]})
+        # Runtime retrieval is audited metadata. A frozen Context revision must
+        # not erase the last real use recorded in its database mirror.
+        memory_last_used = memory.get("last_used")
+        if used:
+            from .agent.contracts import parse_time
+            memory_last_used = max(filter(None, (memory_last_used, used["last_used"])), key=parse_time)
         memory_version = (stored or 0) + 1
         execute(c, "UPDATE memory_items SET state='superseded' WHERE memory_key=:k AND state IN ('active','conflicted')", {"k": memory["memory_id"]})
         insert(c, "memory_items", {"memory_key": memory["memory_id"], "version": memory_version, "state": memory.get("state", "active"),
                "scope": js(memory.get("scope", {})), "trigger": memory.get("trigger", ""), "insight": memory["insight"], "supporting_case_ids": js(memory.get("supporting_case_ids", [])),
                "counterexamples": js(memory.get("counterexamples", []) + memory.get("conflicts", [])), "source_trust": memory.get("source_trust", "reported"), "origin": memory.get("origin", "measured_declared"),
-               "helpful_count": memory.get("helpful_count", 0), "harmful_count": memory.get("harmful_count", 0), "last_used": memory.get("last_used"), "expires_at": memory.get("expires_at"),
+               "helpful_count": memory.get("helpful_count", 0), "harmful_count": memory.get("harmful_count", 0), "last_used": memory_last_used, "expires_at": memory.get("expires_at"),
                "context_snapshot_id": identifier, "created_at": now()})
     # Rollback also deactivates entries absent from the restored snapshot.
     for memory_id in set(old_memories) - {m["memory_id"] for m in snapshot.get("memories", [])}:
@@ -188,6 +195,8 @@ def publish_snapshot(c, base, snapshot, changes, validation, actor):
         content["context_overrides"] = fields
         insert(c, "skill_versions", {"skill_id": skill_id, "version": previous["version"] + 1 if previous else 1, "state": "active", "content": js(content),
                "source_trust": "automatic_dev_regression", "origin": "self_synthetic", "root_scenario_ids": "[]", "context_snapshot_id": identifier, "created_at": now()})
+    if automatic_regression:
+        schedule_context_regression(c, require(c, "context_snapshots", identifier), actor)
     return identifier
 
 
@@ -343,6 +352,7 @@ def evolution_snapshot(c, job):
 
 
 def _evaluation_cases(case_ids, split):
+    from tools.content.replay import read_selected_jsonl
     # Hidden labels remain in this scorer-only loader, outside the Agent context.
     directory = REPO_ROOT / "content_v1"
     split_directory = "evaluation/sealed" if split == "sealed_test" else "evaluation/dev" if split == "dev" else "streams"
@@ -350,22 +360,26 @@ def _evaluation_cases(case_ids, split):
     records = {}
     for file in candidates:
         if file.is_file():
-            for line in file.read_text().splitlines():
-                case = json.loads(line)
+            for case in read_selected_jsonl(file, set(case_ids)):
                 records[case.get("case_id", case.get("root_scenario_id"))] = case
     if not records:
+        if candidates:
+            raise ValueError("所请求根事件未登记在当前 split")
         raise RuntimeError("合成案例包未就绪，未使用虚构评测成绩")
     assignments = json.loads((directory / "manifests/splits.json").read_text())["root_assignments"]
-    labels = {item["case_id"]: item for item in (json.loads(line) for line in (directory / "oracle/labels.jsonl").read_text().splitlines()) if item["case_id"] in case_ids}
-    result = []
+    requested_split = "sealed" if split == "sealed_test" else split
+    # Validate public root membership before opening the shared evaluator label
+    # store; a wrong-split request cannot select a protected label row.
     for identifier in case_ids:
         if identifier not in records:
             raise ValueError(f"未登记案例: {identifier}")
-        case = copy.deepcopy(records[identifier])
-        requested_split = "sealed" if split == "sealed_test" else split
         actual_split = "sealed" if assignments[identifier] in ("sealed", "sealed_test") else assignments[identifier]
         if actual_split != requested_split:
             raise ValueError("案例实际根级 split 与实验请求不一致")
+    labels = {item["case_id"]: item for item in read_selected_jsonl(directory / "oracle/labels.jsonl", set(case_ids))}
+    result = []
+    for identifier in case_ids:
+        case = copy.deepcopy(records[identifier])
         case["split"] = requested_split
         oracle = labels[identifier]
         case["asset"] = case.get("asset_context", {})
@@ -401,7 +415,8 @@ def evolution_compute(request, cancelled):
     replay_environment = None
     if payload["split"] == "evolution":
         from tools.content.replay import EvaluatorReplay
-        replay_environment = EvaluatorReplay(REPO_ROOT / "content_v1", oracle_access=True)
+        replay_environment = EvaluatorReplay(REPO_ROOT / "content_v1", oracle_access=True,
+                                             allowed_splits={payload["split"]}, case_ids=set(payload["case_ids"]))
     direct_runs = []
     def tracked_runner(*args, **kwargs):
         if cancelled():
@@ -564,3 +579,107 @@ def gepa_complete(c, job, result, request):
             {"s": state, "snapshot": snapshot_id, "changes": js([update] if update else []), "validation": js(validation), "metrics": js(metrics), "t": now(), "i": request["run"]["id"]})
     audit(c, job["created_by"], "context_gepa_auto_complete", "evolution_run", request["run"]["id"], {"status": state, "snapshot_id": snapshot_id, "approval_required": False})
     return {"evolution_run_id": request["run"]["id"], "state": state, "context_snapshot_id": snapshot_id, "metrics": metrics, "validation": validation}
+
+
+def schedule_context_regression(c, snapshot, actor, *, selection_count=5, max_rollouts=10, key=None):
+    """A published version gets a bounded independent check, never sealed data."""
+    from .jobs import enqueue
+    if one(c, "SELECT count(*) n FROM jobs WHERE status IN ('queued','running')")["n"] >= 12:
+        validation = obj(snapshot["validation"])
+        validation["regression_check"] = {"state": "no_check", "reason": "compute_queue_full"}
+        execute(c, "UPDATE context_snapshots SET validation=:v WHERE id=:i", {"v": js(validation), "i": snapshot["id"]})
+        return None
+    payload = {"snapshot_id": snapshot["id"], "base_version": snapshot["context_version"],
+               "selection_count": selection_count, "max_rollouts": max_rollouts}
+    job_id = enqueue(c, "context_regression", payload, {"id": actor}, key or f"context-regression-{snapshot['id']}")
+    run = one(c, "SELECT id FROM evolution_runs WHERE job_id=:j", {"j": job_id})
+    if run is None:
+        insert(c, "evolution_runs", {"job_id": job_id, "method": "context_regression", "status": "queued",
+               "base_context_version": snapshot["context_version"], "source_feedback_ids": "[]", "case_ids": "[]", "split": "dev",
+               "changes": "[]", "validation": js({"automatic": True, "source_split": "dev"}), "metrics": "{}",
+               "provenance": "independent_synthetic_dev_regression", "created_by": actor, "created_at": now()})
+    validation = obj(snapshot["validation"])
+    validation["regression_check"] = {"state": "queued", "job_id": job_id, "max_rollouts": max_rollouts,
+                                     "selection_count": selection_count, "selection_split": "dev"}
+    execute(c, "UPDATE context_snapshots SET validation=:v WHERE id=:i", {"v": js(validation), "i": snapshot["id"]})
+    audit(c, actor, "context_regression_enqueue", "context_snapshot", snapshot["id"], payload)
+    return job_id
+
+
+@router.post("/context-snapshots/check", status_code=202)
+def context_check(data: S.ContextRegression, request: Request, user=Depends(roles("admin", "researcher"))):
+    key = request.headers.get("idempotency-key", "")
+    body = data.model_dump()
+    with tx() as c:
+        old = replay(c, user, "context_regression_check", key, body)
+        if old:
+            return response(request, **old)
+        current = ensure_context(c)
+        if current["context_version"] != data.base_version:
+            raise HTTPException(409, "上下文版本已变化，请刷新检查")
+        job_id = schedule_context_regression(c, current, user["id"], selection_count=data.selection_count,
+                                            max_rollouts=data.max_rollouts, key="context-check-" + fingerprint([user["id"], key]))
+        result = {"job_id": job_id, "snapshot_id": current["id"], "base_version": current["context_version"],
+                  "state": "queued" if job_id else "no_check", "approval_required": False}
+        return response(request, **remember(c, user, "context_regression_check", key, body, result))
+
+
+def context_regression_snapshot(c, job):
+    payload = obj(job["payload"])
+    base = require(c, "context_snapshots", payload["snapshot_id"])
+    previous = require(c, "context_snapshots", base["parent_id"]) if base["parent_id"] else None
+    run = one(c, "SELECT * FROM evolution_runs WHERE job_id=:j", {"j": job["id"]})
+    execute(c, "UPDATE evolution_runs SET status='running' WHERE id=:i", {"i": run["id"]})
+    return {"kind": "context_regression", "payload": payload, "base": base, "previous": previous, "run": run}
+
+
+def context_regression_compute(request, cancelled):
+    from .agent.regression import ContextRegressionService
+    payload = request["payload"]
+    service = ContextRegressionService(REPO_ROOT / "content_v1", selection_count=payload["selection_count"],
+                                       rollout_budget=payload["max_rollouts"], cancelled=cancelled)
+    current = obj(request["base"]["content"])
+    previous = obj(request["previous"]["content"]) if request["previous"] else None
+    source_roots = {str(root) for memory in current.get("memories", []) for root in memory.get("supporting_case_ids", [])}
+    try:
+        return service.check(current, previous, source_root_ids=sorted(source_roots))
+    finally:
+        request["_accounting"] = service.accounting()
+
+
+def context_regression_complete(c, job, result, request):
+    current = ensure_context(c)
+    checked = request["base"]
+    state, restored_id, changes = result["state"], None, []
+    # A delayed check of an old version cannot undo a newer feedback update.
+    captured = obj(checked["content"])
+    if current["id"] != checked["id"] or current["context_version"] != request["payload"]["base_version"] or fingerprint(obj(current["content"])) != fingerprint(captured):
+        state = "conflicted"
+    elif state == "regression":
+        previous = request["previous"]
+        if previous is None or previous["state"] == "quarantined":
+            state = "no_check"
+        else:
+            restored = obj(previous["content"])
+            restored["parent_snapshot_id"] = captured["context_snapshot_id"]
+            restored["context_snapshot_id"] = "automatic-rollback-" + fingerprint([checked["id"], previous["id"], now()])[:20]
+            changes = [{"operation": "ROLLBACK", "from_snapshot_id": checked["id"], "restore_snapshot_id": previous["id"],
+                        "reason": result["reason"], "trigger": "automatic_independent_regression"}]
+            restored_id = publish_snapshot(c, current, restored, changes, {"passed": True, "trigger": "automatic_independent_regression",
+                                            "checked_snapshot_id": checked["id"], "regression": result}, job["created_by"], automatic_regression=False)
+            execute(c, "UPDATE context_snapshots SET state='quarantined' WHERE id=:i", {"i": checked["id"]})
+            state = "rolled_back"
+    validation = {**obj(checked["validation"]), "regression_check": {**result, "state": state,
+                   "job_id": job["id"], "restored_snapshot_id": restored_id, "automatic": True}}
+    execute(c, "UPDATE context_snapshots SET validation=:v WHERE id=:i", {"v": js(validation), "i": checked["id"]})
+    execute(c, "UPDATE evolution_runs SET status=:s,result_snapshot_id=:r,changes=:changes,validation=:v,metrics=:m,finished_at=:t WHERE id=:i",
+            {"s": state, "r": restored_id, "changes": js(changes), "v": js({"passed": state == "passed", "reason": result["reason"], "automatic": True}),
+             "m": js(result), "t": now(), "i": request["run"]["id"]})
+    if result.get("selection_root_ids"):
+        insert(c, "evaluation_runs", {"evolution_run_id": request["run"]["id"], "split": "dev", "sample_count": len(result["selection_root_ids"]),
+               "metrics": js(result), "protocol": js({"current_snapshot_id": checked["id"], "previous_snapshot_id": request["previous"]["id"] if request["previous"] else None,
+                                                     "selection_sha256": result.get("selection_sha256"), "sealed_access": False}),
+               "budget": js(result.get("budget", {})), "created_at": now()})
+    audit(c, job["created_by"], "context_regression_complete", "context_snapshot", checked["id"], {"state": state, "reason": result["reason"], "restored_snapshot_id": restored_id})
+    return {"state": state, "checked_snapshot_id": checked["id"], "restored_snapshot_id": restored_id,
+            "evolution_run_id": request["run"]["id"], "metrics": result, "approval_required": False}

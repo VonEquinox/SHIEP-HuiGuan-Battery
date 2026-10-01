@@ -74,9 +74,25 @@ class IncidentSplit(VersionNote):
 
 class Measurement(Strict):
     metric: str = Field(min_length=1, max_length=80)
-    value: float
+    value: float = Field(allow_inf_nan=False)
     unit: str = Field(min_length=1, max_length=40)
     method: str = Field(min_length=1, max_length=160)
+
+
+class ComparisonContext(Strict):
+    chemistry: Literal["LFP", "NCM", "NCA", "LCO", "LMO", "LTO", "unknown"]
+    protocol_id: str = Field(min_length=1, max_length=160)
+    load_condition: str = Field(min_length=1, max_length=160)
+    temperature_condition: str = Field(min_length=1, max_length=160)
+    source_cohort_id: str = Field(min_length=1, max_length=160)
+    reference_status: Literal["not_reference", "declared_normal"] = "not_reference"
+
+    @model_validator(mode="after")
+    def nonblank_conditions(self):
+        for field in ("protocol_id", "load_condition", "temperature_condition", "source_cohort_id"):
+            if not getattr(self, field).strip():
+                raise ValueError("comparison conditions must be explicitly declared")
+        return self
 
 
 class ObservationCreate(Strict):
@@ -89,6 +105,7 @@ class ObservationCreate(Strict):
     instrument_id: str = Field(default="not_recorded", min_length=1, max_length=160)
     calibration_status: Literal["calibrated", "unknown", "expired", "not_applicable"] = "unknown"
     measurements: list[Measurement] = Field(default_factory=list, max_length=100)
+    comparison_context: ComparisonContext | None = None
     observed_symptoms: list[str] = Field(default_factory=list, max_length=30)
     performed_actions: list[str] = Field(default_factory=list, max_length=30)
     confirmed_hypotheses: list[str] = Field(default_factory=list, max_length=30)
@@ -181,3 +198,9 @@ class ContextRollback(Strict):
     base_version: int = Field(ge=0)
     snapshot_id: int = Field(gt=0)
     reason: str = Field(min_length=3, max_length=2000)
+
+
+class ContextRegression(Strict):
+    base_version: int = Field(ge=0)
+    selection_count: int = Field(default=5, ge=1, le=20)
+    max_rollouts: int = Field(default=10, ge=2, le=40)

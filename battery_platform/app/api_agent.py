@@ -101,7 +101,7 @@ def get_session(identifier: int, request: Request, user=Depends(authenticated)):
         session["runs"] = [public(v, ("request",)) for v in rows(c, "SELECT * FROM agent_runs WHERE session_id=:s ORDER BY id", {"s": identifier})]
         session["reports"] = [public(v, REPORT_JSON) for v in rows(c, "SELECT * FROM agent_reports WHERE session_id=:s ORDER BY report_version", {"s": identifier})]
         session["proposals"] = [public(v, PROPOSAL_JSON) for v in rows(c, "SELECT * FROM work_proposals WHERE session_id=:s ORDER BY id", {"s": identifier})]
-        session["observations"] = [public(v, ("measurements", "observed_symptoms", "performed_actions", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items", "candidate_facts", "attachment_ids", "assertion_targets"))
+        session["observations"] = [public(v, ("measurements", "observed_symptoms", "performed_actions", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items", "candidate_facts", "attachment_ids", "assertion_targets", "comparison_context"))
                                    for v in rows(c, "SELECT * FROM inspection_observations WHERE session_id=:s ORDER BY id", {"s": identifier})]
         session["feedback"] = [public(v, ("assertion_targets", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items", "candidate_facts")) for v in rows(c, "SELECT * FROM diagnostic_feedback WHERE session_id=:s ORDER BY id", {"s": identifier})]
         return response(request, **session)
@@ -489,6 +489,15 @@ def agent_complete(c, job, result, request):
     report_id = insert(c, "agent_reports", {"agent_run_id": run["id"], "session_id": run["session_id"], "asset_id": run["asset_id"], "installation_id": run["installation_id"],
                     "round": run["round"], "report_version": version, "context_snapshot_id": run["context_snapshot_id"], "report": js(report), "tool_trace": js(result.get("tool_trace", [])),
                     "provenance": provenance, "status": report["status"], "created_at": now()})
+    retrieved = set(result.get("run", {}).get("retrieved_memory_ids", []))
+    frozen_keys = {item["memory_id"] for item in request["context_snapshot"].get("memories", [])}
+    for memory_key in sorted(retrieved & frozen_keys):
+        memory = one(c, "SELECT * FROM memory_items WHERE memory_key=:k AND context_snapshot_id<=:snapshot ORDER BY version DESC LIMIT 1",
+                     {"k": memory_key, "snapshot": run["context_snapshot_id"]})
+        if memory:
+            execute(c, "UPDATE memory_items SET last_used=:t WHERE id=:i", {"t": now(), "i": memory["id"]})
+            audit(c, job["created_by"], "memory_retrieved", "memory_item", memory["id"],
+                  {"report_id": report_id, "context_snapshot_id": run["context_snapshot_id"], "memory_version": memory["version"], "helpfulness_evaluated": False})
     execute(c, "UPDATE agent_runs SET status='succeeded',finished_at=:t,version=version+1 WHERE id=:i", {"t": now(), "i": run["id"]})
     session_status = "UNRESOLVED" if report.get("termination", {}).get("reason") in ("budget_exhausted", "no_useful_test") else "OPEN"
     execute(c, "UPDATE diagnostic_sessions SET round=max(round,:r),status=:status,version=version+1 WHERE id=:s", {"r": run["round"], "s": run["session_id"], "status": session_status})
@@ -521,27 +530,73 @@ def incident_snapshot(c, job):
     payload = obj(job["payload"])
     start = (datetime.fromisoformat(payload["visible_cutoff"]) - timedelta(minutes=payload["window_minutes"])).isoformat()
     members = []
+    source_versions = {}
+    catalog = test_catalog()
     for asset_id in payload["asset_ids"]:
         asset = require(c, "assets", asset_id)
+        if not asset["active"]:
+            raise HTTPException(409, "群组成员已经退役")
         alert = one(c, """SELECT a.*,e.installation_id,e.provenance,e.created_at event_at,e.evidence FROM alerts a JOIN health_events e ON e.id=a.event_id
                       WHERE a.asset_id=:a AND e.installation_id=:n AND e.created_at>=:start AND e.created_at<=:end AND a.status!='RESOLVED' ORDER BY a.id DESC LIMIT 1""",
                     {"a": asset_id, "n": asset["installation_id"], "start": start, "end": payload["visible_cutoff"]})
-        members.append({"asset": asset, "alert": alert})
-    return {"kind": "incident_analysis", "payload": payload, "members": members, "window_start": start}
+        observations = []
+        records = rows(c, """SELECT * FROM inspection_observations WHERE asset_id=:a AND installation_id=:n AND available_at<=:end
+                            AND measured_at>=:start AND measured_at<=:end ORDER BY id DESC LIMIT 500""",
+                       {"a": asset_id, "n": asset["installation_id"], "start": start, "end": payload["visible_cutoff"]})
+        for record in reversed(records):
+            visible = versioned_evidence(c, "inspection_observations", record, payload["visible_cutoff"])
+            if visible is None:
+                continue
+            conditions = visible.get("comparison_context") or {}
+            authorization = conditions.get("authorization_ref", {})
+            qualified = conditions.get("qualification_evidence", {})
+            proposal = one(c, "SELECT * FROM work_proposals WHERE id=:p AND order_id=:o AND status='APPROVED'",
+                           {"p": authorization.get("proposal_id"), "o": record["order_id"]})
+            round_row = one(c, "SELECT * FROM inspection_rounds WHERE id=:r AND order_id=:o", {"r": authorization.get("round_id"), "o": record["order_id"]})
+            scope = one(c, "SELECT * FROM order_assets WHERE order_id=:o AND asset_id=:a AND installation_id=:n",
+                        {"o": record["order_id"], "a": asset_id, "n": asset["installation_id"]})
+            minimum = set(catalog.get(record["test_id"], {}).get("required_qualifications", []))
+            visible["_authorization_verified"] = bool(proposal and round_row and scope and authorization.get("test_id") == record["test_id"]
+                and record["test_id"] in catalog and record["test_id"] in obj(round_row["authorized_tests"], []) and qualified.get("author_id") == record["author_id"]
+                and minimum.issubset(set(qualified.get("required_qualifications", []))))
+            observations.append(visible)
+            source_versions[("inspection_observations", record["id"])] = record["version"]
+            if proposal:
+                source_versions[("work_proposals", proposal["id"])] = proposal["version"]
+            if round_row:
+                source_versions[("inspection_rounds", round_row["id"])] = round_row["version"]
+        members.append({"asset": asset, "alert": alert, "observations": observations})
+    return {"kind": "incident_analysis", "payload": payload, "members": members, "window_start": start,
+            "_source_versions": [{"table": table, "id": identifier, "version": version} for (table, identifier), version in source_versions.items()],
+            "_catalog_sha256": fingerprint(catalog)}
 
 
 def incident_compute(request, cancelled):
     if cancelled():
         raise RuntimeError("任务取消")
-    # Missing aligned residual measurements cannot establish correlation or a common cause.
+    from .diagnosis.group_adapter import measurement_groups
     members = request["members"]
+    numeric = measurement_groups(members, window_start=request["window_start"], cutoff=request["payload"]["visible_cutoff"], cancelled=cancelled)
     active = [v for v in members if v["alert"]]
     groups = {}
     for member in active:
         groups.setdefault(member["asset"]["parent_id"], []).append(member)
-    candidates = [members for parent, members in groups.items() if parent is not None and len(members) >= 2]
-    return {"groups": [{"members": group, "relation_type": "topology_association", "reason": "同一拓扑父节点且告警窗口重叠；缺少对齐残差，不确认共因", "confirmed_common_cause": False} for group in candidates],
-            "unmatched_asset_ids": [v["asset"]["id"] for v in members if not any(v in g for g in candidates)], "numeric_correlation_supported": False}
+    candidates = list(numeric["groups"])
+    covered = {member["asset"]["id"] for group in candidates for member in group["members"]}
+    for parent, peers in groups.items():
+        peers = [peer for peer in peers if peer["asset"]["id"] not in covered]
+        if parent is None or len(peers) < 2:
+            continue
+        relevant = [analysis for analysis in numeric["analyses"] if analysis["comparison"]["parent_id"] == parent]
+        detail = next((analysis for analysis in relevant if analysis["numeric_correlation_supported"]), relevant[0] if relevant else {})
+        reasons = sorted({reason for peer in peers for reason in numeric["rejections"].get(str(peer["asset"]["id"]), [])})
+        candidates.append({**detail, "members": peers, "relation_type": "topology_association", "confirmed_common_cause": False,
+            "numeric_algorithm_executed": bool(relevant), "numeric_correlation_supported": bool(detail.get("numeric_correlation_supported")),
+            "numeric_support": detail.get("numeric_support", {"status": "unsupported", "reasons": reasons or ["comparable_normal_reference_and_aligned_measurements_missing"]}),
+            "reason": "数值关联未达到冻结阈值，保留拓扑关联且不确认共因" if relevant else "同一拓扑父节点且告警窗口重叠；可比对齐残差资格不足，不确认共因"})
+    return {"groups": candidates, "numeric_analyses": numeric["analyses"], "measurement_rejections": numeric["rejections"],
+            "unmatched_asset_ids": [member["asset"]["id"] for member in members if not any(member in group["members"] for group in candidates)],
+            "numeric_algorithm_executed": numeric["numeric_algorithm_executed"], "numeric_correlation_supported": numeric["numeric_correlation_supported"]}
 
 
 def incident_complete(c, job, result, request):
@@ -551,15 +606,29 @@ def incident_complete(c, job, result, request):
             raise HTTPException(409, "群组分析期间资产已经变化")
         if member["alert"] and require(c, "alerts", member["alert"]["id"])["version"] != member["alert"]["version"]:
             raise HTTPException(409, "群组分析期间告警已经变化")
+    for source in request.get("_source_versions", []):
+        if require(c, source["table"], source["id"])["version"] != source["version"]:
+            raise HTTPException(409, "群组分析期间来源观察或授权范围已经变化")
+    if request.get("_catalog_sha256") != fingerprint(test_catalog()):
+        raise HTTPException(409, "群组分析期间测试目录资格已经变化")
     group_ids = []
     for candidate in result["groups"]:
-        evidence = {"member_alert_ids": [v["alert"]["id"] for v in candidate["members"]], "confirmed_common_cause": False, "numeric_correlation_supported": False,
+        evidence = {"member_alert_ids": [v["alert"]["id"] for v in candidate["members"] if v["alert"]], "confirmed_common_cause": False,
+                    "numeric_correlation_supported": candidate["numeric_correlation_supported"], "numeric_algorithm_executed": candidate["numeric_algorithm_executed"],
+                    "numeric_support": candidate["numeric_support"], "numeric_analysis": candidate.get("numeric_analysis", {}),
+                    "comparison": candidate.get("comparison"), "source_refs": candidate.get("source_refs", []),
+                    "alternative_explanations": candidate.get("alternative_explanations", ["shared acquisition issue", "shared environment", "coincident individual anomalies"]),
+                    "measurement_rejections": result["measurement_rejections"], "source_trust": "declared_measurements_and_normal_reference",
                     "topology_origin": "simulated" if any(v["asset"]["provenance"] == "simulated" for v in candidate["members"]) else "declared"}
-        identifier = insert(c, "incident_groups", {"title": "拓扑关联检查组", "status": "ACTIVE", "relation_type": candidate["relation_type"], "reason": candidate["reason"], "evidence": js(evidence),
+        identifier = insert(c, "incident_groups", {"title": "同步残差关联检查组" if candidate["relation_type"] == "synchronous_association" else "拓扑关联检查组",
+                            "status": "ACTIVE", "relation_type": candidate["relation_type"], "reason": candidate["reason"], "evidence": js(evidence),
                             "window_start": request["window_start"], "window_end": request["payload"]["visible_cutoff"], "provenance": "self_synthetic" if evidence["topology_origin"] == "simulated" else "measured_declared",
                             "created_by": job["created_by"], "created_at": now()})
         for member in candidate["members"]:
-            insert(c, "incident_members", {"group_id": identifier, "asset_id": member["asset"]["id"], "installation_id": member["asset"]["installation_id"], "alert_id": member["alert"]["id"], "evidence": js({"event_at": member["alert"]["event_at"]})})
+            insert(c, "incident_members", {"group_id": identifier, "asset_id": member["asset"]["id"], "installation_id": member["asset"]["installation_id"],
+                                        "alert_id": member["alert"]["id"] if member["alert"] else None, "evidence": js({"event_at": member["alert"]["event_at"] if member["alert"] else None})})
         group_ids.append(identifier)
         audit(c, job["created_by"], "incident_group_create", "incident_group", identifier, evidence)
-    return {"group_ids": group_ids, "unmatched_asset_ids": result["unmatched_asset_ids"], "numeric_correlation_supported": False}
+    return {"group_ids": group_ids, "unmatched_asset_ids": result["unmatched_asset_ids"], "numeric_analyses": result["numeric_analyses"],
+            "measurement_rejections": result["measurement_rejections"], "numeric_algorithm_executed": result["numeric_algorithm_executed"],
+            "numeric_correlation_supported": result["numeric_correlation_supported"]}

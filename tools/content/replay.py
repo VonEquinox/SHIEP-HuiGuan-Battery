@@ -116,17 +116,76 @@ class ReplaySession:
     completed: list[dict] = field(default_factory=list)
 
 
-class EvaluatorReplay:
-    """Hidden labels never enter returned visible dictionaries."""
+def read_selected_jsonl(path: Path, identities: set[str], *, key: str = "case_id") -> list[dict]:
+    """Filter opaque identity fields before decoding any out-of-scope JSON row.
 
-    def __init__(self, root: str | Path, *, oracle_access: bool = False):
+    Corpus identities contain no JSON escapes. Scanning the shared oracle file
+    is necessary, but a sealed/future root's payload never enters the decoder.
+    """
+    if not identities:
+        return []
+    pattern = re.compile(r'(?<!\\)"' + re.escape(key) + r'"\s*:\s*"([^"\\]*)"')
+    rows = []
+    with Path(path).open(encoding="utf-8") as handle:
+        for line in handle:
+            identity = pattern.search(line)
+            if identity and identity.group(1) in identities:
+                rows.append(json.loads(line))
+    return rows
+
+
+class EvaluatorReplay:
+    """Read only allowed split/root payloads; labels stay evaluator-only.
+
+    Cold-start is the safe default. Evolution, dev and sealed_test each require
+    explicit selection; granting oracle access does not grant every split.
+    """
+
+    def __init__(self, root: str | Path, *, oracle_access: bool = False,
+                 allowed_splits=None, case_ids=None):
         if not oracle_access:
             raise PermissionError("oracle access is evaluator-only and must be explicitly enabled")
         self.root = Path(root)
-        paths = [self.root / "cases/cold_start.jsonl", *sorted((self.root / "streams").glob("evolution_round_*.jsonl")), self.root / "evaluation/dev/cases.jsonl", self.root / "evaluation/sealed/cases.jsonl"]
-        self._cases = {case["case_id"]: case for path in paths for case in read_jsonl(path)}
-        self._labels = {row["case_id"]: row for row in read_jsonl(self.root / "oracle/labels.jsonl")}
-        self._observations = {row["observation_id"]: row for row in read_jsonl(self.root / "oracle/observations.jsonl")}
+        if isinstance(allowed_splits, str):
+            raise ValueError("allowed_splits must be an explicit collection of splits")
+        self.allowed_splits = frozenset({"cold_start"} if allowed_splits is None else allowed_splits)
+        if not self.allowed_splits or not self.allowed_splits <= {"cold_start", "evolution", "dev", "sealed_test"}:
+            raise ValueError("unknown or empty evaluator split scope")
+        if isinstance(case_ids, str):
+            raise ValueError("case_ids must be a collection, not a single string")
+        selected = None if case_ids is None else set(case_ids)
+        if selected is not None and any(not isinstance(cid, str) or not cid for cid in selected):
+            raise ValueError("case_ids must contain nonempty opaque string IDs")
+        self._cases, self._labels, self._observations = {}, {}, {}
+        if selected == set():
+            return
+        paths = []
+        if "cold_start" in self.allowed_splits:
+            paths.append(("cold_start", self.root / "cases/cold_start.jsonl"))
+        if "evolution" in self.allowed_splits:
+            paths.extend(("evolution", path) for path in sorted((self.root / "streams").glob("evolution_round_*.jsonl")))
+        if "dev" in self.allowed_splits:
+            paths.append(("dev", self.root / "evaluation/dev/cases.jsonl"))
+        if "sealed_test" in self.allowed_splits:
+            paths.append(("sealed_test", self.root / "evaluation/sealed/cases.jsonl"))
+        for split, path in paths:
+            cases = read_jsonl(path) if selected is None else read_selected_jsonl(path, selected)
+            for case in cases:
+                if case.get("split_tags", {}).get("split", split) != split:
+                    raise ValueError("case split does not match its allowed source file")
+                if case["case_id"] in self._cases:
+                    raise ValueError("duplicate root identity across evaluator input files")
+                self._cases[case["case_id"]] = case
+        if selected is not None and selected != set(self._cases):
+            raise PermissionError("requested case is missing or outside allowed evaluator splits")
+        roots = set(self._cases)
+        self._labels = {row["case_id"]: row for row in read_selected_jsonl(self.root / "oracle/labels.jsonl", roots)}
+        if set(self._labels) != roots:
+            raise ValueError("requested evaluator roots lack their oracle label")
+        observation_ids = {oid for label in self._labels.values() for branch in label["branches"] for oid in branch["reveal"]}
+        self._observations = {row["observation_id"]: row for row in read_selected_jsonl(self.root / "oracle/observations.jsonl", observation_ids, key="observation_id")}
+        if set(self._observations) != observation_ids:
+            raise ValueError("requested evaluator branches lack their observations")
 
     def begin(self, case_id: str) -> ReplaySession:
         case = deepcopy(self._cases[case_id])

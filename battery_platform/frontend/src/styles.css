@@ -2060,6 +2060,27 @@ summary {
   gap: 12px;
   margin: 18px 0;
 }
+
+.v2-comparison {
+  margin: 20px 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-width: 0;
+}
+.v2-comparison legend {
+  padding: 0 6px;
+  font-weight: 600;
+}
+.v2-check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.v2-check-label input {
+  width: auto;
+  flex-shrink: 0;
+}
 .v2-form-inline .field {
   flex: 1;
   min-width: 160px;

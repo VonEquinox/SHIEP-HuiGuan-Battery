@@ -153,6 +153,9 @@ def test_experiment_preserves_total_candidate_budget_and_provider_accounting(adm
     visible_cases = [{**case, "case_id": f"evo-{index}", "root_scenario_id": f"evo-{index}", "split": "evolution",
                       "feedback": {"free_text": "Retain competing explanations", "evidence_ids": ["e"]}} for index, case in enumerate(cases())]
     monkeypatch.setattr(api_evolution, "_evaluation_cases", lambda ids, split: visible_cases)
+    # These handmade root IDs intentionally have no released replay branches;
+    # skip only the environment loader, which now rejects unknown roots early.
+    monkeypatch.setattr("tools.content.replay.EvaluatorReplay", lambda *args, **kwargs: None)
     client = inject_search(monkeypatch)
     original = ReplayEvaluator.evaluate
     def fixture_replay(self, *args, **kwargs):

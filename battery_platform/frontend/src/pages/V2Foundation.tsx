@@ -668,6 +668,12 @@ export function V2Prediction({
   useEffect(() => {
     if (params.id) setAssetId(params.id);
   }, [params.id]);
+  const selectedPackage = listItems(packages.data).find(
+      (item) => item.package_id === packageId,
+    ),
+    bindingRows = Array.isArray(selectedPackage?.feature_rows)
+      ? selectedPackage.feature_rows
+      : packages.data?.feature_rows || [];
   const p = profile.data,
     rawPrediction = useData<any>(
       p?.prediction_id ? `/predictions/${p.prediction_id}` : "",
@@ -757,7 +763,10 @@ export function V2Prediction({
               <select
                 required
                 value={packageId}
-                onChange={(e) => setPackageId(e.target.value)}
+                onChange={(e) => {
+                  setPackageId(e.target.value);
+                  setRowIndex("");
+                }}
               >
                 <option value="">选择服务器验证过的包</option>
                 {listItems(packages.data).map((item) => (
@@ -774,11 +783,14 @@ export function V2Prediction({
                 onChange={(e) => setRowIndex(e.target.value)}
               >
                 <option value="">选择已登记的源观测</option>
-                {packages.data?.feature_rows?.map((row: any) => (
+                {bindingRows.map((row: any) => (
                   <option key={row.row_index} value={row.row_index}>
                     {row.physical_cell_id} / #{row.row_index} / {row.split} /
                     {typeof row.visible_cutoff === "number"
-                      ? ` 源截止序号 ${row.visible_cutoff}`
+                      ? row.physical_cycles_known === true &&
+                        row.time_basis === "verified_physical_cycle"
+                        ? ` 源物理循环截止 ${row.visible_cutoff}`
+                        : ` 源截止序号 ${row.visible_cutoff}`
                       : ` 源截止 ${textValue(row.visible_cutoff)}`}
                   </option>
                 ))}
@@ -796,6 +808,7 @@ export function V2Prediction({
                 !p?.installation_id ||
                 !assetDetail.data?.version ||
                 !listItems(packages.data).length ||
+                !bindingRows.length ||
                 action.busy
               }
             >
@@ -803,11 +816,30 @@ export function V2Prediction({
             </button>
             <Evidence
               title="包版本、域、哈希与实验身份"
-              value={listItems(packages.data).find(
-                (item) => item.package_id === packageId,
-              )}
+              value={selectedPackage}
             />
           </form>
+        )}
+        {packageId && !bindingRows.length && (
+          <Notice>
+            所选模型包尚无可绑定的开发观测，请检查包的输入来源。
+            {selectedPackage?.binding_error &&
+              ` ${textValue(selectedPackage.binding_error)}`}
+          </Notice>
+        )}
+        {selectedPackage?.binding_input_source && (
+          <p>
+            所选包输入来源：
+            {selectedPackage.binding_input_source ===
+            "committed_development_bundle"
+              ? "已登记开发集观测"
+              : selectedPackage.binding_input_source ===
+                  "label_free_package_development_examples"
+                ? "模型包内开发观测（不含标签）"
+                : selectedPackage.binding_input_source === "unavailable"
+                  ? "暂无可用开发观测"
+                  : textValue(selectedPackage.binding_input_source)}
+          </p>
         )}
         {action.feedback}
         <V2Job
@@ -850,8 +882,22 @@ export function V2Prediction({
                   {textValue(p?.query?.visible_cutoff)}{" "}
                   {p?.query?.time_basis === "source_record_ordinal" &&
                     "（源记录序号，非现场时间）"}
+                  {p?.query?.time_basis === "verified_physical_cycle" &&
+                    p?.query?.physical_cycles_known === true &&
+                    "（已核实物理循环编号，非日历时间）"}
                 </span>
               )}
+              {p?.query?.time_basis === "verified_physical_cycle" &&
+                p?.query?.physical_cycles_known === true && (
+                  <span>
+                    物理循环编号：查询{" "}
+                    {textValue(p.query.source_time?.query_cycle)} · 可见截止{" "}
+                    {textValue(p.query.source_time?.visible_cutoff_cycle)} ·
+                    特征截止 {textValue(p.query.source_time?.feature_max_cycle)}{" "}
+                    · 参考截止{" "}
+                    {textValue(p.query.source_time?.reference_cutoff_cycle)}
+                  </span>
+                )}
               <Version
                 value={
                   p?.model_version ||

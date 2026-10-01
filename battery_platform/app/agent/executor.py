@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from ..diagnosis.active_tests import rank_tests
-from .context import ContextStore
+from .context import ContextStore, MemoryRetrievalBudget
 from .contracts import AgentReport, TOOL_WHITELIST, public_context, validate_report
 from .llm import LLMError, OpenAICompatibleClient
 from .tools import ToolError, ToolRegistry
@@ -124,6 +124,8 @@ class AgentExecutor:
                 skill_library = SkillLibrary(public_root)
         if skill_library:
             try:
+                if hasattr(skill_library, "with_context_overrides"):
+                    skill_library = skill_library.with_context_overrides(snapshot.get("skills", {}))
                 selected = skill_library.route(visible, max_skills=4)
                 for metadata in selected[:4]:
                     sid = metadata.get("skill_id", metadata.get("id"))
@@ -141,8 +143,9 @@ class AgentExecutor:
             memory_store = ContextStore(initial_snapshot=snapshot)
         else:
             memory_store = store
-        memories = memory_store.search(str(visible.get("symptoms", "inspection")), scope=scope, cutoff=cutoff,
-                                       snapshot_id=snapshot["context_snapshot_id"])
+        memory_budget = MemoryRetrievalBudget()
+        memories = memory_budget.admit(memory_store.search(str(visible.get("symptoms", "inspection")), scope=scope, cutoff=cutoff,
+                                       snapshot_id=snapshot["context_snapshot_id"]))
         prediction = visible.get("prediction", {})
         if isinstance(prediction.get("heads"), list):
             prediction["heads"] = {head["head"]: head for head in prediction["heads"] if head.get("head")}
@@ -193,6 +196,10 @@ class AgentExecutor:
             if not set(tools) <= TOOL_WHITELIST:
                 raise ToolError("registered tools exceed fixed whitelist")
             callbacks.update(tools)
+        original_memory_search = callbacks["search_memory"]
+        def bounded_memory_search(arguments):
+            return memory_budget.admit(original_memory_search(arguments))
+        callbacks["search_memory"] = bounded_memory_search
         if "propose_work_order" in callbacks:
             original_propose = callbacks["propose_work_order"]
             def guarded_proposal(arguments):
@@ -221,7 +228,7 @@ class AgentExecutor:
                    "visible_cutoff": cutoff, "round": round_no, "asset": visible.get("asset", {}),
                    "observations": visible["observations"], "prediction": prediction,
                    "group_context": visible.get("group_context", {}), "skills": loaded,
-                   "memories": memories, "test_catalog": catalog,
+                   "memories": memories, "memory_retrieval_budget": memory_budget.summary(), "test_catalog": catalog,
                    "ranked_tests": ranked, "previous_reports": visible.get("previous_reports", [])[-3:],
                    "feedback": visible.get("feedback", []), "context_version": snapshot["context_version"],
                    "known_errors": errors}
@@ -309,6 +316,10 @@ class AgentExecutor:
             states.append({"state": "WAIT_FOR_MEASUREMENT"})
         elif ranked.get("stop_reason") or report["status"] == "unsupported":
             states.append({"state": "CLOSED_OR_UNRESOLVED"})
+        retrieved_memory_ids = {m["memory_id"] for m in memories}
+        for trace in registry.trace:
+            if trace.get("name") == "search_memory" and trace.get("status") == "completed":
+                retrieved_memory_ids.update(m["memory_id"] for m in trace.get("result", []) if isinstance(m, dict) and m.get("memory_id"))
         return {"report": report, "run": {"state": states[-1]["state"], "states": states,
                 "execution_mode": mode, "cloud_report_valid": provider_report_valid,
                 "status": "completed_with_problem_report" if errors else "completed", "errors": errors,
@@ -318,6 +329,8 @@ class AgentExecutor:
                 "llm_request_count": getattr(client, "request_count", 0) - requests_before,
                 "llm_failed_request_count": getattr(client, "failed_request_count", 0) - failed_before,
                 "llm_unknown_usage_request_count": getattr(client, "unknown_usage_request_count", 0) - unknown_usage_before,
+                "retrieved_memory_ids": sorted(retrieved_memory_ids),
+                "memory_retrieval_budget": memory_budget.summary(),
                 "context_snapshot_id": snapshot["context_snapshot_id"]},
                 "context_snapshot": snapshot, "tool_trace": registry.trace}
 

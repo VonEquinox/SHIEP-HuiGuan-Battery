@@ -266,3 +266,25 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
 - 交付前单位复核修正 threshold_risk 的 unit 为 probability，H 仍是物理循环，RUL 仍为 physical_cycle。
   两个研究包仅刷新保存输出与回执hash，模型SHA和全部数值不变；六包再次重放通过。
   本阶段提交在推送前 amend 纳入元数据纠正，原四个包与原实验指标保持不变。
+
+## 提交 18：最终服务链补齐与按包输入验收
+
+- Context 发布自动进入独立 dev 回归作业，检查 previous/current、真实费用、取消终态和版本 CAS；
+  退化可恢复为新版本并隔离坏版本，不递归排队，无 prior/cloud/dev/预算时明确 no_check。
+- 可编辑 routing_description 参与实际 Skill 路由；Memory.last_used 接真实检索与审计，
+  正反例各最多3条、同轮初始与全部工具共6个唯一条目，未核实报告保持未分类，不虚增在线奖励。
+- 共享回放器默认只加载 cold_start；API 显式限制 split 与根身份，先筛选行再解码，
+  普通 evolution 不打开 sealed 案例、不解码其标签/未来观察。原试验协议、成绩和费用未修改。
+- 真实 incident worker 接入 MAD 标准化残差与同工况相关：显式参考声明、校准/来源资格、
+  对齐时间和证据版本控制；实验室回放不当现场参考，条件不足保留拒判，不把相关认作因果。
+- 每个安全模型包使用自身开发输入，含 final 的研究清单在数值加载前排除并使用包内
+  label-free dev 样例。查询过滤未来删失字段；真实周期有来源与严格布尔证明才展示为物理周期。
+- Web 补齐可选比较条件、含时区原始时间、正常参考声明、资格/残差/来源详情，以及按包选择观察。
+  绑定、关联和提案都保留版本/身份及人工工单边界。
+- 实际最终全仓离线 Python：**517 passed in 67.37s**；前端 TypeScript/Vite 构建通过。
+  新包/输入/周期14项 **3.61s**，包含两项真实 API/模型/规则 Agent；真实 Chrome 闭环1项 **13.2s**，
+  最终完整 Web 合同13项 **6.7s**（合同使用受控响应，与真实接口测试分开记录）。
+  本阶段没有新增云端调用、读取新 sealed、训练或重评分旧研究。
+- 独立记录：Agent FINAL_REVIEW/IMPLEMENTATION、后台 IMPLEMENTATION、WEB IMPLEMENTATION、
+  REPLAY_SPLIT_FIX、MODEL_BINDING_FIX。独立团队审阅与手工边界测试、真实服务测试分别说明，
+  未完成的专业语义盲评、现场能力与微信原生验证仍明确列出，不由软件回归代替。

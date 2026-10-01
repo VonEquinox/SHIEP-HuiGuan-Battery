@@ -10,8 +10,7 @@ from test_platform import seed
 from test_v2_workflow import observation, work_job
 
 
-def test_secondary_installation_observation_is_scoped_peer_evidence(admin, monkeypatch):
-    monkeypatch.delenv("BATTERY_LLM_API_KEY", raising=False)
+def group_order(admin):
     primary = seed(admin)
     peer = next(item for item in admin.get("/api/assets").json() if item["kind"] == "cell" and item["parent_id"] == primary["parent_id"] and item["id"] != primary["id"])
     for asset in (primary, peer):
@@ -47,6 +46,14 @@ def test_secondary_installation_observation_is_scoped_peer_evidence(admin, monke
         response = mobile.post(f"/api/orders/{order['id']}/transition", json={"version": order["version"], "action": "accept"})
         assert response.status_code == 200, response.text
         order = response.json()
+    return primary, peer, order
+
+
+def test_secondary_installation_observation_is_scoped_peer_evidence(admin, monkeypatch):
+    monkeypatch.delenv("BATTERY_LLM_API_KEY", raising=False)
+    primary, peer, order = group_order(admin)
+    with TestClient(app) as mobile:
+        sign_in(mobile, "tech")
         body = {**observation(peer, order, "secondary-measurement-uuid"), "asset_id": peer["id"], "free_text": "SECONDARY_MEMBER_VISIBLE；仅针对第二安装的独立读数。"}
         response = mobile.post(f"/api/v2/orders/{order['id']}/observations", json=body)
         assert response.status_code == 201, response.text

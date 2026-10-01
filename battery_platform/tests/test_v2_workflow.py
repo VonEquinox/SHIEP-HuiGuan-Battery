@@ -114,6 +114,8 @@ def test_observation_scope_uuid_hash_and_automatic_memory(admin):
         first = first.json()
         repeated = technician.post(f"/api/v2/orders/{order['id']}/observations", json=body)
         assert repeated.json()["observation_id"] == first["observation_id"]
+        explicit_empty_context = technician.post(f"/api/v2/orders/{order['id']}/observations", json={**body, "comparison_context": None})
+        assert explicit_empty_context.status_code == 201 and explicit_empty_context.json()["observation_id"] == first["observation_id"]
         changed = technician.post(f"/api/v2/orders/{order['id']}/observations", json={**body, "free_text": "修改过的草稿"})
         assert changed.status_code == 409
         extraction = work_job(first["extraction_job_id"])
@@ -130,6 +132,17 @@ def test_observation_scope_uuid_hash_and_automatic_memory(admin):
             memory = one(c, "SELECT * FROM memory_items WHERE origin='synthetic' ORDER BY id DESC LIMIT 1")
             assert memory and memory["source_trust"] == "reported"
             assert one(c, "SELECT count(*) n FROM orders")["n"] == 1
+            context_count = one(c, "SELECT count(*) n FROM context_snapshots")["n"]
+        refreshed = admin.post("/api/v2/agent/runs", json={"asset_id": asset["id"], "installation_id": asset["installation_id"],
+                               "session_id": run["session_id"], "visible_cutoff": now()}, headers={"Idempotency-Key": "workflow-memory-retrieval"})
+        assert refreshed.status_code == 202, refreshed.text
+        used = work_job(refreshed.json()["job_id"])
+        assert used["status"] == "succeeded", used["error"]
+        assert memory["memory_key"] in obj(used["result"])["run"]["retrieved_memory_ids"]
+        with tx() as c:
+            mirror = one(c, "SELECT * FROM memory_items WHERE id=:i", {"i": memory["id"]})
+            assert mirror["last_used"] and mirror["helpful_count"] == mirror["harmful_count"] == 0
+            assert one(c, "SELECT count(*) n FROM context_snapshots")["n"] == context_count
     with TestClient(app) as other:
         sign_in(other, "othertech")
         assert other.get(f"/api/v2/orders/{order['id']}/inspection").status_code == 403

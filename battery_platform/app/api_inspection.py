@@ -10,7 +10,7 @@ from .api_v2 import authenticated, roles, response, fingerprint, timestamp, repl
 from .api_agent import create_run, REPORT_JSON, PROPOSAL_JSON
 
 router = APIRouter(prefix="/api/v2")
-OBSERVATION_JSON = ("measurements", "observed_symptoms", "performed_actions", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items", "attachment_ids", "candidate_facts", "assertion_targets")
+OBSERVATION_JSON = ("measurements", "observed_symptoms", "performed_actions", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items", "attachment_ids", "candidate_facts", "assertion_targets", "comparison_context")
 
 
 def inspection_access(c, identifier, user, write=False):
@@ -57,7 +57,9 @@ def qualification_check(c, user, test):
 @router.post("/orders/{identifier}/observations", status_code=201)
 def add_observation(identifier: int, data: S.ObservationCreate, request: Request, user=Depends(roles("admin", "dispatcher", "technician"))):
     from .jobs import enqueue
-    body = data.model_dump()
+    # An absent optional comparison context must preserve pre-migration retry
+    # hashes; adding grouping metadata is an explicit new submission instead.
+    body = data.model_dump(exclude={"comparison_context"} if data.comparison_context is None else set())
     key = request.headers.get("idempotency-key") or data.client_submission_id
     with tx() as c:
         previous = replay(c, user, f"observation:{identifier}", key, body)
@@ -106,7 +108,16 @@ def add_observation(identifier: int, data: S.ObservationCreate, request: Request
                   "client_submission_id": data.client_submission_id, "request_hash": fingerprint(body)}
         for field in OBSERVATION_JSON:
             if field != "candidate_facts":
-                values[field] = js(body[field])
+                values[field] = js(body.get(field))
+        if data.comparison_context is not None:
+            person = one(c, "SELECT * FROM personnel WHERE user_id=:u", {"u": user["id"]})
+            minimum = sorted(set(test.get("required_qualifications", [])))
+            qualified = bool(person) and set(minimum).issubset(obj(person["skills"], []))
+            values["comparison_context"] = js({**body["comparison_context"], "declaration_trust": "reported",
+                "qualification_evidence": {"author_id": user["id"], "verified": qualified, "required_qualifications": minimum,
+                                           "personnel_id": person["id"] if person else None, "personnel_version": person["version"] if person else None},
+                "authorization_ref": {"order_id": identifier, "proposal_id": proposal["id"], "proposal_version": proposal["version"],
+                                      "round_id": round_row["id"], "test_id": data.test_id}})
         observation_id = insert(c, "inspection_observations", values)
         insert(c, "inspection_observation_versions", {"observation_id": observation_id, "version": 1, "content": js(values), "author_id": user["id"], "note": "original submission", "created_at": now()})
         job_id = enqueue(c, "feedback_extract", {"observation_id": observation_id, "observation_version": 1}, user, "extract-observation-" + fingerprint([identifier, data.client_submission_id]))

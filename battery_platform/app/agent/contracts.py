@@ -130,11 +130,14 @@ def public_context(value: Any, *, cutoff: str, installation_id: str) -> Any:
         if isinstance(item, dict):
             if item.get("installation_id") is not None and str(item["installation_id"]) != str(installation_id):
                 return None
-            source_ordinal_query = (item.get("time_basis") == "source_record_ordinal" and bool(item.get("source_id"))
-                                    and isinstance(item.get("visible_cutoff"), (int, float)))
+            verified_cycle_query = item.get("time_basis") == "verified_physical_cycle" and item.get("physical_cycles_known") is True
+            if item.get("time_basis") == "verified_physical_cycle" and (not verified_cycle_query or not item.get("source_id")):
+                raise ValueError("verified physical cycles require explicit source identity and cycle evidence flag")
+            source_coordinate_query = ((item.get("time_basis") == "source_record_ordinal" or verified_cycle_query)
+                                       and bool(item.get("source_id")) and isinstance(item.get("visible_cutoff"), (int, float)))
             for key in ("measured_at", "available_at", "received_at", "visible_at", "query_time", "visible_cutoff", "timestamp"):
                 if item.get(key) is not None:
-                    if (key in {"query_time", "visible_cutoff"} or key == "available_at" and source_ordinal_query) and isinstance(item[key], (int, float)):
+                    if (key in {"query_time", "visible_cutoff"} or key == "available_at" and source_coordinate_query) and isinstance(item[key], (int, float)):
                         # Numerical-model source coordinates (cycles/sample time)
                         # are separate from server ISO observation availability.
                         if not any(k in item for k in ("feature_max_time", "feature_schema", "source_id", "physical_cell_id", "allowed_heads")):

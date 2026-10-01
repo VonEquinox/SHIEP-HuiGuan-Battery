@@ -50,6 +50,12 @@ class FrozenSkills:
     def route(self, context, max_skills=4):
         return self.library.route(context, max_skills=max_skills)
 
+    def with_context_overrides(self, overrides):
+        frozen = copy.copy(self)
+        if hasattr(self.library, "with_context_overrides"):
+            frozen.library = self.library.with_context_overrides(overrides)
+        return frozen
+
     def load_skill(self, skill_id):
         if skill_id not in self._skills:
             raise ValueError("Skill is outside the frozen release")

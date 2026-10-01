@@ -124,3 +124,50 @@ smoke 固定一份 JSON provider 调用/报告、最多四份 Skill 正文、相
 ## Post-pilot 通用数字词法修复
 
 独立手工中英文用例确认旧 Unicode `\w` 边界会将 `温度18.25` 错取为 `25`，并误抓 ID/时间碎片。完成完整 signed/scientific token 扫描、CJK 邻接、明确紧邻单位和 ID/date 过滤；来源文本共用同一规则，物理值比对容差未放宽。独立复查再补齐句末英文句点、范围双端点、千位分组和非有限指数拒绝。最终新 38 项手工回归及前述必要组合实际为 **95 passed in 11.95s**。详细独立证据见 [V2_REPORT_VALIDATION_FIX.md](V2_REPORT_VALIDATION_FIX.md)。这是后续软件修复：没有读取 sealed/pilot 数据、调用 LLM、改动冻结 artifact 或重评分原实验。
+
+## 最后覆盖核验后的自动回归接入
+
+独立核验确认此前 `ContextStore.check_regression` 只是纯接口，没有绑定真实 API 发布后的检查链。现补齐 `ContextRegressionService`、`context_regression` worker 和 `POST /api/v2/context-snapshots/check`：普通 Context 发布自动排队，默认同一独立 dev 集上 previous/current 各5根、总10 rollout；缺少 prior、cloud、dev 或完整预算时显式 `no_check`。结构/权限异常先做确定性核对；dev 比较采用现有代理指标，旧版本本身无效时不能恢复，两个无效快照不制造回滚依据。
+
+回归恢复通过取消与 snapshot ID/version/content CAS 后的新快照发布完成；隔离坏版本、保存原因，不再次检查自身，不允许旧检查撤销后到反馈。专用报告 client 禁用工具交互与 HTTP 重试；成功/失败/取消均保存真实请求、已知 token、未知用量与保守预留的 dev rollout。取消/失败/中断同步快照详情，按对应 job ID 避免覆盖较新的检查标记。
+
+冻结 Context 的 `routing_description` 现在参与真正的元数据路由，仍保持化学体系/输入条件和工具边界。`retrieved_memory_ids` 来自实际检索，后端只更新镜像 `last_used` 与审计，新 Memory 镜像保留真实时间，不更新冻结文本或自评 helpful/harmful。来源时间 guard 只在明确 `verified_physical_cycle` 且 `physical_cycles_known is True` 时接受真实数值周期，不把记录序号转换成周期或墙钟时间。
+
+回放 API 显式限制 `allowed_splits/case_ids`，public 根级 membership 先于 oracle 加载；共享 JSONL 按 ID 先筛选后解码，不在普通 evolution 解码 sealed 标签。手工非法 sentinel/Path.open/json.loads spy 检查该边界。已有 GEPA API 的假根 fixture 相应绕过发布环境 loader，继续真实验证 scorer/费用聚合，不放松生产边界。
+
+本轮必要组合实际命令：
+
+```sh
+.venv/bin/python -m pytest battery_platform/tests/test_v2_agent_core.py \
+  battery_platform/tests/test_v2_gepa_service.py \
+  battery_platform/tests/test_v2_llm_accounting.py \
+  battery_platform/tests/test_v2_gepa_workflow.py \
+  battery_platform/tests/test_v2_report_numeric_lexing.py \
+  battery_platform/tests/test_v2_context_regression_core.py \
+  battery_platform/tests/test_v2_context_regression_api.py \
+  battery_platform/tests/test_v2_skill_routing_override.py \
+  battery_platform/tests/test_v2_source_cycle_context.py \
+  battery_platform/tests/test_v2_evaluator_scope.py \
+  tests/content/test_replay_split_isolation.py -q
+```
+
+实际结果 **169 passed in 18.59s**：前次必要组合95，本轮 Context 纯服务44、API10、路由4、来源周期5、API scope3、content loader8。该验证没有新增云端调用、读取新 sealed/pilot 数据、修改旧实验或重新评分。独立只读审查还复核取消终态，并确认旧检查 CAS 与非递归恢复。完整覆盖与用户操作见 [V2_AGENT_FINAL_REVIEW.md](V2_AGENT_FINAL_REVIEW.md)。dev 分数不能替代专业语义盲评；晚于 dev cutoff 的经验继续不可见，不能用未退化分数证明该经验收益。
+
+### Memory 正反例配额补齐
+
+`ContextStore.search` 补齐正例/反例各最多3条、总最多6条。类别依据现有来源字段：明确反例/冲突 bundle、`conflicted/contradicted` 进入反例；active 且有来源根、测量或独立复核支持的适用经验进入正例，不能据此声称根因确诊/干预成功。未核实人员报告或未建立类别的条目保留 `unclassified`；helpful/harmful 不参与分类或排序。
+
+先过滤安装/化学体系/时间/过期/状态，再分组排序；两类可用时保留双方，奇数小预算先保留反证。不借用另一类空位突破3条上限；未分类条目可补至总6条，类别不足时返回实际可用条目，完全无候选返回空。检索视图附 `retrieval_kind/retrieval_basis`，不写回 Context。executor 的 `MemoryRetrievalBudget` 将初始 Context 与全部 `search_memory` 工具检索合并计入同轮6个唯一 ID，同 ID 复用原冻结视图，新 ID 超预算时留待下一轮，run 保存实际预算摘要。
+
+新增28项手工回归覆盖高相关正例不能挤掉反证、类别不足/全reported/空库回退、四类反例来源、无类别不猜成功、域与时间过滤、较小/非法预算、奖励计数无关、返回副本不改原库、重复检索与真实 executor 多次工具共享额度。
+
+```sh
+.venv/bin/python -m pytest battery_platform/tests/test_v2_memory_retrieval_budget.py \
+  battery_platform/tests/test_v2_agent_core.py \
+  battery_platform/tests/test_v2_context_regression_core.py \
+  battery_platform/tests/test_v2_context_regression_api.py \
+  battery_platform/tests/test_v2_gepa_service.py \
+  battery_platform/tests/test_v2_gepa_workflow.py -q
+```
+
+实际结果 **131 passed in 15.52s**（新增28＋相关既有103）。独立只读复查确认分类、过滤与工具共享额度，未发现新实质问题。此为后置预算实现，不调用云端、不读取新 sealed/pilot 数据、不重新评分原试验，不增加在线学习奖励。

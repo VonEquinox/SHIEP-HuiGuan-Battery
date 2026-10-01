@@ -119,7 +119,7 @@ def versioned_evidence(c, table, record, cutoff):
         return None
     visible = obj(history["content"])
     visible.update(id=record["id"], version=history["version"])
-    for field in ("measurements", "observed_symptoms", "performed_actions", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items", "attachment_ids", "candidate_facts", "assertion_targets"):
+    for field in ("measurements", "observed_symptoms", "performed_actions", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items", "attachment_ids", "candidate_facts", "assertion_targets", "comparison_context"):
         if isinstance(visible.get(field), str):
             visible[field] = obj(visible[field], [])
     return visible
@@ -271,14 +271,22 @@ def prediction_profile(c, asset, cutoff=None, prediction_id=None):
 
 def source_time_view(query):
     result = dict(query)
-    source_time = {"time_basis": "source_record_ordinal"}
+    physical = (query.get("time_basis") == "verified_physical_cycle" and query.get("physical_cycles_known") is True
+                and bool(query.get("source_id")))
+    basis = "verified_physical_cycle" if physical else "source_record_ordinal"
+    suffix = "_cycle" if physical else "_ordinal"
+    source_time = {"time_basis": basis}
+    if physical:
+        source_time.update(unit="physical_cycle", source_id=query["source_id"], physical_cycles_known=True)
+    converted = False
     for key in ("query_time", "visible_cutoff", "feature_max_time", "available_at", "reference_cutoff"):
         value = result.get(key)
         if isinstance(value, (int, float)) and not isinstance(value, bool):
-            source_time[key.removesuffix("_time").removesuffix("_at") + "_ordinal"] = value
-    if len(source_time) > 1:
+            source_time[key.removesuffix("_time").removesuffix("_at") + suffix] = value
+            converted = True
+    if converted:
         result["source_time"] = source_time
-        result["time_basis"] = "source_record_ordinal"
+        result["time_basis"] = basis
     return result
 
 
@@ -393,13 +401,24 @@ def model_run_detail(identifier: int, request: Request, user=Depends(roles("admi
 def model_packages(request: Request, user=Depends(roles("admin", "researcher", "dispatcher", "viewer"))):
     from .v2_jobs import registered_packages, feature_bundle
     packages = registered_packages()
+    def visible_rows(manifest):
+        return [{"row_index": index, **{key: row.get(key) for key in ("source_id", "physical_cell_id", "chemistry", "protocol_id", "query_time", "visible_cutoff", "split", "time_basis", "physical_cycles_known")}}
+                for index, row in enumerate(manifest["rows"])]
     try:
         file, manifest, _ = feature_bundle()
-        feature_rows = [{"row_index": index, **{key: row.get(key) for key in ("source_id", "physical_cell_id", "chemistry", "protocol_id", "query_time", "visible_cutoff", "split")}}
-                        for index, row in enumerate(manifest["rows"])]
+        feature_rows = visible_rows(manifest)
     except (ValueError, FileNotFoundError):
         feature_rows = []
-    return response(request, items=[{"package_id": p["package_id"], "manifest": p["manifest"], "manifest_hash": p["manifest_hash"]} for p in packages],
+    items = []
+    for package in packages:
+        item = {"package_id": package["package_id"], "manifest": package["manifest"], "manifest_hash": package["manifest_hash"]}
+        try:
+            _, bundle, _ = feature_bundle(package["package_id"], package=package)
+            item.update(feature_rows=visible_rows(bundle), binding_input_source=bundle["binding_input_source"])
+        except (ValueError, OSError, KeyError):
+            item.update(feature_rows=[], binding_input_source="unavailable", binding_error="该安全包尚无可用于运行绑定的开发观察")
+        items.append(item)
+    return response(request, items=items,
                     feature_rows=feature_rows, next_cursor=None, production_activated=False)
 
 
@@ -409,7 +428,10 @@ def bind_v2(identifier: int, data: S.V2Binding, request: Request, user=Depends(r
     package = next((item for item in registered_packages() if item["package_id"] == data.package_id), None)
     if not package:
         raise HTTPException(422, "只能绑定校验通过且可重新加载的服务端安全包")
-    file, manifest, _ = feature_bundle()
+    try:
+        file, manifest, _ = feature_bundle(data.package_id, package=package)
+    except (ValueError, OSError, KeyError):
+        raise HTTPException(422, "该安全包没有可用于绑定的开发观察")
     if data.row_index >= len(manifest["rows"]):
         raise HTTPException(422, "开发源观察编号不存在")
     row = manifest["rows"][data.row_index]

@@ -50,9 +50,23 @@ PLAYWRIGHT_CHANNEL=chrome npx playwright test e2e/v2.integration.spec.ts --confi
 
 定量观察没有数值时发送空 `measurements`，不会填0。`inconclusive`、`failed`、`refused`、`requires_authorization`均独立于测量阴性。仪器身份、校准状态、附件等缺项在服务端提交轮次时列出。最终验收仍在原正式工单流程由另一身份执行。
 
+### 最终联调：同工况比较与参考声明
+
+正式工单观察增加可选的“提供本次观察的可比条件”。关闭时不发送 `comparison_context`，原有提交流程仍可使用空测量或未测状态。启用后要求使用者根据已有记录选择化学体系，填写运行协议、负载条件、温度条件、同源比较批次和含时区的原始测量记录时间。空白或未知条件不会自动从资产名称猜测；未启用比较且未填写记录时间时沿用本次登记时间。
+
+“本次观察声明为正常参考”默认不勾选，正常参考依据写入原始自由文字。勾选只发送 `reference_status:declared_normal`，未勾选发送 `not_reference`；保存或更换工单后清除正常参考声明和测量时间，下一次须重新填写。`src/contracts/v2.ts` 明确定义客户端声明字段；客户端不回传服务端追加的资格、授权或验证字段。
+
+群组详情展示服务端计算的标准化残差、残差相关、精确对齐点、异常重叠点、阈值版本、参考窗口质量、来源观察 ID/版本/安装/记录时间/可见时间和不合格原因。`qualified_pairs` 保留已计算但未达到群组阈值的相关；`pair_evidence` 保留实际共享关系和重叠依据。null残差或相关显示未支持，不补0。早期正常参考只是使用者声明，不能替代独立复核；实验回放不能被当成站内通道，合成来源只用于演示。所有支持状态均保留“关联不能确认共同根因”。
+
+后台资格检查包括当前安装、授权测试、校准与仪器、人员资格、相同指标/单位/方法和全部同工况条件，要求至少3个早期正常参考点以及3个后续精确对齐点。Web不自行执行MAD或相关计算，也不将拓扑关联自动升级为数值支持或确认因果。
+
 ### 模型分布与实验身份
 
 V2 回放选择的是服务器安全包和已登记开发源观察编号，不能通过浏览器指定任意模型文件或上传pickle。界面同时显示源物理电芯、split、源截止和安装身份；数值源的记录序号明确标为“非现场时间”，不会显示成安装UTC观测时间。槽位仿真身份不因回放而转为实测BMS。
+
+模型包提供 `feature_rows` 时，观测下拉框仅使用所选包的行；切换包清空上一观测编号。所选包明确返回空数组时不能回退到XJTU输入，界面显示无可绑定观测和服务端原因；只有旧响应没有包内行字段时兼容顶层列表。输入来源区分已登记开发集和模型包内不含标签的开发观测。同一安装身份不能绑定另一物理对象，服务端409仍需登记更换或新建资产处理。
+
+已核实物理循环来源同时具备 `time_basis:verified_physical_cycle` 与 `physical_cycles_known:true` 时，显示查询、可见截止、特征截止和参考截止的实际循环编号，明确标为“非日历时间”。未核实的原记录序号继续使用原有标识；不因为字段是数字就推断为物理cycle。
 
 分位带不是完整密度。仅登记为 `lognormal` 或 `logit_normal`、具有合法位置/尺度参数时计算其展示密度；图窗为变换域±4个尺度，尾部仍由登记参数定义。生存图只使用已有物理横轴与实际 survival 值，不对缺值补0。CQR校准区间的null上下界提示“校准样本不足或域未校准，区间无界”，不能将无界区间覆盖率1.0当作有效校准保证。
 
@@ -106,5 +120,19 @@ V2 回放选择的是服务器安全包和已登记开发源观察编号，不�
 | Web-3 诊断/风险/闭环 | `V2Diagnosis.tsx`、`V2Operations.tsx`、人员instrumentation；提案、断言纠正、群组、约束排程、观察与原文跨度纠正 | cutoff/提案/定点反馈、群组失败、排程409合同通过；原V1真实闭环通过 |
 | Web-4 自动进化/独立Carbon | `V2Evolution.tsx`、`V2Carbon.tsx`；来源分开曲线、快照diff、离线实验/回滚、因子/规则/情景/求解/台账/导出 | 下降曲线/只读权限/Γ/负减排/活动分解合同通过 |
 | Web-5 页面与验收 | `styles.css`、`playwright.v2.config.ts`、`v2.contract.spec.ts`、`v2.integration.spec.ts`、本独立文档；响应布局与合同/真实截图 | 8合同+3原用例+1真实V2用例通过；部署资产详情路由已修复并重验；测试服务器均随Playwright结束停止 |
+| Web-6 最终数值资格联调 | `contracts/v2.ts`、`V2Operations.tsx`、`V2Diagnosis.tsx`、`V2Foundation.tsx`、样式/合同测试；可选同工况条件、明确正常参考、原始时间、资格/残差、物理循环与按包观测选择 | 构建通过；6项定向合同验收通过，最终3.7秒；包含新增条件/来源表与原专业页390px布局；未使用LLM或封存标签 |
+
+最终集成后 root 再执行完整合同文件：**13 passed (6.7s)**；真实 `v2.integration.spec.ts`：
+**1 passed (13.2s)**，无 API 拦截，隔离服务明确使用 rule_baseline；TypeScript/Vite 构建再次通过。
+两张本次真实数值与诊断截图另归档于 `docs/evidence/v2/`，保留实验来源、unsupported 与无界校准提示。
 
 本Agent按协调约定没有单独Git提交，避免共享工作目录并发提交混入其他模块。各部分由根Agent在DEV分批提交，完整commit与后续修复记录进入总实施日志；本记录提供每部分真实文件、操作、命令与限制，供每次提交引用。
+
+Web-1至Web-5已由根Agent提交为 `a54e67be`。Web-6的可复现定向命令如下，合同中的相关值与参考点属于确定性夹具，不构成站内实际效果证据；后台实际资格/MAD回归由数值群组实施记录另列。
+
+```bash
+cd battery_platform/frontend
+npm run build
+PLAYWRIGHT_CHANNEL=chrome npx playwright test --config playwright.v2.config.ts \
+  --grep 'comparison metadata|residual group evidence|verified physical cycle|switching safe packages|specialist workspaces'
+```

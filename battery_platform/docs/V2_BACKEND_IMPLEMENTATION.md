@@ -8,6 +8,8 @@
 |---|---|
 | `app/contracts/v2.py`、`app/contracts/__init__.py` | 严格的请求契约、范围、枚举、版本和 UUID 校验；拒绝未声明字段 |
 | `app/migrations/002_v2.sql` | 增量 V2 表、索引、唯一性和引用约束；不替换 V1 表 |
+| `app/migrations/005_group_measurements.sql` | 为已授权观察增加可选比较条件与时间索引；既有记录不猜补元数据 |
+| `app/diagnosis/group_adapter.py` | 从有资格的快照构造严格可比的正常参考/分析序列，实际调用原 MAD/残差相关算法 |
 | `app/api_v2.py` | 预测剖面、来源、白名单数值包、模型作业、实验资产绑定、演示小程序凭据和签名 QR |
 | `app/api_agent.py` | 会话、后台 Agent、报告、待审批提案、人工批准/拒绝、群组与拆分 |
 | `app/api_inspection.py` | 受分配限制的现场观察、测试/轮次授权、事实修正、自由反馈、QR 范围检查 |
@@ -17,6 +19,7 @@
 | `tests/test_v2_workflow.py` | 7 条真实 HTTP/数据库/worker 连接回归，包括实际安全 M1 包预测 |
 | `tests/test_v2_gepa_workflow.py` | 8 条自动反馈批次、候选、CAS、失败/取消成本及实验总预算回归，使用明确标注的 test-only 提供方 |
 | `tests/test_v2_group_workflow.py` | 多资产正式工单中次安装的真实 HTTP 观察进入 peer 工具，且不混为主安装证据 |
+| `tests/test_v2_group_numeric.py` | 12 条数值群组真实 API/worker 回归，包括合格数据、拒判、历史 cutoff 和来源 CAS |
 
 主 Agent 负责 `main.py`、迁移执行器、V1 worker/security/附件/人员资格与独立验收 hook；诊断 Agent 负责 `app/agent/`；数值 Agent 负责 `model_lab`；内容 Agent 负责 `content_v1` 与公开/评测回放；派单、Carbon、前端、小程序由各对应 Agent 实施。本后端调用这些服务，未把多 Agent 协作改造成生产运行时多 Agent。
 
@@ -63,7 +66,13 @@ Agent 取得有界快照，在事务外调用唯一诊断执行器。接口中�
 
 批准生成一个合法主告警工单，并保存 `order_assets`、`order_alert_links` 与 dispatch requirements；多资产检查保留每个安装快照。检查范围、必需测试、最大轮次、资格、有效期限由服务器持有。检查不能自动扩大批准集合；新的测试需新的提案。已提交且截止时间内可见的尝试传递 `completed_test_ids`/`attempted_test_ids`，程序过滤重复推荐。failed/inconclusive 等是有效未知结果，不改写为阴性，也不默认为可盲目重试。
 
-群组分析当前依据拓扑和告警窗口，明确 `causality=not_established`，没有凭空声称数值残差相关或已确认共因。持久化群组及成员证据实际进入 Agent 的 peer 工具；成员新提交的观察也按会话、物理实体、安装、轮次、可用时间和版本取得，每成员上限 100 条并显式保留 `peer_installation_id`，不会把次安装读数混为主安装观察。拆分保存原单体告警，旧群组提案和运行中旧输入被拒绝。
+群组分析有合格数据时实际调用数值 baseline：正常参考的中位数/MAD、按精确时间戳对齐的残差相关、异常重叠和拓扑邻接；没有合格数据时明确只保留拓扑/窗口关联。冻结阈值来自原 `group-dev-v1`，不由 LLM 或请求改写。结果始终 `causality=not_established`、`confirmed_common_cause=false`。持久化群组及成员证据进入 Agent 的 peer 工具；成员新提交的观察也按会话、物理实体、安装、轮次、可用时间和版本取得，每成员上限 100 条并显式保留 `peer_installation_id`，不会把次安装读数混为主安装观察。拆分保存原单体告警，旧群组提案和运行中旧输入被拒绝。
+
+可选 `ObservationCreate.comparison_context` 包含 chemistry、protocol_id、load_condition、temperature_condition、source_cohort_id，以及 `reference_status=not_reference|declared_normal`。所有条件由获授权提交者明确声明，初始为空，不从曲线猜体系或正常状态。服务器另存不可由客户端提交的资格证据与 proposal/order/round/test 来源引用。计算只使用当前安装、截止时间内版本、有效仪器、calibrated+observed、目录资格及授权可核对的测量；按同源 cohort、同拓扑、同指标/单位/方法、同化学体系/协议/负载/温度条件形成候选序列。
+
+每序列至少三个不同时间的正常声明参考点，且全部早于分析序列首点；分析至少三个不同点并需与同伴精确对齐。零值保留，重复时间不增加样本数，冲突时间不参与；常数 MAD、缺失条件、未知体系、无资格、未校准和错位给出具体 unsupported 原因。正常状态是 operator-declared reference，数值关联不将其升级为因果核实。`experimental_replay` 一律不用于站内相关；在 simulated 拓扑上只允许显式 synthetic 数值情景，结果保持 self_synthetic。没有将不同实验室电芯或独立时间序列摆进虚拟柜冒充现场共因。
+
+Incident 证据保存 comparison、source_refs（观察 ID/版本/安装/角色/测量及可用时间）、numeric_support、MAD residuals、pair_evidence、qualified_pairs、quality_flags、阈值版本与备选解释。计算在 SQLite 事务外，发布前 CAS 验证资产、告警、来源观察、测试授权轮次、提案和目录资格版本。没有资格时不产生虚构相关系数。增加可选条件后，不带条件的旧请求保持原幂等 hash 形式。
 
 ## 5. 现场反馈与自动 Context
 
@@ -73,6 +82,8 @@ Agent 取得有界快照，在事务外调用唯一诊断执行器。接口中�
 
 ACE 在临时 ContextStore 中提出局部更新。发布前检查取消、反馈版本和当前上下文；并发情况下针对最新版本重新合并，不持有写事务等待 LLM。Memory 自动生效或隔离/无更新，不引入人工 Memory 审批。回滚创建新版本并保存来源，不删除历史。独立 V1 验收者不能是技术员/解决人；验收 hook 保存新观察版本，并让 worker 分批抽取。超过 12 作业队列上限时状态保留待处理，验收不会因逐条 enqueue 失败。
 
+Memory `last_used` 来自实际初始检索或完成的 search_memory 工具返回 ID，在报告通过取消/CAS 屏障后更新相应冻结版本的数据库镜像并审计。它不新增 Context 文本版本；未进行独立帮助性评估时 helpful_count/harmful_count 不增加。新镜像保留已有真实 last_used，避免语义修订把使用历史清空。
+
 GEPA 接口另提供默认每 50 个独立完成反馈根事件的自动候选调度，根不按轮次数重复计数。只生成可编辑 Skill 文本，以与来源根分离的固定 dev 子集做候选选择；计算仅返回 staging，最终取消检查、回归、来源反馈版本和 Context CAS 后才自动发布。封存根不参与候选生成/选择；sealed 实验拒绝 ACE/Reflexion/GEPA 与 activation。`fixed` 方法显式关闭 episodic/ACE/GEPA 更新。进化审计从临时 store 的全部 active 更新展开，保留早期 Memory 与 Skill 变化，而非只记录最后一轮。
 
 预算记录是 direct 根报告数 + 候选/基线预留 rollout，格式/安全失败候选也占相同的比较预算。每次真实搜索的候选指标、选择根、请求、失败请求、未知 usage 请求、已知累计 tokens 同时写 job、evolution metrics 和 evaluation budget；没有触发或没有候选云客户端时明确 no_update。GEPA 中途取消及计算结束后取消仍通过独立 accounting-only hook 保存已花成本，绝不调用上下文发布；hook 在 SAVEPOINT 中隔离，记录失败也不阻止原作业进入终态。真实云候选搜索的质量证据由单独进化实验记录，程序 stub 验证不证明改善。
@@ -81,7 +92,7 @@ GEPA 接口另提供默认每 50 个独立完成反馈根事件的自动候选�
 
 服务器只登记 hash/reload 验证通过的 Safe JSON+NPZ 包；NPZ 禁止 pickle。在线读取服务器白名单开发特征 bundle，仅选择对应真实物理实体、化学体系、协议和源序号行，不读取 y 标签或 final bundle。demo 资产绑定实际实验对象时明确 `experimental_replay_on_simulated_asset`，没有称作现场实时测量。
 
-当前实际 M1/M2 包支持 XJTU 对应域的 RPT 相对 SOH。RUL、效率、风险/故障等未训练或不支持的任务返回 unsupported/null。独立校准对象不足时区间上下界保持 null，展示 `insufficient_calibration_objects`，不冒称 90%/95% 覆盖已达到。若将来支持 Bernoulli head，其 value 取真实 `params.probability`；不存在值仍为 null。
+本后端实际 workflow 采用的 XJTU M1/M2 包支持对应域的 RPT 相对 SOH；其他登记包按其 manifest 声明逐任务支持。未训练或不支持的 RUL、效率、风险/故障等任务返回 unsupported/null。独立校准对象不足时区间上下界保持 null，展示 `insufficient_calibration_objects`，不冒称 90%/95% 覆盖已达到。支持 Bernoulli head 时 value 取真实 `params.probability`；不存在值仍为 null。
 
 来源 GET 初始登记数值 Agent 的 registry；metadata job 在事务外刷新官方元数据，不自动下载整源。已解析来源保留 parsed_manifest、许可、receipt、hash 和 inspected subset 的 raw_scope，不把元数据查询称为全量原始解析。registered_local 拒绝模拟/未核实数据集和来源错配。CH public generated 数据的 namespace 与实测来源保持区分。
 
@@ -131,5 +142,16 @@ QR 使用服务器 HMAC 签名，有效期 15 分钟，绑定 order/asset/instal
 |---|---|---|
 | 后端契约/连接 | additive migration、全部 HTTP/worker 连接、真实数值剖面、受限 mobile/QR、自动 Memory、时间与版本修复；7 workflow + 18 接受用例，组合 177 passed；真实云 API smoke | 主 Agent 在 DEV 提交本模块与本独立记录，并在总实施日志记录 Commit |
 | 进化搜索连接 | context_gepa 批次调度、固定 dev 选择、受授权 evaluator 分支桥接、阶段化 Skill 发布、完整更新审计、包含失败/取消的预算与费用；8 新 workflow 和 1 次安装观察回归通过 | 由主 Agent 单独阶段记录运行证据和 Commit；真实云候选实验另记录，不用普通报告 smoke 或 stub 推断候选改善 |
+| 最终数值群组/检索统计接入 | 005 可选比较条件迁移、冻结正常参考/可比条件、原 MAD+残差相关函数真实 API 接入、原文/来源版本 CAS、synthetic/实验室边界与拒判；实际 Memory 检索 last_used 审计，不虚增奖励 | 主 Agent 最终集成 Commit；下述回归记录与代码一同归档，未更改原始数值数据或读取 sealed |
+
+后端主要连接已经归档于 `7ac492c8`；GEPA 核心搜索与失败预算修复分别归档于 `73ce2cd8`、`a13d1a27`，精确文件归属与后续 Commit 见总实施日志。
+
+最终群组接入首次执行 9 passed in 11.75s，证明真实获派技术员 API 的 12 条 synthetic 参考/分析测量实际进入算法（MAD 残差大于 3、rho=1、对齐 3 点、源观察引用完整），并通过独立写事务探针证明 compute 未持有 snapshot 写锁。资格不足、未知体系、后期参考声明随后扩为 12 条。源码/原始测量保持不变；计算过程中通过实际 facts 修正 API 改变来源版本后，旧结果 CAS 被拒绝且无新 IncidentGroup。数值 fixture 仅证明程序能力，不能解释为站内物理共因实验。
+
+```bash
+.venv/bin/python -m pytest battery_platform/tests/test_v2_group_numeric.py battery_platform/tests/test_v2_group_workflow.py battery_platform/tests/test_v2_workflow.py battery_platform/tests/test_v2_acceptance.py -q
+# 39 passed in 26.66s：12 数值群组 + 1 peer 工具 + 7 workflow + 19 QA。
+# 包括报告实际引用 Memory 后 last_used 更新、Context 版本不增加且 helpful/harmful 仍为 0。
+```
 
 已完成的代码并不表示所有现实验收成立：没有物理设备控制、认证现场 SOP、专家语义签署、真实共因统计结论、全面数值任务覆盖或生产部署。正式封存质量实验仍须冻结协议并独立执行；真实数值数据、训练、模型比较、Carbon 因子许可与数学算例、派单、浏览器和微信能力的各自证据以对应独立文档为准。
