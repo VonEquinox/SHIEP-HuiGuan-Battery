@@ -8,8 +8,10 @@ MODEL_ROOT = REPO_ROOT / "model_lab"
 RUNTIME = Path(os.environ.get("BATTERY_RUNTIME", str(APP_ROOT / "runtime"))).resolve()
 PORT = int(os.environ.get("BATTERY_PORT", "8787"))
 ML_PYTHON = Path(
-    os.environ.get("BATTERY_ML_PYTHON", str(MODEL_ROOT / ".venv/bin/python"))
-)
+    os.environ.get("BATTERY_ML_PYTHON", str(REPO_ROOT / ".venv/bin/python")
+                   if (REPO_ROOT / ".venv/bin/python").is_file()
+                   else str(MODEL_ROOT / ".venv/bin/python"))
+).absolute()
 SCHEMA = "xjtu_71d_partial_cc_v1"
 ROLES = ("admin", "researcher", "dispatcher", "technician", "viewer")
 MAX_UPLOAD = 8 * 1024 * 1024

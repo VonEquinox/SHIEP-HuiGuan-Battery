@@ -174,6 +174,8 @@ def initialize():
         for statement in SCHEMA_SQL.split(";"):
             if statement.strip():
                 execute(c, statement)
+    from .migrations import migrate
+    migrate()
 
 
 def audit(c, actor, action, entity, entity_id, details=None):
