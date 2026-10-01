@@ -178,6 +178,32 @@ def test_unavailable_service_requires_standby_and_inspection_cannot_heal():
         state_inventory(m, [100], 1, "inspect")
 
 
+def test_initial_replacement_generates_manufacture_and_inspection_shares_start():
+    m = state_model(initial_distribution=[0, 0, 0, 1], initial_replacement_count=1)
+    m.states.append(m.states[3].model_copy(update={"name": "new-1", "age_years": 1, "health": 0.95}))
+    m.initial_distribution.append(0)
+    m.new_initial_distribution.append(0)
+    for row in m.transitions[0]:
+        row.append(0)
+    m.transitions[0].append([0, 0, 0, 0, 1])
+    m.transitions[0][3] = [0, 0, 0, 0, 1]
+    computed = state_inventory(m, [100], 1, "replace_pack")
+    assert computed["replacement_count"] == [1]
+    assert computed["energy_kwh"] == [125]
+    m.initial_replacement_count = 0
+    with pytest.raises(CarbonInputError, match="initial manufacture"):
+        state_inventory(m, [100], 1, "replace_pack")
+    s = scenario(basis="projected")
+    s.functional_unit.boundary = ["use", "manufacture"]
+    for candidate in s.candidates:
+        candidate.activities = []
+        candidate.state_model = state_model()
+    s.candidates[1].intervention = "inspect"
+    s.candidates[1].state_model.states[0].health = 0.95
+    with pytest.raises(CarbonInputError, match="physical initial state"):
+        solve_scenario(s, {1: factor(), 2: factor(code="manufacture", boundary="manufacture", activity_unit="rated_kWh")})
+
+
 def test_renewal_remaining_and_new_life_are_not_interchangeable():
     # Existing pack fails after 1 period, all subsequent new packs last 2.
     assert renewal_counts([1], [0, 1], 5) == {
@@ -199,7 +225,7 @@ def test_cost_npv_shadow_cash_and_policy_cap_are_separate():
     benefit = {"id": "cash-1", "rule_version_id": 1, "period": 1, "amount": 10, "entity": "test-company",
                "documents": {"registration": "registered-project", "verification": "verified-activity"},
                "conditions": {"eligible-tech": True}, "trade_or_grant_reference": "documented grant", "receipt_reference": "actual receipt"}
-    data["candidates"][1]["policy_benefits"] = [benefit, {**benefit, "id": "cash-2"}]
+    data["candidates"][1]["policy_benefits"] = [benefit, {**benefit, "id": "cash-2", "receipt_reference": "second actual receipt"}]
     solved = solve_scenario(Scenario.model_validate(data), {1: factor()}, {1: rule})["candidates"][1]
     assert solved["cost"]["eligible_cash_npv"] == 7
     assert solved["cost"]["realized_cash_npv"] == 7
@@ -251,7 +277,7 @@ def test_recovery_credit_duplicate_material_flow_is_refused():
         solve_scenario(s, {1: factor()})
 
 
-def _stored_case(s=None):
+def _stored_case(s=None, publish=True):
     s = s or scenario()
     with tx() as c:
         actor = one(c, "SELECT id FROM users WHERE username='admin'")["id"]
@@ -269,8 +295,10 @@ def _stored_case(s=None):
         job = one(c, "SELECT * FROM jobs WHERE id=:j", {"j": jid})
         request = snapshot(c, job)
     result = compute(request)
-    with tx() as c:
-        summary = complete(c, job, result, request)
+    summary = None
+    if publish:
+        with tx() as c:
+            summary = complete(c, job, result, request)
     return job, request, result, summary, actor
 
 
@@ -282,6 +310,34 @@ def test_snapshot_publication_and_cancelled_job_never_creates_partial_rows():
         execute(c, "UPDATE jobs SET cancel_requested=1 WHERE id=:j", {"j": job["id"]})
         with pytest.raises(InterruptedError):
             complete(c, job, result, request)
+
+
+def test_cancelled_or_restarted_first_solve_never_publishes_result_or_activity():
+    job, request, result, _, actor = _stored_case(publish=False)
+    with tx() as c:
+        execute(c, "UPDATE jobs SET cancel_requested=1 WHERE id=:j", {"j": job["id"]})
+        with pytest.raises(InterruptedError):
+            complete(c, job, result, request)
+        assert rows(c, "SELECT * FROM carbon_results") == []
+        assert rows(c, "SELECT * FROM carbon_activities") == []
+        execute(c, "UPDATE jobs SET cancel_requested=0,status='interrupted' WHERE id=:j", {"j": job["id"]})
+        with pytest.raises(InterruptedError):
+            complete(c, job, result, request)
+        assert rows(c, "SELECT * FROM carbon_results") == []
+
+
+def test_gamma_recompute_does_not_book_another_physical_claim():
+    job, request, result, summary, actor = _stored_case()
+    with tx() as c:
+        body = LedgerRequest(result_id=summary["result_id"], candidate_id="candidate", claim_type="comparative_avoided",
+                             basis="settled", review_status="reviewed", evidence_reference="verified meter", accounting_period="2026")
+        add_ledger(c, body, actor)
+        new_id = insert(c, "jobs", {"kind": "carbon_solve", "status": "running", "payload": job["payload"],
+            "created_by": actor, "created_at": now(), "idempotency_key": "second-gamma-solve", "request_hash": "second"})
+        second = one(c, "SELECT * FROM jobs WHERE id=:i", {"i": new_id})
+        repeated = complete(c, second, result, request)
+        with pytest.raises(HTTPException, match="already booked"):
+            add_ledger(c, body.model_copy(update={"result_id": repeated["result_id"]}), actor)
 
 
 def test_factor_hash_change_before_publication_is_rejected():

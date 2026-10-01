@@ -111,6 +111,7 @@ class StateModel(Strict):
     transitions: list[list[list[Nonnegative]]] = Field(min_length=1, max_length=120)
     replacement_edges: list[ReplacementEdge] = Field(default_factory=list, max_length=4000)
     new_initial_distribution: list[Nonnegative] | None = None
+    initial_replacement_count: Nonnegative = 0
     energy_factor_id: int = Field(gt=0)
     replacement_factor_id: int | None = Field(default=None, gt=0)
     rated_capacity_kwh: Annotated[Number, Field(gt=0)] | None = None

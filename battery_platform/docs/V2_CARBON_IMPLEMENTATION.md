@@ -29,7 +29,7 @@ versioned structured scenario, factor, activity, and policy records.
   and formal export routes. Writer role checks are server-side.
 - `app/migrations/003_carbon.sql`: factor, policy, scenario, result, activity,
   and ledger tables. Reversal rows are constrained to one correction per entry.
-- `tests/test_v2_carbon.py`: 21 deterministic checks covering golden arithmetic,
+- `tests/test_v2_carbon.py`: 24 deterministic checks covering golden arithmetic,
   unit/gas/boundary/source rejection, shared uncertainty cancellation, negative
   benefit, Gamma endpoints, state and renewal recursion, replacement capacity,
   no auxiliary double count, eligibility/cap/cash separation, Pareto and
@@ -56,6 +56,8 @@ age-zero new cohort distribution. Unavailable service is reported as unmet
 energy or explicit standby energy. The engine never rewrites an old battery's
 health as 100%. Settled accounting requires settled, non-unverified activity
 records; projected model inventories cannot be promoted by changing a label.
+Initial replacement contributes explicit manufacturing activity. Inspection and
+continuation candidates must preserve the baseline physical starting state.
 
 Formal exports exclude synthetic, unverified, projected, unreviewed, invalid,
 inconsistent reversal rows, and repeated claims on actual source records.
@@ -88,5 +90,5 @@ available, and ordinary measured electricity accounting never requires a model.
 ```text
 cd battery_platform
 ../.venv/bin/python -m pytest tests/test_v2_carbon.py -q --disable-warnings
-21 passed
+24 passed
 ```

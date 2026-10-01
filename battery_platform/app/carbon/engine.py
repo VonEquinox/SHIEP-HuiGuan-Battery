@@ -31,6 +31,8 @@ def budget_support(coefficients: dict[str, float], gamma: float) -> float:
 
 
 def robust_range(nominal: float, coefficients: dict[str, float], gamma: float) -> dict:
+    if not math.isfinite(nominal):
+        raise CarbonInputError("nominal accounting total exceeds finite numeric range")
     width = budget_support(coefficients, gamma)
     return {
         "nominal": nominal,
@@ -46,7 +48,9 @@ def robust_range(nominal: float, coefficients: dict[str, float], gamma: float) -
 def renewal_counts(old_remaining_pmf: list[float], new_lifetime_pmf: list[float], horizon: int) -> dict:
     """PMFs start at duration 1; missing mass is surviving beyond their support.
 
-    No zero-time renewals. Existing remaining-life and new lifetime stay distinct.
+    Missing PMF mass is explicitly assumed to survive through the requested
+    horizon; this assumption is not inferred from right censoring. No zero-time
+    renewals. Existing remaining-life and new lifetime stay distinct.
     """
     if not isinstance(horizon, int) or not 0 <= horizon <= 120:
         raise CarbonInputError("renewal horizon must be an integer in 0..120")
@@ -91,6 +95,15 @@ def state_inventory(model: StateModel, output_kwh: list[float], period_years: fl
     if any(t > horizon or s >= n or d >= n for t, s, d in edges):
         raise CarbonInputError("replacement edge is outside state dimensions")
     reset = model.new_initial_distribution
+    if model.initial_replacement_count:
+        if intervention not in ("replace_module", "replace_pack"):
+            raise CarbonInputError("only explicit replacement interventions can claim an initial replacement")
+        if model.replacement_factor_id is None:
+            raise CarbonInputError("initial replacement requires a manufacturing factor")
+    if intervention in ("replace_module", "replace_pack") and any(
+        state.cohort == "new" and prob > 0 for state, prob in zip(states, model.initial_distribution)
+    ) and not model.initial_replacement_count:
+        raise CarbonInputError("starting a replacement candidate with a new battery requires explicit initial manufacture")
     if edges:
         if reset is None or len(reset) != n:
             raise CarbonInputError("replacement requires an independent new-initial distribution")
@@ -138,7 +151,8 @@ def state_inventory(model: StateModel, output_kwh: list[float], period_years: fl
             unserved = 0
         energy.append(input_energy + auxiliary[t - 1])
         unmet.append(unserved)
-        replacement.append(sum(p[s] * matrix[s][d] for period, s, d in edges if period == t))
+        replacement.append(sum(p[s] * matrix[s][d] for period, s, d in edges if period == t)
+                           + (model.initial_replacement_count if t == 1 else 0))
         p = [sum(p[s] * matrix[s][d] for s in range(n)) for d in range(n)]
         _probability(p, f"distribution at period {t}")
         distributions.append(list(p))
@@ -335,6 +349,12 @@ def solve_scenario(scenario: Scenario, factors: dict[int, Factor], rules: dict[i
             sources.update(flow.uncertainty_coefficients)
         if c.costs.energy_price_deviation:
             sources.add(c.costs.energy_price_uncertainty_key)
+    baseline_input = next(c for c in scenario.candidates if c.id == scenario.baseline_id)
+    def initial_signature(model):
+        distribution = defaultdict(float)
+        for s, p in zip(model.states, model.initial_distribution):
+            distribution[(s.age_years, s.cohort, s.available, s.efficiency, s.health)] += p
+        return {key: value for key, value in distribution.items() if value > 1e-12}
     for c in scenario.candidates:
         if cancelled and cancelled():
             raise InterruptedError("carbon solve cancelled before publishing any accounting rows")
@@ -351,6 +371,9 @@ def solve_scenario(scenario: Scenario, factors: dict[int, Factor], rules: dict[i
         if bad or unknown:
             results.append(r)
             continue
+        if (c.intervention in ("continue", "inspect") and c.state_model and baseline_input.state_model
+            and initial_signature(c.state_model) != initial_signature(baseline_input.state_model)):
+            raise CarbonInputError("continuation/inspection must share the baseline physical initial state; information alone cannot improve health")
         activities, nominal, coefs, state = _candidate_inventory(c, scenario, factors)
         if state and any(v > 1e-9 for v in state["unmet_kwh"]):
             r.update(status="infeasible", reasons=["unmet common energy service; no explicit standby service"], terminal_state=state)
@@ -365,6 +388,7 @@ def solve_scenario(scenario: Scenario, factors: dict[int, Factor], rules: dict[i
             raise CarbonInputError("policy benefit duplicated or already included in a cost flow")
         eligible_pv = realized_pv = 0
         policy_amounts = defaultdict(float)
+        cash_fact_ids = set()
         for benefit in c.policy_benefits:
             if benefit.period > len(scenario.functional_unit.output_kwh_per_period):
                 raise CarbonInputError("policy cash flow exceeds the service horizon")
@@ -372,13 +396,18 @@ def solve_scenario(scenario: Scenario, factors: dict[int, Factor], rules: dict[i
             if rule is None:
                 raise CarbonInputError("policy rule version is missing")
             eligibility = policy_eligibility(rule, benefit, scenario)
+            cash_fact = benefit.receipt_reference or benefit.trade_or_grant_reference
+            if cash_fact and cash_fact in cash_fact_ids:
+                raise CarbonInputError("same transaction/receipt cannot establish multiple policy benefits")
+            if cash_fact:
+                cash_fact_ids.add(cash_fact)
             # Rule cap is per candidate/project across all included periods.
             # Multiple payment rows must not each receive the full project cap.
-            remaining = max(0, rule.cap - policy_amounts[benefit.rule_version_id])
+            remaining = max(0, rule.cap - policy_amounts[rule.rule_id])
             if eligibility["amount"] > remaining:
                 eligibility["amount"] = remaining
                 eligibility["capped"] = True
-            policy_amounts[benefit.rule_version_id] += eligibility["amount"]
+            policy_amounts[rule.rule_id] += eligibility["amount"]
             pv = eligibility["amount"] / (1 + c.costs.discount_rate) ** (benefit.period * scenario.functional_unit.period_years)
             eligibility["present_value"] = pv
             eligible_pv += pv
