@@ -1,0 +1,269 @@
+{
+  "state": "completed",
+  "protocol_sha256": "cc626a7d4681ad32007fd56b067d1ac8470271ffec334e6d7844761e76282b38",
+  "cost": {
+    "http_attempts": 148,
+    "failed_calls": 0,
+    "reported_usage": {
+      "prompt_tokens": 1403366,
+      "completion_tokens": 124568,
+      "total_tokens": 1527934
+    },
+    "charged_tokens_including_unknown_failures": 1527934,
+    "max_http_attempts": 171,
+    "max_tokens": 1640344,
+    "remaining_calls": 23,
+    "combined_http_attempts": 177,
+    "combined_charged_tokens": 1887590
+  },
+  "batches_completed": 6,
+  "evolution": {
+    "A0": {
+      "root_count": 12,
+      "mean_report_quality": 0.9249999999999999,
+      "cloud_valid_reports": 0,
+      "wrong_references": 0,
+      "mean_recommended_checks": 3.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A1": {
+      "root_count": 12,
+      "mean_report_quality": 0.8555555555555555,
+      "cloud_valid_reports": 11,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.8333333333333333,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A2": {
+      "root_count": 12,
+      "mean_report_quality": 0.8555555555555555,
+      "cloud_valid_reports": 11,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.8333333333333333,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A3": {
+      "root_count": 12,
+      "mean_report_quality": 0.8555555555555555,
+      "cloud_valid_reports": 11,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.8333333333333333,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A4": {
+      "root_count": 12,
+      "mean_report_quality": 0.9333333333333332,
+      "cloud_valid_reports": 12,
+      "wrong_references": 0,
+      "mean_recommended_checks": 2.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    }
+  },
+  "dev": {
+    "A0": {
+      "root_count": 12,
+      "mean_report_quality": 0.9249999999999999,
+      "cloud_valid_reports": 0,
+      "wrong_references": 0,
+      "mean_recommended_checks": 3.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A1": {
+      "root_count": 12,
+      "mean_report_quality": 0.9333333333333332,
+      "cloud_valid_reports": 12,
+      "wrong_references": 0,
+      "mean_recommended_checks": 2.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A4": {
+      "root_count": 12,
+      "mean_report_quality": 0.5444444444444444,
+      "cloud_valid_reports": 7,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.1666666666666667,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    }
+  },
+  "sealed": {
+    "A0": {
+      "initial": {
+        "root_count": 12,
+        "mean_report_quality": 0.9249999999999999,
+        "cloud_valid_reports": 0,
+        "wrong_references": 0,
+        "mean_recommended_checks": 3.0,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "final": {
+        "root_count": 12,
+        "mean_report_quality": 0.9249999999999999,
+        "cloud_valid_reports": 0,
+        "wrong_references": 0,
+        "mean_recommended_checks": 3.0,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "same_context_reused": true
+    },
+    "A1": {
+      "initial": {
+        "root_count": 12,
+        "mean_report_quality": 0.6999999999999998,
+        "cloud_valid_reports": 9,
+        "wrong_references": 0,
+        "mean_recommended_checks": 1.5,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "final": {
+        "root_count": 12,
+        "mean_report_quality": 0.6999999999999998,
+        "cloud_valid_reports": 9,
+        "wrong_references": 0,
+        "mean_recommended_checks": 1.5,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "same_context_reused": true
+    },
+    "A2": {
+      "initial": {
+        "root_count": 12,
+        "mean_report_quality": 0.6999999999999998,
+        "cloud_valid_reports": 9,
+        "wrong_references": 0,
+        "mean_recommended_checks": 1.5,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "final": {
+        "root_count": 12,
+        "mean_report_quality": 0.8555555555555555,
+        "cloud_valid_reports": 11,
+        "wrong_references": 0,
+        "mean_recommended_checks": 1.8333333333333333,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "static_initial_reports_shared": true,
+      "quality_delta": 0.15555555555555567
+    },
+    "A3": {
+      "initial": {
+        "root_count": 12,
+        "mean_report_quality": 0.6999999999999998,
+        "cloud_valid_reports": 9,
+        "wrong_references": 0,
+        "mean_recommended_checks": 1.5,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "final": {
+        "root_count": 12,
+        "mean_report_quality": 0.7777777777777777,
+        "cloud_valid_reports": 10,
+        "wrong_references": 0,
+        "mean_recommended_checks": 1.6666666666666667,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "static_initial_reports_shared": true,
+      "quality_delta": 0.07777777777777783
+    },
+    "A4": {
+      "initial": {
+        "root_count": 12,
+        "mean_report_quality": 0.6999999999999998,
+        "cloud_valid_reports": 9,
+        "wrong_references": 0,
+        "mean_recommended_checks": 1.5,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "final": {
+        "root_count": 12,
+        "mean_report_quality": 0.31111111111111106,
+        "cloud_valid_reports": 4,
+        "wrong_references": 0,
+        "mean_recommended_checks": 0.6666666666666666,
+        "missed_inspections": 0,
+        "false_inspection_alarms": 1,
+        "permission_violations": 0,
+        "unjustified_confirmations": 0,
+        "semantic_blind_review": "pending"
+      },
+      "static_initial_reports_shared": true,
+      "quality_delta": -0.3888888888888888
+    }
+  },
+  "offline_A0": {
+    "root_count": 2400,
+    "status_counts": {
+      "insufficient_evidence": 2400
+    },
+    "provider_calls": 0,
+    "interpretation": "complete deterministic execution coverage only; no LLM generalization result"
+  },
+  "semantic_blind_review": "pending"
+}

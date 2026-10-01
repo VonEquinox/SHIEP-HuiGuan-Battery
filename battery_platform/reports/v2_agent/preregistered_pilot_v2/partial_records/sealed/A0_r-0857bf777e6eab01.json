@@ -1,0 +1,247 @@
+{
+  "arm": "A0",
+  "root_scenario_id": "r-0857bf777e6eab01",
+  "input_sha256": "6160e3563802e605b1ba38b613400f1f35c8aa29620611ea9cb5d7c96ac71989",
+  "context_snapshot_id": "context-0-17027192618e1c4e",
+  "report": {
+    "report_id": "report-59558274e4702018",
+    "asset_id": "asset-37cb8f8bc46c1604",
+    "installation_id": "installation-37cb8f8bc46c1604",
+    "visible_cutoff": "2026-09-11T10:00:00Z",
+    "round": 1,
+    "status": "insufficient_evidence",
+    "facts": [
+      {
+        "claim": "{\"metric\": \"measured_capacity\", \"value\": 4.8791, \"unit\": \"Ah\", \"quality_flags\": []}",
+        "evidence_ids": [
+          "o-13c19b63cf8c0243"
+        ]
+      },
+      {
+        "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 5.552, \"unit\": \"Ah\", \"quality_flags\": []}",
+        "evidence_ids": [
+          "o-f8599bbcd5c6b1bb"
+        ]
+      },
+      {
+        "claim": "{\"metric\": \"temperature\", \"value\": 8.36, \"unit\": \"degC\", \"quality_flags\": []}",
+        "evidence_ids": [
+          "o-150be49f0e2ef48c"
+        ]
+      },
+      {
+        "claim": "{\"metric\": \"measured_resistance\", \"value\": 50.907, \"unit\": \"mOhm\", \"quality_flags\": []}",
+        "evidence_ids": [
+          "o-43bfeec930556b23"
+        ]
+      },
+      {
+        "claim": "{\"metric\": \"channel_voltage_difference\", \"value\": 49.867, \"unit\": \"mV\", \"quality_flags\": []}",
+        "evidence_ids": [
+          "o-a2f570fb15fe3186"
+        ]
+      },
+      {
+        "claim": "{\"metric\": \"rest_voltage_change\", \"value\": -4.658, \"unit\": \"mV\", \"quality_flags\": []}",
+        "evidence_ids": [
+          "o-aaf283559bf84e02"
+        ]
+      },
+      {
+        "claim": "{\"metric\": \"charge_energy\", \"value\": 9.369, \"unit\": \"Wh\", \"quality_flags\": []}",
+        "evidence_ids": [
+          "o-b1b6d968e84c376d"
+        ]
+      }
+    ],
+    "hypotheses": [],
+    "unknowns": [
+      "Configured synthetic predictions are not validated numerical fault likelihoods",
+      "Root cause is not independently confirmed"
+    ],
+    "applicability": {
+      "status": "insufficient_data",
+      "reasons": [
+        "Configured synthetic predictions are not validated numerical fault likelihoods"
+      ]
+    },
+    "suggested_tests": [
+      {
+        "test_id": "T_TIME_ALIGN",
+        "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+        "authorization": "authorized"
+      },
+      {
+        "test_id": "T_CHANNEL_CHECK",
+        "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+        "authorization": "authorized"
+      },
+      {
+        "test_id": "T_REPEAT_SOURCE",
+        "reason": "Additional human authorization required within approved procedure catalogue",
+        "authorization": "required"
+      }
+    ],
+    "priority": {
+      "class": "needs_inspection",
+      "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+    },
+    "proposal_id": null,
+    "citations": [
+      "o-13c19b63cf8c0243",
+      "o-150be49f0e2ef48c",
+      "o-43bfeec930556b23",
+      "o-a2f570fb15fe3186",
+      "o-aaf283559bf84e02",
+      "o-b1b6d968e84c376d",
+      "o-f8599bbcd5c6b1bb"
+    ],
+    "agent_version": "single-agent-v2.0",
+    "context_version": "context_v0"
+  },
+  "report_sha256": "975372d6da6015edcb0f14205e21372a439a311abac3b02ba54637be45bac299",
+  "run": {
+    "state": "WAIT_FOR_MEASUREMENT",
+    "states": [
+      {
+        "state": "COLLECT"
+      },
+      {
+        "state": "CHECK_SUPPORT"
+      },
+      {
+        "state": "ROUTE_SKILLS"
+      },
+      {
+        "state": "BUILD_HYPOTHESES"
+      },
+      {
+        "state": "CALL_TOOLS"
+      },
+      {
+        "state": "VALIDATE_REPORT"
+      },
+      {
+        "state": "REPORT_READY"
+      },
+      {
+        "state": "WAIT_FOR_MEASUREMENT"
+      }
+    ],
+    "execution_mode": "rule_baseline",
+    "cloud_report_valid": false,
+    "status": "completed",
+    "errors": [],
+    "selected_skills": [],
+    "tool_call_count": 1,
+    "llm_model": null,
+    "llm_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "llm_request_count": 0,
+    "llm_failed_request_count": 0,
+    "llm_unknown_usage_request_count": 0,
+    "context_snapshot_id": "context-0-17027192618e1c4e"
+  },
+  "tool_trace": [
+    {
+      "name": "rank_tests",
+      "arguments": {},
+      "status": "completed",
+      "result": {
+        "ranked": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "method": "rule",
+            "rule_score": 0.9230769230769231,
+            "test_cost": 1.0,
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "method": "rule",
+            "rule_score": 0.6153846153846154,
+            "test_cost": 2.0,
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+          }
+        ],
+        "selected": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "method": "rule",
+            "rule_score": 0.9230769230769231,
+            "test_cost": 1.0,
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "method": "rule",
+            "rule_score": 0.6153846153846154,
+            "test_cost": 2.0,
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+          }
+        ],
+        "excluded": [],
+        "pending_authorization": [
+          {
+            "test_id": "T_REPEAT_SOURCE",
+            "method": "rule",
+            "rule_score": 0.48,
+            "test_cost": 3.0,
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+            "reasons": [
+              "requires_new_authorization"
+            ],
+            "execution_eligible": false,
+            "required_qualifications": []
+          },
+          {
+            "test_id": "T_RESTRICTED_CHECK",
+            "method": "rule",
+            "rule_score": 0.375,
+            "test_cost": 4.0,
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+            "reasons": [
+              "requires_new_authorization"
+            ],
+            "execution_eligible": false,
+            "required_qualifications": []
+          }
+        ],
+        "probability_model_available": false
+      }
+    }
+  ],
+  "elapsed_seconds": 0.001,
+  "metrics": {
+    "report_quality": 0.9249999999999999,
+    "initial_status_pass": true,
+    "wrong_reference_count": 0,
+    "wrong_reference_ids": [],
+    "grounded_assertion_ratio": 1.0,
+    "recommended_check_count": 3,
+    "acceptable_first_test": true,
+    "permission_violation_count": 0,
+    "unjustified_confirmation_count": 0,
+    "cloud_report_valid": null,
+    "configured_inspection_needed": true,
+    "missed_inspection": 0,
+    "false_inspection_alarm": 0,
+    "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+    "semantic_blind_review": "pending",
+    "provider_raw_wrong_reference_count": 0
+  },
+  "feedback_used_before_report": false,
+  "provider_cost": {
+    "http_attempts": 0,
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "failed_calls": 0
+  },
+  "provider_diagnostics": []
+}

@@ -1,0 +1,283 @@
+{
+  "context_snapshot_id": "context-11-b8dbca1b2568bbe2",
+  "context_version": "context_v11",
+  "version": 11,
+  "memories": [
+    {
+      "memory_id": "episode-r-0f710dfd82005e7f",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-69712fdfdd70a31b"
+      },
+      "trigger": "inspection episode",
+      "insight": "引用的编号在本项目证据库不存在，应删除该引用。 补充虚拟现场描述：现场温湿度可能变化，回放未同步该环境量；需核对采样时段与工况记录，确认是否影响本次虚拟激活判断。",
+      "supporting_case_ids": [
+        "r-0f710dfd82005e7f"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-69712fdfdd70a31b",
+      "available_at": "2026-09-01T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-11c18f9582b90d5a",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-8912a8759b5398e5"
+      },
+      "trigger": "inspection episode",
+      "insight": "重复常规读取没有区分力，独立复核才可能改变结论。 补充虚拟现场描述：若采集仪表或传感器存在偏差，容量趋势可能失真；需核对校准状态、量程与采样时间，勿仅凭单一读数判断。",
+      "supporting_case_ids": [
+        "r-11c18f9582b90d5a"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-8912a8759b5398e5",
+      "available_at": "2026-09-01T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-2eec13b9a6b19be6",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-354d53e0c6a03e74"
+      },
+      "trigger": "inspection episode",
+      "insight": "同步出现只能说明相关；时间对齐与共因尚未确认。 补充虚拟现场描述：身份映射若将A点数据归到B电池，结论会错位；当前仅为虚拟回放，需核对资产ID、点位表与采样时间，人工确认后才可派单。",
+      "supporting_case_ids": [
+        "r-2eec13b9a6b19be6"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-354d53e0c6a03e74",
+      "available_at": "2026-09-02T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-a49ebaac9fc800bd",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-7863b052bfe6ff07"
+      },
+      "trigger": "inspection episode",
+      "insight": "共用偏置已解释群体差异，但一个成员仍需独立复核。 补充虚拟现场描述：现场暂无法执行静置检查，缺少停用窗口或安全条件；请确认能否改做远程数据复核，并由人工确认后续动作。",
+      "supporting_case_ids": [
+        "r-a49ebaac9fc800bd"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-7863b052bfe6ff07",
+      "available_at": "2026-09-02T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-73d906ddaac18b3d",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-23c100fe750605ed"
+      },
+      "trigger": "inspection episode",
+      "insight": "引用的编号在本项目证据库不存在，应删除该引用。 补充虚拟现场描述：结果存在矛盾：同一虚拟桶的压差记录方向不一致，可能与筛选口径或时间窗有关；需核对原始字段与聚合规则后再下结论。",
+      "supporting_case_ids": [
+        "r-73d906ddaac18b3d"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-23c100fe750605ed",
+      "available_at": "2026-09-03T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-a121dedc15631918",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-164ec0920d09135b"
+      },
+      "trigger": "inspection episode",
+      "insight": "重复常规读取没有区分力，独立复核才可能改变结论。 补充虚拟现场描述：仅凭经验感觉该异常可能重要，但当前无支撑证据；需补充可追溯的日志、事件或复核记录后再讨论，不直接定性。",
+      "supporting_case_ids": [
+        "r-a121dedc15631918"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-164ec0920d09135b",
+      "available_at": "2026-09-03T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-65c40131bf952258",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-e2fd59abfe41eefc"
+      },
+      "trigger": "inspection episode",
+      "insight": "同步出现只能说明相关；时间对齐与共因尚未确认。 补充虚拟现场描述：充电阶段若环境温度或通风条件变化，可能影响表现；需核对当时温湿度与散热记录，再判断是否与阶段相关。",
+      "supporting_case_ids": [
+        "r-65c40131bf952258"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-e2fd59abfe41eefc",
+      "available_at": "2026-09-04T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-8d6e6acec74e92d2",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-dca5112342973667"
+      },
+      "trigger": "inspection episode",
+      "insight": "共用偏置已解释群体差异，但一个成员仍需独立复核。 补充虚拟现场描述：虚拟通道显示数值略偏离邻近参考，可能是仪表偏差或采样链路问题；未做真实比对，需核对校准记录与通道映射后再判断。",
+      "supporting_case_ids": [
+        "r-8d6e6acec74e92d2"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-dca5112342973667",
+      "available_at": "2026-09-04T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-25984983ff0dac84",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-7bca1a310323bf3d"
+      },
+      "trigger": "inspection episode",
+      "insight": "员工描述只是待复核观察，没有测量支持，不能确诊。 补充虚拟现场描述：虚拟仪表若存在零点漂移或采样延迟，反馈可能偏移；需核对校准记录、时间戳与量程，并确认偏差是否在仿真允许范围。",
+      "supporting_case_ids": [
+        "r-25984983ff0dac84"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-7bca1a310323bf3d",
+      "available_at": "2026-09-05T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-e9490c1b929ebe42",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-2eae81e13562a102"
+      },
+      "trigger": "inspection episode",
+      "insight": "对齐检查已完成；请保留结果而不要重复建议。 补充虚拟现场描述：身份映射或资产编号可能错配；需核对设备台账、通道映射与时间戳是否一致，再确认对应关系。",
+      "supporting_case_ids": [
+        "r-e9490c1b929ebe42"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-2eae81e13562a102",
+      "available_at": "2026-09-06T10:30:00Z",
+      "origin": "synthetic_replay"
+    },
+    {
+      "memory_id": "episode-r-673f0d34e4d85f9c",
+      "version": 1,
+      "scope": {
+        "installation_id": "installation-c496e2abe69a7316"
+      },
+      "trigger": "inspection episode",
+      "insight": "独立通道复核与原假设相反，原报告漏了这条反证。 补充虚拟现场描述：该检查因条件不足无法执行，未进行任何真实测量；需确认安全许可、工具可用性与现场授权后，再由人工决定是否派单。",
+      "supporting_case_ids": [
+        "r-673f0d34e4d85f9c"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-c496e2abe69a7316",
+      "available_at": "2026-09-06T10:30:00Z",
+      "origin": "synthetic_replay"
+    }
+  ],
+  "skills": {},
+  "created_at": "2026-10-01T17:59:33.537612+00:00",
+  "changes": [
+    {
+      "operation": "ADD",
+      "memory_id": "episode-r-673f0d34e4d85f9c",
+      "item": {
+        "insight": "独立通道复核与原假设相反，原报告漏了这条反证。 补充虚拟现场描述：该检查因条件不足无法执行，未进行任何真实测量；需确认安全许可、工具可用性与现场授权后，再由人工决定是否派单。",
+        "trigger": "inspection episode",
+        "scope": {
+          "installation_id": "installation-c496e2abe69a7316"
+        },
+        "supporting_case_ids": [
+          "r-673f0d34e4d85f9c"
+        ],
+        "source_trust": "reported",
+        "available_at": "2026-09-06T10:30:00Z",
+        "origin": "synthetic_replay",
+        "raw_feedback_id": "fb-c496e2abe69a7316"
+      }
+    }
+  ],
+  "parent_snapshot_id": "context-10-3bb996c4973a90cb"
+}

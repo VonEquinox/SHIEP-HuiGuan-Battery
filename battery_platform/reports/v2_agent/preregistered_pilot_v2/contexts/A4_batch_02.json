@@ -1,0 +1,133 @@
+{
+  "context_snapshot_id": "context-5-cbec976ad7883771",
+  "context_version": "context_v5",
+  "version": 5,
+  "memories": [
+    {
+      "memory_id": "memory-69712fdfdd70a31b",
+      "version": 1,
+      "scope": {
+        "chemistry": "LFP",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "引用的编号在本项目证据库不存在，应删除该引用。 | 补充虚拟现场描述：现场温湿度可能变化，回放未同步该环境量；需核对采样时段与工况记录，确认是否影响本次虚拟激活判断。",
+      "supporting_case_ids": [
+        "r-0f710dfd82005e7f"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-69712fdfdd70a31b",
+      "available_at": "2026-09-01T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-8912a8759b5398e5",
+      "version": 1,
+      "scope": {
+        "chemistry": "NCM",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "重复常规读取没有区分力，独立复核才可能改变结论。 | 补充虚拟现场描述：若采集仪表或传感器存在偏差，容量趋势可能失真；需核对校准状态、量程与采样时间，勿仅凭单一读数判断。",
+      "supporting_case_ids": [
+        "r-11c18f9582b90d5a"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-8912a8759b5398e5",
+      "available_at": "2026-09-01T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-354d53e0c6a03e74",
+      "version": 1,
+      "scope": {
+        "chemistry": "unknown",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "同步出现只能说明相关；时间对齐与共因尚未确认。 | 补充虚拟现场描述：身份映射若将A点数据归到B电池，结论会错位；当前仅为虚拟回放，需核对资产ID、点位表与采样时间，人工确认后才可派单。",
+      "supporting_case_ids": [
+        "r-2eec13b9a6b19be6"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-354d53e0c6a03e74",
+      "available_at": "2026-09-02T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-7863b052bfe6ff07",
+      "version": 1,
+      "scope": {
+        "chemistry": "LFP",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "共用偏置已解释群体差异，但一个成员仍需独立复核。 | 补充虚拟现场描述：现场暂无法执行静置检查，缺少停用窗口或安全条件；请确认能否改做远程数据复核，并由人工确认后续动作。",
+      "supporting_case_ids": [
+        "r-a49ebaac9fc800bd"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-7863b052bfe6ff07",
+      "available_at": "2026-09-02T10:30:00Z",
+      "origin": "expert_synthetic"
+    }
+  ],
+  "skills": {
+    "data-quality": {
+      "evidence_checklist": "1. 先比较物理实体、安装身份和观察时间；换新后的序列不能承接旧安装历史。\n2. 保留 value=0；只有显式 missing/null 或质量码才表示缺失。\n3. 逐字段核对单位和采样频率；先对齐时间再比较通道。\n4. 重复上传按观察 ID 与来源指纹去重，重复不是独立确认。\n5. 报告引用的证据编号必须能在当前可见证据库中解析；无法解析的引用应删除，不得作为支持或反证依据。\n6. 环境量（如现场温湿度）若未随回放同步，需在可比性判断中标记为未核对工况，不得默认其不影响结论。",
+      "inspection_selection_hints": "- 用 get_asset_context 锁定 installation_id，再用 get_signal_evidence 核对原始质量码。\n- 仅对未解决且可改变报告的单位/时间/通道问题请求 rank_tests；已经完成的对齐检查不重复。\n- 重复常规读取不具区分力；只有能改变结论的独立复核才值得请求。\n- 采集仪表或传感器的校准状态、量程与采样时间未核实时，不得仅凭单一读数下结论。\n- 引用编号无法在证据库解析时，先修正引用再评估测试优先级。"
+    }
+  },
+  "created_at": "2026-10-01T17:57:36.107619+00:00",
+  "changes": [
+    {
+      "operation": "ADD",
+      "memory_id": "memory-7863b052bfe6ff07",
+      "item": {
+        "insight": "共用偏置已解释群体差异，但一个成员仍需独立复核。 | 补充虚拟现场描述：现场暂无法执行静置检查，缺少停用窗口或安全条件；请确认能否改做远程数据复核，并由人工确认后续动作。",
+        "source_trust": "reported",
+        "supporting_case_ids": [
+          "r-a49ebaac9fc800bd"
+        ],
+        "raw_feedback_id": "fb-7863b052bfe6ff07",
+        "available_at": "2026-09-02T10:30:00Z",
+        "memory_id": "memory-7863b052bfe6ff07",
+        "scope": {
+          "chemistry": "LFP",
+          "protocol_id": "DEMO-PROTOCOL-1"
+        },
+        "trigger": "inspection feedback",
+        "origin": "expert_synthetic"
+      }
+    }
+  ],
+  "parent_snapshot_id": "context-4-a8dc16b8a62c3857"
+}

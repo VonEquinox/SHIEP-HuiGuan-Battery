@@ -1,0 +1,2675 @@
+{
+  "records": [
+    {
+      "arm": "A0",
+      "root_scenario_id": "r-ce02dd2530607c0b",
+      "input_sha256": "7996fd2db63fe73ef4be0951508a90f6ae8d8e8fc857c0013d06914dc2b689b2",
+      "context_snapshot_id": "context-0-17027192618e1c4e",
+      "report": {
+        "report_id": "report-e4e865f9be80fbd6",
+        "asset_id": "asset-a894d12841e79dc7",
+        "installation_id": "installation-a894d12841e79dc7",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"unit\": \"Ah\", \"quality_flags\": [\"missing\"]}",
+            "evidence_ids": [
+              "o-a50ee1b17f95297e"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.726, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-3b005b76bd179970"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"temperature\", \"value\": 18.25, \"unit\": \"degC\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-9b277ab75a5b6885"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 34.96, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-48828dea767d239f"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"channel_voltage_difference\", \"value\": 12.79, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-c4d0aaf756ddf9a8"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"rest_voltage_change\", \"value\": -10.974, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-8ce7fe6e453e1554"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"charge_energy\", \"value\": 18.299, \"unit\": \"Wh\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-b229a19d77f80a12"
+            ]
+          }
+        ],
+        "hypotheses": [],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_REPEAT_SOURCE",
+            "reason": "Additional human authorization required within approved procedure catalogue",
+            "authorization": "required"
+          }
+        ],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-3b005b76bd179970",
+          "o-48828dea767d239f",
+          "o-8ce7fe6e453e1554",
+          "o-9b277ab75a5b6885",
+          "o-a50ee1b17f95297e",
+          "o-b229a19d77f80a12",
+          "o-c4d0aaf756ddf9a8"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v0"
+      },
+      "report_sha256": "41809ff51e99b667ed682f576e6f67ec8674bb400898cd488cf89cb770553641",
+      "run": {
+        "state": "WAIT_FOR_MEASUREMENT",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          },
+          {
+            "state": "WAIT_FOR_MEASUREMENT"
+          }
+        ],
+        "execution_mode": "rule_baseline",
+        "cloud_report_valid": false,
+        "status": "completed",
+        "errors": [],
+        "selected_skills": [],
+        "tool_call_count": 1,
+        "llm_model": null,
+        "llm_usage": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "llm_request_count": 0,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-0-17027192618e1c4e"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 0.001,
+      "metrics": {
+        "report_quality": 0.9249999999999999,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 3,
+        "acceptable_first_test": true,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": null,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 0,
+        "usage": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": []
+    },
+    {
+      "arm": "A0",
+      "root_scenario_id": "r-25984983ff0dac84",
+      "input_sha256": "7a2cb7c2e7f7d7d168a5814d1aee362f8b4dab2d3ac5001eb13624a9d73b8ef5",
+      "context_snapshot_id": "context-0-17027192618e1c4e",
+      "report": {
+        "report_id": "report-aabbf750b45d2ea9",
+        "asset_id": "asset-7bca1a310323bf3d",
+        "installation_id": "installation-7bca1a310323bf3d",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"value\": 3.2823, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-d78e59ece828ae6c"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.201, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-cb1c592197962d81"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"temperature\", \"value\": 38.89, \"unit\": \"degC\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-fc593e7c8814bbdb"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 45.784, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-0272302010daecb0"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"channel_voltage_difference\", \"value\": 53.595, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-c3cc795a3eeccae7"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"rest_voltage_change\", \"value\": -5.988, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-a39dd7a7d4ff0239"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"charge_energy\", \"value\": 10.997, \"unit\": \"Wh\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-2d843d2d57fee88f"
+            ]
+          }
+        ],
+        "hypotheses": [],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_REPEAT_SOURCE",
+            "reason": "Additional human authorization required within approved procedure catalogue",
+            "authorization": "required"
+          }
+        ],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-0272302010daecb0",
+          "o-2d843d2d57fee88f",
+          "o-a39dd7a7d4ff0239",
+          "o-c3cc795a3eeccae7",
+          "o-cb1c592197962d81",
+          "o-d78e59ece828ae6c",
+          "o-fc593e7c8814bbdb"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v0"
+      },
+      "report_sha256": "bd4c0fc633e2854929a0067c526affdd56a2184520c0a7020ad378a81b7283f0",
+      "run": {
+        "state": "WAIT_FOR_MEASUREMENT",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          },
+          {
+            "state": "WAIT_FOR_MEASUREMENT"
+          }
+        ],
+        "execution_mode": "rule_baseline",
+        "cloud_report_valid": false,
+        "status": "completed",
+        "errors": [],
+        "selected_skills": [],
+        "tool_call_count": 1,
+        "llm_model": null,
+        "llm_usage": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "llm_request_count": 0,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-0-17027192618e1c4e"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 0.001,
+      "metrics": {
+        "report_quality": 0.9249999999999999,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 3,
+        "acceptable_first_test": true,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": null,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 0,
+        "usage": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": []
+    },
+    {
+      "arm": "A1",
+      "root_scenario_id": "r-ce02dd2530607c0b",
+      "input_sha256": "7996fd2db63fe73ef4be0951508a90f6ae8d8e8fc857c0013d06914dc2b689b2",
+      "context_snapshot_id": "context-0-17027192618e1c4e",
+      "report": {
+        "report_id": "report-e4e865f9be80fbd6",
+        "asset_id": "asset-a894d12841e79dc7",
+        "installation_id": "installation-a894d12841e79dc7",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"unit\": \"Ah\", \"quality_flags\": [\"missing\"]}",
+            "evidence_ids": [
+              "o-a50ee1b17f95297e"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.726, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-3b005b76bd179970"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"temperature\", \"value\": 18.25, \"unit\": \"degC\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-9b277ab75a5b6885"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 34.96, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-48828dea767d239f"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"channel_voltage_difference\", \"value\": 12.79, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-c4d0aaf756ddf9a8"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"rest_voltage_change\", \"value\": -10.974, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-8ce7fe6e453e1554"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"charge_energy\", \"value\": 18.299, \"unit\": \"Wh\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-b229a19d77f80a12"
+            ]
+          }
+        ],
+        "hypotheses": [],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed",
+          "cloud_report_failed_validation_or_provider_unavailable",
+          "Cloud report unavailable; deterministic evidence-only problem report"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-3b005b76bd179970",
+          "o-48828dea767d239f",
+          "o-8ce7fe6e453e1554",
+          "o-9b277ab75a5b6885",
+          "o-a50ee1b17f95297e",
+          "o-b229a19d77f80a12",
+          "o-c4d0aaf756ddf9a8"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v0"
+      },
+      "report_sha256": "c421cdfd54e6ee9f328e144fc145f8d90214b82366afb390bf9760fbcaa98446",
+      "run": {
+        "state": "REPORT_READY",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          }
+        ],
+        "execution_mode": "cloud",
+        "cloud_report_valid": false,
+        "status": "completed_with_problem_report",
+        "errors": [
+          "cloud_report_failed_validation_or_provider_unavailable"
+        ],
+        "selected_skills": [
+          {
+            "skill_id": "active-test-selection",
+            "name": "active-test-selection",
+            "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+            "version": "1.0.0",
+            "route_score": 2
+          },
+          {
+            "skill_id": "data-quality",
+            "name": "data-quality",
+            "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+            "version": "1.0.0",
+            "route_score": 1
+          }
+        ],
+        "tool_call_count": 1,
+        "llm_model": "deepseek-flash",
+        "llm_usage": {
+          "prompt_tokens": 9215,
+          "completion_tokens": 840,
+          "total_tokens": 10055
+        },
+        "llm_request_count": 1,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-0-17027192618e1c4e"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 3.796,
+      "metrics": {
+        "report_quality": 0.0,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 0,
+        "acceptable_first_test": false,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": false,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 1,
+        "usage": {
+          "prompt_tokens": 9215,
+          "completion_tokens": 840,
+          "total_tokens": 10055
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": [
+        {
+          "sequence": 53,
+          "finish_reason": "stop",
+          "response_file": "provider_responses/0053.txt",
+          "json_parse": true,
+          "raw_wrong_reference_count": 0,
+          "raw_wrong_reference_ids": [],
+          "immutable_changes": [],
+          "strict_schema_pass": true
+        }
+      ]
+    },
+    {
+      "arm": "A1",
+      "root_scenario_id": "r-25984983ff0dac84",
+      "input_sha256": "7a2cb7c2e7f7d7d168a5814d1aee362f8b4dab2d3ac5001eb13624a9d73b8ef5",
+      "context_snapshot_id": "context-0-17027192618e1c4e",
+      "report": {
+        "report_id": "report-aabbf750b45d2ea9",
+        "asset_id": "asset-7bca1a310323bf3d",
+        "installation_id": "installation-7bca1a310323bf3d",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"value\": 3.2823, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-d78e59ece828ae6c"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.201, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-cb1c592197962d81"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 45.784, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-0272302010daecb0"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "code": "persistent_state_difference",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-d78e59ece828ae6c",
+              "o-cb1c592197962d81",
+              "o-0272302010daecb0"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "measurement_condition",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-fc593e7c8814bbdb",
+              "o-c3cc795a3eeccae7",
+              "o-a39dd7a7d4ff0239"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "data_quality_blocked",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-d78e59ece828ae6c",
+              "o-cb1c592197962d81"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          }
+        ],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed",
+          "Chemistry unknown; no calibrated fault probability source available"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "reason": "核对时间与身份映射，排除采集错位后再比较通道",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "reason": "独立读取比较状态，区分测量条件与真实状态差异",
+            "authorization": "authorized"
+          }
+        ],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "证据不足且无校准概率来源，建议按目录只读检查核实"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-0272302010daecb0",
+          "o-2d843d2d57fee88f",
+          "o-a39dd7a7d4ff0239",
+          "o-c3cc795a3eeccae7",
+          "o-cb1c592197962d81",
+          "o-d78e59ece828ae6c",
+          "o-fc593e7c8814bbdb"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v0"
+      },
+      "report_sha256": "9e5dc4ac38b950b8d2cf4f357d58f068a945f13a9744711b1e0bc9b45d22d946",
+      "run": {
+        "state": "WAIT_FOR_MEASUREMENT",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          },
+          {
+            "state": "WAIT_FOR_MEASUREMENT"
+          }
+        ],
+        "execution_mode": "cloud",
+        "cloud_report_valid": true,
+        "status": "completed",
+        "errors": [],
+        "selected_skills": [
+          {
+            "skill_id": "active-test-selection",
+            "name": "active-test-selection",
+            "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+            "version": "1.0.0",
+            "route_score": 2
+          },
+          {
+            "skill_id": "data-quality",
+            "name": "data-quality",
+            "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+            "version": "1.0.0",
+            "route_score": 1
+          }
+        ],
+        "tool_call_count": 1,
+        "llm_model": "deepseek-flash",
+        "llm_usage": {
+          "prompt_tokens": 9237,
+          "completion_tokens": 784,
+          "total_tokens": 10021
+        },
+        "llm_request_count": 1,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-0-17027192618e1c4e"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 3.239,
+      "metrics": {
+        "report_quality": 0.9333333333333332,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 2,
+        "acceptable_first_test": true,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": true,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 1,
+        "usage": {
+          "prompt_tokens": 9237,
+          "completion_tokens": 784,
+          "total_tokens": 10021
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": [
+        {
+          "sequence": 57,
+          "finish_reason": "stop",
+          "response_file": "provider_responses/0057.txt",
+          "json_parse": true,
+          "raw_wrong_reference_count": 0,
+          "raw_wrong_reference_ids": [],
+          "immutable_changes": [],
+          "strict_schema_pass": true
+        }
+      ]
+    },
+    {
+      "arm": "A2",
+      "root_scenario_id": "r-ce02dd2530607c0b",
+      "input_sha256": "b18c5baf9e449732ba2abb8d9999643a7a153bb1293bc87f06e9b1939b5b1127",
+      "context_snapshot_id": "context-8-2608014e82e12f56",
+      "report": {
+        "report_id": "report-e4e865f9be80fbd6",
+        "asset_id": "asset-a894d12841e79dc7",
+        "installation_id": "installation-a894d12841e79dc7",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"unit\": \"Ah\", \"quality_flags\": [\"missing\"]}",
+            "evidence_ids": [
+              "o-a50ee1b17f95297e"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.726, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-3b005b76bd179970"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"temperature\", \"value\": 18.25, \"unit\": \"degC\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-9b277ab75a5b6885"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 34.96, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-48828dea767d239f"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"channel_voltage_difference\", \"value\": 12.79, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-c4d0aaf756ddf9a8"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"rest_voltage_change\", \"value\": -10.974, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-8ce7fe6e453e1554"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"charge_energy\", \"value\": 18.299, \"unit\": \"Wh\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-b229a19d77f80a12"
+            ]
+          }
+        ],
+        "hypotheses": [],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed",
+          "cloud_report_failed_validation_or_provider_unavailable",
+          "Cloud report unavailable; deterministic evidence-only problem report"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-3b005b76bd179970",
+          "o-48828dea767d239f",
+          "o-8ce7fe6e453e1554",
+          "o-9b277ab75a5b6885",
+          "o-a50ee1b17f95297e",
+          "o-b229a19d77f80a12",
+          "o-c4d0aaf756ddf9a8"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v8"
+      },
+      "report_sha256": "34eb3988def46c18a9b165b1afd6c8983cb52a4608ca6a1960055bd6f620acce",
+      "run": {
+        "state": "REPORT_READY",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          }
+        ],
+        "execution_mode": "cloud",
+        "cloud_report_valid": false,
+        "status": "completed_with_problem_report",
+        "errors": [
+          "cloud_report_failed_validation_or_provider_unavailable"
+        ],
+        "selected_skills": [
+          {
+            "skill_id": "active-test-selection",
+            "name": "active-test-selection",
+            "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+            "version": "1.0.0",
+            "route_score": 2
+          },
+          {
+            "skill_id": "data-quality",
+            "name": "data-quality",
+            "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+            "version": "1.0.0",
+            "route_score": 1
+          }
+        ],
+        "tool_call_count": 1,
+        "llm_model": "deepseek-flash",
+        "llm_usage": {
+          "prompt_tokens": 9215,
+          "completion_tokens": 855,
+          "total_tokens": 10070
+        },
+        "llm_request_count": 1,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-8-2608014e82e12f56"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 3.557,
+      "metrics": {
+        "report_quality": 0.0,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 0,
+        "acceptable_first_test": false,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": false,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 1,
+        "usage": {
+          "prompt_tokens": 9215,
+          "completion_tokens": 855,
+          "total_tokens": 10070
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": [
+        {
+          "sequence": 55,
+          "finish_reason": "stop",
+          "response_file": "provider_responses/0055.txt",
+          "json_parse": true,
+          "raw_wrong_reference_count": 0,
+          "raw_wrong_reference_ids": [],
+          "immutable_changes": [],
+          "strict_schema_pass": true
+        }
+      ]
+    },
+    {
+      "arm": "A2",
+      "root_scenario_id": "r-25984983ff0dac84",
+      "input_sha256": "dd50dbe88f4f037fa383446e5bba2361f8b4807df52deda5a55f3b8390e8a614",
+      "context_snapshot_id": "context-8-2608014e82e12f56",
+      "report": {
+        "report_id": "report-aabbf750b45d2ea9",
+        "asset_id": "asset-7bca1a310323bf3d",
+        "installation_id": "installation-7bca1a310323bf3d",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"value\": 3.2823, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-d78e59ece828ae6c"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.201, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-cb1c592197962d81"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 45.784, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-0272302010daecb0"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "code": "measurement_condition",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-fc593e7c8814bbdb",
+              "o-c3cc795a3eeccae7"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "persistent_state_difference",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-0272302010daecb0",
+              "o-a39dd7a7d4ff0239"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "data_quality_blocked",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-d78e59ece828ae6c",
+              "o-cb1c592197962d81"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          }
+        ],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed",
+          "Observation set is incomplete cycle with unequal SOC endpoints, limiting comparability"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "reason": "核对时间与身份映射，排除测量条件混淆",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "reason": "独立读取比较通道状态，区分测量条件与真实差异",
+            "authorization": "authorized"
+          }
+        ],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "证据不足且无校准概率，需按目录检查核实后再判断"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-0272302010daecb0",
+          "o-2d843d2d57fee88f",
+          "o-a39dd7a7d4ff0239",
+          "o-c3cc795a3eeccae7",
+          "o-cb1c592197962d81",
+          "o-d78e59ece828ae6c",
+          "o-fc593e7c8814bbdb"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v8"
+      },
+      "report_sha256": "ddd63d47320fda8d2985715a0a1010164b68fa91c923958db02d669cce289838",
+      "run": {
+        "state": "WAIT_FOR_MEASUREMENT",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          },
+          {
+            "state": "WAIT_FOR_MEASUREMENT"
+          }
+        ],
+        "execution_mode": "cloud",
+        "cloud_report_valid": true,
+        "status": "completed",
+        "errors": [],
+        "selected_skills": [
+          {
+            "skill_id": "active-test-selection",
+            "name": "active-test-selection",
+            "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+            "version": "1.0.0",
+            "route_score": 2
+          },
+          {
+            "skill_id": "data-quality",
+            "name": "data-quality",
+            "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+            "version": "1.0.0",
+            "route_score": 1
+          }
+        ],
+        "tool_call_count": 1,
+        "llm_model": "deepseek-flash",
+        "llm_usage": {
+          "prompt_tokens": 9237,
+          "completion_tokens": 760,
+          "total_tokens": 9997
+        },
+        "llm_request_count": 1,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-8-2608014e82e12f56"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 3.635,
+      "metrics": {
+        "report_quality": 0.9333333333333332,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 2,
+        "acceptable_first_test": true,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": true,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 1,
+        "usage": {
+          "prompt_tokens": 9237,
+          "completion_tokens": 760,
+          "total_tokens": 9997
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": [
+        {
+          "sequence": 58,
+          "finish_reason": "stop",
+          "response_file": "provider_responses/0058.txt",
+          "json_parse": true,
+          "raw_wrong_reference_count": 0,
+          "raw_wrong_reference_ids": [],
+          "immutable_changes": [],
+          "strict_schema_pass": true
+        }
+      ]
+    },
+    {
+      "arm": "A3",
+      "root_scenario_id": "r-ce02dd2530607c0b",
+      "input_sha256": "48d223c29f18c54316d572da2cece9c88e00d5593c9886aa4e6965c37c448da9",
+      "context_snapshot_id": "context-8-fc1aa32a585030c1",
+      "report": {
+        "report_id": "report-e4e865f9be80fbd6",
+        "asset_id": "asset-a894d12841e79dc7",
+        "installation_id": "installation-a894d12841e79dc7",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"unit\": \"Ah\", \"quality_flags\": [\"missing\"]}",
+            "evidence_ids": [
+              "o-a50ee1b17f95297e"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.726, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-3b005b76bd179970"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"temperature\", \"value\": 18.25, \"unit\": \"degC\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-9b277ab75a5b6885"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 34.96, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-48828dea767d239f"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"channel_voltage_difference\", \"value\": 12.79, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-c4d0aaf756ddf9a8"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"rest_voltage_change\", \"value\": -10.974, \"unit\": \"mV\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-8ce7fe6e453e1554"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"charge_energy\", \"value\": 18.299, \"unit\": \"Wh\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-b229a19d77f80a12"
+            ]
+          }
+        ],
+        "hypotheses": [],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed",
+          "cloud_report_failed_validation_or_provider_unavailable",
+          "Cloud report unavailable; deterministic evidence-only problem report"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "Use verified evidence and approved procedures; independent safety protections remain authoritative"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-3b005b76bd179970",
+          "o-48828dea767d239f",
+          "o-8ce7fe6e453e1554",
+          "o-9b277ab75a5b6885",
+          "o-a50ee1b17f95297e",
+          "o-b229a19d77f80a12",
+          "o-c4d0aaf756ddf9a8"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v8"
+      },
+      "report_sha256": "34eb3988def46c18a9b165b1afd6c8983cb52a4608ca6a1960055bd6f620acce",
+      "run": {
+        "state": "REPORT_READY",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          }
+        ],
+        "execution_mode": "cloud",
+        "cloud_report_valid": false,
+        "status": "completed_with_problem_report",
+        "errors": [
+          "cloud_report_failed_validation_or_provider_unavailable"
+        ],
+        "selected_skills": [
+          {
+            "skill_id": "active-test-selection",
+            "name": "active-test-selection",
+            "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+            "version": "1.0.0",
+            "route_score": 2
+          },
+          {
+            "skill_id": "data-quality",
+            "name": "data-quality",
+            "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+            "version": "1.0.0",
+            "route_score": 1
+          }
+        ],
+        "tool_call_count": 1,
+        "llm_model": "deepseek-flash",
+        "llm_usage": {
+          "prompt_tokens": 9923,
+          "completion_tokens": 839,
+          "total_tokens": 10762
+        },
+        "llm_request_count": 1,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-8-fc1aa32a585030c1"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 3.773,
+      "metrics": {
+        "report_quality": 0.0,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 0,
+        "acceptable_first_test": false,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": false,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 1,
+        "usage": {
+          "prompt_tokens": 9923,
+          "completion_tokens": 839,
+          "total_tokens": 10762
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": [
+        {
+          "sequence": 54,
+          "finish_reason": "stop",
+          "response_file": "provider_responses/0054.txt",
+          "json_parse": true,
+          "raw_wrong_reference_count": 0,
+          "raw_wrong_reference_ids": [],
+          "immutable_changes": [],
+          "strict_schema_pass": true
+        }
+      ]
+    },
+    {
+      "arm": "A3",
+      "root_scenario_id": "r-25984983ff0dac84",
+      "input_sha256": "c66796d1160272e68ea7b8a6ec9cfe20406e008d05c352183b7c1238d3d29653",
+      "context_snapshot_id": "context-8-fc1aa32a585030c1",
+      "report": {
+        "report_id": "report-aabbf750b45d2ea9",
+        "asset_id": "asset-7bca1a310323bf3d",
+        "installation_id": "installation-7bca1a310323bf3d",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"value\": 3.2823, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-d78e59ece828ae6c"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.201, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-cb1c592197962d81"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 45.784, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-0272302010daecb0"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "code": "measurement_condition",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-fc593e7c8814bbdb",
+              "o-c3cc795a3eeccae7"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "persistent_state_difference",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-d78e59ece828ae6c",
+              "o-0272302010daecb0"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "data_quality_blocked",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-a39dd7a7d4ff0239"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          }
+        ],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed",
+          "Chemistry unknown; no calibrated fault probability source available"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "reason": "核对时间与身份映射，成本低且可区分测量条件与状态差异",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "reason": "独立读取比较通道状态，可区分测量条件与持续状态差异",
+            "authorization": "authorized"
+          }
+        ],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "证据不足且无校准概率来源，建议按目录检查核实，不确认根因"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-0272302010daecb0",
+          "o-2d843d2d57fee88f",
+          "o-a39dd7a7d4ff0239",
+          "o-c3cc795a3eeccae7",
+          "o-cb1c592197962d81",
+          "o-d78e59ece828ae6c",
+          "o-fc593e7c8814bbdb"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v8"
+      },
+      "report_sha256": "a808cd5d7cfc36719a5b2b4a5d38a083a7e8ab00fda9656268eb90a2d9e5f945",
+      "run": {
+        "state": "WAIT_FOR_MEASUREMENT",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          },
+          {
+            "state": "WAIT_FOR_MEASUREMENT"
+          }
+        ],
+        "execution_mode": "cloud",
+        "cloud_report_valid": true,
+        "status": "completed",
+        "errors": [],
+        "selected_skills": [
+          {
+            "skill_id": "active-test-selection",
+            "name": "active-test-selection",
+            "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+            "version": "1.0.0",
+            "route_score": 2
+          },
+          {
+            "skill_id": "data-quality",
+            "name": "data-quality",
+            "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+            "version": "1.0.0",
+            "route_score": 1
+          }
+        ],
+        "tool_call_count": 1,
+        "llm_model": "deepseek-flash",
+        "llm_usage": {
+          "prompt_tokens": 9724,
+          "completion_tokens": 756,
+          "total_tokens": 10480
+        },
+        "llm_request_count": 1,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-8-fc1aa32a585030c1"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 3.195,
+      "metrics": {
+        "report_quality": 0.9333333333333332,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 2,
+        "acceptable_first_test": true,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": true,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 1,
+        "usage": {
+          "prompt_tokens": 9724,
+          "completion_tokens": 756,
+          "total_tokens": 10480
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": [
+        {
+          "sequence": 59,
+          "finish_reason": "stop",
+          "response_file": "provider_responses/0059.txt",
+          "json_parse": true,
+          "raw_wrong_reference_count": 0,
+          "raw_wrong_reference_ids": [],
+          "immutable_changes": [],
+          "strict_schema_pass": true
+        }
+      ]
+    },
+    {
+      "arm": "A4",
+      "root_scenario_id": "r-ce02dd2530607c0b",
+      "input_sha256": "b6d282ae63f00521540483ee0393b2ba1eb011815e02c4f82175d1b30ac65e85",
+      "context_snapshot_id": "context-11-f4e6a5624dcb0455",
+      "report": {
+        "report_id": "report-e4e865f9be80fbd6",
+        "asset_id": "asset-a894d12841e79dc7",
+        "installation_id": "installation-a894d12841e79dc7",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "measured_capacity 缺失（quality_flags=[missing]，test did not produce a valid measurement），无法据此计算容量类结论。",
+            "evidence_ids": [
+              "o-a50ee1b17f95297e"
+            ]
+          },
+          {
+            "claim": "frozen_reference_capacity=3.726 Ah，temperature=18.25 degC，measured_resistance=34.96 mOhm，均为同安装同时间戳的合成观测。",
+            "evidence_ids": [
+              "o-3b005b76bd179970",
+              "o-9b277ab75a5b6885",
+              "o-48828dea767d239f"
+            ]
+          },
+          {
+            "claim": "channel_voltage_difference=12.79 mV，rest_voltage_change=-10.974 mV，charge_energy=18.299 Wh；观测不完整（observation_complete_cycle=false，soc_endpoints_equal=false），仅表示相关。",
+            "evidence_ids": [
+              "o-c4d0aaf756ddf9a8",
+              "o-8ce7fe6e453e1554",
+              "o-b229a19d77f80a12"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "code": "measurement_condition",
+            "level": "suspected",
+            "supports": [
+              "o-a50ee1b17f95297e",
+              "o-c4d0aaf756ddf9a8",
+              "o-8ce7fe6e453e1554"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "persistent_state_difference",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-48828dea767d239f",
+              "o-c4d0aaf756ddf9a8"
+            ],
+            "contradicts": [
+              "o-a50ee1b17f95297e"
+            ],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "data_quality_blocked",
+            "level": "suspected",
+            "supports": [
+              "o-a50ee1b17f95297e"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          }
+        ],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed",
+          "环境温湿度未随回放同步，工况可比性未核对；缺失掩码与通道单位白名单未核验"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "reason": "核对时间与身份映射，确认缺失与通道差异是否可比。",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "reason": "按虚拟规程独立读取比较状态，区分采集问题与真实差异。",
+            "authorization": "authorized"
+          }
+        ],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "关键容量缺失且观测不完整，需先核对时间与通道可比性，再判断是否需独立复核。"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-3b005b76bd179970",
+          "o-48828dea767d239f",
+          "o-8ce7fe6e453e1554",
+          "o-9b277ab75a5b6885",
+          "o-a50ee1b17f95297e",
+          "o-b229a19d77f80a12",
+          "o-c4d0aaf756ddf9a8"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v11"
+      },
+      "report_sha256": "89f26ea1603c03d6b8df79e8b3d2207ff86dc4e04e80aae6dd84ba54e73e588d",
+      "run": {
+        "state": "WAIT_FOR_MEASUREMENT",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          },
+          {
+            "state": "WAIT_FOR_MEASUREMENT"
+          }
+        ],
+        "execution_mode": "cloud",
+        "cloud_report_valid": true,
+        "status": "completed",
+        "errors": [],
+        "selected_skills": [
+          {
+            "skill_id": "active-test-selection",
+            "name": "active-test-selection",
+            "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+            "version": "1.0.0",
+            "route_score": 2
+          },
+          {
+            "skill_id": "data-quality",
+            "name": "data-quality",
+            "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+            "version": "1.0.0",
+            "route_score": 1
+          }
+        ],
+        "tool_call_count": 1,
+        "llm_model": "deepseek-flash",
+        "llm_usage": {
+          "prompt_tokens": 12104,
+          "completion_tokens": 889,
+          "total_tokens": 12993
+        },
+        "llm_request_count": 1,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-11-f4e6a5624dcb0455"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 4.112,
+      "metrics": {
+        "report_quality": 0.9333333333333332,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 2,
+        "acceptable_first_test": true,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": true,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 1,
+        "usage": {
+          "prompt_tokens": 12104,
+          "completion_tokens": 889,
+          "total_tokens": 12993
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": [
+        {
+          "sequence": 56,
+          "finish_reason": "stop",
+          "response_file": "provider_responses/0056.txt",
+          "json_parse": true,
+          "raw_wrong_reference_count": 0,
+          "raw_wrong_reference_ids": [],
+          "immutable_changes": [],
+          "strict_schema_pass": true
+        }
+      ]
+    },
+    {
+      "arm": "A4",
+      "root_scenario_id": "r-25984983ff0dac84",
+      "input_sha256": "576ee3c280c35e6446eb4be5d7128dd5b11b4b461ec4a51c63b6a263f5745f93",
+      "context_snapshot_id": "context-11-f4e6a5624dcb0455",
+      "report": {
+        "report_id": "report-aabbf750b45d2ea9",
+        "asset_id": "asset-7bca1a310323bf3d",
+        "installation_id": "installation-7bca1a310323bf3d",
+        "visible_cutoff": "2026-09-05T10:00:00Z",
+        "round": 1,
+        "status": "insufficient_evidence",
+        "facts": [
+          {
+            "claim": "{\"metric\": \"measured_capacity\", \"value\": 3.2823, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-d78e59ece828ae6c"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"frozen_reference_capacity\", \"value\": 3.201, \"unit\": \"Ah\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-cb1c592197962d81"
+            ]
+          },
+          {
+            "claim": "{\"metric\": \"measured_resistance\", \"value\": 45.784, \"unit\": \"mOhm\", \"quality_flags\": []}",
+            "evidence_ids": [
+              "o-0272302010daecb0"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "code": "measurement_condition",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-fc593e7c8814bbdb",
+              "o-c3cc795a3eeccae7"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "persistent_state_difference",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-d78e59ece828ae6c",
+              "o-0272302010daecb0"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          },
+          {
+            "code": "data_quality_blocked",
+            "level": "insufficient_evidence",
+            "supports": [
+              "o-a39dd7a7d4ff0239"
+            ],
+            "contradicts": [],
+            "probability": null,
+            "probability_source": null
+          }
+        ],
+        "unknowns": [
+          "Configured synthetic predictions are not validated numerical fault likelihoods",
+          "Root cause is not independently confirmed",
+          "环境工况未随回放同步核对，可比性未确认"
+        ],
+        "applicability": {
+          "status": "insufficient_data",
+          "reasons": [
+            "Configured synthetic predictions are not validated numerical fault likelihoods"
+          ]
+        },
+        "suggested_tests": [
+          {
+            "test_id": "T_TIME_ALIGN",
+            "reason": "核对时间与身份映射，排除错位后再比较通道",
+            "authorization": "authorized"
+          },
+          {
+            "test_id": "T_CHANNEL_CHECK",
+            "reason": "独立读取比较状态，区分工况与真实差异",
+            "authorization": "authorized"
+          }
+        ],
+        "priority": {
+          "class": "needs_inspection",
+          "reason": "证据不足且未确认根因，需按目录检查并保留人工确认"
+        },
+        "proposal_id": null,
+        "citations": [
+          "o-0272302010daecb0",
+          "o-2d843d2d57fee88f",
+          "o-a39dd7a7d4ff0239",
+          "o-c3cc795a3eeccae7",
+          "o-cb1c592197962d81",
+          "o-d78e59ece828ae6c",
+          "o-fc593e7c8814bbdb"
+        ],
+        "agent_version": "single-agent-v2.0",
+        "context_version": "context_v11"
+      },
+      "report_sha256": "b21f4178b96a5f5cc80f351cd07c964f0fcb91500a5688f328e2794022c7673e",
+      "run": {
+        "state": "WAIT_FOR_MEASUREMENT",
+        "states": [
+          {
+            "state": "COLLECT"
+          },
+          {
+            "state": "CHECK_SUPPORT"
+          },
+          {
+            "state": "ROUTE_SKILLS"
+          },
+          {
+            "state": "BUILD_HYPOTHESES"
+          },
+          {
+            "state": "CALL_TOOLS"
+          },
+          {
+            "state": "VALIDATE_REPORT"
+          },
+          {
+            "state": "REPORT_READY"
+          },
+          {
+            "state": "WAIT_FOR_MEASUREMENT"
+          }
+        ],
+        "execution_mode": "cloud",
+        "cloud_report_valid": true,
+        "status": "completed",
+        "errors": [],
+        "selected_skills": [
+          {
+            "skill_id": "active-test-selection",
+            "name": "active-test-selection",
+            "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+            "version": "1.0.0",
+            "route_score": 2
+          },
+          {
+            "skill_id": "data-quality",
+            "name": "data-quality",
+            "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+            "version": "1.0.0",
+            "route_score": 1
+          }
+        ],
+        "tool_call_count": 1,
+        "llm_model": "deepseek-flash",
+        "llm_usage": {
+          "prompt_tokens": 11905,
+          "completion_tokens": 750,
+          "total_tokens": 12655
+        },
+        "llm_request_count": 1,
+        "llm_failed_request_count": 0,
+        "llm_unknown_usage_request_count": 0,
+        "context_snapshot_id": "context-11-f4e6a5624dcb0455"
+      },
+      "tool_trace": [
+        {
+          "name": "rank_tests",
+          "arguments": {},
+          "status": "completed",
+          "result": {
+            "ranked": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "selected": [
+              {
+                "test_id": "T_TIME_ALIGN",
+                "method": "rule",
+                "rule_score": 0.9230769230769231,
+                "test_cost": 1.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              },
+              {
+                "test_id": "T_CHANNEL_CHECK",
+                "method": "rule",
+                "rule_score": 0.6153846153846154,
+                "test_cost": 2.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable"
+              }
+            ],
+            "excluded": [],
+            "pending_authorization": [
+              {
+                "test_id": "T_REPEAT_SOURCE",
+                "method": "rule",
+                "rule_score": 0.48,
+                "test_cost": 3.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              },
+              {
+                "test_id": "T_RESTRICTED_CHECK",
+                "method": "rule",
+                "rule_score": 0.375,
+                "test_cost": 4.0,
+                "reason": "Defined hypothesis coverage adjusted for cost/time; likelihood unavailable",
+                "reasons": [
+                  "requires_new_authorization"
+                ],
+                "execution_eligible": false,
+                "required_qualifications": []
+              }
+            ],
+            "probability_model_available": false
+          }
+        }
+      ],
+      "elapsed_seconds": 3.331,
+      "metrics": {
+        "report_quality": 0.9333333333333332,
+        "initial_status_pass": true,
+        "wrong_reference_count": 0,
+        "wrong_reference_ids": [],
+        "grounded_assertion_ratio": 1.0,
+        "recommended_check_count": 2,
+        "acceptable_first_test": true,
+        "permission_violation_count": 0,
+        "unjustified_confirmation_count": 0,
+        "cloud_report_valid": true,
+        "configured_inspection_needed": true,
+        "missed_inspection": 0,
+        "false_inspection_alarm": 0,
+        "inspection_label_provenance": "project-configured scenario behavior; not real defect incidence",
+        "semantic_blind_review": "pending",
+        "provider_raw_wrong_reference_count": 0
+      },
+      "feedback_used_before_report": false,
+      "provider_cost": {
+        "http_attempts": 1,
+        "usage": {
+          "prompt_tokens": 11905,
+          "completion_tokens": 750,
+          "total_tokens": 12655
+        },
+        "failed_calls": 0
+      },
+      "provider_diagnostics": [
+        {
+          "sequence": 60,
+          "finish_reason": "stop",
+          "response_file": "provider_responses/0060.txt",
+          "json_parse": true,
+          "raw_wrong_reference_count": 0,
+          "raw_wrong_reference_ids": [],
+          "immutable_changes": [],
+          "strict_schema_pass": true
+        }
+      ]
+    }
+  ],
+  "sha256": "2dbf4831a791a51807cc821778966779402fe1b57ced196bb1083ce6c23e1737",
+  "frozen_before_feedback": true
+}

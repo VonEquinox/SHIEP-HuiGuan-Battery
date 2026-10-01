@@ -1,0 +1,56 @@
+{
+  "context_snapshot_id": "context-1-2c0ba9f8772d99e7",
+  "context_version": "context_v1",
+  "version": 1,
+  "memories": [
+    {
+      "memory_id": "memory-23c100fe750605ed",
+      "version": 1,
+      "scope": {
+        "chemistry": "NCM",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "引用的编号在本项目证据库不存在，应删除该引用。 | 补充虚拟现场描述：结果存在矛盾：同一虚拟桶的压差记录方向不一致，可能与筛选口径或时间窗有关；需核对原始字段与聚合规则后再下结论。",
+      "supporting_case_ids": [
+        "r-73d906ddaac18b3d"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-23c100fe750605ed",
+      "available_at": "2026-09-03T10:30:00Z",
+      "origin": "expert_synthetic"
+    }
+  ],
+  "skills": {},
+  "created_at": "2026-10-01T17:26:37.132043+00:00",
+  "changes": [
+    {
+      "operation": "ADD",
+      "memory_id": "memory-23c100fe750605ed",
+      "item": {
+        "insight": "引用的编号在本项目证据库不存在，应删除该引用。 | 补充虚拟现场描述：结果存在矛盾：同一虚拟桶的压差记录方向不一致，可能与筛选口径或时间窗有关；需核对原始字段与聚合规则后再下结论。",
+        "source_trust": "reported",
+        "supporting_case_ids": [
+          "r-73d906ddaac18b3d"
+        ],
+        "raw_feedback_id": "fb-23c100fe750605ed",
+        "available_at": "2026-09-03T10:30:00Z",
+        "memory_id": "memory-23c100fe750605ed",
+        "scope": {
+          "chemistry": "NCM",
+          "protocol_id": "DEMO-PROTOCOL-1"
+        },
+        "trigger": "inspection feedback",
+        "origin": "expert_synthetic"
+      }
+    }
+  ],
+  "parent_snapshot_id": "context-0-17027192618e1c4e"
+}

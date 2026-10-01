@@ -1,0 +1,178 @@
+{
+  "protocol_version": "battery-replay-pilot-v1",
+  "registered_at": "2026-10-01T17:57:04.167642+00:00",
+  "content_manifest_sha256": "3e8c6ccf4f440991cb4b4215b7062cb773f88d885a44ee37ef9682736c1713e5",
+  "code_sha256": {
+    "tools/content/experiment.py": "480fbee08578074e3617fdbfe41ad7603d0d87c2dc50c67cca6b52820ce9d7bb",
+    "tools/content/common.py": "20ea204d1bcfb539da2acc2459d5175f6d0d38fa0985d5855397fb7f30f2abbb",
+    "tools/content/replay.py": "b3ade00f3c576f0e8725ff251d1410bb8bbbcae3c0cc7d051d0a7b1b329f9a83",
+    "tools/content/generate.py": "d29a0b5f5754226f17d6d861c4c4d462d78b15d52587e6081b443123e7a46f84",
+    "battery_platform/app/agent/__init__.py": "aab9c48cf4f917c2a9054e0c5d49e8a7c0833bec2868514fc32efcd25d00aef6",
+    "battery_platform/app/agent/context.py": "c1e2ee5f17c533c7af28ea517af2e24f93507eabb9651fe017cc8253540913df",
+    "battery_platform/app/agent/contracts.py": "4ef7608d7b56cd474e07305e24e7e46aa0ae633ac4c0fffda20fcbc2f6c84c63",
+    "battery_platform/app/agent/evaluation.py": "e18c93cc041fbe53681a79fe5af23603fd5f38a48e1e84727bcf68e26d1b511b",
+    "battery_platform/app/agent/executor.py": "fec54ffeff3626f9a80053a90a5dcbd7904c1e7818471fe464b959e7df79995d",
+    "battery_platform/app/agent/experiment_cli.py": "fb70ea4fc1915750f6da62c0ca4122a5ba13de5b046e1ce3aa0625763ba183e9",
+    "battery_platform/app/agent/feedback.py": "899d86cbe28750df603eb2462ab6975a4627e632ac6edef9044e9fccd15eda33",
+    "battery_platform/app/agent/gepa_service.py": "47166249aa11a44f37b003a3b1bdaa2122e5f8b712cc1863e24f45beeddb7398",
+    "battery_platform/app/agent/llm.py": "6a83d26b6c656489ecb2edb8931df3d3b08ae5d7ef9a83c1aab820192a70e403",
+    "battery_platform/app/agent/skills.py": "363779688c503b19e976c641d105dfb5fcc686d5667cb826aab21f133d2f3391",
+    "battery_platform/app/agent/tools.py": "486c4dc36ad2d416b8cf9b34d791e9f4042b2fefd3f2ffc4b58dc694c63dbba9",
+    "battery_platform/app/diagnosis/active_tests.py": "e41c2841c4473aec15896d7009f3a4146d067cd6a509ab9b976a8f887f00cbbd"
+  },
+  "model": "deepseek-flash",
+  "provider_base_url": "https://api.deepseek.com",
+  "numerical_model": "configured-synthetic-head-v1 (unvalidated)",
+  "context_v0": {
+    "context_snapshot_id": "context-0-17027192618e1c4e",
+    "context_version": "context_v0",
+    "version": 0,
+    "memories": [],
+    "skills": {},
+    "created_at": "2026-10-01T17:57:04.071541+00:00",
+    "changes": [],
+    "parent_snapshot_id": null
+  },
+  "context_v0_sha256": "8023baf228b0b67da6aaf53e9dbe6e381787ac26907d38cfb7d4f9c9309e1ec4",
+  "root_ids": {
+    "evolution": [
+      "r-0f710dfd82005e7f",
+      "r-11c18f9582b90d5a",
+      "r-2eec13b9a6b19be6",
+      "r-a49ebaac9fc800bd",
+      "r-73d906ddaac18b3d",
+      "r-a121dedc15631918",
+      "r-65c40131bf952258",
+      "r-8d6e6acec74e92d2",
+      "r-ce02dd2530607c0b",
+      "r-25984983ff0dac84",
+      "r-e9490c1b929ebe42",
+      "r-673f0d34e4d85f9c"
+    ],
+    "dev": [
+      "r-48e636e102942743",
+      "r-14be39fe5d5b9d75",
+      "r-86f26ee555da46de",
+      "r-ea5f301b341b6550",
+      "r-5b0560d492fd6a8f",
+      "r-e7395fb554c5e34a",
+      "r-86632df831e5fc3f",
+      "r-29fca74d8cd386e2",
+      "r-145cbde81802edc9",
+      "r-7b576a89edc85ea8",
+      "r-e58f4377fb35c0ab",
+      "r-bfb432c4c332fb8e"
+    ],
+    "sealed_test": [
+      "r-6c425cfa9f18012b",
+      "r-6f1031f45894a322",
+      "r-80e34ea8c783d0d6",
+      "r-12813b3d147eff67",
+      "r-d7178863f5700d43",
+      "r-57c72670465c44df",
+      "r-f674176cb3edb050",
+      "r-eb7cccca6ffa9b03",
+      "r-ec4f9558e7f33d52",
+      "r-0857bf777e6eab01",
+      "r-e583f888f6b4e820",
+      "r-72dd7f835908e6d6"
+    ]
+  },
+  "bucket_order": [
+    "normal_activation",
+    "capacity_degradation",
+    "high_resistance",
+    "suspected_self_discharge",
+    "voltage_difference",
+    "temperature_anomaly",
+    "charging_stage",
+    "sensor_fault",
+    "missing_bad_data",
+    "unsupported_domain",
+    "fleet_common",
+    "mixed_unresolved"
+  ],
+  "arms": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4"
+  ],
+  "thinking": "disabled",
+  "prior_run": {
+    "path": "battery_platform/reports/v2_agent/preregistered_pilot_v1",
+    "summary_sha256": "d710fdc184b9d9136e82ed8f8749a5d8cfe4a235553eeed12529fd8f7bf45099",
+    "cost": {
+      "http_attempts": 29,
+      "failed_calls": 7,
+      "reported_usage": {
+        "prompt_tokens": 267218,
+        "completion_tokens": 92438,
+        "total_tokens": 359656
+      },
+      "charged_tokens_including_unknown_failures": 359656,
+      "max_http_attempts": 200,
+      "max_tokens": 2000000,
+      "remaining_calls": 171
+    },
+    "state": "cancelled",
+    "cumulative_cost": {
+      "http_attempts": 29,
+      "charged_tokens": 359656
+    }
+  },
+  "batch_count": 6,
+  "roots_per_batch": 2,
+  "same_frozen_input_within_batch": true,
+  "report_budget": {
+    "provider_calls": 1,
+    "max_tokens_per_call": 4096,
+    "max_tool_calls": 12,
+    "max_loaded_skills": 4,
+    "http_retries": 0
+  },
+  "gepa": {
+    "candidate_budget_per_batch": 1,
+    "selection_roots_per_batch": 2,
+    "max_candidate_rollouts": 24,
+    "feedback_before_proposal": true
+  },
+  "maximum_http_attempts": 171,
+  "maximum_tokens_including_unknown_failures": 1640344,
+  "tools": [
+    "append_report",
+    "get_asset_context",
+    "get_peer_anomalies",
+    "get_signal_evidence",
+    "load_skill",
+    "propose_work_order",
+    "rank_tests",
+    "read_prediction",
+    "search_knowledge",
+    "search_memory"
+  ],
+  "stages": [
+    "six evolution batches: predict all arms, freeze reports, reveal selected authorized tests, apply memory, stage GEPA",
+    "freeze final context snapshots",
+    "read-only final twelve-dev evaluation for A0/A1/A4 (A2/A3 reserved for sealed milestone to fit cumulative budget)",
+    "one final twelve-sealed milestone, compare shared static v0 and frozen final A2/A3/A4, no later optimizer",
+    "optional complete deterministic A0 offline after milestone"
+  ],
+  "sealed_cache": "A1 and initial A2/A3/A4 are identical static inputs/context; v0 is called once and shared. A1 final stays v0 and reuses this identical report; no duplicate report counted as independent sample.",
+  "selection_rule": "one root per each of twelve buckets, frozen generator identity groups8/14/17, member=bucket_index%8; no result-dependent selection",
+  "timeline": "each evolution batch shifted by integer days; original physical root/observation identity and quantities retained; feedback availability precedes later batch cutoff",
+  "scoring": "0.4 initial-status pass +0.3 grounded citations +0.2 acceptable first-test/abstention +0.1/(1+checks); failed cloud report=0; inspection error counts use configured requires_initial_test, not real defect labels",
+  "cancellation": "create output/CANCEL or interrupt process; ledger and frozen batches retained",
+  "semantic_blind_review": "pending",
+  "response_constraints": {
+    "facts": 3,
+    "hypotheses": 3,
+    "unknowns": 3,
+    "suggested_tests": 2,
+    "reason_max_chinese_characters": 80,
+    "raw_final_answers_saved": true,
+    "reasoning_content_saved": false
+  },
+  "protocol_sha256": "cc626a7d4681ad32007fd56b067d1ac8470271ffec334e6d7844761e76282b38"
+}

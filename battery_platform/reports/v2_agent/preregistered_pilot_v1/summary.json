@@ -1,0 +1,84 @@
+{
+  "state": "cancelled",
+  "protocol_sha256": "48e43bf519e1f586746eeb1af1a06b77039233faa720b173bf7ffafefd90e145",
+  "cost": {
+    "http_attempts": 29,
+    "failed_calls": 7,
+    "reported_usage": {
+      "prompt_tokens": 267218,
+      "completion_tokens": 92438,
+      "total_tokens": 359656
+    },
+    "charged_tokens_including_unknown_failures": 359656,
+    "max_http_attempts": 200,
+    "max_tokens": 2000000,
+    "remaining_calls": 171
+  },
+  "batches_completed": 3,
+  "evolution": {
+    "A0": {
+      "root_count": 6,
+      "mean_report_quality": 0.9249999999999999,
+      "cloud_valid_reports": 0,
+      "wrong_references": 0,
+      "mean_recommended_checks": 3.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A1": {
+      "root_count": 6,
+      "mean_report_quality": 0.15416666666666665,
+      "cloud_valid_reports": 1,
+      "wrong_references": 0,
+      "mean_recommended_checks": 0.5,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A2": {
+      "root_count": 6,
+      "mean_report_quality": 0.15333333333333332,
+      "cloud_valid_reports": 1,
+      "wrong_references": 0,
+      "mean_recommended_checks": 0.6666666666666666,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A3": {
+      "root_count": 6,
+      "mean_report_quality": 0.15333333333333332,
+      "cloud_valid_reports": 1,
+      "wrong_references": 0,
+      "mean_recommended_checks": 0.6666666666666666,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    "A4": {
+      "root_count": 6,
+      "mean_report_quality": 0.15416666666666665,
+      "cloud_valid_reports": 1,
+      "wrong_references": 0,
+      "mean_recommended_checks": 0.5,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    }
+  },
+  "dev": {},
+  "sealed": {},
+  "offline_A0": {},
+  "semantic_blind_review": "pending"
+}

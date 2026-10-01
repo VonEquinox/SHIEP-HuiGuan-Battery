@@ -1,0 +1,143 @@
+{
+  "protocol_version": "battery-replay-pilot-v1",
+  "registered_at": "2026-10-01T17:24:58.011947+00:00",
+  "content_manifest_sha256": "3e8c6ccf4f440991cb4b4215b7062cb773f88d885a44ee37ef9682736c1713e5",
+  "code_sha256": {
+    "tools/content/experiment.py": "5a69c410622c676da7b9c7e0bab9b9f7db4b5837bfbf14649656cd9a3b2343f4",
+    "battery_platform/app/agent/__init__.py": "aab9c48cf4f917c2a9054e0c5d49e8a7c0833bec2868514fc32efcd25d00aef6",
+    "battery_platform/app/agent/context.py": "c1e2ee5f17c533c7af28ea517af2e24f93507eabb9651fe017cc8253540913df",
+    "battery_platform/app/agent/contracts.py": "4ef7608d7b56cd474e07305e24e7e46aa0ae633ac4c0fffda20fcbc2f6c84c63",
+    "battery_platform/app/agent/evaluation.py": "d22146b1d155f98df329530b54195c7b79a94ee6658c43c0ac4de087b9e1a95f",
+    "battery_platform/app/agent/executor.py": "d1ee91c86cb75e765f3261a01c560e05230fb319ac99d0064e2fb26141b6faf5",
+    "battery_platform/app/agent/experiment_cli.py": "fb70ea4fc1915750f6da62c0ca4122a5ba13de5b046e1ce3aa0625763ba183e9",
+    "battery_platform/app/agent/feedback.py": "899d86cbe28750df603eb2462ab6975a4627e632ac6edef9044e9fccd15eda33",
+    "battery_platform/app/agent/gepa_service.py": "6683245c7b7496c513e08a25fdf90a11d30b54bf15bc41a6e03bb7de3e61ffe5",
+    "battery_platform/app/agent/llm.py": "31cd5bfee94a22f4ee0318f0d301248338729dfa7bc577b6963eb9a9ccd6a5e4",
+    "battery_platform/app/agent/skills.py": "363779688c503b19e976c641d105dfb5fcc686d5667cb826aab21f133d2f3391",
+    "battery_platform/app/agent/tools.py": "486c4dc36ad2d416b8cf9b34d791e9f4042b2fefd3f2ffc4b58dc694c63dbba9",
+    "battery_platform/app/diagnosis/active_tests.py": "e41c2841c4473aec15896d7009f3a4146d067cd6a509ab9b976a8f887f00cbbd"
+  },
+  "model": "deepseek-flash",
+  "provider_base_url": "https://api.deepseek.com",
+  "numerical_model": "configured-synthetic-head-v1 (unvalidated)",
+  "context_v0": {
+    "context_snapshot_id": "context-0-17027192618e1c4e",
+    "context_version": "context_v0",
+    "version": 0,
+    "memories": [],
+    "skills": {},
+    "created_at": "2026-10-01T17:24:57.958094+00:00",
+    "changes": [],
+    "parent_snapshot_id": null
+  },
+  "context_v0_sha256": "26140a0802bd0325741fd9ce2d4182a7e6ae46cf97598a9b7a419540bcbbcc05",
+  "root_ids": {
+    "evolution": [
+      "r-0f710dfd82005e7f",
+      "r-11c18f9582b90d5a",
+      "r-2eec13b9a6b19be6",
+      "r-a49ebaac9fc800bd",
+      "r-73d906ddaac18b3d",
+      "r-a121dedc15631918",
+      "r-65c40131bf952258",
+      "r-8d6e6acec74e92d2",
+      "r-ce02dd2530607c0b",
+      "r-25984983ff0dac84",
+      "r-e9490c1b929ebe42",
+      "r-673f0d34e4d85f9c"
+    ],
+    "dev": [
+      "r-48e636e102942743",
+      "r-14be39fe5d5b9d75",
+      "r-86f26ee555da46de",
+      "r-ea5f301b341b6550",
+      "r-5b0560d492fd6a8f",
+      "r-e7395fb554c5e34a",
+      "r-86632df831e5fc3f",
+      "r-29fca74d8cd386e2",
+      "r-145cbde81802edc9",
+      "r-7b576a89edc85ea8",
+      "r-e58f4377fb35c0ab",
+      "r-bfb432c4c332fb8e"
+    ],
+    "sealed_test": [
+      "r-6c425cfa9f18012b",
+      "r-6f1031f45894a322",
+      "r-80e34ea8c783d0d6",
+      "r-12813b3d147eff67",
+      "r-d7178863f5700d43",
+      "r-57c72670465c44df",
+      "r-f674176cb3edb050",
+      "r-eb7cccca6ffa9b03",
+      "r-ec4f9558e7f33d52",
+      "r-0857bf777e6eab01",
+      "r-e583f888f6b4e820",
+      "r-72dd7f835908e6d6"
+    ]
+  },
+  "bucket_order": [
+    "normal_activation",
+    "capacity_degradation",
+    "high_resistance",
+    "suspected_self_discharge",
+    "voltage_difference",
+    "temperature_anomaly",
+    "charging_stage",
+    "sensor_fault",
+    "missing_bad_data",
+    "unsupported_domain",
+    "fleet_common",
+    "mixed_unresolved"
+  ],
+  "arms": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4"
+  ],
+  "batch_count": 6,
+  "roots_per_batch": 2,
+  "same_frozen_input_within_batch": true,
+  "report_budget": {
+    "provider_calls": 1,
+    "max_tokens_per_call": 4096,
+    "max_tool_calls": 12,
+    "max_loaded_skills": 4,
+    "http_retries": 0
+  },
+  "gepa": {
+    "candidate_budget_per_batch": 1,
+    "selection_roots_per_batch": 2,
+    "max_candidate_rollouts": 24,
+    "feedback_before_proposal": true
+  },
+  "maximum_http_attempts": 200,
+  "maximum_tokens_including_unknown_failures": 2000000,
+  "tools": [
+    "append_report",
+    "get_asset_context",
+    "get_peer_anomalies",
+    "get_signal_evidence",
+    "load_skill",
+    "propose_work_order",
+    "rank_tests",
+    "read_prediction",
+    "search_knowledge",
+    "search_memory"
+  ],
+  "stages": [
+    "six evolution batches: predict all arms, freeze reports, reveal selected authorized tests, apply memory, stage GEPA",
+    "freeze final context snapshots",
+    "read-only final twelve-dev evaluation",
+    "one final twelve-sealed milestone, compare shared static v0 and frozen final A2/A3/A4, no later optimizer",
+    "optional complete deterministic A0 offline after milestone"
+  ],
+  "sealed_cache": "A1 and initial A2/A3/A4 are identical static inputs/context; v0 is called once and shared. A1 final stays v0 and reuses this identical report; no duplicate report counted as independent sample.",
+  "selection_rule": "one root per each of twelve buckets, frozen generator identity groups8/14/17, member=bucket_index%8; no result-dependent selection",
+  "timeline": "each evolution batch shifted by integer days; original physical root/observation identity and quantities retained; feedback availability precedes later batch cutoff",
+  "scoring": "0.4 initial-status pass +0.3 grounded citations +0.2 acceptable first-test/abstention +0.1/(1+checks); failed cloud report=0; inspection error counts use configured requires_initial_test, not real defect labels",
+  "cancellation": "create output/CANCEL or interrupt process; ledger and frozen batches retained",
+  "semantic_blind_review": "pending",
+  "protocol_sha256": "48e43bf519e1f586746eeb1af1a06b77039233faa720b173bf7ffafefd90e145"
+}

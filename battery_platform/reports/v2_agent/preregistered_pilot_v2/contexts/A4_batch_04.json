@@ -1,0 +1,219 @@
+{
+  "context_snapshot_id": "context-11-f4e6a5624dcb0455",
+  "context_version": "context_v11",
+  "version": 11,
+  "memories": [
+    {
+      "memory_id": "memory-69712fdfdd70a31b",
+      "version": 1,
+      "scope": {
+        "chemistry": "LFP",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "引用的编号在本项目证据库不存在，应删除该引用。 | 补充虚拟现场描述：现场温湿度可能变化，回放未同步该环境量；需核对采样时段与工况记录，确认是否影响本次虚拟激活判断。",
+      "supporting_case_ids": [
+        "r-0f710dfd82005e7f"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-69712fdfdd70a31b",
+      "available_at": "2026-09-01T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-8912a8759b5398e5",
+      "version": 1,
+      "scope": {
+        "chemistry": "NCM",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "重复常规读取没有区分力，独立复核才可能改变结论。 | 补充虚拟现场描述：若采集仪表或传感器存在偏差，容量趋势可能失真；需核对校准状态、量程与采样时间，勿仅凭单一读数判断。",
+      "supporting_case_ids": [
+        "r-11c18f9582b90d5a"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-8912a8759b5398e5",
+      "available_at": "2026-09-01T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-354d53e0c6a03e74",
+      "version": 1,
+      "scope": {
+        "chemistry": "unknown",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "同步出现只能说明相关；时间对齐与共因尚未确认。 | 补充虚拟现场描述：身份映射若将A点数据归到B电池，结论会错位；当前仅为虚拟回放，需核对资产ID、点位表与采样时间，人工确认后才可派单。",
+      "supporting_case_ids": [
+        "r-2eec13b9a6b19be6"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-354d53e0c6a03e74",
+      "available_at": "2026-09-02T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-7863b052bfe6ff07",
+      "version": 1,
+      "scope": {
+        "chemistry": "LFP",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "共用偏置已解释群体差异，但一个成员仍需独立复核。 | 补充虚拟现场描述：现场暂无法执行静置检查，缺少停用窗口或安全条件；请确认能否改做远程数据复核，并由人工确认后续动作。",
+      "supporting_case_ids": [
+        "r-a49ebaac9fc800bd"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-7863b052bfe6ff07",
+      "available_at": "2026-09-02T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-23c100fe750605ed",
+      "version": 1,
+      "scope": {
+        "chemistry": "NCM",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "引用的编号在本项目证据库不存在，应删除该引用。 | 补充虚拟现场描述：结果存在矛盾：同一虚拟桶的压差记录方向不一致，可能与筛选口径或时间窗有关；需核对原始字段与聚合规则后再下结论。",
+      "supporting_case_ids": [
+        "r-73d906ddaac18b3d"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-23c100fe750605ed",
+      "available_at": "2026-09-03T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-164ec0920d09135b",
+      "version": 1,
+      "scope": {
+        "chemistry": "unknown",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "重复常规读取没有区分力，独立复核才可能改变结论。 | 补充虚拟现场描述：仅凭经验感觉该异常可能重要，但当前无支撑证据；需补充可追溯的日志、事件或复核记录后再讨论，不直接定性。",
+      "supporting_case_ids": [
+        "r-a121dedc15631918"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-164ec0920d09135b",
+      "available_at": "2026-09-03T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-e2fd59abfe41eefc",
+      "version": 1,
+      "scope": {
+        "chemistry": "LFP",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "同步出现只能说明相关；时间对齐与共因尚未确认。 | 补充虚拟现场描述：充电阶段若环境温度或通风条件变化，可能影响表现；需核对当时温湿度与散热记录，再判断是否与阶段相关。",
+      "supporting_case_ids": [
+        "r-65c40131bf952258"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-e2fd59abfe41eefc",
+      "available_at": "2026-09-04T10:30:00Z",
+      "origin": "expert_synthetic"
+    },
+    {
+      "memory_id": "memory-dca5112342973667",
+      "version": 1,
+      "scope": {
+        "chemistry": "NCM",
+        "protocol_id": "DEMO-PROTOCOL-1"
+      },
+      "trigger": "inspection feedback",
+      "insight": "共用偏置已解释群体差异，但一个成员仍需独立复核。 | 补充虚拟现场描述：虚拟通道显示数值略偏离邻近参考，可能是仪表偏差或采样链路问题；未做真实比对，需核对校准记录与通道映射后再判断。",
+      "supporting_case_ids": [
+        "r-8d6e6acec74e92d2"
+      ],
+      "counterexamples": [],
+      "source_trust": "reported",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "last_used": null,
+      "expires_at": null,
+      "state": "active",
+      "source_scope": "evolution",
+      "raw_feedback_id": "fb-dca5112342973667",
+      "available_at": "2026-09-04T10:30:00Z",
+      "origin": "expert_synthetic"
+    }
+  ],
+  "skills": {
+    "data-quality": {
+      "evidence_checklist": "1. 先比较物理实体、安装身份和观察时间；换新后的序列不能承接旧安装历史。\n2. 保留 value=0；只有显式 missing/null 或质量码才表示缺失。\n3. 逐字段核对单位和采样频率；先对齐时间再比较通道。\n4. 重复上传按观察 ID 与来源指纹去重，重复不是独立确认。\n5. 报告引用的证据编号必须能在当前可见证据库中解析；无法解析的引用应删除，不得作为支持或反证依据。\n6. 环境量（如现场温湿度）若未随回放同步，需在可比性判断中标记为未核对工况，不得默认其不影响结论。\n7. 同一时间戳重复但字段级来源不同时，仅按时戳去重会丢失传感器切换记录；需保留来源列并标记冲突。\n8. 缺失值填充后必须回写原始缺失掩码；后续统计不得把插补值当实测。\n9. 单位混用（如 mV 与 V）在合并表后仍可能通过数值范围检查；需按通道单位白名单校验并保留原始单位字段。\n10. 时间对齐或同步出现仅表示相关，不能单独确认共因；需独立复核或共因证据。\n11. 共用偏置可解释群体差异，但个别成员仍需独立复核，不得因群体一致而跳过。\n12. 通道数值偏离邻近参考时，需核对校准记录与通道映射后再判断，不得仅凭单次读数下结论。",
+      "inspection_selection_hints": "- 用 get_asset_context 锁定 installation_id，再用 get_signal_evidence 核对原始质量码。\n- 仅对未解决且可改变报告的单位/时间/通道问题请求 rank_tests；已经完成的对齐检查不重复。\n- 重复常规读取不具区分力；只有能改变结论的独立复核才值得请求。\n- 采集仪表或传感器的校准状态、量程与采样时间未核实时，不得仅凭单一读数下结论。\n- 引用编号无法在证据库解析时，先修正引用再评估测试优先级。\n- 同一时间戳重复但来源不同时，先保留来源列并标记冲突，再判断是否需独立复核。\n- 缺失值填充后未回写掩码时，先恢复掩码再评估统计可比性。\n- 单位混用（如 mV 与 V）时，先按通道单位白名单校验并保留原始单位字段，再比较数值。\n- 时间对齐或同步出现时，先标记为相关，再评估是否需要独立复核或共因证据。\n- 共用偏置解释群体差异后，仍需对个别成员独立复核。\n- 通道数值偏离邻近参考时，先核对校准记录与通道映射，再判断是否需独立复核。",
+      "instructions": "---\nname: data-quality\ndescription: \"检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。\"\n---\n\n# 数据质量与安装身份\n\n## 适用范围\n\n检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。\n\n输入：`installation_id`、`observations`、`units`、`observed_at`。\n输入缺失时按缺失流程报告，未知化学体系不猜测；所有比较限于同一安装身份与可追溯测量条件。\n本包为 AI 辅助项目合成推理材料，供合成/回放实验使用，不是厂商 SOP、专家签署结论或现场安全规程。\n\n## 证据检查\n\n1. 先比较物理实体、安装身份和观察时间；换新后的序列不能承接旧安装历史。\n2. 保留 value=0；只有显式 missing/null 或质量码才表示缺失。\n3. 逐字段核对单位和采样频率；先对齐时间再比较通道。\n4. 重复上传按观察 ID 与来源指纹去重，重复不是独立确认。\n5. 报告引用的证据编号必须能在当前可见证据库中解析；无法解析的引用应删除，不得作为支持或反证依据。\n6. 环境量（如现场温湿度）若未随回放同步，需在可比性判断中标记为未核对工况，不得默认其不影响结论。\n7. 同一时间戳重复但字段级来源不同时，仅按时戳去重会丢失传感器切换记录；需保留来源列并标记冲突。\n8. 缺失值填充后必须回写原始缺失掩码；后续统计不得把插补值当实测。\n9. 单位混用（如 mV 与 V）在合并表后仍可能通过数值范围检查；需按通道单位白名单校验并保留原始单位字段。\n10. 时间对齐或同步出现仅表示相关，不能单独确认共因；需独立复核或共因证据。\n11. 共用偏置可解释群体差异，但个别成员仍需独立复核，不得因群体一致而跳过。\n12. 通道数值偏离邻近参考时，需核对校准记录与通道映射后再判断，不得仅凭单次读数下结论。\n\n## 候选解释或流程\n\n- **真实状态变化**：支持条件为同安装、同协议且质量合格的独立观察一致；反证/边界为单位、采样时间、映射或缺测尚未排除。\n- **采集或传输问题**：支持条件为缺失码、时间错位、重复指纹或通道断续有直接记录；反证/边界为独立仪表支持同一变化且传输完整。\n- **协议或身份不匹配**：支持条件为安装 ID、测量条件或单位不同；反证/边界为已验证同实体、同协议且可转换的单位。\n\n## 工具与多轮检查\n\n可调用工具以运行时权限检查为准，本包只声明以下白名单子集：\n- `get_asset_context`\n- `get_signal_evidence`\n- `search_knowledge`\n- `rank_tests`\n- `append_report`\n\n- 用 get_asset_context 锁定 installation_id，再用 get_signal_evidence 核对原始质量码。\n- 仅对未解决且可改变报告的单位/时间/通道问题请求 rank_tests；已经完成的对齐检查不重复。\n- 时间对齐或同步出现时，先标记为相关，再评估是否需要独立复核或共因证据。\n- 共用偏置解释群体差异后，仍需对个别成员独立复核。\n- 通道数值偏离邻近参考时，先核对校准记录与通道映射，再判断是否需独立复核。\n\n只读取当前已到达观察；测试结果必须由环境按已选择且已授权测试揭示。未来分支、封存案例、隐藏原因不可检索。\n复测失败、超量程、重复上传、矛盾结果、工程师拒绝/无法执行、需要追加授权分别记录，不按轮次自动确认。\n\n## 终止和转交\n\n- 必需单位、时间或安装身份缺失时终止物理根因确认，输出 data_quality_blocked。\n- 补正失败、记录互相矛盾或跨安装混合无法拆开时保留 unresolved 并转交数据维护。\n\n## 输出约定\n\n使用运行时报告 schema，将观察事实、数值服务估计、候选、反证、未知项与建议分开；只输出简短可审查理由和可见证据引用。\n保留 installation_id、report_version、状态、检查授权与未执行原因。没有校准来源不编故障概率，没有可见测量不填精确数值。\n`examples/positive-01.json` 展示适用的证据整理流程；正例不表示物理根因已确认。`examples/insufficient-01.json` 展示初始证据不足的报告。\n工作提案不等于正式工单；正式派单必须由人确认。Carbon 工具、因子、碳收益和政策金额不进入诊断报告与 Context。\n\n## 困难反例\n\n- 零电流静置记录不能直接删除为缺测。\n- 换新后的正常容量不能作为旧电池报警的假阳性证据。\n- 时间对齐或同步出现不能单独确认共因。\n- 共用偏置解释群体差异后，个别成员仍需独立复核。\n- 通道数值偏离邻近参考时，不能仅凭单次读数下结论。\n\n## 参考与自动检查\n\n读取 [references/evidence.md](references/evidence.md) 查来源、适用版本和条件；读 [checks/contract.json](checks/contract.json) 查行为检查点。\n案例只引用 cold_start 的当前可见字段。正文的通用条件不包含合成案例中的数值阈值。\n\n## 云端合成补充说明\n\n以下仅通过程序格式检查，尚未经过独立专家审查；作为项目合成补充，不是外部专家或文献结论：\n\n- 同一时间戳重复但字段级来源不同，若仅按时戳去重会丢传感器切换记录；需保留来源列并标记冲突。\n- 缺失值填充后未回写原始缺失掩码，后续统计会把插补值当实测，需同时保留掩码与填充值。\n- 单位混用（如mV与V）在合并表后仍能通过数值范围检查，需按通道单位白名单校验并保留原始单位字段。\n- 时间对齐或同步出现仅表示相关，不能单独确认共因；需独立复核或共因证据。\n- 共用偏置可解释群体差异，但个别成员仍需独立复核。\n- 通道数值偏离邻近参考时，需核对校准记录与通道映射后再判断。\n"
+    }
+  },
+  "created_at": "2026-10-01T17:58:54.261914+00:00",
+  "changes": [
+    {
+      "operation": "SKILL_REVISE",
+      "skill_id": "data-quality",
+      "fields": {
+        "evidence_checklist": "1. 先比较物理实体、安装身份和观察时间；换新后的序列不能承接旧安装历史。\n2. 保留 value=0；只有显式 missing/null 或质量码才表示缺失。\n3. 逐字段核对单位和采样频率；先对齐时间再比较通道。\n4. 重复上传按观察 ID 与来源指纹去重，重复不是独立确认。\n5. 报告引用的证据编号必须能在当前可见证据库中解析；无法解析的引用应删除，不得作为支持或反证依据。\n6. 环境量（如现场温湿度）若未随回放同步，需在可比性判断中标记为未核对工况，不得默认其不影响结论。\n7. 同一时间戳重复但字段级来源不同时，仅按时戳去重会丢失传感器切换记录；需保留来源列并标记冲突。\n8. 缺失值填充后必须回写原始缺失掩码；后续统计不得把插补值当实测。\n9. 单位混用（如 mV 与 V）在合并表后仍可能通过数值范围检查；需按通道单位白名单校验并保留原始单位字段。\n10. 时间对齐或同步出现仅表示相关，不能单独确认共因；需独立复核或共因证据。\n11. 共用偏置可解释群体差异，但个别成员仍需独立复核，不得因群体一致而跳过。\n12. 通道数值偏离邻近参考时，需核对校准记录与通道映射后再判断，不得仅凭单次读数下结论。",
+        "inspection_selection_hints": "- 用 get_asset_context 锁定 installation_id，再用 get_signal_evidence 核对原始质量码。\n- 仅对未解决且可改变报告的单位/时间/通道问题请求 rank_tests；已经完成的对齐检查不重复。\n- 重复常规读取不具区分力；只有能改变结论的独立复核才值得请求。\n- 采集仪表或传感器的校准状态、量程与采样时间未核实时，不得仅凭单一读数下结论。\n- 引用编号无法在证据库解析时，先修正引用再评估测试优先级。\n- 同一时间戳重复但来源不同时，先保留来源列并标记冲突，再判断是否需独立复核。\n- 缺失值填充后未回写掩码时，先恢复掩码再评估统计可比性。\n- 单位混用（如 mV 与 V）时，先按通道单位白名单校验并保留原始单位字段，再比较数值。\n- 时间对齐或同步出现时，先标记为相关，再评估是否需要独立复核或共因证据。\n- 共用偏置解释群体差异后，仍需对个别成员独立复核。\n- 通道数值偏离邻近参考时，先核对校准记录与通道映射，再判断是否需独立复核。",
+        "instructions": "---\nname: data-quality\ndescription: \"检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。\"\n---\n\n# 数据质量与安装身份\n\n## 适用范围\n\n检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。\n\n输入：`installation_id`、`observations`、`units`、`observed_at`。\n输入缺失时按缺失流程报告，未知化学体系不猜测；所有比较限于同一安装身份与可追溯测量条件。\n本包为 AI 辅助项目合成推理材料，供合成/回放实验使用，不是厂商 SOP、专家签署结论或现场安全规程。\n\n## 证据检查\n\n1. 先比较物理实体、安装身份和观察时间；换新后的序列不能承接旧安装历史。\n2. 保留 value=0；只有显式 missing/null 或质量码才表示缺失。\n3. 逐字段核对单位和采样频率；先对齐时间再比较通道。\n4. 重复上传按观察 ID 与来源指纹去重，重复不是独立确认。\n5. 报告引用的证据编号必须能在当前可见证据库中解析；无法解析的引用应删除，不得作为支持或反证依据。\n6. 环境量（如现场温湿度）若未随回放同步，需在可比性判断中标记为未核对工况，不得默认其不影响结论。\n7. 同一时间戳重复但字段级来源不同时，仅按时戳去重会丢失传感器切换记录；需保留来源列并标记冲突。\n8. 缺失值填充后必须回写原始缺失掩码；后续统计不得把插补值当实测。\n9. 单位混用（如 mV 与 V）在合并表后仍可能通过数值范围检查；需按通道单位白名单校验并保留原始单位字段。\n10. 时间对齐或同步出现仅表示相关，不能单独确认共因；需独立复核或共因证据。\n11. 共用偏置可解释群体差异，但个别成员仍需独立复核，不得因群体一致而跳过。\n12. 通道数值偏离邻近参考时，需核对校准记录与通道映射后再判断，不得仅凭单次读数下结论。\n\n## 候选解释或流程\n\n- **真实状态变化**：支持条件为同安装、同协议且质量合格的独立观察一致；反证/边界为单位、采样时间、映射或缺测尚未排除。\n- **采集或传输问题**：支持条件为缺失码、时间错位、重复指纹或通道断续有直接记录；反证/边界为独立仪表支持同一变化且传输完整。\n- **协议或身份不匹配**：支持条件为安装 ID、测量条件或单位不同；反证/边界为已验证同实体、同协议且可转换的单位。\n\n## 工具与多轮检查\n\n可调用工具以运行时权限检查为准，本包只声明以下白名单子集：\n- `get_asset_context`\n- `get_signal_evidence`\n- `search_knowledge`\n- `rank_tests`\n- `append_report`\n\n- 用 get_asset_context 锁定 installation_id，再用 get_signal_evidence 核对原始质量码。\n- 仅对未解决且可改变报告的单位/时间/通道问题请求 rank_tests；已经完成的对齐检查不重复。\n- 时间对齐或同步出现时，先标记为相关，再评估是否需要独立复核或共因证据。\n- 共用偏置解释群体差异后，仍需对个别成员独立复核。\n- 通道数值偏离邻近参考时，先核对校准记录与通道映射，再判断是否需独立复核。\n\n只读取当前已到达观察；测试结果必须由环境按已选择且已授权测试揭示。未来分支、封存案例、隐藏原因不可检索。\n复测失败、超量程、重复上传、矛盾结果、工程师拒绝/无法执行、需要追加授权分别记录，不按轮次自动确认。\n\n## 终止和转交\n\n- 必需单位、时间或安装身份缺失时终止物理根因确认，输出 data_quality_blocked。\n- 补正失败、记录互相矛盾或跨安装混合无法拆开时保留 unresolved 并转交数据维护。\n\n## 输出约定\n\n使用运行时报告 schema，将观察事实、数值服务估计、候选、反证、未知项与建议分开；只输出简短可审查理由和可见证据引用。\n保留 installation_id、report_version、状态、检查授权与未执行原因。没有校准来源不编故障概率，没有可见测量不填精确数值。\n`examples/positive-01.json` 展示适用的证据整理流程；正例不表示物理根因已确认。`examples/insufficient-01.json` 展示初始证据不足的报告。\n工作提案不等于正式工单；正式派单必须由人确认。Carbon 工具、因子、碳收益和政策金额不进入诊断报告与 Context。\n\n## 困难反例\n\n- 零电流静置记录不能直接删除为缺测。\n- 换新后的正常容量不能作为旧电池报警的假阳性证据。\n- 时间对齐或同步出现不能单独确认共因。\n- 共用偏置解释群体差异后，个别成员仍需独立复核。\n- 通道数值偏离邻近参考时，不能仅凭单次读数下结论。\n\n## 参考与自动检查\n\n读取 [references/evidence.md](references/evidence.md) 查来源、适用版本和条件；读 [checks/contract.json](checks/contract.json) 查行为检查点。\n案例只引用 cold_start 的当前可见字段。正文的通用条件不包含合成案例中的数值阈值。\n\n## 云端合成补充说明\n\n以下仅通过程序格式检查，尚未经过独立专家审查；作为项目合成补充，不是外部专家或文献结论：\n\n- 同一时间戳重复但字段级来源不同，若仅按时戳去重会丢传感器切换记录；需保留来源列并标记冲突。\n- 缺失值填充后未回写原始缺失掩码，后续统计会把插补值当实测，需同时保留掩码与填充值。\n- 单位混用（如mV与V）在合并表后仍能通过数值范围检查，需按通道单位白名单校验并保留原始单位字段。\n- 时间对齐或同步出现仅表示相关，不能单独确认共因；需独立复核或共因证据。\n- 共用偏置可解释群体差异，但个别成员仍需独立复核。\n- 通道数值偏离邻近参考时，需核对校准记录与通道映射后再判断。\n"
+      }
+    }
+  ],
+  "parent_snapshot_id": "context-10-6ff215af752c1ceb"
+}
