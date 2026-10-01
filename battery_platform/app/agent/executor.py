@@ -212,6 +212,9 @@ class AgentExecutor:
             ranked = registry.call("rank_tests", {})
         except ToolError as exc:
             errors.append(str(exc))
+        # A procedure's presence in the catalogue is not permission to recommend
+        # it. Keep every report/proposal within the service's feasible set.
+        test_ids = {t["test_id"] for t in ranked.get("selected", []) + ranked.get("pending_authorization", [])}
         # Only the allowed projection enters this user-data section. No replay truth
         # or future branch is included even if supplied accidentally in payload.
         context = {"asset_id": visible.get("asset_id", "unknown"), "installation_id": installation,
@@ -241,6 +244,7 @@ class AgentExecutor:
         usage_before = dict(getattr(client, "total_usage", {}))
         requests_before = getattr(client, "request_count", 0)
         failed_before = getattr(client, "failed_request_count", 0)
+        unknown_usage_before = getattr(client, "unknown_usage_request_count", 0)
         mode, report = "cloud" if client else "rule_baseline", baseline
         provider_report_valid = False
         if client:
@@ -286,7 +290,9 @@ class AgentExecutor:
                 if report.get("proposal_id") is not None and str(report["proposal_id"]) not in issued_proposals:
                     raise ValueError("report cites an unissued proposal")
                 provider_report_valid = True
-            except (LLMError, ToolError, ValueError, KeyError, TypeError):
+            except (LLMError, ToolError, ValueError, KeyError, TypeError) as exc:
+                if not isinstance(exc, ToolError) and hasattr(client, "mark_response_failed"):
+                    client.mark_response_failed()
                 errors.append("cloud_report_failed_validation_or_provider_unavailable")
                 # A labeled failure report never masquerades as a successful cloud
                 # diagnosis. Observed facts remain available for human follow-up.
@@ -311,6 +317,7 @@ class AgentExecutor:
                 "llm_usage": {k: v - usage_before.get(k, 0) for k, v in getattr(client, "total_usage", {}).items()} or getattr(client, "last_usage", {}),
                 "llm_request_count": getattr(client, "request_count", 0) - requests_before,
                 "llm_failed_request_count": getattr(client, "failed_request_count", 0) - failed_before,
+                "llm_unknown_usage_request_count": getattr(client, "unknown_usage_request_count", 0) - unknown_usage_before,
                 "context_snapshot_id": snapshot["context_snapshot_id"]},
                 "context_snapshot": snapshot, "tool_trace": registry.trace}
 

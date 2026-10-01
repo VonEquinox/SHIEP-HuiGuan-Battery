@@ -97,3 +97,26 @@ smoke 固定一份 JSON provider 调用/报告、最多四份 Skill 正文、相
 真实分支回放不得在初始报告后直接学习 oracle 的未来反馈。`ReplayEvaluator.evaluate` 可接收 evaluator-only 环境和明确冻结的虚拟检查授权，先冻结报告、按所选已授权检查揭示，再只学习 `visible_feedback`。没有分支环境时，引用未揭示观察的反馈返回 `no_update`。固定 Memory 对照可设置 `allow_context_updates=False`；dev/selection/sealed 始终不写 Context。已有 API 接受测试验证了后到 Memory 修正不会进入旧 cutoff 的诊断。
 
 该补齐阶段运行了核心、GEPA 服务及真实 API Memory 回归组合测试；加入固定上下文开关后最终结果为 **37 passed, 17 deselected in 3.38s**（前次为 36 passed in 4.75s）。这里的 provider 计数 stub 仅用于检查计账程序，不冒充新增云端实验；更大的实际 protocol 实验由独立实验记录文档保存。`context_changes` 汇总所有成功 ACE/Skill 更新，避免只展示最后一个快照的局部 changes。
+
+## 独立审查修复：固定基线、安全建议与失败费用
+
+独立审查用离线可控 scorer 复现了候选 ID 冒充基线的缺陷：真实基线分数 0.9，生成的 `candidate_id=baseline` 分数 0.1，后续 0.2 候选可能被错误选择。现改为由搜索器内部位置识别基线，生成器不能修改其角色和回归下限；保留 ID、重复 ID 及空 ID 被拒绝，仍按同样的 selection 根数预留预算。该精确场景现为 `no_update`，无激活，三个预留 rollout 都保留记录。另一回归验证重复 ID 不能覆盖已评分候选。
+
+所有 `safety_infeasible_tests` 推荐都触发 scorer hard failure，包括标注 `authorization=required` 的建议。运行报告、append 和提案也只允许程序 `rank_tests` 已筛出的可行检查或可待批准检查；目录中存在的破坏性/不满足硬前置条件的项目不能被模型再次建议。测试同时覆盖真实 `run_agent` 严格报告边界与 scorer 的独立预定义安全判分。
+
+云端计账在验证 choices 之前保存供应商给出的有效 usage。因此缺失 choices、无效 final JSON、非对象 final JSON 和非法 message 均计一次失败并保留已知 token；重试失败与后续成功各按一次真实请求计账。缺少或无法解析 usage 的请求通过 `unknown_usage_request_count` 明确标识，累计 token 只是已知部分，不把未知费用说成零。`last_usage` 每次请求清空，防止把上一次成功的成本错误带入新失败。executor 的 `complete` 路径也会把 JSON/报告验证失败标为失败，重复标记不会双计。
+
+`GEPAService.optimize` 的 `finally` 保留候选生成/选择已发生的 provider 费用和已预留 rollout，包括中途取消的当前候选。`accounting()` 仅返回预算、来源/选择根和费用，没有激活操作或候选内容；共享 client 的直接回放请求不会重复算成 GEPA 请求。后端可在取消/异常路径独立保存该费用，仍跳过激活。新增回归验证取消后 Context 保持 v0、生成＋一次 dev 报告的两次实际 stub 请求/30 token 被保留，以及失败提案的费用不因 `no_update` 丢失。
+
+固定 4096 completion 预算继续保留。仅在显式设置 `BATTERY_LLM_THINKING=disabled` 或 `enabled` 时发送 `thinking.type`，未设置时省略，使用标准兼容请求。该字段已按 [DeepSeek 官方 Chat Completions 文档](https://api-docs.deepseek.com/api/create-chat-completion/)核实；新增 MockTransport 检查默认省略与显式关闭两种请求形态。V1 实验已取消并保存实际 29 次请求、359,656 token，sealed 尚未打开；运行代码变化后必须以新 checksum 重新预登记 V2，不能在同一冻结协议中悄悄替换。
+
+该必要修复阶段实际命令与结果：
+
+```sh
+.venv/bin/python -m pytest battery_platform/tests/test_v2_agent_core.py \
+  battery_platform/tests/test_v2_gepa_service.py \
+  battery_platform/tests/test_v2_llm_accounting.py \
+  battery_platform/tests/test_v2_gepa_workflow.py -q
+```
+
+**57 passed in 9.46s**（核心 29、GEPA 服务 12、LLM 计账 8、API GEPA 8）。新验证均为离线/MockTransport，不额外花费云端调用，不声称新的诊断提升或真实部署结论。运行模块与 `active_tests` 在该结果后冻结，供独立实验文档 `docs/V2_AGENT_EXPERIMENT.md` 记录更大实际实验。

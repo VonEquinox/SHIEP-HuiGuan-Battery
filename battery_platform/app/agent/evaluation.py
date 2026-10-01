@@ -63,6 +63,7 @@ class GEPASearch:
         self.rollout_budget = max(1, int(rollout_budget))
         self.candidate_budget = max(1, int(candidate_budget))
         self.batch_size = max(1, int(batch_size))
+        self.rollouts_reserved = 0
 
     def search(self, *, skill_id: str, current_fields: dict[str, Any],
                feedback_events: list[dict[str, Any]], selection_events: list[dict[str, Any]],
@@ -70,6 +71,7 @@ class GEPASearch:
                propose: Callable[[dict[str, Any]], list[dict[str, Any]]] | None = None,
                llm: Any = None, cancelled: Callable[[], bool] | None = None) -> dict[str, Any]:
         cancelled = cancelled or (lambda: False)
+        self.rollouts_reserved = 0
         if cancelled():
             raise RuntimeError("evolution cancelled")
         feedback_roots = _check_events(feedback_events, {"evolution"})
@@ -99,16 +101,28 @@ class GEPASearch:
         baseline_candidate = {"candidate_id": "baseline", "skill_id": skill_id, "fields": current_fields}
         chosen = None
         baseline_score = None
+        seen_candidate_ids = {"baseline"}
         # Failed candidates consume the same reserved evaluation budget. The
         # evaluator cannot signal a falsely cheap failure by omitting its costs.
-        for candidate in [baseline_candidate, *candidates[:self.candidate_budget]]:
+        for index, candidate in enumerate([baseline_candidate, *candidates[:self.candidate_budget]]):
             if cancelled():
                 raise RuntimeError("evolution cancelled")
             reserved = len(selection_events)
             if rollouts + reserved > self.rollout_budget:
                 break
             rollouts += reserved
+            self.rollouts_reserved = rollouts
             try:
+                # The first entry is an internal baseline. Provider-controlled
+                # IDs never select its role or change its regression floor.
+                is_baseline = index == 0
+                if not is_baseline:
+                    candidate_id = candidate.get("candidate_id") if isinstance(candidate, dict) else None
+                    if not isinstance(candidate_id, str) or not candidate_id.strip() or candidate_id in seen_candidate_ids:
+                        evaluations.append({"candidate_id": candidate_id, "state": "rejected",
+                                            "reason": "candidate_id_reserved_duplicate_or_invalid", "rollouts_reserved": reserved})
+                        continue
+                    seen_candidate_ids.add(candidate_id)
                 checked = validate_skill_candidate(candidate, skill_id)
                 if not set(checked.get("supporting_root_ids", [])) <= feedback_roots:
                     raise ValueError("candidate cites an unavailable proposal root")
@@ -120,7 +134,7 @@ class GEPASearch:
                     raise ValueError("invalid dev score")
                 failures = metrics.get("hard_failures", [])
                 evaluation = {"candidate": checked, "metrics": metrics, "state": "passed" if not failures else "rejected", "rollouts_reserved": reserved}
-                if candidate["candidate_id"] == "baseline":
+                if is_baseline:
                     baseline_score = score
                     if failures:
                         baseline_score = None

@@ -12,6 +12,8 @@ cp .env.example .env
 
 在 `.env` 中设置测试 API Key 后，Agent 使用云端 OpenAI 兼容 `/chat/completions`。
 不填 Key 时只能执行明确标注的规则回归；这不构成真实 LLM 能力验证。
+DeepSeek 测试配置可显式设置 `BATTERY_LLM_THINKING=disabled`，以固定非思考输出预算。
+该扩展默认不发送；更换其他 OpenAI 兼容服务时可留空，具体调用参数随实验协议记录。
 不要把 `.env` 或运行目录提交到 Git。前端和小程序都不接收服务端 API Key。
 
 默认监听 `127.0.0.1:8787`。手机联调需要显式配置可达地址、允许主机与实际微信账号的网络能力。

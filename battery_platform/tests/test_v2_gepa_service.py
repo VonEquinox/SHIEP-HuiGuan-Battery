@@ -6,7 +6,8 @@ import json
 
 import pytest
 
-from app.agent import ContextStore, GEPAService, ReplayEvaluator, run_agent
+from app.agent import ContextStore, GEPASearch, GEPAService, LLMError, ReplayEvaluator, run_agent
+from app.agent.gepa_service import DevSelectionScorer
 
 
 class Library:
@@ -114,6 +115,11 @@ def test_cancel_after_dev_rollout_never_activates(tmp_path):
     with pytest.raises(RuntimeError, match="cancelled"):
         adapter.batch_optimizer(events(), store)
     assert store.snapshot()["version"] == 0
+    accounting = adapter.accounting()
+    assert accounting["state"] == "cancelled" and accounting["rollouts"] == 1
+    assert accounting["provider_requests"] == 2 and accounting["provider_usage"]["total_tokens"] == 30
+    assert "activation_update" not in accounting and "regression" not in accounting
+    assert adapter.runs[-1]["activation_update"] is None
 
 
 def test_sealed_feedback_and_selection_and_duplicate_roots_are_rejected(tmp_path):
@@ -140,3 +146,84 @@ def test_fixed_context_comparison_can_disable_episodic_updates():
             "hidden_truth": {"unresolved": True}, "feedback": {"free_text": "Retain unknowns", "evidence_ids": ["e"]}}
     result = ReplayEvaluator().evaluate("A2", [case], llm=False, allow_context_updates=False)
     assert result["final_context_snapshot"]["version"] == 0 and result["records"][0]["update_state"] == "no_update"
+
+
+def test_generated_baseline_id_cannot_lower_the_real_regression_floor():
+    evaluated = []
+    def evaluate(candidate, _):
+        text = candidate["fields"]["instructions"]
+        evaluated.append(text)
+        return {"score": {"current": 0.9, "spoofed": 0.1, "worse": 0.2}[text], "hard_failures": []}
+    result = GEPASearch(rollout_budget=3, candidate_budget=2).search(
+        skill_id="s", current_fields={"instructions": "current"},
+        feedback_events=[{"root_scenario_id": "e", "split": "evolution"}],
+        selection_events=[{"root_scenario_id": "d", "split": "dev"}], evaluate=evaluate,
+        propose=lambda _: [{"candidate_id": "baseline", "skill_id": "s", "fields": {"instructions": "spoofed"}},
+                           {"candidate_id": "worse", "skill_id": "s", "fields": {"instructions": "worse"}}])
+    assert result["state"] == "no_update" and result["activation_update"] is None
+    assert result["rollouts"] == 3 and evaluated == ["current", "worse"]
+    assert result["candidates"][1]["reason"] == "candidate_id_reserved_duplicate_or_invalid"
+
+
+def test_duplicate_candidate_ids_are_rejected_and_consume_budget():
+    evaluated = []
+    def evaluate(candidate, _):
+        text = candidate["fields"]["instructions"]
+        evaluated.append(text)
+        return {"score": {"current": 0.9, "first": 0.95, "duplicate": 1.0}[text], "hard_failures": []}
+    result = GEPASearch(rollout_budget=3, candidate_budget=2).search(
+        skill_id="s", current_fields={"instructions": "current"},
+        feedback_events=[{"root_scenario_id": "e", "split": "evolution"}],
+        selection_events=[{"root_scenario_id": "d", "split": "dev"}], evaluate=evaluate,
+        propose=lambda _: [{"candidate_id": "same", "skill_id": "s", "fields": {"instructions": "first"}},
+                           {"candidate_id": "same", "skill_id": "s", "fields": {"instructions": "duplicate"}}])
+    assert result["chosen"]["candidate"]["fields"]["instructions"] == "first"
+    assert result["rollouts"] == 3 and evaluated == ["current", "first"]
+    assert result["candidates"][2]["state"] == "rejected"
+
+
+def test_scorer_rejects_every_oracle_safety_infeasible_recommendation(tmp_path):
+    case = cases()[0]
+    case["expected_behavior"]["safety_infeasible_tests"] = ["T_CHANNEL_CHECK"]
+    scorer = DevSelectionScorer(tmp_path, proposal_root_ids={"e"}, count=1, cases=[case])
+    def unsafe_runner(payload, **kwargs):
+        class Provider:
+            def generate_json(self, messages, schema=None):
+                report = json.loads(messages[-1]["content"])["report_template"]
+                report["suggested_tests"] = [{"test_id": "T_CHANNEL_CHECK", "authorization": "required", "reason": "requires approval"}]
+                return report
+        return run_agent(payload, llm=Provider(), skill_library=kwargs["skill_library"], context_store=kwargs["context_store"])
+    result = scorer.evaluate({"skill_id": "data-quality", "fields": {"instructions": "preserve unknowns"}},
+                             snapshot=ContextStore().snapshot(), library=Library(), llm=None,
+                             runner=unsafe_runner, cancelled=lambda: False)
+    assert result["roots"][0]["cloud_report_valid"]
+    assert result["roots"][0]["metrics"]["unsafe_test_count"] == 1
+    assert result["hard_failures"] == [{"root_scenario_id": "dev-0", "reason": "safety_infeasible_test_recommended"}]
+
+
+def test_report_cannot_recommend_a_destructive_catalogue_procedure(tmp_path):
+    data = visible()
+    data["test_catalog"].append({"test_id": "T_BAD", "destructive": True})
+    class Provider:
+        def generate_json(self, messages, schema=None):
+            report = json.loads(messages[-1]["content"])["report_template"]
+            report["suggested_tests"] = [{"test_id": "T_BAD", "authorization": "required", "reason": "requires approval"}]
+            return report
+    result = run_agent(data, llm=Provider(), skill_library=Library())
+    assert not result["run"]["cloud_report_valid"] and not result["report"]["suggested_tests"]
+
+
+def test_failed_candidate_generation_preserves_cost_without_direct_call_double_count(tmp_path):
+    class Failed(Client):
+        def generate_json(self, messages, schema=None):
+            self.account()
+            self.failed_request_count += 1
+            raise LLMError("test malformed proposal")
+    client = Failed()
+    adapter = GEPAService(tmp_path, batch_size=1, llm=client, skill_library=Library(), selection_cases=cases())
+    client.account()  # A preceding direct replay shares the client; exclude it.
+    result = adapter.optimize(events(), ContextStore())
+    assert result["state"] == "no_update" and result["rollouts"] == 0
+    assert adapter.accounting()["provider_requests"] == 1
+    assert adapter.accounting()["provider_failed_requests"] == 1
+    assert adapter.accounting()["provider_usage"]["total_tokens"] == 15

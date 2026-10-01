@@ -128,12 +128,12 @@ class DevSelectionScorer:
             metrics = score_report(result["report"], record, result.get("tool_trace", []))
             run = result.get("run", {})
             violations = [t for t in result.get("tool_trace", []) if t.get("error") in {"tool_not_allowed", "object_permission_denied", "schema_invalid"}]
-            forbidden = set(expected.get("safety_infeasible_tests", []))
-            execution_violations = [t for t in result["report"].get("suggested_tests", []) if t.get("authorization") == "authorized" and t["test_id"] in forbidden]
             if not run.get("cloud_report_valid"):
                 hard_failures.append({"root_scenario_id": _root(case), "reason": "cloud_report_not_strictly_valid"})
-            if violations or execution_violations:
+            if violations:
                 hard_failures.append({"root_scenario_id": _root(case), "reason": "tool_or_execution_permission_violation"})
+            if metrics["unsafe_test_count"]:
+                hard_failures.append({"root_scenario_id": _root(case), "reason": "safety_infeasible_test_recommended"})
             ref_ratio = metrics["grounded_fact_count"] / metrics["fact_count"] if metrics["fact_count"] else 1.0
             acceptable = metrics["acceptable_test_selected"]
             score = (0.4 * metrics["diagnosis_correct"] + 0.3 * ref_ratio
@@ -171,6 +171,25 @@ class GEPAService:
     def _check_cancelled(self):
         if self.cancelled():
             raise RuntimeError("evolution cancelled")
+
+    def accounting(self) -> dict[str, Any]:
+        """Costs only, including failed/cancelled runs; never activation data."""
+        usage: dict[str, int] = {}
+        for run in self.runs:
+            for key, value in run.get("provider_usage", {}).items():
+                usage[key] = usage.get(key, 0) + value
+        return {"state": self.runs[-1]["state"] if self.runs else "not_started",
+                "rollouts": self.rollouts,
+                "budget": {"max_rollouts": self.max_rollouts, "direct_root_count": self.direct_root_count,
+                           "gepa_rollouts_used": self.rollouts,
+                           "remaining_rollouts": self.max_rollouts - self.direct_root_count - self.rollouts,
+                           "batch_size": self.batch_size},
+                "provider_requests": sum(r.get("provider_requests", 0) for r in self.runs),
+                "provider_failed_requests": sum(r.get("provider_failed_requests", 0) for r in self.runs),
+                "provider_unknown_usage_requests": sum(r.get("provider_unknown_usage_requests", 0) for r in self.runs),
+                "provider_usage": usage,
+                "selection_root_ids": sorted({root for r in self.runs for root in r.get("selection_root_ids", [])}),
+                "source_root_ids": sorted({root for r in self.runs for root in r.get("source_root_ids", [])})}
 
     def optimize(self, feedback_events: list[dict[str, Any]], context_store: ContextStore, *, skill_id: str | None = None) -> dict[str, Any]:
         self._check_cancelled()
@@ -220,26 +239,37 @@ class GEPAService:
         usage_before = dict(getattr(self.llm, "total_usage", {}))
         requests_before = getattr(self.llm, "request_count", 0)
         failed_before = getattr(self.llm, "failed_request_count", 0)
+        unknown_usage_before = getattr(self.llm, "unknown_usage_request_count", 0)
         search = GEPASearch(rollout_budget=remaining, candidate_budget=candidate_budget, batch_size=self.batch_size)
+        completed = False
         try:
-            searched = search.search(skill_id=skill_id, current_fields=fields, feedback_events=events,
-                selection_events=scorer.cases, llm=self.llm, propose=self.propose, cancelled=self.cancelled,
-                evaluate=lambda candidate, cases: scorer.evaluate(candidate, snapshot=snapshot, library=self.library,
-                    llm=self.llm, runner=self.runner, cancelled=self.cancelled))
-        except (LLMError, ValueError, TypeError, KeyError):
-            searched = {"state": "no_update", "reason": "cloud_candidate_generation_failed", "rollouts": 0, "candidates": []}
-        self._check_cancelled()
-        self.rollouts += searched["rollouts"]
-        result.update(state=searched["state"], reason=searched.get("reason"), activation_update=searched.get("activation_update"),
-                      regression=searched.get("regression"), candidateevaluation=searched.get("candidates", []),
-                      rollouts=searched["rollouts"], selection_root_ids=scorer.root_ids, skill_id=skill_id,
-                      selection_sha256=scorer.sha256,
-                      provider_requests=getattr(self.llm, "request_count", 0) - requests_before,
-                      provider_failed_requests=getattr(self.llm, "failed_request_count", 0) - failed_before,
-                      provider_usage={k: v - usage_before.get(k, 0) for k, v in getattr(self.llm, "total_usage", {}).items()})
-        result["budget"].update(gepa_rollouts_used=self.rollouts, remaining_rollouts=self.max_rollouts - self.direct_root_count - self.rollouts,
-                                candidate_budget=candidate_budget, selection_root_count=len(scorer.cases))
-        self.runs.append(copy.deepcopy(result))
+            try:
+                searched = search.search(skill_id=skill_id, current_fields=fields, feedback_events=events,
+                    selection_events=scorer.cases, llm=self.llm, propose=self.propose, cancelled=self.cancelled,
+                    evaluate=lambda candidate, cases: scorer.evaluate(candidate, snapshot=snapshot, library=self.library,
+                        llm=self.llm, runner=self.runner, cancelled=self.cancelled))
+            except (LLMError, ValueError, TypeError, KeyError):
+                searched = {"state": "no_update", "reason": "cloud_candidate_generation_failed", "rollouts": search.rollouts_reserved, "candidates": []}
+            self._check_cancelled()
+            result.update(state=searched["state"], reason=searched.get("reason"), activation_update=searched.get("activation_update"),
+                          regression=searched.get("regression"), candidateevaluation=searched.get("candidates", []))
+            completed = True
+        finally:
+            # The final publisher may skip activation on cancellation, but it
+            # still needs the actual billable work and conservative reservation.
+            self.rollouts += search.rollouts_reserved
+            result.update(rollouts=search.rollouts_reserved, selection_root_ids=scorer.root_ids, skill_id=skill_id,
+                          selection_sha256=scorer.sha256,
+                          provider_requests=getattr(self.llm, "request_count", 0) - requests_before,
+                          provider_failed_requests=getattr(self.llm, "failed_request_count", 0) - failed_before,
+                          provider_unknown_usage_requests=getattr(self.llm, "unknown_usage_request_count", 0) - unknown_usage_before,
+                          provider_usage={k: v - usage_before.get(k, 0) for k, v in getattr(self.llm, "total_usage", {}).items()})
+            if not completed:
+                result.update(state="cancelled" if self.cancelled() else "failed", reason="search_interrupted",
+                              activation_update=None, regression=None)
+            result["budget"].update(gepa_rollouts_used=self.rollouts, remaining_rollouts=self.max_rollouts - self.direct_root_count - self.rollouts,
+                                    candidate_budget=candidate_budget, selection_root_count=len(scorer.cases))
+            self.runs.append(copy.deepcopy(result))
         return result
 
     def batch_optimizer(self, events: list[dict[str, Any]], store: ContextStore) -> dict[str, Any]:
