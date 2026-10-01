@@ -14,12 +14,27 @@ import {
   Menu,
   ChevronRight,
   ShieldCheck,
+  SearchCheck,
+  GitBranch,
+  Leaf,
+  ShieldAlert,
 } from "lucide-react";
 import { api, setCsrf, type User, labels, useData } from "./api";
 import { Notice, Field, Spinner, Badge } from "./components";
 import { Dashboard, Assets, DataCenter } from "./pages/Foundation";
 import { ModelCenter, HealthCenter } from "./pages/Intelligence";
 import { Operations, SystemPage } from "./pages/Operations";
+import {
+  V2Overview,
+  V2Sources,
+  V2Models,
+  V2Prediction,
+  V2System,
+} from "./pages/V2Foundation";
+import { RiskCenter, Diagnosis } from "./pages/V2Diagnosis";
+import { V2Operations } from "./pages/V2Operations";
+import { Evolution } from "./pages/V2Evolution";
+import { CarbonCenter, CarbonScenario } from "./pages/V2Carbon";
 
 const nav = [
   ["/", "总览", LayoutDashboard],
@@ -29,6 +44,12 @@ const nav = [
   ["/health", "健康中心", HeartPulse],
   ["/operations", "告警与工单", ClipboardList],
   ["/system", "系统管理", Settings],
+] as const;
+const specialistNav = [
+  ["/risk", "风险与群组", ShieldAlert],
+  ["/diagnosis/new", "诊断工作区", SearchCheck],
+  ["/evolution", "Context 进化", GitBranch],
+  ["/carbon", "碳与经济", Leaf],
 ] as const;
 function Login({ onLogin }: { onLogin: (u: User) => void }) {
   const [username, setUsername] = useState(""),
@@ -144,7 +165,13 @@ export function App() {
   useEffect(() => setMobile(false), [location.pathname]);
   if (!ready) return <Spinner />;
   if (!user) return <Login onLogin={setUser} />;
-  const title = nav.find((n) => n[0] === location.pathname)?.[1] || "工作台";
+  const title =
+    [...nav, ...specialistNav].find((n) => n[0] === location.pathname)?.[1] ||
+    (location.pathname.startsWith("/diagnosis/")
+      ? "诊断工作区"
+      : location.pathname.startsWith("/carbon/")
+        ? "碳情景比较"
+        : "工作台");
   return (
     <div className="shell">
       <aside className={"sidebar " + (mobile ? "open" : "")}>
@@ -160,6 +187,14 @@ export function App() {
         <nav>
           {nav.map(([path, label, Icon]) => (
             <NavLink key={path} to={path} end={path === "/"}>
+              <Icon size={19} />
+              {label}
+              <ChevronRight className="nav-chevron" size={14} />
+            </NavLink>
+          ))}
+          <div className="workspace-label">V2 专业分析</div>
+          {specialistNav.map(([path, label, Icon]) => (
+            <NavLink key={path} to={path}>
               <Icon size={19} />
               {label}
               <ChevronRight className="nav-chevron" size={14} />
@@ -229,13 +264,84 @@ export function App() {
         </header>
         <main className="content">
           <Routes>
-            <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/assets" element={<Assets user={user} />} />
-            <Route path="/data" element={<DataCenter user={user} />} />
-            <Route path="/models" element={<ModelCenter user={user} />} />
-            <Route path="/health" element={<HealthCenter user={user} />} />
-            <Route path="/operations" element={<Operations user={user} />} />
-            <Route path="/system" element={<SystemPage user={user} />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <Dashboard user={user} />
+                  <V2Overview />
+                </>
+              }
+            />
+            <Route
+              path="/assets"
+              element={
+                <>
+                  <Assets user={user} />
+                  <V2Prediction user={user} />
+                </>
+              }
+            />
+            <Route
+              path="/assets/:id"
+              element={<V2Prediction user={user} detail />}
+            />
+            <Route
+              path="/data"
+              element={
+                <>
+                  <DataCenter user={user} />
+                  <V2Sources user={user} />
+                </>
+              }
+            />
+            <Route
+              path="/models"
+              element={
+                <>
+                  <ModelCenter user={user} />
+                  <V2Models user={user} />
+                </>
+              }
+            />
+            <Route
+              path="/health"
+              element={
+                <>
+                  <HealthCenter user={user} />
+                  <V2Prediction user={user} />
+                </>
+              }
+            />
+            <Route
+              path="/operations"
+              element={
+                <>
+                  <Operations user={user} />
+                  <V2Operations user={user} />
+                </>
+              }
+            />
+            <Route
+              path="/system"
+              element={
+                <>
+                  <SystemPage user={user} />
+                  <V2System user={user} />
+                </>
+              }
+            />
+            <Route path="/risk" element={<RiskCenter user={user} />} />
+            <Route
+              path="/diagnosis/:session"
+              element={<Diagnosis user={user} />}
+            />
+            <Route path="/evolution" element={<Evolution user={user} />} />
+            <Route path="/carbon" element={<CarbonCenter user={user} />} />
+            <Route
+              path="/carbon/scenarios/:id"
+              element={<CarbonScenario user={user} />}
+            />
             <Route
               path="*"
               element={<Notice>页面不存在，请从左侧导航选择功能。</Notice>}
@@ -243,7 +349,8 @@ export function App() {
           </Routes>
         </main>
         <footer className="footer">
-          慧管电池 / 模型结果可追溯，业务状态可复核<span>v1.0 · 独立应用</span>
+          慧管电池 / 模型结果可追溯，业务状态可复核
+          <span>v2.0 · 研究与测试环境</span>
         </footer>
       </div>
     </div>

@@ -155,27 +155,29 @@ function Personnel({ user }: { user: User }) {
             </Field>
             <Field label="技能要求">
               <div className="checks">
-                {["battery", "electrical", "sensor", "inspection"].map(
-                  (skill) => (
-                    <label key={skill}>
-                      <input
-                        type="checkbox"
-                        checked={editing.skills.includes(skill)}
-                        onChange={(e) =>
-                          setEditing({
-                            ...editing,
-                            skills: e.target.checked
-                              ? [...editing.skills, skill]
-                              : editing.skills.filter(
-                                  (s: string) => s !== skill,
-                                ),
-                          })
-                        }
-                      />
-                      {skill}
-                    </label>
-                  ),
-                )}
+                {[
+                  "battery",
+                  "electrical",
+                  "sensor",
+                  "inspection",
+                  "instrumentation",
+                ].map((skill) => (
+                  <label key={skill}>
+                    <input
+                      type="checkbox"
+                      checked={editing.skills.includes(skill)}
+                      onChange={(e) =>
+                        setEditing({
+                          ...editing,
+                          skills: e.target.checked
+                            ? [...editing.skills, skill]
+                            : editing.skills.filter((s: string) => s !== skill),
+                        })
+                      }
+                    />
+                    {skill}
+                  </label>
+                ))}
               </div>
             </Field>
             <label className="checkbox-label">

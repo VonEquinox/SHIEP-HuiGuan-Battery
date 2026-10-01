@@ -1,6 +1,14 @@
-import { useEffect, useState, type ReactNode } from "react";
+import {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useId,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { X, LoaderCircle, ArrowUpRight, Info } from "lucide-react";
-import { labels } from "./api";
+import { ApiError, labels } from "./api";
 export function Badge({
   value,
   children,
@@ -156,10 +164,19 @@ export function Field({
   label: string;
   children: ReactNode;
 }) {
+  const labelId = useId();
+  const control =
+    isValidElement(children) &&
+    typeof children.type === "string" &&
+    ["input", "select", "textarea"].includes(children.type)
+      ? cloneElement(children as ReactElement<Record<string, unknown>>, {
+          "aria-labelledby": labelId,
+        })
+      : children;
   return (
     <label className="field">
-      <span>{label}</span>
-      {children}
+      <span id={labelId}>{label}</span>
+      {control}
     </label>
   );
 }
@@ -299,16 +316,19 @@ export function ResultMetrics({ metrics }: { metrics: any }) {
 export function useAction() {
   const [busy, setBusy] = useState(false),
     [message, setMessage] = useState(""),
-    [error, setError] = useState("");
+    [error, setError] = useState(""),
+    [failure, setFailure] = useState<ApiError | null>(null);
   async function run(fn: () => Promise<unknown>, success = "操作已保存") {
     setBusy(true);
     setError("");
+    setFailure(null);
     setMessage("");
     try {
       await fn();
       setMessage(success);
     } catch (e) {
       setError((e as Error).message);
+      setFailure(e instanceof ApiError ? e : null);
     } finally {
       setBusy(false);
     }
@@ -320,7 +340,27 @@ export function useAction() {
     run,
     feedback: (
       <>
-        {error && <Notice tone="error">{error}</Notice>}
+        {error && (
+          <Notice tone="error">
+            <strong>{error}</strong>
+            {failure && (
+              <>
+                <p>
+                  错误码 {failure.code}
+                  {failure.requestId && ` · 请求 ${failure.requestId}`}
+                </p>
+                {failure.missingFields.length > 0 && (
+                  <p>缺少：{failure.missingFields.join("、")}</p>
+                )}
+                <small>
+                  {failure.retryable
+                    ? "可以重试"
+                    : "请修正输入、权限或刷新版本后再试"}
+                </small>
+              </>
+            )}
+          </Notice>
+        )}
         {message && <Notice tone="success">{message}</Notice>}
       </>
     ),

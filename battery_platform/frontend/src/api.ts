@@ -9,6 +9,18 @@ export type User = {
   version: number;
 };
 let csrf = "";
+export class ApiError extends Error {
+  constructor(
+    public status: number,
+    public code: string,
+    message: string,
+    public missingFields: string[] = [],
+    public retryable = false,
+    public requestId?: string,
+  ) {
+    super(message);
+  }
+}
 export function setCsrf(value: string) {
   csrf = value;
 }
@@ -37,16 +49,34 @@ export async function api<T = any>(
   });
   if (!response.ok) {
     let message = `请求失败 (${response.status})`;
+    let code = `HTTP_${response.status}`,
+      missingFields: string[] = [],
+      retryable = false,
+      requestId: string | undefined;
     try {
       const error = await response.json();
+      const detail =
+        error.error ||
+        (typeof error.message === "string" ? error : error.detail || error);
       message =
-        typeof error.detail === "string"
-          ? error.detail
-          : JSON.stringify(error.detail);
+        typeof detail === "string"
+          ? detail
+          : detail.message || JSON.stringify(detail);
+      code = detail.code || error.code || code;
+      missingFields = detail.missing_fields || error.missing_fields || [];
+      retryable = detail.retryable || error.retryable || false;
+      requestId = error.request_id || detail.request_id;
     } catch {}
     if (response.status === 401 && path !== "/auth/login")
       window.dispatchEvent(new Event("session-expired"));
-    throw new Error(message);
+    throw new ApiError(
+      response.status,
+      code,
+      message,
+      missingFields,
+      retryable,
+      requestId,
+    );
   }
   return response.json();
 }
@@ -121,6 +151,42 @@ export const labels: Record<string, string> = {
   failed: "失败",
   cancelled: "已取消",
   interrupted: "已中断",
+  partial: "部分结果",
+  unsupported: "未支持",
+  insufficient_evidence: "证据不足",
+  supported: "已支持",
+  active: "当前有效",
+  quarantined: "已隔离",
+  conflict: "版本冲突",
+  PENDING_APPROVAL: "待人员确认",
+  APPROVED: "已确认",
+  REJECTED: "已拒绝",
+  ACTIVE: "有效事件",
+  SPLIT: "已拆分",
+  SUBMITTED: "本轮已提交",
+  authorized: "已授权",
+  required: "需要授权",
+  feasible: "可行",
+  infeasible: "不可行",
+  optimal: "最优解",
+  timeout: "求解超时",
+  critical: "紧急",
+  high: "高",
+  medium: "中",
+  low: "低",
+  routine: "常规",
+  suspected: "待进一步复核",
+  confirmed: "已确认",
+  self_synthetic: "自行合成",
+  synthetic: "合成情景",
+  public_generated: "公开生成数据",
+  metadata_only: "仅元数据",
+  blocked: "导入受阻",
+  parsed: "已解析",
+  DRAFT: "待确认草案",
+  CONFIRMED: "已人工确认",
+  STALE: "输入已过期",
+  FAILED: "求解失败",
   normal: "观测范围内",
   attention: "维护复核",
   review: "适用性复核",
