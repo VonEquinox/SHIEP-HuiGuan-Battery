@@ -1,0 +1,93 @@
+{
+  "skill_id": "fleet-correlation",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "topology",
+    "aligned_observations",
+    "shared_conditions"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "get_peer_anomalies",
+    "search_knowledge",
+    "rank_tests",
+    "propose_work_order",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "correlation_is_common_cause",
+    "simulated_topology_is_real",
+    "merge_noncontemporaneous_events"
+  ],
+  "references": [
+    "knowledge-skill-fleet-correlation"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "fleet-correlation-positive-01",
+    "fleet-correlation-negative-01",
+    "fleet-correlation-negative-02",
+    "fleet-correlation-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0376d2d3a2e154ba",
+    "r-06b8a6e66762bedb",
+    "r-072fb2c3920d8c4d",
+    "r-08114d078d08bb69"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "fleet",
+    "group",
+    "topology",
+    "peer",
+    "shared",
+    "群体",
+    "共因",
+    "模组"
+  ],
+  "files": {
+    "SKILL.md": "1d5a25025a39db12ef0fcd572600a7785ce715e14eb5b3c714a45fb1ec541b80",
+    "checks/contract.json": "a351a7a92557fb1c9efed797302c5f1eb1903cf8bf4f160f2af4ff7c6231ebd1",
+    "examples/insufficient-01.json": "8c0ffe80c603ec8bfffb9614df4c57169473bcf1db5f0e901d590ddabd4d7d1d",
+    "examples/negative-01.json": "a136b5c703d226cf6a72afddc81c5c0fdc5ba85295644f35b298cb4e434dcc8e",
+    "examples/negative-02.json": "5bd6a07214a1271914ca842e4805a8e3df3562b88401bab4e6e2b7c71ddc31d8",
+    "examples/positive-01.json": "4faf9980f29a0ffecfcba5f23dfea5058c086bcc98fa6eca3a670f43c8791864",
+    "references/evidence.md": "cfeae326030b1abe55896d7670d364561dbaf9b1832f9fab476246f4c3655772"
+  }
+}

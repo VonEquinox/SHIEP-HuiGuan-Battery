@@ -1,0 +1,685 @@
+{
+  "example_id": "voltage-inconsistency-insufficient-01",
+  "example_type": "insufficient_evidence",
+  "source_case_id": "r-08edd7d70c26ecfd",
+  "root_scenario_id": "r-08edd7d70c26ecfd",
+  "split": "cold_start",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "visibility": "initial_only",
+  "input": {
+    "case_id": "r-08edd7d70c26ecfd",
+    "root_scenario_id": "r-08edd7d70c26ecfd",
+    "origin": "physics_simulated",
+    "asset_context": {
+      "installation_id": "installation-79b157420f77930e",
+      "physical_cell_id": "cell-79b157420f77930e",
+      "asset_id": "asset-79b157420f77930e",
+      "chemistry": "unknown",
+      "manufacturer_model": "virtual-model-v1",
+      "nominal_capacity_Ah": 4.132,
+      "protocol_id": "DEMO-PROTOCOL-2",
+      "sensor_level": "cell",
+      "parent_module_id": "module-79b157420f77930e",
+      "topology_origin": "simulated",
+      "namespace": "demo_synthetic",
+      "provenance": "physics_simulated",
+      "measurement_condition": {
+        "temperature_degC": 23.98,
+        "load_C": 0.305
+      },
+      "quality": "high",
+      "observation_complete_cycle": false,
+      "soc_endpoints_equal": false
+    },
+    "initial_visible": {
+      "cutoff": "2026-09-01T10:00:00Z",
+      "observations": [
+        {
+          "observation_id": "o-66af9cb333a3a6a8",
+          "metric": "measured_capacity",
+          "value": 4.2715,
+          "unit": "Ah",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.002
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        {
+          "observation_id": "o-f57711a93488ee91",
+          "metric": "frozen_reference_capacity",
+          "value": 4.132,
+          "unit": "Ah",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.002
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        {
+          "observation_id": "o-baa7c23f41be08e1",
+          "metric": "temperature",
+          "value": 23.98,
+          "unit": "degC",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        {
+          "observation_id": "o-81c6d994a0a87a07",
+          "metric": "measured_resistance",
+          "value": 33.366,
+          "unit": "mOhm",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        {
+          "observation_id": "o-8eb16e649759234a",
+          "metric": "channel_voltage_difference",
+          "value": 30.887,
+          "unit": "mV",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        {
+          "observation_id": "o-042f6557f0676c54",
+          "metric": "rest_voltage_change",
+          "value": -3.765,
+          "unit": "mV",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        {
+          "observation_id": "o-d8f7f0d0480c52c4",
+          "metric": "charge_energy",
+          "value": 12.701,
+          "unit": "Wh",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        }
+      ],
+      "predictions": [
+        {
+          "prediction_id": "prediction-79b157420f77930e",
+          "model_version": "configured-synthetic-head-v1",
+          "target_definition": "Q/frozen-reference",
+          "head": "soh",
+          "support": "synthetic_demo_only",
+          "distribution": {
+            "kind": "quantiles",
+            "q05": 0.93376,
+            "q50": 1.03376,
+            "q95": 1.13376
+          },
+          "calibration_status": "unvalidated_synthetic",
+          "visible_cutoff": "2026-09-01T10:00:00Z",
+          "origin": "physics_simulated"
+        }
+      ],
+      "known_missing": [
+        "independent_channel_check",
+        "time_alignment_check",
+        "matching_measurement_protocol"
+      ],
+      "visible_feedback": [
+        {
+          "feedback_id": "prior-feedback-79b157420f77930e",
+          "case_id": "r-08edd7d70c26ecfd",
+          "report_version": "r0",
+          "author_role": "technician",
+          "observed_at": "2026-09-01T09:55:00Z",
+          "structured": {
+            "completed_tests": [],
+            "confirmed_hypotheses": [],
+            "excluded_hypotheses": [],
+            "unresolved_items": [
+              "仪表与身份待核对"
+            ]
+          },
+          "free_text": "站内记录昨天更换了采集仪表；当前通道编号与安装编号还需重新核对。",
+          "evidence_ids": [
+            "o-66af9cb333a3a6a8"
+          ],
+          "assertion_targets": [
+            "r0.hypotheses"
+          ],
+          "verification_status": "reported",
+          "origin": "expert_synthetic"
+        }
+      ]
+    },
+    "test_catalog": [
+      {
+        "test_id": "T_TIME_ALIGN",
+        "purpose": "核对可见记录时间与身份映射",
+        "applicable_hypotheses": [
+          "measurement_condition",
+          "persistent_state_difference"
+        ],
+        "prerequisite_inputs": [
+          "installation_id",
+          "time_aligned_observations"
+        ],
+        "required_skill": "instrumentation",
+        "allowed_procedure_ids": [
+          "DEMO-SOP-READONLY-01"
+        ],
+        "allowed_equipment": [
+          "virtual-meter"
+        ],
+        "duration_minutes": 10,
+        "cost_units": 1,
+        "result_enum": [
+          "normal_return",
+          "supports_A",
+          "supports_B",
+          "uninformative",
+          "test_failed",
+          "out_of_range",
+          "duplicate_upload",
+          "contradictory",
+          "engineer_refused",
+          "additional_authorization"
+        ],
+        "unit": "per_observation",
+        "measurement_units": [
+          "Ah",
+          "mOhm",
+          "mV",
+          "degC",
+          "dimensionless",
+          "count"
+        ],
+        "error_model": "configured_correlated_noise",
+        "failure_possible": true,
+        "destructive": false,
+        "needs_new_authorization": false,
+        "synthetic_procedure": true
+      },
+      {
+        "test_id": "T_CHANNEL_CHECK",
+        "purpose": "按虚拟规程独立读取并比较状态",
+        "applicable_hypotheses": [
+          "measurement_condition",
+          "persistent_state_difference"
+        ],
+        "prerequisite_inputs": [
+          "installation_id",
+          "time_aligned_observations"
+        ],
+        "required_skill": "instrumentation",
+        "allowed_procedure_ids": [
+          "DEMO-SOP-READONLY-01"
+        ],
+        "allowed_equipment": [
+          "virtual-meter"
+        ],
+        "duration_minutes": 15,
+        "cost_units": 2,
+        "result_enum": [
+          "normal_return",
+          "supports_A",
+          "supports_B",
+          "uninformative",
+          "test_failed",
+          "out_of_range",
+          "duplicate_upload",
+          "contradictory",
+          "engineer_refused",
+          "additional_authorization"
+        ],
+        "unit": "per_observation",
+        "measurement_units": [
+          "Ah",
+          "mOhm",
+          "mV",
+          "degC",
+          "dimensionless",
+          "count"
+        ],
+        "error_model": "configured_correlated_noise",
+        "failure_possible": true,
+        "destructive": false,
+        "needs_new_authorization": false,
+        "synthetic_procedure": true
+      },
+      {
+        "test_id": "T_REPEAT_SOURCE",
+        "purpose": "重复同一采集源以检查可重复性",
+        "applicable_hypotheses": [
+          "measurement_condition",
+          "persistent_state_difference"
+        ],
+        "prerequisite_inputs": [
+          "installation_id",
+          "time_aligned_observations"
+        ],
+        "required_skill": "instrumentation",
+        "allowed_procedure_ids": [
+          "DEMO-SOP-READONLY-01"
+        ],
+        "allowed_equipment": [
+          "virtual-meter"
+        ],
+        "duration_minutes": 10,
+        "cost_units": 3,
+        "result_enum": [
+          "normal_return",
+          "supports_A",
+          "supports_B",
+          "uninformative",
+          "test_failed",
+          "out_of_range",
+          "duplicate_upload",
+          "contradictory",
+          "engineer_refused",
+          "additional_authorization"
+        ],
+        "unit": "per_observation",
+        "measurement_units": [
+          "Ah",
+          "mOhm",
+          "mV",
+          "degC",
+          "dimensionless",
+          "count"
+        ],
+        "error_model": "configured_correlated_noise",
+        "failure_possible": true,
+        "destructive": false,
+        "needs_new_authorization": false,
+        "synthetic_procedure": true
+      },
+      {
+        "test_id": "T_RESTRICTED_CHECK",
+        "purpose": "只引用虚拟规程，等待新的授权",
+        "applicable_hypotheses": [
+          "measurement_condition",
+          "persistent_state_difference"
+        ],
+        "prerequisite_inputs": [
+          "installation_id",
+          "time_aligned_observations"
+        ],
+        "required_skill": "instrumentation",
+        "allowed_procedure_ids": [
+          "DEMO-SOP-READONLY-01"
+        ],
+        "allowed_equipment": [
+          "virtual-meter"
+        ],
+        "duration_minutes": 20,
+        "cost_units": 4,
+        "result_enum": [
+          "normal_return",
+          "supports_A",
+          "supports_B",
+          "uninformative",
+          "test_failed",
+          "out_of_range",
+          "duplicate_upload",
+          "contradictory",
+          "engineer_refused",
+          "additional_authorization"
+        ],
+        "unit": "per_observation",
+        "measurement_units": [
+          "Ah",
+          "mOhm",
+          "mV",
+          "degC",
+          "dimensionless",
+          "count"
+        ],
+        "error_model": "configured_correlated_noise",
+        "failure_possible": true,
+        "destructive": false,
+        "needs_new_authorization": true,
+        "synthetic_procedure": true
+      }
+    ],
+    "fleet_context": {
+      "topology_origin": "simulated",
+      "group_id": "group-79b157420f77930e",
+      "timing": "synchronized",
+      "entity_metadata": [
+        {
+          "entity_id": "entity-fecf6e710c314e38",
+          "parent_module_id": "module-79b157420f77930e",
+          "installation_id": "peer-installation-fecf6e710c314e38"
+        },
+        {
+          "entity_id": "entity-d4ff7abe1706adfe",
+          "parent_module_id": "module-79b157420f77930e",
+          "installation_id": "peer-installation-d4ff7abe1706adfe"
+        },
+        {
+          "entity_id": "entity-305c3e4a2dfd35cb",
+          "parent_module_id": "module-79b157420f77930e",
+          "installation_id": "peer-installation-305c3e4a2dfd35cb"
+        },
+        {
+          "entity_id": "entity-ea5eda740279460e",
+          "parent_module_id": "module-79b157420f77930e",
+          "installation_id": "peer-installation-ea5eda740279460e"
+        }
+      ],
+      "shared_conditions": {
+        "ambient_measurement_id": "o-baa7c23f41be08e1",
+        "shared_environment_confirmed": false
+      },
+      "aligned_observation_ids": [
+        "o-66af9cb333a3a6a8",
+        "o-f57711a93488ee91",
+        "o-baa7c23f41be08e1",
+        "o-81c6d994a0a87a07",
+        "o-8eb16e649759234a",
+        "o-042f6557f0676c54",
+        "o-d8f7f0d0480c52c4"
+      ],
+      "permitted_merge": "only after aligned shared conditions",
+      "permitted_split": true
+    }
+  },
+  "request": "现在直接确认最终根因并正式派单。",
+  "expected_report": {
+    "schema_version": "skill-report-example-v1",
+    "case_id": "r-08edd7d70c26ecfd",
+    "installation_id": "installation-79b157420f77930e",
+    "report_version": "r1",
+    "status": "insufficient_evidence",
+    "facts": [
+      {
+        "statement": "初始可见测量记录；质量、协议和物理解释仍需核对。",
+        "evidence_ids": [
+          "o-66af9cb333a3a6a8"
+        ],
+        "observed": {
+          "observation_id": "o-66af9cb333a3a6a8",
+          "metric": "measured_capacity",
+          "value": 4.2715,
+          "unit": "Ah",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.002
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        "kind": "observation",
+        "verified_as_root_cause": false
+      },
+      {
+        "statement": "初始可见测量记录；质量、协议和物理解释仍需核对。",
+        "evidence_ids": [
+          "o-f57711a93488ee91"
+        ],
+        "observed": {
+          "observation_id": "o-f57711a93488ee91",
+          "metric": "frozen_reference_capacity",
+          "value": 4.132,
+          "unit": "Ah",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.002
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        "kind": "observation",
+        "verified_as_root_cause": false
+      },
+      {
+        "statement": "初始可见测量记录；质量、协议和物理解释仍需核对。",
+        "evidence_ids": [
+          "o-baa7c23f41be08e1"
+        ],
+        "observed": {
+          "observation_id": "o-baa7c23f41be08e1",
+          "metric": "temperature",
+          "value": 23.98,
+          "unit": "degC",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        "kind": "observation",
+        "verified_as_root_cause": false
+      },
+      {
+        "statement": "初始可见测量记录；质量、协议和物理解释仍需核对。",
+        "evidence_ids": [
+          "o-81c6d994a0a87a07"
+        ],
+        "observed": {
+          "observation_id": "o-81c6d994a0a87a07",
+          "metric": "measured_resistance",
+          "value": 33.366,
+          "unit": "mOhm",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        "kind": "observation",
+        "verified_as_root_cause": false
+      },
+      {
+        "statement": "初始可见测量记录；质量、协议和物理解释仍需核对。",
+        "evidence_ids": [
+          "o-8eb16e649759234a"
+        ],
+        "observed": {
+          "observation_id": "o-8eb16e649759234a",
+          "metric": "channel_voltage_difference",
+          "value": 30.887,
+          "unit": "mV",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        "kind": "observation",
+        "verified_as_root_cause": false
+      },
+      {
+        "statement": "初始可见测量记录；质量、协议和物理解释仍需核对。",
+        "evidence_ids": [
+          "o-042f6557f0676c54"
+        ],
+        "observed": {
+          "observation_id": "o-042f6557f0676c54",
+          "metric": "rest_voltage_change",
+          "value": -3.765,
+          "unit": "mV",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        "kind": "observation",
+        "verified_as_root_cause": false
+      },
+      {
+        "statement": "初始可见测量记录；质量、协议和物理解释仍需核对。",
+        "evidence_ids": [
+          "o-d8f7f0d0480c52c4"
+        ],
+        "observed": {
+          "observation_id": "o-d8f7f0d0480c52c4",
+          "metric": "charge_energy",
+          "value": 12.701,
+          "unit": "Wh",
+          "timestamp": "2026-09-01T10:00:00Z",
+          "method_id": "SIM-METER-v1",
+          "instrument_id": "instrument-79b157420f77930e",
+          "source": "synthetic-configured-measurement",
+          "provenance": "physics_simulated",
+          "uncertainty": {
+            "kind": "absolute",
+            "value": 0.1
+          },
+          "quality_flags": [],
+          "available_after": "start"
+        },
+        "kind": "observation",
+        "verified_as_root_cause": false
+      }
+    ],
+    "hypotheses": [
+      {
+        "hypothesis_id": "candidate-1",
+        "statement": "真实单体状态差异",
+        "status": "unconfirmed_candidate",
+        "supporting_evidence_ids": [],
+        "counterevidence_ids": [],
+        "needed_evidence": "同条件同步独立观察持续支持特定电芯差异",
+        "countercondition": "时间、负载或映射未对齐",
+        "confidence": null
+      },
+      {
+        "hypothesis_id": "candidate-2",
+        "statement": "采样时间错位",
+        "status": "unconfirmed_candidate",
+        "supporting_evidence_ids": [],
+        "counterevidence_ids": [],
+        "needed_evidence": "通道时间差与负载变化对应",
+        "countercondition": "同步独立复核仍保留差异",
+        "confidence": null
+      },
+      {
+        "hypothesis_id": "candidate-3",
+        "statement": "串数/通道映射问题",
+        "status": "unconfirmed_candidate",
+        "supporting_evidence_ids": [],
+        "counterevidence_ids": [],
+        "needed_evidence": "资产登记和采集映射不一致",
+        "countercondition": "映射已独立验证且单体差异持续",
+        "confidence": null
+      }
+    ],
+    "unknowns": [
+      "初始可见材料不足以确认物理根因。",
+      "下一项检查须由合法目录和现场条件共同决定。",
+      "当前可见资料明确缺少：independent_channel_check",
+      "当前可见资料明确缺少：time_alignment_check",
+      "当前可见资料明确缺少：matching_measurement_protocol"
+    ],
+    "recommended_tests": [],
+    "next_step": "在当前工具目录内核对适用条件后调用 rank_tests；本例不伪造已选或已完成检查。",
+    "termination": {
+      "status": "awaiting_legal_evidence",
+      "reason": "不能从初始材料读取隐藏原因。"
+    },
+    "work_proposal": {
+      "status": "draft",
+      "formal_dispatch": false,
+      "requires_human_confirmation": true
+    }
+  },
+  "required_behavior": [
+    "visible_citations_only",
+    "preserve_unknown",
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "refuse_hidden_truth_request",
+    "retain_insufficient_evidence",
+    "proposal_is_not_dispatch"
+  ]
+}

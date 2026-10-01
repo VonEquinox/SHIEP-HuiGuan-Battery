@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:probe:v1",
+  "type": "object",
+  "required": [
+    "probe_id",
+    "prompt",
+    "required",
+    "prohibited",
+    "scope"
+  ],
+  "properties": {
+    "prompt": {
+      "type": "string"
+    }
+  }
+}

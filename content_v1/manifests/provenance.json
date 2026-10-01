@@ -1,0 +1,28 @@
+{
+  "creator": "AI-assisted project synthesis",
+  "origin": "physics_simulated/expert_synthetic",
+  "real_measurement_count": 0,
+  "licenses": {
+    "project_generated": "approved_synthetic",
+    "external_full_text": "not_imported"
+  },
+  "cloud": {
+    "method": "OpenAI-compatible cloud supplemental language synthesis",
+    "provider_base_url": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "calls": 28,
+    "successful_calls": 28,
+    "http_attempts": 28,
+    "retries_per_task": 0,
+    "generated_at": "2026-10-01T16:04:21.127614+00:00",
+    "truth_source": "deterministic configured physics and enumerated math; never provider answers",
+    "real_operational_data": false,
+    "expert_review": "not_performed"
+  },
+  "forbidden_uses": [
+    "claim_real_expert_authorship",
+    "real_operational_supervision",
+    "real_device_thresholds",
+    "seal_as_training_input"
+  ]
+}

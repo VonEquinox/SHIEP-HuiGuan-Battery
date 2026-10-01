@@ -1,0 +1,93 @@
+{
+  "skill_id": "efficiency-measurement",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "energy_in",
+    "energy_out",
+    "soc_start",
+    "soc_end",
+    "measurement_boundary"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "read_prediction",
+    "search_knowledge",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "partial_cycle_is_roundtrip_efficiency",
+    "double_count_auxiliary_energy",
+    "carbon_estimate_in_diagnosis"
+  ],
+  "references": [
+    "knowledge-skill-efficiency-measurement"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "efficiency-measurement-positive-01",
+    "efficiency-measurement-negative-01",
+    "efficiency-measurement-negative-02",
+    "efficiency-measurement-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "efficiency",
+    "energy",
+    "SOC",
+    "auxiliary",
+    "效率",
+    "能量",
+    "边界"
+  ],
+  "files": {
+    "SKILL.md": "ace8ce06723064eaa43563849f35a36f07a35849436d3d2ca4d22a23bf243786",
+    "checks/contract.json": "8bab6736287f841a67d9fe28ae2158f702ddcc3bf110196783ff97e9b5660f5a",
+    "examples/insufficient-01.json": "1bdcda4d8f2c29e38d665fccc97195b1f574897fc0b4ed693f3e5fa74193f9fd",
+    "examples/negative-01.json": "cf495ed2cc604052d246292a73c8307fc1dfb76db16c7d38a86e7a063fc3e0e2",
+    "examples/negative-02.json": "5fcec674bc67a849d9f0f5108aef230af9725e9f5394fab199e60962f2e25b53",
+    "examples/positive-01.json": "381214b478cc6a8670c6685908faee4aacc374b64e2f948892b07211b9a4949a",
+    "references/evidence.md": "1037b82a682e26c2b0f6941b798c2aaa738f444f3fb1fd1f6e39fe9eaacdba9a"
+  }
+}

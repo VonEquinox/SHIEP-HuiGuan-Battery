@@ -1,0 +1,94 @@
+{
+  "skill_id": "feedback-context-update",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "visible_feedback",
+    "source_spans",
+    "evidence_ids",
+    "report_version"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "search_memory",
+    "search_knowledge",
+    "load_skill",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "unverified_feedback_is_truth",
+    "feedback_changes_permissions",
+    "discard_original_text",
+    "hidden_feedback_leak"
+  ],
+  "references": [
+    "knowledge-skill-feedback-context-update"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "feedback-context-update-positive-01",
+    "feedback-context-update-negative-01",
+    "feedback-context-update-negative-02",
+    "feedback-context-update-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-036be010b588fc32",
+    "r-04e3466dfe978c81",
+    "r-059f9f5ebe87c475",
+    "r-08edd7d70c26ecfd"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "feedback",
+    "context",
+    "memory",
+    "conflict",
+    "technician",
+    "反馈",
+    "纠错",
+    "经验"
+  ],
+  "files": {
+    "SKILL.md": "48982787f9dc5a60b6515b97849f6288a7b5bb9caa3812d64726fcc86161b751",
+    "checks/contract.json": "df63efefa979af176ba90cf1d9c213c37ff28640b082d4fb5e5ed2251d27f0d9",
+    "examples/insufficient-01.json": "984a77fcde8f9681203211406d3cc4de8ba75398f58c280adddd5d4f48231684",
+    "examples/negative-01.json": "12b8ba243200cbbb8a80659e297b695a92d163bc06a9835183572ce13b838722",
+    "examples/negative-02.json": "c0e0851943d02a65bfc22aa8c282d88ec56d0fdbdc57d7708a6673984c27a876",
+    "examples/positive-01.json": "27eb2d95a5e103d95212759deaa4e5e9961ed1f9a8a550834d1445a4f483f0c9",
+    "references/evidence.md": "eb613518467a095801466145ebde8cdbf664f80e9e0a73047eabd6cf23801c54"
+  }
+}

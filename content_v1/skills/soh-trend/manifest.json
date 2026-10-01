@@ -1,0 +1,92 @@
+{
+  "skill_id": "soh-trend",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "soh_prediction",
+    "reference_capacity",
+    "history"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "read_prediction",
+    "search_knowledge",
+    "search_memory",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "estimated_soh_is_measured_soh",
+    "compare_incompatible_references",
+    "model_score_is_failure_probability"
+  ],
+  "references": [
+    "knowledge-skill-soh-trend"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "soh-trend-positive-01",
+    "soh-trend-negative-01",
+    "soh-trend-negative-02",
+    "soh-trend-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "soh",
+    "capacity",
+    "activation",
+    "trend",
+    "容量",
+    "趋势",
+    "normal"
+  ],
+  "files": {
+    "SKILL.md": "209652d41c3dfb5db2d555e8dd9568708adf7aece3c6aa74bddcd307403b5c67",
+    "checks/contract.json": "56afe3b6e0aa526bdae9c1f7ae70a98d2ab6012d39d2f7ba12a1be45cbc5d760",
+    "examples/insufficient-01.json": "a37f1f6d46f8b684059771c4eebd0cd0a9b04c41ea355a7af4adfbb30353f17f",
+    "examples/negative-01.json": "5ebb3b593ff5098db8cb4577f305a6669a747fcc84c3300ceae53c82d17903dd",
+    "examples/negative-02.json": "d08a4fb5c7939c523d82935c0b1183682351ea9b54d7f3631c39d35fb41fa636",
+    "examples/positive-01.json": "75e87d1babaf561c1a168ce902fb97bfbc79f9fa0f35b146bb806daf32e27617",
+    "references/evidence.md": "34808b4f57c5c7dc810ff7da29f48dcd2d9bcd677a32a20f72736dd4737469bb"
+  }
+}

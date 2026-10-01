@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:parentage:v1",
+  "type": "object",
+  "required": [
+    "case_id",
+    "root_scenario_id",
+    "parent_id",
+    "split",
+    "kind"
+  ],
+  "properties": {
+    "parent_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "enum": [
+        "root",
+        "observation_branch"
+      ]
+    }
+  }
+}

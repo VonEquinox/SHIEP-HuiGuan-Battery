@@ -1,0 +1,905 @@
+{
+  "skills": {
+    "data-quality": {
+      "reviewed_notes": [
+        "同一时间戳重复但字段级来源不同，若仅按时戳去重会丢传感器切换记录；需保留来源列并标记冲突。",
+        "缺失值填充后未回写原始缺失掩码，后续统计会把插补值当实测，需同时保留掩码与填充值。",
+        "单位混用（如mV与V）在合并表后仍能通过数值范围检查，需按通道单位白名单校验并保留原始单位字段。"
+      ],
+      "route_keywords": [
+        "data-quality",
+        "虚拟回放"
+      ]
+    },
+    "chemistry-eligibility": {
+      "reviewed_notes": [
+        "仅凭标签或历史工单推断化学体系，而回放缺少可核验的批次/体系标识时，不得判符合，应标为待人工确认。",
+        "回放曲线一致但存在混装、替换、维修后重组时，单一化学体系资格失效，须按最小可识别单元拆分评估。",
+        "BMS配置或保护映射与化学体系匹配未知、或配置不可读取时，不得套用默认映射放行，应输出未知并转人工。"
+      ],
+      "route_keywords": [
+        "chemistry-eligibility",
+        "人工确认"
+      ]
+    },
+    "soh-trend": {
+      "reviewed_notes": [
+        "规则：若SOH序列跨BMS更换、采样周期变化或安时积分重置，前后点不可直接连趋势；先标为未知/不可比，交人工确认是否分段。",
+        "规则：温度阶跃、充放电倍率切换、长静置后恢复的SOH点，不应与同工况点混算趋势；需按工况标签分段，否则斜率只是工况伪影。",
+        "规则：整包SOH趋势不能简单取模组最低值；模组级、包级粒度不同，聚合规则未注明时该趋势点仅为候选，不得直接派单，需人确认。"
+      ],
+      "route_keywords": [
+        "工况分段",
+        "粒度与聚合"
+      ]
+    },
+    "efficiency-measurement": {
+      "reviewed_notes": [
+        "重试或跳过后的耗时归属易漏：若把重试等待算作有效执行，效率会虚高；应先声明重试是否计入分母、是否单独列等待时间。",
+        "串联多Skill时总耗时不可全归本Skill；调度排队、外部工具等待、人工确认延迟须扣除或单列，否则环境延迟会被误判为本Skill低效。",
+        "冷启动与热启动不可直接比较：缓存、预取、预热会拉高后续表现；评价时须标注运行序次与缓存状态，否则用热态结果代表冷态效率。"
+      ],
+      "route_keywords": [
+        "efficiency-measurement",
+        "耗时归因"
+      ]
+    },
+    "lifetime-interpretation": {
+      "reviewed_notes": [
+        "仅凭累计充放电量推断寿命时，若循环计数口径与容量标定基准不一致，应标为未知；不可把不同口径的循环数直接换算剩余寿命。",
+        "同循环数下，温度、倍率、DOD分布变化会改变老化速率；工况标签缺失时不得跨工况外推，只能输出条件候选并提示需补充工况。",
+        "长期搁置后的日历老化与循环老化叠加，首次充放电跳变可能来自测量、均衡或标定变更；未排除前不得归因于循环寿命衰减。"
+      ],
+      "route_keywords": [
+        "lifetime-interpretation",
+        "工况或口径缺失转人工复核"
+      ]
+    },
+    "internal-resistance": {
+      "reviewed_notes": [
+        "内阻测前静置/带载状态缺失：同一电芯若未标注测前是否静置、是否带载，阻值变化只能记为候选，不能直接当作老化或接触劣化。",
+        "并联支路反例：并联单体或模组未断开邻居支路时，单点电压夹测得的等效内阻受分流影响，不能直接映射为单体健康。",
+        "跨体系补偿反例：借用其他批次或化学体系的温度补偿曲线外推内阻，结果只能列为未知；须人确认，不自动派单。"
+      ],
+      "route_keywords": [
+        "内阻-静置/带载/并联/跨体系条件未标注",
+        "未独立审查-人确认派单-Carbon与Agent隔离-不变更权限"
+      ]
+    },
+    "self-discharge": {
+      "reviewed_notes": [
+        "若静置前刚充电、均衡或大电流放电，极化弛豫会伪装成电压回升；须确认静置起点前无充放电且弛豫已结束，否则不能判自放电。",
+        "并联支路中健康支路会向异常单体补流，掩盖电压下降；须同时比对支路电流或连接点压差，否则漏判单体自放电。",
+        "温度分层未处理时，低温单体电压偏低会被误认为自放电；须先按温度/位置分组，再比较同组静置压降，避免把温差当自放电。"
+      ],
+      "route_keywords": [
+        "自放电",
+        "静置压降复核"
+      ]
+    },
+    "capacity-loss": {
+      "reviewed_notes": [
+        "候选规则：若对比窗口的温度、充放电倍率、截止条件或静置时长不一致，容量差应先归因于测试条件，不得直接判为capacity-loss，需人工确认。",
+        "候选规则：只比较充电容量或只比较放电容量，可能漏掉可逆损失恢复与库仑效率变化；应同时保留充放电两侧记录，异常交人工复核。",
+        "候选规则：多串并联包出现单体不一致、均衡动作或SOC跳变时，整包容量统计会失真；不得由单芯候选外推整包损失，需隔离数据源并待人工确认。"
+      ],
+      "route_keywords": [
+        "capacity-loss",
+        "待人工确认"
+      ]
+    },
+    "charging-anomaly": {
+      "reviewed_notes": [
+        "插枪后桩端显示已连接但车端处于预约等待或未到充电时段，易误判异常；应记候选并转人工确认，不直接派单。",
+        "充电中断若因用户主动停止、刷卡结束、SOC达车端设定上限或地锁未降，属正常终止；标为未知待复核，不按异常上报。",
+        "同车同桩短时重复插拔、桩端离线重连或BMS绝缘检测中，可能只是通信握手中断；不得据此确诊，须隔离Carbon与Agent并等待独立复核。"
+      ],
+      "route_keywords": [
+        "充电异常-人工确认",
+        "车端桩端日志隔离复核"
+      ]
+    },
+    "voltage-inconsistency": {
+      "reviewed_notes": [
+        "均衡开启或刚结束未记录时，电压被均衡电流拉平或扰动；未等静置且无均衡状态标记，不应把此刻压差判为电芯不一致，应标为候选或未知。",
+        "采样线束、接插件接触电阻或采集通道偏差会造成压差；未做通道交叉、断开采样排查前，不能把压差归因电芯，需保留采样异常候选。",
+        "并联支路、接触器或熔断器状态未确认时，测得电压可能是悬空或感应电压；未确认支路实际投入，不应进入电压不一致诊断，需标记未知。"
+      ],
+      "route_keywords": [
+        "电压不一致",
+        "采样同步"
+      ]
+    },
+    "thermal-anomaly": {
+      "reviewed_notes": [
+        "温升若与充放电倍率、环境温度同向变化，可能只是工况耦合；未同步核对负载与环境就判热异常，会漏掉该反例。",
+        "相邻测点温差大但绝对温度不高，可能源于安装位置或接触热阻；未核对布置与导热路径，会误报或漏判。",
+        "风道遮挡、传感器脱落或老化可制造假热点或掩盖真热点；仅看温度曲线而不核对安装与气流，会漏掉该条件。"
+      ],
+      "route_keywords": [
+        "thermal-anomaly人工确认派单",
+        "Carbon与Agent隔离"
+      ]
+    },
+    "fleet-correlation": {
+      "reviewed_notes": [
+        "同一车队内各车时标未统一到UTC或网关时标时，本地时钟漂移会制造伪相关；相关前必须按原始时间戳重对齐并保留时钟源标记。",
+        "换包、换BMS或维修后沿用同一车辆ID，历史序列会跨电池包拼接；相关前需按电池包唯一标识切段，否则旧包数据会污染新包相关。",
+        "共享充电桩、同路线、同批次的车辆会因外部共因同步波动；若只算车际相关，会把共因误当电池间关联，需先标记共因协变量或剔除共享窗口。"
+      ],
+      "route_keywords": [
+        "fleet-correlation",
+        "人工确认派单；Carbon-Agent隔离"
+      ]
+    },
+    "sensor-anomaly": {
+      "reviewed_notes": [
+        "多传感器时间戳未对齐时，跨秒跳变可能只是链路延迟；先按采集源分组并标记时钟源，不能直接判异常，需人工确认。",
+        "更换传感器后ID复用但量程或单位未同步，读数整体偏移可能是映射错误；应核对铭牌与配置版本，禁止仅凭回放数值确诊。",
+        "读数长期恒定且落在历史范围内，可能被误判为正常，但冻结值或通信保持也是候选异常；应结合心跳与时间导数转人工确认。"
+      ],
+      "route_keywords": [
+        "sensor-anomaly",
+        "人工确认"
+      ]
+    },
+    "active-test-selection": {
+      "reviewed_notes": [
+        "若技能选择结果来自合成回放或历史数据，须标记为候选，不得直接视为现场可用；缺少来源、时效或适用边界时应暂停选择。",
+        "Agent 建议不得绕过 Carbon 隔离或变更工具权限；若测试需新权限、真实设备动作或正式派单，应转人工确认，不自动选中。",
+        "反例：同一技能在旧平台通过后迁移到新回放键仍被自动选中；平台、授权范围、被测对象版本任一不一致，即降为候选并核验。"
+      ],
+      "route_keywords": [
+        "active-test-selection",
+        "人工确认"
+      ]
+    },
+    "report-work-proposal": {
+      "reviewed_notes": [
+        "回放或合成输入生成的派单建议仅为提案，不得触发真实工单或通知现场；正式派单须人确认，并保持Carbon与Agent隔离。",
+        "证据来自虚拟回放时，不得写成现场测量；故障原因只能标候选或未知，不得写确诊、阈值或规范值，也不得编造来源。",
+        "反例：要求直接改工具权限或执行高风险物理动作时，报告应止于建议清单，不得给操作步骤，也不得声称已授权。"
+      ],
+      "route_keywords": [
+        "report-work-proposal",
+        "human-confirm"
+      ]
+    },
+    "feedback-context-update": {
+      "reviewed_notes": [
+        "反馈若晚于当前上下文版本到达，先按版本映射，不能直接覆盖新状态；无法映射时标未知并挂起，待人工确认。",
+        "Carbon与Agent的反馈上下文不得互相写入；跨域仅可留候选并标注来源，正式派单仍须人工确认，且不改动工具权限。",
+        "用户撤回或否定先前反馈时，应删除或回滚对应上下文更新，而非追加新条目；若影响已派单，只标记冲突待人工复核。"
+      ],
+      "route_keywords": [
+        "feedback-context-update",
+        "版本映射与跨域隔离"
+      ]
+    }
+  },
+  "buckets": {
+    "normal_activation": {
+      "feedback_texts": [
+        "现场温湿度可能变化，回放未同步该环境量；需核对采样时段与工况记录，确认是否影响本次虚拟激活判断。",
+        "某通道读数与历史基线偏离，疑似仪表偏差或量程配置差异；需核对校准标签与原始配置，不能据此直接判定。",
+        "工单设备编号与回放身份映射疑似不一致，可能指向不同资产；需人工确认映射表和有效时段，再决定是否派单。",
+        "当前无法执行该项检查，缺少只读日志与授权快照；需先由授权人员补齐数据，Carbon与Agent保持隔离。",
+        "两组回放结果趋势相反，一组平稳一组波动；需核对时间对齐、数据源版本和筛选条件，暂不采信任一方。",
+        "凭经验感觉此次更接近正常激活，但无证据支撑，仅作候选意见；需补充可复核记录并由人工确认。"
+      ]
+    },
+    "capacity_degradation": {
+      "feedback_texts": [
+        "环境温湿度或负载节奏变化可能影响容量表现，需核对同期环境记录与工况是否一致，暂不作结论。",
+        "若采集仪表或传感器存在偏差，容量趋势可能失真；需核对校准状态、量程与采样时间，勿仅凭单一读数判断。",
+        "需确认设备编号、电池包ID与回放数据映射是否一致，若映射错位会误读容量；请核对资产台账与绑定关系。",
+        "当前条件无法执行现场容量检查，缺少可核验的测试条件；建议先确认是否具备安全隔离与授权，再决定后续。",
+        "不同回放片段或来源显示容量趋势互相矛盾，需核对时间轴、口径与数据完整性，避免用矛盾结果下结论。",
+        "仅凭主观印象或未标注来源的意见，不能支撑容量衰减判断；需补充可追溯证据并确认数据来源后再评估。"
+      ]
+    },
+    "suspected_self_discharge": {
+      "feedback_texts": [
+        "先核对环境温度、湿度或通风是否较前一时段变化；若环境波动明显，suspected_self_discharge 需结合历史环境记录复核。",
+        "仪表偏差可能影响静置电压与内阻判断；请先核对通道校准状态和最近比对记录，未确认前不宜归因自放电。",
+        "需先核对工单、电池ID与通道映射是否一致；若身份映射错位，suspected_self_discharge 可能指错对象，请查资产台账。",
+        "现场暂无法执行静置检查，缺少停用窗口或安全条件；请确认能否改做远程数据复核，并由人工确认后续动作。",
+        "两次趋势结果矛盾：一次电压下降偏快，另一次较平；可能是工况或时段差异，需核对原始时间戳与充放电记录。",
+        "目前无直接证据支持自放电，仅凭个别反馈不宜定性；请补充可核验记录，并由工程师人工确认是否继续跟踪。"
+      ]
+    },
+    "high_resistance": {
+      "feedback_texts": [
+        "环境温度波动若使接触电阻变化，当前回放不能替代实测；需核对温湿度记录与基准条件，且派单需人工确认。",
+        "若仪表校准漂移或量程偏差，读数可能偏高，回放不构成实测；需核对校准证书有效期与通道映射，勿改工具权限。",
+        "身份映射若将A点数据归到B电池，结论会错位；当前仅为虚拟回放，需核对资产ID、点位表与采样时间，人工确认后才可派单。",
+        "受安全条件限制无法执行检查；虚拟回放不替代现场验证，需核对作业许可、隔离措施与停电范围，再决定是否人工派单。",
+        "同一时段两路记录趋势相反，结果矛盾；回放不能判定真伪，需核对时间同步、滤波设置与通道对应，并保留Carbon与Agent隔离。",
+        "有同事凭经验觉得接触不良，但属无证据意见；不得据此确诊，需核对原始波形、告警日志与维护记录，派单前人工确认。"
+      ]
+    },
+    "temperature_anomaly": {
+      "feedback_texts": [
+        "回放温度波动与舱门开合、风道切换等环境事件时间接近；需核对事件记录与采样时刻是否对齐，再判断相关性。",
+        "温度读数可能受传感器漂移或校准状态影响；需核对校准日期、量程及同测点其他通道读数，暂不据此下结论。",
+        "该温度点与设备或通道映射可能在回放中错位；需核对唯一ID、点位表版本及映射变更记录，确认后再关联工单。",
+        "当前虚拟环境缺少现场权限与物理接近条件，无法执行探头检查；需确认仿真权限、替代数据源或由人工评估后续步骤。",
+        "同一时段不同回放片段显示升温与平稳互相矛盾；需核对片段版本、时间同步和预处理规则，先解决冲突再判断。",
+        "仅凭经验感觉该异常可能重要，但当前无支撑证据；需补充可追溯的日志、事件或复核记录后再讨论，不直接定性。"
+      ]
+    },
+    "voltage_difference": {
+      "feedback_texts": [
+        "虚拟桶voltage_difference下，温度与湿度波动可能影响读数趋势，需核对当时环境记录及是否同步变更，再判断该候选是否成立。",
+        "仪表偏差候选：若采样通道或校准状态不同，压差表现可能漂移；需核对仪表编号、校准有效期与量程，暂不直接归因。",
+        "身份映射待核：该虚拟桶与设备/工位标识是否对应尚无证据，需核对映射表、时间戳和授权范围，避免把不同对象混在同一反馈里。",
+        "当前无法执行检查：缺少安全条件或访问权限，不能进行现场复核；需先确认虚拟回放授权与操作边界，再决定是否转人工。",
+        "结果存在矛盾：同一虚拟桶的压差记录方向不一致，可能与筛选口径或时间窗有关；需核对原始字段与聚合规则后再下结论。",
+        "无证据意见：仅凭主观印象认为压差偏高不可作为派单依据；需补充可复核数据并由人工确认，Agent不得自行变更权限。"
+      ]
+    },
+    "charging_stage": {
+      "feedback_texts": [
+        "充电阶段若环境温度或通风条件变化，可能影响表现；需核对当时温湿度与散热记录，再判断是否与阶段相关。",
+        "仪表可能存在偏差，充电阶段读数未必可靠；需核对校准状态与同源数据，当前不能据此下结论。",
+        "同一充电阶段样本的身份映射若不一致，可能对应错设备或时段；需核对映射表与日志关联，暂不归因。",
+        "当前无法执行该检查，充电阶段信息不完整；需确认检查条件与权限由谁补齐，再安排人工复核。",
+        "充电阶段结果相互矛盾，可能因口径或时间窗不同；需复核数据来源与对齐规则，才能判断矛盾是否成立。",
+        "仅凭经验看，充电阶段似有异常，但无证据支持；需补充可追溯记录并由人工确认，不能作为正式派单依据。"
+      ]
+    },
+    "unsupported_domain": {
+      "feedback_texts": [
+        "若虚拟环境温湿度或气流突变，可能影响回放趋势；需核对同一时间窗的环境记录与桶映射，并确认是否仅为仿真扰动。",
+        "虚拟仪表若存在零点漂移或采样延迟，反馈可能偏移；需核对校准记录、时间戳与量程，并确认偏差是否在仿真允许范围。",
+        "当设备ID与虚拟桶身份映射不一致时，反馈可能串桶；需核对映射表、会话标签与权限边界，并确认是否需人工复核。",
+        "当前虚拟情景缺少可执行检查入口，无法完成一致性核验；需核对工具权限、数据可见性与是否应转为人工派单。",
+        "不同虚拟回放片段的结果出现矛盾，可能源于输入版本或聚合口径；需核对数据版本、时间对齐与桶归属，再决定是否人工确认。",
+        "目前只有主观推测，无证据支持任何结论；需核对是否有可追溯记录、来源标注与复核意见，并保持Carbon与Agent隔离。"
+      ]
+    },
+    "missing_bad_data": {
+      "feedback_texts": [
+        "环境温湿度或供电波动可能影响该桶数据，建议先核对采集时间窗、环境日志与传感器状态，再决定是否复采。",
+        "仪表零漂或校准状态偏差可能导致读数偏移，需核对最近校准记录、同点位比对条件与量程设置后再判断。",
+        "数据桶标识与设备身份映射可能不一致，需核对资产编码、网关映射表及采集时间戳是否一一对应。",
+        "当前条件不允许执行检查，不能据此形成结论，需确认安全许可、工具可用性与人员资质后再决定是否排期。",
+        "不同来源记录互相矛盾，无法直接采信任一结果，需先核对原始文件完整性、版本来源与时间对齐关系。",
+        "目前仅有主观印象，缺乏可核验证据，不宜作为诊断依据，需补充记录并明确复核责任人与复核条件。"
+      ]
+    },
+    "sensor_fault": {
+      "feedback_texts": [
+        "合成回放中温度或振动曲线似有漂移，可能扰动传感器读数；尚未核对同期环境记录与安装位置，需确认是否同源。",
+        "虚拟通道显示数值略偏离邻近参考，可能是仪表偏差或采样链路问题；未做真实比对，需核对校准记录与通道映射后再判断。",
+        "设备身份在回放里可能映射错位，sensor_fault 桶与物理点位未必对应；需核对资产编号、拓扑绑定及时间戳对齐，避免误归因。",
+        "当前仅合成数据，无法执行现场检查或带电测试；需确认是否具备远程日志、维护窗口与安全授权后，再安排人工复核。",
+        "两段回放结论互相矛盾：一处显示异常，另一处却平稳；尚不清楚哪段可信，需核对采集时段、过滤规则及缺失值处理。",
+        "个人倾向认为该桶更像误报，但无证据支撑，不能作为诊断；需补充可追溯日志与对照样本后，再由人工确认。"
+      ]
+    },
+    "fleet_common": {
+      "feedback_texts": [
+        "环境温湿度或振动可能变化，当前为虚拟回放；需核对现场环境记录与传感器日志后再判断。",
+        "仪表可能偏差，未做现场校准；需核对校准状态、比对记录和安装位置，勿据此下结论。",
+        "身份映射或资产编号可能错配；需核对设备台账、通道映射与时间戳是否一致，再确认对应关系。",
+        "因权限、接口或现场条件受限，检查无法执行；需人工确认可执行窗口与安全前提，虚拟结果不代表实况。",
+        "两组回放结果相互矛盾；需核对数据窗口、统计口径与版本，并由人工复核后再决定是否派单。",
+        "有工程师凭经验认为可能异常，但无证据支持；需补充可核验记录与来源，避免作为派单依据。"
+      ]
+    },
+    "mixed_unresolved": {
+      "feedback_texts": [
+        "虚拟情景桶环境参数疑似变化，当前记录只提示温度/湿度漂移，未做真实测量；建议核对传感器日志与时间窗后再判断。",
+        "仪表读数可能偏差，候选原因是校准状态或采样通道未确认；需核对最近校准记录与同源比对，暂不认定设备异常。",
+        "身份映射存在不确定性，设备ID与回放桶标签可能未对齐；需人工核对映射表、时间戳和权限边界，Carbon与Agent保持隔离。",
+        "该检查因条件不足无法执行，未进行任何真实测量；需确认安全许可、工具可用性与现场授权后，再由人工决定是否派单。",
+        "回放结果出现矛盾，一组倾向正常一组提示异常，但均为虚拟数据；需核对数据版本、口径和缺失值后再复现。",
+        "仅有无证据意见，不能作为结论；建议先补充可追溯记录和可复核依据，并由人工确认后续动作。"
+      ]
+    }
+  },
+  "ledger": [
+    {
+      "kind": "buckets",
+      "target": "capacity_degradation",
+      "status": "passed_language_schema",
+      "request_sha256": "fd44bd190e0b4988981620116219dfc8da39e93006d8fd9d7f8aecfca68589d9",
+      "usage": {
+        "prompt_tokens": 228,
+        "completion_tokens": 1457,
+        "total_tokens": 1685,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1266
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 228
+      },
+      "response_sha256": "fbf8d063e8116c94bc1e92513083bddc9a179cd09d2da233a9c7b73a20fb3c1c",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "charging_stage",
+      "status": "passed_language_schema",
+      "request_sha256": "c1c39d23a98caf36bab45595e95d7e2e4481376fa03716ae9b35eebf853cae26",
+      "usage": {
+        "prompt_tokens": 227,
+        "completion_tokens": 986,
+        "total_tokens": 1213,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 801
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 227
+      },
+      "response_sha256": "434151d3de78949789c2d21174362b4bb0c43d5686bc6299b3353753f61b28ca",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "fleet_common",
+      "status": "passed_language_schema",
+      "request_sha256": "66d618035322fe1b9a35cf2971f6889bfe94ff1cbd34157d613db1399fddcc75",
+      "usage": {
+        "prompt_tokens": 227,
+        "completion_tokens": 960,
+        "total_tokens": 1187,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 786
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 227
+      },
+      "response_sha256": "0fd44f2c619e12ee1ecb872501004f3109ccfeec44f16437b49c145d8fb05f27",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "high_resistance",
+      "status": "passed_language_schema",
+      "request_sha256": "619b9943aba1ded15c926a6aa48cf56f4348509b622de83ba3dcf17531e3d0ad",
+      "usage": {
+        "prompt_tokens": 227,
+        "completion_tokens": 1741,
+        "total_tokens": 1968,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1514
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 227
+      },
+      "response_sha256": "8af81494581889fb52a27e834dd66e2425921a8a2c6591b721c932ec410a4276",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "missing_bad_data",
+      "status": "passed_language_schema",
+      "request_sha256": "2f3eeff0881d282beb4c74dd5885ee374c5b7e1857988d805af5346f02ca0c72",
+      "usage": {
+        "prompt_tokens": 228,
+        "completion_tokens": 1334,
+        "total_tokens": 1562,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1154
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 228
+      },
+      "response_sha256": "b6b6562cc0af01f61144f7d5f0eeb824678df41c524b98cfb99c459afe89c950",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "mixed_unresolved",
+      "status": "passed_language_schema",
+      "request_sha256": "13a6e797074599dcde7148f9f9a402ebb86a18557839d058bca5b4031e66c18f",
+      "usage": {
+        "prompt_tokens": 228,
+        "completion_tokens": 1698,
+        "total_tokens": 1926,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1496
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 228
+      },
+      "response_sha256": "48ed4797feeabcc417326b4098fb1ad713e0be85339ac7ef1fd44bdc90439ace",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "normal_activation",
+      "status": "passed_language_schema",
+      "request_sha256": "efb1dcaa327c9c37234f73f972df3abe3cc61d8a4eb6fa55a50d1e5ec3ff4af0",
+      "usage": {
+        "prompt_tokens": 227,
+        "completion_tokens": 971,
+        "total_tokens": 1198,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 779
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 227
+      },
+      "response_sha256": "9729a454b8688a21d1b6a579efcc97c921f0a4521af0e2f1794e08c6a30b27d7",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "sensor_fault",
+      "status": "passed_language_schema",
+      "request_sha256": "64cfdf9a0ffc01cda5d014e377ceebc9996a289a15920a48d421afc660ed9ce9",
+      "usage": {
+        "prompt_tokens": 227,
+        "completion_tokens": 1979,
+        "total_tokens": 2206,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1761
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 227
+      },
+      "response_sha256": "454c673ada383c8ba8979d9e302b0e5a6e8cb17f8ceedb146816552af2a7e1a2",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "suspected_self_discharge",
+      "status": "passed_language_schema",
+      "request_sha256": "1c81e2955de2ddd4801eb50fc838edf71846e497c882b6a3517309704ba7f7a1",
+      "usage": {
+        "prompt_tokens": 230,
+        "completion_tokens": 803,
+        "total_tokens": 1033,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 589
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 230
+      },
+      "response_sha256": "5b174350a589f0a12aab3c8936828fd4f53b27699b7831046a1c660739555649",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "temperature_anomaly",
+      "status": "passed_language_schema",
+      "request_sha256": "b86c7722cfba80f8ab81cc0bd3097566e9b89184171403b631cd1cd589c0601f",
+      "usage": {
+        "prompt_tokens": 229,
+        "completion_tokens": 682,
+        "total_tokens": 911,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 474
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 229
+      },
+      "response_sha256": "1fd236169a1745c9273f8492bfcc0425e8ae4b48286ecf9092df46835a251a25",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "unsupported_domain",
+      "status": "passed_language_schema",
+      "request_sha256": "94adce8c4f134e6d21a80d2f7672594794b70092607254e7258323635222c739",
+      "usage": {
+        "prompt_tokens": 228,
+        "completion_tokens": 755,
+        "total_tokens": 983,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 544
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 228
+      },
+      "response_sha256": "fcc707dba8ebdb15d1d900d5f6622777f44432aef14578b56883d32d15b1a3c8",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "buckets",
+      "target": "voltage_difference",
+      "status": "passed_language_schema",
+      "request_sha256": "5a00d52ba163ba40621dcf3b9731e6d41785248f3f75d87e12c6473d33db35ab",
+      "usage": {
+        "prompt_tokens": 227,
+        "completion_tokens": 1051,
+        "total_tokens": 1278,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 828
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 227
+      },
+      "response_sha256": "d5d40159a5766c7050a5c6c81643eac31bc8a559cd909878049532bbbba9702d",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "active-test-selection",
+      "status": "passed_language_schema",
+      "request_sha256": "62ab0588bd774cf665de1876281251383d8b671b015ebc06c6963f47bd6ac5ec",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 1675,
+        "total_tokens": 1897,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1540
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "cd59e030e1dcd1ad63263cb489109d6cbfd5e59756cbf0e78c7ca2ef7846cc72",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "capacity-loss",
+      "status": "passed_language_schema",
+      "request_sha256": "8177abf1552a2465eb1daf2e524230bc52f77cb940b4434656bc7d85d4b7474f",
+      "usage": {
+        "prompt_tokens": 220,
+        "completion_tokens": 2277,
+        "total_tokens": 2497,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2127
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 220
+      },
+      "response_sha256": "74ecfaf65a59a64d61aa47315343607faef81e33f8f8e5ce9b5e6358f5240704",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "charging-anomaly",
+      "status": "passed_language_schema",
+      "request_sha256": "0f7b56c6deae85b226b95a5a036c2d555266264fab3da824eeee8a3645af3874",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 672,
+        "total_tokens": 894,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 522
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "48872146dc94cd789f0f474c2e12d555ed789614e0b66ffa8c9f71e551a464bc",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "chemistry-eligibility",
+      "status": "passed_language_schema",
+      "request_sha256": "2ad8dd58ed0d1b804d18fb55413b6647d048542fb946a63a4816949033bd311e",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 894,
+        "total_tokens": 1116,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 769
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "970f2c727b5208c3d82a6472c048d4a0700e99b720ac3cf363af3845a405f2b2",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "data-quality",
+      "status": "passed_language_schema",
+      "request_sha256": "a79c14d5d6dcd7cd49b64e6c2c2036aec31b534bebf8dde813ca5b57f6f9e588",
+      "usage": {
+        "prompt_tokens": 220,
+        "completion_tokens": 766,
+        "total_tokens": 986,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 649
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 220
+      },
+      "response_sha256": "06436cb8e110475e912511be54faa51f187c9277aaf872039b000028b71d83fb",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "efficiency-measurement",
+      "status": "passed_language_schema",
+      "request_sha256": "bd73ab4dc6ff7b555474bc59a4449914b16b1142940598600891dabab2565185",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 670,
+        "total_tokens": 892,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 523
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "b0af0a928a3e6df32633769ada06a5ccef160a375307a1a2bfe48cd16cbdeaac",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "feedback-context-update",
+      "status": "passed_language_schema",
+      "request_sha256": "57fee6bb225f14fd1075e278dfe94fffebaa73727e7ec6fab1bf81d0cda115f4",
+      "usage": {
+        "prompt_tokens": 223,
+        "completion_tokens": 1461,
+        "total_tokens": 1684,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1329
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 223
+      },
+      "response_sha256": "31cf364d179295c5f43341261f61cbab2a6a8867a4d14c8deead71c049b58177",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "fleet-correlation",
+      "status": "passed_language_schema",
+      "request_sha256": "d683fd05a5dfb0cae3eefd543efbfdfb80aec6a4f17e038a3a31e1577e662536",
+      "usage": {
+        "prompt_tokens": 221,
+        "completion_tokens": 2144,
+        "total_tokens": 2365,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1981
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 221
+      },
+      "response_sha256": "ae623ebe10a24a742fd1b4f08f7eba2760877ce4cf009ea52b646587ece2df8a",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "internal-resistance",
+      "status": "passed_language_schema",
+      "request_sha256": "081ea2a55bb0f3a409434f1fe11f34bd798e239760dfa51e25ee4c98934d5278",
+      "usage": {
+        "prompt_tokens": 221,
+        "completion_tokens": 2347,
+        "total_tokens": 2568,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2179
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 221
+      },
+      "response_sha256": "a821b70dcd35fa95904b3dc7251e2c46f918cbcc5c123463c2b3732c75b3e7cb",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "lifetime-interpretation",
+      "status": "passed_language_schema",
+      "request_sha256": "023cce3a599cc1491fdd563b7c959d15da46da98cce49cf4d1addfddbf3e2161",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 815,
+        "total_tokens": 1037,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 670
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "4eb4041a9d71e52b2bd509c8ec238ec180969424c5691509544e0a9f16577c1f",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "report-work-proposal",
+      "status": "passed_language_schema",
+      "request_sha256": "34f4dca33b11dd559f0901e9d1c0bee10c930375036fb73efa190f866324e73e",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 1392,
+        "total_tokens": 1614,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1263
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "1486e658b1da1e198cfc7e4927a4182261e46443043c750e945fc22fa51af4dc",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "self-discharge",
+      "status": "passed_language_schema",
+      "request_sha256": "70cbdc7a12f81d57238e1836ac59c53ec88eb24677f0c267cc3d3e0764c572c3",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 1740,
+        "total_tokens": 1962,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1594
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "9e0b3cb030b1be3b131e9ded4bc6e8c11faafd8d136fb12d9e36523128a773f6",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "sensor-anomaly",
+      "status": "passed_language_schema",
+      "request_sha256": "6c0cf4ceee85e4b871d30f09ae8be7c737a0869cc5fd33b869c407115593d8fa",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 2702,
+        "total_tokens": 2924,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2569
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "ab33f97b6c04d4abe9ef41ba738a8fecb30d198b92078ecb28952cf6cc9f837e",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "soh-trend",
+      "status": "passed_language_schema",
+      "request_sha256": "8af39e702b935c1e62a72d8bd611de33bd41199df03e8bef479572364c885e8a",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 1038,
+        "total_tokens": 1260,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 885
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "c07845067d97cf1d5812dc1e843c69efac74c04338e9be9cdcdd87e9ec7a618b",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "thermal-anomaly",
+      "status": "passed_language_schema",
+      "request_sha256": "604b035f3ffb3fdcee0c5caafeac8417f8c08f7822af6b3a5fec42c22e759b14",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 2513,
+        "total_tokens": 2735,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2379
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "990f54b1074b6dca450d8125efa646d157e39e219e947145018b8b8e11ce871d",
+      "expert_review": "not_performed"
+    },
+    {
+      "kind": "skills",
+      "target": "voltage-inconsistency",
+      "status": "passed_language_schema",
+      "request_sha256": "b801d72c6e9979ef02a804b9f32ab5fac7039cdf8d6dabb23aa7b16d21ca47aa",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 1605,
+        "total_tokens": 1827,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1454
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 222
+      },
+      "response_sha256": "899521e868a8a9b5719d7e8d070cfbb01bd72588d705bd929eb816668d020372",
+      "expert_review": "not_performed"
+    }
+  ],
+  "provenance": {
+    "method": "OpenAI-compatible cloud supplemental language synthesis",
+    "provider_base_url": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "calls": 28,
+    "successful_calls": 28,
+    "http_attempts": 28,
+    "retries_per_task": 0,
+    "generated_at": "2026-10-01T16:04:21.127614+00:00",
+    "truth_source": "deterministic configured physics and enumerated math; never provider answers",
+    "real_operational_data": false,
+    "expert_review": "not_performed"
+  }
+}

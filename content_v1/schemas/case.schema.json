@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:case:v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "case_id",
+    "root_scenario_id",
+    "parent_id",
+    "origin",
+    "source_refs",
+    "asset_context",
+    "initial_visible",
+    "test_catalog",
+    "observation_model",
+    "split_tags"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "battery-content-v1"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "root_scenario_id": {
+      "type": "string"
+    },
+    "parent_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "origin": {
+      "enum": [
+        "real_experimental",
+        "real_operational",
+        "literature",
+        "physics_simulated",
+        "expert_synthetic",
+        "public_generated"
+      ]
+    },
+    "source_refs": {
+      "type": "array"
+    },
+    "asset_context": {
+      "type": "object",
+      "required": [
+        "installation_id",
+        "physical_cell_id",
+        "chemistry",
+        "protocol_id",
+        "namespace",
+        "provenance"
+      ]
+    },
+    "initial_visible": {
+      "type": "object",
+      "required": [
+        "cutoff",
+        "observations",
+        "known_missing"
+      ],
+      "properties": {
+        "cutoff": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "observation_id",
+              "metric",
+              "value",
+              "unit",
+              "timestamp",
+              "method_id",
+              "instrument_id",
+              "source",
+              "provenance",
+              "uncertainty",
+              "quality_flags",
+              "available_after"
+            ],
+            "properties": {
+              "observation_id": {
+                "type": "string"
+              },
+              "metric": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "uncertainty": {
+                "type": "object"
+              },
+              "quality_flags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "available_after": {
+                "type": "string"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "value": {
+                      "type": "null"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "missing_reason"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "known_missing": {
+          "type": "array"
+        },
+        "predictions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "prediction_id",
+              "model_version",
+              "target_definition",
+              "head",
+              "support",
+              "distribution",
+              "calibration_status",
+              "visible_cutoff"
+            ]
+          }
+        }
+      }
+    },
+    "test_catalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "test_id",
+          "purpose",
+          "applicable_hypotheses",
+          "prerequisite_inputs",
+          "required_skill",
+          "allowed_procedure_ids",
+          "duration_minutes",
+          "cost_units",
+          "result_enum",
+          "unit",
+          "failure_possible",
+          "destructive",
+          "needs_new_authorization"
+        ],
+        "properties": {
+          "test_id": {
+            "type": "string"
+          },
+          "duration_minutes": {
+            "type": "number",
+            "minimum": 0
+          },
+          "cost_units": {
+            "type": "number",
+            "minimum": 0
+          },
+          "result_enum": {
+            "type": "array",
+            "minItems": 1
+          },
+          "destructive": {
+            "type": "boolean"
+          },
+          "needs_new_authorization": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "observation_model": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "split_tags": {
+      "type": "object",
+      "required": [
+        "split",
+        "difficulty",
+        "domain"
+      ]
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "hidden_truth"
+        ]
+      },
+      {
+        "required": [
+          "branches"
+        ]
+      },
+      {
+        "required": [
+          "feedback_events"
+        ]
+      },
+      {
+        "required": [
+          "expected_behavior"
+        ]
+      },
+      {
+        "required": [
+          "oracle"
+        ]
+      },
+      {
+        "required": [
+          "labels"
+        ]
+      }
+    ]
+  }
+}

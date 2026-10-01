@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:oracle-label:v1",
+  "type": "object",
+  "required": [
+    "case_id",
+    "root_scenario_id",
+    "schema_version",
+    "hidden_truth",
+    "branches",
+    "feedback_events",
+    "expected_behavior",
+    "expected_patch",
+    "split_tags"
+  ],
+  "properties": {
+    "hidden_truth": {
+      "type": "object",
+      "required": [
+        "status",
+        "root_cause",
+        "candidate_causes",
+        "is_real_confirmation"
+      ]
+    },
+    "branches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "branch_id",
+          "from",
+          "test_id",
+          "result",
+          "reveal",
+          "next_state",
+          "observation_only"
+        ]
+      }
+    },
+    "feedback_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "feedback_id",
+          "case_id",
+          "report_version",
+          "author_role",
+          "observed_at",
+          "structured",
+          "free_text",
+          "evidence_ids",
+          "assertion_targets",
+          "verification_status",
+          "origin",
+          "extraction_targets"
+        ],
+        "properties": {
+          "free_text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "structured": {
+            "type": "object",
+            "required": [
+              "completed_tests",
+              "confirmed_hypotheses",
+              "excluded_hypotheses",
+              "unresolved_items"
+            ]
+          },
+          "extraction_targets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "field",
+                "span",
+                "evidence_ids"
+              ],
+              "properties": {
+                "span": {
+                  "type": "object",
+                  "required": [
+                    "start",
+                    "end",
+                    "text"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "expected_patch": {
+      "type": "object",
+      "required": [
+        "operation",
+        "must_preserve"
+      ],
+      "properties": {
+        "operation": {
+          "enum": [
+            "ADD",
+            "REVISE",
+            "DEPRECATE",
+            "CONFLICT",
+            "NO_UPDATE"
+          ]
+        }
+      }
+    },
+    "expected_behavior": {
+      "type": "object",
+      "required": [
+        "required",
+        "acceptable",
+        "prohibited",
+        "unknown_allowed",
+        "weights",
+        "weight_basis"
+      ]
+    }
+  }
+}

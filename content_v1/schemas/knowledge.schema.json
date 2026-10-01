@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:knowledge:v1",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "origin",
+    "license_status",
+    "title",
+    "text"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "license_status": {
+      "type": "string"
+    }
+  }
+}

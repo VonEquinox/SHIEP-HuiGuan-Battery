@@ -69,3 +69,18 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
 - 验证：调度 API/求解测试 13 项通过；40 个小规模 fixture 已与穷举 oracle 比较。
 - 详细命令、状态、约束和限制见 `battery_platform/docs/V2_DISPATCH_IMPLEMENTATION.md`。
 - 提交归档范围为调度包/API、迁移 004、调度测试与独立实施说明；运行目录不纳入提交。
+
+## 提交 05：Skill 与合成内容完整包
+
+- 交付 `content_v1/` 和可复现生成/合成/验证/回放工具，16 个 Skill、64 个冷启动示例。
+- 生成 2,400 个根情景，12 桶各 200；划分为 cold_start 960、evolution 720（六批各120）、
+  dev 360、sealed 360；31,200 条未来观察物理隔离并由授权回放器逐轮揭示。
+- 覆盖 1,760 个初始需补测、1,000 个正常/不支持/证据不足、640 个冲突/未解决情景；
+  十二类错误反馈和 ADD/REVISE/DEPRECATE/CONFLICT/NO_UPDATE 均可检查。
+- 额外交付 40 个派单穷举 fixture 与 30 个 Carbon 算例；Carbon 不进入 Agent 知识库。
+- 实际云端合成：DeepSeek `deepseek-flash` 28/28 HTTP 调用成功，提供方记账 45,408 tokens；
+  文本变体与 Skill 补充采用云端结果，物理真值/分支/数学 oracle 由独立程序提供。
+- 验证：内容测试 82 项通过；16/16 标准 Skill 结构通过；冻结验证报告 `hashes_checked=true`。
+- 限制：未做真实设备验证或独立专家盲评，跨划分仍共享广义物理生成方法；不声称真实诊断准确率。
+- 独立实施、Skill 和 fixture 细节分别归档到 `docs/V2_CONTENT_IMPLEMENTATION.md`、
+  `docs/V2_SKILLS_DETAIL.md`、`docs/V2_FIXTURES_DETAIL.md`。

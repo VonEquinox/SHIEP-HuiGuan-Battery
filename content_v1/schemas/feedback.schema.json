@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:feedback:v1",
+  "type": "object",
+  "required": [
+    "feedback_id",
+    "case_id",
+    "report_version",
+    "author_role",
+    "observed_at",
+    "structured",
+    "free_text",
+    "evidence_ids",
+    "assertion_targets",
+    "verification_status",
+    "origin",
+    "extraction_targets"
+  ],
+  "properties": {
+    "free_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "structured": {
+      "type": "object",
+      "required": [
+        "completed_tests",
+        "confirmed_hypotheses",
+        "excluded_hypotheses",
+        "unresolved_items"
+      ]
+    },
+    "extraction_targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "span",
+          "evidence_ids"
+        ],
+        "properties": {
+          "span": {
+            "type": "object",
+            "required": [
+              "start",
+              "end",
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:package-manifest:v1",
+  "type": "object",
+  "required": [
+    "content_version",
+    "schema_version",
+    "creator",
+    "generation_method",
+    "root_scenario_count",
+    "child_sample_count",
+    "split_counts",
+    "public_paths",
+    "evaluator_only_paths",
+    "files"
+  ],
+  "properties": {
+    "root_scenario_count": {
+      "const": 2400
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

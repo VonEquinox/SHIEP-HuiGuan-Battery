@@ -1,0 +1,92 @@
+{
+  "skill_id": "self-discharge",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "rest_observations",
+    "elapsed_time",
+    "temperature",
+    "standby_load"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "search_knowledge",
+    "search_memory",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "internal_short_from_rest_voltage",
+    "unknown_load_is_zero",
+    "unvalidated_safety_probability"
+  ],
+  "references": [
+    "knowledge-skill-self-discharge"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "self-discharge-positive-01",
+    "self-discharge-negative-01",
+    "self-discharge-negative-02",
+    "self-discharge-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "rest",
+    "self",
+    "discharge",
+    "standby",
+    "静置",
+    "自放电",
+    "休眠"
+  ],
+  "files": {
+    "SKILL.md": "963042d349ddca5b4a95823f884fc8778360527ce3a3bcf3ae0c39060ffb7973",
+    "checks/contract.json": "53593a955de22055902205336c4a7c1a03cca1cf78dae9122db7aaf9ac6d3797",
+    "examples/insufficient-01.json": "600b46bddf6f5ebebcb773b52ee6d1b575bd5d3cd51c9d73f83e7e03e1280ad0",
+    "examples/negative-01.json": "f2a07ef1969aaa01ddc2ba95077db8173b6bfb0b6fb61147a734cbcb8685a937",
+    "examples/negative-02.json": "fa680949018ac0fc90340119398eef5f148b33ac7a3193b559d16d8e97a5306d",
+    "examples/positive-01.json": "0c1a7e04b4221d91addf68c9ee0735e92bbf3e0475f5efe7513ee12843ea014d",
+    "references/evidence.md": "2f339091744249261b725f980ea8dc0a1cead6770b492cb5d8b2fedae932672b"
+  }
+}

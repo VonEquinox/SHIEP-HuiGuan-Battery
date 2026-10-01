@@ -1,0 +1,93 @@
+{
+  "skill_id": "report-work-proposal",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "visible_evidence",
+    "hypotheses",
+    "test_catalog"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "read_prediction",
+    "search_knowledge",
+    "rank_tests",
+    "propose_work_order",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "automatic_dispatch",
+    "fabricated_evidence_reference",
+    "fabricated_report_numeric",
+    "rewrite_installation_identity"
+  ],
+  "references": [
+    "knowledge-skill-report-work-proposal"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "report-work-proposal-positive-01",
+    "report-work-proposal-negative-01",
+    "report-work-proposal-negative-02",
+    "report-work-proposal-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-036be010b588fc32",
+    "r-04e3466dfe978c81",
+    "r-059f9f5ebe87c475",
+    "r-08edd7d70c26ecfd"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "report",
+    "proposal",
+    "evidence",
+    "dispatch",
+    "报告",
+    "提案",
+    "派单"
+  ],
+  "files": {
+    "SKILL.md": "5449a069e8911dd5f3ba74682e018b4487ae9e413981b6f2a9e2369125b6d243",
+    "checks/contract.json": "539b752d13c72cd4a5e62abbfc9af8a492b1a136f913864c1b4978227d755570",
+    "examples/insufficient-01.json": "11f9ed387e5aa9da98f26f626209ad4926de26be9f1460bd69b73ae1da820485",
+    "examples/negative-01.json": "f9765895238d2e25743d320169438fe78c1c63a9a037495fd9ce2ea332867db5",
+    "examples/negative-02.json": "bbc08a38b9f8f139fb62c69f8ca0b59ac8e3f01c5735e8e88f7a7e18d034c359",
+    "examples/positive-01.json": "680d5854bbae155b36f6190ef207bf3443021958fa3d3f58f9948ec503ca9b31",
+    "references/evidence.md": "5a3c1bf4a84fcab35a3d931d1c9bc21f11c2675c0cfd9591977d097fcc5376c2"
+  }
+}

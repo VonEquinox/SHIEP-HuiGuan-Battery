@@ -1,0 +1,92 @@
+{
+  "skill_id": "charging-anomaly",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "charging_strategy",
+    "charging_observations",
+    "soc",
+    "temperature"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "read_prediction",
+    "search_knowledge",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "multi_stage_is_fault",
+    "compare_different_charge_strategies",
+    "autonomous_charging_parameter_change"
+  ],
+  "references": [
+    "knowledge-skill-charging-anomaly"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "charging-anomaly-positive-01",
+    "charging-anomaly-negative-01",
+    "charging-anomaly-negative-02",
+    "charging-anomaly-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "charging",
+    "stage",
+    "strategy",
+    "fast",
+    "充电",
+    "阶段",
+    "策略"
+  ],
+  "files": {
+    "SKILL.md": "596743fc598268abfdbebaac8ab3d97a0ff518e76ddc21f1fde9df9f829f198f",
+    "checks/contract.json": "ad200d48922b166cf03756c3a1dd4981ef94073e0ed1260761a0b060e35c3cc4",
+    "examples/insufficient-01.json": "efbc7f5a4944c02548008fc1385ab7d11b071e31250d1fbd0e7038a27c4a5224",
+    "examples/negative-01.json": "4c352c911caf80fd18639fb503e67df2728ddf25d4e4f0aef52f6ac331957532",
+    "examples/negative-02.json": "28bf46faa1e146cd64f445e59181544972f8812a6e27468f89d881fa0216dc4e",
+    "examples/positive-01.json": "5ace775b2e5ee3a311615553369bf5cce0c4ced1fff4cc94ef2d8a5471b5504a",
+    "references/evidence.md": "df56247aa611f3711e97740e69d0c42ed88f2be0f8c58c26d0f1a888efbda7d9"
+  }
+}

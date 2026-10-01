@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:fixture:v1",
+  "type": "object",
+  "required": [
+    "fixture_id",
+    "schema_version",
+    "kind",
+    "synthetic",
+    "data_scope",
+    "generated_by",
+    "inputs",
+    "oracle"
+  ],
+  "properties": {
+    "synthetic": {
+      "const": true
+    },
+    "data_scope": {
+      "const": "demo_synthetic"
+    },
+    "kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "oracle": {
+      "type": "object"
+    }
+  }
+}

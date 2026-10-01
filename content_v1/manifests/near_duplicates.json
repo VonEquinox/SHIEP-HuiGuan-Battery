@@ -1,0 +1,5766 @@
+{
+  "cross_split_clusters": 0,
+  "clusters": [
+    {
+      "cluster_id": "cluster-ac72368a586a18c1",
+      "template_family": "template-ac72368a586a18c1",
+      "split": "cold_start",
+      "root_ids": [
+        "r-0db38b82aeb8eb71",
+        "r-40dd260d47b8b96b",
+        "r-051c95cddcc9074d",
+        "r-77cafff6e2f92917",
+        "r-ae3bf1a19fe94242",
+        "r-4b33b2c7aa4f7b89",
+        "r-ee7b5f66dc1939c7",
+        "r-0ef4483c17bf3f15",
+        "r-624a13857fd0c5a7",
+        "r-b2372daf626606d2"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-ef134f2a180ba05d",
+      "template_family": "template-ef134f2a180ba05d",
+      "split": "cold_start",
+      "root_ids": [
+        "r-33e88d2910698d01",
+        "r-954c0989da45c508",
+        "r-2244ae87a5805cbe",
+        "r-af446175063a8876",
+        "r-5e419e8d10e809f9",
+        "r-aa53620750d8aabb",
+        "r-a0ba16eac6788248",
+        "r-410561c3866a3a9e",
+        "r-2e3fc842e49a7fe5",
+        "r-41add53d17462e53"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-9328a9dc66caf8eb",
+      "template_family": "template-9328a9dc66caf8eb",
+      "split": "cold_start",
+      "root_ids": [
+        "r-5f31229770fa288b",
+        "r-fa78d26eb2c4e19c",
+        "r-55c683bc30cd120a",
+        "r-e63fd8e4ad046bbc",
+        "r-70740f71cde5f957",
+        "r-95a2c4bf25d171c2",
+        "r-8e98524286034a91",
+        "r-39282352d723acd7",
+        "r-2841c122aa0dec6b",
+        "r-1a15e6353a712d2c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-76d3c2eeff0f7e93",
+      "template_family": "template-76d3c2eeff0f7e93",
+      "split": "cold_start",
+      "root_ids": [
+        "r-fa298f767f25b134",
+        "r-66de48dd14830318",
+        "r-4d06f6ef075dfda0",
+        "r-03188a483d4973be",
+        "r-eb73d3bce47297cd",
+        "r-38a2c379659f0419",
+        "r-285bde684051dc91",
+        "r-f300119892fff220",
+        "r-f2c1d623d505a074",
+        "r-07d71b8ded5031b4"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-48f03bc9419d2b28",
+      "template_family": "template-48f03bc9419d2b28",
+      "split": "cold_start",
+      "root_ids": [
+        "r-3f3d89d2f26478e0",
+        "r-41410f8c531e106a",
+        "r-a5a6b1cfc78b2f8e",
+        "r-93d78b4a1979a35c",
+        "r-e00d5a6a21ca2d14",
+        "r-5291ef4ee48fd353",
+        "r-e2a56846fd7562a3",
+        "r-ddbc08fd4991e2c0",
+        "r-a7e835c6372d25ca",
+        "r-afd1090d5d5590ad"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-cc0c07a725b8917c",
+      "template_family": "template-cc0c07a725b8917c",
+      "split": "cold_start",
+      "root_ids": [
+        "r-97becf4af4e7ea05",
+        "r-22d7ca0837be5267",
+        "r-4d7f9ac3634e26d7",
+        "r-67fe2c704a06ca21",
+        "r-5d1f4ae8cb2723a2",
+        "r-5ed621052182e1bd",
+        "r-fc94858c16ae1be7",
+        "r-254b78c80cb5848c",
+        "r-ceb953ab120adf15",
+        "r-67acd4fcd7616a5f"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-a79a44cee0ffc19b",
+      "template_family": "template-a79a44cee0ffc19b",
+      "split": "cold_start",
+      "root_ids": [
+        "r-41ab528af359f682",
+        "r-cbd940bb050fa293",
+        "r-f07461a4e90f1cc6",
+        "r-a0cd7a1c6b8e1a7e",
+        "r-61c2770f4f201d20",
+        "r-90f80f81dab91cb5",
+        "r-257249876218acfa",
+        "r-c563d5e013f2b67b",
+        "r-ae034f2cc4a856e0",
+        "r-4e24e491f30492fd"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-2bef8ffb8bc03ce3",
+      "template_family": "template-2bef8ffb8bc03ce3",
+      "split": "cold_start",
+      "root_ids": [
+        "r-5b903114bcbec416",
+        "r-99fc388a87b6acfb",
+        "r-875b67dc4423d2c0",
+        "r-d9cb74e9e9dd1bcc",
+        "r-f16eb73b6521b818",
+        "r-a48762b041b1818a",
+        "r-6162d69fc07e6436",
+        "r-257bbc3f50a0881f",
+        "r-a8745135fa4be17a",
+        "r-aa86f288fdee4025"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-91ce123f4eaf1fcf",
+      "template_family": "template-91ce123f4eaf1fcf",
+      "split": "evolution",
+      "root_ids": [
+        "r-0f710dfd82005e7f",
+        "r-478e2f84d695d439",
+        "r-58c22ca732aa24ca",
+        "r-cabf29317f2e376b",
+        "r-be8bbe5fb4a42b94",
+        "r-8425b77cb87b9773",
+        "r-c94c55d24001d39c",
+        "r-fe8458c59fac108c",
+        "r-9f42576f54a1050c",
+        "r-b2d0220c07146ccf"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-502172c31fb89ae1",
+      "template_family": "template-502172c31fb89ae1",
+      "split": "evolution",
+      "root_ids": [
+        "r-62429f46f729c1cd",
+        "r-b3e8bf036c980c03",
+        "r-a7954e3436d39486",
+        "r-ec4df4132767f3f8",
+        "r-d752cb0ec3b194b7",
+        "r-e83f889086105847",
+        "r-4d05a96986114b3f",
+        "r-96a9575f514e20f9",
+        "r-764dc8f8f4262530",
+        "r-0f88ca9f35732106"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-6ac52aebb25dd6ad",
+      "template_family": "template-6ac52aebb25dd6ad",
+      "split": "evolution",
+      "root_ids": [
+        "r-e0c8d67b23a13f26",
+        "r-c275731806baa1fd",
+        "r-844feb6237dfe1f9",
+        "r-1bc6ee370252a064",
+        "r-209e33f7d1169a59",
+        "r-8cc6cf706a6f3454",
+        "r-46d72681f250a98e",
+        "r-2b1b3ba387de959a",
+        "r-ed626f78e42bf4d7",
+        "r-60f9c46c3b8b202a"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d235e7d7dd57dded",
+      "template_family": "template-d235e7d7dd57dded",
+      "split": "evolution",
+      "root_ids": [
+        "r-e661e9a18078e930",
+        "r-2d96a450f9322594",
+        "r-f779f32d62096cba",
+        "r-eacc9a9f18f14b6e",
+        "r-e92b02ccab98d984",
+        "r-6afcc9395f81185d",
+        "r-117c2d7e1a7dfbd3",
+        "r-5298194c3525fe28",
+        "r-8ea65787ded0a930",
+        "r-9c3c49a2b4d1e041"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-a07e6f36a88a563c",
+      "template_family": "template-a07e6f36a88a563c",
+      "split": "evolution",
+      "root_ids": [
+        "r-034b5f8df4606657",
+        "r-330f7c2445d49a99",
+        "r-88f11b558f89dc48",
+        "r-33b09751f0862f17",
+        "r-e13af8e162b82229",
+        "r-0893170b77c7ed63",
+        "r-4c38d015374bc212",
+        "r-78ca3c46452a383a",
+        "r-82bf7a3a5ac123a2",
+        "r-8417075aadf0cde4"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d853339de6adacae",
+      "template_family": "template-d853339de6adacae",
+      "split": "evolution",
+      "root_ids": [
+        "r-773fa2a57bca0fc0",
+        "r-c15bd3598ebde79e",
+        "r-8d7bf0f7c9c3a163",
+        "r-4c09dc14900659a6",
+        "r-0b0e0a96d9bedf9b",
+        "r-5c14250a9fb695be",
+        "r-dcc37e66f5a6abf2",
+        "r-da1227455ab4f444",
+        "r-75036d6dc28be061",
+        "r-44f73c49802e2630"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-731ba4d59bbc07fd",
+      "template_family": "template-731ba4d59bbc07fd",
+      "split": "dev",
+      "root_ids": [
+        "r-48e636e102942743",
+        "r-03a66291c670f86e",
+        "r-85bd9aa2bf6fc969",
+        "r-c728875c75b0c6d8",
+        "r-47d0914d60f48b37",
+        "r-c3a037d5e254131d",
+        "r-05a7d0456adaecf2",
+        "r-a28323165ec58032",
+        "r-0181d4745282d91e",
+        "r-dbe90f47e068b480"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-04111fc95655f3e1",
+      "template_family": "template-04111fc95655f3e1",
+      "split": "dev",
+      "root_ids": [
+        "r-c958d7b4075fc23f",
+        "r-655f622933ebcfce",
+        "r-e1454c8be48896ca",
+        "r-4d02137edfaee91a",
+        "r-530b44dca0afc050",
+        "r-3ccf17560d9ffbab",
+        "r-db2ae470c0d17b96",
+        "r-ec94c2320eab3f0a",
+        "r-e4a721c062640a6c",
+        "r-8e0b3c2a8fa6e995"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c584d84a8ce05bad",
+      "template_family": "template-c584d84a8ce05bad",
+      "split": "dev",
+      "root_ids": [
+        "r-0d8dd11795e1e0e2",
+        "r-f004c8d430f129d8",
+        "r-4af9734a18ebcdb1",
+        "r-8a1956aa33557221",
+        "r-7811ffb65ab7dfbd",
+        "r-6578cf2f0a248d9f",
+        "r-c071e839c78fb39b",
+        "r-1271b0e8025b7704",
+        "r-ed324e0506e44f5f",
+        "r-b86727daffb51253"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-6d5dc3494e59a0de",
+      "template_family": "template-6d5dc3494e59a0de",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-6c425cfa9f18012b",
+        "r-a40bd7916625fe8e",
+        "r-26c51b82d6b4fd89",
+        "r-ba2ba9b5b0ee36d2",
+        "r-7cb8bc12dc0533dd",
+        "r-ffbcfeb08eb06da7",
+        "r-3c5f59f74ea8cc12",
+        "r-a72952833e0ad62a",
+        "r-0f15b62b80f52857",
+        "r-cc4c00050c29ee9c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-2356cd74bee78077",
+      "template_family": "template-2356cd74bee78077",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-c397ed55e744dd2d",
+        "r-343fa3c62b442ce1",
+        "r-cd4f73e918d199a9",
+        "r-d6785dd08a55fe67",
+        "r-fa10b57f6e0948f6",
+        "r-5e97819122d1e4a6",
+        "r-c105f8aa2e43eed4",
+        "r-c7201d380a192058",
+        "r-dd29a86fe22a1c0e",
+        "r-4aeda8a903ce284b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7dea4c469c3e364f",
+      "template_family": "template-7dea4c469c3e364f",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-1747ff83d43845c3",
+        "r-a73f0734db85223b",
+        "r-00da0b9df4ceee5a",
+        "r-81c62c3b3e41094c",
+        "r-ae01d1669ad53a40",
+        "r-5da9722df938affe",
+        "r-2301ebc9532bb217",
+        "r-984e4d4fa6b2b61d",
+        "r-6467a2e60eaeecf9",
+        "r-9bfd18da2e889ff2"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-a6685f3b62d57bfc",
+      "template_family": "template-a6685f3b62d57bfc",
+      "split": "cold_start",
+      "root_ids": [
+        "r-8c26d1b9837b1ef3",
+        "r-84d4733b1cfc45fa",
+        "r-6acead0643b87aaa",
+        "r-766c3dc1c7c1bd12",
+        "r-9fca76c865093024",
+        "r-5483241473cf68c6",
+        "r-e840b300a6a86b13",
+        "r-248aad53be872c88",
+        "r-2440133090c3f13f",
+        "r-3b2be68f49607ad5"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d6b5915c46057bcb",
+      "template_family": "template-d6b5915c46057bcb",
+      "split": "cold_start",
+      "root_ids": [
+        "r-c4f77d44445889b3",
+        "r-7ef43098c28c5fb3",
+        "r-a4d0dd0e08e19485",
+        "r-6ab5c4f78ac4111a",
+        "r-04a432b1722ab4d3",
+        "r-ea3e4b2c8f799cab",
+        "r-7c1bb37d2ff8dffd",
+        "r-6bacd6c51b1eb2ec",
+        "r-b7b037211624e9a5",
+        "r-2aa57fe530c35696"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-673aeeb08cfbb00b",
+      "template_family": "template-673aeeb08cfbb00b",
+      "split": "cold_start",
+      "root_ids": [
+        "r-2cfe193ccf363670",
+        "r-0ad004cff388acf9",
+        "r-d7e7a7fcadac08e3",
+        "r-f53a0a1c3d067faf",
+        "r-85251c8c539ed3be",
+        "r-db294e7772fb4a2b",
+        "r-6b892a8719baf19b",
+        "r-09d57907015311f2",
+        "r-2ed2795cb75cff9b",
+        "r-d30241ec6810e234"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-85f2ef987b76f4c3",
+      "template_family": "template-85f2ef987b76f4c3",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f3cce6442471d8ef",
+        "r-35ef7b3ea6b07db0",
+        "r-8dfcb71084c95fdb",
+        "r-fdce696f7ad63730",
+        "r-ea3472e5385b936b",
+        "r-61bdda3caeac93f1",
+        "r-fa6746fcf5ed605b",
+        "r-96826601d84897f4",
+        "r-fafbd24dbe26c547",
+        "r-3b405794fba6d9e8"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-492ab00bbe71db09",
+      "template_family": "template-492ab00bbe71db09",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b10714ecdf0a34f0",
+        "r-9dc9a1cba8d42bc6",
+        "r-6a3d20bf1642f06f",
+        "r-30974e3a24eec7d6",
+        "r-28375201df2921e9",
+        "r-4c448a1d9db2649b",
+        "r-27d9e3260332acd5",
+        "r-44bd5953a172f391",
+        "r-895cab77f62b425c",
+        "r-e1f8954f11bd06e4"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-6669b8482999dfdc",
+      "template_family": "template-6669b8482999dfdc",
+      "split": "cold_start",
+      "root_ids": [
+        "r-db7956db45584017",
+        "r-8c5d51cc76510c66",
+        "r-34b07c540f0084f9",
+        "r-9a586168f9f3083f",
+        "r-51272ff07cfea698",
+        "r-7b162c2f91965425",
+        "r-0e4fd952fc4c20bc",
+        "r-1e96e6f604e29745",
+        "r-f9b05e767fb8dab0",
+        "r-ea78830b9fbff761"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-62325dfc1fc67525",
+      "template_family": "template-62325dfc1fc67525",
+      "split": "cold_start",
+      "root_ids": [
+        "r-5cc373a89aac122e",
+        "r-b047d3520fe8cbc8",
+        "r-2e6477e8fbd635fa",
+        "r-75220781392f77e2",
+        "r-cfe43b26f9f9d1ea",
+        "r-32b747b715846877",
+        "r-ea6968f69d8afbf9",
+        "r-26eb9ce257b91202",
+        "r-489b137c48080c1e",
+        "r-52ca5b647549e417"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-3d5f0fd838606f1f",
+      "template_family": "template-3d5f0fd838606f1f",
+      "split": "cold_start",
+      "root_ids": [
+        "r-9e9babd5640c5642",
+        "r-a200e24d692618d2",
+        "r-f659ccdf407638c3",
+        "r-b0f16ceea11d8605",
+        "r-fa85ad1dfd325c32",
+        "r-49bc069ba69aac72",
+        "r-36c1bbcb19ac8555",
+        "r-f563a24bc52740e9",
+        "r-6de0a0cc1bc5f609",
+        "r-b58119130a6b72a7"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-546201ca810396be",
+      "template_family": "template-546201ca810396be",
+      "split": "evolution",
+      "root_ids": [
+        "r-6f09d5b2e6c17d58",
+        "r-11c18f9582b90d5a",
+        "r-1f8fbedf85282fc8",
+        "r-318a0bf5fcbc6f28",
+        "r-4fa74f3744846191",
+        "r-572de65c5b5aef55",
+        "r-e29f9278e56a37bb",
+        "r-ecd7e778fbbba671",
+        "r-47584301265eeabf",
+        "r-88f00ac3e7759dd7"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b8eb241b0bdd8d69",
+      "template_family": "template-b8eb241b0bdd8d69",
+      "split": "evolution",
+      "root_ids": [
+        "r-5668b3832355424f",
+        "r-d72b26c607971861",
+        "r-04ff7f20be5e0226",
+        "r-fc0f12c514068dbf",
+        "r-4325cf2859ecb7b0",
+        "r-87a85761ef6af4d7",
+        "r-6ac5a1adb8d9dfff",
+        "r-c0fca7855380b2cb",
+        "r-53299cb1c183dbf2",
+        "r-e1034f4d9aab7770"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b37ae13e618cd2a9",
+      "template_family": "template-b37ae13e618cd2a9",
+      "split": "evolution",
+      "root_ids": [
+        "r-80ba3c2efdf25696",
+        "r-73537640143eea21",
+        "r-d8f2acc1c6bf13a2",
+        "r-5377d44f3fc29d75",
+        "r-06d3bccfad81be90",
+        "r-3fc421d4a872f647",
+        "r-8b562cd0d84843a4",
+        "r-d805a11d4c4489b4",
+        "r-ef843d212ff94703",
+        "r-0a6cbe6669f92ea8"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-3f4ffd26df275e6f",
+      "template_family": "template-3f4ffd26df275e6f",
+      "split": "evolution",
+      "root_ids": [
+        "r-0aa2b3fc25680e85",
+        "r-14a074aa3a4b203f",
+        "r-5b44936dcc25dbbf",
+        "r-f4d6f04aa34d9443",
+        "r-41547e4d80bd5e82",
+        "r-363d07a1b6903e73",
+        "r-825e20fa8faf9ac5",
+        "r-f2a6f68ae11941e6",
+        "r-7d1e9298d3a78197",
+        "r-fb242dfca974ad71"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-ce356d2f943ea5af",
+      "template_family": "template-ce356d2f943ea5af",
+      "split": "evolution",
+      "root_ids": [
+        "r-6c1f0b3d286e0844",
+        "r-978db1c4b6a24cdc",
+        "r-0ef2460f99545946",
+        "r-7fadc2cd20266162",
+        "r-4ac6fa70ec915ff3",
+        "r-f3c2e5deffc9ce44",
+        "r-24d75f809fbd667d",
+        "r-8e5994e4ed5b1d9a",
+        "r-2f4d62c15ec4089e",
+        "r-2fd41a0ae9e246fe"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-fd18287e99e3834d",
+      "template_family": "template-fd18287e99e3834d",
+      "split": "evolution",
+      "root_ids": [
+        "r-16f98ef404dabca4",
+        "r-882050318bda67c6",
+        "r-91658ceca24073ef",
+        "r-8a6d062ac51f96d7",
+        "r-4858d6866a8f7918",
+        "r-160756199ee80210",
+        "r-374dfc5ab167bd52",
+        "r-bed1496ae7e8d2e9",
+        "r-6551d949e731515f",
+        "r-ff204932aae83711"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-ed0120f61c409c58",
+      "template_family": "template-ed0120f61c409c58",
+      "split": "dev",
+      "root_ids": [
+        "r-1b6fa6c30c611bda",
+        "r-14be39fe5d5b9d75",
+        "r-02d311494924c248",
+        "r-7fb127767ab366e7",
+        "r-646172cb022d092e",
+        "r-19219609b7e60fcd",
+        "r-1e2df6aa93facf42",
+        "r-2f11b947978831a0",
+        "r-da997536ac92b32c",
+        "r-1b954aa756825c56"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-dcf02bc950c3bfe7",
+      "template_family": "template-dcf02bc950c3bfe7",
+      "split": "dev",
+      "root_ids": [
+        "r-dcef37a9e47fc9ba",
+        "r-d936a905089593f6",
+        "r-477254d4301a2977",
+        "r-f5cda918ea17a328",
+        "r-921531ed0cde9699",
+        "r-aa42fd93d5d0321c",
+        "r-43ea771829d69e23",
+        "r-cfd44572b6190ff2",
+        "r-5ca849c279590b8a",
+        "r-e88d0461e7415f23"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-a8aa5f5b8b00b993",
+      "template_family": "template-a8aa5f5b8b00b993",
+      "split": "dev",
+      "root_ids": [
+        "r-241c1b2d0c013ecc",
+        "r-68377079ebf563dc",
+        "r-f77467501f824683",
+        "r-30afbc715feba669",
+        "r-40d9e9496284e0d7",
+        "r-752b479d21ee8d7e",
+        "r-7c4633bfbea9de9d",
+        "r-45089f5d54781a8f",
+        "r-7170e5fd208194ff",
+        "r-e75baa8ea8d0e05b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-5c70ee556e54dab3",
+      "template_family": "template-5c70ee556e54dab3",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-dfbfde4c5dfc02c3",
+        "r-6f1031f45894a322",
+        "r-e8f0f9ace6e4b157",
+        "r-7e0ed4f66505abbf",
+        "r-e70a349c5f0fabb8",
+        "r-87ae48ac2fdd8d65",
+        "r-e3419e39bbd42bc7",
+        "r-53f6ea673b9fc4ee",
+        "r-6f636f23dee6859b",
+        "r-f2580094e06574b4"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d9301910b58fb501",
+      "template_family": "template-d9301910b58fb501",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-1f8fa745dd99025a",
+        "r-541d44c25f21ccec",
+        "r-0ac908d875dce6b2",
+        "r-d27575a437509cbe",
+        "r-c8302f8555c7f1a5",
+        "r-c2825eadeff9a3d9",
+        "r-8bb2f288523aef8f",
+        "r-a7820dca6217909f",
+        "r-761e50c59f566d6d",
+        "r-30daf6590a66057f"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d43675b995215b79",
+      "template_family": "template-d43675b995215b79",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-0fd63920857215a5",
+        "r-94741e60b53c001b",
+        "r-07937830b726053f",
+        "r-a7e3e2f64c83b6ef",
+        "r-3f595c3122c45d98",
+        "r-ee6a644edc0e580a",
+        "r-f6fde24f2d33b09e",
+        "r-0751ca44abc37d8e",
+        "r-cc2e7c635fdda265",
+        "r-dce12533e06a691d"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e6b190f6cd6fa4b8",
+      "template_family": "template-e6b190f6cd6fa4b8",
+      "split": "cold_start",
+      "root_ids": [
+        "r-4ac5cf9172ad142b",
+        "r-12204e2dfcf3fdc6",
+        "r-8125740b47833f0e",
+        "r-15976cb32896ef2a",
+        "r-a0a16d380a021b52",
+        "r-ff4f5dafe97a2a79",
+        "r-2140ef776c19e54e",
+        "r-1b7ffbc11eda5de5",
+        "r-246b885df945a508",
+        "r-52e77c18b9a56c2c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-70a37d8f972f2494",
+      "template_family": "template-70a37d8f972f2494",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f325fb4aa3b1f72d",
+        "r-e7c444482d09fa1e",
+        "r-0c7afffc432b63ef",
+        "r-bfa4070c8ddcfb1a",
+        "r-12da0d1dc549a39d",
+        "r-f0747656b91a7963",
+        "r-8341e61fc1682153",
+        "r-63c5aab345cf0e9b",
+        "r-04e3466dfe978c81",
+        "r-3fcb744185bc6d01"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-13113e084fdad328",
+      "template_family": "template-13113e084fdad328",
+      "split": "cold_start",
+      "root_ids": [
+        "r-26c7f9369418324d",
+        "r-332c4fdddd97a469",
+        "r-6dffecf31cb89694",
+        "r-e8c16c42fb20c7e6",
+        "r-993c49d6b2d310ee",
+        "r-75f6da30de094e02",
+        "r-17670bffd6d3044a",
+        "r-8c4f309b984d7741",
+        "r-5bcb39836f74c93c",
+        "r-85a19d59c95a3676"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-8e0375adfc1f4563",
+      "template_family": "template-8e0375adfc1f4563",
+      "split": "cold_start",
+      "root_ids": [
+        "r-a662e2bab70da71f",
+        "r-3296ccbd96910cee",
+        "r-f9945ec01d4f3146",
+        "r-c9e8df05e7772198",
+        "r-e2fb3c1762a0d3c8",
+        "r-b7b743815d3ba4e9",
+        "r-d7eb4e340c958841",
+        "r-7b3f950ed3f204a5",
+        "r-e610cefe5938a664",
+        "r-9f79854aacbea0ff"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-fa70b304f0b46892",
+      "template_family": "template-fa70b304f0b46892",
+      "split": "cold_start",
+      "root_ids": [
+        "r-497b792e1797a0c6",
+        "r-e56de481d991e637",
+        "r-c513ea88018f7a18",
+        "r-ce80df2b29a9697e",
+        "r-2d1594f92d140c41",
+        "r-96cf5914f7a5ddbd",
+        "r-d8b57aa5906fa814",
+        "r-07b46a042de86033",
+        "r-99d4d20825a58f11",
+        "r-66664fdb41730eb8"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-2946226f577b7bbb",
+      "template_family": "template-2946226f577b7bbb",
+      "split": "cold_start",
+      "root_ids": [
+        "r-aaf7c0b4ef0b416d",
+        "r-a9d1f56d08ed9d1d",
+        "r-4667f595f39a2c2a",
+        "r-5f7021083e1e23a7",
+        "r-6fca7e4a3557100d",
+        "r-1f8cae7946fde70d",
+        "r-4b37d63ddd6f3aa7",
+        "r-79dd2742a63f3ea0",
+        "r-4ec5751eda1ce4c4",
+        "r-1a574c6961d09662"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-4526fb2d82c60441",
+      "template_family": "template-4526fb2d82c60441",
+      "split": "cold_start",
+      "root_ids": [
+        "r-0b7c45343d51035f",
+        "r-40dac9a46a404ad9",
+        "r-e9bf23b26089c5cd",
+        "r-894cd42bbde6c71f",
+        "r-3185e14066cd6fbe",
+        "r-9835a3328c2662af",
+        "r-5abe32165cffa2c0",
+        "r-29f8c1c2aaf279cc",
+        "r-74dc38ed53def3c0",
+        "r-068e419e8618cdf1"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7bcddfc2024dd934",
+      "template_family": "template-7bcddfc2024dd934",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f23c6fe5ff99d427",
+        "r-5ca23c2b84061e84",
+        "r-2f8b31ed681d2dd4",
+        "r-ce9b7cb1c24eac88",
+        "r-52a8e6621342fbf3",
+        "r-2c061f13df7ad06e",
+        "r-1679538623e910bd",
+        "r-80db9ca09bb32a7b",
+        "r-7b45b47fd0aa69d2",
+        "r-4ffbd4bb364772ae"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c876a1d5125b12c8",
+      "template_family": "template-c876a1d5125b12c8",
+      "split": "evolution",
+      "root_ids": [
+        "r-69447b09c278c1a9",
+        "r-1db07878157d42db",
+        "r-2eec13b9a6b19be6",
+        "r-c89806c9f2ddb70b",
+        "r-f45965cc6aa4a2d2",
+        "r-ed9d1e0ef06b467a",
+        "r-d6f1f92bbb1778b4",
+        "r-b3c319c382a8e2ee",
+        "r-424755d0998aaa57",
+        "r-0561223348009c16"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-bc731f76c2e8e0c5",
+      "template_family": "template-bc731f76c2e8e0c5",
+      "split": "evolution",
+      "root_ids": [
+        "r-d34d915fdc77eebb",
+        "r-058fe13cb8fc0652",
+        "r-bcd129fe54e89bef",
+        "r-338afe3b40338107",
+        "r-abcaeae4ceb0d4aa",
+        "r-d0445806d53d4070",
+        "r-ab3ac2a642b99df6",
+        "r-35456897a075131a",
+        "r-e51d265ec34ca4ba",
+        "r-b9939936e886d723"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-bb0415935df2d4c3",
+      "template_family": "template-bb0415935df2d4c3",
+      "split": "evolution",
+      "root_ids": [
+        "r-093b951fc8c1e430",
+        "r-bb2e47341bcd6522",
+        "r-f38b7530d9f18297",
+        "r-e6c936313bd3bd53",
+        "r-1904b1df1fdacc75",
+        "r-fb0741c8fad64903",
+        "r-fb3a78083af1c303",
+        "r-543662072bc4632c",
+        "r-6b394570ea1f35f9",
+        "r-235abaf7f2a2f044"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-529710f30493956c",
+      "template_family": "template-529710f30493956c",
+      "split": "evolution",
+      "root_ids": [
+        "r-8843296cd8b11ec6",
+        "r-a014c3025af7a630",
+        "r-93856babfa8f07d8",
+        "r-4d915ae6fa5b109a",
+        "r-4a1db09b9debd812",
+        "r-9d8e485074601fec",
+        "r-3c9155d414ab856b",
+        "r-65bb711aac3e9870",
+        "r-850ce07bcf004187",
+        "r-882f9b33e98d9cad"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-cc523076f1970180",
+      "template_family": "template-cc523076f1970180",
+      "split": "evolution",
+      "root_ids": [
+        "r-a32f394c70c9d0b4",
+        "r-5190ed4e27be130b",
+        "r-f5958596ea2e6b41",
+        "r-94080a148a938393",
+        "r-75b0a9b916c3baf5",
+        "r-d44fa59ccc26c04a",
+        "r-2f2dc6dd1178931a",
+        "r-79dee17df20c6e35",
+        "r-a2dbd084b2e174f1",
+        "r-11236f1ca8128465"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-27108f38a065f476",
+      "template_family": "template-27108f38a065f476",
+      "split": "evolution",
+      "root_ids": [
+        "r-28f7c61ff73c0ae9",
+        "r-9dc211c0ebf1a5f4",
+        "r-eda39b846c28d766",
+        "r-77a141c207caafec",
+        "r-b8dee87ebbdc2959",
+        "r-15816d86d831c2fe",
+        "r-adf8c9888818aef2",
+        "r-f9442cf8a3f5d4e8",
+        "r-7d9f44d45d361527",
+        "r-b75c0120c4b7a55c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-1dc932f827fc0caa",
+      "template_family": "template-1dc932f827fc0caa",
+      "split": "dev",
+      "root_ids": [
+        "r-6f0d40c370b2cd24",
+        "r-e51d4b98f3308313",
+        "r-86f26ee555da46de",
+        "r-8972ad73a73d387d",
+        "r-93197ca99c25647d",
+        "r-41173ad8f76829f6",
+        "r-12e65238e681cbb6",
+        "r-a7d6da8d4fd4f196",
+        "r-324fef7c3049a1df",
+        "r-974f69dcd98fab61"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d90115f81d206a18",
+      "template_family": "template-d90115f81d206a18",
+      "split": "dev",
+      "root_ids": [
+        "r-4b810fc3e98c00e2",
+        "r-e447253f815d67f3",
+        "r-6436fa21d17f4b95",
+        "r-27a07b23fc74e19a",
+        "r-34f827a524d5f490",
+        "r-120cce8ac09fdd10",
+        "r-18a021454102a216",
+        "r-81e3990e19abd9b4",
+        "r-b696f168899e3408",
+        "r-d9948272ff6e8195"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-44f13dbbd7f8ccea",
+      "template_family": "template-44f13dbbd7f8ccea",
+      "split": "dev",
+      "root_ids": [
+        "r-ae5c74af5d796756",
+        "r-7dfcf3ba1d130128",
+        "r-e502ecbb17bbe346",
+        "r-065d2a7df9e1a895",
+        "r-a1bb8c2f2be652c5",
+        "r-3e6fb63ff0308b53",
+        "r-f058a8c228c42634",
+        "r-521737e7fd9fff21",
+        "r-7209dc6631efcbfe",
+        "r-7e8a55cd438d1f0b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-04fb747d3abb68c7",
+      "template_family": "template-04fb747d3abb68c7",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-cc012635de4e27c6",
+        "r-aa136cf2a4f5b676",
+        "r-80e34ea8c783d0d6",
+        "r-d22bb1cceab03283",
+        "r-d0d5dafda186a05e",
+        "r-7380d352dc8d0217",
+        "r-6cd0b6289b5da3a0",
+        "r-cac2a1a2c2d10978",
+        "r-0a3165219a93d896",
+        "r-eb4eafe84e02cfd6"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-cd26661665e81e70",
+      "template_family": "template-cd26661665e81e70",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-e50360560f9b5eb5",
+        "r-b175faba8a1a5d48",
+        "r-a3376e32a087688d",
+        "r-48465a5deb69eb07",
+        "r-6eaa4c647ab83bdb",
+        "r-d2c195f46679b497",
+        "r-f9944575cc25dd11",
+        "r-0d725c6aaefc1ac0",
+        "r-71c1e3174c506b8a",
+        "r-f36599f8995e1bba"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-2b14a7ea9433f992",
+      "template_family": "template-2b14a7ea9433f992",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-2c8387ddc265f44b",
+        "r-43551073783ad339",
+        "r-9fbbbe173448180e",
+        "r-348302fee3e20c75",
+        "r-922dd41cfb9c571b",
+        "r-c965ca8355c2b046",
+        "r-479c6f897099d7eb",
+        "r-791aff60ae3ce300",
+        "r-e77267e66d6774f0",
+        "r-11b9e2b683d779d4"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-eab817087de37b4d",
+      "template_family": "template-eab817087de37b4d",
+      "split": "cold_start",
+      "root_ids": [
+        "r-806810b16fc67b6b",
+        "r-a8197761ddac82f5",
+        "r-e5a7a362c0d74544",
+        "r-9fc33067b6097039",
+        "r-0df63a959c27e926",
+        "r-86dceb863f4b8572",
+        "r-680740ba91f8e327",
+        "r-45ab1d7656bb133b",
+        "r-45d289ccc076a616",
+        "r-b3a4d47fd62910f4"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-59a5a0c7c39734d9",
+      "template_family": "template-59a5a0c7c39734d9",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b242e08e164d2995",
+        "r-8b9edcea1eaf151a",
+        "r-ae261351199e4902",
+        "r-4b68376f465d3b23",
+        "r-ebe4298bef6a3972",
+        "r-e63ff525e27eaf94",
+        "r-9bec93a2aaff2d57",
+        "r-2138540ad2f139ef",
+        "r-6ccf77c6a9280a38",
+        "r-43999ad4d4d3aec3"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-749ce3286f349c68",
+      "template_family": "template-749ce3286f349c68",
+      "split": "cold_start",
+      "root_ids": [
+        "r-d74b70845ec6bba3",
+        "r-59b8bb4e238fe8bd",
+        "r-f5727b65b733b22f",
+        "r-e16b95f2cbcaa12c",
+        "r-8ff720f7558c6f49",
+        "r-e2e4288cc914fdcb",
+        "r-ddd78564a6ae01bb",
+        "r-9830617741f3883f",
+        "r-f78fc20bae03bac6",
+        "r-53d0479159014c31"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-bb352f840be20602",
+      "template_family": "template-bb352f840be20602",
+      "split": "cold_start",
+      "root_ids": [
+        "r-479064198de7b3be",
+        "r-ee8c8fa112cc7cfa",
+        "r-150104f212282735",
+        "r-e20247e9710c647c",
+        "r-96ba57a9aacb510b",
+        "r-b61bb9b221c93e0e",
+        "r-674e8821968365a1",
+        "r-16a6a58a5c81830a",
+        "r-a9e4df19cb04732f",
+        "r-2b479b62c4c6cb88"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-3adf4e63cc740374",
+      "template_family": "template-3adf4e63cc740374",
+      "split": "cold_start",
+      "root_ids": [
+        "r-87b90f8a10bf45ed",
+        "r-a3db195d58461aba",
+        "r-25e5641260cb653a",
+        "r-6410e92924740c9c",
+        "r-7ff06c216bab6a97",
+        "r-e407309f4ce700d6",
+        "r-c37423ce33f25f0e",
+        "r-a47e886cf5de3ab1",
+        "r-597b0b3fba6d01f3",
+        "r-a06a169ca88b1aef"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-0e1db62f5d2596b7",
+      "template_family": "template-0e1db62f5d2596b7",
+      "split": "cold_start",
+      "root_ids": [
+        "r-edabf0487d29ae11",
+        "r-7f4e6aa379a95035",
+        "r-3d2e022d312a931a",
+        "r-db60b93fc8d8e1c6",
+        "r-2a80b12e8e45cfe6",
+        "r-22a18e249c73e005",
+        "r-bf56b3814254b019",
+        "r-e7e37a92245e1ab5",
+        "r-036be010b588fc32",
+        "r-65a1daf4dbbe7541"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e6baaa69fe5dfadb",
+      "template_family": "template-e6baaa69fe5dfadb",
+      "split": "cold_start",
+      "root_ids": [
+        "r-512fb78fd6532d71",
+        "r-07c3d50fa835ad11",
+        "r-26287c23d30f1263",
+        "r-021ee017691922c0",
+        "r-9662fe7c3033a4fe",
+        "r-25e91e8f5d8ce198",
+        "r-3b1b933b030b2798",
+        "r-05dcd2cc65289b95",
+        "r-9986ca89840698e1",
+        "r-05612b054fa0ca0b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-cde46093ade92bd5",
+      "template_family": "template-cde46093ade92bd5",
+      "split": "cold_start",
+      "root_ids": [
+        "r-94e71b9b83e1b420",
+        "r-1e0b6793f4705679",
+        "r-33be5957f6b83b86",
+        "r-7be8657bcb956055",
+        "r-96ce61b6f2a624e2",
+        "r-5e87ec39e57ab812",
+        "r-6db6a3f42c35ed3d",
+        "r-701486dccc92c4d5",
+        "r-127e99de735e8677",
+        "r-6fa7c0001f4a8607"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-4f3924ab8aaa8114",
+      "template_family": "template-4f3924ab8aaa8114",
+      "split": "evolution",
+      "root_ids": [
+        "r-41273929d17bcc5b",
+        "r-1ecf98312dec1dba",
+        "r-3d0fd4b50819643a",
+        "r-a49ebaac9fc800bd",
+        "r-e8ed194067c997e8",
+        "r-011f0d3856974801",
+        "r-e185c7e0271856c3",
+        "r-457d714fd3a3294f",
+        "r-cfec4e5fb7a2e12e",
+        "r-2f31e48c87cc8f57"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-80979ef0e4a8a2b0",
+      "template_family": "template-80979ef0e4a8a2b0",
+      "split": "evolution",
+      "root_ids": [
+        "r-3bb36e722a0daaf4",
+        "r-e523750709d7dbfb",
+        "r-0d9de0a24a17bc50",
+        "r-b9e7c92767529621",
+        "r-a1413e5017e3ed7a",
+        "r-8e6c9deb27550054",
+        "r-662a9a7c5668c09d",
+        "r-9d34b534a919b2da",
+        "r-c31ac80ddf9c9087",
+        "r-0316f085784530c3"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-87e220e6c9393cf1",
+      "template_family": "template-87e220e6c9393cf1",
+      "split": "evolution",
+      "root_ids": [
+        "r-d692305b7a735587",
+        "r-49f081484e422827",
+        "r-fdf3770832ec56bb",
+        "r-572995a8c2f153a6",
+        "r-e11ab882a07c8627",
+        "r-89c6fbddc8e452ce",
+        "r-50e081bc3ffd1f5e",
+        "r-f09f894d06e8aba3",
+        "r-3923e0beb3045f4c",
+        "r-ec49c39fc3cf76e2"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7725e95e339a8321",
+      "template_family": "template-7725e95e339a8321",
+      "split": "evolution",
+      "root_ids": [
+        "r-ee39ee13ace979a2",
+        "r-e16936548d9de37a",
+        "r-a7adbb51bcd83718",
+        "r-90981d03838752d0",
+        "r-57a67c8559bdae11",
+        "r-cb010f0904edc257",
+        "r-64d664891b155cce",
+        "r-da87234f5b4fc10a",
+        "r-15c5ce07b05423d9",
+        "r-640887f94e8aebc2"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-df284a49f837c454",
+      "template_family": "template-df284a49f837c454",
+      "split": "evolution",
+      "root_ids": [
+        "r-280f409d9e026cd6",
+        "r-f717e57e9b0c9a5c",
+        "r-7c2da83bbc2e2c5f",
+        "r-409ff170426d872e",
+        "r-521f9cb4e0c8d87b",
+        "r-8fab3e76b4d7244d",
+        "r-2179e36f7e67861d",
+        "r-359d73853b055d2f",
+        "r-69384bb95ace6e51",
+        "r-0a86f81820b8944c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-13e1215e400f34e8",
+      "template_family": "template-13e1215e400f34e8",
+      "split": "evolution",
+      "root_ids": [
+        "r-05a905aecc9320aa",
+        "r-4486982445bc0f85",
+        "r-8d172b4d1d59931b",
+        "r-1697c0f1584edd02",
+        "r-42079e770b951ed2",
+        "r-2c9015153a95b21b",
+        "r-c6ffac15a1ee80e5",
+        "r-8415673c8219cb1b",
+        "r-20739b8c0dfea5b5",
+        "r-ca0a232c15014aff"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-70abc9fc27ac3226",
+      "template_family": "template-70abc9fc27ac3226",
+      "split": "dev",
+      "root_ids": [
+        "r-c89c1c571c67e2bf",
+        "r-61ed821989d336c9",
+        "r-0be7c6e002af335c",
+        "r-ea5f301b341b6550",
+        "r-9fb6cade7db729f7",
+        "r-4116735f126f8e5f",
+        "r-cd18ad575b261d79",
+        "r-2f91bda4753ef08b",
+        "r-493f3db18e75b584",
+        "r-6be21eeb075fcfe3"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-24d0b018597aaa59",
+      "template_family": "template-24d0b018597aaa59",
+      "split": "dev",
+      "root_ids": [
+        "r-6e85f55848ab4f39",
+        "r-45d49b46b3b42ef2",
+        "r-1c6edaaba8231ea4",
+        "r-5acdbcc1755f8831",
+        "r-c2808510baad8ad3",
+        "r-c1f148fe61854e7d",
+        "r-4820c5924a45d141",
+        "r-3e0bf6744da0593c",
+        "r-a1245dd1b9809e50",
+        "r-e81f08e2bd690d86"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7e11bfc646168804",
+      "template_family": "template-7e11bfc646168804",
+      "split": "dev",
+      "root_ids": [
+        "r-4bfd90ca6557e5f1",
+        "r-eb25be577aa5ff45",
+        "r-6594d3ebf58fb2ad",
+        "r-f931017439e95681",
+        "r-67cb576e52dd9bdc",
+        "r-a0b9b4de56057975",
+        "r-914c9bdbe7da46fd",
+        "r-435712dcb19cb3f5",
+        "r-b44df407da39bf2c",
+        "r-e48033c29b5c41a7"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-a3890cbc06b4f341",
+      "template_family": "template-a3890cbc06b4f341",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-fa1c6c9997e2b486",
+        "r-f7ea96d381c73bf2",
+        "r-fc81c74111931924",
+        "r-12813b3d147eff67",
+        "r-fef4795bca2a3b16",
+        "r-3d04418f433cf87f",
+        "r-7b98e7d809461951",
+        "r-c990301d5c25cd5a",
+        "r-a035fc8f931a8022",
+        "r-a67f6982b7aa53bb"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-5332fe794f3c5612",
+      "template_family": "template-5332fe794f3c5612",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-e783dd4ace5b05ce",
+        "r-6d15e7077f2dba85",
+        "r-ac3969a9eec22887",
+        "r-8244d3607b2db52d",
+        "r-71ac4a64a301afe6",
+        "r-60a611dd623f6664",
+        "r-8c56299aede5985d",
+        "r-4ffdd3222d50ff5c",
+        "r-b87e5b470bf14c90",
+        "r-2f1fd88087e1bffe"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-ea24a483baffe194",
+      "template_family": "template-ea24a483baffe194",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-8dc9026fe54a741b",
+        "r-a1f9e15e30fe2861",
+        "r-0d7e2690bda4e206",
+        "r-7f17a92db7e9c04d",
+        "r-f76a18d14ef517e8",
+        "r-66d6ff5f13634761",
+        "r-8eff6c2d4b6dc903",
+        "r-df1db5121c13ea42",
+        "r-f75098f35bb0f7ff",
+        "r-532e0910334ee5c9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-592506cf9dae29d0",
+      "template_family": "template-592506cf9dae29d0",
+      "split": "cold_start",
+      "root_ids": [
+        "r-430d3a4fe48b3207",
+        "r-549cbb839c8f885e",
+        "r-129845e37a52926e",
+        "r-4cbc79e1284428de",
+        "r-97c4220bc58c1394",
+        "r-a521843c67518f97",
+        "r-fa511773cd29d9d8",
+        "r-3d23d747f1361064",
+        "r-5a0b3659bf3a7342",
+        "r-a30fdc3ead0328ec"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d4803e17ed18d3d4",
+      "template_family": "template-d4803e17ed18d3d4",
+      "split": "cold_start",
+      "root_ids": [
+        "r-c0d9ee9816e6932d",
+        "r-9f4083117a2dd1d3",
+        "r-1323cf881024e2b1",
+        "r-0ce71e2c5f2f364a",
+        "r-eccc09efc1f7392f",
+        "r-e034ebd70d1c8634",
+        "r-f081ee49b7cdf140",
+        "r-87864501322ab4c3",
+        "r-b05c0cad6876ecf3",
+        "r-b0fd9e7894b08ed3"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d29b9bf02d7daea9",
+      "template_family": "template-d29b9bf02d7daea9",
+      "split": "cold_start",
+      "root_ids": [
+        "r-8750c77f775b444d",
+        "r-60fb8326180cf1c6",
+        "r-1f1a66adb3973ca5",
+        "r-71ba052b1246c7a3",
+        "r-10827d81c07a59c5",
+        "r-a2c98bd66160e74b",
+        "r-fc6fdb81246ad684",
+        "r-1f4bb5e070ad907c",
+        "r-9b894d22f79a8c18",
+        "r-8dfc08c1728d17a1"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-3be52504bc360151",
+      "template_family": "template-3be52504bc360151",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b73f791f769b0dbd",
+        "r-437fad0b5157c9ff",
+        "r-04b9d3afddd85ccf",
+        "r-aebda7dc9beed403",
+        "r-8d1b2fd6ba0de6bf",
+        "r-6ed037ad0e30ae2b",
+        "r-204abb64bd65f08a",
+        "r-1ecb94c0b9cb3f39",
+        "r-31894afbf1f39093",
+        "r-e6031a2e0f7ab02f"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e766f727391d5682",
+      "template_family": "template-e766f727391d5682",
+      "split": "cold_start",
+      "root_ids": [
+        "r-8baf1ece900e23aa",
+        "r-2e5941c2ce958653",
+        "r-d5e2169e18e76c33",
+        "r-1748c78b70ed64c6",
+        "r-7a12e398e094067f",
+        "r-73b094cbc37a99c8",
+        "r-f171d14e670a134d",
+        "r-e53f2367f207b335",
+        "r-7d45effe1f57a68e",
+        "r-e307bc762be9a35c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-5a23e96a12312c41",
+      "template_family": "template-5a23e96a12312c41",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f193742c57c40878",
+        "r-896ef4c4ac3e39d7",
+        "r-b08f1b1d48354afb",
+        "r-76c8a63a197911a3",
+        "r-15cf6175ed320688",
+        "r-77bebf714880b042",
+        "r-c20d321f1cd43527",
+        "r-caadbf3bcd75993f",
+        "r-e967cacf8ce31333",
+        "r-1ea3cc4f2bf0322d"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-61cd361d4686529f",
+      "template_family": "template-61cd361d4686529f",
+      "split": "cold_start",
+      "root_ids": [
+        "r-71f1a5eeebc68ff6",
+        "r-b1b09f052fca71bd",
+        "r-1e085aff356ab82b",
+        "r-a1b0fb3e8a827677",
+        "r-03a8dd5e41c6d8ff",
+        "r-d52bf5ee32d72dc7",
+        "r-3e539755f8ad0d6c",
+        "r-462fcfdbdf37733c",
+        "r-17d2d0a9c4da22c2",
+        "r-30b7d444d5279626"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b132cc41439f6e78",
+      "template_family": "template-b132cc41439f6e78",
+      "split": "cold_start",
+      "root_ids": [
+        "r-8949b51758745e07",
+        "r-96e06d9febb552bb",
+        "r-a1aba1806134ed4d",
+        "r-2b9f4ac5ce45ae41",
+        "r-14bcc0552e07d280",
+        "r-41b6757ca322d01b",
+        "r-f6a5d80f0d1a917e",
+        "r-b7dd738918ae03b6",
+        "r-9fb08cc16202d3ab",
+        "r-f6550351da49573a"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-cf640bea1173d7d1",
+      "template_family": "template-cf640bea1173d7d1",
+      "split": "evolution",
+      "root_ids": [
+        "r-4c66f8b82e00b648",
+        "r-5e27bac5c49579bf",
+        "r-87237bdd3d3e2b93",
+        "r-93f04a0ab0ec47c3",
+        "r-73d906ddaac18b3d",
+        "r-a19db9bcdc4cb1f7",
+        "r-c00b5f08e2fa7212",
+        "r-f5c1c02bd885f131",
+        "r-d1ff43c2e6e92f85",
+        "r-bdc25eb1f0b4f47e"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c6f34b5e46cce87c",
+      "template_family": "template-c6f34b5e46cce87c",
+      "split": "evolution",
+      "root_ids": [
+        "r-43c596437b8c7aa6",
+        "r-5af44e828eec4b78",
+        "r-3c08332aa1f6f75f",
+        "r-52b706017c5fe06d",
+        "r-6e39086995c6c690",
+        "r-b9601bfcd3304cf4",
+        "r-7ce0af8fb578861c",
+        "r-e51801877349e6d2",
+        "r-3e62ec503b01ea5b",
+        "r-ec31dd90295b5831"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-4b9faa3a89dbb029",
+      "template_family": "template-4b9faa3a89dbb029",
+      "split": "evolution",
+      "root_ids": [
+        "r-8939ec12d279be6e",
+        "r-d6a5d43e5fd47759",
+        "r-ba400bb5996f23a9",
+        "r-0368a5d7ef52ac58",
+        "r-da6ee2109ebec862",
+        "r-3a06d5c052050919",
+        "r-9791496d9cfb11ca",
+        "r-ec15938f01f7ed8a",
+        "r-c8b13719bf70d426",
+        "r-954491a74a9a5917"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-5ac8a477a2d969c3",
+      "template_family": "template-5ac8a477a2d969c3",
+      "split": "evolution",
+      "root_ids": [
+        "r-a02d90bf6e8b89f9",
+        "r-a87c69df3a7eec35",
+        "r-69ff5293fbb0ca2a",
+        "r-3cd4c513cbc7a1de",
+        "r-33efe2ed920ff5b8",
+        "r-0e811d0d051fdbe3",
+        "r-9c0a0ebd211febd6",
+        "r-ab05170f585b4cd0",
+        "r-bc35e20f63fd7dae",
+        "r-23eaa16f71aab62c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-272589b6f5c8b743",
+      "template_family": "template-272589b6f5c8b743",
+      "split": "evolution",
+      "root_ids": [
+        "r-7a8a6e391f57d5d2",
+        "r-99c1f9593ef7187a",
+        "r-0605a6f3caba640a",
+        "r-4520658a47355acf",
+        "r-2267319cd5f681f1",
+        "r-f8ee5d3907a55542",
+        "r-0ac2d26854bca72e",
+        "r-2608c5edace58200",
+        "r-b535e67783cefb14",
+        "r-68dbe31f4d5a2254"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-0bb4bf6270df0089",
+      "template_family": "template-0bb4bf6270df0089",
+      "split": "evolution",
+      "root_ids": [
+        "r-bb9b61e4672da9cd",
+        "r-e323ab4183d7eb2a",
+        "r-bcb6400db3f7d0a3",
+        "r-a5782872e0abd342",
+        "r-695ebbfd279ded77",
+        "r-caa36c9415f15d1a",
+        "r-3dbf5b9f6268ad18",
+        "r-9b24fd0b7f3d6bff",
+        "r-ac662c1a8180b2e4",
+        "r-eceadc995080e7ae"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-382e59a7c30d51f3",
+      "template_family": "template-382e59a7c30d51f3",
+      "split": "dev",
+      "root_ids": [
+        "r-7cbf644afb9c419c",
+        "r-4eba81ef7649db05",
+        "r-0c59d97b7d2b357e",
+        "r-c64190c78d25651e",
+        "r-5b0560d492fd6a8f",
+        "r-d50c0251bca1c73e",
+        "r-79d1e050e1da4142",
+        "r-02ad262fdafa4171",
+        "r-8d0c95f95d131882",
+        "r-da11b56ad49dc575"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-774b6f0fccec1fb2",
+      "template_family": "template-774b6f0fccec1fb2",
+      "split": "dev",
+      "root_ids": [
+        "r-485208bab93e74bb",
+        "r-abb6b3c894047aa2",
+        "r-43d357d5366ea503",
+        "r-89bb70c4bd21a923",
+        "r-671031922dfe988b",
+        "r-ed54a7e3915600cc",
+        "r-d15b1d6d52e13c11",
+        "r-86ba77fafc5abb4c",
+        "r-49a30704457e5f95",
+        "r-499e5d8141224646"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-fd6df9e3530cb74f",
+      "template_family": "template-fd6df9e3530cb74f",
+      "split": "dev",
+      "root_ids": [
+        "r-49270a36504aeebd",
+        "r-966bb3fc2163a47b",
+        "r-827c92a6eb106ab3",
+        "r-370ac30cfabb179a",
+        "r-acbb78d2dadc3c3e",
+        "r-a0b40ffd741d87cc",
+        "r-8cbd13a439aee5f7",
+        "r-c295335e3504e3eb",
+        "r-4bbb74899fee44e4",
+        "r-de9058f50260011c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-596dff0d7f006837",
+      "template_family": "template-596dff0d7f006837",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-9f3edb0af21bab3f",
+        "r-be8d01e56d769b0f",
+        "r-89e8c23bcf173c66",
+        "r-6b8e59390d5fc5ca",
+        "r-d7178863f5700d43",
+        "r-79d39e476779ea9f",
+        "r-32e62bdff313c192",
+        "r-8cbdf7ad7e0d0a0e",
+        "r-7b86a3bcd2e82c3e",
+        "r-7c880dd1d9612354"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-2be305cca84c8648",
+      "template_family": "template-2be305cca84c8648",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-7d341a88157e2b4e",
+        "r-f75d1c8f340fe8fb",
+        "r-7ef9e5c828ebdd04",
+        "r-fda4f58369f00355",
+        "r-cd5a9d2ef29b0b29",
+        "r-74f0276d686ae9d7",
+        "r-f2f31ad1e0b835b4",
+        "r-67bdbc562a810ee7",
+        "r-b4b8b45b65edbf31",
+        "r-10f6aacef1b1faa9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7227050553af565d",
+      "template_family": "template-7227050553af565d",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-0fe05aa5503e5a7c",
+        "r-6b8a5cf685cc5919",
+        "r-f8dd020c657eca7b",
+        "r-31013508aeb419e7",
+        "r-bae12f080633937b",
+        "r-bddd0ee393bd7bf4",
+        "r-7349eb420593e8b5",
+        "r-7f3983f6512a97c3",
+        "r-c31976e25023778e",
+        "r-3c76df35eef811ef"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b3d8acb98c59e4a8",
+      "template_family": "template-b3d8acb98c59e4a8",
+      "split": "cold_start",
+      "root_ids": [
+        "r-7b3b019cb039e033",
+        "r-514a4900a3e7de53",
+        "r-e15f4361367c7a98",
+        "r-20eab6e577a595f4",
+        "r-51e7ff4208ce6a16",
+        "r-7abd32338c237081",
+        "r-70b5d0b2e0c49d2c",
+        "r-78ee90d9a03b027a",
+        "r-57a6f64f18d2a6c3",
+        "r-d3a8910f7c89188e"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-a5886f21fcb5f028",
+      "template_family": "template-a5886f21fcb5f028",
+      "split": "cold_start",
+      "root_ids": [
+        "r-5c4bcca1dac1d66d",
+        "r-e8c3d726f2233a75",
+        "r-d74137fd6213408d",
+        "r-ced16e5c0abaeb7e",
+        "r-3ec3e2dc7f4761f3",
+        "r-0065363c7f39a61e",
+        "r-3e1b1c64d5a6e93d",
+        "r-fc2effbd7e37df21",
+        "r-8afd0a9d0a68ba72",
+        "r-744162e294aa8018"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-038423688a80e226",
+      "template_family": "template-038423688a80e226",
+      "split": "cold_start",
+      "root_ids": [
+        "r-349013859db1b517",
+        "r-38f9aab77fec0cc8",
+        "r-7da18fcdfff90a52",
+        "r-e653cbba80dafdca",
+        "r-f2032e44b7ca9d98",
+        "r-279e2c1999c06b21",
+        "r-e655be6d013178f4",
+        "r-0017f5093b4a54c9",
+        "r-c1a2eebae22cce49",
+        "r-3186f5eb6f2ce9a8"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-bc2e390fb4b61ef5",
+      "template_family": "template-bc2e390fb4b61ef5",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b51c42b8816bb4af",
+        "r-daf9156f4f4b1310",
+        "r-8c66028c95d30873",
+        "r-a434bb039ce36159",
+        "r-8fafcccc1d3077f1",
+        "r-317804bd7f48e9cf",
+        "r-3b127d8e11cf8a64",
+        "r-32490c9501552629",
+        "r-b5b29ada42565a83",
+        "r-2c798d1f25fee0ed"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-0896689755fffe77",
+      "template_family": "template-0896689755fffe77",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f08fa3d0229f14c0",
+        "r-dc16eae669647d44",
+        "r-5bdf3d7183d1dc2c",
+        "r-b46b607b4e8b6c41",
+        "r-68326258a77d0f80",
+        "r-b491ea375dad062e",
+        "r-25140289b3229527",
+        "r-b881cff05e467899",
+        "r-cc0fabc6601910a8",
+        "r-b85196f2b9791e53"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-ce0c00d5a0eae441",
+      "template_family": "template-ce0c00d5a0eae441",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b65b757946f465c8",
+        "r-92f9f1f035955327",
+        "r-746b95aa241b04f3",
+        "r-f9b79966f12c05ab",
+        "r-038ea5feb808623b",
+        "r-9a1fa125d822bd47",
+        "r-21963484912eb9a4",
+        "r-7638f6ff0521899e",
+        "r-f197ae29a38ea640",
+        "r-e0083ba00abcde64"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-9cc0a944e130d446",
+      "template_family": "template-9cc0a944e130d446",
+      "split": "cold_start",
+      "root_ids": [
+        "r-554f1bf1cbd64296",
+        "r-0404933440c3450e",
+        "r-a02f6ef4fe1bfcb7",
+        "r-422d2c69fe6dba0c",
+        "r-bfa188f6c6b0ee37",
+        "r-dd0e4c1df858afa0",
+        "r-08f43acb84ab9351",
+        "r-9cb53347cfbc3f76",
+        "r-2ac0707fd6923d09",
+        "r-b2fd9cafa56a87fa"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-83a1c6ab9e9ed7e9",
+      "template_family": "template-83a1c6ab9e9ed7e9",
+      "split": "cold_start",
+      "root_ids": [
+        "r-1e3747c761682833",
+        "r-ee67ae0be5fdf2a6",
+        "r-3a566084b34f5a88",
+        "r-69475ca9cdcc5c95",
+        "r-589840d8c37ab477",
+        "r-3ccd18dc398d55f2",
+        "r-35580d27c41dd798",
+        "r-d08ebe2d10ca9953",
+        "r-504eddecae44eacc",
+        "r-2727958e96955e59"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e445bcc28123921d",
+      "template_family": "template-e445bcc28123921d",
+      "split": "evolution",
+      "root_ids": [
+        "r-253db2a34c0fdbb3",
+        "r-9266527e12d5b115",
+        "r-68ee6fb103602c53",
+        "r-322a5706174b5846",
+        "r-529985bff99adab9",
+        "r-a121dedc15631918",
+        "r-ce4f09621e542300",
+        "r-b31e78d0ae7b0738",
+        "r-c48ffea950545f75",
+        "r-b6fa64d896d3e454"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e0e9d38f9ccb7a41",
+      "template_family": "template-e0e9d38f9ccb7a41",
+      "split": "evolution",
+      "root_ids": [
+        "r-d376d4471d2c2369",
+        "r-16c7267f4064bddc",
+        "r-c6a63e4897cc933d",
+        "r-0315732a5ec103b2",
+        "r-bc08ed46920b2249",
+        "r-59e74666f4ec22ab",
+        "r-95dc783b38f0fa77",
+        "r-b0b0b261c0e87e64",
+        "r-cf1d08462590bb5e",
+        "r-34df4ae1ff6ebc1b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-308ea598a6d203bf",
+      "template_family": "template-308ea598a6d203bf",
+      "split": "evolution",
+      "root_ids": [
+        "r-5a1ac0e1f72df82b",
+        "r-1e64b29c0cae79e4",
+        "r-49f3f99c5572b765",
+        "r-9f675a64d9662d83",
+        "r-88617c389178f930",
+        "r-ceb9440306fa960f",
+        "r-a12544b72428490b",
+        "r-ccfefdd9c6a83514",
+        "r-153a3d667417d0d4",
+        "r-2f7bd3701f003658"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-f9d4368abb1e0765",
+      "template_family": "template-f9d4368abb1e0765",
+      "split": "evolution",
+      "root_ids": [
+        "r-b7e47be3ea186ed6",
+        "r-ccab390a8c3c86e2",
+        "r-9925e67481bf9db3",
+        "r-877ea363edd43545",
+        "r-f303d48dbbe65003",
+        "r-5b95f00608c07734",
+        "r-80708a49a826b41d",
+        "r-1b05c8629fa459d9",
+        "r-774fe68727ca3290",
+        "r-0a6c8f0bc348fdc9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-5ae48e25c6e678a4",
+      "template_family": "template-5ae48e25c6e678a4",
+      "split": "evolution",
+      "root_ids": [
+        "r-214bb05adc2f34b3",
+        "r-e67626ad5eb62acf",
+        "r-cf4a51a998519368",
+        "r-4333e70d02d710eb",
+        "r-54a49b30535bfa60",
+        "r-fef626f0cd6aa943",
+        "r-61a57df4d24f08d4",
+        "r-4da5486fc7c13846",
+        "r-2cef2027dc2d4cc6",
+        "r-5730a292a0d728ce"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-3ce37584abb20edc",
+      "template_family": "template-3ce37584abb20edc",
+      "split": "evolution",
+      "root_ids": [
+        "r-3f1dcb7cd0692d36",
+        "r-4b27da7bee83fba6",
+        "r-4da57dfa4b3b0f4d",
+        "r-fb449950b1b8e489",
+        "r-c8d43d48a57deee5",
+        "r-844d4db3b2fba0b1",
+        "r-d93d4f373bde95d9",
+        "r-1931c67e081fb039",
+        "r-bb7e6700a05df54c",
+        "r-cd4ca7c6434ae9f9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-85c7980a4a1a23e7",
+      "template_family": "template-85c7980a4a1a23e7",
+      "split": "dev",
+      "root_ids": [
+        "r-f7f1de10c5b49b7d",
+        "r-01827a6d65f4cb0f",
+        "r-9ce06b36cd7e7883",
+        "r-e779db859e1663f2",
+        "r-9837aea16a6f48b5",
+        "r-e7395fb554c5e34a",
+        "r-81015da02870d26d",
+        "r-cecb2546b8cecdb9",
+        "r-d54ac3874919e945",
+        "r-41d935b1747c48fa"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-682ee3220c2a456c",
+      "template_family": "template-682ee3220c2a456c",
+      "split": "dev",
+      "root_ids": [
+        "r-525ebab2af59cda5",
+        "r-2a28024a7dafa040",
+        "r-f1cb962824e50a57",
+        "r-86ac8fc4dcf0f094",
+        "r-ba7e3951e4c84818",
+        "r-44a48679e54b73a0",
+        "r-21886c6280a99fd8",
+        "r-000216c9c7a0ca5e",
+        "r-8d8d92e86948024c",
+        "r-95eac6c848cc1ef4"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-3d183ef316d0fb19",
+      "template_family": "template-3d183ef316d0fb19",
+      "split": "dev",
+      "root_ids": [
+        "r-0594410cc975a8f8",
+        "r-288a530afe594648",
+        "r-698c13f9d77ae430",
+        "r-f663696caabe524e",
+        "r-47546572cc3db0b3",
+        "r-63c8157ff66a7e8c",
+        "r-ec501e83e1887b89",
+        "r-a6b7d0a77bb64e5d",
+        "r-c528cc0d1de70aae",
+        "r-0d7a22336e607c68"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-4ae4d15b028b9850",
+      "template_family": "template-4ae4d15b028b9850",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-d4b25fa62dfb8208",
+        "r-ce6d8a6506175b58",
+        "r-cea36dac2b0e514e",
+        "r-759702aba2f11a91",
+        "r-efc47f9d868bd7bf",
+        "r-57c72670465c44df",
+        "r-beca094d8683308d",
+        "r-b43a086574eb1a02",
+        "r-6bfeefbf19292584",
+        "r-c96b90a7b7f6fb5b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-4234ac37e99fcc88",
+      "template_family": "template-4234ac37e99fcc88",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-a0370d1b81393e13",
+        "r-86922f79fcf56654",
+        "r-e78c1af0c55cbd4b",
+        "r-5393ed0c4d4ac48b",
+        "r-bf8207d27eb60e28",
+        "r-f366865ed5e82e29",
+        "r-fed3d40c6e26f801",
+        "r-6854862357677cab",
+        "r-be0e5ebe79e3bee3",
+        "r-4b6bc495dfa2d870"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-537ec66264ecd2ec",
+      "template_family": "template-537ec66264ecd2ec",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-7f9ef575f4470df2",
+        "r-1b7ade456bd88eb6",
+        "r-c6f8a62c48389708",
+        "r-c3addf16c9efd2c1",
+        "r-fe31bcd2e49fd661",
+        "r-2b4459517c325fe4",
+        "r-97c7665ae628bc4b",
+        "r-f5f17d7d86396c1f",
+        "r-fb4058009b142fb6",
+        "r-d0c6f03f91af9c41"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e21c9380778aa397",
+      "template_family": "template-e21c9380778aa397",
+      "split": "cold_start",
+      "root_ids": [
+        "r-8108940289fe5f9a",
+        "r-c091eaaf20c36bd6",
+        "r-67067095706ffa16",
+        "r-c9358424de06d7e3",
+        "r-71bfd1a306175ba6",
+        "r-7b7c46d200359b76",
+        "r-e409e16f29c81471",
+        "r-979df0d215adcc3b",
+        "r-2961dc370f6b2e2c",
+        "r-6179c110640bbed0"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-bc17fcd44aed975d",
+      "template_family": "template-bc17fcd44aed975d",
+      "split": "cold_start",
+      "root_ids": [
+        "r-1eda395090f21a07",
+        "r-d2210a034d00a33e",
+        "r-7f76df3d96dd1ee9",
+        "r-ca0d35a6c7e56c7e",
+        "r-b0e9539c66fc16ac",
+        "r-8f4942030ef0ca18",
+        "r-9c8ff8a581f5851f",
+        "r-7dfa409b2802a39a",
+        "r-38892b58b985c8a2",
+        "r-c311a96d58c5e005"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-aaf50d890710c4dc",
+      "template_family": "template-aaf50d890710c4dc",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f8539dd867bdbe5f",
+        "r-722e2bebc2650345",
+        "r-438c80d7a0ad051e",
+        "r-fcbb143df7629c21",
+        "r-ec9ad6c1742b5ccd",
+        "r-dede007c7fcdd061",
+        "r-ee776559c9566314",
+        "r-16c25f891d2bc671",
+        "r-39f333d5b9021edb",
+        "r-7a82cc94d2e7ca98"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-157d8e9376a94b27",
+      "template_family": "template-157d8e9376a94b27",
+      "split": "cold_start",
+      "root_ids": [
+        "r-0388699d58cb3d05",
+        "r-058d537418ac84ff",
+        "r-5e57d3b756e7c192",
+        "r-da4cb57a31711f97",
+        "r-39db0737082ea085",
+        "r-1a10aad4e36269e1",
+        "r-50f10939a5c89b53",
+        "r-1c76c7bd3bc5508a",
+        "r-d00b7548ee12fd9c",
+        "r-205536b56b0e52a3"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e719f7fde83fafda",
+      "template_family": "template-e719f7fde83fafda",
+      "split": "cold_start",
+      "root_ids": [
+        "r-c1b83efc10dd98ec",
+        "r-8151a52fdda7c5fb",
+        "r-dc5985605d3ed84d",
+        "r-6fcbe871345b452c",
+        "r-3bc00344652510a3",
+        "r-dbff410dd129990f",
+        "r-2676ff7effe3848c",
+        "r-5cbb9365fc74ad57",
+        "r-205e26fda41dd9b6",
+        "r-b45292d1a2b0585c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c38837a822e0e72a",
+      "template_family": "template-c38837a822e0e72a",
+      "split": "cold_start",
+      "root_ids": [
+        "r-d7d5cd514297800a",
+        "r-2d2443570181f46e",
+        "r-01c03caea228c93a",
+        "r-3a50934c3110d321",
+        "r-a2ddf5149e8e858a",
+        "r-62bbca61ab24b4bd",
+        "r-fc147d801a61c7c1",
+        "r-17335fd4654a03fb",
+        "r-5a298109b580b430",
+        "r-0c6c0e0a8fd45ba7"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-72bb1c484ae974a2",
+      "template_family": "template-72bb1c484ae974a2",
+      "split": "cold_start",
+      "root_ids": [
+        "r-a6f3369512aac216",
+        "r-e7380a2cf6170113",
+        "r-f0fd396105e29ef9",
+        "r-bcf5664e17c4b498",
+        "r-e96b0524af1115b9",
+        "r-f996030dcf80f398",
+        "r-156e582623d53596",
+        "r-900172891dc72b71",
+        "r-5aac824fee1d4fab",
+        "r-5c9cdd56aadd7b01"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-949428ad70d7bfbc",
+      "template_family": "template-949428ad70d7bfbc",
+      "split": "cold_start",
+      "root_ids": [
+        "r-1de9de7a549fd7d3",
+        "r-6a401218395bf5aa",
+        "r-c3e2ca2ca9ba2947",
+        "r-2e0057510b1c7f88",
+        "r-d4fc5041ea819736",
+        "r-2fa723f8aeddc6bb",
+        "r-6b8021816adbe33d",
+        "r-6f2f6ce73dd33031",
+        "r-98c516ac44faad7a",
+        "r-edff15ea17aa7eab"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-0113fd12d238deae",
+      "template_family": "template-0113fd12d238deae",
+      "split": "evolution",
+      "root_ids": [
+        "r-e4df4552a8b62993",
+        "r-54b04cffc4cec6da",
+        "r-589010f34a033f78",
+        "r-ac2e095e4076ab7b",
+        "r-30771f5055b817aa",
+        "r-11ef0e407d651828",
+        "r-65c40131bf952258",
+        "r-a3927816bb1243b3",
+        "r-561d59bd3a591cc9",
+        "r-f577369278ce78f0"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-79e37922f3cdd1ce",
+      "template_family": "template-79e37922f3cdd1ce",
+      "split": "evolution",
+      "root_ids": [
+        "r-5deae53262e4c9ab",
+        "r-6257ac070024dd71",
+        "r-46bcfd2a2f2a10d3",
+        "r-79c5d5ce8642e45e",
+        "r-65b3fec7b0947d99",
+        "r-00550bfd28bdf0bb",
+        "r-b8d4af01918b12f4",
+        "r-f437fa5aa07ebfa2",
+        "r-b05e2f4de245d0c4",
+        "r-d820ef91503c01af"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-58c1b5f5b55609ff",
+      "template_family": "template-58c1b5f5b55609ff",
+      "split": "evolution",
+      "root_ids": [
+        "r-d894ff61e6de6bbb",
+        "r-de8ad018bdbc752b",
+        "r-49986250fb963a3f",
+        "r-5b8d490576d835bd",
+        "r-84953b78a79549b4",
+        "r-49a04cba36b52acc",
+        "r-fe4c4c76d30ce07c",
+        "r-57d531b770c707ce",
+        "r-1a2485a3da79b126",
+        "r-889935681cdd3764"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-248fb6bd21284c66",
+      "template_family": "template-248fb6bd21284c66",
+      "split": "evolution",
+      "root_ids": [
+        "r-a5e5417d46ef0455",
+        "r-1f421d15d11d3463",
+        "r-78331ad771ead867",
+        "r-6f02229801e39272",
+        "r-7eb99a3003f19e7a",
+        "r-1392554ed3e94323",
+        "r-807e50b0391988ea",
+        "r-e60e74e4eb022f08",
+        "r-693df18a629e93c1",
+        "r-9a5447ce9424c3db"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c74bd0dab0c877a4",
+      "template_family": "template-c74bd0dab0c877a4",
+      "split": "evolution",
+      "root_ids": [
+        "r-6019f73fc7dcc932",
+        "r-6709bf0e0bf035be",
+        "r-11e2e54fbdf70c6b",
+        "r-a9fc85c877da3755",
+        "r-982980748f81eb4e",
+        "r-e4b8cec6869dcfd3",
+        "r-ae18c4d6e484321e",
+        "r-d299741dd68bf93d",
+        "r-a9094bade64e7521",
+        "r-0d3b94902ff5b2b4"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-9f7f6029bea3b6f0",
+      "template_family": "template-9f7f6029bea3b6f0",
+      "split": "evolution",
+      "root_ids": [
+        "r-1466d35f9230251a",
+        "r-76865b84c0009a27",
+        "r-9d82e31dfc5bc0f1",
+        "r-7b5411fb11c5728d",
+        "r-eb9d6561b7c6c442",
+        "r-418022d4b8a89988",
+        "r-cf78ae2ec5418dd7",
+        "r-36ff128d3b85d377",
+        "r-e5ea0a56bd200d48",
+        "r-e9334c5465b42a2c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-9b8d9af7db56976c",
+      "template_family": "template-9b8d9af7db56976c",
+      "split": "dev",
+      "root_ids": [
+        "r-2988bd2218a8d327",
+        "r-1cd5e45aea855ce5",
+        "r-4eb06e2e9f174e2f",
+        "r-ae4b65895fabb68c",
+        "r-ff01b1407168128e",
+        "r-4fa4855e9880070e",
+        "r-86632df831e5fc3f",
+        "r-b03248a136c039a8",
+        "r-6818202bc94d1f65",
+        "r-e089990760ea34dc"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-997127788672ca1b",
+      "template_family": "template-997127788672ca1b",
+      "split": "dev",
+      "root_ids": [
+        "r-b1146f1783daf784",
+        "r-6802a2b1e0bccfcd",
+        "r-a72768afb56021f0",
+        "r-b1dabef4885ed220",
+        "r-996113b2ff247f88",
+        "r-1f34357a74ae2a5c",
+        "r-bb4180230702c063",
+        "r-9e6d597fcf2253e5",
+        "r-2dc63d30f16437d7",
+        "r-390f2f2bddd2c654"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-8d0d38f29be1e803",
+      "template_family": "template-8d0d38f29be1e803",
+      "split": "dev",
+      "root_ids": [
+        "r-198d0ab620f254fb",
+        "r-baa9243d7fba86c3",
+        "r-e96a60c45e973d29",
+        "r-0ad973c5897cfd33",
+        "r-d9eff0ff02525b16",
+        "r-7ea3985c0829c1dd",
+        "r-fc1e848c9aaa0bcd",
+        "r-dabf1943373bafa1",
+        "r-b8411707fe44209a",
+        "r-3a44d5e6b1fb6f65"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-4215440c3a86a949",
+      "template_family": "template-4215440c3a86a949",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-c8a834e06b277b85",
+        "r-27f3b62785c31c50",
+        "r-9eea20f2e168c46d",
+        "r-3e2f53929b712e41",
+        "r-7bea649a30619e38",
+        "r-869843ab4ea6affa",
+        "r-f674176cb3edb050",
+        "r-4ab1a8f920384d7e",
+        "r-2bdc64592644cbab",
+        "r-a2d06033b9e997e5"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e5fd63a39922dc18",
+      "template_family": "template-e5fd63a39922dc18",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-dcc3faecb7abf72f",
+        "r-9f014fd02bc83343",
+        "r-a593acef3c63ec6d",
+        "r-04c00f0b71024d23",
+        "r-404e9d5d5c7faaa9",
+        "r-9b7537f9b45a80c1",
+        "r-468bbfb1f603bbc0",
+        "r-d858ef3ff7348250",
+        "r-ba8da68791e4915c",
+        "r-cd9e3526dcad43c6"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-39029226a4fa074f",
+      "template_family": "template-39029226a4fa074f",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-369ea5b6eebbdcf0",
+        "r-d61e346bd5514399",
+        "r-22dfbc9b41fe667b",
+        "r-f3a18f6a8b716391",
+        "r-a8b8411f6428f4f2",
+        "r-bc1ee90e53a1576b",
+        "r-98b21bed27b44082",
+        "r-016f010f01530a12",
+        "r-71bc0fca0425b6ec",
+        "r-4f27529920b541fb"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-f5ff61d7b533cd73",
+      "template_family": "template-f5ff61d7b533cd73",
+      "split": "cold_start",
+      "root_ids": [
+        "r-73313d011f515ea9",
+        "r-e4f5f9e3132b726b",
+        "r-61f04c0a25e74d60",
+        "r-6f8a5afa3ac01d61",
+        "r-3d096f7503fddaca",
+        "r-a0db4a7f129d8573",
+        "r-27d3082340182150",
+        "r-87653698d4e15d77",
+        "r-535b065528bd5327",
+        "r-54f1e7174d305737"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d7a0cee7b61eb0e3",
+      "template_family": "template-d7a0cee7b61eb0e3",
+      "split": "cold_start",
+      "root_ids": [
+        "r-34326e45a8106af4",
+        "r-dd52138723a36ea7",
+        "r-6dac20518c164d46",
+        "r-307912d329385174",
+        "r-657ce0550dffd221",
+        "r-febda853e9d455b4",
+        "r-19f2f6e1f073a8ec",
+        "r-80ea477f63d4c4c1",
+        "r-7236aa6383dac265",
+        "r-7197b2fe66d6d0e5"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-8d8ea3758174b90c",
+      "template_family": "template-8d8ea3758174b90c",
+      "split": "cold_start",
+      "root_ids": [
+        "r-2fb333b4ef4c15e6",
+        "r-b17a5be6d100c6e0",
+        "r-292d17031d77a2bb",
+        "r-6c753954ea3829b2",
+        "r-95e0abd74fd06d12",
+        "r-b315be10835a20d9",
+        "r-f010d37737dd708e",
+        "r-27812f5c5baa305e",
+        "r-66b068f72ba19422",
+        "r-0684566e11caf954"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-111c309fc0cfd2b7",
+      "template_family": "template-111c309fc0cfd2b7",
+      "split": "cold_start",
+      "root_ids": [
+        "r-d76e38be100eccd8",
+        "r-3b7fbd260e958658",
+        "r-a920f4b1f47c9e4d",
+        "r-44cedc5915854aaa",
+        "r-7ef4f0b39dc659dd",
+        "r-e19d5005c485628d",
+        "r-4d18cc68f1f526ce",
+        "r-190e555f21d2208a",
+        "r-b3817d4c5e6a3b3b",
+        "r-1865ae5a8a3dfabe"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-02cc100736c73d8b",
+      "template_family": "template-02cc100736c73d8b",
+      "split": "cold_start",
+      "root_ids": [
+        "r-df72be7041c62973",
+        "r-3d0b0dcd3c8ac194",
+        "r-b46a4b3703c5cf0b",
+        "r-e50cdcc230cf8fbb",
+        "r-6a5508d5aa9b5138",
+        "r-420e2cdf0bafe3ef",
+        "r-d019f576f0c178d4",
+        "r-fcc27fd38e85be52",
+        "r-f180260aaaa6dcc2",
+        "r-24e5d1c41c76c7f8"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-da7e9c169d1a5db3",
+      "template_family": "template-da7e9c169d1a5db3",
+      "split": "cold_start",
+      "root_ids": [
+        "r-7c9a311f8fed82f5",
+        "r-64ac4a9c302d9581",
+        "r-0cad3b11fa4ccc5c",
+        "r-f54aa5ce334ad8d7",
+        "r-0e40f58bdb733280",
+        "r-c19500d828a6dce5",
+        "r-e56a259ccf3e52d7",
+        "r-5069cc74fcd5015f",
+        "r-e829810eeb3ed63c",
+        "r-b24daf691c5bb536"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-f5d8bf0f3ef977e2",
+      "template_family": "template-f5d8bf0f3ef977e2",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f26a12d7acf23173",
+        "r-f14ac85538949610",
+        "r-4dc1c6787c406d71",
+        "r-e0bec1ba0b9d2aed",
+        "r-b4d7c4c80ef1011f",
+        "r-cc68580ecb5101a5",
+        "r-c7e0a83e0a32fab8",
+        "r-59fdf072f184d0b7",
+        "r-7ee0d8526c224aaa",
+        "r-c78bdeb126133bf2"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-08c843c9980c257e",
+      "template_family": "template-08c843c9980c257e",
+      "split": "cold_start",
+      "root_ids": [
+        "r-d5982b8cc180e2ac",
+        "r-f0c7fde8508afbc3",
+        "r-31e131e2238898fb",
+        "r-4c16e83a50bfb548",
+        "r-7869445671e01aee",
+        "r-b21c1e93bfd00b49",
+        "r-eb69550d1179e6a4",
+        "r-43f46bde7456e44d",
+        "r-3ed3735758cbe389",
+        "r-b5eb1bea0f4286c0"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-1393ac80e69a8991",
+      "template_family": "template-1393ac80e69a8991",
+      "split": "evolution",
+      "root_ids": [
+        "r-ba1c594a9ad22bae",
+        "r-e57274f73567fc18",
+        "r-da189d02c8b20a6f",
+        "r-620208c560ef210e",
+        "r-1df657166f662256",
+        "r-53f2437336db7e7f",
+        "r-c5017c4822992f58",
+        "r-8d6e6acec74e92d2",
+        "r-6b4105275af61f53",
+        "r-ddf7057192a9c424"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-cedde4de2ccbc3f0",
+      "template_family": "template-cedde4de2ccbc3f0",
+      "split": "evolution",
+      "root_ids": [
+        "r-972c6bd49a4221cc",
+        "r-079303f4c1cdc260",
+        "r-374ff0b2bd178547",
+        "r-976a2f29029edde0",
+        "r-64c4a8c9334c03f7",
+        "r-06cdb9f01a72d89a",
+        "r-8ba8634ed0b59781",
+        "r-6964a1800e5149e9",
+        "r-21292e35c44b9390",
+        "r-4b292a788872b7e8"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-a62ed33a885bbebc",
+      "template_family": "template-a62ed33a885bbebc",
+      "split": "evolution",
+      "root_ids": [
+        "r-5e56b2771d82b6f9",
+        "r-2f74b84d1f3e4a3a",
+        "r-25a5ee8450a1e5b8",
+        "r-13861cc926aadee5",
+        "r-07b98d59bff88b3c",
+        "r-7a9d6ddda72f5565",
+        "r-64b063d81978b4d1",
+        "r-5f6a1c6cbcd823b6",
+        "r-57aa0c0d036d5551",
+        "r-262a0982c530e2d0"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c568fb4fec2fd2e8",
+      "template_family": "template-c568fb4fec2fd2e8",
+      "split": "evolution",
+      "root_ids": [
+        "r-b42a0a5d00b20345",
+        "r-e4df88bd18d0cb93",
+        "r-4bb880638a9427e3",
+        "r-6bb516325e65856e",
+        "r-529f4b99f777a0b8",
+        "r-7564dbfa76f727fb",
+        "r-4e4cb94a164f6788",
+        "r-bf276b1d545f3fec",
+        "r-6bc8ab79f36cde0b",
+        "r-11a79872645beeaf"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-0d6236236f75c179",
+      "template_family": "template-0d6236236f75c179",
+      "split": "evolution",
+      "root_ids": [
+        "r-51b6ff257bc2f74f",
+        "r-33dac857a92b519f",
+        "r-b2bd44db655f424d",
+        "r-31c0c0ff648d8e2f",
+        "r-3bc8965faf8cb2cd",
+        "r-d777ee4ceefc5dac",
+        "r-d5f4ed861b5922d6",
+        "r-02f68ab27307a151",
+        "r-142eabe22215bfda",
+        "r-5d6a4aa6c4c9aade"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-ec3a16843de8dc64",
+      "template_family": "template-ec3a16843de8dc64",
+      "split": "evolution",
+      "root_ids": [
+        "r-58a4ffc0640519f0",
+        "r-fa5f7cd20c9ed365",
+        "r-51ac1bcb343a7265",
+        "r-7e4b864384b0f34f",
+        "r-d49c1bfea2d970b4",
+        "r-209621643411e3f0",
+        "r-cb7ab5d657f8fea8",
+        "r-6529a5102f470dd5",
+        "r-5cbc221ce16fb5c4",
+        "r-b92ebd05e345d462"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-8f2017d8b52e5077",
+      "template_family": "template-8f2017d8b52e5077",
+      "split": "dev",
+      "root_ids": [
+        "r-9122a7f3b417be0a",
+        "r-2e53894f26f4bbfb",
+        "r-3b7fb1fb9a32b582",
+        "r-f7635c2d7b5d3da5",
+        "r-1e3bcdd97f4899e3",
+        "r-3f4cada5fbefe097",
+        "r-bb85387c406924ee",
+        "r-29fca74d8cd386e2",
+        "r-da787c36e26261e1",
+        "r-7da4ddc732d69933"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d628b0aac4e55a0c",
+      "template_family": "template-d628b0aac4e55a0c",
+      "split": "dev",
+      "root_ids": [
+        "r-1faf4b706394e1c8",
+        "r-bdc4fd037801fe5b",
+        "r-ad5e58cee477102b",
+        "r-72e09a399c3ff142",
+        "r-638405df56cba56b",
+        "r-62945a252ab20748",
+        "r-427565e9968634c9",
+        "r-545331568dd75872",
+        "r-fb731aa4731a975b",
+        "r-5e94c3be6ba6da2c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-40f0cb2327677f6a",
+      "template_family": "template-40f0cb2327677f6a",
+      "split": "dev",
+      "root_ids": [
+        "r-de238d2a37a40d8e",
+        "r-97c3384799b03d7e",
+        "r-982f05021a31deb6",
+        "r-166341b9c7133e85",
+        "r-9c0ce264e54857cd",
+        "r-f441ff8f75b28670",
+        "r-489515c02d69750b",
+        "r-2561c79743412d05",
+        "r-54f3c327848e4ffa",
+        "r-afcc173283fc3d91"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-72f0971645661f34",
+      "template_family": "template-72f0971645661f34",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-1dbf7f36dfd89909",
+        "r-10336e430ac99e9b",
+        "r-3309fc4451bce3ee",
+        "r-19e2aed5f583d975",
+        "r-0fbe0d5c73754d3a",
+        "r-4058f3f3b53901aa",
+        "r-e026c67768262d1c",
+        "r-eb7cccca6ffa9b03",
+        "r-672bef98af73fc22",
+        "r-24132b7ba901a850"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-1b0f4c9214c2ffe3",
+      "template_family": "template-1b0f4c9214c2ffe3",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-b971bcee9b1f9689",
+        "r-bf0c95a8c7529f84",
+        "r-2309efad4cc1fda1",
+        "r-d8313012b314b06f",
+        "r-64b2dd348878fd2d",
+        "r-777d021a0c9ce96d",
+        "r-f917571cf7e72789",
+        "r-f217db21659875a0",
+        "r-f4160e869ee8aa2e",
+        "r-188ab7f1c0cf2d7c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-8bbedbf0966a74b2",
+      "template_family": "template-8bbedbf0966a74b2",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-4fec4664bb303167",
+        "r-c19a2f2a4fa9745e",
+        "r-a8826c06951c44ad",
+        "r-da126a5b20c797e9",
+        "r-6af1db2b9784a056",
+        "r-7aeb0589c929a5ad",
+        "r-665682cb275915e8",
+        "r-ba96d0244ecc31de",
+        "r-194c709ec899f871",
+        "r-c1af47b0192ced42"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-bf7799df6eb22643",
+      "template_family": "template-bf7799df6eb22643",
+      "split": "cold_start",
+      "root_ids": [
+        "r-9f1c7657a138fe2a",
+        "r-06f0862f3ce8076f",
+        "r-11512a1389bf69d4",
+        "r-85f92ad05cfa7956",
+        "r-1733779dd28b6269",
+        "r-190add07d64d932a",
+        "r-5a96491bf8d98f9a",
+        "r-af0b0315f5e0492a",
+        "r-a5cd65f7735495db",
+        "r-82fb1485b0b82147"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d24bf172c29e6cc8",
+      "template_family": "template-d24bf172c29e6cc8",
+      "split": "cold_start",
+      "root_ids": [
+        "r-efed490264ec17e6",
+        "r-9c27afc3d0ee387e",
+        "r-af26586a85d19fd6",
+        "r-a8bd44bb81334bf0",
+        "r-bec905e403f90142",
+        "r-587eadefa14bdae0",
+        "r-b6b8daed7efdcc8c",
+        "r-2b0c0c2848b164ce",
+        "r-532bbe0a4d18967f",
+        "r-20b4ed006d4c9f8b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-01cbdeb676f5a3d7",
+      "template_family": "template-01cbdeb676f5a3d7",
+      "split": "cold_start",
+      "root_ids": [
+        "r-67575ed3d105e2af",
+        "r-d2f238df94c71e35",
+        "r-f4495e51a219a110",
+        "r-8ea692e78d727646",
+        "r-bd6dcdf5e3d2a2f6",
+        "r-f32c38b0fe31291e",
+        "r-940d1743b8ab2de8",
+        "r-b86779806855626f",
+        "r-d24ebc29ac04a01b",
+        "r-0c55b3a15124ae91"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c7f7d38db27f01fe",
+      "template_family": "template-c7f7d38db27f01fe",
+      "split": "cold_start",
+      "root_ids": [
+        "r-bda7caf42d02a10f",
+        "r-744515e04b659eaa",
+        "r-e69028d9ec42eebd",
+        "r-6a9f60662941e2da",
+        "r-451394b905fb0ac8",
+        "r-5ce7324f25dea565",
+        "r-a453781a2ea95dfb",
+        "r-4d26a4479e2b5b90",
+        "r-e79d8ee13f7098e5",
+        "r-64a958e1ca7783c9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7151e0199814368a",
+      "template_family": "template-7151e0199814368a",
+      "split": "cold_start",
+      "root_ids": [
+        "r-9d09bfaf8d5675c2",
+        "r-c08ecc85dac6fe29",
+        "r-7c77f0f83f85f00a",
+        "r-510c30ab12bd22ef",
+        "r-226fdf60286cb44b",
+        "r-77845bcf35d34377",
+        "r-f77e4ccb460e4a89",
+        "r-0179697865f9b80a",
+        "r-b6cb6dc5e868ff7e",
+        "r-86cc59433452eade"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-2c9f8c05f28cfca6",
+      "template_family": "template-2c9f8c05f28cfca6",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b89db7aab0f9a0f4",
+        "r-059b482b1b19d4bd",
+        "r-24f0c33e01e19f8d",
+        "r-2a3f608840c647c8",
+        "r-0d9f76d6b4f4900e",
+        "r-2b80d3f086961de4",
+        "r-3fa4e365c83f609c",
+        "r-504ac9f18561c4a1",
+        "r-ac865a06b99a5726",
+        "r-e389ff3ec5ae3f3e"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-9211ce1292a465a8",
+      "template_family": "template-9211ce1292a465a8",
+      "split": "cold_start",
+      "root_ids": [
+        "r-6047d05d0c54e575",
+        "r-fadbf9a1e8658ccc",
+        "r-37a577d2c68ea20c",
+        "r-8ef089700770425a",
+        "r-41e0828008b69442",
+        "r-9d5320460215c68e",
+        "r-3c562ac697f9a1c7",
+        "r-fed26d6671501816",
+        "r-dd16e563b051635b",
+        "r-45958072f8bed3b1"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-70229ee865551925",
+      "template_family": "template-70229ee865551925",
+      "split": "cold_start",
+      "root_ids": [
+        "r-d92ffaf113f32b07",
+        "r-2d0bff9d708cb0a8",
+        "r-b79e0d53bbac57f8",
+        "r-f9ef74fc3d84722a",
+        "r-4cfe86a67d1d3c44",
+        "r-892f350022f68f14",
+        "r-e315d6747eb19def",
+        "r-e0149f3d300fe985",
+        "r-0ddb0060012fcffc",
+        "r-fe9ed6fd121db0a9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-ff715b03276bc2cb",
+      "template_family": "template-ff715b03276bc2cb",
+      "split": "evolution",
+      "root_ids": [
+        "r-ce02dd2530607c0b",
+        "r-f14ce6878f456b46",
+        "r-59dfd1127817741a",
+        "r-938e7dd9de5141d4",
+        "r-b6d248e6e1d39591",
+        "r-54b752bff283f91d",
+        "r-133b14a56d990ad3",
+        "r-d19986e34e219595",
+        "r-56e237e6951244fe",
+        "r-823cf9cd4c501341"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c6fa8d70eef45377",
+      "template_family": "template-c6fa8d70eef45377",
+      "split": "evolution",
+      "root_ids": [
+        "r-cc8722cd9ddd8e2b",
+        "r-b98d3413e8dc7c2f",
+        "r-3c6be12e70cb48fe",
+        "r-11e5b4ef22ad7d59",
+        "r-f94854a6e8e0643f",
+        "r-1aafb81bf926695c",
+        "r-5d2d0d77fd18b742",
+        "r-b5eb4abe54065e99",
+        "r-585a201a3fbcaa1f",
+        "r-3cb629ea7fb95c94"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b5d665e8f8fca871",
+      "template_family": "template-b5d665e8f8fca871",
+      "split": "evolution",
+      "root_ids": [
+        "r-aeaf28568e357bd2",
+        "r-78aa674a42598816",
+        "r-9d94f7991c2d0db7",
+        "r-33ab973ce3d6eb5e",
+        "r-9d65e04ad1a2730b",
+        "r-7bb2ddb828826ee6",
+        "r-670899804f2ed652",
+        "r-8081d8c61ccfee35",
+        "r-0c3c4a7a05aabd3e",
+        "r-53f08b1c2a0e4684"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-28b4a71d6138d49c",
+      "template_family": "template-28b4a71d6138d49c",
+      "split": "evolution",
+      "root_ids": [
+        "r-6a904e1030866290",
+        "r-784c2f58e23717c9",
+        "r-1b45ca59d2618e30",
+        "r-eed9b93eff8fb34a",
+        "r-05821acd01e2e9a4",
+        "r-541d155556391174",
+        "r-ac05ff1b5e60f200",
+        "r-e98bece04686a52a",
+        "r-13d93fc89f2c77fa",
+        "r-61438301ba43575b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b2f6b60d73898ed4",
+      "template_family": "template-b2f6b60d73898ed4",
+      "split": "evolution",
+      "root_ids": [
+        "r-163b2f4830bd2e62",
+        "r-b74d0cbb7968f184",
+        "r-9370d86db11f4440",
+        "r-85e7155bd1abf996",
+        "r-91fb86e308ec0c1f",
+        "r-f6b36a4f6fc5d00a",
+        "r-cccf6bada4e6cf65",
+        "r-edd6e87da30ff6e8",
+        "r-ee9f08cc24a3aac9",
+        "r-1a54ac5cff1cfcdd"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-bd963c88b8550007",
+      "template_family": "template-bd963c88b8550007",
+      "split": "evolution",
+      "root_ids": [
+        "r-7ac385a7196bc931",
+        "r-d21204855d91a171",
+        "r-5fa2bdc54c6ef504",
+        "r-cb7293bb9e69b446",
+        "r-85cd256aae1c1a70",
+        "r-3e1375edd74c9d44",
+        "r-3e3289f639627aab",
+        "r-51f97b826297b849",
+        "r-d6cea4a466f5c37d",
+        "r-f8158cb23a42a1d8"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-fbf44bb15cce696b",
+      "template_family": "template-fbf44bb15cce696b",
+      "split": "dev",
+      "root_ids": [
+        "r-145cbde81802edc9",
+        "r-0f42ad21b017eca3",
+        "r-f797f9760207d47d",
+        "r-a27553c0f90c482d",
+        "r-e0a472fd7509eb54",
+        "r-73242e80598c625f",
+        "r-8ae5ba5d145995e4",
+        "r-14b5a51da67354e7",
+        "r-6b069554e72ce2d1",
+        "r-033cac25132cae1e"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-705aeb945c265d49",
+      "template_family": "template-705aeb945c265d49",
+      "split": "dev",
+      "root_ids": [
+        "r-df3d0760c4770a2c",
+        "r-52781a8cfad563b1",
+        "r-e79d0ca7f013170b",
+        "r-0313469331d3ed8f",
+        "r-79a1c1b64c91098e",
+        "r-d233e423150f215f",
+        "r-e7bbb2bac622f424",
+        "r-5cd1ec1a28353604",
+        "r-07da96e42e374327",
+        "r-e995e506d3c51e32"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-15347203d9da226b",
+      "template_family": "template-15347203d9da226b",
+      "split": "dev",
+      "root_ids": [
+        "r-f9fa12d728d5a930",
+        "r-5900bed4d2012e9d",
+        "r-a8e5ae47abbfc470",
+        "r-97da34f997f8775c",
+        "r-d36d9e2db290e772",
+        "r-0ff092a810a6540f",
+        "r-a76f829caa65f1b5",
+        "r-118ba0cc8c5a18e7",
+        "r-5f6f7c8ebb9c960d",
+        "r-889df4bcd535cc11"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-0fa9cf3e9b58a31b",
+      "template_family": "template-0fa9cf3e9b58a31b",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-ec4f9558e7f33d52",
+        "r-162bb4d5532e54f6",
+        "r-4a4cf16245344e50",
+        "r-76f4082fe5700cdc",
+        "r-eab8573d7a24ec79",
+        "r-14c45fff7b7a4b56",
+        "r-3e0efcf83ac57608",
+        "r-86a57ad6902b22ce",
+        "r-dfa3d7234952eda9",
+        "r-4dc02b2ab4fe580d"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7177c056ecc2efc2",
+      "template_family": "template-7177c056ecc2efc2",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-754d95d9120e481b",
+        "r-04c3926539a5c1cc",
+        "r-88245ef712576ac6",
+        "r-5d9df866d9551728",
+        "r-27c6f60b91f0a2d6",
+        "r-9d51a95995ec9776",
+        "r-bb1eadff619da637",
+        "r-fbb6baeb1b7e87a4",
+        "r-4dea24801396dc35",
+        "r-8502273029df0574"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-4ab0df0ef720a270",
+      "template_family": "template-4ab0df0ef720a270",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-5854446a543bd382",
+        "r-4b234c847b1bf6ce",
+        "r-4b69f28b60549db4",
+        "r-e205ece958e55a8f",
+        "r-22c8e0f8cd06e0bc",
+        "r-1f92f1fda165cd9a",
+        "r-50a4bfde8e0cccfb",
+        "r-9997291df2618696",
+        "r-416396ca888f4e15",
+        "r-697177081a6185b5"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-dfb3008225bed094",
+      "template_family": "template-dfb3008225bed094",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b4694311887433b8",
+        "r-6c512a8ea1acd7aa",
+        "r-2e4d75cd8dcda8d0",
+        "r-cf806403d2c25338",
+        "r-cdd4b896077d9ad2",
+        "r-7a4a459fa370a47e",
+        "r-82b2672ed589ecb2",
+        "r-c037e3dd4665aa5c",
+        "r-733f8aa70d000ffd",
+        "r-a0a6feb33cc49dcc"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-6c08cc63f95f37d4",
+      "template_family": "template-6c08cc63f95f37d4",
+      "split": "cold_start",
+      "root_ids": [
+        "r-d80a7d9861e7e871",
+        "r-e1ec648c2c2b4f58",
+        "r-3d3d6e926bfe54f6",
+        "r-99c44108b09e11fb",
+        "r-e245fd2384514be7",
+        "r-0b6df38f98404cef",
+        "r-87073bdee2c5a52b",
+        "r-fd46354e8710b449",
+        "r-7bb288c38f0b3e41",
+        "r-2636736c179a1f85"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-61456c3ba4db5db7",
+      "template_family": "template-61456c3ba4db5db7",
+      "split": "cold_start",
+      "root_ids": [
+        "r-01cb7fe9ea26b58a",
+        "r-2ad504291fe7fa92",
+        "r-98c51b2af2b77745",
+        "r-b1c82e161d7132c6",
+        "r-9d104150cdd308b6",
+        "r-8e8f913d8e63de14",
+        "r-bff2a919b434ac2a",
+        "r-7a863d3dbb1dd888",
+        "r-acc28c989c9dce00",
+        "r-ed457c4f6d1ba6e7"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-cccce95410339b22",
+      "template_family": "template-cccce95410339b22",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b78fd19ce3512249",
+        "r-b29a4a873f87a728",
+        "r-41ced031d07b7c37",
+        "r-42cf2ee684e6e405",
+        "r-6a6d537a52d625f5",
+        "r-fb9b49dfd33b5af7",
+        "r-27607d4e755de69e",
+        "r-edcf4d1dd3fc2335",
+        "r-b3d3dd671d20981e",
+        "r-150ac8584a7ee511"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-30070e84b10bb5e3",
+      "template_family": "template-30070e84b10bb5e3",
+      "split": "cold_start",
+      "root_ids": [
+        "r-14768e3e4371fa28",
+        "r-9edf968957a3882a",
+        "r-40a7c8b01331f473",
+        "r-85dbf138519d75fd",
+        "r-f4cec1c00d3b80c0",
+        "r-3a7e8c52679a2d98",
+        "r-b655f4687591c297",
+        "r-0e77d69a4926f424",
+        "r-7c57e011bf8e7a07",
+        "r-e3858abb93f32203"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-ecbffac9f9f9e5d9",
+      "template_family": "template-ecbffac9f9f9e5d9",
+      "split": "cold_start",
+      "root_ids": [
+        "r-4da3eb1b3195fc9d",
+        "r-2655f861d44b4e3d",
+        "r-791c7d1a68f9b8c3",
+        "r-5130f8fbed9e8009",
+        "r-ce4fc355f7ac9135",
+        "r-d8eb5463eb79ddcf",
+        "r-6ee652f0bd0645ee",
+        "r-f3966bf9f3a5d953",
+        "r-9fb3093d00cecf02",
+        "r-17441c329652e81a"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-37c4f7c95142f626",
+      "template_family": "template-37c4f7c95142f626",
+      "split": "cold_start",
+      "root_ids": [
+        "r-23b1650193cd3028",
+        "r-40c81c7c2f1c2c0a",
+        "r-356704fea31b4652",
+        "r-2df50a9a060df050",
+        "r-f176c73950b460ad",
+        "r-9452f256e37d8ed7",
+        "r-1597adccd32c439c",
+        "r-f89b5e2ceef562b7",
+        "r-7abda691353e66a1",
+        "r-b286332e4382d062"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-384fcabee9b1d0f9",
+      "template_family": "template-384fcabee9b1d0f9",
+      "split": "cold_start",
+      "root_ids": [
+        "r-058fa4b38ca4905d",
+        "r-b7b97cd1ddd5d95e",
+        "r-35bbb28cc18c1ee5",
+        "r-936551dfd66b538e",
+        "r-de9b10f2268f1caf",
+        "r-f04a7a174f44e390",
+        "r-7bd8822f65da9935",
+        "r-49311e2abe6978f3",
+        "r-21db2ee04add3d48",
+        "r-b52748d3e55d2f3b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-64404aa9c6707549",
+      "template_family": "template-64404aa9c6707549",
+      "split": "evolution",
+      "root_ids": [
+        "r-36253793d885a398",
+        "r-25984983ff0dac84",
+        "r-9b33e66250e11054",
+        "r-bcbb4fdb0a9039d9",
+        "r-9c5b51d6a3917c32",
+        "r-459d24258c7094b4",
+        "r-9d9f907cb1ff2300",
+        "r-4a9863df784e0988",
+        "r-4cfce7ae374d002b",
+        "r-c8089c7de218c1dd"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-03c568d51f328304",
+      "template_family": "template-03c568d51f328304",
+      "split": "evolution",
+      "root_ids": [
+        "r-ab7492e877db09e7",
+        "r-f56bf0fbdc1a7cee",
+        "r-faeb00ab07dfdaa5",
+        "r-4b7bc4154147e6f8",
+        "r-51ed40e8aa7d162e",
+        "r-cc86cde17a722e63",
+        "r-950d501f45c728f6",
+        "r-927f385aa8fe27de",
+        "r-88f0de167300c807",
+        "r-bdcaba22daba2eca"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-182b2400fb53af55",
+      "template_family": "template-182b2400fb53af55",
+      "split": "evolution",
+      "root_ids": [
+        "r-e2cd6beb7646f8a9",
+        "r-39001362278c29bb",
+        "r-3dfa211309b09ad5",
+        "r-f4b2ececb49710f5",
+        "r-25386b5c5c99cae4",
+        "r-cdc16e8576121108",
+        "r-cf335052f36253dc",
+        "r-cae5acbf5b11af02",
+        "r-e8b6a154102181d8",
+        "r-13ec3c178d0d908f"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-6901b4090b059f1e",
+      "template_family": "template-6901b4090b059f1e",
+      "split": "evolution",
+      "root_ids": [
+        "r-0c1a6ac9a4a6f008",
+        "r-12236769ae139dd3",
+        "r-8c47071c899e1287",
+        "r-f7e691fd8e6eac93",
+        "r-3163c8076403d5aa",
+        "r-fc07f26e08fbe4a9",
+        "r-8bf45396b0e6859c",
+        "r-82d6adbb08b9a967",
+        "r-b45917c32ac54f15",
+        "r-c01b56cf8f4a84c6"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-60a5a03baf83637e",
+      "template_family": "template-60a5a03baf83637e",
+      "split": "evolution",
+      "root_ids": [
+        "r-f50ed98427435fae",
+        "r-c028680a25e4dcf4",
+        "r-5cb9fc358d6c53c2",
+        "r-c68218b79ca93d59",
+        "r-99c6f22dc26f1017",
+        "r-b416cad744155fa1",
+        "r-375d6a5410c60648",
+        "r-b29f2a0bec9dd50f",
+        "r-f27f4a2285fce0ca",
+        "r-d9982cbcbf9ac1df"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-42b1b0e9281a53f1",
+      "template_family": "template-42b1b0e9281a53f1",
+      "split": "evolution",
+      "root_ids": [
+        "r-576e4f648acd3b27",
+        "r-e5b23f30a9243b18",
+        "r-8b9ecaabd18bb423",
+        "r-3b34439c69205dea",
+        "r-fdd7183c099b2e00",
+        "r-2d6e63f832352944",
+        "r-7578c2c54a16bcb4",
+        "r-5294477eb9fff567",
+        "r-14e4880c81a5242a",
+        "r-54c524c684b0ec3f"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-42e2f1a16cd8086c",
+      "template_family": "template-42e2f1a16cd8086c",
+      "split": "dev",
+      "root_ids": [
+        "r-6867540338352101",
+        "r-7b576a89edc85ea8",
+        "r-a0ddc16c9c4e0835",
+        "r-997e6f11995cdc34",
+        "r-f72e8597cab05d7b",
+        "r-6ab0a75b1a420786",
+        "r-0213fcce8934e02d",
+        "r-71b86b6e1cfe8dd9",
+        "r-2d7a11c1a342599b",
+        "r-88aa7210de405153"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b3e9af5bcfa7302f",
+      "template_family": "template-b3e9af5bcfa7302f",
+      "split": "dev",
+      "root_ids": [
+        "r-a599357373ed3eed",
+        "r-eae1a3b08580a5a8",
+        "r-ac56f7bccb5efe75",
+        "r-77d14bc4b20111b0",
+        "r-0045da089d014d63",
+        "r-e5332dae2c1e12ef",
+        "r-b7c47395ee0938f8",
+        "r-3af312688913f1f5",
+        "r-abc0e08b849811f4",
+        "r-13d1a78f57104f04"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-1ac6f39e9f51daba",
+      "template_family": "template-1ac6f39e9f51daba",
+      "split": "dev",
+      "root_ids": [
+        "r-542be3ad16a44332",
+        "r-76e1da42c15079cf",
+        "r-2c330a88d0c07750",
+        "r-a2cf9d210da1b35b",
+        "r-5550867c65cdd11b",
+        "r-7c271885aef807dd",
+        "r-e0b95aa5af0505e3",
+        "r-8993e8210f02019b",
+        "r-d393af25b263ff42",
+        "r-e6396af53526dccf"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-33501e38d77da84d",
+      "template_family": "template-33501e38d77da84d",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-9861efb65c1fa635",
+        "r-0857bf777e6eab01",
+        "r-f4b4bbb77c26a9b7",
+        "r-c8cf66f6a74078ad",
+        "r-77214271839152a0",
+        "r-9f536dd919ec960d",
+        "r-6cbe173813eacd1a",
+        "r-73cc23c0622241c4",
+        "r-595355aaa1d07b36",
+        "r-37d7aebefdc1dcaf"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-dc449d20282484bb",
+      "template_family": "template-dc449d20282484bb",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-27a1738c7871d963",
+        "r-1462729de19377f5",
+        "r-96d056ed2b20b978",
+        "r-6db31a0b1378d1ce",
+        "r-ab11cf0de55e2ccf",
+        "r-4a106795086bb6d8",
+        "r-44d1183926ea3ab0",
+        "r-c2aef4cc10865ac3",
+        "r-56be6b8e8782f085",
+        "r-0e6f67213cc1bd11"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-eb4fd4bc6769f9eb",
+      "template_family": "template-eb4fd4bc6769f9eb",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-acfe11f7d2a94d9e",
+        "r-c429428e4f2f39eb",
+        "r-7f104dc3742f27dc",
+        "r-eec74c3697e9eff1",
+        "r-8f0752c1bded9f29",
+        "r-3457641420b7c890",
+        "r-c3513a41a4181d30",
+        "r-49c8b76ee7f90ea6",
+        "r-0872e837d923803e",
+        "r-2a4d637b5fe871bd"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-444485ff09fb70ce",
+      "template_family": "template-444485ff09fb70ce",
+      "split": "cold_start",
+      "root_ids": [
+        "r-b4834b8fb9d682d5",
+        "r-3b9203ba0415123d",
+        "r-70d5ebec8c8c38ef",
+        "r-db9a9eeb48fc00b3",
+        "r-ae5f5589eca9fe5b",
+        "r-c3f689aa64c49616",
+        "r-e48bcd7657268fd0",
+        "r-c7c4ccff1236b77f",
+        "r-32934bc142834e6e",
+        "r-d9267e85d462d576"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-5e01603443fb4f55",
+      "template_family": "template-5e01603443fb4f55",
+      "split": "cold_start",
+      "root_ids": [
+        "r-921db57ea4a6b4dd",
+        "r-08114d078d08bb69",
+        "r-9273ab40329dd3a2",
+        "r-fe6fd252bc249ca2",
+        "r-c28ff1b603f34bdc",
+        "r-81f62d30ef82945b",
+        "r-7a27d0a7cfcff5d1",
+        "r-3435f3b8e5248988",
+        "r-08edd7d70c26ecfd",
+        "r-fbfe9c226690eba9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-665ca27fc42736b6",
+      "template_family": "template-665ca27fc42736b6",
+      "split": "cold_start",
+      "root_ids": [
+        "r-6209ca9173012f2e",
+        "r-e7916eedffef4279",
+        "r-85bb9a884d651ef7",
+        "r-072fb2c3920d8c4d",
+        "r-f61594261013b8d6",
+        "r-6cff43b291e1f4de",
+        "r-e191ce27e9495ee1",
+        "r-e0785f2b3485d76f",
+        "r-32db353ba1db0748",
+        "r-671119c92c741dc5"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-592e1f0cf5f0604e",
+      "template_family": "template-592e1f0cf5f0604e",
+      "split": "cold_start",
+      "root_ids": [
+        "r-5e7da46b9344d39c",
+        "r-794f78b568e0cb91",
+        "r-cd2df00ca3885a97",
+        "r-27e6a9afa148d8b9",
+        "r-65e5a6ea98499fc7",
+        "r-a0b8469cb09d5368",
+        "r-49c8b26959904319",
+        "r-06b8a6e66762bedb",
+        "r-90531224e9c58ffa",
+        "r-ccc419c097ddd07b"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7e35c599fb7fa05e",
+      "template_family": "template-7e35c599fb7fa05e",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f00eb193b2e92639",
+        "r-30408ff7ed0e587a",
+        "r-14883de340e7decb",
+        "r-45a9afac326f1c38",
+        "r-ab6904e5c0569cb1",
+        "r-838af48863a0599d",
+        "r-3f716c4e122450fb",
+        "r-dac5ca3f923bba73",
+        "r-fcd62cfc02a38757",
+        "r-2ecf6a45a6d42bae"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-97c90213a2051f9e",
+      "template_family": "template-97c90213a2051f9e",
+      "split": "cold_start",
+      "root_ids": [
+        "r-9071bc8628c8165e",
+        "r-6dbe5751c51e24d5",
+        "r-6023c55ac666eb53",
+        "r-4e1350366e8b5171",
+        "r-67faf31fc3f3ea85",
+        "r-595021689952f802",
+        "r-0d3d9989087b974f",
+        "r-be011e05ceb0e047",
+        "r-dd9fcbe3a3c0887a",
+        "r-176f56e4fd4817ba"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-688c6eab98ecc764",
+      "template_family": "template-688c6eab98ecc764",
+      "split": "cold_start",
+      "root_ids": [
+        "r-2b1ad67d7bc500e4",
+        "r-779f12e960c96afd",
+        "r-8a1118121108044b",
+        "r-4e04ed300e673a0a",
+        "r-ab22954f40ca34d9",
+        "r-6c7c13b639bb16ea",
+        "r-1b8e5ca997b187b1",
+        "r-08e08dc73500b230",
+        "r-2ef861f6bd31b59f",
+        "r-2250d28915984211"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b182de4c199df510",
+      "template_family": "template-b182de4c199df510",
+      "split": "cold_start",
+      "root_ids": [
+        "r-c0368b73ad74fd68",
+        "r-4b32519f34f320ac",
+        "r-dfed3dd4adb5fd0a",
+        "r-0fdb3aa005742af4",
+        "r-5b0d92a6ee1b4a11",
+        "r-5e8789180a227875",
+        "r-c996d2abac0f4e84",
+        "r-fa5e9af5c7e0acac",
+        "r-0ea12a300218b4ad",
+        "r-0376d2d3a2e154ba"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-2a2b02f8aeaeb41e",
+      "template_family": "template-2a2b02f8aeaeb41e",
+      "split": "evolution",
+      "root_ids": [
+        "r-62c6da8a98a4ae88",
+        "r-2c44ba8fb61a5a39",
+        "r-e9490c1b929ebe42",
+        "r-e88bc6e1d589121f",
+        "r-2af61267ea089e3c",
+        "r-378453468a88c9da",
+        "r-5eb7a35f367ec769",
+        "r-b25885fab3d467ad",
+        "r-546f4b1f4a68ecde",
+        "r-e2c70ba7a53584f7"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e6b24a3608db0093",
+      "template_family": "template-e6b24a3608db0093",
+      "split": "evolution",
+      "root_ids": [
+        "r-99992bb867c62f86",
+        "r-77f08f0ea453afab",
+        "r-d8591717a57570c5",
+        "r-bc880b4835ee8af3",
+        "r-f96a68b0365d78e5",
+        "r-047221cff336c689",
+        "r-688d7bc86bba6024",
+        "r-61887baf68b9e63f",
+        "r-0f6ff62e5707c8a5",
+        "r-8d819448df11884e"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-49c5ea78149f64df",
+      "template_family": "template-49c5ea78149f64df",
+      "split": "evolution",
+      "root_ids": [
+        "r-4ac11032e54a36b6",
+        "r-954b6a5f3c8ab666",
+        "r-3899be5041786ba5",
+        "r-5583fcdf6228731f",
+        "r-10c9fad7392448aa",
+        "r-c6e6377b924ebf05",
+        "r-e973e3716694a002",
+        "r-61abbb74aba52bf2",
+        "r-0c56adbf6aaf1aa7",
+        "r-3c988b63933ba606"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-4a90468fc204e995",
+      "template_family": "template-4a90468fc204e995",
+      "split": "evolution",
+      "root_ids": [
+        "r-bd5383d433909aa5",
+        "r-0f32ae96139127de",
+        "r-8aea5539f1b3418a",
+        "r-21dc9f37c59c47ff",
+        "r-aab6b7d42e822046",
+        "r-889edf4b31d5c8fa",
+        "r-1a95691d014956a1",
+        "r-01ca9b30abb41d4b",
+        "r-06a18f5e54e9b3a2",
+        "r-a7a5364512f09a09"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-bc0be66f222f1628",
+      "template_family": "template-bc0be66f222f1628",
+      "split": "evolution",
+      "root_ids": [
+        "r-ecc8b3dcc559f596",
+        "r-918aa809ab28f4ef",
+        "r-ffa2a4b872d45105",
+        "r-d46705736e3cf718",
+        "r-386c7370b8661806",
+        "r-ff0ae65a963aa7fe",
+        "r-296a330c8985dfe6",
+        "r-40dea919fb668f3c",
+        "r-f57a13d743e1c024",
+        "r-a757983779c88f03"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-23c16fb3fadc2941",
+      "template_family": "template-23c16fb3fadc2941",
+      "split": "evolution",
+      "root_ids": [
+        "r-72a2cb14933686e4",
+        "r-d8cdd3f9e318ed9c",
+        "r-5782971022e764e6",
+        "r-ea8ff149c5e19852",
+        "r-3bbec68be359e3f5",
+        "r-5fabf8535a70b689",
+        "r-8273fa340476e34c",
+        "r-308faabc2f104a6e",
+        "r-a8f0a6252e0b4835",
+        "r-5e7849958ebf26bc"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-359a354a8c2667cd",
+      "template_family": "template-359a354a8c2667cd",
+      "split": "dev",
+      "root_ids": [
+        "r-f3f46c0e5c5cdcf7",
+        "r-597257f6be397e38",
+        "r-e58f4377fb35c0ab",
+        "r-32e5b00ffee0bb7c",
+        "r-33170fdbe88bf80c",
+        "r-3763ea553600bb8e",
+        "r-1643df7d99bbffc6",
+        "r-8374e08f297a9e27",
+        "r-e72294392cd52083",
+        "r-9b6aa954177eec61"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-799942dd63c69759",
+      "template_family": "template-799942dd63c69759",
+      "split": "dev",
+      "root_ids": [
+        "r-1a6f29928b7ea172",
+        "r-673d27592e1b5729",
+        "r-15af158801c84c7b",
+        "r-a751c323168fd370",
+        "r-8569f9fd1ebe1105",
+        "r-7137d610fe11e629",
+        "r-ae998549dc311e9a",
+        "r-47f60df838389d0b",
+        "r-322c01e0393cfccf",
+        "r-c7aa925d20890863"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-6cea2f7c74bd604f",
+      "template_family": "template-6cea2f7c74bd604f",
+      "split": "dev",
+      "root_ids": [
+        "r-6f5d5fb555f8f815",
+        "r-fef7f15cc43b9cec",
+        "r-0f5a91f31abb625e",
+        "r-a8c5e3165537dff2",
+        "r-4f80405f1f96eaa7",
+        "r-3ca4ee79bb0165b5",
+        "r-35362cb5404428e1",
+        "r-fd068bcfbcf607f4",
+        "r-00ae39689bdb5866",
+        "r-9c5111d4bc6fd06f"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-e3d4a8782369d9a3",
+      "template_family": "template-e3d4a8782369d9a3",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-a5e29e36835b8cde",
+        "r-02e280903551865c",
+        "r-e583f888f6b4e820",
+        "r-d422721dbd8e4c74",
+        "r-fec72af4aa3893cb",
+        "r-76540482caa926d2",
+        "r-fee1ae1939032f22",
+        "r-9f2059bf8ed9da93",
+        "r-61ef8cb7ebd21949",
+        "r-57d3d71fbd1e76ab"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-6edf3c6c14310e6c",
+      "template_family": "template-6edf3c6c14310e6c",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-e408decfb382698f",
+        "r-08b65f572ad3caa4",
+        "r-0200acb5ae7023c7",
+        "r-afc02568e069901a",
+        "r-89a122428991c063",
+        "r-910c9613538eb394",
+        "r-6693b26d2a10eb59",
+        "r-fab2a0a3a52b88f5",
+        "r-b084dbbbdd35ad78",
+        "r-2ef2d1176562cb8a"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-719e783c36a8e7ee",
+      "template_family": "template-719e783c36a8e7ee",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-6b4ccb70350656f1",
+        "r-dcf1246023a2bd69",
+        "r-99ca1e8a21b17aea",
+        "r-b83003cd5abe2b03",
+        "r-599f0cb2f61d0510",
+        "r-a40be07ef43fdb40",
+        "r-6ff6b29aba4d92c3",
+        "r-af75415c6eafcf45",
+        "r-c3530f869c59e212",
+        "r-fafc1c9d19211fb1"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-b0bacd3a0f0bb64b",
+      "template_family": "template-b0bacd3a0f0bb64b",
+      "split": "cold_start",
+      "root_ids": [
+        "r-71abb63a6a605f7a",
+        "r-b143fc223edf6f09",
+        "r-c2efb7889aa55c37",
+        "r-2e87a0156b666ef1",
+        "r-9b37b5064963d29f",
+        "r-6daa0ffa16279062",
+        "r-fc8c3b69301601c5",
+        "r-1ffa4d17a8b3bd94",
+        "r-fe96d8d4af9cb5f6",
+        "r-7930f024dbfae7f3"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-500547957dcbeaff",
+      "template_family": "template-500547957dcbeaff",
+      "split": "cold_start",
+      "root_ids": [
+        "r-d00845b976c95f29",
+        "r-9adff7cd8c02e511",
+        "r-32f7a83470458d54",
+        "r-d7bb3bee453646f9",
+        "r-6f177e6e2b6a9330",
+        "r-f5bf50d3aa87ed2f",
+        "r-44c21642c7f9bad1",
+        "r-489983b7557143a9",
+        "r-d9db9b33c9fcf9e1",
+        "r-522a6cd328dce84d"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-3b54c463e23d1c1c",
+      "template_family": "template-3b54c463e23d1c1c",
+      "split": "cold_start",
+      "root_ids": [
+        "r-4ac68466c42f2166",
+        "r-64d2aba607747a8d",
+        "r-770f1c41df1d1487",
+        "r-50b681baae117411",
+        "r-34a5b0e01f6f5207",
+        "r-9956ea1f01e97860",
+        "r-cf3412a5c087c677",
+        "r-cec9405bcac18886",
+        "r-b6e85ae5d8799994",
+        "r-69072e03e8fce839"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-52792812691ee59b",
+      "template_family": "template-52792812691ee59b",
+      "split": "cold_start",
+      "root_ids": [
+        "r-bac4d2ad30e45f59",
+        "r-63484146058677a3",
+        "r-663e90aa222ecb70",
+        "r-06877913012d6880",
+        "r-0818ae40c91cc377",
+        "r-7df48e1ea6df2bd5",
+        "r-2632d193e550d0b4",
+        "r-0243f63cec86704e",
+        "r-9e5b3891258d8dd5",
+        "r-1564490a6ed79c0a"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-9787b9025fb91dde",
+      "template_family": "template-9787b9025fb91dde",
+      "split": "cold_start",
+      "root_ids": [
+        "r-f16e33d629e0c07e",
+        "r-049a7bca3bebfa7f",
+        "r-acd59ce5f235a0d0",
+        "r-eba0993a146bf3f0",
+        "r-4039fe4106809a76",
+        "r-a8eb3b88088e92b9",
+        "r-606f730f9c79a6ea",
+        "r-9c995b80fab32ac6",
+        "r-bdb1fe3ae637327c",
+        "r-2039e863f7403598"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-335749cea0e8c3c0",
+      "template_family": "template-335749cea0e8c3c0",
+      "split": "cold_start",
+      "root_ids": [
+        "r-4e57b8e5b2d9281a",
+        "r-ab924d946060e896",
+        "r-356e12cafe6e970a",
+        "r-aea307d86880f377",
+        "r-10826989027d7f33",
+        "r-8a72c42e8ab5fb18",
+        "r-8de95ddd45cfbfb8",
+        "r-750309d686270c99",
+        "r-fabe1203e5d90734",
+        "r-2a23247232803d98"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-54985c4b5da56aa9",
+      "template_family": "template-54985c4b5da56aa9",
+      "split": "cold_start",
+      "root_ids": [
+        "r-60022070402874d5",
+        "r-ae681c26f53355cb",
+        "r-f16bd9a19c08e708",
+        "r-8d7dfd96d1ba5809",
+        "r-0a94f2bbfeab2d28",
+        "r-2f29e253e83a2940",
+        "r-3296913c767063b2",
+        "r-3f6242c93dd6d95b",
+        "r-3a5d7a2656f991ca",
+        "r-497cd9362c7cbf4f"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-7d3b06e5fa4f56e1",
+      "template_family": "template-7d3b06e5fa4f56e1",
+      "split": "cold_start",
+      "root_ids": [
+        "r-20e17a487ef21c3b",
+        "r-2999101d65b162ff",
+        "r-93bcb723d346adef",
+        "r-a8be0e5ae9a5dcea",
+        "r-20dfb97b9eef33ec",
+        "r-f0602f07fe337cea",
+        "r-c0b9cdb659f7dd93",
+        "r-f8571e19b1e021a9",
+        "r-059f9f5ebe87c475",
+        "r-a467eca9565cb644"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-13141acd2d877619",
+      "template_family": "template-13141acd2d877619",
+      "split": "evolution",
+      "root_ids": [
+        "r-e6d37b346eec43bf",
+        "r-e207c75bf9c42b6d",
+        "r-30d249a5a59ad691",
+        "r-673f0d34e4d85f9c",
+        "r-aaaaffab8ef743ee",
+        "r-c8594b393da0c578",
+        "r-c900f9c1d5cb8083",
+        "r-f68834a74fe49acd",
+        "r-348ac528275ef417",
+        "r-d9f94d430e9f05d8"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-89682b6c52c3e5fa",
+      "template_family": "template-89682b6c52c3e5fa",
+      "split": "evolution",
+      "root_ids": [
+        "r-bbb4265752807dd9",
+        "r-916d7d522e325b60",
+        "r-382e99692c0c9638",
+        "r-3015823dd4bf3201",
+        "r-132b5c935b5624b4",
+        "r-063a7e57ebebbd3e",
+        "r-4ce7efaebc566981",
+        "r-d502132a5a9f5753",
+        "r-e89edc105b514723",
+        "r-a82a0b11b8a2a6af"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-1e0a0c5cd2483366",
+      "template_family": "template-1e0a0c5cd2483366",
+      "split": "evolution",
+      "root_ids": [
+        "r-532cd5b98b86078a",
+        "r-ada5b93a216285da",
+        "r-df883beeacd45e10",
+        "r-e19cda8f57a8f7f0",
+        "r-344d097b14351172",
+        "r-4da5ecb95a799fbd",
+        "r-6fbe05ae625f3bee",
+        "r-8582fe64b10152b5",
+        "r-101fdaebbc165a14",
+        "r-0c7cc7fe2c48df60"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-309d7906e7138ddf",
+      "template_family": "template-309d7906e7138ddf",
+      "split": "evolution",
+      "root_ids": [
+        "r-dbf0ef999b65d882",
+        "r-caed777fb1068bdc",
+        "r-d759064b3edd0b9a",
+        "r-631359b053ec3684",
+        "r-78cee32e6c7da833",
+        "r-99d96cdfe0a41669",
+        "r-a58ef11af64c8689",
+        "r-ff1af73a909a8429",
+        "r-7943325d98e53183",
+        "r-ef0780800cf872d9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-db2588c4b38a4ed2",
+      "template_family": "template-db2588c4b38a4ed2",
+      "split": "evolution",
+      "root_ids": [
+        "r-792fc5914079df2d",
+        "r-6ba4609d93ddafaf",
+        "r-7d9a3ba630ff7d7b",
+        "r-18fd81796381e978",
+        "r-59c973a8ba8d47d7",
+        "r-43c7e87ea8f6e4bd",
+        "r-0f2d4f8fcff12b6d",
+        "r-95b69fb527f45c08",
+        "r-c3310279c7542da2",
+        "r-e27ced822d0a8df9"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c4edeef6b1ef41b0",
+      "template_family": "template-c4edeef6b1ef41b0",
+      "split": "evolution",
+      "root_ids": [
+        "r-eb4a60b5d9f29b5e",
+        "r-e46a33b696b1bf52",
+        "r-6990c20bb5f995b7",
+        "r-592457b58039c004",
+        "r-f24ec20398561efb",
+        "r-9aef93d8b5bfda17",
+        "r-51432033b4ad4126",
+        "r-48e06bc288d58a23",
+        "r-4344aec0f92251c3",
+        "r-8241a5bcfb6ba94c"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-44fb84d7f6619b45",
+      "template_family": "template-44fb84d7f6619b45",
+      "split": "dev",
+      "root_ids": [
+        "r-3a645acee53c952d",
+        "r-674d1ad2f0b8cfde",
+        "r-3888551a2bb6c4a2",
+        "r-bfb432c4c332fb8e",
+        "r-63c66aeb66679277",
+        "r-cadb86b9108912d6",
+        "r-005e463ee3ecad4a",
+        "r-a60d22f8b9469b6a",
+        "r-aea8f541475f49d8",
+        "r-4dd06e8fb381d417"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-08bb7e1687b57655",
+      "template_family": "template-08bb7e1687b57655",
+      "split": "dev",
+      "root_ids": [
+        "r-fd99fd4670a81ed5",
+        "r-7d2994f7844d2d6e",
+        "r-dd0765ae630e30ea",
+        "r-c6de94fc4a4ffb8b",
+        "r-8bcf41d309ab0442",
+        "r-9bef4958c9eed6c3",
+        "r-a837f7c9395417c9",
+        "r-9f2b068275244f80",
+        "r-f7c472e7c40febf3",
+        "r-7ecfd50e4705501a"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-513a3d8842e6c873",
+      "template_family": "template-513a3d8842e6c873",
+      "split": "dev",
+      "root_ids": [
+        "r-c42b540320f3dc76",
+        "r-52ab7e52459baa1e",
+        "r-4cc53e103ab542e5",
+        "r-e04a429a6def7356",
+        "r-f271edf4f912386c",
+        "r-872f4be1001dfa20",
+        "r-4ecfa15fda631e88",
+        "r-c09937967185b7b8",
+        "r-5f5bd3e2041c59c8",
+        "r-90c6e6401ffb9c96"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-501f98fe72ec9e12",
+      "template_family": "template-501f98fe72ec9e12",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-6f490cf9da44ccc4",
+        "r-ceb858a42bf71083",
+        "r-47d425b4df87143d",
+        "r-72dd7f835908e6d6",
+        "r-61333f7b5c511e4a",
+        "r-c54a3133cf5d2224",
+        "r-ea9aa9815fc342bd",
+        "r-85cee3bdfdc2b791",
+        "r-3aeae97737a7ad35",
+        "r-b131fe74dde1888a"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-d956514ba3445102",
+      "template_family": "template-d956514ba3445102",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-4c84cc5cdf0a84fb",
+        "r-ffd72d3f7a6dbb9d",
+        "r-3f59e07d64a00184",
+        "r-f3365297984029cd",
+        "r-6b21535714a38918",
+        "r-f9ea202813a4568b",
+        "r-797eaab6b64e7cc1",
+        "r-76e7dd15bb9b655a",
+        "r-85c7515c5b7033f2",
+        "r-fc91557853cd53ff"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    },
+    {
+      "cluster_id": "cluster-c7cf10837c8eb4f6",
+      "template_family": "template-c7cf10837c8eb4f6",
+      "split": "sealed_test",
+      "root_ids": [
+        "r-8d8e14e271fb5b9c",
+        "r-acbf4c43cbded5e0",
+        "r-4f7d9254fd29c301",
+        "r-71a257c62c1624e6",
+        "r-7dbbe80a43cbd76d",
+        "r-a1ddf5ae6493389d",
+        "r-6b8ed644f58d7ecd",
+        "r-7c986f041e160725",
+        "r-981b8ae477e0ab31",
+        "r-61d794da4bad3c71"
+      ],
+      "methods": [
+        "paired-visible-signal-equivalence",
+        "structural-recipe-parentage",
+        "text-provenance",
+        "parameter-family"
+      ],
+      "reason": "ten configured scenarios share one mother template; whole cluster assigned before synthesis"
+    }
+  ],
+  "limitations": "Programmatic fingerprints group known generation parents and normalized signals; does not claim exhaustive learned semantic deduplication."
+}

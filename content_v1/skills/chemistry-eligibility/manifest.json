@@ -1,0 +1,91 @@
+{
+  "skill_id": "chemistry-eligibility",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "chemistry",
+    "model_id",
+    "protocol"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "read_prediction",
+    "search_knowledge",
+    "load_skill",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "infer_unknown_chemistry",
+    "unsupported_model_prediction",
+    "transfer_voltage_window_without_validation"
+  ],
+  "references": [
+    "knowledge-skill-chemistry-eligibility"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "chemistry-eligibility-positive-01",
+    "chemistry-eligibility-negative-01",
+    "chemistry-eligibility-negative-02",
+    "chemistry-eligibility-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "chemistry",
+    "domain",
+    "LFP",
+    "NCM",
+    "unknown",
+    "unsupported",
+    "体系",
+    "协议"
+  ],
+  "files": {
+    "SKILL.md": "e72ce36c2e339e7b2795f3993a19249b32fee7934b525245ae9bf2993e490690",
+    "checks/contract.json": "59d95af0f657895f537d61c0a17a31480888d4c46fcc3a6a681e48497b52fa98",
+    "examples/insufficient-01.json": "e599aff0c553876c3d86d7ad0eba9015b86ea8ed63f71b4e86d411be703148b7",
+    "examples/negative-01.json": "763f2ff380fedcfa3ec77ab7657ff818ef24348b70faa858dee5f75bcefbd2c9",
+    "examples/negative-02.json": "7929e94c63267de010b47d34282d8a189f5df1b3cb54f80914ff15a290731089",
+    "examples/positive-01.json": "67f03744839af1afe50fa9243d13585740093b6a1c3d1b16995d0ebe38d0c895",
+    "references/evidence.md": "4ced16b1e96242707c1b05e4bf8643d83d204bd2f401b0f22a6a478670f213fc"
+  }
+}

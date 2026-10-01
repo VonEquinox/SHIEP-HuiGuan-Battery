@@ -1,0 +1,91 @@
+{
+  "skill_id": "lifetime-interpretation",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "survival_prediction",
+    "service_threshold",
+    "usage_intensity"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "read_prediction",
+    "get_signal_evidence",
+    "search_knowledge",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "last_observation_is_eol",
+    "calendar_conversion_without_usage",
+    "deterministic_lifetime_from_distribution"
+  ],
+  "references": [
+    "knowledge-skill-lifetime-interpretation"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "lifetime-interpretation-positive-01",
+    "lifetime-interpretation-negative-01",
+    "lifetime-interpretation-negative-02",
+    "lifetime-interpretation-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "lifetime",
+    "survival",
+    "censored",
+    "cycle",
+    "usage",
+    "寿命",
+    "删失"
+  ],
+  "files": {
+    "SKILL.md": "294207c565d6cd5f69a2bdd54aba67ea8a72cb3d144edc08707883423e267bb3",
+    "checks/contract.json": "d6b8e283acd5755a88167b8e9607241110743f3903c7610b560b63cbb44d5944",
+    "examples/insufficient-01.json": "02b5ce415ba0c5147f5bee9a0f9e4996c1285261f75f2e628cf9c402963addcc",
+    "examples/negative-01.json": "515853e026710ee2262fb3fddfc4e7d603b97da17efac3a6eb755863bdd1c258",
+    "examples/negative-02.json": "73d77facc46277de4cbf956e64aca0c92ecaec458359eeb76b42caf0ea3db0db",
+    "examples/positive-01.json": "b1f26b8e23052a2da4b0af5f01b8fc03aabdb0f531abaae8fb7b4a3a9d00d016",
+    "references/evidence.md": "a2fd513cb8873ef4550d3f1405d7eccbfff541b097d4a44f18feb0de9d10da87"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:skill-example:v1",
+  "type": "object",
+  "required": [
+    "example_id",
+    "example_type",
+    "source_case_id",
+    "root_scenario_id"
+  ],
+  "properties": {
+    "example_type": {
+      "enum": [
+        "positive",
+        "hard_negative",
+        "insufficient_evidence"
+      ]
+    }
+  }
+}

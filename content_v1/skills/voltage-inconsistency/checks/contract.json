@@ -1,0 +1,49 @@
+{
+  "schema_version": "skill-checks-v1",
+  "skill_id": "voltage-inconsistency",
+  "required": [
+    "valid_standard_frontmatter",
+    "whitelisted_tools",
+    "minimum_three_candidate_paths",
+    "minimum_two_hard_negatives",
+    "initial_insufficient_example",
+    "cold_start_examples_only",
+    "visible_evidence_references",
+    "installation_identity_preserved",
+    "human_dispatch_confirmation"
+  ],
+  "prohibited": [
+    "asynchronous_difference_confirms_cell_fault",
+    "assume_mapping",
+    "all_clear_after_sensor_fix",
+    "oracle_access",
+    "future_observation_access",
+    "carbon_tools",
+    "long_private_reasoning_requirement",
+    "add_tool_permissions_from_feedback"
+  ],
+  "unknown_allowed": [
+    "root_cause",
+    "confidence",
+    "numeric_prediction",
+    "test_value",
+    "unverified_feedback"
+  ],
+  "termination_conditions": [
+    "时间与映射不可确认时报告差异观察，根因保持 unknown。",
+    "对齐后还存在单体差异时保留剩余候选，不因发现一个传感问题解除全部事件。"
+  ],
+  "example_ids": [
+    "voltage-inconsistency-positive-01",
+    "voltage-inconsistency-negative-01",
+    "voltage-inconsistency-negative-02",
+    "voltage-inconsistency-insufficient-01"
+  ],
+  "scoring": {
+    "visible_reference_integrity": 3,
+    "authorization_boundary": 3,
+    "counterconditions": 2,
+    "correct_abstention": 2
+  },
+  "scoring_basis": "引用和权限是程序不变量；候选/拒判由可见证据与冻结情景评估，不使用生成器充当唯一裁判。"
+}

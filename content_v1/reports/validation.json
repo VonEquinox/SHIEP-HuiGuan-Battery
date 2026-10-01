@@ -1,0 +1,191 @@
+{
+  "schema_version": "content-validation-v1",
+  "status": "passed",
+  "errors": [],
+  "warnings": [
+    "Programmatic acceptance does not establish clinical/engineering validity on real devices.",
+    "Broad physics generation recipe is shared across splits; root/entity/condition/mother-template groups are frozen independently.",
+    "No independent professional blind review has been performed; LLM language outputs are supplemental synthetic content only."
+  ],
+  "checks": {
+    "S01": {
+      "skill_count": 16,
+      "tool_whitelist": true
+    },
+    "S02": {
+      "example_count": 64,
+      "source": "cold_start_only"
+    },
+    "S03": {
+      "roots": 2400,
+      "derived_observations": 31200,
+      "parentage": 33600,
+      "cross_split_clusters": 0,
+      "cross_split_templates": 0
+    },
+    "S04": {
+      "visible_hidden_paths": "physically_separate",
+      "library_allowlist": [
+        "skills",
+        "knowledge",
+        "cases"
+      ]
+    },
+    "S05": {
+      "branch_result_counts": {
+        "normal_return": 2400,
+        "supports_A": 4800,
+        "supports_B": 4800,
+        "uninformative": 2400,
+        "test_failed": 2400,
+        "out_of_range": 2400,
+        "duplicate_upload": 2400,
+        "contradictory": 4800,
+        "engineer_refused": 2400,
+        "additional_authorization": 2400
+      },
+      "coverage": {
+        "requires_initial_test": 1760,
+        "normal_unsupported_or_insufficient": 1000,
+        "conflicting_or_unresolved": 640
+      }
+    },
+    "S06": {
+      "feedback_raw_span_checks": 2400
+    },
+    "S07": {
+      "updates": {
+        "ADD": 480,
+        "REVISE": 480,
+        "DEPRECATE": 480,
+        "CONFLICT": 480,
+        "NO_UPDATE": 480
+      },
+      "errors": {
+        "wrong_chemistry_reference": 200,
+        "anomaly_score_as_probability": 200,
+        "correlation_as_cause": 200,
+        "omitted_counterevidence": 200,
+        "ignored_missingness": 200,
+        "low_value_test": 200,
+        "repeat_completed_test": 200,
+        "unauthorized_work_order": 200,
+        "nonexistent_reference": 200,
+        "unverified_feedback_as_fact": 200,
+        "intervention_as_false_positive": 200,
+        "release_all_mixed_faults": 200
+      }
+    },
+    "S08": {
+      "fleet_variants": {
+        "shared_bias": 40,
+        "single_cell": 40,
+        "shared_environment": 40,
+        "shared_plus_single": 40,
+        "different_time_same_batch": 20,
+        "mapping_error": 20
+      }
+    },
+    "S09": {
+      "fixture_count": 40,
+      "coverage": [
+        "all_engineers_busy",
+        "approval_version",
+        "approved_task",
+        "asset_mapping_error",
+        "cycle",
+        "deadline",
+        "duplicate_approval",
+        "duration",
+        "event_expiry",
+        "group_order_over_duplicate_individuals",
+        "human_approval_boundary",
+        "idempotency",
+        "inclusive_end_boundary",
+        "infeasible_deadline",
+        "infeasible_duration",
+        "initial_location",
+        "installation_identity",
+        "lateness",
+        "lexicographic_severity",
+        "locked_tasks",
+        "multiple_qualifications",
+        "multiple_tools",
+        "no_overlap",
+        "no_spanning_shift_gap",
+        "optimistic_concurrency",
+        "precedence",
+        "predecessor_unassigned",
+        "qualification",
+        "qualified_not_present",
+        "same_equipment_conflict",
+        "severity",
+        "shift_windows",
+        "skills",
+        "stale_input",
+        "started_task_not_reassigned",
+        "temporary_leave",
+        "tool_availability",
+        "travel_times",
+        "unassigned_reason",
+        "unreachable_location",
+        "workload_limit"
+      ],
+      "oracle": "independent exhaustive discrete-grid scheduler"
+    },
+    "S10": {
+      "fixture_count": 30,
+      "coverage": [
+        "Wh_kWh",
+        "approximation_tolerance",
+        "auxiliary_double_count",
+        "correction_reversal",
+        "delay_not_permanent_avoidance",
+        "demo_export",
+        "different_terminal_states",
+        "gamma_fractional",
+        "gamma_full_dimension",
+        "gamma_one",
+        "gamma_zero",
+        "incompatible_gas_boundary",
+        "kg_t",
+        "low_efficiency_offsets_benefit",
+        "manufacturing_per_capacity",
+        "manufacturing_per_pack",
+        "missing_source",
+        "multiple_replacements",
+        "negative_benefit",
+        "negative_lower_benefit",
+        "no_ml_required",
+        "nonlinear_efficiency",
+        "one_replacement",
+        "pareto_dominance",
+        "pareto_ties",
+        "qualified_test_benefit_split",
+        "replacement_reset",
+        "right_censored_lifetime",
+        "same_service_comparison",
+        "shadow_value_without_cash_eligibility",
+        "shared_error_cancellation",
+        "simple_electricity",
+        "state_probability",
+        "unavailable_state",
+        "unit_conversion",
+        "zero_replacements"
+      ],
+      "oracle": "deterministic arithmetic, recurrence and support functions"
+    },
+    "S11": {
+      "real_measurements": 0,
+      "origins": {
+        "physics_simulated": 2400
+      }
+    },
+    "S12": {
+      "sealed_roots": 360,
+      "public_library_access": "denied_by_allowlist",
+      "expert_blind_review": "not_performed"
+    }
+  },
+  "hashes_checked": true
+}

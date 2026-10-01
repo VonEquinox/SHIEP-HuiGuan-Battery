@@ -1,0 +1,194 @@
+{
+  "schema_version": "synthetic-test-catalog-v1",
+  "namespace": "demo_synthetic",
+  "tests": [
+    {
+      "test_id": "T_TIME_ALIGN",
+      "purpose": "核对可见记录时间与身份映射",
+      "applicable_hypotheses": [
+        "measurement_condition",
+        "persistent_state_difference"
+      ],
+      "prerequisite_inputs": [
+        "installation_id",
+        "time_aligned_observations"
+      ],
+      "required_skill": "instrumentation",
+      "allowed_procedure_ids": [
+        "DEMO-SOP-READONLY-01"
+      ],
+      "allowed_equipment": [
+        "virtual-meter"
+      ],
+      "duration_minutes": 10,
+      "cost_units": 1,
+      "result_enum": [
+        "normal_return",
+        "supports_A",
+        "supports_B",
+        "uninformative",
+        "test_failed",
+        "out_of_range",
+        "duplicate_upload",
+        "contradictory",
+        "engineer_refused",
+        "additional_authorization"
+      ],
+      "unit": "per_observation",
+      "measurement_units": [
+        "Ah",
+        "mOhm",
+        "mV",
+        "degC",
+        "dimensionless",
+        "count"
+      ],
+      "error_model": "configured_correlated_noise",
+      "failure_possible": true,
+      "destructive": false,
+      "needs_new_authorization": false,
+      "synthetic_procedure": true
+    },
+    {
+      "test_id": "T_CHANNEL_CHECK",
+      "purpose": "按虚拟规程独立读取并比较状态",
+      "applicable_hypotheses": [
+        "measurement_condition",
+        "persistent_state_difference"
+      ],
+      "prerequisite_inputs": [
+        "installation_id",
+        "time_aligned_observations"
+      ],
+      "required_skill": "instrumentation",
+      "allowed_procedure_ids": [
+        "DEMO-SOP-READONLY-01"
+      ],
+      "allowed_equipment": [
+        "virtual-meter"
+      ],
+      "duration_minutes": 15,
+      "cost_units": 2,
+      "result_enum": [
+        "normal_return",
+        "supports_A",
+        "supports_B",
+        "uninformative",
+        "test_failed",
+        "out_of_range",
+        "duplicate_upload",
+        "contradictory",
+        "engineer_refused",
+        "additional_authorization"
+      ],
+      "unit": "per_observation",
+      "measurement_units": [
+        "Ah",
+        "mOhm",
+        "mV",
+        "degC",
+        "dimensionless",
+        "count"
+      ],
+      "error_model": "configured_correlated_noise",
+      "failure_possible": true,
+      "destructive": false,
+      "needs_new_authorization": false,
+      "synthetic_procedure": true
+    },
+    {
+      "test_id": "T_REPEAT_SOURCE",
+      "purpose": "重复同一采集源以检查可重复性",
+      "applicable_hypotheses": [
+        "measurement_condition",
+        "persistent_state_difference"
+      ],
+      "prerequisite_inputs": [
+        "installation_id",
+        "time_aligned_observations"
+      ],
+      "required_skill": "instrumentation",
+      "allowed_procedure_ids": [
+        "DEMO-SOP-READONLY-01"
+      ],
+      "allowed_equipment": [
+        "virtual-meter"
+      ],
+      "duration_minutes": 10,
+      "cost_units": 3,
+      "result_enum": [
+        "normal_return",
+        "supports_A",
+        "supports_B",
+        "uninformative",
+        "test_failed",
+        "out_of_range",
+        "duplicate_upload",
+        "contradictory",
+        "engineer_refused",
+        "additional_authorization"
+      ],
+      "unit": "per_observation",
+      "measurement_units": [
+        "Ah",
+        "mOhm",
+        "mV",
+        "degC",
+        "dimensionless",
+        "count"
+      ],
+      "error_model": "configured_correlated_noise",
+      "failure_possible": true,
+      "destructive": false,
+      "needs_new_authorization": false,
+      "synthetic_procedure": true
+    },
+    {
+      "test_id": "T_RESTRICTED_CHECK",
+      "purpose": "只引用虚拟规程，等待新的授权",
+      "applicable_hypotheses": [
+        "measurement_condition",
+        "persistent_state_difference"
+      ],
+      "prerequisite_inputs": [
+        "installation_id",
+        "time_aligned_observations"
+      ],
+      "required_skill": "instrumentation",
+      "allowed_procedure_ids": [
+        "DEMO-SOP-READONLY-01"
+      ],
+      "allowed_equipment": [
+        "virtual-meter"
+      ],
+      "duration_minutes": 20,
+      "cost_units": 4,
+      "result_enum": [
+        "normal_return",
+        "supports_A",
+        "supports_B",
+        "uninformative",
+        "test_failed",
+        "out_of_range",
+        "duplicate_upload",
+        "contradictory",
+        "engineer_refused",
+        "additional_authorization"
+      ],
+      "unit": "per_observation",
+      "measurement_units": [
+        "Ah",
+        "mOhm",
+        "mV",
+        "degC",
+        "dimensionless",
+        "count"
+      ],
+      "error_model": "configured_correlated_noise",
+      "failure_possible": true,
+      "destructive": false,
+      "needs_new_authorization": true,
+      "synthetic_procedure": true
+    }
+  ]
+}

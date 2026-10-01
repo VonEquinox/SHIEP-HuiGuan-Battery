@@ -1,0 +1,95 @@
+{
+  "skill_id": "active-test-selection",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "visible_evidence",
+    "test_catalog",
+    "authorization",
+    "resource_constraints"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "read_prediction",
+    "search_memory",
+    "rank_tests",
+    "propose_work_order",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "fabricated_test_likelihood",
+    "future_branch_query",
+    "confidence_gain_from_round_number",
+    "execute_unauthorized_test"
+  ],
+  "references": [
+    "knowledge-skill-active-test-selection"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "active-test-selection-positive-01",
+    "active-test-selection-negative-01",
+    "active-test-selection-negative-02",
+    "active-test-selection-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "test",
+    "cost",
+    "uncertain",
+    "inconclusive",
+    "rank",
+    "检查",
+    "补测",
+    "未解决"
+  ],
+  "files": {
+    "SKILL.md": "732cf62d9980c9b9f188727b0cce0a74acff006c153cd8eacb3a7a0aef5cda0e",
+    "checks/contract.json": "3943abf1678e42e1dcf29192aed8440917aac0074827b274309a0660dfc78d9d",
+    "examples/insufficient-01.json": "1d9756767b12cf479ea19f877c41d1ebad6c320f565be8350a84abb2b8d40f47",
+    "examples/negative-01.json": "470605d279d06f21fdca23e4e227967db8c16d1da225f23198b9c3d401185039",
+    "examples/negative-02.json": "fb3be87d31b521dee32d4e0d5e8d763f0b5b31dae83dd15409a828fb4402ddd8",
+    "examples/positive-01.json": "0187396db89b991fa4da9b9ecd6d82910f3568d402899fc118cc05425051f0ac",
+    "references/evidence.md": "374802e4463c7153d3e11209fec411d87169a7d57860a3fa5536712c7181fe0e"
+  }
+}

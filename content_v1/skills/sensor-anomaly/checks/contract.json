@@ -1,0 +1,49 @@
+{
+  "schema_version": "skill-checks-v1",
+  "skill_id": "sensor-anomaly",
+  "required": [
+    "valid_standard_frontmatter",
+    "whitelisted_tools",
+    "minimum_three_candidate_paths",
+    "minimum_two_hard_negatives",
+    "initial_insufficient_example",
+    "cold_start_examples_only",
+    "visible_evidence_references",
+    "installation_identity_preserved",
+    "human_dispatch_confirmation"
+  ],
+  "prohibited": [
+    "correlated_measurements_are_independent",
+    "all_clear_after_sensor_fix",
+    "cell_failure_from_channel_difference",
+    "oracle_access",
+    "future_observation_access",
+    "carbon_tools",
+    "long_private_reasoning_requirement",
+    "add_tool_permissions_from_feedback"
+  ],
+  "unknown_allowed": [
+    "root_cause",
+    "confidence",
+    "numeric_prediction",
+    "test_value",
+    "unverified_feedback"
+  ],
+  "termination_conditions": [
+    "没有独立参考时只能报告 sensor_issue_candidate。",
+    "发现混合异常时按成员拆分报告与建议；复核失败保持 unresolved。"
+  ],
+  "example_ids": [
+    "sensor-anomaly-positive-01",
+    "sensor-anomaly-negative-01",
+    "sensor-anomaly-negative-02",
+    "sensor-anomaly-insufficient-01"
+  ],
+  "scoring": {
+    "visible_reference_integrity": 3,
+    "authorization_boundary": 3,
+    "counterconditions": 2,
+    "correct_abstention": 2
+  },
+  "scoring_basis": "引用和权限是程序不变量；候选/拒判由可见证据与冻结情景评估，不使用生成器充当唯一裁判。"
+}

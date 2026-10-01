@@ -1,0 +1,93 @@
+{
+  "skill_id": "thermal-anomaly",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "temperature_observations",
+    "ambient_temperature",
+    "load",
+    "approved_sop_id"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "get_peer_anomalies",
+    "search_knowledge",
+    "rank_tests",
+    "propose_work_order",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "unvalidated_thermal_runaway_probability",
+    "fabricated_safety_threshold",
+    "unsafe_physical_procedure"
+  ],
+  "references": [
+    "knowledge-skill-thermal-anomaly"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "thermal-anomaly-positive-01",
+    "thermal-anomaly-negative-01",
+    "thermal-anomaly-negative-02",
+    "thermal-anomaly-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0376d2d3a2e154ba",
+    "r-06b8a6e66762bedb",
+    "r-072fb2c3920d8c4d",
+    "r-08114d078d08bb69"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "thermal",
+    "temperature",
+    "ambient",
+    "heat",
+    "温度",
+    "环境",
+    "热"
+  ],
+  "files": {
+    "SKILL.md": "a281eb9d4361c385dfee5e4743fce57291d34236ccc0d91b3ab433f79801c751",
+    "checks/contract.json": "815ddf86bbbaaaba52744464444eb5fc685a7248cd140d8d2a8062cb411ba214",
+    "examples/insufficient-01.json": "5c8b31d54c25bbc80a7e3e3e17fddff240f739805afd85a2a85c2af0597f38ea",
+    "examples/negative-01.json": "27fa4fd9be5a5be9a0f47fb8823a41bd8de4f35b9e57564fbc88675e8b31b653",
+    "examples/negative-02.json": "bd84d035f1e2356a5f6b60408a97fc534a506e434cdb8a3f2b83106a36a6b6ff",
+    "examples/positive-01.json": "c566274c2d2939012e11914fcdf8e04de277ea50fb4517ce979ec19852078a14",
+    "references/evidence.md": "ae1edcbd5f9dfac4b7366deede30ab1c9b80a7ecf5ef79815f515f53c68b6a60"
+  }
+}

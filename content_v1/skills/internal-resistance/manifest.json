@@ -1,0 +1,91 @@
+{
+  "skill_id": "internal-resistance",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "resistance_measurement",
+    "temperature",
+    "soc",
+    "measurement_method"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "read_prediction",
+    "search_knowledge",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "universal_resistance_threshold",
+    "compare_dc_and_ac_without_protocol",
+    "unsafe_physical_procedure"
+  ],
+  "references": [
+    "knowledge-skill-internal-resistance"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "internal-resistance-positive-01",
+    "internal-resistance-negative-01",
+    "internal-resistance-negative-02",
+    "internal-resistance-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "resistance",
+    "impedance",
+    "pulse",
+    "load",
+    "内阻",
+    "倍率"
+  ],
+  "files": {
+    "SKILL.md": "05afa5c1e398242d8c0ecfc847122c68666ff5810ca20c7bb5ecfb38129a4bb7",
+    "checks/contract.json": "927c7cbf65f7c0fb2a01e2d95a8a5fbff1cd8d60f43cf05ed4d113aefe6f7f9c",
+    "examples/insufficient-01.json": "ecb5b67df0578945d17d05e156a8dd186187f8b4e3d6d44a74ba7a83eeb20b3f",
+    "examples/negative-01.json": "3d1b012701fa957f541dd50c49d4c26f7cbcc35a75d1aa9633a3d1e794579f0b",
+    "examples/negative-02.json": "81bc9ffbe9e1a6e2c10bca3bf89b42aac3a6de58a2e67fef855d3503fd8c4597",
+    "examples/positive-01.json": "4b9fee9cac49af5b8f22a3d5f9652ecf3593137cf24f37bb61b50e05b7167c3f",
+    "references/evidence.md": "add7542a2ad8cad28a0fd69c0ff9ee8f57937aff8a88fc6ae7b31e3f8c8d1c3c"
+  }
+}

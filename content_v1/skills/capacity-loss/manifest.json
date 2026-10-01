@@ -1,0 +1,92 @@
+{
+  "skill_id": "capacity-loss",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "capacity_measurement",
+    "soc",
+    "cutoff_conditions",
+    "protocol"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "read_prediction",
+    "search_knowledge",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "estimated_capacity_is_measured",
+    "irreversible_loss_from_partial_discharge",
+    "fabricated_capacity_numeric"
+  ],
+  "references": [
+    "knowledge-skill-capacity-loss"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "capacity-loss-positive-01",
+    "capacity-loss-negative-01",
+    "capacity-loss-negative-02",
+    "capacity-loss-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "capacity",
+    "degradation",
+    "cutoff",
+    "soc",
+    "容量",
+    "截止",
+    "退化"
+  ],
+  "files": {
+    "SKILL.md": "5a321a0e3976c2699e23dd72e3b1b1c91ea17f8356f682c72586ebd2a557510e",
+    "checks/contract.json": "4bf79844faaad8b79693e29f1f8c0772338e4b5dd2b3b5802e24b9afed6b3236",
+    "examples/insufficient-01.json": "9783ca2a487f379e7cd7ad2a72c801a73dc74f7e7ec8dfc8e6b4c59b47f4c05d",
+    "examples/negative-01.json": "a56021732652b4a73b4bd88f08ee28072a0fae39b2e323d2e2356a6d8c7ea5da",
+    "examples/negative-02.json": "cfab88cb457e05f0b1aceb55e3233da5fb7f93b7c9cdd4be83699ea36a56638d",
+    "examples/positive-01.json": "a79964814407565b657dabefbecfa2f0284fdc0ae4266db502f2016381ad5163",
+    "references/evidence.md": "784430219e7760108c0b42a1f2a3614f5bcd68841b582fceebbfa3b209f62dee"
+  }
+}

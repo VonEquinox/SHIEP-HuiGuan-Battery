@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:skill-manifest:v1",
+  "type": "object",
+  "required": [
+    "skill_id",
+    "version",
+    "origin",
+    "schema_version",
+    "supported_chemistries",
+    "required_inputs",
+    "allowed_tools",
+    "forbidden_claims",
+    "references",
+    "editable_sections",
+    "tests",
+    "license_status"
+  ],
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "references": {
+      "type": "array"
+    },
+    "license_status": {
+      "enum": [
+        "approved_synthetic",
+        "approved",
+        "pending_review",
+        "restricted",
+        "blocked"
+      ]
+    }
+  }
+}

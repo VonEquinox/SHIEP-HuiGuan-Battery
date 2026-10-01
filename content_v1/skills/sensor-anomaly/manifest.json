@@ -1,0 +1,93 @@
+{
+  "skill_id": "sensor-anomaly",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "channel_mapping",
+    "observations",
+    "measurement_quality"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "get_peer_anomalies",
+    "search_knowledge",
+    "search_memory",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "correlated_measurements_are_independent",
+    "all_clear_after_sensor_fix",
+    "cell_failure_from_channel_difference"
+  ],
+  "references": [
+    "knowledge-skill-sensor-anomaly"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "sensor-anomaly-positive-01",
+    "sensor-anomaly-negative-01",
+    "sensor-anomaly-negative-02",
+    "sensor-anomaly-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "sensor",
+    "channel",
+    "bias",
+    "drift",
+    "alignment",
+    "传感",
+    "偏置",
+    "断线"
+  ],
+  "files": {
+    "SKILL.md": "00426e8ecadf1dfb3b4410d295c51636f784c67cf0dbb7a2cb0efbc135adcd4d",
+    "checks/contract.json": "1ba4073036501a8c65674a8c2012a1b8b855d01024d8764b3838767774163a4c",
+    "examples/insufficient-01.json": "0e07e2addfae5061b4dc3850ec6d283f5ef36dab4ed3810980c5bc8bffdb81bd",
+    "examples/negative-01.json": "fbea94e4a45037ef506f22db7de60497ddda283f21d865a1124920d02678927d",
+    "examples/negative-02.json": "1426ef6d6d4ee7793af524e42162efc64e8159983fc7eebe17cdb46e503fc77e",
+    "examples/positive-01.json": "e934109a8ed499d17322ec3c1b70b09f533ed4e1b8809b703f6f983eea38954c",
+    "references/evidence.md": "2003af217a5ba170bd8f8eb4664e01e8c9fa32e0780dc04ac793ec8019b0b930"
+  }
+}

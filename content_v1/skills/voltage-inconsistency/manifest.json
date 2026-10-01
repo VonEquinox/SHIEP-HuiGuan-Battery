@@ -1,0 +1,92 @@
+{
+  "skill_id": "voltage-inconsistency",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "channel_mapping",
+    "voltage_observations",
+    "observed_at",
+    "load"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "get_peer_anomalies",
+    "search_knowledge",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "asynchronous_difference_confirms_cell_fault",
+    "assume_mapping",
+    "all_clear_after_sensor_fix"
+  ],
+  "references": [
+    "knowledge-skill-voltage-inconsistency"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "voltage-inconsistency-positive-01",
+    "voltage-inconsistency-negative-01",
+    "voltage-inconsistency-negative-02",
+    "voltage-inconsistency-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-036be010b588fc32",
+    "r-04e3466dfe978c81",
+    "r-059f9f5ebe87c475",
+    "r-08edd7d70c26ecfd"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "voltage",
+    "channel",
+    "alignment",
+    "series",
+    "电压",
+    "通道",
+    "串数"
+  ],
+  "files": {
+    "SKILL.md": "e385a8e6176d70e3de7f57b86df93f490b4a0996de6e01891319e9790e59b8c8",
+    "checks/contract.json": "213e53cc19bcfddc59ed01bb3e46e0d884e8a21acbe39bcd92d199f41bd8a0e9",
+    "examples/insufficient-01.json": "e1fec8e2d0beee14929bf6ed6c72b8eee16e50fa461b69ba14bb6e3de7083d25",
+    "examples/negative-01.json": "98a3665c8051e74c3009c303316382e96b6167ee43571e65211040c37ec86905",
+    "examples/negative-02.json": "a01b550f13db9a1723c75b69f1b84c77d5e872b932445f00c894c158405ba6a3",
+    "examples/positive-01.json": "3a83e8ebb9df6ea321719b9c19cbadf885a674749b4edab8c464fc5fa8f943f5",
+    "references/evidence.md": "a1f7602d5b56b5e1c0135fd74091ee09c108b004f8415bbf8d36fb1387ade483"
+  }
+}

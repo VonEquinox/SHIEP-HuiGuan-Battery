@@ -1,0 +1,91 @@
+{
+  "skill_id": "data-quality",
+  "version": "1.0.0",
+  "schema_version": "skill-manifest-v1",
+  "origin": "expert_synthetic",
+  "synthetic": true,
+  "license_status": "approved_synthetic",
+  "authorship": "AI-assisted project synthesis; not expert-authored",
+  "generation_method": "project_catalog_with_visible_cold_start_examples",
+  "supported_chemistries": [
+    "LFP",
+    "NCM",
+    "unknown"
+  ],
+  "chemistry_scope_note": "unknown is supported for eligibility/abstention workflows, not for unsupported physical models",
+  "required_inputs": [
+    "installation_id",
+    "observations",
+    "units",
+    "observed_at"
+  ],
+  "allowed_tools": [
+    "get_asset_context",
+    "get_signal_evidence",
+    "search_knowledge",
+    "rank_tests",
+    "append_report"
+  ],
+  "forbidden_claims": [
+    "zero_is_missing",
+    "diagnosis_from_invalid_data",
+    "merge_installations"
+  ],
+  "references": [
+    "knowledge-skill-data-quality"
+  ],
+  "source_refs": [
+    {
+      "source_id": "project-doc02",
+      "locator": "03.1–03.3",
+      "source_type": "project_requirement"
+    }
+  ],
+  "editable_sections": [
+    "evidence_checklist",
+    "pitfalls",
+    "test_hints"
+  ],
+  "permission_invariants": [
+    "human_dispatch_confirmation",
+    "no_carbon_tools",
+    "no_oracle",
+    "no_new_tools"
+  ],
+  "candidate_count": 3,
+  "hard_negative_count": 2,
+  "tests": [
+    "data-quality-positive-01",
+    "data-quality-negative-01",
+    "data-quality-negative-02",
+    "data-quality-insufficient-01"
+  ],
+  "example_case_ids": [
+    "r-0017f5093b4a54c9",
+    "r-0065363c7f39a61e",
+    "r-0179697865f9b80a",
+    "r-01c03caea228c93a"
+  ],
+  "example_split": "cold_start",
+  "cloud_supplemental_note_count": 3,
+  "expert_review": "not_performed",
+  "route_keywords": [
+    "missing",
+    "quality",
+    "timestamp",
+    "duplicate",
+    "unit",
+    "缺测",
+    "单位",
+    "采样"
+  ],
+  "files": {
+    "SKILL.md": "6a6a96c6832119a19fe273feaf5c989dc6dce1b70332f64bfd4bd52aca47959b",
+    "checks/contract.json": "1942f3d65e6ff09ca3b4e44b575951d8b74614ffa7edfd0114a996edce7e56e8",
+    "examples/insufficient-01.json": "8121c3ea3d5eb702b76d1a50fa0aafc675d2d65fb243166874fe63a7662602fe",
+    "examples/negative-01.json": "d9abc89a9327d9d06c1303266940fe5d9c1465ae00cc5c2ed687aa1abb2778a2",
+    "examples/negative-02.json": "a3a07b2df4adeab85f1d2d9ec9f7ef2b2fab0b164e3d85343aaddee7719868a3",
+    "examples/positive-01.json": "743d7c13dfc6af1ca7bb7142e2ae1d09b37c2651e22f9ed65b2e815359bb9341",
+    "references/evidence.md": "27ab5308c20d384d5c2da61f1e6e4ea306be14620871c36e32b847d247b6c392"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huiguan:observation:v1",
+  "type": "object",
+  "required": [
+    "observation_id",
+    "metric",
+    "value",
+    "unit",
+    "timestamp",
+    "method_id",
+    "instrument_id",
+    "source",
+    "provenance",
+    "uncertainty",
+    "quality_flags",
+    "available_after"
+  ],
+  "properties": {
+    "observation_id": {
+      "type": "string"
+    },
+    "metric": {
+      "type": "string"
+    },
+    "value": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "uncertainty": {
+      "type": "object"
+    },
+    "quality_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "available_after": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "value": {
+            "type": "null"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "missing_reason"
+        ]
+      }
+    }
+  ]
+}
