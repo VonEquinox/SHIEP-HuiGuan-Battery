@@ -1,0 +1,75 @@
+{
+  "xjtu::NCM::RW_battery": {
+    "independent_objects": 1,
+    "rows": 8,
+    "heads": {
+      "soh": {
+        "status": "evaluated",
+        "independent_objects": 1,
+        "rows": 8,
+        "per_object": {
+          "xjtu:Batch-5/RW_battery-3": {
+            "mae": 0.007647234875876527,
+            "rmse": 0.009582168652646552,
+            "rows": 8
+          }
+        },
+        "mae": 0.007647234875876527,
+        "rmse": 0.009582168652646552,
+        "worst_object": "xjtu:Batch-5/RW_battery-3",
+        "pinball": 0.0031192732792586202
+      },
+      "efficiency": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "rul": {
+        "status": "unavailable",
+        "reason": "no verified physical-time survival targets"
+      },
+      "fault": {
+        "status": "unavailable",
+        "reason": "missing confirmed labels or only one class"
+      }
+    }
+  },
+  "xjtu::NCM::Sim_satellite_battery": {
+    "independent_objects": 2,
+    "rows": 16,
+    "heads": {
+      "soh": {
+        "status": "evaluated",
+        "independent_objects": 2,
+        "rows": 16,
+        "per_object": {
+          "xjtu:Batch-6/Sim_satellite_battery-2": {
+            "mae": 0.006361038948532294,
+            "rmse": 0.008589946470181221,
+            "rows": 8
+          },
+          "xjtu:Batch-6/Sim_satellite_battery-4": {
+            "mae": 0.0036300736322634336,
+            "rmse": 0.007183938277565062,
+            "rows": 8
+          }
+        },
+        "mae": 0.004995556290397864,
+        "rmse": 0.007886942373873142,
+        "worst_object": "xjtu:Batch-6/Sim_satellite_battery-2",
+        "pinball": 0.002314972247970984
+      },
+      "efficiency": {
+        "status": "unavailable",
+        "reason": "no supported legal labels"
+      },
+      "rul": {
+        "status": "unavailable",
+        "reason": "no verified physical-time survival targets"
+      },
+      "fault": {
+        "status": "unavailable",
+        "reason": "missing confirmed labels or only one class"
+      }
+    }
+  }
+}

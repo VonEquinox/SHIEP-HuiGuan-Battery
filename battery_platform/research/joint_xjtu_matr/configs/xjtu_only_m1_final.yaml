@@ -1,0 +1,10 @@
+dataset_manifest: battery_platform/research/joint_xjtu_matr/bundles/xjtu_only_development/features.json
+output_dir: battery_platform/research/joint_xjtu_matr/runs/xjtu_only_m1_final
+families: [M1]
+seeds: [0, 1, 2]
+ablations: [joint]
+ngboost: false
+m1_estimators: 80
+calibration_alpha: 0.2
+loss_contract: fixed_domain_object_task_v2
+task_weights: {soh: 1.0, efficiency: 1.0, rul: 1.0, fault: 1.0}

@@ -1,0 +1,102 @@
+{
+  "run_id": "M2_joint_seed2",
+  "split": "final",
+  "data_namespace": "experimental",
+  "dataset_sha256": "035de0e2883d368542097ea8c06614ba11ab30576aaba3468b3c24a85be32439",
+  "model_sha256": "9fc070ce096cc9f83e1e49c7fe49a242d2954290f453fc9e013b06771c0c4ccd",
+  "metrics": {
+    "xjtu::NCM::R3_battery": {
+      "independent_objects": 2,
+      "rows": 16,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 2,
+          "rows": 16,
+          "per_object": {
+            "xjtu:Batch-4/R3_battery-2": {
+              "mae": 0.026464273850026004,
+              "rmse": 0.028703174695819518,
+              "rows": 8
+            },
+            "xjtu:Batch-4/R3_battery-7": {
+              "mae": 0.02713668518378909,
+              "rmse": 0.02946811613953886,
+              "rows": 8
+            }
+          },
+          "mae": 0.026800479516907547,
+          "rmse": 0.02908564541767919,
+          "worst_object": "xjtu:Batch-4/R3_battery-7",
+          "pinball": 0.006762395014635981,
+          "nll_original_scale": -1.9919569301190418
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    },
+    "xjtu::NCM::RW_battery": {
+      "independent_objects": 1,
+      "rows": 8,
+      "heads": {
+        "soh": {
+          "status": "evaluated",
+          "independent_objects": 1,
+          "rows": 8,
+          "per_object": {
+            "xjtu:Batch-5/RW_battery-2": {
+              "mae": 0.04345001613638447,
+              "rmse": 0.047330592299868794,
+              "rows": 8
+            }
+          },
+          "mae": 0.04345001613638447,
+          "rmse": 0.047330592299868794,
+          "worst_object": "xjtu:Batch-5/RW_battery-2",
+          "pinball": 0.011010183686701976,
+          "nll_original_scale": -1.2214866843304744
+        },
+        "efficiency": {
+          "status": "unavailable",
+          "reason": "no supported legal labels"
+        },
+        "rul": {
+          "status": "unavailable",
+          "reason": "no verified physical-time survival targets"
+        },
+        "fault": {
+          "status": "unavailable",
+          "reason": "missing confirmed labels or only one class"
+        }
+      }
+    }
+  },
+  "supported_protocols": [
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "R3_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "RW_battery"
+    },
+    {
+      "source_id": "xjtu",
+      "chemistry": "NCM",
+      "protocol_id": "Sim_satellite_battery"
+    }
+  ],
+  "no_model_selection_on_this_split": true
+}

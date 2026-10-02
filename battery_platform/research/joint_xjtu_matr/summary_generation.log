@@ -1,0 +1,238 @@
+{
+  "scope": "XJTU+MATR final comparison; XJTU final is historically exposed and protected -5 cells remain sealed",
+  "models": {
+    "M1_joint": {
+      "matr": {
+        "mae_pp_mean": 2.4527911757498586,
+        "mae_pp_sd": 0.007442126784725232,
+        "rmse_pp_mean": 4.790583459998821,
+        "rmse_pp_sd": 0.01740072066179388,
+        "seeds": 3
+      },
+      "xjtu": {
+        "mae_pp_mean": 1.176750843955516,
+        "mae_pp_sd": 0.11206913777194731,
+        "rmse_pp_mean": 1.6628449872339932,
+        "rmse_pp_sd": 0.18010861465807604,
+        "seeds": 3
+      }
+    },
+    "M2_joint": {
+      "matr": {
+        "mae_pp_mean": 9.391801317005852,
+        "mae_pp_sd": 1.7472386477757242,
+        "rmse_pp_mean": 19.291057879249685,
+        "rmse_pp_sd": 4.828748037644737,
+        "seeds": 3
+      },
+      "xjtu": {
+        "mae_pp_mean": 3.0158657291263946,
+        "mae_pp_sd": 0.6034460556726111,
+        "rmse_pp_mean": 3.2872988555192926,
+        "rmse_pp_sd": 0.641718754507389,
+        "seeds": 3
+      }
+    },
+    "MLP_JOINT": {
+      "xjtu": {
+        "mae_pp_mean": 0.633793572584788,
+        "mae_pp_sd": 0.059776728335706145,
+        "rmse_pp_mean": 0.8024670507342254,
+        "rmse_pp_sd": 0.13333105992352473,
+        "seeds": 3
+      },
+      "matr": {
+        "mae_pp_mean": 4.57174823515945,
+        "mae_pp_sd": 2.9025961599236636,
+        "rmse_pp_mean": 7.024636845119162,
+        "rmse_pp_sd": 4.010442354556714,
+        "seeds": 3
+      }
+    },
+    "LSTM_JOINT": {
+      "xjtu": {
+        "mae_pp_mean": 4.169537623723348,
+        "mae_pp_sd": 0.7870935864916985,
+        "rmse_pp_mean": 5.5206988658380824,
+        "rmse_pp_sd": 1.3028497019916505,
+        "seeds": 3
+      },
+      "matr": {
+        "mae_pp_mean": 10.31156935625606,
+        "mae_pp_sd": 2.1715303226548768,
+        "rmse_pp_mean": 17.63663922929065,
+        "rmse_pp_sd": 5.004476921883075,
+        "seeds": 3
+      }
+    },
+    "LIGHTGBM_JOINT": {
+      "xjtu": {
+        "mae_pp_mean": 1.5715858914902379,
+        "mae_pp_sd": 0.0,
+        "rmse_pp_mean": 2.5781230671568967,
+        "rmse_pp_sd": 0.0,
+        "seeds": 3
+      },
+      "matr": {
+        "mae_pp_mean": 3.8754144406712974,
+        "mae_pp_sd": 0.0,
+        "rmse_pp_mean": 8.182336753309889,
+        "rmse_pp_sd": 0.0,
+        "seeds": 3
+      }
+    }
+  },
+  "xjtu_only": {
+    "M1": {
+      "xjtu": {
+        "mae_pp_mean": 1.176750843955516,
+        "mae_pp_sd": 0.11206913777194731,
+        "rmse_pp_mean": 1.6628449872339932,
+        "rmse_pp_sd": 0.18010861465807604,
+        "seeds": 3
+      }
+    },
+    "M2": {
+      "xjtu": {
+        "mae_pp_mean": 2.997338366078724,
+        "mae_pp_sd": 1.2663467142824691,
+        "rmse_pp_mean": 3.4389064151299813,
+        "rmse_pp_sd": 1.4818042931031936,
+        "seeds": 3
+      }
+    }
+  },
+  "joint_vs_xjtu_only_delta": {
+    "M1": {
+      "xjtu": {
+        "delta_mae_pp": 0.0,
+        "relative_error_reduction": 0.0
+      }
+    },
+    "M2": {
+      "xjtu": {
+        "delta_mae_pp": 0.018527363047670775,
+        "relative_error_reduction": -0.006181271776769484
+      }
+    }
+  },
+  "xjtu_only_transfer": {
+    "xjtu": {
+      "mae_pp_mean": 1.3778392503162333,
+      "mae_pp_sd": 1.3578679906610522,
+      "rmse_pp_mean": 1.7367295289078857,
+      "rmse_pp_sd": 1.7348633954059398,
+      "seeds": 9
+    },
+    "matr": {
+      "mae_pp_mean": 14.754599161969471,
+      "mae_pp_sd": 6.723493745952198,
+      "rmse_pp_mean": 26.790487147566342,
+      "rmse_pp_sd": 5.4443594878267305,
+      "seeds": 9
+    }
+  },
+  "xjtu_only_transfer_by_method": {
+    "lightgbm": {
+      "xjtu": {
+        "mae_pp_mean": 0.7719986559782085,
+        "mae_pp_sd": 0.0,
+        "rmse_pp_mean": 1.0062019160077298,
+        "rmse_pp_sd": 0.0,
+        "seeds": 3
+      },
+      "matr": {
+        "mae_pp_mean": 9.859704210440862,
+        "mae_pp_sd": 0.0,
+        "rmse_pp_mean": 26.16523025132121,
+        "rmse_pp_sd": 0.0,
+        "seeds": 3
+      }
+    },
+    "lstm": {
+      "xjtu": {
+        "mae_pp_mean": 2.9340038696924844,
+        "mae_pp_sd": 1.355021484405024,
+        "rmse_pp_mean": 3.660719577588861,
+        "rmse_pp_sd": 1.8837656217892285,
+        "seeds": 3
+      },
+      "matr": {
+        "mae_pp_mean": 10.799387180142931,
+        "mae_pp_sd": 1.6954189220346483,
+        "rmse_pp_mean": 20.849879229424545,
+        "rmse_pp_sd": 0.41917544272339086,
+        "seeds": 3
+      }
+    },
+    "mlp": {
+      "xjtu": {
+        "mae_pp_mean": 0.4275152252780066,
+        "mae_pp_sd": 0.037793460831580424,
+        "rmse_pp_mean": 0.5432670931270666,
+        "rmse_pp_sd": 0.028102591755658095,
+        "seeds": 3
+      },
+      "matr": {
+        "mae_pp_mean": 23.60470609532462,
+        "mae_pp_sd": 1.027078661535733,
+        "rmse_pp_mean": 33.35635196195327,
+        "rmse_pp_sd": 0.44717871447573776,
+        "seeds": 3
+      }
+    }
+  },
+  "joint_baseline_vs_m1_delta": {
+    "MLP_JOINT": {
+      "matr": {
+        "delta_mae_pp": 2.118957059409591,
+        "relative_error_reduction": -0.8638962339555021
+      },
+      "xjtu": {
+        "delta_mae_pp": -0.5429572713707281,
+        "relative_error_reduction": 0.46140376627701246
+      }
+    },
+    "LSTM_JOINT": {
+      "matr": {
+        "delta_mae_pp": 7.858778180506201,
+        "relative_error_reduction": -3.2040143727700925
+      },
+      "xjtu": {
+        "delta_mae_pp": 2.9927867797678314,
+        "relative_error_reduction": -2.5432629134200693
+      }
+    },
+    "LIGHTGBM_JOINT": {
+      "matr": {
+        "delta_mae_pp": 1.4226232649214388,
+        "relative_error_reduction": -0.580001786938311
+      },
+      "xjtu": {
+        "delta_mae_pp": 0.39483504753472176,
+        "relative_error_reduction": -0.3355298613660034
+      }
+    }
+  },
+  "data_scale": {
+    "xjtu_full": {
+      "objects": 21,
+      "rows": 168
+    },
+    "xjtu_matr_full": {
+      "objects": 56,
+      "rows": 448
+    },
+    "xjtu_development_nonfinal": {
+      "objects": 18,
+      "rows": 144
+    },
+    "xjtu_matr_development_nonfinal": {
+      "objects": 47,
+      "rows": 376
+    },
+    "full_multiplier": 2.6666666666666665,
+    "development_multiplier": 2.611111111111111,
+    "train_multiplier": 2.5454545454545454
+  }
+}

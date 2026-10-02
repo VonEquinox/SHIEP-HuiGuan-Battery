@@ -1,0 +1,36 @@
+{
+  "name": "final_comparison",
+  "allowed_splits": [
+    "calibration",
+    "dev",
+    "final",
+    "train"
+  ],
+  "source_manifests": [
+    "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/xjtu_features_final/features.json",
+    "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/model_lab/data/derived/v2/matr_features_v2/features.json"
+  ],
+  "source_manifest_sha256": [
+    "4e8048913b376343da1891e205eb7300453fd0719ee5ebb432ae4a4b61fb3bed",
+    "497b719a9c549e1c906b8f975c70e4e92244587447c57caeabe48d3b14b11f51"
+  ],
+  "combined_manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/battery_platform/research/joint_xjtu_matr/bundles/final_comparison/combined/features.json",
+  "combined_manifest_sha256": "67ba3949229b39248710e8cf8a6dc19c78150f9da51044e01ebb7a1ac9fa0c6a",
+  "combined_arrays_sha256": "c420563ec386f1d853202057732601fc4d03ca77332b73c218565ba40d467925",
+  "rows": 448,
+  "objects": 56,
+  "source_split_rows": {
+    "xjtu": {
+      "train": 88,
+      "final": 24,
+      "calibration": 32,
+      "dev": 24
+    },
+    "matr": {
+      "train": 136,
+      "dev": 48,
+      "calibration": 48,
+      "final": 48
+    }
+  }
+}

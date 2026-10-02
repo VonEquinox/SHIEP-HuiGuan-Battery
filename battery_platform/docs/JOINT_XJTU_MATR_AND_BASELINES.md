@@ -19,11 +19,11 @@
 
 | 数据 | 可建模电芯 | SOH 窗口 | train/dev/calibration/final 电芯 |
 |---|---:|---:|---|
-| XJTU development | 18 | 144 | 11 / 3 / 4 / 0 |
+| XJTU feature population | 21 | 168 | 11 / 3 / 4 / 3 |
 | MATR official summary | 35 | 280 | 17 / 6 / 6 / 6 |
-| XJTU+MATR | 53 | 424 | 28 / 9 / 10 / 6 |
+| XJTU+MATR full comparison package | 56 | 448 | 28 / 9 / 10 / 9 |
 
-因此，按可建模独立电芯或 SOH 窗口计，联合数据是 XJTU-only 的 `53 / 18 = 2.944x`，新增 35 个 MATR 电芯，增加 194.4%。训练电芯从 11 个增加到 28 个，训练窗口从 88 个增加到 224 个，训练规模为 `2.545x`。MATR 的 cycle、segment 和历史曲线数量另行记录，不能直接称为独立样本倍数。
+完整比较包按可建模独立电芯或 SOH 窗口计，是 XJTU-only 的 `56 / 21 = 2.667x`，新增 35 个 MATR 电芯，增加 166.7%。训练电芯从 11 个增加到 28 个，训练窗口从 88 个增加到 224 个，训练规模为 `2.545x`。用于反复选型的 development/feedback 包会排除所有 final 行，实际为 XJTU 18 个对象/144 行 + MATR 29 个对象/232 行 = 47 个对象/376 行；相对 XJTU development 包的扩大倍数为 `2.611x`。MATR 的 cycle、segment 和历史曲线数量另行记录，不能直接称为独立样本倍数。
 
 MATR 的特征包只有容量历史/统计信息，XJTU 还包含可见曲线序列。两者通过 source-specific adapter 和 mask 进入共同模型；未经说明时，不把两类原始曲线当成同分布。
 
@@ -49,15 +49,15 @@ MATR 的特征包只有容量历史/统计信息，XJTU 还包含可见曲线序
 
 目标是检验联合训练是否同时满足：XJTU 指标不恶化，MATR 指标改善。这个目标不能预先保证；如果 M2、MLP、LSTM 或 LightGBM 出现负迁移，原始结果也必须保留。
 
-## 待运行模型
+## 模型状态
 
 | 方法 | 输入 | 训练方式 | 状态 |
 |---|---|---|---|
-| V2 M1 quantile GBDT | 30D统计特征 | source/domain 分头 | 待本阶段统一重跑/汇总 |
-| V2 M2 multitask | 统计特征+历史序列 | 共享编码器+域适配器 | 待本阶段统一重跑/汇总 |
-| MLP | 30D统计特征 | pooled source-agnostic | 待运行 |
-| LSTM | 历史序列+mask | pooled source-agnostic | 待运行 |
-| LightGBM | 30D统计特征 | pooled source-agnostic | 待运行 |
+| V2 M1 quantile GBDT | 30D统计特征 | source/domain 分头 | 已完成；联合 MATR final MAE `2.4528±0.0074 pp` |
+| V2 M2 multitask | 统计特征+历史序列 | 共享编码器+域适配器 | 已完成；联合 MATR final MAE `9.3918±1.7472 pp`，保留负迁移 |
+| MLP | 30D统计特征 | source-aware 输入 | 已完成；联合 MATR final MAE `4.5717±2.9026 pp` |
+| LSTM | 历史序列+mask | source-aware 输入 | 已完成；联合 MATR final MAE `10.3116±2.1715 pp` |
+| LightGBM | 30D统计特征 | source-aware 输入 | 已完成；联合 MATR final MAE `3.8754 pp` |
 
 XGBoost 当前环境没有安装，本阶段不把 LightGBM 的结果冒充 XGBoost。若后续增加 XGBoost，必须使用同一分割和同一报告格式。
 
@@ -84,3 +84,9 @@ XGBoost 当前环境没有安装，本阶段不把 LightGBM 的结果冒充 XGBo
 - 旧 XJTU final 与 M0 历史开发人口存在重叠，不能用于声称 M0 的全新独立泛化。
 
 后续每次训练、评估、图表生成和提交都追加到本文件，并在 `docs/V2_IMPLEMENTATION_LOG.md` 记录对应 commit。
+
+## 已完成结果入口（2026-10-02）
+
+实际运行结果、逐 seed/逐电芯回执、模型结构、失败日志、命令和图表已经归档到 [JOINT_XJTU_MATR_RESULTS_20261002.md](JOINT_XJTU_MATR_RESULTS_20261002.md)。完整比较包为 56 个对象/448 行，开发包为 47 个对象/376 行；XJTU 保护的 `*-5` 电芯仍封存。联合 M1 在 XJTU/MATR 上分别为 `1.1768±0.1121 pp` / `2.4528±0.0074 pp`，但联合 MLP 在历史暴露 XJTU final 上更低（`0.6338±0.0598 pp`），因此结果不能简化为单模型在两个来源都领先。
+
+机器可读汇总为 `battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json`；图表为 `final_mae_comparison.png`、`dataset_scale_comparison.png` 和 `matr_transfer_comparison.png`。首次 M1 的 `ngboost=true` 导入失败由于环境没有 `ngboost`，失败日志保留，正式结果使用明确记录的 `ngboost=false` 重跑。

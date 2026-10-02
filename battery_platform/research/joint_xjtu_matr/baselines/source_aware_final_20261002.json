@@ -1,0 +1,720 @@
+{
+  "scope": "one-time historical-exposed XJTU comparison final plus MATR final",
+  "bundle": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/battery_platform/research/joint_xjtu_matr/bundles/final_comparison/combined/features.json",
+  "bundle_sha256": "67ba3949229b39248710e8cf8a6dc19c78150f9da51044e01ebb7a1ac9fa0c6a",
+  "final_rows": 72,
+  "final_objects": [
+    "matr:el150800737229",
+    "matr:el150800737259",
+    "matr:el150800737275",
+    "matr:el150800737287",
+    "matr:el150800737387",
+    "matr:el150800739477",
+    "xjtu:Batch-4/R3_battery-2",
+    "xjtu:Batch-4/R3_battery-7",
+    "xjtu:Batch-5/RW_battery-2"
+  ],
+  "selection_split": "dev",
+  "final_labels_used_for_selection": false,
+  "methods": [
+    {
+      "method": "mlp",
+      "seed": 0,
+      "dev_selected_epochs": 40,
+      "dev_selection_score_sum_pp": 9.998700519402822,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 0.7028174897034963,
+          "cell_rmse_pp": 0.9542259615641303,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 0.6658993661403656,
+              "rmse_pp": 0.960016145601216
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 0.5307875573635101,
+              "rmse_pp": 0.8562925941913159
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 0.9117655456066132,
+              "rmse_pp": 1.0463691448998593
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 7.9183027148246765,
+          "cell_rmse_pp": 11.654502191230813,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 21.480585634708405,
+              "rmse_pp": 25.10422445830481
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 3.7720441818237305,
+              "rmse_pp": 5.457552276547496
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 6.059637665748596,
+              "rmse_pp": 11.094918660694896
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 5.827883630990982,
+              "rmse_pp": 9.738174925652167
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 4.241529107093811,
+              "rmse_pp": 7.749827013088492
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 6.128136068582535,
+              "rmse_pp": 10.782315813097021
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "mlp",
+      "seed": 1,
+      "dev_selected_epochs": 295,
+      "dev_selection_score_sum_pp": 3.941905622680982,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 0.5994588136672974,
+          "cell_rmse_pp": 0.7041355068168352,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 0.6207756698131561,
+              "rmse_pp": 0.7349578750588364
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 0.7865868508815765,
+              "rmse_pp": 0.8887466773565853
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 0.3910139203071594,
+              "rmse_pp": 0.4887019680350841
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 2.738801638285319,
+          "cell_rmse_pp": 4.626589571190595,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 12.188924103975296,
+              "rmse_pp": 20.08851357998717
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 0.4902474582195282,
+              "rmse_pp": 0.6263125229814411
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 1.1220797896385193,
+              "rmse_pp": 1.9577711130505107
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 1.0532185435295105,
+              "rmse_pp": 2.0774270367133356
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 1.2219920754432678,
+              "rmse_pp": 2.5318289909633784
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 0.35634785890579224,
+              "rmse_pp": 0.47768418344773783
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "mlp",
+      "seed": 2,
+      "dev_selected_epochs": 295,
+      "dev_selection_score_sum_pp": 4.239448780814807,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 0.5991044143835703,
+          "cell_rmse_pp": 0.749039683821711,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 0.48477500677108765,
+              "rmse_pp": 0.5563803133428638
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 0.8302398025989532,
+              "rmse_pp": 1.067199427010502
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 0.48229843378067017,
+              "rmse_pp": 0.6235393111117675
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 3.058140352368355,
+          "cell_rmse_pp": 4.792818772936079,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 13.26080858707428,
+              "rmse_pp": 21.027949142432245
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 0.6150901317596436,
+              "rmse_pp": 0.6913717134490783
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 1.201394945383072,
+              "rmse_pp": 1.7846766097435856
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 1.0723650455474854,
+              "rmse_pp": 1.8979805054412682
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 1.522168517112732,
+              "rmse_pp": 2.534831131250792
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 0.6770148873329163,
+              "rmse_pp": 0.8201035352995045
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "lstm",
+      "seed": 0,
+      "dev_selected_epochs": 170,
+      "dev_selection_score_sum_pp": 10.409250358740488,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 3.2606802880764008,
+          "cell_rmse_pp": 4.016300250832939,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 3.4108422696590424,
+              "rmse_pp": 4.307925948398055
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 3.690996766090393,
+              "rmse_pp": 4.700099634634308
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 2.680201828479767,
+              "rmse_pp": 3.0408751694664513
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 7.809634258349736,
+          "cell_rmse_pp": 11.857972562412106,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 14.94644284248352,
+              "rmse_pp": 18.380390644236073
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 5.098485201597214,
+              "rmse_pp": 7.527917299544477
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 7.640430331230164,
+              "rmse_pp": 14.126190367109862
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 7.15075358748436,
+              "rmse_pp": 11.557748798831222
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 4.484890401363373,
+              "rmse_pp": 5.832595339790835
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 7.536803185939789,
+              "rmse_pp": 13.72299292496017
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "lstm",
+      "seed": 1,
+      "dev_selected_epochs": 10,
+      "dev_selection_score_sum_pp": 16.273692498604458,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 4.623698939879735,
+          "cell_rmse_pp": 6.270458632874669,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 3.866387903690338,
+              "rmse_pp": 6.013318070994639
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 4.187498986721039,
+              "rmse_pp": 6.284317456890582
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 5.817209929227829,
+              "rmse_pp": 6.513740370738786
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 11.418368543187777,
+          "cell_rmse_pp": 20.532895458828488,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 8.888538181781769,
+              "rmse_pp": 9.893630531042499
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 11.628589779138565,
+              "rmse_pp": 22.879703676476918
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 12.260627001523972,
+              "rmse_pp": 22.567997300274698
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 11.868450790643692,
+              "rmse_pp": 22.39818322335674
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 11.601737886667252,
+              "rmse_pp": 22.4409228521468
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 12.262267619371414,
+              "rmse_pp": 23.01693516967328
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "lstm",
+      "seed": 2,
+      "dev_selected_epochs": 5,
+      "dev_selection_score_sum_pp": 16.551706939935684,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 4.624233643213908,
+          "cell_rmse_pp": 6.275337713806642,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 3.881072998046875,
+              "rmse_pp": 6.031354707837856
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 4.202184081077576,
+              "rmse_pp": 6.303747138157131
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 5.789443850517273,
+              "rmse_pp": 6.4909112954249375
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 11.706705267230669,
+          "cell_rmse_pp": 20.519049666631364,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 9.176895022392273,
+              "rmse_pp": 10.108746353495158
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 11.91691979765892,
+              "rmse_pp": 22.811348863208398
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 12.548960000276566,
+              "rmse_pp": 22.51635282975534
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 12.156782299280167,
+              "rmse_pp": 22.340452734751985
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 11.890073865652084,
+              "rmse_pp": 22.377099609187912
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 12.550600618124008,
+              "rmse_pp": 22.960297609389396
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "lightgbm",
+      "seed": 0,
+      "dev_selected_iterations": 171,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 1.5715858914902379,
+          "cell_rmse_pp": 2.5781230671568967,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 1.7550500046735626,
+              "rmse_pp": 3.0740277040954522
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 2.3191012081747497,
+              "rmse_pp": 3.7965300426034236
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 0.6406064616224019,
+              "rmse_pp": 0.8638114547718141
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 3.8754144406712974,
+          "cell_rmse_pp": 8.182336753309889,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 10.949432208214413,
+              "rmse_pp": 17.770085164065343
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 1.7357483313193907,
+              "rmse_pp": 3.826550599720345
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 3.615654628120273,
+              "rmse_pp": 9.744729860153075
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 3.5828206640286937,
+              "rmse_pp": 9.816467242950365
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 2.6040046483556774,
+              "rmse_pp": 6.426182576541162
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 0.7648261639893364,
+              "rmse_pp": 1.5100050764290354
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "lightgbm",
+      "seed": 1,
+      "dev_selected_iterations": 171,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 1.5715858914902379,
+          "cell_rmse_pp": 2.5781230671568967,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 1.7550500046735626,
+              "rmse_pp": 3.0740277040954522
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 2.3191012081747497,
+              "rmse_pp": 3.7965300426034236
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 0.6406064616224019,
+              "rmse_pp": 0.8638114547718141
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 3.8754144406712974,
+          "cell_rmse_pp": 8.182336753309889,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 10.949432208214413,
+              "rmse_pp": 17.770085164065343
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 1.7357483313193907,
+              "rmse_pp": 3.826550599720345
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 3.615654628120273,
+              "rmse_pp": 9.744729860153075
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 3.5828206640286937,
+              "rmse_pp": 9.816467242950365
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 2.6040046483556774,
+              "rmse_pp": 6.426182576541162
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 0.7648261639893364,
+              "rmse_pp": 1.5100050764290354
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "lightgbm",
+      "seed": 2,
+      "dev_selected_iterations": 171,
+      "final_scores": {
+        "xjtu": {
+          "cells": 3,
+          "rows": 24,
+          "cell_mae_pp": 1.5715858914902379,
+          "cell_rmse_pp": 2.5781230671568967,
+          "per_cell": [
+            {
+              "cell": "xjtu:Batch-4/R3_battery-2",
+              "rows": 8,
+              "mae_pp": 1.7550500046735626,
+              "rmse_pp": 3.0740277040954522
+            },
+            {
+              "cell": "xjtu:Batch-4/R3_battery-7",
+              "rows": 8,
+              "mae_pp": 2.3191012081747497,
+              "rmse_pp": 3.7965300426034236
+            },
+            {
+              "cell": "xjtu:Batch-5/RW_battery-2",
+              "rows": 8,
+              "mae_pp": 0.6406064616224019,
+              "rmse_pp": 0.8638114547718141
+            }
+          ]
+        },
+        "matr": {
+          "cells": 6,
+          "rows": 48,
+          "cell_mae_pp": 3.8754144406712974,
+          "cell_rmse_pp": 8.182336753309889,
+          "per_cell": [
+            {
+              "cell": "matr:el150800737229",
+              "rows": 8,
+              "mae_pp": 10.949432208214413,
+              "rmse_pp": 17.770085164065343
+            },
+            {
+              "cell": "matr:el150800737259",
+              "rows": 8,
+              "mae_pp": 1.7357483313193907,
+              "rmse_pp": 3.826550599720345
+            },
+            {
+              "cell": "matr:el150800737275",
+              "rows": 8,
+              "mae_pp": 3.615654628120273,
+              "rmse_pp": 9.744729860153075
+            },
+            {
+              "cell": "matr:el150800737287",
+              "rows": 8,
+              "mae_pp": 3.5828206640286937,
+              "rmse_pp": 9.816467242950365
+            },
+            {
+              "cell": "matr:el150800737387",
+              "rows": 8,
+              "mae_pp": 2.6040046483556774,
+              "rmse_pp": 6.426182576541162
+            },
+            {
+              "cell": "matr:el150800739477",
+              "rows": 8,
+              "mae_pp": 0.7648261639893364,
+              "rmse_pp": 1.5100050764290354
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
