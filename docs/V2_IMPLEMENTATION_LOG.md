@@ -324,3 +324,12 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
 - 首次 M1 `ngboost=true` 因本地环境没有 `ngboost` 导入失败；失败日志原样保留，正式结果明确改用 `ngboost=false` 重跑，没有将失败运行计作分数。当前环境没有 XGBoost，因此 LightGBM 没有被冒称为 XGBoost。
 - 交付 `battery_platform/research/build_joint_bundles.py`、基线/传输脚本、配置、NPZ/JSON bundle、逐 seed 训练与 final 回执、机器可读汇总和三张图。统一说明为 `battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md`，协议文档同步更新；它同时指向 Carbon、16 Skill、合成内容和 Agent A0–A4 的已有独立记录。
 - 验证：研究脚本 `py_compile` 通过；research 下全部 JSON 可解析；12 个 final 回执均标记禁止在 final 选择；`git diff --check` 通过；图表已目视检查。提交：`4a4913bc research: archive XJTU MATR joint benchmark and baselines`。
+
+## 提交 22：联合 H-M1 development 结构优化与量化原型
+
+- 在不读取 `final`、`final-test`、`sealed` 或 `protected` 行的前提下，对联合 XJTU+MATR M1 做两轮 development-only 结构搜索：第一轮层级专家/共享主干/残差/容量锚点共128个候选、384个 seed 记录；宽点预测搜索归档1,440个候选；ExtraTrees 的 XJTU低分因 MATR门控和缺少量化契约未选用。
+- 修正层级搜索专家学习率为现有 M1 artifact 的真实值 `0.10` 后，最佳层级候选 development cell-macro MAE 为 XJTU `0.5210 pp`、MATR `1.5610 pp`，通过预登记门控。随后冻结 source-level pooled q05/q50/q95 GBDT + source-level residual：160/80棵树、深度3/2、最小叶5、学习率0.03、source log-SOH归一化、cell-balanced weighting。
+- 完整量化候选三 seed development q50 MAE 为 XJTU `0.3841±0.0173 pp`、MATR `1.5290±0.0344 pp`；相对同包 MLP XJTU `0.7297 pp` 降低约 `47.36%`，相对旧 M1 XJTU `0.6095 pp` 降低约 `36.98%`；MATR 相对旧 M1 `1.7021 pp` 降低约 `10.18%`。这些是 development 内部结果，不宣称新的 final 或公开领域 SOTA。
+- 每个 seed 导出包含预处理参数、q05/q50/q95 主干和 residual 数值树；从 JSON 重放三 seed 最大 SOH 误差 `0.0`。当前状态明确为 H-M1 quantile research prototype，尚未接入完整 `DomainBaseline` 多任务生产契约。
+- 新增独立协议、详细结果、机器可读候选/模型回执和 development 比较图，并更新联合实验结果、README 与协议索引；历史 final 与 XJTU `*-5` 保护标签仍不在本轮选择中。
+- 验证：四个研究脚本 `py_compile`、五份 JSON 解析、development split 计数 `train=224/dev=72/calibration=80`、回执 final 安全标记和 `git diff --cached --check` 通过；图表已目视检查。提交：`d9cf67a3 research: optimize joint H-M1 on development`。
