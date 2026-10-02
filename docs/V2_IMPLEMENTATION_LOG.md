@@ -314,3 +314,13 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
   测试服务器/训练进程已结束，首次推送后工作区干净。
 - 本提交只追加实际发布文档与索引，代码/模型/冻结云试验结果保持已验证版本，随后归档到DEV。
   完整测试、独立盲评与微信外部条件的边界仍见最终验收，不因上传宣称额外能力。
+
+## 提交 21：XJTU + MATR 联合实验、基线和统一结果文档
+
+- 按用户最新要求只建立 XJTU-only 与 XJTU+MATR 两条主线，跳过 MATR-only 主实验；新增只含 train/dev/calibration 的 development bundle 和含 final 的一次性 comparison bundle。完整对象从 21/168 增至 56/448（2.667x），训练对象从 11/88 增至 28/224（2.545x），non-final feedback/dev 从 18/144 增至 47/376（2.611x）。
+- 保持 XJTU `*-5` 保护电芯封存；历史暴露的 3 个 XJTU comparison final 与 MATR 6 个 final 只在配方冻结后各 seed 评估一次。所有 final 回执 `no_model_selection_on_this_split=true`，没有用 final 标签选 epoch、树数或模型。
+- 训练并归档三种 seed 的 M1 source/domain quantile GBDT、M2 masked temporal multitask、source-aware MLP、source-aware LSTM 和 LightGBM。M1 的 MATR final MAE 为 `2.4528±0.0074 pp`，优于 MLP `4.5717±2.9026`、LightGBM `3.8754`、LSTM `10.3116±2.1715` 和 M2 `9.3918±1.7472`；MLP 在历史暴露 XJTU final 上为 `0.6338±0.0598`，低于 M1 `1.1768±0.1121`，所以没有把结果表述为两个来源都由同一模型领先。
+- XJTU-only M1 在 MATR 没有合法 domain head，保持 unsupported；XJTU-only pooled MLP/LSTM/LightGBM 到 MATR 的 OOD MAE 分别为 `23.6047/10.7994/9.8597 pp`，联合 source-aware 后降为 `4.5717/10.3116/3.8754 pp`。M1 加 MATR 后 XJTU 分支不变，M2 XJTU 轻微退化 `0.0185 pp`，M2 MATR 负迁移完整保留。
+- 首次 M1 `ngboost=true` 因本地环境没有 `ngboost` 导入失败；失败日志原样保留，正式结果明确改用 `ngboost=false` 重跑，没有将失败运行计作分数。当前环境没有 XGBoost，因此 LightGBM 没有被冒称为 XGBoost。
+- 交付 `battery_platform/research/build_joint_bundles.py`、基线/传输脚本、配置、NPZ/JSON bundle、逐 seed 训练与 final 回执、机器可读汇总和三张图。统一说明为 `battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md`，协议文档同步更新；它同时指向 Carbon、16 Skill、合成内容和 Agent A0–A4 的已有独立记录。
+- 验证：研究脚本 `py_compile` 通过；research 下全部 JSON 可解析；12 个 final 回执均标记禁止在 final 选择；`git diff --check` 通过；图表已目视检查。提交：`4a4913bc research: archive XJTU MATR joint benchmark and baselines`。
