@@ -149,6 +149,46 @@ def test_observation_scope_uuid_hash_and_automatic_memory(admin):
         assert other.get(f"/api/v2/agent/runs/{run['run_id']}").status_code == 403
 
 
+def test_current_event_history_binds_session_and_order_without_cross_session_fallback(admin):
+    from app.agent import ContextStore, run_agent
+    asset, run, _, proposal, order, _ = approved(admin)
+    other = admin.post("/api/v2/agent/runs", json={"asset_id": asset["id"], "installation_id": asset["installation_id"],
+                       "visible_cutoff": now()}, headers={"Idempotency-Key": "history-other-session"})
+    assert other.status_code == 202, other.text
+    other_session_id = other.json()["session_id"]
+    cutoff = now()
+    refreshed = admin.post("/api/v2/agent/runs", json={"asset_id": asset["id"], "installation_id": asset["installation_id"],
+                           "session_id": run["session_id"], "visible_cutoff": cutoff},
+                           headers={"Idempotency-Key": "history-current-session"})
+    assert refreshed.status_code == 202, refreshed.text
+    with tx() as c:
+        job = one(c, "SELECT * FROM jobs WHERE id=:i", {"i": refreshed.json()["job_id"]})
+        request = api_agent.agent_snapshot(c, job)
+    assert request["root_scenario_id"] == f"order:{order['id']}"
+    assert request["history_root_ids"] == [f"session:{run['session_id']}", f"order:{order['id']}"]
+    assert f"session:{other_session_id}" not in request["history_root_ids"]
+    snapshot = ContextStore().snapshot()
+    def record(mid, root):
+        return {"memory_id": mid, "version": 1, "scope": {"installation_id": asset["installation_id"]},
+                "trigger": "inspection feedback", "insight": "Arrival was recorded.", "supporting_case_ids": [root],
+                "source_trust": "reported", "source_scope": "operational", "state": "active", "available_at": cutoff}
+    snapshot["memories"] = [record("current-session", f"session:{run['session_id']}"),
+                            record("current-order", f"order:{order['id']}"),
+                            record("other-session", f"session:{other_session_id}"), record("other-order", "order:unrelated")]
+    request["context_snapshot"] = snapshot
+    result = run_agent({k: v for k, v in request.items() if not k.startswith("_")}, llm=False)
+    assert set(result["run"]["history_memory_ids"]) == {"current-session", "current-order"}
+    assert set(result["run"]["initial_memory_ids"]) == {"current-session", "current-order"}
+    assert set(result["run"]["retrieved_memory_ids"]) == {"current-session", "current-order"}
+    # A future approval must not bind an order alias into an earlier snapshot.
+    with tx() as c:
+        future = (datetime.fromisoformat(cutoff) + timedelta(days=1)).isoformat()
+        execute(c, "UPDATE work_proposals SET updated_at=:t WHERE id=:i", {"t": future, "i": proposal["id"]})
+        earlier = api_agent.agent_snapshot(c, job)
+    assert earlier["root_scenario_id"] == f"session:{run['session_id']}"
+    assert earlier["history_root_ids"] == [f"session:{run['session_id']}"]
+
+
 def test_mobile_token_restricted_authenticated_role_and_signed_qr(admin, monkeypatch):
     asset, run, report, proposal, order, _ = approved(admin)
     monkeypatch.setenv("BATTERY_DEMO_MOBILE", "1")

@@ -13,7 +13,8 @@ from typing import Any, Callable
 
 from .context import ContextStore, evolve_context
 from .contracts import EDITABLE_SKILL_FIELDS, FORBIDDEN_CONTEXT_KEYS, public_context
-from .executor import run_agent, _evidence_ids
+from .executor import run_agent, _evidence_ids, _without_memory
+from .experiment_metrics import aggregate_experiment_metrics
 
 ARMS = {
     "A0": {"llm": False, "memory": False, "ace": False, "gepa": False},
@@ -213,9 +214,15 @@ class ReplayEvaluator:
                  batch_optimizer: Callable[[list[dict[str, Any]], ContextStore], Any] | None = None,
                  batch_size: int = 50, replay_environment: Any = None,
                  replay_authorized_test_ids: list[str] | None = None,
-                 allow_context_updates: bool = True) -> dict[str, Any]:
+                 allow_context_updates: bool = True,
+                 memory_enabled: bool | None = None) -> dict[str, Any]:
         if arm not in ARMS:
             raise ValueError("unknown experiment arm")
+        if memory_enabled is not None and type(memory_enabled) is not bool:
+            raise ValueError("memory_enabled must be a boolean execution policy")
+        # An explicit control may further narrow an arm, never turn Memory on
+        # for A0/A1. This governs retrieval as well as feedback writes.
+        memory_enabled = ARMS[arm]["memory"] and memory_enabled is not False
         roots = _check_events(cases, {"dev", "selection", "evolution", "sealed"})
         sealed = any(c["split"] == "sealed" for c in cases)
         if sealed and (not milestone or any(c["split"] != "sealed" for c in cases)):
@@ -224,6 +231,7 @@ class ReplayEvaluator:
             raise ValueError("sealed results cannot be passed to an optimizer")
         store = ContextStore(initial_snapshot=initial_snapshot)
         frozen = copy.deepcopy(frozen_config or {})
+        frozen["memory_enabled"] = memory_enabled
         config_digest = hashlib.sha256(json.dumps(frozen, sort_keys=True).encode()).hexdigest()
         records, feedback_batch = [], []
         for case in cases:
@@ -236,9 +244,18 @@ class ReplayEvaluator:
                 visible = _public_case(replay_session.visible)
                 visible["authorization"] = {"authorized_test_ids": replay_authorized_test_ids,
                                             "qualifications": ["instrumentation"], "round_budget": 3, "human_approved": True}
-            visible["context_snapshot"] = store.snapshot()
+            execution_snapshot = store.snapshot()
+            execution_store = store
+            if not memory_enabled:
+                execution_snapshot = _without_memory(execution_snapshot)
+                execution_store = ContextStore(initial_snapshot=execution_snapshot)
+                visible["memories"] = []
+                visible["memory_history"] = []
+            visible["root_scenario_id"] = _root(case)
+            visible["context_snapshot"] = execution_snapshot
+            visible["memory_enabled"] = memory_enabled
             result = runner(visible, llm=(llm if ARMS[arm]["llm"] else False),
-                            skill_library=(skill_library if arm != "A0" else None), context_store=store)
+                            skill_library=(skill_library if arm != "A0" else None), context_store=execution_store)
             report = copy.deepcopy(result["report"])
             metrics = score_report(report, case, result.get("tool_trace", []))
             record = {"root_scenario_id": _root(case), "split": case["split"], "report": report,
@@ -246,7 +263,7 @@ class ReplayEvaluator:
                       "metrics": metrics, "run": result.get("run", {}), "update_state": "no_update"}
             # Dev/selection are read-only, avoiding order-dependent tuning of the
             # set used to compare candidates. Sealed labels never leave scorer.
-            if case["split"] == "evolution" and ARMS[arm]["memory"] and allow_context_updates:
+            if case["split"] == "evolution" and memory_enabled and allow_context_updates:
                 feedback = copy.deepcopy(case.get("feedback", case.get("expected_feedback", {})))
                 if replay_session is not None:
                     eligible_tests = [t["test_id"] for t in report.get("suggested_tests", []) if t["authorization"] == "authorized" and t["test_id"] in replay_authorized_test_ids]
@@ -286,25 +303,18 @@ class ReplayEvaluator:
                     record["gepa_result"] = batch_optimizer(copy.deepcopy(feedback_batch), store)
                     feedback_batch = []
             records.append(record)
-        labeled = [r for r in records if r["metrics"]["missed"] is not None]
-        facts = sum(r["metrics"]["fact_count"] for r in records)
         return {"arm": arm, "label": "synthetic/replay diagnosis experiment", "root_count": len(roots),
                 "records": records, "frozen_config": frozen, "frozen_config_sha256": config_digest,
                 "selection_eligible": not sealed, "generalization_verified": False,
-                "metrics": {"diagnosis_accuracy": sum(r["metrics"]["diagnosis_correct"] for r in records) / len(records) if records else None,
-                            "grounded_assertion_ratio": sum(r["metrics"]["grounded_fact_count"] for r in records) / facts if facts else None,
-                            "mean_test_count": sum(r["metrics"]["test_count"] for r in records) / len(records) if records else None,
-                            "unsafe_test_count": sum(r["metrics"]["unsafe_test_count"] for r in records),
-                            "independently_labeled_root_count": len(labeled),
-                            "misses": sum(r["metrics"]["missed"] for r in labeled) if labeled else None,
-                            "false_alarms": sum(r["metrics"]["false_alarm"] for r in labeled) if labeled else None},
+                "metrics": aggregate_experiment_metrics(records, cases),
                 "final_context_snapshot": store.snapshot(),
                 "context_changes": [update for entry in store.audit() if entry.get("state") == "active" for update in entry.get("updates", [])]}
 
     def replay_session(self, arm: str, environment: Any, case_id: str, *,
                        authorized_test_ids: list[str], llm: Any = None, skill_library: Any = None,
                        context_store: ContextStore | None = None, round_budget: int = 3,
-                       milestone: bool = False, selected_outcomes: dict[str, str] | None = None) -> dict[str, Any]:
+                       milestone: bool = False, selected_outcomes: dict[str, str] | None = None,
+                       memory_enabled: bool | None = None) -> dict[str, Any]:
         """Bridge to evaluator-only branch environments with explicit test grants.
 
         The executor gets only environment.visible; it receives no reference to
@@ -313,6 +323,9 @@ class ReplayEvaluator:
         """
         if arm not in ARMS or not 1 <= round_budget <= 20:
             raise ValueError("invalid arm or round budget")
+        if memory_enabled is not None and type(memory_enabled) is not bool:
+            raise ValueError("memory_enabled must be a boolean execution policy")
+        memory_enabled = ARMS[arm]["memory"] and memory_enabled is not False
         session = environment.begin(case_id)
         split = session.visible.get("split", session.visible.get("split_tags", {}).get("split", "dev"))
         if split == "sealed" and not milestone:
@@ -326,9 +339,18 @@ class ReplayEvaluator:
                                          "qualifications": ["instrumentation"], "round_budget": round_budget}
             visible["completed_test_ids"] = [r["test_id"] for r in session.completed]
             visible["previous_reports"] = copy.deepcopy(history[-3:])
-            visible["context_snapshot"] = store.snapshot()
+            execution_snapshot = store.snapshot()
+            execution_store = store
+            if not memory_enabled:
+                execution_snapshot = _without_memory(execution_snapshot)
+                execution_store = ContextStore(initial_snapshot=execution_snapshot)
+                visible["memories"] = []
+                visible["memory_history"] = []
+            visible["root_scenario_id"] = case_id
+            visible["context_snapshot"] = execution_snapshot
+            visible["memory_enabled"] = memory_enabled
             result = run_agent(visible, llm=llm if ARMS[arm]["llm"] else False,
-                               skill_library=skill_library if arm != "A0" else None, context_store=store)
+                               skill_library=skill_library if arm != "A0" else None, context_store=execution_store)
             frozen_report = copy.deepcopy(result["report"])
             history.append(frozen_report)
             entry = {"round": number, "report": frozen_report, "run": result["run"], "tool_trace": result["tool_trace"]}
@@ -346,7 +368,7 @@ class ReplayEvaluator:
                 rounds.append(entry)
                 break
             entry["revealed"] = revealed
-            if split == "evolution" and ARMS[arm]["memory"]:
+            if split == "evolution" and memory_enabled:
                 for feedback in environment.visible_feedback(session):
                     fid = feedback.get("feedback_id")
                     if fid in seen_feedback:
@@ -369,7 +391,7 @@ class ReplayEvaluator:
                 entry["termination"] = "no_new_evidence"
                 break
         return {"arm": arm, "root_scenario_id": case_id, "root_count": 1, "split": split,
-                "rounds": rounds, "selection_eligible": split != "sealed",
+                "rounds": rounds, "memory_enabled": memory_enabled, "selection_eligible": split != "sealed",
                 "generalization_verified": False, "semantic_expert_validation": "not_performed",
                 "environment_checks": environment.score(session, history[-1]) if history else None,
                 "context_snapshot": store.snapshot()}

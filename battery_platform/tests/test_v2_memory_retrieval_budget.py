@@ -15,7 +15,7 @@ CUTOFF = "2026-09-01T12:00:00Z"
 
 def memory(mid, kind="positive", **changes):
     entry = {"memory_id": mid, "version": 1, "scope": {"installation_id": "installation-a", "chemistry": "LFP"},
-             "trigger": "inspection", "insight": "Retain a source-supported applicable condition.",
+             "trigger": "channel", "insight": "Retain a source-supported applicable condition.",
              "supporting_case_ids": ["manual-root-" + mid], "counterexamples": [], "source_trust": "measurement_supported",
              "state": "active", "source_scope": "operational", "available_at": "2026-09-01T10:00:00Z",
              "helpful_count": 0, "harmful_count": 0, "last_used": None, "expires_at": None}
@@ -34,7 +34,7 @@ def store(entries):
 
 
 def retrieve(entries, **kwargs):
-    return store(entries).search("inspection", scope={"installation_id": "installation-a", "chemistry": "LFP"}, cutoff=CUTOFF, **kwargs)
+    return store(entries).search("channel", scope={"installation_id": "installation-a", "chemistry": "LFP"}, cutoff=CUTOFF, **kwargs)
 
 
 def counts(items):
@@ -42,8 +42,8 @@ def counts(items):
 
 
 def test_high_score_support_cannot_crowd_out_recorded_counterexamples():
-    entries = [memory(f"p-{i}", insight="inspection source-supported applicable condition") for i in range(8)]
-    entries += [memory(f"c-{i}", "counterexample", trigger="other", insight="An opposite observation.") for i in range(8)]
+    entries = [memory(f"p-{i}", insight="channel source-supported applicable condition") for i in range(8)]
+    entries += [memory(f"c-{i}", "counterexample", trigger="other", insight="An opposite channel observation.") for i in range(8)]
     items = retrieve(entries)
     assert counts(items) == {"positive": 3, "counterexample": 3}
     assert {m["memory_id"] for m in items} == {"p-0", "p-1", "p-2", "c-0", "c-1", "c-2"}
@@ -58,7 +58,7 @@ def test_missing_other_class_never_borrows_above_three(kind):
 
 def test_unclassified_reports_fill_missing_slots_without_becoming_successes():
     entries = [memory("p-a"), memory("p-b"), memory("c-a", "counterexample")]
-    entries += [memory(f"u-{i}", "unclassified", insight="inspection confirmed successful root cause") for i in range(8)]
+    entries += [memory(f"u-{i}", "unclassified", insight="channel confirmed successful root cause") for i in range(8)]
     items = retrieve(entries)
     assert len(items) == 6 and counts(items) == {"positive": 2, "counterexample": 1, "unclassified": 3}
     assert all(m["source_trust"] == "reported" for m in items if m["retrieval_kind"] == "unclassified")
@@ -85,7 +85,7 @@ def test_counterevidence_precedes_source_support_without_erasing_both_sides(fiel
     {"supporting_case_ids": []}, {"supporting_case_ids": [""]},
 ])
 def test_missing_or_unestablished_category_does_not_infer_success_from_prose(fields):
-    kind, _ = memory_retrieval_kind(memory("unknown", insight="confirmed successful inspection", **fields))
+    kind, _ = memory_retrieval_kind(memory("unknown", insight="confirmed successful channel", **fields))
     assert kind == "unclassified"
 
 
@@ -123,7 +123,7 @@ def test_reward_counters_and_client_category_do_not_change_classification_or_ran
     assert [m["memory_id"] for m in retrieve(changed)] == [m["memory_id"] for m in initial]
     before = store(entries)
     original = before.snapshot()
-    result = before.search("inspection", scope={"installation_id": "installation-a", "chemistry": "LFP"}, cutoff=CUTOFF)
+    result = before.search("channel", scope={"installation_id": "installation-a", "chemistry": "LFP"}, cutoff=CUTOFF)
     result[0]["insight"] = "Changed returned copy"
     assert before.snapshot() == original and not any("retrieval_kind" in m for m in original["memories"])
 
@@ -163,7 +163,9 @@ def test_executor_initial_context_and_repeated_memory_tools_share_six_entries():
         if arguments["query"] == "one":
             return [memory(f"new-p-{i}") for i in range(4)]
         return [memory(f"new-c-{i}", "counterexample") for i in range(4)] + [memory("c-0", "counterexample")]
-    result = run_agent(payload(), context_store=store(entries), llm=client, tools={"search_memory": tool})
+    current = payload()
+    current["symptoms"] = "channel"
+    result = run_agent(current, context_store=store(entries), llm=client, tools={"search_memory": tool})
     assert result["run"]["cloud_report_valid"] and client.calls == 2
     assert counts(client.initial["memories"]) == {"positive": 3, "counterexample": 3}
     trace = [t for t in result["tool_trace"] if t["name"] == "search_memory"]

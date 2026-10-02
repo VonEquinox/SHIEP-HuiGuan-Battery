@@ -26,7 +26,12 @@ _SNAPSHOT_KEYS = {"context_snapshot_id", "context_version", "version", "memories
 _MEMORY_KEYS = {"memory_id", "version", "scope", "trigger", "insight", "supporting_case_ids",
                 "counterexamples", "source_trust", "helpful_count", "harmful_count", "last_used",
                 "expires_at", "state", "source_scope", "raw_feedback_id", "available_at", "origin",
-                "revision_provenance", "deprecation_reason", "conflicts", "allowed_tools"}
+                "revision_provenance", "deprecation_reason", "conflicts", "allowed_tools",
+                "fact_references", "fact_summary", "source_label_guards"}
+_FACT_REFERENCE_KEYS = {"reference_id", "fact_id", "claim", "span", "source_text", "measurement", "author_id",
+                        "extraction_model", "trust", "kind", "source_field", "source_index", "feedback_id",
+                        "feedback_version", "available_at", "priority_class", "contradicts_previous", "corrected_claim_ids"}
+_FACT_PRIORITY = {"correction", "measurement", "counterevidence", "unknown", "conclusion", "reported_statement"}
 _TRUST = {"reported", "measurement_supported", "independently_verified", "contradicted"}
 _SCOPE = {"operational", "cold_start", "evolution"}
 _STATE = {"active", "conflicted", "deprecated", "quarantined"}
@@ -55,6 +60,48 @@ def _time(value: Any) -> bool:
 
 def _strings(value: Any, *, empty: bool = True) -> bool:
     return isinstance(value, list) and (empty or bool(value)) and all(_text(item) for item in value)
+
+
+def _valid_fact_references(value: Any) -> bool:
+    if not isinstance(value, list):
+        return False
+    identities = set()
+    for fact in value:
+        if not isinstance(fact, dict) or set(fact) - _FACT_REFERENCE_KEYS:
+            return False
+        if (not _text(fact.get("reference_id")) or fact["reference_id"] in identities
+                or not _text(fact.get("fact_id")) or not _text(fact.get("claim"))
+                or not _text(fact.get("feedback_id")) or not _integer(fact.get("feedback_version"), 1)
+                or not _time(fact.get("available_at")) or fact.get("trust") not in _TRUST
+                or fact.get("priority_class") not in _FACT_PRIORITY):
+            return False
+        identities.add(fact["reference_id"])
+        span = fact.get("span")
+        if span is not None:
+            if (not isinstance(span, dict) or set(span) != {"start", "end"}
+                    or not _integer(span.get("start")) or not _integer(span.get("end"), span["start"] + 1)
+                    or not _text(fact.get("source_text")) or len(fact["source_text"]) != span["end"] - span["start"]):
+                return False
+        if "measurement" in fact and not isinstance(fact["measurement"], dict):
+            return False
+        if "source_index" in fact and not _integer(fact["source_index"]):
+            return False
+        if "contradicts_previous" in fact and type(fact["contradicts_previous"]) is not bool:
+            return False
+        if "corrected_claim_ids" in fact and not _strings(fact["corrected_claim_ids"]):
+            return False
+    return True
+
+
+def _valid_fact_summary(value: Any, facts: list[dict[str, Any]]) -> bool:
+    return (isinstance(value, dict) and value.get("projection") == "stored_complete"
+            and _integer(value.get("total_fact_count")) and value["total_fact_count"] == len(facts)
+            and _strings(value.get("selected_fact_ids"))
+            and set(value["selected_fact_ids"]) <= {f["reference_id"] for f in facts}
+            and _integer(value.get("omitted_fact_count"))
+            and value["omitted_fact_count"] == len(facts) - len(value["selected_fact_ids"])
+            and _integer(value.get("max_facts"), 1) and _integer(value.get("max_chars"), 1)
+            and _text(value.get("policy")) and _text(value.get("detail_retrieval")))
 
 
 def _validate_snapshot(snapshot: Any) -> list[str]:
@@ -160,12 +207,25 @@ def _validate_snapshot(snapshot: Any) -> list[str]:
                 errors.append("memory_provenance_invalid")
         if "counterexamples" in memory and not isinstance(memory["counterexamples"], list):
             errors.append("memory_counterexamples_invalid")
+        if "fact_references" in memory:
+            if not _valid_fact_references(memory["fact_references"]):
+                errors.append("memory_fact_references_invalid")
+            elif not _valid_fact_summary(memory.get("fact_summary"), memory["fact_references"]):
+                errors.append("memory_fact_summary_invalid")
+        elif "fact_summary" in memory:
+            errors.append("memory_fact_summary_without_references")
+        if "source_label_guards" in memory and (not isinstance(memory["source_label_guards"], dict)
+                or any(type(flag) is not bool for flag in memory["source_label_guards"].values())):
+            errors.append("memory_source_label_guards_invalid")
         if "conflicts" in memory:
             conflicts = memory["conflicts"]
             if not isinstance(conflicts, list) or any(not isinstance(c, dict) or not _text(c.get("insight"), empty=True)
                     or not isinstance(c.get("source_trust"), str) or c["source_trust"] not in _TRUST
                     or not _strings(c.get("supporting_case_ids")) for c in conflicts):
                 errors.append("memory_conflicts_invalid")
+            elif any("fact_references" in c and (not _valid_fact_references(c["fact_references"])
+                    or not _valid_fact_summary(c.get("fact_summary"), c["fact_references"])) for c in conflicts):
+                errors.append("memory_conflict_fact_references_invalid")
         if "revision_provenance" in memory:
             previous = memory["revision_provenance"]
             if (not isinstance(previous, dict) or set(previous) - {"previous_version", "previous_available_at", "previous_feedback_id"}

@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import re
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
@@ -19,6 +20,33 @@ from .api_v2 import authenticated, roles, response, fingerprint, replay, remembe
 router = APIRouter(prefix="/api/v2")
 EVOLUTION_JSON = ("source_feedback_ids", "case_ids", "changes", "validation", "metrics")
 SNAPSHOT_JSON = ("content", "changes", "validation")
+
+
+def public_evolution_run(c, row):
+    """Expose the same strict metric vocabulary to list, detail, and charts."""
+    from .agent.experiment_metrics import public_metrics
+    run = dict(row)
+    for key in EVOLUTION_JSON:
+        if isinstance(run.get(key), str):
+            run[key] = obj(run[key])
+    measured = public_metrics(run["metrics"])
+    evaluation = one(c, "SELECT * FROM evaluation_runs WHERE evolution_run_id=:i ORDER BY id DESC LIMIT 1", {"i": run["id"]})
+    protocol = obj(evaluation["protocol"]) if evaluation else {}
+    validation = run["validation"]
+    # Unknown/legacy protocols remain one-run groups rather than joining
+    # potentially incomparable operational, selection, or replay results.
+    run["experiment_metrics"] = measured
+    run["experiment_protocol"] = {
+        "protocol_id": validation.get("experiment_protocol_id", "unrecorded-run-" + str(run["id"])),
+        "protocol_version": protocol.get("protocol_version", "unrecorded"),
+        "split": run["split"], "method": run["method"], "provenance": run["provenance"],
+        "metric_version": measured["measurement_version"],
+        "cohort_sha256": fingerprint(sorted(run["case_ids"])),
+        "frozen_config_sha256": validation.get("frozen_config_sha256"),
+        "execution_modes": protocol.get("execution_modes", ["unrecorded"]),
+        "llm_models": protocol.get("llm_models", []),
+    }
+    return run
 
 
 def sync_skills(c):
@@ -109,17 +137,21 @@ def evolution_runs(request: Request, cursor: int = Query(0, ge=0), limit: int = 
             predicates.append(f"{field}=:{field}")
             values[field] = value
     with tx() as c:
-        return response(request, **page(c, "evolution_runs", cursor=cursor, limit=limit, predicates=predicates, values=values, json_fields=EVOLUTION_JSON))
+        from .agent.experiment_metrics import metrics_contract
+        result = page(c, "evolution_runs", cursor=cursor, limit=limit, predicates=predicates, values=values, json_fields=EVOLUTION_JSON)
+        result["items"] = [public_evolution_run(c, run) for run in result["items"]]
+        return response(request, **result, metrics_contract=metrics_contract())
 
 
 @router.get("/evolution/runs/{identifier}")
 def evolution_run_detail(identifier: int, request: Request, user=Depends(roles("admin", "researcher", "dispatcher", "viewer"))):
     with tx() as c:
-        run = public(require(c, "evolution_runs", identifier), EVOLUTION_JSON)
+        from .agent.experiment_metrics import metrics_contract
+        run = public_evolution_run(c, require(c, "evolution_runs", identifier))
         if run["job_id"]:
             run["job"] = public(require(c, "jobs", run["job_id"]), ("result", "payload"))
         run["evaluations"] = [public(v, ("metrics", "protocol", "budget")) for v in rows(c, "SELECT * FROM evaluation_runs WHERE evolution_run_id=:i ORDER BY id", {"i": identifier})]
-        return response(request, **run)
+        return response(request, **run, metrics_contract=metrics_contract())
 
 
 @router.post("/evolution/experiments", status_code=202)
@@ -308,37 +340,216 @@ def schedule_pending_feedback(c):
     return job_id
 
 
-def schedule_context_gepa(c):
-    """Automatically admit a bounded batch of distinct, completed feedback roots."""
+GEPA_AUTOMATIC_ATTEMPTS = 3
+GEPA_RETRY_SECONDS = 60
+
+
+def _gepa_provider_signature():
+    # Credentials are hashed, never persisted. Configuration changes can unblock
+    # a batch deferred without a Key without repeatedly enqueueing offline work.
+    return fingerprint({field: os.environ.get(field, default) for field, default in (
+        ("BATTERY_LLM_API_KEY", ""), ("BATTERY_LLM_BASE_URL", "https://api.deepseek.com"),
+        ("BATTERY_LLM_MODEL", "deepseek-flash"), ("BATTERY_LLM_PROXY", "http://127.0.0.1:7897"))})
+
+
+def _gepa_feedback(c, feedback_id):
+    try:
+        table, identifier = feedback_id.split(":", 1)
+        if table not in ("inspection_observations", "diagnostic_feedback"):
+            return None
+        return one(c, f"SELECT * FROM {table} WHERE id=:i", {"i": int(identifier)})
+    except (AttributeError, TypeError, ValueError):
+        return None
+
+
+def _gepa_job_matches(job, source):
+    payload = obj(job["payload"])
+    if payload.get("sources"):
+        return any((item.get("root_id"), item.get("feedback_id"), item.get("feedback_version")) ==
+                   (source["root_id"], source["feedback_id"], source["feedback_version"])
+                   for item in payload["sources"])
+    # Legacy jobs did not pin versions. A later ACE publication proves a new
+    # revision, rather than permanently consuming the root event identity.
+    return (source["root_id"] in payload.get("root_ids", [])
+            and (not payload.get("feedback_ids") or source["feedback_id"] in payload["feedback_ids"])
+            and source["source_event_created_at"] <= job["created_at"])
+
+
+def _gepa_job_generation(job, source):
+    payload = obj(job["payload"])
+    for item in payload.get("sources", []):
+        if (item.get("root_id"), item.get("feedback_id"), item.get("feedback_version")) == (
+                source["root_id"], source["feedback_id"], source["feedback_version"]):
+            return item.get("retry_generation", payload.get("retry_generation", 0))
+    return payload.get("retry_generation", 0)
+
+
+def _gepa_disposition(job):
+    """Reserved, consumed, deferred, retryable, or explicitly stopped."""
+    if job.get("cancel_requested") or job["status"] == "cancelled":
+        return "cancelled"
+    if job["status"] in ("queued", "running"):
+        return "reserved"
+    if job["status"] == "interrupted":
+        # Restart never silently replays potentially billable interrupted work.
+        return "interrupted"
+    result = obj(job.get("result"))
+    validation = obj(job.get("run_validation"))
+    reason = result.get("validation", {}).get("reason", validation.get("reason"))
+    state = result.get("state", job.get("run_status", job["status"]))
+    if reason == "cloud_candidate_client_not_configured":
+        return "deferred"
+    if job["status"] == "failed" or state in ("conflicted", "failed"):
+        return "retryable"
+    if reason == "cloud_candidate_generation_failed":
+        return "retryable"
+    metrics = result.get("metrics", obj(job.get("run_metrics")))
+    candidates = metrics.get("candidate_evaluation", [])
+    if metrics.get("provider_failed_requests", 0):
+        baseline = next((item.get("metrics", {}) for item in candidates
+                         if item.get("candidate", {}).get("candidate_id") == "baseline"), {})
+        reasons = {item.get("reason") for item in baseline.get("hard_failures", [])}
+        # Executor can catch a provider exception and return a fallback report
+        # with metrics. Those numbers cannot establish a valid comparison floor.
+        # Actual safety/permission rejection stays terminal rather than retrying
+        # until a forbidden action happens to pass.
+        safety_failures = {"tool_or_execution_permission_violation", "safety_infeasible_test_recommended"}
+        if not baseline or ("cloud_report_not_strictly_valid" in reasons and not reasons & safety_failures):
+            return "retryable"
+    return "consumed"
+
+
+def _enqueue_context_gepa(c, sources, actor, *, key, retry_of=None, retry_generation=0, explicit_retry=False):
     from .jobs import enqueue
+    current = ensure_context(c)
+    root_ids = [source["root_id"] for source in sources]
+    payload = {"root_ids": root_ids, "feedback_ids": [source["feedback_id"] for source in sources],
+               "sources": sources, "batch_size": len(sources), "max_rollouts": 200, "selection_count": 5,
+               "provider_config_sha256": _gepa_provider_signature(), "retry_generation": retry_generation,
+               "retry_of_job_ids": sorted(set(retry_of or [])), "automatic_attempt_limit": GEPA_AUTOMATIC_ATTEMPTS,
+               "explicit_retry": explicit_retry}
+    job_id = enqueue(c, "context_gepa", payload, {"id": actor}, key)
+    if one(c, "SELECT id FROM evolution_runs WHERE job_id=:j", {"j": job_id}):
+        return job_id
+    identifier = insert(c, "evolution_runs", {"job_id": job_id, "method": "gepa", "status": "queued", "base_context_version": current["context_version"],
+               "source_feedback_ids": js(payload["feedback_ids"]), "case_ids": js(root_ids), "split": "operational",
+               "changes": "[]", "validation": js({"automatic": not explicit_retry, "distinct_root_count": len(root_ids),
+               "source_consumption": "reserved", "sources": sources, "retry_of_job_ids": payload["retry_of_job_ids"]}), "metrics": "{}",
+               "provenance": "source_tagged_operational_with_synthetic_selection", "created_by": actor, "created_at": now()})
+    audit(c, actor, "context_gepa_explicit_retry" if explicit_retry else "context_gepa_auto_enqueue", "evolution_run", identifier,
+          {"root_count": len(root_ids), "selection_split": "dev", "approval_required": False, "retry_of_job_ids": payload["retry_of_job_ids"],
+           "retry_generation": retry_generation, "sources": sources})
+    return job_id
+
+
+def schedule_context_gepa(c):
+    """Versioned reservations; at most three automatic attempts per revision."""
     if one(c, "SELECT count(*) n FROM jobs WHERE status IN ('queued','running')")["n"] >= 12:
         return None
     try:
         batch_size = max(1, min(200, int(os.environ.get("BATTERY_GEPA_BATCH_SIZE", "50"))))
     except ValueError:
         batch_size = 50
-    consumed = set()
-    for job in rows(c, "SELECT payload FROM jobs WHERE kind='context_gepa'"):
-        consumed.update(obj(job["payload"]).get("root_ids", []))
+    history = rows(c, """SELECT j.*,e.status run_status,e.validation run_validation,e.metrics run_metrics
+                         FROM jobs j LEFT JOIN evolution_runs e ON e.job_id=j.id
+                         WHERE j.kind='context_gepa' ORDER BY j.id""")
     eligible = {}
     for event in rows(c, "SELECT * FROM evolution_runs WHERE method='ace' AND split='operational' AND status IN ('active','no_update') ORDER BY id"):
         root_ids, feedback_ids = obj(event["case_ids"], []), obj(event["source_feedback_ids"], [])
-        if root_ids and feedback_ids and root_ids[0] not in consumed:
-            eligible[root_ids[0]] = {"root_id": root_ids[0], "feedback_id": feedback_ids[0], "actor_id": event["created_by"]}
-    if len(eligible) < batch_size:
+        if not root_ids or not feedback_ids:
+            continue
+        feedback = _gepa_feedback(c, feedback_ids[0])
+        if feedback is None or feedback["extraction_status"] not in ("succeeded", "corrected"):
+            continue
+        eligible[root_ids[0]] = {"root_id": root_ids[0], "feedback_id": feedback_ids[0], "feedback_version": feedback["version"],
+                                 "source_event_id": event["id"], "source_event_created_at": event["created_at"], "actor_id": event["created_by"]}
+    candidates = []
+    provider_signature = _gepa_provider_signature()
+    for source in eligible.values():
+        matches = [job for job in history if _gepa_job_matches(job, source)]
+        if any(_gepa_disposition(job) == "consumed" for job in matches):
+            continue
+        generation = max((_gepa_job_generation(job, source) for job in matches), default=0)
+        attempts = [job for job in matches if _gepa_job_generation(job, source) == generation]
+        dispositions = [(job, _gepa_disposition(job)) for job in attempts]
+        if any(state in ("reserved", "consumed", "cancelled", "interrupted") for _, state in dispositions):
+            continue
+        if any(state == "deferred" and (not os.environ.get("BATTERY_LLM_API_KEY") or
+               obj(job["payload"]).get("provider_config_sha256") == provider_signature) for job, state in dispositions):
+            continue
+        failures = [job for job, state in dispositions if state == "retryable"]
+        if len(failures) >= GEPA_AUTOMATIC_ATTEMPTS:
+            continue
+        if failures:
+            latest = failures[-1]
+            stamp = latest.get("finished_at") or latest["created_at"]
+            try:
+                finished = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+                finished = finished.replace(tzinfo=finished.tzinfo or timezone.utc)
+                delay = min(300, GEPA_RETRY_SECONDS * 2 ** (len(failures) - 1))
+                if datetime.now(timezone.utc) < finished + timedelta(seconds=delay):
+                    continue
+            except (ValueError, TypeError):
+                # Unknown terminal time requires explicit recovery, never hot-loop.
+                continue
+        candidates.append({**source, "retry_generation": generation})
+    if len(candidates) < batch_size:
         return None
-    selected = [eligible[root_id] for root_id in sorted(eligible)[:batch_size]]
-    current = ensure_context(c)
-    root_ids = [event["root_id"] for event in selected]
-    actor = selected[0]["actor_id"]
-    job_id = enqueue(c, "context_gepa", {"root_ids": root_ids, "feedback_ids": [event["feedback_id"] for event in selected],
-                     "batch_size": batch_size, "max_rollouts": 200, "selection_count": 5}, {"id": actor}, "auto-gepa-" + fingerprint(root_ids))
-    identifier = insert(c, "evolution_runs", {"job_id": job_id, "method": "gepa", "status": "queued", "base_context_version": current["context_version"],
-               "source_feedback_ids": js([event["feedback_id"] for event in selected]), "case_ids": js(root_ids), "split": "operational",
-               "changes": "[]", "validation": js({"automatic": True, "distinct_root_count": len(root_ids)}), "metrics": "{}",
-               "provenance": "source_tagged_operational_with_synthetic_selection", "created_by": actor, "created_at": now()})
-    audit(c, actor, "context_gepa_auto_enqueue", "evolution_run", identifier, {"root_count": len(root_ids), "selection_split": "dev", "approval_required": False})
-    return job_id
+    selected = sorted(candidates, key=lambda source: source["root_id"])[:batch_size]
+    selected_history = [job for job in history if any(_gepa_job_matches(job, source) for source in selected)]
+    generation = max((obj(job["payload"]).get("retry_generation", 0) for job in selected_history), default=0)
+    source_key = [(source["root_id"], source["feedback_id"], source["feedback_version"]) for source in selected]
+    key = "auto-gepa-" + fingerprint([source_key, [job["id"] for job in selected_history], provider_signature])
+    return _enqueue_context_gepa(c, selected, selected[0]["actor_id"], key=key,
+                                  retry_of=[job["id"] for job in selected_history], retry_generation=generation)
+
+
+@router.post("/evolution/runs/{identifier}/retry", status_code=202)
+def retry_context_gepa(identifier: int, request: Request, user=Depends(roles("admin", "researcher"))):
+    """Explicit recovery also permits deliberate resumption after cancellation."""
+    key, body = request.headers.get("idempotency-key", ""), {"evolution_run_id": identifier}
+    with tx() as c:
+        old = replay(c, user, "context_gepa_retry", key, body)
+        if old:
+            return response(request, **old)
+        run = require(c, "evolution_runs", identifier)
+        if not run.get("job_id"):
+            raise HTTPException(409, "此进化记录没有可恢复作业")
+        job = require(c, "jobs", run["job_id"])
+        if job["kind"] != "context_gepa" or job["status"] in ("queued", "running"):
+            raise HTTPException(409, "只有已终结的 GEPA 作业可以显式恢复")
+        if job["created_by"] != user["id"] and user["role"] != "admin":
+            raise HTTPException(403, "只能恢复自己的 GEPA 作业")
+        record = {**job, "run_status": run["status"], "run_validation": run["validation"], "run_metrics": run["metrics"]}
+        if _gepa_disposition(record) == "consumed":
+            raise HTTPException(409, "此来源版本已经完成候选评估或终结，不重复消费")
+        if not os.environ.get("BATTERY_LLM_API_KEY"):
+            raise HTTPException(503, "云端候选接口尚未配置；恢复未入队且不产生费用")
+        payload = obj(job["payload"])
+        history = rows(c, """SELECT j.*,e.status run_status,e.validation run_validation,e.metrics run_metrics
+                             FROM jobs j LEFT JOIN evolution_runs e ON e.job_id=j.id WHERE j.kind='context_gepa'""")
+        sources = []
+        for root_id, feedback_id in zip(payload.get("root_ids", []), payload.get("feedback_ids", [])):
+            feedback = _gepa_feedback(c, feedback_id)
+            if feedback is None or feedback["extraction_status"] not in ("succeeded", "corrected"):
+                raise HTTPException(409, "来源反馈尚未完成安全抽取")
+            event = one(c, "SELECT * FROM evolution_runs WHERE method='ace' AND source_feedback_ids=:f ORDER BY id DESC LIMIT 1", {"f": js([feedback_id])})
+            source = {"root_id": root_id, "feedback_id": feedback_id, "feedback_version": feedback["version"],
+                      "source_event_id": event["id"] if event else None, "source_event_created_at": event["created_at"] if event else now(), "actor_id": user["id"]}
+            if any(_gepa_job_matches(other, source) and _gepa_disposition(other) == "consumed" for other in history):
+                raise HTTPException(409, "当前来源版本已经完成候选评估或终结，不重复消费")
+            source["retry_generation"] = max((_gepa_job_generation(other, source) for other in history
+                                               if _gepa_job_matches(other, source)), default=0) + 1
+            sources.append(source)
+        if not sources or any(any(_gepa_job_matches(other, source) for source in sources)
+                              for other in rows(c, "SELECT * FROM jobs WHERE kind='context_gepa' AND status IN ('queued','running')")):
+            raise HTTPException(409, "同一来源版本已有预留作业或来源为空")
+        generation = max(source["retry_generation"] for source in sources)
+        job_id = _enqueue_context_gepa(c, sources, user["id"], key=key,
+                                      retry_of=[job["id"]], retry_generation=generation, explicit_retry=True)
+        new_run = one(c, "SELECT id FROM evolution_runs WHERE job_id=:j", {"j": job_id})
+        result = {"job_id": job_id, "evolution_run_id": new_run["id"], "resumed_from_job_id": job["id"]}
+        return response(request, **remember(c, user, "context_gepa_retry", key, body, result))
 
 
 def evolution_snapshot(c, job):
@@ -426,10 +637,11 @@ def evolution_compute(request, cancelled):
         return result
     try:
         evaluation = ReplayEvaluator().evaluate(method_arm[payload["method"]], cases, initial_snapshot=obj(request["base"]["content"]), skill_library=library,
-                                frozen_config={"base_context_version": payload["base_version"], "method": payload["method"], "case_ids": payload["case_ids"], "max_rollouts": payload["max_rollouts"]},
+                                frozen_config={"base_context_version": payload["base_version"], "method": payload["method"], "case_ids": payload["case_ids"], "max_rollouts": payload["max_rollouts"],
+                                               "memory_enabled": payload["method"] != "no_memory"},
                                 milestone=payload["split"] == "sealed_test", batch_optimizer=optimizer, batch_size=min(50, len(cases)), runner=tracked_runner,
                                 replay_environment=replay_environment, replay_authorized_test_ids=["T_TIME_ALIGN", "T_CHANNEL_CHECK"] if replay_environment else [],
-                                allow_context_updates=payload["method"] != "fixed")
+                                allow_context_updates=payload["method"] != "fixed", memory_enabled=payload["method"] != "no_memory")
     finally:
         staged = optimizer.service.accounting() if optimizer else {}
         direct_count, search_count = len(direct_runs), staged.get("rollouts", 0)
@@ -472,6 +684,7 @@ def _provider_metrics(direct_runs, search_runs):
 
 
 def evolution_complete(c, job, result, request):
+    from .agent.experiment_metrics import METRICS_VERSION, PROTOCOL_VERSION, ExperimentMetrics
     base = ensure_context(c)
     run = request["run"]
     payload = request["payload"]
@@ -484,13 +697,26 @@ def evolution_complete(c, job, result, request):
         elif changes:
             snapshot_id = publish_snapshot(c, base, result["final_context_snapshot"], changes, {"passed": True, "source_split": "evolution", "generalization_verified": False}, job["created_by"])
             state = "active"
-    metrics = {**result["metrics"], "root_count": result["root_count"], "generalization_verified": False, "label": result["label"], "gepa_status": result["gepa_status"],
+    measured = ExperimentMetrics.model_validate(result["metrics"]).model_dump()
+    metrics = {**measured, "root_count": result["root_count"], "generalization_verified": False, "label": result["label"], "gepa_status": result["gepa_status"],
                **result.get("provider_metrics", {}), "gepa_telemetry": result.get("gepa_telemetry", {})}
-    validation = {"passed": state != "conflicted", "case_split_verified": True, "selection_eligible": result["selection_eligible"], "frozen_config_sha256": result["frozen_config_sha256"]}
+    execution_modes = sorted({record.get("run", {}).get("execution_mode", "unrecorded") for record in result["records"]})
+    llm_models = sorted({record["run"]["llm_model"] for record in result["records"] if record.get("run", {}).get("llm_model")})
+    protocol = {**result["frozen_config"], "protocol_version": PROTOCOL_VERSION,
+                "metric_schema_version": METRICS_VERSION, "split": payload["split"], "method": payload["method"],
+                "execution_modes": execution_modes, "llm_models": llm_models}
+    comparison_protocol = {"protocol_version": PROTOCOL_VERSION, "metric_schema_version": METRICS_VERSION,
+                          "split": payload["split"], "method": payload["method"], "case_ids": sorted(payload["case_ids"]),
+                          "max_rollouts": payload["max_rollouts"], "activate": payload["activate"],
+                          "execution_modes": execution_modes, "llm_models": llm_models,
+                          "frozen_controls": {key: value for key, value in result["frozen_config"].items()
+                                              if key not in ("base_context_version", "case_ids")}}
+    validation = {"passed": state != "conflicted", "case_split_verified": True, "selection_eligible": result["selection_eligible"],
+                  "frozen_config_sha256": result["frozen_config_sha256"], "experiment_protocol_id": fingerprint(comparison_protocol)}
     execute(c, "UPDATE evolution_runs SET status=:s,result_snapshot_id=:snapshot,changes=:changes,validation=:validation,metrics=:metrics,finished_at=:t WHERE id=:i",
             {"s": state, "snapshot": snapshot_id, "changes": js(changes), "validation": js(validation), "metrics": js(metrics), "t": now(), "i": run["id"]})
     evaluation_id = insert(c, "evaluation_runs", {"evolution_run_id": run["id"], "split": payload["split"], "sample_count": result["root_count"], "metrics": js(metrics),
-                "protocol": js(result["frozen_config"]), "budget": js(result["budget"]), "created_at": now()})
+                "protocol": js(protocol), "budget": js(result["budget"]), "created_at": now()})
     audit(c, job["created_by"], "evolution_experiment_complete", "evolution_run", run["id"], {"status": state, "split": payload["split"], "snapshot_id": snapshot_id})
     # Store reports and scores in job result, never evaluator hidden labels.
     return {"evolution_run_id": run["id"], "evaluation_id": evaluation_id, "status": state, "context_snapshot_id": snapshot_id, "metrics": metrics,
@@ -502,6 +728,7 @@ def gepa_snapshot(c, job):
     base = ensure_context(c)
     run = one(c, "SELECT * FROM evolution_runs WHERE job_id=:j", {"j": job["id"]})
     events = []
+    expected_versions = {item["feedback_id"]: item["feedback_version"] for item in payload.get("sources", [])}
     for root_id, feedback_id in zip(payload["root_ids"], payload["feedback_ids"]):
         table, identifier = feedback_id.split(":", 1)
         if table not in ("inspection_observations", "diagnostic_feedback"):
@@ -509,6 +736,8 @@ def gepa_snapshot(c, job):
         feedback = public(require(c, table, int(identifier)), ("measurements", "performed_actions", "candidate_facts", "assertion_targets", "confirmed_hypotheses", "excluded_hypotheses", "unresolved_items"))
         if feedback["extraction_status"] not in ("succeeded", "corrected"):
             raise HTTPException(409, "GEPA 来源反馈尚未完成安全抽取")
+        if feedback_id in expected_versions and feedback["version"] != expected_versions[feedback_id]:
+            raise HTTPException(409, "GEPA 预留来源版本已变化，旧批次不读取新版反馈")
         report = one(c, "SELECT * FROM agent_reports WHERE session_id=:s AND created_at<=:cutoff ORDER BY id DESC LIMIT 1", {"s": feedback["session_id"], "cutoff": feedback["available_at"]})
         if report is None:
             raise RuntimeError("反馈来源缺少可观察的原报告")
@@ -551,18 +780,18 @@ def gepa_complete(c, job, result, request):
     state, snapshot_id = result.get("state", "no_update"), None
     update = result.get("activation_update")
     regression = result.get("regression")
+    sources = [_gepa_feedback(c, event["feedback"]["feedback_id"]) for event in request["feedback_events"]]
+    source_changed = any(source is None or source["version"] != event["feedback"]["version"]
+                         for source, event in zip(sources, request["feedback_events"]))
+    conflict_reason = "source_feedback_version_changed" if source_changed else None
+    if source_changed:
+        state = "conflicted"
     if update:
         captured = obj(request["base"]["content"])
-        source_changed = False
-        for event in request["feedback_events"]:
-            source = event["feedback"]
-            table, identifier = source["feedback_id"].split(":", 1)
-            if require(c, table, int(identifier))["version"] != source["version"]:
-                source_changed = True
-                break
         if (source_changed or current["id"] != request["base"]["id"] or result.get("base_context_version") != captured["version"]
                 or result.get("base_context_snapshot_id") != captured["context_snapshot_id"]):
             state = "conflicted"
+            conflict_reason = conflict_reason or "context_version_changed"
         else:
             applied = ContextStore(initial_snapshot=obj(current["content"])).apply([update], expected_version=current["context_version"], source_scope="evolution", regression=regression)
             state = applied["state"]
@@ -573,8 +802,11 @@ def gepa_complete(c, job, result, request):
                "provider_failed_requests": result.get("provider_failed_requests", 0),
                "provider_unknown_usage_requests": result.get("provider_unknown_usage_requests", 0),
                "selection_root_ids": result.get("selection_root_ids", []), "generalization_verified": False}
-    validation = {"passed": state not in ("quarantined", "conflicted", "failed"), "reason": result.get("reason"), "regression": regression,
-                  "source_root_count": len(request["feedback_events"]), "approval_required": False}
+    disposition = _gepa_disposition({**job, "status": "succeeded", "result": js({"state": state, "metrics": metrics,
+                                    "validation": {"reason": conflict_reason or result.get("reason")}})})
+    validation = {"passed": state not in ("quarantined", "conflicted", "failed"), "reason": conflict_reason or result.get("reason"), "regression": regression,
+                  "source_root_count": len(request["feedback_events"]), "approval_required": False, "source_consumption": disposition,
+                  "sources": request["payload"].get("sources", []), "automatic_attempt_limit": GEPA_AUTOMATIC_ATTEMPTS}
     execute(c, "UPDATE evolution_runs SET status=:s,result_snapshot_id=:snapshot,changes=:changes,validation=:validation,metrics=:metrics,finished_at=:t WHERE id=:i",
             {"s": state, "snapshot": snapshot_id, "changes": js([update] if update else []), "validation": js(validation), "metrics": js(metrics), "t": now(), "i": request["run"]["id"]})
     audit(c, job["created_by"], "context_gepa_auto_complete", "evolution_run", request["run"]["id"], {"status": state, "snapshot_id": snapshot_id, "approval_required": False})

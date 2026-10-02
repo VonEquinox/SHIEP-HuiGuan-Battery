@@ -1,0 +1,101 @@
+{
+  "schema_version": "f01-f07-acceptance.v1",
+  "verified_at_utc": "2026-10-02T08:22:58.449360+00:00",
+  "branch": "DEV",
+  "findings": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F07"
+  ],
+  "backend": {
+    "tests": 604,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 82.59,
+    "command": "env BATTERY_LLM_API_KEY= uv run --frozen python -m pytest -q --junitxml=battery_platform/runtime/acceptance/f01-f07-backend-tests.xml",
+    "raw_receipt_sha256": "4fc83eb58081f64ae71add5150e60c263ea1777df8cf970687edc32dc777e2bd"
+  },
+  "frontend": {
+    "typecheck": "passed",
+    "build": "passed",
+    "browser": {
+      "contract": {
+        "passed": 13,
+        "duration_ms": 5693.9619999999995,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "raw_receipt_sha256": "d8e4fba82d7a096d5a12499a4be709ad8ae216bfc793f972c842f1a723b44a0a"
+      },
+      "integration": {
+        "passed": 2,
+        "duration_ms": 14249.581,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "raw_receipt_sha256": "1f1104a238653ae04bc627f4439922ba93fc2d506b33f5d8aaa7f1c6dc09a668"
+      }
+    }
+  },
+  "test_ports": {
+    "8791": "closed",
+    "8794": "closed"
+  },
+  "cloud_provider_calls_this_repair": 0,
+  "model_retraining": {
+    "families": [
+      "H-M1",
+      "M1",
+      "M2"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "completed_fits": 9,
+    "feature_schema": "battery_features_v2_channel_validity_1",
+    "receipt_sha256": "810d430f21eb7a49550916c13520b08f42265c6c383369652026f4745ea0ccbf",
+    "final_labels_accessed": false,
+    "protected_labels_accessed": false,
+    "production_promoted": false
+  },
+  "source_inventory": {
+    "sources": 6,
+    "admitted_segments_with_V_I_time_arrays": 4744,
+    "pre_fix_temperature_trigger_segments": 0,
+    "scope": "admitted development numerical rows only; CH input array validity does not establish physical sensor qualification"
+  },
+  "code_sha256": {
+    "model_lab/modeling/v2/features.py": "94b7be430fcda81ef3c92157721ffb1525d6ef48bb3add2d8d100925a27d7515",
+    "model_lab/modeling/v2/contracts.py": "c176735cacaf06522dc08ce67d30817841e4c5a5175a01e362f82c17c541a682",
+    "model_lab/modeling/v2/lifetime_features.py": "cc81266269dcab1a59502b2c368d92268b6076b3d3d71b1c614a9a4ce2a15d63",
+    "model_lab/modeling/v2/prediction.py": "8558b48536ea5ca35a1911ed01772ef875983ede2d33e8ab8f9bca1fa9289c02",
+    "model_lab/scripts/v2/train.py": "01a4215f0d492b29df02429cea6e0db70851366026174b2f1e9d262dee37d937",
+    "battery_platform/app/agent/context.py": "c8b149cd80aba676f068c1fedfb924851263887ac3f48f1d2bdc0ad876a20c3a",
+    "battery_platform/app/agent/feedback.py": "fc7dc9e48cef1ca25f7ed901a6c6ba6c0550c29054f367c741be9ac2dbe486e4",
+    "battery_platform/app/agent/executor.py": "3cc1b4783e3548e3bed7102dac8360f8c742f92ec9e3276b8fc19102e09ff34b",
+    "battery_platform/app/agent/evaluation.py": "df13f3d928764faf8c9827f4558038f6fb35114a5d3b9ab1f500244421a2811f",
+    "battery_platform/app/agent/regression.py": "127021f289266bcd5442ea1c0694f8b82ef22ab51df79c6ac731cc1f184e3a5b",
+    "battery_platform/app/agent/experiment_metrics.py": "44a1245595d32ffab39e5e2ec50caf595b76b0f77a9532731fbf052bab28d879",
+    "battery_platform/app/api_agent.py": "80c91aae9808a1e3b5e12cec0e78f8e2c0ce1d81f270325a57040e9ba41a0799",
+    "battery_platform/app/api_evolution.py": "1b7661d81ebb5b5d0744fef4afd6af2b866cf691be8280990108bc7a425f8f78",
+    "battery_platform/app/api_inspection.py": "fa5aed892235d16835220dbaf9bba0be3243f24663f30837189884355d03212d",
+    "battery_platform/app/v2_jobs.py": "6e5514d4854c885e344f81dcfed02d661dc6e47c92b345232689269307eae9be",
+    "battery_platform/frontend/src/contracts/v2.ts": "de99fd7cd68cfeffc26e0427cb96e3e361b9e64a76bec70d80346a6a42280e13",
+    "battery_platform/frontend/src/experimentMetrics.ts": "1883bc3318a7745a3ff26ce2db6006da9792ed2e643af18e0fcd68865fc81b05",
+    "battery_platform/frontend/src/pages/V2Evolution.tsx": "05d3111ae64d5515d74e84c8117a2f7926d8b7ee619338b181ce38a0d73aaae1"
+  },
+  "historical_agent_quality_metrics_rescored": false,
+  "raw_runtime_receipts_committed": false,
+  "historical_artifacts": {
+    "verified_development_files": 24,
+    "sha256_before_equals_after": true,
+    "receipts": "battery_platform/research/f01_channel_validity_20261002_qualified/historical_artifact_hashes_before.json; battery_platform/research/f01_channel_validity_20261002_qualified/historical_artifact_hashes_after.json"
+  }
+}

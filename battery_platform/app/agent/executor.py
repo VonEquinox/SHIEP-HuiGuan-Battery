@@ -87,9 +87,27 @@ def _normalize_observations(payload: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+def _without_memory(snapshot: dict[str, Any]) -> dict[str, Any]:
+    """Execution-only ablation; retain Skill overlays and immutable bindings.
+
+    Snapshot deltas can contain the original Memory text, so clearing only the
+    current entries is insufficient for a runner/Skill router that inspects the
+    complete benchmark input. Never mutate the captured operational snapshot.
+    """
+    result = copy.deepcopy(snapshot)
+    result["memories"] = []
+    result["changes"] = []
+    return result
+
+
 class AgentExecutor:
     def run(self, payload: dict[str, Any], *, tools: dict[str, Any] | None = None, llm: Any = None,
-            skill_library: Any = None, context_store: ContextStore | None = None) -> dict[str, Any]:
+            skill_library: Any = None, context_store: ContextStore | None = None,
+            memory_enabled: bool | None = None) -> dict[str, Any]:
+        if memory_enabled is None:
+            memory_enabled = payload.get("memory_enabled", True)
+        if type(memory_enabled) is not bool:
+            raise ValueError("memory_enabled must be a boolean execution policy")
         installation = str(payload["installation_id"])
         cutoff = str(payload.get("visible_cutoff", payload.get("cutoff")))
         if cutoff in {"None", ""}:
@@ -115,6 +133,13 @@ class AgentExecutor:
         test_ids = {str(t.get("test_id", t.get("id", ""))) for t in catalog}
         store = context_store or ContextStore()
         snapshot = copy.deepcopy(payload.get("context_snapshot") or store.snapshot(payload.get("context_snapshot_id")))
+        if not memory_enabled:
+            snapshot = _without_memory(snapshot)
+            # Keep the control out of every router-visible input path, including
+            # callers that supply a populated snapshot and Memory fields directly.
+            visible["context_snapshot"] = snapshot
+            visible["memories"] = []
+            visible["memory_history"] = []
         states = [{"state": "REASSESS"}] if round_no > 1 else []
         states.extend({"state": s} for s in ("COLLECT", "CHECK_SUPPORT", "ROUTE_SKILLS"))
         errors, selected, loaded = [], [], []
@@ -144,8 +169,13 @@ class AgentExecutor:
         else:
             memory_store = store
         memory_budget = MemoryRetrievalBudget()
-        memories = memory_budget.admit(memory_store.search(str(visible.get("symptoms", "inspection")), scope=scope, cutoff=cutoff,
-                                       snapshot_id=snapshot["context_snapshot_id"]))
+        root_id = payload.get("root_scenario_id", payload.get("case_id"))
+        history_roots = payload.get("history_root_ids", [str(root_id)] if root_id else [])
+        memory_history = memory_budget.admit(memory_store.history(scope=scope, cutoff=cutoff, root_ids=history_roots,
+                                          snapshot_id=snapshot["context_snapshot_id"])) if memory_enabled and history_roots else []
+        history_ids = {m["memory_id"] for m in memory_history}
+        memories = memory_budget.admit([m for m in memory_store.search(str(visible.get("symptoms", "inspection")), scope=scope, cutoff=cutoff,
+                                       snapshot_id=snapshot["context_snapshot_id"]) if m["memory_id"] not in history_ids]) if memory_enabled else []
         prediction = visible.get("prediction", {})
         if isinstance(prediction.get("heads"), list):
             prediction["heads"] = {head["head"]: head for head in prediction["heads"] if head.get("head")}
@@ -196,10 +226,15 @@ class AgentExecutor:
             if not set(tools) <= TOOL_WHITELIST:
                 raise ToolError("registered tools exceed fixed whitelist")
             callbacks.update(tools)
-        original_memory_search = callbacks["search_memory"]
-        def bounded_memory_search(arguments):
-            return memory_budget.admit(original_memory_search(arguments))
-        callbacks["search_memory"] = bounded_memory_search
+        if memory_enabled:
+            original_memory_search = callbacks["search_memory"]
+            def bounded_memory_search(arguments):
+                return memory_budget.admit(original_memory_search(arguments))
+            callbacks["search_memory"] = bounded_memory_search
+        else:
+            # Apply after external tool merge: an injected callback must not
+            # accidentally re-enable the no-Memory experimental control.
+            callbacks.pop("search_memory", None)
         if "propose_work_order" in callbacks:
             original_propose = callbacks["propose_work_order"]
             def guarded_proposal(arguments):
@@ -228,7 +263,8 @@ class AgentExecutor:
                    "visible_cutoff": cutoff, "round": round_no, "asset": visible.get("asset", {}),
                    "observations": visible["observations"], "prediction": prediction,
                    "group_context": visible.get("group_context", {}), "skills": loaded,
-                   "memories": memories, "memory_retrieval_budget": memory_budget.summary(), "test_catalog": catalog,
+                   "memories": memories, "memory_history": memory_history,
+                   "memory_enabled": memory_enabled, "memory_retrieval_budget": memory_budget.summary(), "test_catalog": catalog,
                    "ranked_tests": ranked, "previous_reports": visible.get("previous_reports", [])[-3:],
                    "feedback": visible.get("feedback", []), "context_version": snapshot["context_version"],
                    "known_errors": errors}
@@ -316,10 +352,12 @@ class AgentExecutor:
             states.append({"state": "WAIT_FOR_MEASUREMENT"})
         elif ranked.get("stop_reason") or report["status"] == "unsupported":
             states.append({"state": "CLOSED_OR_UNRESOLVED"})
-        retrieved_memory_ids = {m["memory_id"] for m in memories}
+        initial_memory_ids = {m["memory_id"] for m in memories + memory_history}
+        tool_memory_ids = set()
         for trace in registry.trace:
             if trace.get("name") == "search_memory" and trace.get("status") == "completed":
-                retrieved_memory_ids.update(m["memory_id"] for m in trace.get("result", []) if isinstance(m, dict) and m.get("memory_id"))
+                tool_memory_ids.update(m["memory_id"] for m in trace.get("result", []) if isinstance(m, dict) and m.get("memory_id"))
+        retrieved_memory_ids = initial_memory_ids | tool_memory_ids
         return {"report": report, "run": {"state": states[-1]["state"], "states": states,
                 "execution_mode": mode, "cloud_report_valid": provider_report_valid,
                 "status": "completed_with_problem_report" if errors else "completed", "errors": errors,
@@ -330,6 +368,11 @@ class AgentExecutor:
                 "llm_failed_request_count": getattr(client, "failed_request_count", 0) - failed_before,
                 "llm_unknown_usage_request_count": getattr(client, "unknown_usage_request_count", 0) - unknown_usage_before,
                 "retrieved_memory_ids": sorted(retrieved_memory_ids),
+                "memory_ids": sorted(retrieved_memory_ids),
+                "initial_memory_ids": sorted(initial_memory_ids),
+                "history_memory_ids": sorted(history_ids),
+                "tool_memory_ids": sorted(tool_memory_ids),
+                "memory_enabled": memory_enabled,
                 "memory_retrieval_budget": memory_budget.summary(),
                 "context_snapshot_id": snapshot["context_snapshot_id"]},
                 "context_snapshot": snapshot, "tool_trace": registry.trace}

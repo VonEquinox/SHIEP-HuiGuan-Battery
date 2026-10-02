@@ -344,3 +344,14 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
 - H-M1 每个新研究 JSON 绑定 schema/data version/bundle/arrays/code SHA，重放误差为 0；MLP 原始标量和自有预处理不变，本轮不额外重训，不冒称旧 MLP 为新 schema 评分。
 - 验证：58 项特征/寿命/模型/平台输入针对性用例通过，覆盖缺温、短数组、局部/全 NaN、真实 0°C、双向 schema 拒绝及坏域元数据。源码/JSON/权重和回执完整保存，历史保护边界保持；独立记录为 `battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md`。
 - 本提交保存 F01 实现、回归、两个可复现脚本和独立产物；Agent/GEPA/界面修复及本轮全仓验收由下一提交统一归档。
+
+## 提交 24：F02–F07 Agent 修复、指标界面与统一验收
+
+- F02/F03：数值友好切句保存原文 span；完整事实引用贯穿 ADD/REVISE/CONFLICT、快照与严格验证，6 条/2,400 字投影按纠错、测量、反证、未知项与结论排序。溢出事实可查询；已占预算的同版本 Memory 可取另一组事实。人工纠正 API 支持结构化来源；真实 compute 自动事实不再误用人工 100 条/2,000 字预算。
+- F04：GEPA 来源按 root/feedback/version 预留消费，临时失败和 CAS 按 60/120 秒、每恢复代最多 3 次尝试恢复；无 Key 等配置变更；取消/中断需显式幂等 retry。审阅补齐已消费新版本拒绝恢复、被 executor 捕获的无效云 baseline 分类；旧费用、预算、来源和 validation 留存，未变成无界重试。
+- F05：evaluate/replay_session 的 A0/A1 明确禁用 Memory，清除执行快照及 changes，初始历史、相似经验和外部注入 search_memory 均关闭；Skill/授权知识/数值输入保留，记录实际使用 IDs。旧云端 no_memory 结果不重写，非空 Context 的旧对照解释须重新验证。
+- F06：严格 ExperimentMetrics 和服务端目录统一 scorer/API/前端；计数与独立正负标签分母的率分开，未测量和普通 score 显示 unsupported。曲线按协议/split/方法/来源/案例集/口径/真实 execution mode/云模型分组，真实 API→worker→列表→浏览器验收通过。
+- F07：空、无关、通用巡检与纯数字查询不填相似经验预算，中文词项/英文边界及有限中英概念映射可复现。事件历史单独标记，由服务器绑定当前 session/order 可见别名，同安装其他事件和未来批准不进入历史；与初始/工具共用六个唯一条目预算。
+- 全仓离线 Python **604 passed in 82.61s**；前端 typecheck/build 通过；完整 V2 合同 **13/13 (5.694s)**、真实浏览器整文件 **2/2 (14.250s)**，0 失败/跳过/flaky。无云端调用，8791/8794 已停止，旧模型/指标不改分。
+- 独立只读审阅发现的 metadata、真实长反馈、GEPA 新版本重复消费/无效 baseline、规则回退曲线混连均实际补齐。统一记录为 `docs/V2_F01_F07_REPAIR_20261002.md`，验收回执、F01 重训文档、GEPA 协议与 README 索引一起归档。
+- F01 独立前序提交为 `fa3273b9`。本提交记录 Agent/界面代码、关联回归、统一结果与提交范围，Git 保存本提交实际身份；随后按用户要求通过 7897 代理推送 DEV 并核验远端 Ref。

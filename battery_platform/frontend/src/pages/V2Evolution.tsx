@@ -1,5 +1,14 @@
 import { useState } from "react";
 import { type User } from "../api";
+import type {
+  ExperimentMetricsContract,
+  ExperimentMetricDefinition,
+} from "../contracts/v2";
+import {
+  metricMeasurement,
+  metricSeries,
+  metricValue,
+} from "../experimentMetrics";
 import {
   Empty,
   Field,
@@ -35,23 +44,25 @@ export function Evolution({ user }: { user: User }) {
     [jobId, setJobId] = useState<number | null>(null),
     [left, setLeft] = useState(""),
     [right, setRight] = useState(""),
-    [metric, setMetric] = useState("grounded_claim_rate"),
+    [metric, setMetric] = useState("grounded_assertion_ratio"),
     [rollback, setRollback] = useState(""),
     [reason, setReason] = useState("");
   const action = useAction(),
     snapshots = listItems(contexts.data),
     base = overview.data?.context_version ?? 0;
   const runItems = listItems(runs.data),
-    seriesByOrigin = new Map<string, { value: number; label: string }[]>();
-  for (const run of [...runItems].reverse()) {
-    const value = run.metrics?.[metric] ?? run.result?.metrics?.[metric];
-    if (typeof value === "number" && Number.isFinite(value)) {
-      const origin = run.provenance || run.data_origin || "unverified",
-        series = seriesByOrigin.get(origin) || [];
-      series.push({ value, label: String(run.id) });
-      seriesByOrigin.set(origin, series);
-    }
-  }
+    contract = runs.data?.metrics_contract as
+      ExperimentMetricsContract | undefined,
+    definitions =
+      contract?.schema_version === "experiment-metrics.v1"
+        ? contract.definitions
+        : [],
+    selectedMetric = definitions.find(
+      (definition) => definition.key === metric,
+    ),
+    series = selectedMetric
+      ? metricSeries(runItems as any, selectedMetric)
+      : [];
   return (
     <>
       <V2Heading
@@ -220,14 +231,10 @@ export function Evolution({ user }: { user: User }) {
                 value={metric}
                 onChange={(e) => setMetric(e.target.value)}
               >
-                {[
-                  "grounded_claim_rate",
-                  "diagnostic_accuracy",
-                  "false_positive_rate",
-                  "miss_rate",
-                  "score",
-                ].map((v) => (
-                  <option key={v}>{v}</option>
+                {definitions.map((definition) => (
+                  <option key={definition.key} value={definition.key}>
+                    {definition.label} · {definition.unit}
+                  </option>
                 ))}
               </select>
             </Field>
@@ -241,19 +248,54 @@ export function Evolution({ user }: { user: User }) {
         </form>
         {action.feedback}
         <V2Read resource={runs}>
-          {[...seriesByOrigin.entries()].map(([origin, series]) => (
-            <div key={origin}>
-              <Provenance value={origin} />
-              <LineChart
-                values={series.map((s) => s.value)}
-                labels={series.map((s) => s.label)}
-                title={`${metric} / ${origin} / 原始量纲`}
-              />
-              <p>曲线保留下降与失败迭代；样本数与方法以每个实验记录为准。</p>
-            </div>
-          ))}
-          {!seriesByOrigin.size && (
-            <Empty>暂无可画的实测实验指标。不生成单调上升的示意曲线。</Empty>
+          {selectedMetric &&
+            series.map(([key, group]) => (
+              <div
+                key={key}
+                data-testid="experiment-series"
+                data-protocol={group.protocol.protocol_id}
+                data-split={group.protocol.split}
+                data-method={group.protocol.method}
+              >
+                <Provenance value={group.protocol.provenance} />
+                <LineChart
+                  values={group.points.map((point) => point.value)}
+                  labels={group.points.map((point) => String(point.id))}
+                  title={`${selectedMetric.label} / ${group.protocol.protocol_version} / ${group.protocol.split} / ${group.protocol.method} / ${group.protocol.provenance} / ${selectedMetric.unit}`}
+                />
+                <p>
+                  协议 {group.protocol.protocol_id.slice(0, 12)} · 口径{" "}
+                  {group.protocol.metric_version} · 案例集{" "}
+                  {group.protocol.cohort_sha256.slice(0, 12)}
+                </p>
+                <p>
+                  实际执行：
+                  {group.protocol.execution_modes?.join(" / ") || "未记录"}
+                  {group.protocol.llm_models?.length
+                    ? ` · 云模型 ${group.protocol.llm_models.join(" / ")}`
+                    : ""}
+                </p>
+                <p>
+                  仅连接协议、分割、方法、来源、案例集和指标口径一致的实验；保留实际下降。
+                </p>
+                <ul>
+                  {group.points.map((point) => (
+                    <li key={point.id}>
+                      实验 #{point.id}：
+                      {metricValue(point.value, selectedMetric)}{" "}
+                      {selectedMetric.unit}
+                      {selectedMetric.denominator_label &&
+                        ` · ${selectedMetric.denominator_label} ${point.denominator ?? "未记录"}`}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          {!series.length && (
+            <Empty>
+              {selectedMetric?.unsupported_reason ||
+                "暂无符合当前指标契约的实测数据。未测量的字段标为 unsupported。"}
+            </Empty>
           )}
           <div className="table-wrap">
             <table>
@@ -261,19 +303,30 @@ export function Evolution({ user }: { user: User }) {
                 <tr>
                   <th>实验 / 方法</th>
                   <th>状态 / 版本</th>
+                  <th>当前指标 / 分母</th>
                   <th>结果与失败</th>
                 </tr>
               </thead>
               <tbody>
                 {runItems.map((run) => (
-                  <tr key={run.id}>
+                  <tr key={run.id} data-testid={`experiment-run-${run.id}`}>
                     <td>
                       #{run.id} {run.method}
                       <Provenance value={run.provenance} />
                     </td>
                     <td>
                       <State value={run.status} />
-                      <Version value={run.base_version} />
+                      <Version value={run.base_context_version} />
+                    </td>
+                    <td>
+                      {selectedMetric ? (
+                        <ExperimentMeasurement
+                          run={run}
+                          definition={selectedMetric}
+                        />
+                      ) : (
+                        "unsupported · 指标契约未提供"
+                      )}
                     </td>
                     <td>
                       <Evidence
@@ -349,6 +402,25 @@ export function Evolution({ user }: { user: User }) {
         schema、审批权限、安全约束、数据划分与碳方法仍由服务器固定。
       </Notice>
     </>
+  );
+}
+function ExperimentMeasurement({
+  run,
+  definition,
+}: {
+  run: any;
+  definition: ExperimentMetricDefinition;
+}) {
+  const measurement = metricMeasurement(run, definition);
+  return measurement.value === null ? (
+    <span>unsupported · {measurement.reason}</span>
+  ) : (
+    <span>
+      {metricValue(measurement.value, definition)} {definition.unit}
+      <br />
+      {definition.denominator_label &&
+        `${definition.denominator_label}：${measurement.denominator ?? "未记录"}`}
+    </span>
   );
 }
 function ContextDiff({ left, right }: { left: any; right: any }) {

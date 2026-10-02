@@ -188,7 +188,7 @@ def correct_facts(identifier: int, data: S.FactsCorrection, request: Request, us
         if observation["version"] != data.version:
             raise HTTPException(409, "观察已更新，请合并版本")
         for fact in data.candidate_facts:
-            if not set(fact).issubset({"fact_id", "claim", "span", "source_text", "trust", "kind", "measurement", "author_id", "extraction_model"}) or not isinstance(fact.get("claim"), str) or not 1 <= len(fact["claim"]) <= 2000:
+            if not set(fact).issubset({"fact_id", "claim", "span", "source_text", "trust", "kind", "measurement", "author_id", "extraction_model", "source_field", "source_index"}) or not isinstance(fact.get("claim"), str) or not 1 <= len(fact["claim"]) <= 2000:
                 raise HTTPException(422, "候选事实字段或长度无效")
             span = fact.get("span")
             if span is not None:
@@ -198,7 +198,10 @@ def correct_facts(identifier: int, data: S.FactsCorrection, request: Request, us
                 if fact.get("source_text") != observation["free_text"][start:end]:
                     raise HTTPException(422, "候选事实原文不匹配")
             elif fact.get("measurement") not in obj(observation["measurements"], []):
-                raise HTTPException(422, "候选事实必须关联原文位置或本次已提交测量")
+                field, index = fact.get("source_field"), fact.get("source_index")
+                values = obj(observation.get(field), []) if field in {"excluded_hypotheses", "unresolved_items", "confirmed_hypotheses"} else []
+                if type(index) is not int or not 0 <= index < len(values):
+                    raise HTTPException(422, "候选事实必须关联原文位置、本次已提交测量或结构化断言")
             if fact.get("trust", "reported") not in ("reported", "measurement_supported", "contradicted"):
                 raise HTTPException(403, "独立核实状态由服务端验收决定")
             if fact.get("trust") == "measurement_supported" and (fact.get("measurement") not in obj(observation["measurements"], []) or observation["calibration_status"] != "calibrated" or observation["result"] != "observed"):

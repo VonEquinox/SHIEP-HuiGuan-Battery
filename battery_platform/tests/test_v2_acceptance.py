@@ -437,7 +437,7 @@ def test_later_memory_revision_keeps_its_own_availability_cutoff(admin):
     assert requested.status_code == 202, requested.text
     with tx() as c:
         snapshot = api_agent.agent_snapshot(c, one(c, "SELECT * FROM jobs WHERE id=:i", {"i": requested.json()["job_id"]}))
-    memories = ContextStore(initial_snapshot=snapshot["context_snapshot"]).search("", scope={"installation_id": asset["installation_id"]}, cutoff=cutoff)
+    memories = ContextStore(initial_snapshot=snapshot["context_snapshot"]).history(scope={"installation_id": asset["installation_id"]}, cutoff=cutoff)
     assert "LATER_MEMORY_PHENOMENON" not in js(memories)
 
 

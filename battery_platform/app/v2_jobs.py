@@ -24,7 +24,15 @@ def lifecycle(c, job, status, error=None):
     if job["kind"] == "agent_run":
         execute(c, "UPDATE agent_runs SET status=:s,error=:e,finished_at=:t WHERE job_id=:j", {"s": status, "e": error, "t": now(), "j": job["id"]})
     if job["kind"] in ("evolution_experiment", "context_gepa", "context_regression"):
-        execute(c, "UPDATE evolution_runs SET status=:s,validation=:v,finished_at=:t WHERE job_id=:j", {"s": status, "v": js({"passed": False, "reason": error}), "t": now(), "j": job["id"]})
+        validation = {"passed": False, "reason": error}
+        if job["kind"] == "context_gepa":
+            record = one(c, "SELECT validation FROM evolution_runs WHERE job_id=:j", {"j": job["id"]})
+            payload = obj(job["payload"])
+            validation = {**obj(record["validation"] if record else None), **validation,
+                          "source_consumption": {"cancelled": "cancelled", "interrupted": "interrupted"}.get(status, "retryable"),
+                          "sources": payload.get("sources", []),
+                          "automatic_attempt_limit": payload.get("automatic_attempt_limit", 3)}
+        execute(c, "UPDATE evolution_runs SET status=:s,validation=:v,finished_at=:t WHERE job_id=:j", {"s": status, "v": js(validation), "t": now(), "j": job["id"]})
     if job["kind"] == "context_regression":
         snapshot = one(c, "SELECT id,validation FROM context_snapshots WHERE id=:i", {"i": obj(job["payload"])["snapshot_id"]})
         if snapshot:

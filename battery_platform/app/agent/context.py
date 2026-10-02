@@ -10,7 +10,9 @@ import fcntl
 import hashlib
 import json
 import os
+import re
 import threading
+import unicodedata
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
@@ -58,9 +60,198 @@ def memory_retrieval_kind(item: dict[str, Any]) -> tuple[str, str]:
     return "unclassified", "reported_or_category_not_established"
 
 
-def _retrieval_view(item: dict[str, Any]) -> dict[str, Any]:
+# This is a deterministic lexical gate, not an embedding similarity claim.
+# Chinese bigrams allow an unspaced query such as "复测内阻升高" to match the
+# independently recorded term "内阻" without matching individual common chars.
+_CJK_RUNS = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]+")
+_LATIN_TERMS = re.compile(r"[a-z][a-z0-9]*(?:[-_][a-z0-9]+)*")
+_RETRIEVAL_STOP_TERMS = frozenset({
+    "the", "and", "for", "with", "from", "this", "that", "was", "were", "are", "has", "have",
+    "inspection", "inspect", "check", "feedback", "record", "records", "reported", "case", "cases",
+    "observation", "observations", "review", "battery", "batteries", "电池",
+    "本次", "此次", "现场", "反馈", "记录", "情况", "发现", "确认", "复核", "检查", "检测",
+    "复测", "进行", "已经", "目前", "仍然", "需要", "是否", "结果", "相关", "经验", "案例",
+})
+_DOMAIN_ALIASES = {
+    "内阻": "resistance", "电阻": "resistance", "resistance": "resistance",
+    "电压": "voltage", "voltage": "voltage", "电流": "current", "current": "current",
+    "温度": "temperature", "temperature": "temperature", "容量": "capacity", "capacity": "capacity",
+    "采集": "sensor", "传感": "sensor", "sensor": "sensor", "偏差": "bias", "bias": "bias",
+}
+
+
+def _memory_terms(text: str) -> set[str]:
+    normalized = unicodedata.normalize("NFKC", text).lower()
+    generic_chinese = sorted((term for term in _RETRIEVAL_STOP_TERMS if _CJK_RUNS.fullmatch(term)), key=len, reverse=True)
+    normalized = re.sub("|".join(map(re.escape, generic_chinese)), " ", normalized)
+    terms = {term for term in _LATIN_TERMS.findall(normalized) if len(term) > 1}
+    for run in _CJK_RUNS.findall(normalized):
+        terms.update(run[i:i + 2] for i in range(len(run) - 1))
+    terms -= _RETRIEVAL_STOP_TERMS
+    terms.update("concept:" + _DOMAIN_ALIASES[term] for term in list(terms) if term in _DOMAIN_ALIASES)
+    return terms
+
+
+def memory_relevance(query: str, item: dict[str, Any]) -> tuple[float, list[str]]:
+    """Return query-token coverage and evidence terms; zero means no match.
+
+    Numeric-only overlap and single Chinese characters cannot establish
+    relevance. Complete retained facts and both sides of conflicts participate
+    so a late measurement or counterexample can be retrieved by its content.
+    Scope/availability are separate applicability gates applied by the store.
+    """
+    if not isinstance(query, str):
+        raise ValueError("Memory query must be text")
+    query_terms = _memory_terms(query)
+    if not query_terms:
+        return 0.0, []
+    texts = [str(item.get("trigger", "")), str(item.get("insight", ""))]
+    for field in ("fact_references", "counterexamples", "conflicts"):
+        for fact in item.get(field, []) if isinstance(item.get(field, []), list) else []:
+            if isinstance(fact, dict):
+                texts.extend(str(fact.get(key, "")) for key in ("claim", "insight", "source_text"))
+                for reference in fact.get("fact_references", []) if isinstance(fact.get("fact_references", []), list) else []:
+                    if isinstance(reference, dict):
+                        texts.extend(str(reference.get(key, "")) for key in ("claim", "source_text"))
+    matches = sorted(query_terms & _memory_terms(" ".join(texts)))
+    return len(matches) / len(query_terms), matches
+
+
+_FACT_CLASSES = {"correction": 0, "measurement": 1, "counterevidence": 2,
+                 "unknown": 3, "conclusion": 4, "reported_statement": 5}
+_FACT_SUMMARY_LIMIT = 6
+_FACT_SUMMARY_CHAR_BUDGET = 2400
+
+
+def _fact_class(fact: dict[str, Any]) -> str:
+    """Priority is a presentation hint, never a new truth/trust label."""
+    kind = fact.get("kind", "reported_statement")
+    claim = str(fact.get("claim", ""))
+    if kind in {"correction", "corrected_assertion"} or re.search(r"更正|纠正|修正|correction|corrected", claim, re.I):
+        return "correction"
+    if fact.get("measurement") is not None or kind in {"observation", "measurement"}:
+        return "measurement"
+    if (fact.get("trust") == "contradicted" or kind in {"counterevidence", "contradiction", "counterexample"}
+            or re.search(r"反证|排除|不支持|相矛盾|并非|未发现|contradict|counterevidence|excluded|not support", claim, re.I)):
+        return "counterevidence"
+    if kind == "unknown" or re.search(r"未知|未测|尚未|未核实|未确认|不确定|待复核|unknown|unresolved|not measured|uncertain", claim, re.I):
+        return "unknown"
+    if kind == "conclusion" or re.search(r"结论|最终|复核确认|conclusion|finally", claim, re.I):
+        return "conclusion"
+    return "reported_statement"
+
+
+def _fact_projection(facts: list[dict[str, Any]], *, query: str = "") -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Bound model Context while preserving complete facts in the snapshot.
+
+    Query relevance takes precedence during tool retrieval; otherwise explicit
+    corrections, measurements, counterevidence and unknowns precede incidental
+    prose. Equal-priority facts are newest-first, so late evidence is not hidden
+    by earlier arrival/registration notes. Overflow remains query-retrievable.
+    """
+    ranked = []
+    for index, fact in enumerate(facts):
+        relevance = memory_relevance(query, {"insight": fact["claim"]})[0] if query else 0.0
+        ranked.append((relevance, _FACT_CLASSES.get(fact.get("priority_class", _fact_class(fact)), 5), index, fact))
+    ordered = sorted(ranked, key=lambda row: (-row[0], row[1], -row[2]))
+    selected, used = [], 0
+    for _, _, _, fact in ordered:
+        if len(selected) >= _FACT_SUMMARY_LIMIT or used >= _FACT_SUMMARY_CHAR_BUDGET:
+            break
+        view = copy.deepcopy(fact)
+        remaining = _FACT_SUMMARY_CHAR_BUDGET - used
+        claim = view["claim"]
+        offset = 0
+        if len(claim) > remaining:
+            # An oversized sentence still exposes an exact source excerpt, with
+            # its full span retained for lookup rather than silently discarded.
+            if query:
+                literal = claim.lower().find(query.lower())
+                if literal >= 0:
+                    offset = max(0, literal - remaining // 3)
+            excerpt = claim[offset:offset + remaining]
+            view.update(claim=excerpt, claim_excerpt=True, claim_excerpt_offset=offset,
+                        full_claim_length=len(claim))
+        source = view.get("source_text")
+        if isinstance(source, str) and len(source) > remaining:
+            source_offset = offset if source == claim else 0
+            if query and source != claim:
+                literal = source.lower().find(query.lower())
+                if literal >= 0:
+                    source_offset = max(0, literal - remaining // 3)
+            source_excerpt = source[source_offset:source_offset + remaining]
+            view.update(source_text=source_excerpt, source_excerpt=True)
+            if isinstance(view.get("span"), dict):
+                span = copy.deepcopy(view["span"])
+                view["full_source_span"] = span
+                view["span"] = {"start": span["start"] + source_offset,
+                                "end": span["start"] + source_offset + len(source_excerpt)}
+        selected.append(view)
+        used += max(len(view["claim"]), len(view.get("source_text", "")))
+    return selected, {"policy": "corrections_measurements_counterevidence_unknowns_then_conclusions; query_first; newest_ties",
+                      "max_facts": _FACT_SUMMARY_LIMIT, "max_chars": _FACT_SUMMARY_CHAR_BUDGET,
+                      "total_fact_count": len(facts), "selected_fact_ids": [f["reference_id"] for f in selected],
+                      "omitted_fact_count": len(facts) - len(selected), "projection": "bounded",
+                      "detail_retrieval": "search_memory with a query for the omitted fact"}
+
+
+def _feedback_references(extracted: dict[str, Any], feedback: dict[str, Any], fid: str) -> list[dict[str, Any]]:
+    references = []
+    available_at = feedback.get("available_at", feedback.get("measured_at", now()))
+    for index, fact in enumerate(extracted["candidate_facts"]):
+        # Do not copy arbitrary caller keys into runtime Context.
+        record = {key: copy.deepcopy(fact[key]) for key in ("fact_id", "claim", "span", "source_text", "measurement",
+                   "author_id", "extraction_model", "trust", "kind", "source_field", "source_index") if key in fact}
+        record.setdefault("fact_id", f"corrected-fact-{index}")
+        record.setdefault("kind", "reported_statement")
+        record.setdefault("trust", feedback.get("verification_status", "reported"))
+        record.update(feedback_id=fid, feedback_version=extracted["version"], available_at=available_at)
+        record["priority_class"] = _fact_class(record)
+        if feedback.get("contradicts_previous"):
+            record["contradicts_previous"] = True
+            if record["priority_class"] not in {"correction", "measurement"}:
+                record["priority_class"] = "counterevidence"
+        targets = feedback.get("corrected_claim_ids", feedback.get("assertion_targets", []))
+        if targets:
+            record["corrected_claim_ids"] = copy.deepcopy(targets)
+        identity = json.dumps(record, ensure_ascii=False, sort_keys=True, allow_nan=False)
+        record["reference_id"] = "feedback-ref-" + hashlib.sha256(identity.encode()).hexdigest()[:16]
+        references.append(record)
+    return references
+
+
+def _retrieval_view(item: dict[str, Any], *, query: str = "") -> dict[str, Any]:
     kind, basis = memory_retrieval_kind(item)
-    return {**copy.deepcopy(item), "retrieval_kind": kind, "retrieval_basis": basis}
+    view = copy.deepcopy(item)
+    # A budget receives an already bounded view. Keep that query-selected view
+    # and its original omitted count instead of re-projecting the six facts.
+    if isinstance(item.get("fact_references"), list) and item.get("fact_summary", {}).get("projection") != "bounded":
+        facts, summary = _fact_projection(item["fact_references"], query=query)
+        view.update(fact_references=facts, fact_summary=summary,
+                    insight=" | ".join(f["claim"] for f in facts))
+        if item.get("source_label_guards", {}).get("intervention_prevents_false_positive_label"):
+            view["insight"] += " | Intervention occurred; absence after intervention is not a false-positive label."
+        if view.get("conflicts"):
+            # Complete conflicting source bundles are retained in the immutable
+            # snapshot. Avoid copying them all back into model Context through
+            # the nested conflict list after bounding the primary fact view.
+            view["conflict_summary"] = {"total_conflict_count": len(view["conflicts"]),
+                                        "detail_retrieval": summary["detail_retrieval"]}
+            bounded_conflicts = []
+            for conflict in reversed(view["conflicts"]):
+                refs = conflict.get("fact_references", [])
+                visible_refs = [f for f in facts if f["reference_id"] in {r["reference_id"] for r in refs}]
+                if not visible_refs:
+                    continue
+                bounded_conflicts.append({"insight": " | ".join(f["claim"] for f in visible_refs),
+                    "source_trust": conflict.get("source_trust", "reported"),
+                    "supporting_case_ids": conflict.get("supporting_case_ids", []),
+                    "fact_reference_ids": [f["reference_id"] for f in visible_refs],
+                    "source_label_guards": conflict.get("source_label_guards", {})})
+                if len(bounded_conflicts) == 3:
+                    break
+            view["conflicts"] = bounded_conflicts
+    return {**view, "retrieval_kind": kind, "retrieval_basis": basis}
 
 
 class MemoryRetrievalBudget:
@@ -95,7 +286,16 @@ class MemoryRetrievalBudget:
                     continue
                 self._accepted[mid] = view
             returned.add(mid)
-            result.append(copy.deepcopy(self._accepted[mid]))
+            accepted = self._accepted[mid]
+            stable_fields = ("version", "scope", "source_trust", "state", "supporting_case_ids", "raw_feedback_id", "available_at")
+            alternate_fact_view = (accepted.get("fact_summary", {}).get("projection") == "bounded"
+                and item.get("fact_summary", {}).get("projection") == "bounded"
+                and accepted["fact_summary"]["total_fact_count"] == item["fact_summary"].get("total_fact_count")
+                and all(accepted.get(field) == item.get(field) for field in stable_fields))
+            # Repeated lookups may expose another bounded set of source facts
+            # from the same immutable revision. They do not spend another
+            # memory slot or replace the accepted snapshot with a new revision.
+            result.append(_retrieval_view(item) if alternate_fact_view else copy.deepcopy(accepted))
         return result
 
 
@@ -201,6 +401,9 @@ class ContextStore:
                                   "expires_at": item.get("expires_at"), "state": "active", "source_scope": source_scope,
                                   "raw_feedback_id": item.get("raw_feedback_id"),
                                   "available_at": item.get("available_at", now()), "origin": item.get("origin", "declared_operational")}
+                        for field in ("fact_references", "fact_summary", "source_label_guards"):
+                            if field in item:
+                                record[field] = copy.deepcopy(item[field])
                         memory_by_id[mid] = record
                     else:
                         if mid not in memory_by_id:
@@ -208,7 +411,7 @@ class ContextStore:
                         record = memory_by_id[mid]
                         record["version"] += 1
                         if operation == "REVISE":
-                            if not set(item) <= {"insight", "trigger", "scope", "source_trust", "counterexamples", "supporting_case_ids", "expires_at", "helpful_count", "harmful_count", "available_at", "raw_feedback_id"}:
+                            if not set(item) <= {"insight", "trigger", "scope", "source_trust", "counterexamples", "supporting_case_ids", "expires_at", "helpful_count", "harmful_count", "available_at", "raw_feedback_id", "fact_references", "fact_summary", "source_label_guards"}:
                                 raise ValueError("revision contains immutable or permission fields")
                             if item.get("source_trust", record["source_trust"]) not in {"reported", "measurement_supported", "independently_verified", "contradicted"}:
                                 raise ValueError("invalid revised memory trust")
@@ -219,9 +422,19 @@ class ContextStore:
                             record.update(state="deprecated", deprecation_reason=update.get("reason", "superseded"))
                         else:
                             record["state"] = "conflicted"
-                            record.setdefault("conflicts", []).append({"insight": item.get("insight", ""),
-                                                                       "source_trust": item.get("source_trust", "reported"),
-                                                                       "supporting_case_ids": item.get("supporting_case_ids", [])})
+                            conflict = {"insight": item.get("insight", ""),
+                                        "source_trust": item.get("source_trust", "reported"),
+                                        "supporting_case_ids": item.get("supporting_case_ids", [])}
+                            for field in ("fact_references", "fact_summary", "source_label_guards"):
+                                if field in item:
+                                    conflict[field] = copy.deepcopy(item[field])
+                                    record[field] = copy.deepcopy(item[field])
+                            record.setdefault("conflicts", []).append(conflict)
+                            # The view retains both source bundles; the summary
+                            # includes late counterevidence instead of only the
+                            # old assertion, without resolving the conflict.
+                            if item.get("fact_references"):
+                                record["insight"] = item.get("insight", record["insight"])
                             record["available_at"] = item.get("available_at", now())
                             record["raw_feedback_id"] = item.get("raw_feedback_id")
                 memories = list(memory_by_id.values())
@@ -270,14 +483,15 @@ class ContextStore:
             return {"state": "rolled_back", "snapshot": self.rollback(reason="automatic permission/key-regression guard", expected_version=expected_version)}
         return {"state": "active", "snapshot": self.snapshot()}
 
-    def search(self, query: str, *, scope: dict[str, Any] | None = None, cutoff: str | None = None,
-               limit: int = 6, snapshot_id: str | None = None) -> list[dict[str, Any]]:
+    @staticmethod
+    def _retrieval_limit(limit: int) -> int:
         if type(limit) is not int or limit < 0:
             raise ValueError("Memory retrieval limit must be a nonnegative integer")
-        limit = min(limit, 6)
-        if not limit:
-            return []
-        scope, scored = scope or {}, []
+        return min(limit, 6)
+
+    def _visible_memories(self, *, scope: dict[str, Any], cutoff: str | None,
+                          snapshot_id: str | None) -> list[dict[str, Any]]:
+        visible = []
         for item in self.snapshot(snapshot_id)["memories"]:
             if item["state"] not in {"active", "conflicted"}:
                 continue
@@ -287,8 +501,51 @@ class ContextStore:
                 continue
             if item.get("expires_at") and parse_time(item["expires_at"]) < parse_time(cutoff or now()):
                 continue
-            score = sum(word.lower() in (item["trigger"] + " " + item["insight"]).lower() for word in query.split())
-            scored.append((score, item["memory_id"], item))
+            visible.append(item)
+        return visible
+
+    def history(self, *, scope: dict[str, Any], cutoff: str | None = None,
+                root_id: str | None = None, root_ids: list[str] | None = None, limit: int = 6,
+                snapshot_id: str | None = None) -> list[dict[str, Any]]:
+        """Explicit same-installation event history, never similarity results.
+
+        A supplied root narrows this to the current event's recorded history.
+        Without a root this is an explicit installation-history lookup; the
+        executor must not use that broad lookup as an implicit search fallback.
+        """
+        limit = self._retrieval_limit(limit)
+        installation = scope.get("installation_id")
+        if not limit or not installation:
+            return []
+        if root_ids is not None and (not isinstance(root_ids, list) or len(root_ids) > 100
+                                    or any(not isinstance(root, str) or not root.strip() for root in root_ids)):
+            raise ValueError("Event history roots must be bounded source identities")
+        roots = set(root_ids) if root_ids is not None else ({str(root_id)} if root_id is not None else None)
+        if roots == set():
+            return []
+        rows = [item for item in self._visible_memories(scope=scope, cutoff=cutoff, snapshot_id=snapshot_id)
+                if item.get("scope", {}).get("installation_id") == installation
+                and (roots is None or roots.intersection(item.get("supporting_case_ids", [])))]
+        rows.sort(key=lambda item: (parse_time(item.get("available_at") or "1970-01-01T00:00:00Z"), item["memory_id"]), reverse=True)
+        return [{**_retrieval_view(item), "retrieval_mode": "event_history"} for item in rows[:limit]]
+
+    def search(self, query: str, *, scope: dict[str, Any] | None = None, cutoff: str | None = None,
+               limit: int = 6, snapshot_id: str | None = None) -> list[dict[str, Any]]:
+        """Relevant, applicable lexical experience retrieval with empty results.
+
+        History is available through history(), not zero-score quota filling.
+        Relevance precedes all evidence-class balancing and retrieval budgets.
+        """
+        limit = self._retrieval_limit(limit)
+        if not isinstance(query, str):
+            raise ValueError("Memory query must be text")
+        if not limit or not _memory_terms(query):
+            return []
+        scored = []
+        for item in self._visible_memories(scope=scope or {}, cutoff=cutoff, snapshot_id=snapshot_id):
+            score, matched_terms = memory_relevance(query, item)
+            if score > 0:
+                scored.append((score, item["memory_id"], item, matched_terms))
         ordered = sorted(scored, key=lambda x: (-x[0], x[1]))
         groups = {kind: [row for row in ordered if memory_retrieval_kind(row[2])[0] == kind]
                   for kind in ("positive", "counterexample", "unclassified")}
@@ -307,7 +564,10 @@ class ContextStore:
         # Unknown/reported entries remain explicitly unclassified. A missing
         # class does not permit four positives or four counterexamples.
         selected += groups["unclassified"][:limit - len(selected)]
-        return [_retrieval_view(item) for _, _, item in sorted(selected, key=lambda x: (-x[0], x[1]))]
+        return [{**_retrieval_view(item, query=query), "retrieval_mode": "similar_experience",
+                 "relevance_score": score, "relevance_matched_terms": matched_terms,
+                 "relevance_policy": "lexical_query_coverage_v1"}
+                for score, _, item, matched_terms in sorted(selected, key=lambda x: (-x[0], x[1]))]
 
 
 def evolve_context(store: ContextStore, feedback: dict[str, Any], previous_report: dict[str, Any] | None = None,
@@ -321,7 +581,19 @@ def evolve_context(store: ContextStore, feedback: dict[str, Any], previous_repor
     extracted = extract_feedback(feedback)
     if feedback.get("candidate_facts") is not None:
         corrected = feedback["candidate_facts"]
-        if not isinstance(corrected, list) or len(corrected) > 100 or any(not isinstance(f, dict) or not isinstance(f.get("claim"), str) or len(f["claim"]) > 2000 for f in corrected):
+        if not isinstance(corrected, list) or any(not isinstance(f, dict) or not isinstance(f.get("claim"), str) or not f["claim"].strip() for f in corrected):
+            raise ValueError("corrected feedback facts have invalid structure")
+        # The compute API passes its source-spanned automatic extraction back
+        # through this function (including calibrated-instrument trust
+        # downgrades). It is bounded by the original feedback source budget,
+        # not the smaller human-correction editor limits. A long source span or
+        # many short source sentences must still be preserved and projected.
+        generated = extracted["candidate_facts"]
+        preserves_generated = len(corrected) == len(generated) and all(
+            {key: value for key, value in fact.items() if key != "trust"}
+            == {key: value for key, value in source.items() if key != "trust"}
+            for fact, source in zip(corrected, generated))
+        if not preserves_generated and (len(corrected) > 100 or any(len(f["claim"]) > 2000 for f in corrected)):
             raise ValueError("corrected feedback facts have invalid structure")
         extracted["candidate_facts"] = copy.deepcopy(corrected)
         extracted["structured_correction_preserved"] = True
@@ -333,21 +605,32 @@ def evolve_context(store: ContextStore, feedback: dict[str, Any], previous_repor
     else:
         fid = str(feedback.get("feedback_id", feedback.get("observation_id", root_id)))
         mid = "memory-" + hashlib.sha256(str(root_id).encode()).hexdigest()[:16]
-        insight = " | ".join(f["claim"] for f in extracted["candidate_facts"][:6])
+        old = next((m for m in snapshot["memories"] if m["memory_id"] == mid), None)
+        available_at = feedback.get("available_at", feedback.get("measured_at"))
+        if available_at is None:
+            available_at = old.get("available_at") if old and old.get("raw_feedback_id") == fid else now()
+        references = _feedback_references(extracted, {**feedback, "available_at": available_at}, fid)
+        all_references = {f["reference_id"]: copy.deepcopy(f) for f in (old or {}).get("fact_references", [])}
+        all_references.update({f["reference_id"]: f for f in references})
+        references = list(all_references.values())
+        selected_facts, summary = _fact_projection(references)
+        insight = " | ".join(f["claim"] for f in selected_facts)
         if feedback.get("performed_actions"):
             insight += " | Intervention occurred; absence after intervention is not a false-positive label."
-        old = next((m for m in snapshot["memories"] if m["memory_id"] == mid), None)
         item = {"insight": insight, "source_trust": feedback.get("verification_status", "reported"),
                 "supporting_case_ids": [str(root_id)], "raw_feedback_id": fid,
-                "available_at": feedback.get("available_at", feedback.get("measured_at", now()))}
+                "fact_references": references, "fact_summary": {**summary, "projection": "stored_complete"},
+                "source_label_guards": extracted["label_guards"],
+                "available_at": available_at}
         if old:
-            op = ("NO_UPDATE" if old["insight"] == insight and old["source_trust"] == item["source_trust"] and not feedback.get("contradicts_previous")
+            op = ("NO_UPDATE" if old["insight"] == insight and old["source_trust"] == item["source_trust"]
+                  and old.get("fact_references") == references and not feedback.get("contradicts_previous")
                   else "CONFLICT" if feedback.get("contradicts_previous") else "REVISE")
             updates = [{"operation": op, "memory_id": mid, "item": item}]
         else:
             item.update(memory_id=mid, scope=feedback.get("scope", {"installation_id": feedback.get("installation_id")}),
                         trigger=str(feedback.get("symptoms", "inspection feedback")), raw_feedback_id=fid,
-                        available_at=feedback.get("available_at", feedback.get("measured_at", now())),
+                        available_at=available_at,
                         origin=feedback.get("provenance", "declared_operational"))
             updates = [{"operation": "ADD", "memory_id": mid, "item": item}]
     result = store.apply(updates, expected_version=version, source_scope=feedback.get("split", "operational"))

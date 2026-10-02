@@ -93,3 +93,56 @@ export interface IncidentNumericEvidence {
   confirmed_common_cause?: boolean;
   [key: string]: unknown;
 }
+
+// Scalar names, labels, units and denominator keys come from the server's
+// ExperimentMetrics catalog. The UI never aliases counts into rates.
+export type ExperimentMetricKey =
+  | "grounded_assertion_ratio"
+  | "diagnosis_accuracy"
+  | "false_alarms"
+  | "misses"
+  | "false_positive_rate"
+  | "miss_rate"
+  | "mean_test_count"
+  | "unsafe_test_count"
+  | "score";
+
+export interface ExperimentMetricDefinition {
+  key: ExperimentMetricKey;
+  label: string;
+  kind: "ratio" | "count" | "mean_count" | "unsupported";
+  unit: string;
+  denominator: string | null;
+  denominator_label: string | null;
+  unsupported_reason?: string;
+}
+
+export interface ExperimentMetricsContract {
+  schema_version: "experiment-metrics.v1";
+  definitions: ExperimentMetricDefinition[];
+}
+
+export interface ExperimentMetrics {
+  schema_version: "experiment-metrics.v1";
+  measurement_version: string;
+  values: Partial<Record<ExperimentMetricKey, number | null>> & {
+    schema_version: "experiment-metrics.v1";
+    independently_labeled_root_count: number | null;
+    denominators: Record<string, number | null>;
+  };
+  unsupported: Record<string, string>;
+  legacy_denominators: boolean;
+}
+
+export interface ExperimentProtocol {
+  protocol_id: string;
+  protocol_version: string;
+  split: string;
+  method: string;
+  provenance: string;
+  metric_version: string;
+  cohort_sha256: string;
+  frozen_config_sha256: string | null;
+  execution_modes: string[];
+  llm_models: string[];
+}

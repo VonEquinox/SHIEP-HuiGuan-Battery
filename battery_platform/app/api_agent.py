@@ -433,7 +433,16 @@ def agent_snapshot(c, job):
                                     "members": peer_members, "window_start": group["window_start"], "window_end": group["window_end"], "causality": "not_established"}]
         group_snapshot = {"id": group["id"], "version": group["version"], "members": member_versions}
     asset_context = {**asset, **{key: value for key, value in profile.get("query", {}).items() if key in ("chemistry", "protocol_id", "source_id", "physical_cell_id")}}
+    # A diagnostic event starts with session feedback and may later acquire one
+    # or more authorized inspection orders. Bind those exact historical aliases
+    # on the server; neither another session nor a future approval is history.
+    history_root_ids = [f"session:{run['session_id']}"]
+    history_root_ids.extend(f"order:{proposal['order_id']}" for proposal in rows(c,
+        "SELECT DISTINCT order_id FROM work_proposals WHERE session_id=:s AND order_id IS NOT NULL AND updated_at<=:cutoff ORDER BY order_id",
+        {"s": run["session_id"], "cutoff": cutoff}))
     snapshot = {"asset_id": run["asset_id"], "installation_id": run["installation_id"], "visible_cutoff": cutoff, "round": run["round"],
+                "root_scenario_id": f"order:{order['id']}" if order else f"session:{run['session_id']}",
+                "history_root_ids": history_root_ids,
                 "asset": asset_context, "observations": observations, "prediction": profile, "group_context": group_context,
                 "completed_test_ids": sorted({observation["test_id"] for observation in observations if observation.get("test_id")}),
                 "attempted_test_ids": sorted({observation["test_id"] for observation in observations if observation.get("test_id")}),

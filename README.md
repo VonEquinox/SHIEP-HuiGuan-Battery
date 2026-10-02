@@ -29,6 +29,7 @@ Memory/Skill 通过程序校验后自动生效，Carbon 在独立工作区计算
 | 约束排程与独立碳/经济核算 | [排程](battery_platform/docs/V2_DISPATCH_IMPLEMENTATION.md)、[Carbon](battery_platform/docs/V2_CARBON_IMPLEMENTATION.md) |
 | 真实多源数值模型及来源资格 | [模型研究](model_lab/docs/V2_IMPLEMENTATION.md)、[来源交付](model_lab/reports/v2/sources/DELIVERY.md) |
 | XJTU+MATR 联合训练与 MLP/LSTM/LightGBM 对照 | [联合实验完整结果](battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md)、[联合协议](battery_platform/docs/JOINT_XJTU_MATR_AND_BASELINES.md)、[H-M1 优化结果](battery_platform/docs/HM1_OPTIMIZATION_RESULTS_20261002.md) |
+| F01–F07 修复、来源影响、新特征重训与完整回归 | [统一修复记录](docs/V2_F01_F07_REPAIR_20261002.md)、[特征与重训](battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md)、[GEPA 恢复协议](battery_platform/docs/GEPA_RECOVERY.md) |
 | 权限、时间可见性、取消与版本验收 | [跨模块验收](battery_platform/docs/V2_ACCEPTANCE_REVIEW.md) |
 | 最终测试、重载证据、截图与提交索引 | [最终交付验收](docs/V2_DELIVERY_ACCEPTANCE.md) |
 

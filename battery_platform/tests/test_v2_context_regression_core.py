@@ -30,14 +30,14 @@ def cases():
              "synthetic": True, "hidden_truth": {"root_cause": "HANDMADE_EVALUATOR_SECRET"},
              "expected_behavior": {"initial_status": "insufficient_evidence"},
              "initial_visible": {"asset_id": "a", "installation_id": "i", "visible_cutoff": "2026-09-01T12:00:00Z",
-                 "asset": {"chemistry": "LFP"}, "symptoms": "inspection", "test_catalog": [],
+                 "asset": {"chemistry": "LFP"}, "symptoms": "sensor bias", "test_catalog": [],
                  "observations": [{"evidence_id": "reading", "summary": "Independent readings disagree."}]}}
             for i in range(3)]
 
 
 def memory(**changes):
     return {"memory_id": "m", "version": 1, "scope": {"chemistry": "LFP", "protocol_id": None},
-            "trigger": "inspection", "insight": "Preserve uncertain source reports.", "supporting_case_ids": ["operational-source"],
+            "trigger": "sensor bias", "insight": "Preserve uncertain source reports.", "supporting_case_ids": ["operational-source"],
             "counterexamples": [], "source_trust": "reported", "source_scope": "operational", "state": "active",
             "available_at": "2026-09-01T10:00:00Z", "helpful_count": 0, "harmful_count": 0,
             "last_used": None, "expires_at": None, **changes}

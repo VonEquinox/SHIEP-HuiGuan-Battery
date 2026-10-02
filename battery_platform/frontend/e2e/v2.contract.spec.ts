@@ -287,17 +287,81 @@ async function stub(
             method: "ace",
             status: "failed",
             provenance: "synthetic",
-            metrics: { score: 0.4 },
+            experiment_protocol: {
+              protocol_id: "contract-comparison",
+              protocol_version: "contract-only",
+              split: "dev",
+              method: "ace",
+              provenance: "synthetic",
+              metric_version: "experiment-metrics.v1",
+              cohort_sha256: "contract-cases",
+            },
+            experiment_metrics: {
+              schema_version: "experiment-metrics.v1",
+              measurement_version: "experiment-metrics.v1",
+              values: {
+                diagnosis_accuracy: 0.4,
+                denominators: { diagnosis_roots: 5 },
+              },
+              unsupported: { score: "本合同未测量综合分数。" },
+            },
           },
           {
             id: 1,
             method: "ace",
             status: "succeeded",
             provenance: "synthetic",
-            metrics: { score: 0.8 },
+            experiment_protocol: {
+              protocol_id: "contract-comparison",
+              protocol_version: "contract-only",
+              split: "dev",
+              method: "ace",
+              provenance: "synthetic",
+              metric_version: "experiment-metrics.v1",
+              cohort_sha256: "contract-cases",
+            },
+            experiment_metrics: {
+              schema_version: "experiment-metrics.v1",
+              measurement_version: "experiment-metrics.v1",
+              values: {
+                diagnosis_accuracy: 0.8,
+                denominators: { diagnosis_roots: 5 },
+              },
+              unsupported: { score: "本合同未测量综合分数。" },
+            },
           },
         ],
         next_cursor: null,
+        metrics_contract: {
+          schema_version: "experiment-metrics.v1",
+          definitions: [
+            {
+              key: "grounded_assertion_ratio",
+              label: "有依据的事实比例",
+              kind: "ratio",
+              unit: "比例 (0–1)",
+              denominator: "facts",
+              denominator_label: "报告事实数",
+            },
+            {
+              key: "diagnosis_accuracy",
+              label: "诊断准确率",
+              kind: "ratio",
+              unit: "比例 (0–1)",
+              denominator: "diagnosis_roots",
+              denominator_label: "已评估根事件数",
+            },
+            {
+              key: "score",
+              label: "综合分数",
+              kind: "unsupported",
+              unit: "未支持",
+              denominator: null,
+              denominator_label: null,
+              unsupported_reason: "本合同未测量综合分数。",
+            },
+          ],
+        },
       },
       "/orders": [],
       "/alerts": [],
@@ -493,9 +557,11 @@ test("readonly controls remain disabled and evolution curve can decline", async 
   await expect(
     page.getByRole("button", { name: "提交离线进化实验", exact: true }),
   ).toBeDisabled();
-  await page.getByLabel("实验指标", { exact: true }).selectOption("score");
+  await page
+    .getByLabel("实验指标", { exact: true })
+    .selectOption("diagnosis_accuracy");
   const line = page.locator(
-    'svg[aria-label="score / synthetic / 原始量纲 数据曲线"] polyline',
+    'svg[aria-label="诊断准确率 / contract-only / dev / ace / synthetic / 比例 (0–1) 数据曲线"] polyline',
   );
   await expect(line).toBeVisible();
   const points = (await line.getAttribute("points"))!
