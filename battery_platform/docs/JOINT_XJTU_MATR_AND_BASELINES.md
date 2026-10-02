@@ -87,6 +87,6 @@ XGBoost 当前环境没有安装，本阶段不把 LightGBM 的结果冒充 XGBo
 
 ## 已完成结果入口（2026-10-02）
 
-实际运行结果、逐 seed/逐电芯回执、模型结构、失败日志、命令和图表已经归档到 [JOINT_XJTU_MATR_RESULTS_20261002.md](JOINT_XJTU_MATR_RESULTS_20261002.md)。完整比较包为 56 个对象/448 行，开发包为 47 个对象/376 行；XJTU 保护的 `*-5` 电芯仍封存。联合 M1 在 XJTU/MATR 上分别为 `1.1768±0.1121 pp` / `2.4528±0.0074 pp`，但联合 MLP 在历史暴露 XJTU final 上更低（`0.6338±0.0598 pp`），因此结果不能简化为单模型在两个来源都领先。
+实际运行结果、逐 seed/逐电芯回执、模型结构、失败日志、命令和图表已经归档到 [JOINT_XJTU_MATR_RESULTS_20261002.md](JOINT_XJTU_MATR_RESULTS_20261002.md)。完整比较包为 56 个对象/448 行，开发包为 47 个对象/376 行；XJTU 保护的 `*-5` 电芯仍封存。联合 M1 在 XJTU/MATR 上分别为 `1.1768±0.1121 pp` / `2.4528±0.0074 pp`，但联合 MLP 在历史暴露 XJTU final 上更低（`0.6338±0.0598 pp`），因此结果不能简化为单模型在两个来源都领先。后续 development-only H-M1 结构搜索与量化原型见 [HM1_OPTIMIZATION_RESULTS_20261002.md](HM1_OPTIMIZATION_RESULTS_20261002.md)。
 
 机器可读汇总为 `battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json`；图表为 `final_mae_comparison.png`、`dataset_scale_comparison.png` 和 `matr_transfer_comparison.png`。首次 M1 的 `ngboost=true` 导入失败由于环境没有 `ngboost`，失败日志保留，正式结果使用明确记录的 `ngboost=false` 重跑。

@@ -93,7 +93,7 @@ def _load_dataset(path: Path) -> tuple[dict, dict[str, np.ndarray]]:
     manifest = json.loads(path.read_text())
     rows = manifest.get("rows", [])
     splits = {row.get("split") for row in rows}
-    if "final" in splits or "final-test" in splits or "sealed" in splits:
+    if "final" in splits or "final-test" in splits or "sealed" in splits or "protected" in splits:
         raise ValueError(
             "H-M1 development runner refuses bundles containing final/sealed rows; "
             f"found splits={sorted(splits)}"
@@ -355,8 +355,11 @@ def _reference_gates() -> dict:
     xjtu = []
     matr = []
     for metrics in m1:
-        xjtu_values = [head["heads"]["soh"]["mae"] * 100 for key, head in metrics.items() if key.startswith("xjtu::")]
-        matr_values = [head["heads"]["soh"]["mae"] * 100 for key, head in metrics.items() if key.startswith("matr::")]
+        xjtu_values = []
+        matr_values = []
+        for key, head in metrics.items():
+            target = xjtu_values if key.startswith("xjtu::") else matr_values
+            target.extend(item["mae"] * 100 for item in head["heads"]["soh"].get("per_object", {}).values())
         xjtu.append(float(np.mean(xjtu_values)))
         matr.append(float(np.mean(matr_values)))
     return {

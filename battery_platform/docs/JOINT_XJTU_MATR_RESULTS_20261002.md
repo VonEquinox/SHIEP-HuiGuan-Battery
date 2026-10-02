@@ -37,6 +37,12 @@ M1 是 `DomainBaseline`。它对每个 source/chemistry/protocol domain 独立�
 
 首次尝试 `ngboost=true` 时，环境没有安装 `ngboost`，训练在导入阶段失败；失败日志保留在 `runs/xjtu_only_m1/` 与 `runs/xjtu_matr_m1/`。随后明确改成 `ngboost=false` 重跑，结果只使用成功的 no-NGBoost 运行，未把失败运行当作实验分数。
 
+### H-M1 development 优化
+
+在上述历史 comparison final 之后，另开了 development-only 的 H-M1 结构搜索。修正专家学习率为当前 M1 实际值 `0.10` 后，第一轮按域专家加共享主干的 128 个候选中已有配置通过门控，最优约为 XJTU `0.5210 pp`、MATR `1.5610 pp`；随后继续用完整量化输出做第二轮比较。
+
+随后冻结 source-level pooled q05/q50/q95 GBDT 加 source-level residual 的量化研究原型。三 seed 的 development cell-macro q50 MAE 为 XJTU `0.3841 ± 0.0173 pp`、MATR `1.5290 ± 0.0344 pp`，同包 MLP 参考为 `0.7297/5.3303 pp`，旧 M1 参考为 `0.6095/1.7021 pp`。因此它在本轮 development 门控下同时超过 MLP 的 XJTU，并保持 MATR 优于旧 M1。JSON 树包重新推理的最大数值误差为 `0.0`；尚未把它写成新的 final/SOTA 结论，也尚未接入完整 `DomainBaseline` 多任务生产契约。逐步结构、候选表、q05/q50/q95 coverage 和边界见 [HM1 优化结果](HM1_OPTIMIZATION_RESULTS_20261002.md)。
+
 ### M2：共享编码器研究候选
 
 M2 是宽度 128 的 masked temporal encoder：30D统计输入与历史序列进入共享表示，按 source 使用 128→32→128 residual adapter，然后分别接 SOH、efficiency、survival、fault heads；缺少的标签由 mask 排除，缺少曲线的 MATR 使用全零序列和显式 mask，不伪造曲线。当前配置为 12 epochs、batch size 8、learning rate `1e-3`、三个 seed。它的目标是让共享表示获得跨来源能力，但本次小样本结果显示负迁移，未选为部署模型。
