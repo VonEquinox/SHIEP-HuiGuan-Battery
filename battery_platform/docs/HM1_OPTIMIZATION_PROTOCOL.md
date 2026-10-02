@@ -53,6 +53,6 @@ model_lab/.venv/bin/python -m json.tool \
 
 ## 当前状态和限制
 
-截至本文更新时间，H-M1 只有结构和 development runner，尚未运行候选网格，也没有 final 分数。因此不能声称它已经超过 MLP 或已经在 MATR 上保持 SOTA。后续若通过门控，必须补充：候选逐 seed development 分数、与 MLP 的同 bundle 对照、固定模型导出/回放误差，以及一次性 final 回执。
+截至本文更新时间，H-M1 只有结构和 development runner，尚未运行完整候选网格，也没有 final 分数。因此不能声称它已经超过 MLP 或已经在 MATR 上保持 SOTA。为检查 specialist 分支的数值回退关系，曾用 `n_estimators=80`、专家学习率 0.1、深度 2、叶节点 3、所有新分支收缩为 0 做 development smoke check；三 seed 的均值约为 XJTU 0.6034 pp、MATR 1.6529 pp。这只是本地结构诊断，不是预注册网格选择，也没有接触 final 标签。后续若通过门控，必须补充：候选逐 seed development 分数、与 MLP 的同 bundle 对照、固定模型导出/回放误差，以及一次性 final 回执。
 
 MATR 的 30D bundle 是 capacity-history statistics 视图，没有与 XJTU 完全相同的实测曲线输入；H-M1 的共享主干因此只使用对两源都存在的统计特征和来源适配器。XJTU 的受保护 `*-5` 电芯仍然不在该实验中。
