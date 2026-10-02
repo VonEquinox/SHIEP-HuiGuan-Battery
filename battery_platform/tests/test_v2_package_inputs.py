@@ -34,7 +34,7 @@ def package_fixture(tmp_path, monkeypatch, *, split="final", label_array=False):
     (folder / "run.json").write_text(json.dumps({"dataset_manifest": "/historical/checkout/model_lab/data/derived/v2/study/features.json",
                                               "feature_schema": "battery_features_v2", "data_namespace": "experimental"}))
     queries = [{"split": "dev", "source_id": "matr", "physical_cell_id": "matr:handwritten-dev",
-                "query_time": 100, "visible_cutoff": 99}]
+                "query_time": 100, "visible_cutoff": 99, "feature_schema": "battery_features_v2"}]
     (folder / "reload_domain_queries.json").write_text(json.dumps(queries))
     arrays = {"features": np.zeros((1, 30)), "sequences": np.zeros((1, 2, 4, 6)),
               "sequence_mask": np.ones((1, 2, 4)), "domain": np.zeros(1, dtype=int)}
@@ -68,4 +68,13 @@ def test_package_revision_change_rejects_old_binding_input(tmp_path, monkeypatch
     package, folder = package_fixture(tmp_path, monkeypatch)
     (folder / "manifest.json").write_text('{"updated":true}')
     with pytest.raises(ValueError, match="版本已变化"):
+        v2_jobs.feature_bundle("package", package=package)
+
+
+def test_label_free_package_inputs_must_match_its_feature_version(tmp_path, monkeypatch):
+    package, folder = package_fixture(tmp_path, monkeypatch)
+    queries = json.loads((folder / "reload_domain_queries.json").read_text())
+    queries[0]["feature_schema"] = "battery_features_v2_channel_validity_1"
+    (folder / "reload_domain_queries.json").write_text(json.dumps(queries))
+    with pytest.raises(ValueError, match="特征版本"):
         v2_jobs.feature_bundle("package", package=package)

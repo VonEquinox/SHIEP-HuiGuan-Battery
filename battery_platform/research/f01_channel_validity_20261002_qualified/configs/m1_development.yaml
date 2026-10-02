@@ -1,0 +1,20 @@
+dataset_manifest: battery_platform/research/f01_channel_validity_20261002_qualified/bundles/combined/features.json
+output_dir: battery_platform/research/f01_channel_validity_20261002_qualified/runs/M1
+families:
+- M1
+seeds:
+- 0
+- 1
+- 2
+ablations:
+- joint
+ngboost: false
+m1_estimators: 80
+calibration_alpha: 0.2
+development_only: true
+loss_contract: fixed_domain_object_task_v2
+task_weights:
+  soh: 1.0
+  efficiency: 1.0
+  rul: 1.0
+  fault: 1.0

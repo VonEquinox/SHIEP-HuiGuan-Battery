@@ -150,6 +150,7 @@ def feature_bundle(package_id=None, *, package=None):
     from model_lab.modeling.v2.contracts import load_dataset, validate_training_manifest
     root = (REPO_ROOT / "model_lab/data/derived/v2").resolve()
     file = root / "xjtu_features_protocol/features.json"
+    expected_schema = None
     if package_id is not None:
         package = package or next((item for item in registered_packages() if item["package_id"] == package_id), None)
         if not package or package["package_id"] != package_id:
@@ -158,6 +159,7 @@ def feature_bundle(package_id=None, *, package=None):
         if sha(package_root / "manifest.json") != package["manifest_hash"]:
             raise ValueError("模型包版本已变化")
         record = json.loads((package_root / "run.json").read_text())
+        expected_schema = record["feature_schema"]
         declared = Path(record.get("dataset_manifest", ""))
         # Historical runs retain original absolute provenance. Resolve only the
         # matching V2 derived suffix inside this checkout, never an outside path.
@@ -167,6 +169,7 @@ def feature_bundle(package_id=None, *, package=None):
         file = root.joinpath(*suffix) if suffix is not None else None
     metadata = json.loads(file.read_text()) if file is not None and file.is_file() and file.resolve().is_relative_to(root) else None
     eligible = (metadata is not None and metadata.get("data_namespace") == "experimental"
+                and (expected_schema is None or metadata.get("schema_version") == expected_schema)
                 and all(row.get("split") in ("train", "dev", "calibration") for row in metadata.get("rows", [])))
     if eligible:
         validate_training_manifest(metadata)
@@ -182,6 +185,8 @@ def feature_bundle(package_id=None, *, package=None):
     queries = json.loads((package_root / "reload_domain_queries.json").read_text())
     if not queries or any(row.get("split") != "dev" for row in queries):
         raise ValueError("重载观察必须全部来自独立开发集合")
+    if any(row.get("feature_schema") != expected_schema for row in queries):
+        raise ValueError("重载输入特征版本与模型包不一致，必须重新生成特征并重训模型")
     if any(row.get("source_id") == "xjtu" and str(row.get("physical_cell_id", "")).endswith("-5") for row in queries):
         raise ValueError("受保护电芯不可成为运行输入")
     with np.load(package_root / "reload_domain_samples.npz", allow_pickle=False) as archive:

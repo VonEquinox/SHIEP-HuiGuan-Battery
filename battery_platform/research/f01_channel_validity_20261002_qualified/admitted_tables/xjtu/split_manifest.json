@@ -1,0 +1,48 @@
+{
+  "schema_version": "physical-split-v2",
+  "group_column": "physical_cell_id",
+  "assignments": {
+    "xjtu:Batch-4/R3_battery-1": "train",
+    "xjtu:Batch-4/R3_battery-3": "calibration",
+    "xjtu:Batch-4/R3_battery-4": "calibration",
+    "xjtu:Batch-4/R3_battery-6": "train",
+    "xjtu:Batch-4/R3_battery-8": "calibration",
+    "xjtu:Batch-5/RW_battery-1": "train",
+    "xjtu:Batch-5/RW_battery-3": "dev",
+    "xjtu:Batch-5/RW_battery-4": "train",
+    "xjtu:Batch-5/RW_battery-6": "train",
+    "xjtu:Batch-5/RW_battery-7": "train",
+    "xjtu:Batch-5/RW_battery-8": "train",
+    "xjtu:Batch-6/Sim_satellite_battery-1": "train",
+    "xjtu:Batch-6/Sim_satellite_battery-2": "dev",
+    "xjtu:Batch-6/Sim_satellite_battery-3": "train",
+    "xjtu:Batch-6/Sim_satellite_battery-4": "dev",
+    "xjtu:Batch-6/Sim_satellite_battery-6": "train",
+    "xjtu:Batch-6/Sim_satellite_battery-7": "train",
+    "xjtu:Batch-6/Sim_satellite_battery-8": "calibration"
+  },
+  "counts": {
+    "train": 11,
+    "calibration": 4,
+    "dev": 3
+  },
+  "source_split_sha256": "7a349f3b9cc390d51b4924ab5f3fcd94d53353ea22c89266f82ac83f574c85aa",
+  "exclusions": [
+    {
+      "physical_cell_id": "xjtu:Batch-4/R3_battery-2",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    },
+    {
+      "physical_cell_id": "xjtu:Batch-4/R3_battery-7",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    },
+    {
+      "physical_cell_id": "xjtu:Batch-5/RW_battery-2",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    }
+  ],
+  "policy": "development-only F01 rebuild; no re-split"
+}

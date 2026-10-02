@@ -1,0 +1,447 @@
+{
+  "finding": "F01 missing temperature encoded as measured zero",
+  "scope": "admitted development numerical rows only",
+  "final_labels_accessed": false,
+  "protected_labels_accessed": false,
+  "sources": [
+    {
+      "source": "xjtu_final_20261002",
+      "inventory_name": "xjtu_prefix",
+      "objects": 18,
+      "split_object_counts": {
+        "train": 11,
+        "calibration": 4,
+        "dev": 3
+      },
+      "excluded_before_numeric_read": [
+        {
+          "physical_cell_id": "xjtu:Batch-4/R3_battery-2",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "xjtu:Batch-4/R3_battery-7",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "xjtu:Batch-5/RW_battery-2",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        }
+      ],
+      "counts": {
+        "segments": 581,
+        "curve_segments": 581,
+        "missing_array": 0,
+        "short_array": 0,
+        "all_nan_array": 0,
+        "partial_nonfinite_array": 0,
+        "real_all_zero_array": 0,
+        "pre_fix_trigger_segments": 0,
+        "new_view_temperature_missing": 0
+      },
+      "rates_among_curve_segments": {
+        "missing_array": 0.0,
+        "short_array": 0.0,
+        "all_nan_array": 0.0,
+        "partial_nonfinite_array": 0.0,
+        "real_all_zero_array": 0.0,
+        "pre_fix_trigger_segments": 0.0
+      },
+      "point_counts": {
+        "base_valid_points": 1583164,
+        "temperature_valid_points": 1583164,
+        "temperature_missing_points": 0,
+        "real_zero_temperature_points": 0
+      },
+      "trigger_physical_cell_ids": [],
+      "source_split_sha256": "7a349f3b9cc390d51b4924ab5f3fcd94d53353ea22c89266f82ac83f574c85aa",
+      "numerical_read_policy": "parquet physical_cell_id filter before materialization",
+      "protected_or_final_numerical_rows_returned": 0
+    },
+    {
+      "source": "matr_official_summary_20261002",
+      "inventory_name": "matr_summary_prefix",
+      "objects": 30,
+      "split_object_counts": {
+        "train": 18,
+        "dev": 6,
+        "calibration": 6
+      },
+      "excluded_before_numeric_read": [
+        {
+          "physical_cell_id": "matr:el150800737259",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800739477",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800737229",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800737275",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800737387",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800737287",
+          "split": "final",
+          "reason": "historically_exposed_final_identity"
+        }
+      ],
+      "counts": {
+        "segments": 3225,
+        "no_qualified_curve": 3225
+      },
+      "rates_among_curve_segments": {
+        "missing_array": null,
+        "short_array": null,
+        "all_nan_array": null,
+        "partial_nonfinite_array": null,
+        "real_all_zero_array": null,
+        "pre_fix_trigger_segments": null
+      },
+      "point_counts": {},
+      "trigger_physical_cell_ids": [],
+      "source_split_sha256": "df0aa05cec7f58e19d4928f1dc7399012f56533c74dc214561405b5df37734e7",
+      "numerical_read_policy": "parquet physical_cell_id filter before materialization",
+      "protected_or_final_numerical_rows_returned": 0
+    },
+    {
+      "source": "matr_corrected_development_20261002",
+      "inventory_name": "matr_corrected_curves",
+      "objects": 129,
+      "split_object_counts": {
+        "calibration": 23,
+        "dev": 25,
+        "train": 81
+      },
+      "excluded_before_numeric_read": [
+        {
+          "physical_cell_id": "matr:el150800737229",
+          "split": "dev",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800737387",
+          "split": "calibration",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800737275",
+          "split": "dev",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800737259",
+          "split": "calibration",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800737287",
+          "split": "calibration",
+          "reason": "historically_exposed_final_identity"
+        },
+        {
+          "physical_cell_id": "matr:el150800739477",
+          "split": "calibration",
+          "reason": "historically_exposed_final_identity"
+        }
+      ],
+      "counts": {
+        "segments": 4049,
+        "curve_segments": 4049,
+        "missing_array": 0,
+        "short_array": 0,
+        "all_nan_array": 0,
+        "partial_nonfinite_array": 0,
+        "real_all_zero_array": 0,
+        "pre_fix_trigger_segments": 0,
+        "new_view_temperature_missing": 0
+      },
+      "rates_among_curve_segments": {
+        "missing_array": 0.0,
+        "short_array": 0.0,
+        "all_nan_array": 0.0,
+        "partial_nonfinite_array": 0.0,
+        "real_all_zero_array": 0.0,
+        "pre_fix_trigger_segments": 0.0
+      },
+      "point_counts": {
+        "base_valid_points": 4255790,
+        "temperature_valid_points": 4255790,
+        "temperature_missing_points": 0,
+        "real_zero_temperature_points": 0
+      },
+      "trigger_physical_cell_ids": [],
+      "source_split_sha256": "bcbe1b1e7807f4deb12eb5ab2c978f26737a6924871b7259b443b8496be3c189",
+      "numerical_read_policy": "parquet physical_cell_id filter before materialization",
+      "protected_or_final_numerical_rows_returned": 0
+    },
+    {
+      "source": "matr_arbin_cell_20261002",
+      "inventory_name": "matr_arbin_curve",
+      "objects": 1,
+      "split_object_counts": {
+        "train": 1
+      },
+      "excluded_before_numeric_read": [],
+      "counts": {
+        "segments": 32,
+        "curve_segments": 32,
+        "missing_array": 0,
+        "short_array": 0,
+        "all_nan_array": 0,
+        "partial_nonfinite_array": 0,
+        "real_all_zero_array": 0,
+        "pre_fix_trigger_segments": 0,
+        "new_view_temperature_missing": 0
+      },
+      "rates_among_curve_segments": {
+        "missing_array": 0.0,
+        "short_array": 0.0,
+        "all_nan_array": 0.0,
+        "partial_nonfinite_array": 0.0,
+        "real_all_zero_array": 0.0,
+        "pre_fix_trigger_segments": 0.0
+      },
+      "point_counts": {
+        "base_valid_points": 48612,
+        "temperature_valid_points": 48612,
+        "temperature_missing_points": 0,
+        "real_zero_temperature_points": 0
+      },
+      "trigger_physical_cell_ids": [],
+      "source_split_sha256": "6fcd728b81481538e2944fcba313cb5a2e4dc925f8b05dcc74edcc3c4da03258",
+      "numerical_read_policy": "parquet physical_cell_id filter before materialization",
+      "protected_or_final_numerical_rows_returned": 0
+    },
+    {
+      "source": "ch_batterygen_20261002",
+      "inventory_name": "ch_statistics",
+      "objects": 82,
+      "split_object_counts": {
+        "train": 58,
+        "calibration": 10,
+        "dev": 14
+      },
+      "excluded_before_numeric_read": [
+        {
+          "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_41",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_42",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:LFP:high_resistance:vin_51",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:LFP:low_capacity:vin_77",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_3",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_5",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:LFP:self_discharge:vin_7",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_41",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_42",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:NCM:high_resistance:vin_51",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:NCM:low_capacity:vin_77",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_3",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_5",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "ch_batterygen:NCM:self_discharge:vin_7",
+          "split": "final",
+          "reason": "not_development_split"
+        }
+      ],
+      "counts": {
+        "segments": 82,
+        "curve_segments": 82,
+        "missing_array": 0,
+        "short_array": 0,
+        "all_nan_array": 0,
+        "partial_nonfinite_array": 0,
+        "real_all_zero_array": 0,
+        "pre_fix_trigger_segments": 0,
+        "new_view_temperature_missing": 0
+      },
+      "rates_among_curve_segments": {
+        "missing_array": 0.0,
+        "short_array": 0.0,
+        "all_nan_array": 0.0,
+        "partial_nonfinite_array": 0.0,
+        "real_all_zero_array": 0.0,
+        "pre_fix_trigger_segments": 0.0
+      },
+      "point_counts": {
+        "base_valid_points": 77690,
+        "temperature_valid_points": 77690,
+        "temperature_missing_points": 0,
+        "real_zero_temperature_points": 0
+      },
+      "trigger_physical_cell_ids": [],
+      "source_split_sha256": "7ef5a0e3c84399bc17986a3878075e4043705c1bfe976bd4431ae519bc29f8b0",
+      "numerical_read_policy": "parquet physical_cell_id filter before materialization",
+      "protected_or_final_numerical_rows_returned": 0
+    },
+    {
+      "source": "dyad_brand3_20261002",
+      "inventory_name": "dyad_statistics",
+      "objects": 85,
+      "split_object_counts": {
+        "dev": 15,
+        "train": 60,
+        "calibration": 10
+      },
+      "excluded_before_numeric_read": [
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-441",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-411",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-418",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-435",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-414",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-403",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-463",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-444",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-405",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-495",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-454",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-406",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-407",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-422",
+          "split": "final",
+          "reason": "not_development_split"
+        },
+        {
+          "physical_cell_id": "dyad:brand3:vehicle-471",
+          "split": "final",
+          "reason": "not_development_split"
+        }
+      ],
+      "counts": {
+        "segments": 680,
+        "no_qualified_curve": 680
+      },
+      "rates_among_curve_segments": {
+        "missing_array": null,
+        "short_array": null,
+        "all_nan_array": null,
+        "partial_nonfinite_array": null,
+        "real_all_zero_array": null,
+        "pre_fix_trigger_segments": null
+      },
+      "point_counts": {},
+      "trigger_physical_cell_ids": [],
+      "source_split_sha256": "3593f63b9c8f39a468b8638b42e1d8519c80cd12405361a4d4d2c116a7d1546e",
+      "numerical_read_policy": "parquet physical_cell_id filter before materialization",
+      "protected_or_final_numerical_rows_returned": 0
+    }
+  ]
+}

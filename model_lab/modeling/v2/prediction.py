@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import numpy as np
-from .contracts import PREDICTION_SCHEMA,check_query,unsupported_profile,sha256_file,domain_key
+from .contracts import SCHEMA,CHANNEL_VALIDITY_SCHEMA,PREDICTION_SCHEMA,check_query,unsupported_profile,sha256_file,domain_key,validate_temperature_stat_domains
 from .features import preprocess
 from .baselines import DomainBaseline
 from .multitask import MultiTaskModel
@@ -20,19 +20,28 @@ class SafePackage:
             if Path(name).name!=name:raise ValueError("package path traversal")
             if sha256_file(self.path/name)!=digest:raise ValueError("package integrity failure")
         self.record=json.loads((self.path/"run.json").read_text())
+        if self.record.get("feature_schema")==CHANNEL_VALIDITY_SCHEMA:
+            validate_temperature_stat_domains(self.record.get("domain_index"),self.record.get("preprocessor",{}).get("temperature_stat_domains"))
         self.model_version=self.model_version or self.record["run_id"]
         if self.record["family"]=="M1":self.model=DomainBaseline.from_dict(json.loads((self.path/"model.json").read_text()),n_features=len(self.record["preprocessor"]["feature_mean"]))
         else:self.model=MultiTaskModel.load(self.record["spec"],self.path/"weights.npz",self.record["seed"],self.record["survival_grid"],self.record["label_support"],self.record.get("label_support_by_domain"))
         self.calibration=json.loads((self.path/"calibration.json").read_text()) if (self.path/"calibration.json").exists() else {}
 
     def predict(self,query,arrays):
-        reasons=check_query(query,self.record["support_domains"])
+        reasons=check_query(query,self.record["support_domains"],feature_schema=self.record.get("feature_schema",SCHEMA))
         if reasons:return unsupported_profile(query,";".join(reasons),self.model_version)
         x=np.asarray(arrays["features"])
         if x.ndim!=2 or len(x)!=1 or x.shape[1]!=len(self.record["preprocessor"]["feature_mean"]) or not np.isfinite(x).all():
             return unsupported_profile(query,"invalid_features",self.model_version)
-        if np.asarray(arrays["sequences"]).shape[:1]!=(1,) or not np.isfinite(arrays["sequences"]).all():
+        sequence=np.asarray(arrays["sequences"]);mask=np.asarray(arrays["sequence_mask"])
+        if (sequence.ndim!=4 or sequence.shape[:1]!=(1,) or sequence.shape[-1]!=len(self.record["preprocessor"]["sequence_mean"])
+                or not np.isfinite(sequence).all() or mask.shape!=sequence.shape[:-1] or not np.isfinite(mask).all()):
             return unsupported_profile(query,"invalid_sequence",self.model_version)
+        if self.record.get("feature_schema")==CHANNEL_VALIDITY_SCHEMA and (
+                sequence.shape[-1]!=6 or not np.isin(mask,[0,1]).all()
+                or not np.isin(sequence[...,5],[0,1]).all() or np.any(sequence[...,5]>mask)
+                or np.any(sequence[...,2][sequence[...,5]==0]!=0)):
+            return unsupported_profile(query,"invalid_temperature_channel_validity",self.model_version)
         arrays={**arrays,"domain":np.asarray([self.record["domain_index"]["::".join(str(query.get(k)) for k in ("source_id","chemistry","protocol_id"))]],dtype=np.int64)}
         transformed=preprocess(arrays,self.record["preprocessor"],self.record["ablation"]=="no_history")
         predictions=self.model.predict(transformed,[query])

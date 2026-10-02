@@ -8,6 +8,10 @@ from typing import Any
 import numpy as np
 
 SCHEMA = "battery_features_v2"
+# Historical packages retain SCHEMA. Temperature-aware views have a distinct
+# input contract and require newly trained models, even when statistics are 30D.
+CHANNEL_VALIDITY_SCHEMA = "battery_features_v2_channel_validity_1"
+FEATURE_SCHEMAS = frozenset({SCHEMA, CHANNEL_VALIDITY_SCHEMA})
 PREDICTION_SCHEMA = "battery_prediction_v2"
 PROTECTED_XJTU = frozenset({"Batch-4/R3_battery-5", "Batch-5/RW_battery-5", "Batch-6/Sim_satellite_battery-5"})
 HEADS = ("soh", "rul", "threshold_risk", "efficiency", "fault")
@@ -38,11 +42,11 @@ def unsupported_profile(query: dict, reason: str, model_version: str = "unavaila
                          "calibration_version": None, "evidence_refs": []} for k in HEADS}}
 
 
-def check_query(query: dict, support_domains: list[dict]) -> list[str]:
+def check_query(query: dict, support_domains: list[dict], *, feature_schema: str = SCHEMA) -> list[str]:
     reasons = []
     if query.get("source_id") == "xjtu" and str(query.get("physical_cell_id", "")).endswith("-5"):
         reasons.append("protected_xjtu_cell")
-    if query.get("feature_schema") != SCHEMA:
+    if feature_schema not in FEATURE_SCHEMAS or query.get("feature_schema") != feature_schema:
         reasons.append("feature_schema_mismatch")
     if query.get("data_namespace") not in ("experimental", "demo_synthetic"):
         reasons.append("missing_or_invalid_namespace")
@@ -62,12 +66,32 @@ def check_query(query: dict, support_domains: list[dict]) -> list[str]:
     return reasons
 
 
+def validate_temperature_stat_domains(domains: dict, temperature_domains: list) -> None:
+    """Reject incomplete new-feature metadata before fitting or prediction."""
+    if (not isinstance(domains, dict) or not domains
+            or any(not isinstance(key, str) or type(index) is not int or index < 0 for key, index in domains.items())
+            or len(set(domains.values())) != len(domains)):
+        raise ValueError("temperature-statistics domain mapping must use unique nonnegative integer IDs")
+    if (not isinstance(temperature_domains, list)
+            or any(type(index) is not int for index in temperature_domains)
+            or len(set(temperature_domains)) != len(temperature_domains)
+            or not set(temperature_domains).issubset(domains.values())):
+        raise ValueError("temperature_stat_domains is required and must contain unique registered integer IDs")
+    # Prefix views use temperature summaries even when their curve is wholly
+    # absent. Only DYAD's native statistics have different column meanings.
+    expected = {index for key, index in domains.items() if key.split("::", 1)[0] != "dyad"}
+    if set(temperature_domains) != expected:
+        raise ValueError("temperature_stat_domains must cover all prefix-view domains and exclude native DYAD statistics")
+
+
 def validate_training_manifest(manifest: dict) -> None:
     """Validate before loading arrays; no future/heldout rows may become development inputs."""
-    if manifest.get("schema_version") != SCHEMA:
+    if manifest.get("schema_version") not in FEATURE_SCHEMAS:
         raise ValueError("unsupported dataset schema")
     if manifest.get("data_namespace") not in ("experimental", "demo_synthetic"):
         raise ValueError("namespace required")
+    if manifest["schema_version"] == CHANNEL_VALIDITY_SCHEMA:
+        validate_temperature_stat_domains(manifest.get("domains"), manifest.get("temperature_stat_domains"))
     memberships: dict[str, str] = {}
     for row in manifest["rows"]:
         cell, split = row["physical_cell_id"], row["split"]
@@ -102,6 +126,17 @@ def load_dataset(manifest_path: str | Path) -> tuple[dict, dict[str, np.ndarray]
         raise ValueError("array/manifest row count mismatch")
     if not np.isfinite(arrays["features"]).all():
         raise ValueError("features must use missing masks and finite values")
+    if manifest["schema_version"] == CHANNEL_VALIDITY_SCHEMA:
+        sequence, mask = arrays["sequences"], arrays["sequence_mask"]
+        if sequence.ndim != 4 or sequence.shape[-1] != 6 or mask.shape != sequence.shape[:-1]:
+            raise ValueError("channel-validity sequences require six channels and matching point masks")
+        if not np.isfinite(sequence).all() or not np.isfinite(mask).all() or not np.isin(mask, [0, 1]).all():
+            raise ValueError("sequence values must be finite and point masks binary")
+        temperature_valid = sequence[..., 5]
+        if not np.isin(temperature_valid, [0, 1]).all() or np.any(temperature_valid > mask):
+            raise ValueError("temperature validity must be binary and bounded by point validity")
+        if np.any(sequence[..., 2][temperature_valid == 0] != 0):
+            raise ValueError("unobserved temperature must have a neutral fill and explicit missing validity")
     for task in ("soh", "efficiency"):
         y = arrays[f"y_{task}"]
         finite = np.isfinite(y)

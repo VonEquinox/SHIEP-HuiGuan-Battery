@@ -333,3 +333,14 @@ OpenAI 兼容接口调用，数值模型训练独立于上下文进化。合成�
 - 每个 seed 导出包含预处理参数、q05/q50/q95 主干和 residual 数值树；从 JSON 重放三 seed 最大 SOH 误差 `0.0`。当前状态明确为 H-M1 quantile research prototype，尚未接入完整 `DomainBaseline` 多任务生产契约。
 - 新增独立协议、详细结果、机器可读候选/模型回执和 development 比较图，并更新联合实验结果、README 与协议索引；历史 final 与 XJTU `*-5` 保护标签仍不在本轮选择中。
 - 验证：四个研究脚本 `py_compile`、五份 JSON 解析、development split 计数 `train=224/dev=72/calibration=80`、回执 final 安全标记和 `git diff --cached --check` 通过；图表已目视检查。提交：`d9cf67a3 research: optimize joint H-M1 on development`。
+
+## 提交 23：F01 通道有效性、新特征契约与独立重训
+
+- 修复缺温被当成 0°C：第六通道保存温度有效性，缺温数值填补与有效性分开，短数组保留已知部分，局部 NaN 不跨间隙插值；统计和标准化只使用合格温度，部分覆盖与全缺失均保留缺失标记。
+- prefix/lifetime/fault/combined builders 使用新 schema `battery_features_v2_channel_validity_1`；M2 动态使用六通道。新 schema 的温度统计域与保存的模型预处理器均严格校验，避免 DYAD 原生统计被当作温度；旧/新输入错配在模型与应用适配器中拒绝。
+- 按元数据先过滤再读取六种准入来源表，4,744 条有 V/I/time 数组的分段、5,965,256 个基础有效点未触发旧缺温置零。MATR 摘要/DYAD 没有合格曲线而另列不适用，CH 的源资格不由数组有限性证明；历史 final/protected 数值未读，不能推广为全部来源无问题或解释旧负迁移。
+- 独立重建 376 行开发输入，train/dev/calibration 为 224/72/80，物理人口、30D 原始标量和标签逐位一致。冻结原结构，H-M1/M1/M2 各三种子共 9 次新权重训练完成，旧开发 artifacts 前后 SHA 一致。
+- 新 H-M1 开发 MAE 保持 XJTU `0.3841±0.0173`、MATR `1.5290±0.0344 pp`；M1 不变；M2 新版 XJTU `4.8088±4.1059` 退化、MATR `8.5294±0.6477` 改善，未选用或部署。未以新特征搭配旧权重重写旧指标。
+- H-M1 每个新研究 JSON 绑定 schema/data version/bundle/arrays/code SHA，重放误差为 0；MLP 原始标量和自有预处理不变，本轮不额外重训，不冒称旧 MLP 为新 schema 评分。
+- 验证：58 项特征/寿命/模型/平台输入针对性用例通过，覆盖缺温、短数组、局部/全 NaN、真实 0°C、双向 schema 拒绝及坏域元数据。源码/JSON/权重和回执完整保存，历史保护边界保持；独立记录为 `battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md`。
+- 本提交保存 F01 实现、回归、两个可复现脚本和独立产物；Agent/GEPA/界面修复及本轮全仓验收由下一提交统一归档。

@@ -1,0 +1,220 @@
+{
+  "finding": "F01",
+  "inventory_scope": "feature metadata only; not a numerical trigger count or model evaluation",
+  "historical_manifests": [
+    {
+      "manifest": "model_lab/data/derived/v2/dyad_features_v2/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-dyad-native-statistics-1",
+      "rows": 800,
+      "sources": {
+        "dyad": 800
+      },
+      "split_rows": {
+        "dev": 120,
+        "train": 480,
+        "calibration": 80,
+        "final": 120
+      },
+      "sequence_channels": null,
+      "metadata_sha256": "533cf8a719988dd990c55015ef63af7ed70dafdbd2a61b11ae1baa4a254deec7",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    },
+    {
+      "manifest": "model_lab/data/derived/v2/matr_features_v2/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-prefix-1",
+      "rows": 280,
+      "sources": {
+        "matr": 280
+      },
+      "split_rows": {
+        "train": 136,
+        "dev": 48,
+        "calibration": 48,
+        "final": 48
+      },
+      "sequence_channels": [
+        "voltage_V",
+        "current_Crate_or_A_if_nominal_unknown",
+        "temperature_C",
+        "relative_time",
+        "phase"
+      ],
+      "metadata_sha256": "497b719a9c549e1c906b8f975c70e4e92244587447c57caeabe48d3b14b11f51",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    },
+    {
+      "manifest": "model_lab/data/derived/v2/matr_lifetime_development_20261002/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-matr-physical-lifetime-prefix-1",
+      "rows": 368,
+      "sources": {
+        "matr": 368
+      },
+      "split_rows": {
+        "calibration": 63,
+        "train": 236,
+        "dev": 69
+      },
+      "sequence_channels": [
+        "voltage_V",
+        "current_Crate_or_A_if_nominal_unknown",
+        "temperature_C",
+        "relative_time",
+        "phase"
+      ],
+      "metadata_sha256": "c0fa73aa2601d77e0085cd43c583d6936cab212a0ea3232f78828c7f5e8c1ed4",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    },
+    {
+      "manifest": "model_lab/data/derived/v2/matr_lifetime_development_20261002_budgeted/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-matr-physical-lifetime-prefix-1",
+      "rows": 368,
+      "sources": {
+        "matr": 368
+      },
+      "split_rows": {
+        "calibration": 63,
+        "train": 236,
+        "dev": 69
+      },
+      "sequence_channels": [
+        "voltage_V",
+        "current_Crate_or_A_if_nominal_unknown",
+        "temperature_C",
+        "relative_time",
+        "phase"
+      ],
+      "metadata_sha256": "258346f1e6b189c41ef60f6a6c8af47146339c6b4e2cd3b7a47327752229f066",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    },
+    {
+      "manifest": "model_lab/data/derived/v2/multisource_features_20261002/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-multisource-adapters-1",
+      "rows": 1224,
+      "sources": {
+        "xjtu": 144,
+        "matr": 280,
+        "dyad": 800
+      },
+      "split_rows": {
+        "train": 704,
+        "calibration": 160,
+        "dev": 192,
+        "final": 168
+      },
+      "sequence_channels": null,
+      "metadata_sha256": "83f942e6899f99237cf8213b1abb867f84f40cf91a8a9defaa494c29addec081",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    },
+    {
+      "manifest": "model_lab/data/derived/v2/multisource_features_20261002_v2/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-multisource-adapters-1",
+      "rows": 1224,
+      "sources": {
+        "xjtu": 144,
+        "matr": 280,
+        "dyad": 800
+      },
+      "split_rows": {
+        "train": 704,
+        "calibration": 160,
+        "dev": 192,
+        "final": 168
+      },
+      "sequence_channels": null,
+      "metadata_sha256": "ec1da6d221ce99de505c61a886da019e7480726afe23a30bf07ab4afe33e0a27",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    },
+    {
+      "manifest": "model_lab/data/derived/v2/xjtu_features/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-prefix-1",
+      "rows": 144,
+      "sources": {
+        "xjtu": 144
+      },
+      "split_rows": {
+        "train": 88,
+        "calibration": 32,
+        "dev": 24
+      },
+      "sequence_channels": [
+        "voltage_V",
+        "current_Crate_or_A_if_nominal_unknown",
+        "temperature_C",
+        "relative_time",
+        "phase"
+      ],
+      "metadata_sha256": "abfd85c6788c5e0397002488f4d2a3201068d9402032642c2c66713d4f5fcc16",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    },
+    {
+      "manifest": "model_lab/data/derived/v2/xjtu_features_final/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-prefix-1",
+      "rows": 168,
+      "sources": {
+        "xjtu": 168
+      },
+      "split_rows": {
+        "train": 88,
+        "final": 24,
+        "calibration": 32,
+        "dev": 24
+      },
+      "sequence_channels": [
+        "voltage_V",
+        "current_Crate_or_A_if_nominal_unknown",
+        "temperature_C",
+        "relative_time",
+        "phase"
+      ],
+      "metadata_sha256": "4e8048913b376343da1891e205eb7300453fd0719ee5ebb432ae4a4b61fb3bed",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    },
+    {
+      "manifest": "model_lab/data/derived/v2/xjtu_features_protocol/features.json",
+      "schema_version": "battery_features_v2",
+      "data_version": "v2-prefix-1",
+      "rows": 144,
+      "sources": {
+        "xjtu": 144
+      },
+      "split_rows": {
+        "train": 88,
+        "calibration": 32,
+        "dev": 24
+      },
+      "sequence_channels": [
+        "voltage_V",
+        "current_Crate_or_A_if_nominal_unknown",
+        "temperature_C",
+        "relative_time",
+        "phase"
+      ],
+      "metadata_sha256": "e2c8f3ba731c19756d0b7626678df6c7d2f37dd7f876af7844b5cdad80d5640c",
+      "numerical_arrays_opened": false,
+      "policy": "frozen historical artifacts preserved; new channel-validity features require separately bound retrained models"
+    }
+  ],
+  "current_candidates_retrained": [
+    "H-M1 source-residual qGBDT,3seeds",
+    "M1 domain quantileGBDT,3seeds",
+    "M2 sixchannel temporal multitask,3seeds"
+  ],
+  "historical_or_nonselected_candidates": "not overwritten or auto-promoted to new feature version; old artifacts remain bound to old schema",
+  "missing_temperature_not_demonstrated_as_negative_transfer_cause": true
+}

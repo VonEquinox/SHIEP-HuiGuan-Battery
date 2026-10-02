@@ -1,0 +1,11 @@
+{
+  "row_count": 376,
+  "changed_scalar_rows": 0,
+  "scalar_max_abs_change": 0.0,
+  "changed_feature_indices": [],
+  "target_max_abs_change": 0.0,
+  "new_sequence_channels": 6,
+  "old_sequence_channels": 5,
+  "same_frozen_physical_population": true,
+  "old_weights_used_with_new_features": false
+}

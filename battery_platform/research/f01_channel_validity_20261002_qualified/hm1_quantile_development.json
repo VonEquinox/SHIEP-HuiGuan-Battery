@@ -1,0 +1,638 @@
+{
+  "scope": "H-M1 source-residual quantile prototype; development/feedback only",
+  "bundle": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/battery_platform/research/f01_channel_validity_20261002_qualified/bundles/combined/features.json",
+  "bundle_sha256": "df5bdc622cc81e523929a0ce5780d2f518386b76558902907dc4e815202c24d0",
+  "final_labels_used_for_selection": false,
+  "selection_split": "dev",
+  "calibration_role": "stability-only feedback; no final selection",
+  "architecture": {
+    "source_pooled_backbone": true,
+    "source_residual_stage": true,
+    "source_normalized_log_soh": true,
+    "quantiles": [
+      0.05,
+      0.5,
+      0.95
+    ],
+    "n_estimators": 160,
+    "depth": 3,
+    "min_leaf": 5,
+    "residual_estimators": 80,
+    "residual_depth": 2,
+    "residual_weight": 1.0,
+    "weighting": "cell-balanced"
+  },
+  "references": {
+    "joint_mlp_dev_xjtu_mae_pp": 0.7297388163511473,
+    "joint_mlp_dev_matr_mae_pp": 5.330279534841793,
+    "current_m1_dev_xjtu_mae_pp": 0.6095458466379114,
+    "current_m1_dev_matr_mae_pp": 1.7021475435912425
+  },
+  "results": [
+    {
+      "seed": 0,
+      "metrics": {
+        "dev": {
+          "xjtu": {
+            "objects": 3,
+            "mae_pp": 0.39320165522418177,
+            "rmse_pp": 0.4870265362825712,
+            "coverage_90": 0.9583333333333334,
+            "width_pp": 9.026337568372671,
+            "per_cell": [
+              {
+                "cell": "xjtu:Batch-5/RW_battery-3",
+                "rows": 8,
+                "mae_pp": 0.5694171005680939,
+                "rmse_pp": 0.6596620811317966,
+                "coverage_90": 0.875,
+                "width_pp": 8.977520926806237
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-2",
+                "rows": 8,
+                "mae_pp": 0.3934553076843622,
+                "rmse_pp": 0.44649806198653513,
+                "coverage_90": 1.0,
+                "width_pp": 9.3216088400099
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-4",
+                "rows": 8,
+                "mae_pp": 0.2167325574200893,
+                "rmse_pp": 0.3549194657293819,
+                "coverage_90": 1.0,
+                "width_pp": 8.779882938301878
+              }
+            ]
+          },
+          "matr": {
+            "objects": 6,
+            "mae_pp": 1.5622886811027925,
+            "rmse_pp": 3.9780146235789977,
+            "coverage_90": 0.7916666666666666,
+            "width_pp": 12.690407076181843,
+            "per_cell": [
+              {
+                "cell": "matr:el150800737213",
+                "rows": 8,
+                "mae_pp": 6.5682917041006235,
+                "rmse_pp": 18.4564315035524,
+                "coverage_90": 0.875,
+                "width_pp": 11.845885194283671
+              },
+              {
+                "cell": "matr:el150800737234",
+                "rows": 8,
+                "mae_pp": 1.1335396741413957,
+                "rmse_pp": 1.7634380689276299,
+                "coverage_90": 0.5,
+                "width_pp": 14.750024020383172
+              },
+              {
+                "cell": "matr:el150800737361",
+                "rows": 8,
+                "mae_pp": 0.3916036461902306,
+                "rmse_pp": 1.0195138570301778,
+                "coverage_90": 0.875,
+                "width_pp": 11.648040055172203
+              },
+              {
+                "cell": "matr:el150800737365",
+                "rows": 8,
+                "mae_pp": 0.34810780877903846,
+                "rmse_pp": 0.9203731469696286,
+                "coverage_90": 1.0,
+                "width_pp": 11.634648544156565
+              },
+              {
+                "cell": "matr:el150800737366",
+                "rows": 8,
+                "mae_pp": 0.6991763160606442,
+                "rmse_pp": 1.3118469663735883,
+                "coverage_90": 0.625,
+                "width_pp": 14.698610533661105
+              },
+              {
+                "cell": "matr:el150800737390",
+                "rows": 8,
+                "mae_pp": 0.2330129373448231,
+                "rmse_pp": 0.3964841986205624,
+                "coverage_90": 0.875,
+                "width_pp": 11.565234109434346
+              }
+            ]
+          }
+        },
+        "calibration": {
+          "xjtu": {
+            "objects": 4,
+            "mae_pp": 0.6519548951353353,
+            "rmse_pp": 0.974677755046811,
+            "coverage_90": 0.75,
+            "width_pp": 9.688650963168666,
+            "per_cell": [
+              {
+                "cell": "xjtu:Batch-4/R3_battery-3",
+                "rows": 8,
+                "mae_pp": 0.8085203851764491,
+                "rmse_pp": 1.230209389885146,
+                "coverage_90": 0.625,
+                "width_pp": 10.221707777989291
+              },
+              {
+                "cell": "xjtu:Batch-4/R3_battery-4",
+                "rows": 8,
+                "mae_pp": 1.3450871004390574,
+                "rmse_pp": 2.03647694389258,
+                "coverage_90": 0.625,
+                "width_pp": 10.932048930005525
+              },
+              {
+                "cell": "xjtu:Batch-4/R3_battery-8",
+                "rows": 8,
+                "mae_pp": 0.2518077482966147,
+                "rmse_pp": 0.37738058249639356,
+                "coverage_90": 0.75,
+                "width_pp": 8.744986477083
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-8",
+                "rows": 8,
+                "mae_pp": 0.20240434662922024,
+                "rmse_pp": 0.2546441039131241,
+                "coverage_90": 1.0,
+                "width_pp": 8.85586066759685
+              }
+            ]
+          },
+          "matr": {
+            "objects": 6,
+            "mae_pp": 0.19423754972849758,
+            "rmse_pp": 0.3778142540949774,
+            "coverage_90": 0.9166666666666666,
+            "width_pp": 16.76785280933696,
+            "per_cell": [
+              {
+                "cell": "matr:el150800737276",
+                "rows": 8,
+                "mae_pp": 0.21074803390989244,
+                "rmse_pp": 0.37784473914289046,
+                "coverage_90": 0.875,
+                "width_pp": 11.23945408267602
+              },
+              {
+                "cell": "matr:el150800737313",
+                "rows": 8,
+                "mae_pp": 0.07995196952914757,
+                "rmse_pp": 0.15634266496598073,
+                "coverage_90": 1.0,
+                "width_pp": 11.692793442428464
+              },
+              {
+                "cell": "matr:el150800737334",
+                "rows": 8,
+                "mae_pp": 0.2513522450800637,
+                "rmse_pp": 0.4988492025576548,
+                "coverage_90": 1.0,
+                "width_pp": 27.318755258744527
+              },
+              {
+                "cell": "matr:el150800737378",
+                "rows": 8,
+                "mae_pp": 0.17734030505236476,
+                "rmse_pp": 0.40318458222914316,
+                "coverage_90": 0.875,
+                "width_pp": 11.473898865472208
+              },
+              {
+                "cell": "matr:el150800737386",
+                "rows": 8,
+                "mae_pp": 0.21713685589706405,
+                "rmse_pp": 0.38054298630963423,
+                "coverage_90": 0.75,
+                "width_pp": 11.038073075116955
+              },
+              {
+                "cell": "matr:el150800739484",
+                "rows": 8,
+                "mae_pp": 0.22889588890245283,
+                "rmse_pp": 0.45012134936456105,
+                "coverage_90": 1.0,
+                "width_pp": 27.844142131583602
+              }
+            ]
+          }
+        }
+      },
+      "model": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_models/seed0.json",
+      "model_sha256": "c156df39484d939eac8ce3bdb551417f80f9f87a2bd78ebc3df3cfe4e0c5572c",
+      "replay_max_abs_soh": 0.0
+    },
+    {
+      "seed": 1,
+      "metrics": {
+        "dev": {
+          "xjtu": {
+            "objects": 3,
+            "mae_pp": 0.36421355927157334,
+            "rmse_pp": 0.4522306453249489,
+            "coverage_90": 0.9583333333333334,
+            "width_pp": 8.75306606116733,
+            "per_cell": [
+              {
+                "cell": "xjtu:Batch-5/RW_battery-3",
+                "rows": 8,
+                "mae_pp": 0.47240519407587,
+                "rmse_pp": 0.5610205298685145,
+                "coverage_90": 0.875,
+                "width_pp": 8.433864513175584
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-2",
+                "rows": 8,
+                "mae_pp": 0.35207787176333993,
+                "rmse_pp": 0.4360847486086991,
+                "coverage_90": 1.0,
+                "width_pp": 9.177781386961803
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-4",
+                "rows": 8,
+                "mae_pp": 0.26815761197550997,
+                "rmse_pp": 0.3595866574976331,
+                "coverage_90": 1.0,
+                "width_pp": 8.647552283364604
+              }
+            ]
+          },
+          "matr": {
+            "objects": 6,
+            "mae_pp": 1.5310538819285118,
+            "rmse_pp": 3.927981623093627,
+            "coverage_90": 0.8333333333333334,
+            "width_pp": 12.963362648478197,
+            "per_cell": [
+              {
+                "cell": "matr:el150800737213",
+                "rows": 8,
+                "mae_pp": 6.612651038103716,
+                "rmse_pp": 18.536237650070074,
+                "coverage_90": 0.875,
+                "width_pp": 12.054605895967377
+              },
+              {
+                "cell": "matr:el150800737234",
+                "rows": 8,
+                "mae_pp": 1.0434031877817858,
+                "rmse_pp": 1.678887454223446,
+                "coverage_90": 0.625,
+                "width_pp": 14.578810499392034
+              },
+              {
+                "cell": "matr:el150800737361",
+                "rows": 8,
+                "mae_pp": 0.3526101448523805,
+                "rmse_pp": 0.9108070531929543,
+                "coverage_90": 0.875,
+                "width_pp": 11.787112829247258
+              },
+              {
+                "cell": "matr:el150800737365",
+                "rows": 8,
+                "mae_pp": 0.32360103297367354,
+                "rmse_pp": 0.8409630727826152,
+                "coverage_90": 1.0,
+                "width_pp": 11.828826726201603
+              },
+              {
+                "cell": "matr:el150800737366",
+                "rows": 8,
+                "mae_pp": 0.6434676588495614,
+                "rmse_pp": 1.2688018194185902,
+                "coverage_90": 0.75,
+                "width_pp": 15.381062767892477
+              },
+              {
+                "cell": "matr:el150800737390",
+                "rows": 8,
+                "mae_pp": 0.21059022900995344,
+                "rmse_pp": 0.3321926888740799,
+                "coverage_90": 0.875,
+                "width_pp": 12.149757172168437
+              }
+            ]
+          }
+        },
+        "calibration": {
+          "xjtu": {
+            "objects": 4,
+            "mae_pp": 0.7372868155073324,
+            "rmse_pp": 1.001176892000207,
+            "coverage_90": 0.6875,
+            "width_pp": 9.410483924293857,
+            "per_cell": [
+              {
+                "cell": "xjtu:Batch-4/R3_battery-3",
+                "rows": 8,
+                "mae_pp": 1.008852180785129,
+                "rmse_pp": 1.309496919584578,
+                "coverage_90": 0.5,
+                "width_pp": 10.053797661477404
+              },
+              {
+                "cell": "xjtu:Batch-4/R3_battery-4",
+                "rows": 8,
+                "mae_pp": 1.4740652593202412,
+                "rmse_pp": 2.075803570401591,
+                "coverage_90": 0.5,
+                "width_pp": 10.773691106957942
+              },
+              {
+                "cell": "xjtu:Batch-4/R3_battery-8",
+                "rows": 8,
+                "mae_pp": 0.29114415128010246,
+                "rmse_pp": 0.40115251329341,
+                "coverage_90": 0.75,
+                "width_pp": 8.100412094002335
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-8",
+                "rows": 8,
+                "mae_pp": 0.17508567064385694,
+                "rmse_pp": 0.21825456472124882,
+                "coverage_90": 1.0,
+                "width_pp": 8.714034834737742
+              }
+            ]
+          },
+          "matr": {
+            "objects": 6,
+            "mae_pp": 0.18620916018815084,
+            "rmse_pp": 0.34558294578569226,
+            "coverage_90": 0.9583333333333334,
+            "width_pp": 17.382883238972962,
+            "per_cell": [
+              {
+                "cell": "matr:el150800737276",
+                "rows": 8,
+                "mae_pp": 0.21533484741177167,
+                "rmse_pp": 0.3751674293515993,
+                "coverage_90": 1.0,
+                "width_pp": 11.879028512316799
+              },
+              {
+                "cell": "matr:el150800737313",
+                "rows": 8,
+                "mae_pp": 0.0502085781587433,
+                "rmse_pp": 0.07801802203448543,
+                "coverage_90": 1.0,
+                "width_pp": 12.899272057775214
+              },
+              {
+                "cell": "matr:el150800737334",
+                "rows": 8,
+                "mae_pp": 0.24836278663794564,
+                "rmse_pp": 0.47703971883158236,
+                "coverage_90": 1.0,
+                "width_pp": 27.484545178865424
+              },
+              {
+                "cell": "matr:el150800737378",
+                "rows": 8,
+                "mae_pp": 0.1678218491875036,
+                "rmse_pp": 0.3716563806678794,
+                "coverage_90": 0.875,
+                "width_pp": 12.097200163252857
+              },
+              {
+                "cell": "matr:el150800737386",
+                "rows": 8,
+                "mae_pp": 0.2126807062639624,
+                "rmse_pp": 0.34779639716964916,
+                "coverage_90": 0.875,
+                "width_pp": 11.880734080869974
+              },
+              {
+                "cell": "matr:el150800739484",
+                "rows": 8,
+                "mae_pp": 0.2228461934689785,
+                "rmse_pp": 0.4238197266589578,
+                "coverage_90": 1.0,
+                "width_pp": 28.056519440757516
+              }
+            ]
+          }
+        }
+      },
+      "model": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_models/seed1.json",
+      "model_sha256": "8d2eb29536b1f734b583b4c7f1add0377940df8e19bd953c0cf7041f25179c9d",
+      "replay_max_abs_soh": 0.0
+    },
+    {
+      "seed": 2,
+      "metrics": {
+        "dev": {
+          "xjtu": {
+            "objects": 3,
+            "mae_pp": 0.3949658210256594,
+            "rmse_pp": 0.5038673493199984,
+            "coverage_90": 0.9583333333333334,
+            "width_pp": 9.032105108235038,
+            "per_cell": [
+              {
+                "cell": "xjtu:Batch-5/RW_battery-3",
+                "rows": 8,
+                "mae_pp": 0.5544587380992616,
+                "rmse_pp": 0.6779429743901685,
+                "coverage_90": 0.875,
+                "width_pp": 8.777728237998659
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-2",
+                "rows": 8,
+                "mae_pp": 0.34043683265690544,
+                "rmse_pp": 0.39967106510751355,
+                "coverage_90": 1.0,
+                "width_pp": 9.394806445156172
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-4",
+                "rows": 8,
+                "mae_pp": 0.29000189232081114,
+                "rmse_pp": 0.4339880084623134,
+                "coverage_90": 1.0,
+                "width_pp": 8.923780641550284
+              }
+            ]
+          },
+          "matr": {
+            "objects": 6,
+            "mae_pp": 1.4935191932172103,
+            "rmse_pp": 3.8702082943303577,
+            "coverage_90": 0.8125,
+            "width_pp": 12.798449081216525,
+            "per_cell": [
+              {
+                "cell": "matr:el150800737213",
+                "rows": 8,
+                "mae_pp": 6.592929650694955,
+                "rmse_pp": 18.51213470881634,
+                "coverage_90": 0.875,
+                "width_pp": 11.947266043085149
+              },
+              {
+                "cell": "matr:el150800737234",
+                "rows": 8,
+                "mae_pp": 0.9466293033086132,
+                "rmse_pp": 1.4992708507473216,
+                "coverage_90": 0.5,
+                "width_pp": 15.345776798430853
+              },
+              {
+                "cell": "matr:el150800737361",
+                "rows": 8,
+                "mae_pp": 0.34157415102067656,
+                "rmse_pp": 0.8897415632645831,
+                "coverage_90": 0.875,
+                "width_pp": 11.741583096615148
+              },
+              {
+                "cell": "matr:el150800737365",
+                "rows": 8,
+                "mae_pp": 0.3331518791456767,
+                "rmse_pp": 0.8658907663668997,
+                "coverage_90": 1.0,
+                "width_pp": 11.742048512742857
+              },
+              {
+                "cell": "matr:el150800737366",
+                "rows": 8,
+                "mae_pp": 0.538716993640169,
+                "rmse_pp": 1.1069464530821131,
+                "coverage_90": 0.75,
+                "width_pp": 14.73634171082005
+              },
+              {
+                "cell": "matr:el150800737390",
+                "rows": 8,
+                "mae_pp": 0.20811318149317193,
+                "rmse_pp": 0.34726542370489116,
+                "coverage_90": 0.875,
+                "width_pp": 11.2776783256051
+              }
+            ]
+          }
+        },
+        "calibration": {
+          "xjtu": {
+            "objects": 4,
+            "mae_pp": 0.6939745919173241,
+            "rmse_pp": 0.9734128659045155,
+            "coverage_90": 0.75,
+            "width_pp": 9.81924630971093,
+            "per_cell": [
+              {
+                "cell": "xjtu:Batch-4/R3_battery-3",
+                "rows": 8,
+                "mae_pp": 0.9030062505151704,
+                "rmse_pp": 1.2545354155576935,
+                "coverage_90": 0.625,
+                "width_pp": 10.334852718636608
+              },
+              {
+                "cell": "xjtu:Batch-4/R3_battery-4",
+                "rows": 8,
+                "mae_pp": 1.385609968800869,
+                "rmse_pp": 2.0260276413512583,
+                "coverage_90": 0.5,
+                "width_pp": 10.951354433237434
+              },
+              {
+                "cell": "xjtu:Batch-4/R3_battery-8",
+                "rows": 8,
+                "mae_pp": 0.2756420438298393,
+                "rmse_pp": 0.3781602777816731,
+                "coverage_90": 0.875,
+                "width_pp": 8.95532710583124
+              },
+              {
+                "cell": "xjtu:Batch-6/Sim_satellite_battery-8",
+                "rows": 8,
+                "mae_pp": 0.21164010452341814,
+                "rmse_pp": 0.23492812892743667,
+                "coverage_90": 1.0,
+                "width_pp": 9.035450981138442
+              }
+            ]
+          },
+          "matr": {
+            "objects": 6,
+            "mae_pp": 0.1449626570584772,
+            "rmse_pp": 0.26197495228686996,
+            "coverage_90": 0.9166666666666666,
+            "width_pp": 16.817982529398066,
+            "per_cell": [
+              {
+                "cell": "matr:el150800737276",
+                "rows": 8,
+                "mae_pp": 0.17942147796577435,
+                "rmse_pp": 0.330065059135231,
+                "coverage_90": 0.875,
+                "width_pp": 10.973391365594859
+              },
+              {
+                "cell": "matr:el150800737313",
+                "rows": 8,
+                "mae_pp": 0.07252023828491078,
+                "rmse_pp": 0.12614902059210245,
+                "coverage_90": 1.0,
+                "width_pp": 11.85011758729087
+              },
+              {
+                "cell": "matr:el150800737334",
+                "rows": 8,
+                "mae_pp": 0.20514012674206494,
+                "rmse_pp": 0.3417986288686229,
+                "coverage_90": 0.875,
+                "width_pp": 27.333340575949485
+              },
+              {
+                "cell": "matr:el150800737378",
+                "rows": 8,
+                "mae_pp": 0.10051297754572891,
+                "rmse_pp": 0.21070539467840216,
+                "coverage_90": 0.875,
+                "width_pp": 11.698517871589353
+              },
+              {
+                "cell": "matr:el150800737386",
+                "rows": 8,
+                "mae_pp": 0.13759001839275253,
+                "rmse_pp": 0.28533780747944587,
+                "coverage_90": 0.875,
+                "width_pp": 10.96231587242802
+              },
+              {
+                "cell": "matr:el150800739484",
+                "rows": 8,
+                "mae_pp": 0.17459110341963152,
+                "rmse_pp": 0.27779380296741546,
+                "coverage_90": 1.0,
+                "width_pp": 28.090211903535824
+              }
+            ]
+          }
+        }
+      },
+      "model": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_models/seed2.json",
+      "model_sha256": "c36f1f056a504958ff2018b7040841bc610a403b61dcdc364b4496f19842e27f",
+      "replay_max_abs_soh": 0.0
+    }
+  ],
+  "feature_schema": "battery_features_v2_channel_validity_1",
+  "finding": "F01",
+  "historical_references_role": "pre-fix historical reference only; never reusing historical weights",
+  "preprocessing_version": "f01-scalar-train-median-mean-scale-v1",
+  "input_kind": "30D statistics with explicit missing flags; sequence channels not consumed"
+}

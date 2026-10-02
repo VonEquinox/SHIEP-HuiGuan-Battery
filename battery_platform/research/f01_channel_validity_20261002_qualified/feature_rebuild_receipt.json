@@ -1,0 +1,19 @@
+{
+  "finding": "F01",
+  "new_schema": "battery_features_v2_channel_validity_1",
+  "manifest": "/Users/vonequinox/Program/GithubProjects/SHIEP-HuiGuan-Battery/battery_platform/research/f01_channel_validity_20261002_qualified/bundles/combined/features.json",
+  "manifest_sha256": "df5bdc622cc81e523929a0ce5780d2f518386b76558902907dc4e815202c24d0",
+  "arrays_sha256": "ee712981da286b082a15213296d103b138fbfc485ecee9bb1898449f2d3e640c",
+  "source_rows": {
+    "xjtu": 144,
+    "matr": 232
+  },
+  "splits": {
+    "train": 224,
+    "calibration": 80,
+    "dev": 72
+  },
+  "new_features_require_new_model_weights": true,
+  "previous_artifacts_overwritten": false,
+  "final_labels_accessed": false
+}

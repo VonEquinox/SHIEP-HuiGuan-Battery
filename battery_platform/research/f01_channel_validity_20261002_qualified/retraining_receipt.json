@@ -1,0 +1,100 @@
+{
+  "finding": "F01",
+  "feature_schema": "battery_features_v2_channel_validity_1",
+  "bundle_sha256": "df5bdc622cc81e523929a0ce5780d2f518386b76558902907dc4e815202c24d0",
+  "source_bundle_sha256": "52aa408bc4a4c9b0a32d0e7cba15e786bff0aabc8d0b8da789dcb597eb9b2d1f",
+  "selection_split": "dev",
+  "final_labels_accessed": false,
+  "protected_labels_accessed": false,
+  "new_weights_for_new_feature_version": true,
+  "historical_metrics_overwritten": false,
+  "input_diff": {
+    "row_count": 376,
+    "changed_scalar_rows": 0,
+    "scalar_max_abs_change": 0.0,
+    "changed_feature_indices": [],
+    "target_max_abs_change": 0.0,
+    "new_sequence_channels": 6,
+    "old_sequence_channels": 5,
+    "same_frozen_physical_population": true,
+    "old_weights_used_with_new_features": false
+  },
+  "families_retrained": [
+    "H-M1",
+    "M1",
+    "M2"
+  ],
+  "same_bundle_mlp_retraining": "not required: unchanged scalar 30D input and targets; old MLP metric remains historical",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split_rows": {
+    "train": 224,
+    "calibration": 80,
+    "dev": 72
+  },
+  "hm1_receipt_sha256": "aa5322aaabd4a550beb08c5c2022a3416d50f0be5ac85b711391bfc55c00c4ed",
+  "model_runs": {
+    "M1": [
+      {
+        "seed": 0,
+        "status": "trained",
+        "feature_schema": "battery_features_v2_channel_validity_1",
+        "channels": null,
+        "model_sha256": "eaa251a3175a3a83d96c887a65c8f340dec354a5eefab7de1dd95cea1531c97e",
+        "dev_metrics_sha256": "e296f63bc7e6233a80b343ecf0423ab1e3763b88855a897983a90c39fdea6979",
+        "final_accessed": false
+      },
+      {
+        "seed": 1,
+        "status": "trained",
+        "feature_schema": "battery_features_v2_channel_validity_1",
+        "channels": null,
+        "model_sha256": "fb0b3d831c6c124ca32c9f5dde6362734ed78383cd331d7c3170e5af68dcfe7c",
+        "dev_metrics_sha256": "999fd420134aa9b0e3bfff9edf099a15749dfb98311bfd7813439c5b1f189697",
+        "final_accessed": false
+      },
+      {
+        "seed": 2,
+        "status": "trained",
+        "feature_schema": "battery_features_v2_channel_validity_1",
+        "channels": null,
+        "model_sha256": "8d8333c8add46cd42f9f0f6651c79491e62444ad1aeef41017e3c977a41fc9cd",
+        "dev_metrics_sha256": "ff47f5a8a64dc24eebaeb236d68c5d472be87d86534714e72a5f3ba2fe354f6e",
+        "final_accessed": false
+      }
+    ],
+    "M2": [
+      {
+        "seed": 0,
+        "status": "trained",
+        "feature_schema": "battery_features_v2_channel_validity_1",
+        "channels": 6,
+        "model_sha256": "3c1d1593b9bc122c984de6610acc3c80d983e0f64df712fb9d28a1a323cb1727",
+        "dev_metrics_sha256": "06d4617d1be0a7e771ffc5b62e9bf823553efdb038babb897df1fd4bd14b485c",
+        "final_accessed": false
+      },
+      {
+        "seed": 1,
+        "status": "trained",
+        "feature_schema": "battery_features_v2_channel_validity_1",
+        "channels": 6,
+        "model_sha256": "cc4030fec3a12233841e4478edf8076da60954ecfdb4e1eff53f94e339e8137c",
+        "dev_metrics_sha256": "8339737cf37fb980eaa36da8245e2c62567ba5296d73a91116baacaf12c27672",
+        "final_accessed": false
+      },
+      {
+        "seed": 2,
+        "status": "trained",
+        "feature_schema": "battery_features_v2_channel_validity_1",
+        "channels": 6,
+        "model_sha256": "9de938ebbfd7175d9a6f0470e3b6f1d861d34681e90192340ca1812589f43b3a",
+        "dev_metrics_sha256": "ec18da2c6c37f5891cb246d68d8900f62d1604a80c1fcce79a06483f3d9edc22",
+        "final_accessed": false
+      }
+    ]
+  },
+  "no_model_family_selected_against_final_feedback": true
+}

@@ -24,7 +24,8 @@ def main():
     if config.get("development_only") and any(r["split"]=="final" for r in rows):
         raise ValueError("development-only proof must not include final feature or label arrays")
     train_ix=np.flatnonzero([r["split"]=="train" for r in rows])
-    transform=fit_preprocessor(arrays["features"],arrays["sequences"],arrays["sequence_mask"],train_ix)
+    transform=fit_preprocessor(arrays["features"],arrays["sequences"],arrays["sequence_mask"],train_ix,
+                               domain=arrays["domain"],temperature_stat_domains=manifest.get("temperature_stat_domains"))
     families=[args.family] if args.family else config.get("families",["M1","M2"])
     seeds=[args.seed] if args.seed is not None else config.get("seeds",[0,1,2])
     output=Path(config["output_dir"]);output.mkdir(parents=True,exist_ok=True)
@@ -66,7 +67,7 @@ def main():
                         write_json(run/"model.json",model.to_dict())
                         record["survival_training_support"]={key:value.get("survival_support",{}) for key,value in model.models.items()}
                     else:
-                        spec={"n_features":tr["features"].shape[1],"n_domains":len(manifest["domains"]),"width":128,"adapter_width":32,
+                        spec={"n_features":tr["features"].shape[1],"n_domains":len(manifest["domains"]),"width":128,"adapter_width":32,"channels":tr["sequences"].shape[-1],
                               "domain_adapter":ablation!="no_domain_adapter","history":ablation!="no_history","single_task":ablation=="single_task"}
                         model=MultiTaskModel(spec,seed,record["survival_grid"]).fit(tr,trrows,config.get("epochs",12),config.get("batch_size",8),config.get("learning_rate",.001),config.get("loss_contract","available_task_mean_v1"),config.get("task_weights"),config.get("min_survival_objects",1))
                         model.save(run/"weights.npz");record.update(spec=spec,label_support=model.label_support,label_support_by_domain=model.label_support_by_domain,training_history=model.history)

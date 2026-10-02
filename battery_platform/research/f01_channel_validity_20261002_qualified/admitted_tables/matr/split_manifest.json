@@ -1,0 +1,75 @@
+{
+  "schema_version": "physical-split-v2",
+  "group_column": "physical_cell_id",
+  "assignments": {
+    "matr:el150800739495": "train",
+    "matr:el150800737234": "dev",
+    "matr:el150800737233": "train",
+    "matr:el150800737294": "train",
+    "matr:el150800737297": "train",
+    "matr:el150800737329": "train",
+    "matr:el150800737313": "calibration",
+    "matr:el150800737366": "dev",
+    "matr:el150800737390": "dev",
+    "matr:el150800737364": "train",
+    "matr:el150800737314": "train",
+    "matr:el150800737213": "dev",
+    "matr:el150800737276": "calibration",
+    "matr:el150800737377": "train",
+    "matr:el150800737315": "train",
+    "matr:el150800737334": "calibration",
+    "matr:el150800737378": "calibration",
+    "matr:el150800737270": "train",
+    "matr:el150800737386": "calibration",
+    "matr:el150800737369": "train",
+    "matr:el150800737304": "train",
+    "matr:el150800737274": "train",
+    "matr:el150800737345": "train",
+    "matr:el150800737367": "train",
+    "matr:el150800739484": "calibration",
+    "matr:el150800737280": "train",
+    "matr:el150800737285": "train",
+    "matr:el150800737368": "train",
+    "matr:el150800737361": "dev",
+    "matr:el150800737365": "dev"
+  },
+  "counts": {
+    "train": 18,
+    "dev": 6,
+    "calibration": 6
+  },
+  "source_split_sha256": "df0aa05cec7f58e19d4928f1dc7399012f56533c74dc214561405b5df37734e7",
+  "exclusions": [
+    {
+      "physical_cell_id": "matr:el150800737259",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    },
+    {
+      "physical_cell_id": "matr:el150800739477",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    },
+    {
+      "physical_cell_id": "matr:el150800737229",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    },
+    {
+      "physical_cell_id": "matr:el150800737275",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    },
+    {
+      "physical_cell_id": "matr:el150800737387",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    },
+    {
+      "physical_cell_id": "matr:el150800737287",
+      "split": "final",
+      "reason": "historically_exposed_final_identity"
+    }
+  ],
+  "policy": "development-only F01 rebuild; no re-split"
+}

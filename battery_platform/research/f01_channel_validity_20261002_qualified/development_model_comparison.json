@@ -1,0 +1,142 @@
+{
+  "finding": "F01",
+  "unit": "SOH percentage points",
+  "aggregation": "mean within physicalcell then source cellmacro; across3seeds mean±sampleSD",
+  "selection_split": "dev",
+  "old_schema": "battery_features_v2",
+  "new_schema": "battery_features_v2_channel_validity_1",
+  "model_weights_reused": false,
+  "historical_final_or_protected_scored": false,
+  "same_frozen_population_and_targets": true,
+  "features_scalar_30D_unchanged": true,
+  "MLP_reference_role": "historical scalar30D development comparator; unmodified scalarfeatures/labels/own preprocessing recipe",
+  "models": {
+    "M1": {
+      "old5channel": {
+        "xjtu": {
+          "mean_mae_pp": 0.6095458466379114,
+          "sample_std_mae_pp": 0.06588783312261236,
+          "seeds_mae_pp": [
+            0.5879449152224084,
+            0.6835227033084289,
+            0.5571699213828968
+          ]
+        },
+        "matr": {
+          "mean_mae_pp": 1.7021475435912425,
+          "sample_std_mae_pp": 0.008235919104800258,
+          "seeds_mae_pp": [
+            1.6960880765950301,
+            1.6988296390804376,
+            1.7115249150982599
+          ]
+        }
+      },
+      "new6channel": {
+        "xjtu": {
+          "mean_mae_pp": 0.6095458466379114,
+          "sample_std_mae_pp": 0.06588783312261236,
+          "seeds_mae_pp": [
+            0.5879449152224084,
+            0.6835227033084289,
+            0.5571699213828968
+          ]
+        },
+        "matr": {
+          "mean_mae_pp": 1.7021475435912425,
+          "sample_std_mae_pp": 0.008235919104800258,
+          "seeds_mae_pp": [
+            1.6960880765950301,
+            1.6988296390804376,
+            1.7115249150982599
+          ]
+        }
+      }
+    },
+    "M2": {
+      "old5channel": {
+        "xjtu": {
+          "mean_mae_pp": 2.671866937329755,
+          "sample_std_mae_pp": 1.4275528961858501,
+          "seeds_mae_pp": [
+            3.138364974931538,
+            1.0694240107517836,
+            3.807811826305945
+          ]
+        },
+        "matr": {
+          "mean_mae_pp": 9.747352529836837,
+          "sample_std_mae_pp": 1.0501004286039881,
+          "seeds_mae_pp": [
+            8.69075750089687,
+            10.790835563094754,
+            9.760464525518882
+          ]
+        }
+      },
+      "new6channel": {
+        "xjtu": {
+          "mean_mae_pp": 4.808777402229416,
+          "sample_std_mae_pp": 4.10586381887899,
+          "seeds_mae_pp": [
+            4.267162371389836,
+            9.158568561641424,
+            1.000601273656986
+          ]
+        },
+        "matr": {
+          "mean_mae_pp": 8.529433462200194,
+          "sample_std_mae_pp": 0.6476742411572995,
+          "seeds_mae_pp": [
+            9.266191732336553,
+            8.049823210991145,
+            8.272285443272885
+          ]
+        }
+      }
+    },
+    "H-M1": {
+      "old5channel": {
+        "xjtu": {
+          "mean_mae_pp": 0.38412701184047154,
+          "sample_std_mae_pp": 0.017268099639337665,
+          "seeds_mae_pp": [
+            0.39320165522418177,
+            0.36421355927157334,
+            0.3949658210256594
+          ]
+        },
+        "matr": {
+          "mean_mae_pp": 1.5289539187495047,
+          "sample_std_mae_pp": 0.03443280412667837,
+          "seeds_mae_pp": [
+            1.5622886811027925,
+            1.5310538819285118,
+            1.4935191932172103
+          ]
+        }
+      },
+      "new6channel": {
+        "xjtu": {
+          "mean_mae_pp": 0.38412701184047154,
+          "sample_std_mae_pp": 0.017268099639337665,
+          "seeds_mae_pp": [
+            0.39320165522418177,
+            0.36421355927157334,
+            0.3949658210256594
+          ]
+        },
+        "matr": {
+          "mean_mae_pp": 1.5289539187495047,
+          "sample_std_mae_pp": 0.03443280412667837,
+          "seeds_mae_pp": [
+            1.5622886811027925,
+            1.5310538819285118,
+            1.4935191932172103
+          ]
+        }
+      }
+    }
+  },
+  "M2_interpretation": "6channel encoder/input transform retrained; XJTUdegrades,MATRimproves; not selected and not causal evidence for missingtemperature impact"
+}

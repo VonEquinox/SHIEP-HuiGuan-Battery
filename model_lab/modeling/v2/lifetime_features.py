@@ -14,8 +14,8 @@ import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
 
-from .contracts import SCHEMA, domain_key, sha256_file, validate_training_manifest
-from .features import FEATURE_NAMES, HISTORY_FEATURES, segment_view, statistical_view, values
+from .contracts import CHANNEL_VALIDITY_SCHEMA, domain_key, sha256_file, validate_training_manifest
+from .features import FEATURE_NAMES, HISTORY_FEATURES, SEQUENCE_CHANNELS, segment_view, statistical_view, values
 
 DEFAULT_QUERY_PREFIXES = (50, 100, 200)
 SOH_DEFINITION = "matr-physical-cycle-first-valid-at-or-after10-reference-soh-v2"
@@ -295,7 +295,7 @@ def build_lifetime_feature_bundle(derived_dir, out_dir, *, query_prefixes=DEFAUL
                 if not prior.empty and protocol_column in prior:
                     prior = prior[prior[protocol_column].isna() | prior[protocol_column].eq(record["protocol_id"])]
             prior = prior.tail(history)
-            sequence = np.zeros((history, points, 5), np.float32)
+            sequence = np.zeros((history, points, len(SEQUENCE_CHANNELS)), np.float32)
             mask = np.zeros((history, points), np.float32)
             for j, segment in enumerate(prior.to_dict("records"), start=history - len(prior)):
                 sequence[j], mask[j] = segment_view(segment, points, nominal)
@@ -304,12 +304,6 @@ def build_lifetime_feature_bundle(derived_dir, out_dir, *, query_prefixes=DEFAUL
                 time = values(prior.iloc[-1].to_dict(), "time_s", "relative_time_s")
                 if len(time) > 1 and np.isfinite(time).all() and np.all(np.diff(time) > 0):
                     feature[8] = float(time[-1] - time[0])
-                temperature = values(prior.iloc[-1].to_dict(), "temperature_C")
-                measured_length = min(len(values(prior.iloc[-1].to_dict(), "voltage_V")),
-                                      len(values(prior.iloc[-1].to_dict(), "current_A")), len(time))
-                if not measured_length or len(temperature) < measured_length or not np.isfinite(temperature).all():
-                    feature[6:8] = 0
-                    feature[len(FEATURE_NAMES) + 6:len(FEATURE_NAMES) + 8] = 1
             exact = valid[valid.cycle_index.eq(query)]
             soh = float(exact.iloc[0].capacity_Ah) / reference if len(exact) == 1 else np.nan
             key = domain_key(record)
@@ -353,9 +347,10 @@ def build_lifetime_feature_bundle(derived_dir, out_dir, *, query_prefixes=DEFAUL
     source_manifest_path = directory / "manifest.json"
     source_manifest = json.loads(source_manifest_path.read_text(encoding="utf-8")) if source_manifest_path.exists() else {}
     all_rul_defs = {defs["rul"] for defs in definitions.values()}
-    manifest = {"schema_version": SCHEMA, "data_namespace": "experimental", "data_version": "v2-matr-physical-lifetime-prefix-1",
+    manifest = {"schema_version": CHANNEL_VALIDITY_SCHEMA, "data_namespace": "experimental", "data_version": "v2-matr-physical-lifetime-prefix-channel-validity-2",
                 "arrays_file": "features.npz", "rows": rows, "feature_names": FEATURE_NAMES + [f"missing_{name}" for name in FEATURE_NAMES],
-                "sequence_channels": ["voltage_V", "current_Crate_or_A_if_nominal_unknown", "temperature_C", "relative_time", "phase"],
+                "sequence_channels": SEQUENCE_CHANNELS,
+                "temperature_stat_domains": list(domains.values()),
                 "domains": domains, "history_limit": history, "points": points,
                 "target_definitions": {"soh": SOH_DEFINITION, "rul": next(iter(all_rul_defs)) if len(all_rul_defs) == 1 else "source_policy_specific_remaining_physical_cycle_survival_v2", "efficiency": None, "fault": None},
                 "target_definitions_by_domain": definitions,

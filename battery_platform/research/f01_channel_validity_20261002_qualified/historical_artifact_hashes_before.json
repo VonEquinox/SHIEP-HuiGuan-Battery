@@ -1,0 +1,29 @@
+{
+  "scope": "previous development artifacts only; not final numerical arrays",
+  "sha256": {
+    "battery_platform/research/joint_xjtu_matr/bundles/development/combined/features.json": "52aa408bc4a4c9b0a32d0e7cba15e786bff0aabc8d0b8da789dcb597eb9b2d1f",
+    "battery_platform/research/joint_xjtu_matr/bundles/development/combined/features.npz": "36624855e111c9f3ff2465d2a7988dbf41373f29254da854596d802ff0589307",
+    "battery_platform/research/joint_xjtu_matr/optimization/hm1_quantile_development_20261002.json": "169c2ea49a75de6d5bc622d942bfbe3577dcfe943b52b3d3b60fe4c6b2663ca3",
+    "battery_platform/research/joint_xjtu_matr/optimization/hm1_quantile_models_20261002/seed0.json": "a1697033319f558403ca7aad413182fa7ee24e9abd3bc38078ccd6bfc21fb5e6",
+    "battery_platform/research/joint_xjtu_matr/optimization/hm1_quantile_models_20261002/seed1.json": "2038820e0e35a699a7933d386c24514f975b2c7cf740e6679862d09c20a136cc",
+    "battery_platform/research/joint_xjtu_matr/optimization/hm1_quantile_models_20261002/seed2.json": "685b3297a881a1b458f255422cabde9078b2f295c2574c664187cab29699a81a",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed0/run.json": "cc310abbabd0bd02fe3a2ca46ed0be893d949df99f0c906e161cccd2cfd8f4a0",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed0/dev_metrics.json": "e296f63bc7e6233a80b343ecf0423ab1e3763b88855a897983a90c39fdea6979",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed0/model.json": "1f4330571a7a5c58d87b33b8e5b7d9080ebffc90ae43abe018e08f47872f1176",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed1/run.json": "875ec5ae9d7ad5f2c699617c3c7185fddf4c668d470fc8c80093f7aa3e407b32",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed1/dev_metrics.json": "82aa6eab0445b98d429b37f56e62907900e9dbb1f38150dcdbb49c28ae89e461",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed1/model.json": "9cffef5c6fed5dc3166cac9b77172230f4a08b7945354981bad4e380545c23c9",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed2/run.json": "dfb06b993dd180aeb33bfafde90232e0896c86b8c94a212e4fd55e61a5247c83",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed2/dev_metrics.json": "ff47f5a8a64dc24eebaeb236d68c5d472be87d86534714e72a5f3ba2fe354f6e",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m1_no_ngboost/M1_joint_seed2/model.json": "88336b947027dbcea273857c420040027eefe1893402563eb1a776d323a31ed1",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed0/run.json": "38b5d6fdb0fc4e898d42c2b0104931856402c91cb9c37249031840f014d69d05",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed0/dev_metrics.json": "767cad3dec26606f5cae768b0dd00031e51d93237555a5916245d5a16048302e",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed0/weights.npz": "2ff5ffb95736ebb35ead1e502961bea29a2c4335f6055b428b59159cfe072bbf",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed1/run.json": "e8663d2575b08d57c838d9d98368a6d67cba2158fbf06313d7d6428bf0468e0e",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed1/dev_metrics.json": "6480f8b48b01d5eeca106f677730197aba959f9b5a93f2e19275919849211344",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed1/weights.npz": "84e65aff9e4eaa38f3af58faa97e136b9fd1106d6624a27300f12567acde50f9",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed2/run.json": "50fd0af9cc7a08155c5e0f86fbdbeb926caf74eafc9819d6f7d94280bc949b40",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed2/dev_metrics.json": "283375d8324a203e6e624c2822ff53f931377a6472cc6330083db9f7b4b0fd58",
+    "battery_platform/research/joint_xjtu_matr/runs/xjtu_matr_m2/M2_joint_seed2/weights.npz": "c52754323767623451fb404198160c97298e00f3c680f287348f21a98a0fa4d2"
+  }
+}

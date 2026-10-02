@@ -5,6 +5,10 @@
 电芯以及历史 comparison final 没有被此轮优化器读取，因此这里的数字是 development 结果，不能写成新的
 盲测或外部领域 SOTA 证明。
 
+后续 F01 温度有效性修复另建了六通道特征版本，并以同一开发人口独立重训 H-M1/M1/M2。
+新 H-M1 的标量输入与开发 MAE 保持不变；新旧 schema、权重绑定、扫描分母及 M2 退化结果见
+[F01 独立重训记录](F01_CHANNEL_VALIDITY_RETRAIN_20261002.md)。下文保留原结构优化阶段的版本与指标。
+
 ## 为什么要改 M1
 
 旧联合 M1 是按 `source_id::chemistry::protocol_id` 分域训练的 quantile GBDT。每个 XJTU 协议都只有少量
