@@ -8,7 +8,7 @@
 
 当前联合 M1 对每个 `source_id::chemistry::protocol_id` 单独训练三棵 quantile GradientBoostingRegressor。SOH 目标统一取 `log(y)`，每域使用 80 棵、深度 2、最小叶节点 3 的树。这个结构在 MATR 的单一 `matr::LFP::unknown` 域上稳定，但 XJTU 的每个协议域只有少量独立电芯，分域训练会把有限样本切成更小的样本块。
 
-开发集的已知参考均值是：XJTU 约 0.6382 个 SOH 百分点，MATR 约 1.7021 个 SOH 百分点。它说明 MATR 分支已经很强，但 XJTU 仍有结构优化空间。这个参考来自现有 `M1_joint_seed{0,1,2}/dev_metrics.json`，不包含 final 标签。
+开发集的已知参考均值是：按独立电芯 cell-macro 计算，XJTU 约 0.6095 个 SOH 百分点，MATR 约 1.7021 个 SOH 百分点。它说明 MATR 分支已经很强，但 XJTU 仍有结构优化空间。这个参考来自现有 `M1_joint_seed{0,1,2}/dev_metrics.json` 的逐电芯 `per_object`，不包含 final 标签。
 
 ## 新结构：H-M1
 
@@ -53,6 +53,8 @@ model_lab/.venv/bin/python -m json.tool \
 
 ## 当前状态和限制
 
-截至本文更新时间，H-M1 只有结构和 development runner，尚未运行完整候选网格，也没有 final 分数。因此不能声称它已经超过 MLP 或已经在 MATR 上保持 SOTA。为检查 specialist 分支的数值回退关系，曾用 `n_estimators=80`、专家学习率 0.1、深度 2、叶节点 3、所有新分支收缩为 0 做 development smoke check；三 seed 的均值约为 XJTU 0.6034 pp、MATR 1.6529 pp。这只是本地结构诊断，不是预注册网格选择，也没有接触 final 标签。后续若通过门控，必须补充：候选逐 seed development 分数、与 MLP 的同 bundle 对照、固定模型导出/回放误差，以及一次性 final 回执。
+已完成的一轮 selected development search 位于 [`hm1_selected_development_20261002.json`](../research/joint_xjtu_matr/optimization/hm1_selected_development_20261002.json)，共 36 个配置/种子组合，仍未读取 final。按 cell-macro MAE，`source_residual_gbdt_d3_l2` + cell weighting 的三 seed 均值为 XJTU `0.4507 ± 0.0492 pp`、MATR `1.4819 ± 0.0150 pp`；`source_residual_gbdt_d3_l5` 为 XJTU `0.4313 ± 0.0137 pp`、MATR `1.5109 ± 0.0194 pp`。两者都低于同 bundle MLP 的 XJTU development 均值约 `0.7297 pp`，并通过 MATR `1.7021 + 0.10 pp` 门控。ExtraTrees 配置虽然把 XJTU 降到约 `0.24–0.29 pp`，但 MATR 约 `1.90–2.42 pp`，没有通过 MATR 门控，不能选择。
+
+为检查 specialist 分支的数值回退关系，曾用 `n_estimators=80`、专家学习率 0.1、深度 2、叶节点 3、所有新分支收缩为 0 做 development smoke check；三 seed 的均值约为 XJTU 0.6034 pp、MATR 1.6529 pp。这些都是 development 结果，不是 final 结果保证。后续必须冻结一个通过门控的 GBDT 配置，补充量化头的导出/回放误差，再对 final 运行一次并把 final 回执写入结果文档。
 
 MATR 的 30D bundle 是 capacity-history statistics 视图，没有与 XJTU 完全相同的实测曲线输入；H-M1 的共享主干因此只使用对两源都存在的统计特征和来源适配器。XJTU 的受保护 `*-5` 电芯仍然不在该实验中。
