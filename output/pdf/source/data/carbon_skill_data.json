@@ -1,0 +1,1329 @@
+{
+  "evidence_date": "2026-10-02",
+  "main_sha": "c4203014c4c6999c2d176b1402d596813a072f73",
+  "proof_scope": "carbon/dispatch mathematical fixtures are synthetic demonstrations; no measured project savings",
+  "carbon_count": 30,
+  "dispatch_count": 40,
+  "skills": [
+    {
+      "id": "active-test-selection",
+      "title": "有价值且合法的主动检查",
+      "description": "在诊断证据不足时结合候选、区分力、决策价值、费用、时长与授权选择下一项检查，并处理失败和矛盾结果。",
+      "required_inputs": [
+        "installation_id",
+        "visible_evidence",
+        "test_catalog",
+        "authorization",
+        "resource_constraints"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "read_prediction",
+        "search_memory",
+        "rank_tests",
+        "propose_work_order",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "fabricated_test_likelihood",
+        "future_branch_query",
+        "confidence_gain_from_round_number",
+        "execute_unauthorized_test"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "capacity-loss",
+      "title": "容量降低与伪差异",
+      "description": "把低容量测量与退化候选、SOC 估计和截止/负载协议差异分开，提出可追溯复核。",
+      "required_inputs": [
+        "installation_id",
+        "capacity_measurement",
+        "soc",
+        "cutoff_conditions",
+        "protocol"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "read_prediction",
+        "search_knowledge",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "estimated_capacity_is_measured",
+        "irreversible_loss_from_partial_discharge",
+        "fabricated_capacity_numeric"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "charging-anomaly",
+      "title": "充电阶段与策略差异",
+      "description": "在已知充电策略与体系下分析阶段、时长和曲线差异，排除正常多阶段快充与协议/状态变化。",
+      "required_inputs": [
+        "installation_id",
+        "charging_strategy",
+        "charging_observations",
+        "soc",
+        "temperature"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "read_prediction",
+        "search_knowledge",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "multi_stage_is_fault",
+        "compare_different_charge_strategies",
+        "autonomous_charging_parameter_change"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "chemistry-eligibility",
+      "title": "体系与模型适用性",
+      "description": "在调用或解释电池数值模型前核对化学体系、型号和测量协议，识别缺失或不支持的输入域。",
+      "required_inputs": [
+        "installation_id",
+        "chemistry",
+        "model_id",
+        "protocol"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "read_prediction",
+        "search_knowledge",
+        "load_skill",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "infer_unknown_chemistry",
+        "unsupported_model_prediction",
+        "transfer_voltage_window_without_validation"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "data-quality",
+      "title": "数据质量与安装身份",
+      "description": "检查电池观察的单位、时间、缺测、重复和安装身份；数据不可比时给出修复或拒判条件。",
+      "required_inputs": [
+        "installation_id",
+        "observations",
+        "units",
+        "observed_at"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "search_knowledge",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "zero_is_missing",
+        "diagnosis_from_invalid_data",
+        "merge_installations"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "efficiency-measurement",
+      "title": "能量边界与效率可比性",
+      "description": "核对充放电能量、SOC 边界和辅助能耗后解释效率异常；仅处理电性能，不处理碳计算。",
+      "required_inputs": [
+        "installation_id",
+        "energy_in",
+        "energy_out",
+        "soc_start",
+        "soc_end",
+        "measurement_boundary"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "read_prediction",
+        "search_knowledge",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "partial_cycle_is_roundtrip_efficiency",
+        "double_count_auxiliary_energy",
+        "carbon_estimate_in_diagnosis"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "feedback-context-update",
+      "title": "自由反馈与经验边界",
+      "description": "从工程师反馈保留原文及 span，区分可核验事实、未确认意见和冲突，提炼受限经验而不修改工具或派单权限。",
+      "required_inputs": [
+        "installation_id",
+        "visible_feedback",
+        "source_spans",
+        "evidence_ids",
+        "report_version"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "search_memory",
+        "search_knowledge",
+        "load_skill",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "unverified_feedback_is_truth",
+        "feedback_changes_permissions",
+        "discard_original_text",
+        "hidden_feedback_leak"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "fleet-correlation",
+      "title": "群组关联、共因与拆分",
+      "description": "按真实或显式模拟拓扑、时间和环境聚合电池事件，区分关联组与已确认共因，并支持拆分混合问题。",
+      "required_inputs": [
+        "installation_id",
+        "topology",
+        "aligned_observations",
+        "shared_conditions"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "get_peer_anomalies",
+        "search_knowledge",
+        "rank_tests",
+        "propose_work_order",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "correlation_is_common_cause",
+        "simulated_topology_is_real",
+        "merge_noncontemporaneous_events"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "internal-resistance",
+      "title": "内阻候选与复核",
+      "description": "分析电池内阻相关变化，核对温度、倍率、SOC 和测量方法后提出可比复核。",
+      "required_inputs": [
+        "installation_id",
+        "resistance_measurement",
+        "temperature",
+        "soc",
+        "measurement_method"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "read_prediction",
+        "search_knowledge",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "universal_resistance_threshold",
+        "compare_dc_and_ac_without_protocol",
+        "unsafe_physical_procedure"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "lifetime-interpretation",
+      "title": "寿命分布与删失",
+      "description": "解释数值服务的寿命或生存曲线及服务阈值；明确删失、使用强度和预测域对寿命单位的约束。",
+      "required_inputs": [
+        "installation_id",
+        "survival_prediction",
+        "service_threshold",
+        "usage_intensity"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "read_prediction",
+        "get_signal_evidence",
+        "search_knowledge",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "last_observation_is_eol",
+        "calendar_conversion_without_usage",
+        "deterministic_lifetime_from_distribution"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "report-work-proposal",
+      "title": "诊断报告与待确认工单提案",
+      "description": "将可见事实、候选解释、反证、未知项和合法检查写成可验证报告及工作提案，保留正式派单的人确认边界。",
+      "required_inputs": [
+        "installation_id",
+        "visible_evidence",
+        "hypotheses",
+        "test_catalog"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "read_prediction",
+        "search_knowledge",
+        "rank_tests",
+        "propose_work_order",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "automatic_dispatch",
+        "fabricated_evidence_reference",
+        "fabricated_report_numeric",
+        "rewrite_installation_identity"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "self-discharge",
+      "title": "静置变化的候选解释",
+      "description": "解释电池静置电压或 SOC 变化，区分休眠负载、温度/传感偏差与自放电候选并选择补测。",
+      "required_inputs": [
+        "installation_id",
+        "rest_observations",
+        "elapsed_time",
+        "temperature",
+        "standby_load"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "search_knowledge",
+        "search_memory",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "internal_short_from_rest_voltage",
+        "unknown_load_is_zero",
+        "unvalidated_safety_probability"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "sensor-anomaly",
+      "title": "采集异常与剩余故障",
+      "description": "根据独立可见观察检查电池采集通道的偏置、漂移、断线和时间错位，同时保留未排除的真实单体问题。",
+      "required_inputs": [
+        "installation_id",
+        "channel_mapping",
+        "observations",
+        "measurement_quality"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "get_peer_anomalies",
+        "search_knowledge",
+        "search_memory",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "correlated_measurements_are_independent",
+        "all_clear_after_sensor_fix",
+        "cell_failure_from_channel_difference"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "soh-trend",
+      "title": "SOH 趋势与口径",
+      "description": "解释同安装身份下的 SOH 分布、历史趋势和局部变化，区分退化候选与口径、早期激活及校准差异。",
+      "required_inputs": [
+        "installation_id",
+        "soh_prediction",
+        "reference_capacity",
+        "history"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "read_prediction",
+        "search_knowledge",
+        "search_memory",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "estimated_soh_is_measured_soh",
+        "compare_incompatible_references",
+        "model_score_is_failure_probability"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "thermal-anomaly",
+      "title": "温度异常与合规转交",
+      "description": "汇总电池温度异常的可见证据与环境、负载、测量候选；需要安全处理时仅引用已获批流程。",
+      "required_inputs": [
+        "installation_id",
+        "temperature_observations",
+        "ambient_temperature",
+        "load",
+        "approved_sop_id"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "get_peer_anomalies",
+        "search_knowledge",
+        "rank_tests",
+        "propose_work_order",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "unvalidated_thermal_runaway_probability",
+        "fabricated_safety_threshold",
+        "unsafe_physical_procedure"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    },
+    {
+      "id": "voltage-inconsistency",
+      "title": "电压差异与通道映射",
+      "description": "核对电芯/通道电压差异的时间、负载、串数和映射，区分真实状态差异与采集错位。",
+      "required_inputs": [
+        "installation_id",
+        "channel_mapping",
+        "voltage_observations",
+        "observed_at",
+        "load"
+      ],
+      "allowed_tools": [
+        "get_asset_context",
+        "get_signal_evidence",
+        "get_peer_anomalies",
+        "search_knowledge",
+        "rank_tests",
+        "append_report"
+      ],
+      "forbidden_claims": [
+        "asynchronous_difference_confirms_cell_fault",
+        "assume_mapping",
+        "all_clear_after_sensor_fix"
+      ],
+      "candidate_count": 3,
+      "hard_negative_count": 2,
+      "examples": 4
+    }
+  ],
+  "content_counts": {
+    "roots": 2400,
+    "buckets": 12,
+    "cold_start": 960,
+    "evolution": 720,
+    "dev": 360,
+    "sealed_test": 360,
+    "branches": 31200,
+    "parentage": 33600,
+    "skill_examples": 64,
+    "knowledge_evidence": 17,
+    "probes": 7
+  },
+  "cloud": {
+    "provenance": {
+      "method": "OpenAI-compatible cloud supplemental language synthesis",
+      "provider_base_url": "https://api.deepseek.com",
+      "model": "deepseek-flash",
+      "calls": 28,
+      "successful_calls": 28,
+      "http_attempts": 28,
+      "retries_per_task": 0,
+      "generated_at": "2026-10-01T16:04:21.127614+00:00",
+      "truth_source": "deterministic configured physics and enumerated math; never provider answers",
+      "real_operational_data": false,
+      "expert_review": "not_performed"
+    },
+    "usage": {
+      "prompt_tokens": 6280,
+      "completion_tokens": 39128,
+      "total_tokens": 45408
+    },
+    "skill_notes": 48,
+    "feedback_texts": 72
+  },
+  "carbon_figures": {
+    "positive_comparison": {
+      "fixture_id": "carbon-same-service-positive-benefit",
+      "baseline_kg": 655.5555555555555,
+      "candidate_kg": 625.0,
+      "avoided_kg": 30.555555555555543,
+      "reduction_pct": 4.661016949152541
+    },
+    "negative_comparison": {
+      "fixture_id": "carbon-inefficiency-offsets-manufacturing",
+      "baseline_kg": 575.5555555555555,
+      "candidate_kg": 625.0,
+      "avoided_kg": -49.44444444444446,
+      "increase_pct": 8.590733590733594
+    },
+    "gamma_range": [
+      {
+        "gamma": 0.0,
+        "nominal": 100.0,
+        "lower": 100.0,
+        "upper": 100.0
+      },
+      {
+        "gamma": 1.0,
+        "nominal": 100.0,
+        "lower": 80.0,
+        "upper": 120.0
+      },
+      {
+        "gamma": 1.5,
+        "nominal": 100.0,
+        "lower": 75.0,
+        "upper": 125.0
+      },
+      {
+        "gamma": 2.0,
+        "nominal": 100.0,
+        "lower": 70.0,
+        "upper": 130.0
+      }
+    ],
+    "pareto": {
+      "coverage_tags": [
+        "pareto_dominance"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "carbon-pareto-dominance",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "candidates": [
+          {
+            "candidate_id": "A",
+            "carbon": 10.0,
+            "cost": 10.0
+          },
+          {
+            "candidate_id": "B",
+            "carbon": 15.0,
+            "cost": 15.0
+          },
+          {
+            "candidate_id": "C",
+            "carbon": 5.0,
+            "cost": 20.0
+          },
+          {
+            "candidate_id": "D",
+            "carbon": 0.0,
+            "cost": 0.0,
+            "feasible": false
+          }
+        ]
+      },
+      "kind": "pareto",
+      "oracle": {
+        "dominated_ids": [
+          "B"
+        ],
+        "frontier_ids": [
+          "A",
+          "C"
+        ],
+        "infeasible_ids": [
+          "D"
+        ]
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-9"
+      ],
+      "synthetic": true,
+      "tolerance": {
+        "absolute": 1e-09,
+        "relative": 1e-09
+      }
+    },
+    "efficiency": {
+      "coverage_tags": [
+        "nonlinear_efficiency",
+        "approximation_tolerance"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "carbon-nonlinear-efficiency-expectation",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "delivered_kwh": 100.0,
+        "efficiencies": [
+          0.5,
+          0.9
+        ],
+        "state_probabilities": [
+          0.5,
+          0.5
+        ]
+      },
+      "kind": "nonlinear_efficiency",
+      "oracle": {
+        "exact_calculation_error": 0.0,
+        "expected_input_energy_kwh": 155.55555555555554,
+        "invalid_shortcut_error_kwh": 12.698412698412682,
+        "inverse_mean_efficiency_energy_kwh": 142.85714285714286
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-9"
+      ],
+      "synthetic": true,
+      "tolerance": {
+        "absolute": 1e-09,
+        "relative": 1e-09
+      }
+    },
+    "shared_error": {
+      "coverage_tags": [
+        "shared_error_cancellation"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "carbon-shared-error-cancels",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "baseline_coefficients": {
+          "grid_factor": 20.0,
+          "meter": 10.0
+        },
+        "baseline_nominal": 200.0,
+        "candidate_coefficients": {
+          "grid_factor": 20.0,
+          "meter": 10.0
+        },
+        "candidate_nominal": 100.0,
+        "gamma": 2.0
+      },
+      "kind": "robust_difference",
+      "oracle": {
+        "lower_avoided_kg": 100.0,
+        "nominal_avoided_kg": 100.0,
+        "robustly_better": true,
+        "shared_source_ids": [
+          "grid_factor",
+          "meter"
+        ],
+        "upper_avoided_kg": 100.0
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-9"
+      ],
+      "synthetic": true,
+      "tolerance": {
+        "absolute": 1e-09,
+        "relative": 1e-09
+      }
+    },
+    "economic_cash": {
+      "coverage_tags": [
+        "qualified_test_benefit_split"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "carbon-qualified-demo-income-split",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "avoided_kg": 1000.0,
+        "contract_price_rmb_per_t": 100.0,
+        "issued_t": 0.8,
+        "operating_savings_rmb": 20.0,
+        "rule_id": "TEST_RULE_001",
+        "shadow_price_rmb_per_t": 80.0,
+        "test_qualification_established": true
+      },
+      "kind": "economic_split",
+      "oracle": {
+        "cash_status": "demo_issued",
+        "credit_cash_rmb": 80.0,
+        "official_policy_claim": false,
+        "operating_savings_rmb": 20.0,
+        "shadow_value_rmb": 80.0,
+        "synthetic_rule_id": "TEST_RULE_001",
+        "total_cash_savings_rmb": 100.0
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-9"
+      ],
+      "synthetic": true,
+      "tolerance": {
+        "absolute": 1e-09,
+        "relative": 1e-09
+      }
+    },
+    "economic_no_cash": {
+      "coverage_tags": [
+        "shadow_value_without_cash_eligibility"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "carbon-shadow-value-no-cash",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "avoided_kg": 1000.0,
+        "contract_price_rmb_per_t": 100.0,
+        "issued_t": 0.0,
+        "operating_savings_rmb": 20.0,
+        "shadow_price_rmb_per_t": 80.0,
+        "test_qualification_established": false
+      },
+      "kind": "economic_split",
+      "oracle": {
+        "cash_status": "not_established",
+        "credit_cash_rmb": null,
+        "official_policy_claim": false,
+        "operating_savings_rmb": 20.0,
+        "shadow_value_rmb": 80.0,
+        "synthetic_rule_id": null,
+        "total_cash_savings_rmb": 20.0
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-9"
+      ],
+      "synthetic": true,
+      "tolerance": {
+        "absolute": 1e-09,
+        "relative": 1e-09
+      }
+    },
+    "ledger": {
+      "coverage_tags": [
+        "correction_reversal",
+        "demo_export"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "carbon-correction-and-demo-export",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "entries": [
+          {
+            "basis": "settled",
+            "data_scope": "demo_synthetic",
+            "emission_kg": 40.0,
+            "entry_id": "DEMO_ENTRY_1"
+          },
+          {
+            "basis": "settled",
+            "data_scope": "demo_synthetic",
+            "emission_kg": -10.0,
+            "entry_id": "DEMO_CORRECTION_1",
+            "reversal_of": "DEMO_ENTRY_1"
+          }
+        ]
+      },
+      "kind": "ledger_export",
+      "oracle": {
+        "corrected_demo_emission_kg": 30.0,
+        "correction_count": 1,
+        "demo_export_emission_kg": 30.0,
+        "demo_export_marked_synthetic": true,
+        "formal_export_emission_kg": 0,
+        "original_entry_retained": true
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-9"
+      ],
+      "synthetic": true,
+      "tolerance": {
+        "absolute": 1e-09,
+        "relative": 1e-09
+      }
+    }
+  },
+  "dispatch_examples": [
+    {
+      "coverage_tags": [
+        "travel_times"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "dispatch-travel-order",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "current_snapshot_version": 1,
+        "engineers": [
+          {
+            "available": true,
+            "available_from_minute": 0,
+            "engineer_id": "E1",
+            "initial_location": "A",
+            "leave_windows": [],
+            "max_work_minutes": 30,
+            "qualifications": [
+              "demo-inspection"
+            ],
+            "shift_windows": [
+              [
+                0,
+                30
+              ]
+            ],
+            "skills": [
+              "electrical",
+              "instrumentation"
+            ]
+          }
+        ],
+        "horizon_minutes": 30,
+        "locked_tasks": [],
+        "snapshot_version": 1,
+        "tasks": [
+          {
+            "approval": {
+              "current_version": 1,
+              "status": "APPROVED",
+              "version": 1
+            },
+            "asset_ids": [
+              "demo-asset-T1"
+            ],
+            "asset_mapping_valid": true,
+            "checks": [
+              "DEMO_CHANNEL_CHECK"
+            ],
+            "deadline_minute": 30,
+            "duration_minutes": 10,
+            "hard_deadline": true,
+            "installation_id": "demo-installation-v1",
+            "location": "B",
+            "predecessors": [],
+            "required_qualifications": [
+              "demo-inspection"
+            ],
+            "required_skills": [
+              "electrical"
+            ],
+            "severity": 2,
+            "task_id": "T1",
+            "tools": [
+              "meter"
+            ]
+          },
+          {
+            "approval": {
+              "current_version": 1,
+              "status": "APPROVED",
+              "version": 1
+            },
+            "asset_ids": [
+              "demo-asset-T2"
+            ],
+            "asset_mapping_valid": true,
+            "checks": [
+              "DEMO_CHANNEL_CHECK"
+            ],
+            "deadline_minute": 10,
+            "duration_minutes": 10,
+            "hard_deadline": true,
+            "installation_id": "demo-installation-v1",
+            "location": "A",
+            "predecessors": [],
+            "required_qualifications": [
+              "demo-inspection"
+            ],
+            "required_skills": [
+              "electrical"
+            ],
+            "severity": 2,
+            "task_id": "T2",
+            "tools": [
+              "meter"
+            ]
+          }
+        ],
+        "time_quantum_minutes": 5,
+        "time_unit": "minute",
+        "tools": [
+          {
+            "available_windows": [
+              [
+                0,
+                30
+              ]
+            ],
+            "capacity": 1,
+            "tool_id": "meter"
+          }
+        ],
+        "travel_minutes": {
+          "A": {
+            "A": 0,
+            "B": 5
+          },
+          "B": {
+            "A": 5,
+            "B": 0
+          }
+        }
+      },
+      "kind": "dispatch",
+      "oracle": {
+        "assignments": [
+          {
+            "end": 25,
+            "engineer_id": "E1",
+            "start": 15,
+            "task_id": "T1"
+          },
+          {
+            "end": 10,
+            "engineer_id": "E1",
+            "start": 0,
+            "task_id": "T2"
+          }
+        ],
+        "excluded": [],
+        "feasible_assignment_count": 8,
+        "idempotent_duplicate_task_ids": [],
+        "locked_tasks_preserved": [],
+        "method": "exhaustive_discrete_grid",
+        "objective": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0
+        ],
+        "requires_human_schedule_confirmation": true,
+        "status": "optimal",
+        "unassigned": []
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-8.2"
+      ],
+      "synthetic": true
+    },
+    {
+      "coverage_tags": [
+        "precedence"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "dispatch-precedence",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "current_snapshot_version": 1,
+        "engineers": [
+          {
+            "available": true,
+            "available_from_minute": 0,
+            "engineer_id": "E1",
+            "initial_location": "A",
+            "leave_windows": [],
+            "max_work_minutes": 30,
+            "qualifications": [
+              "demo-inspection"
+            ],
+            "shift_windows": [
+              [
+                0,
+                30
+              ]
+            ],
+            "skills": [
+              "electrical",
+              "instrumentation"
+            ]
+          }
+        ],
+        "horizon_minutes": 30,
+        "locked_tasks": [],
+        "snapshot_version": 1,
+        "tasks": [
+          {
+            "approval": {
+              "current_version": 1,
+              "status": "APPROVED",
+              "version": 1
+            },
+            "asset_ids": [
+              "demo-asset-T1"
+            ],
+            "asset_mapping_valid": true,
+            "checks": [
+              "DEMO_CHANNEL_CHECK"
+            ],
+            "deadline_minute": 25,
+            "duration_minutes": 10,
+            "hard_deadline": true,
+            "installation_id": "demo-installation-v1",
+            "location": "A",
+            "predecessors": [],
+            "required_qualifications": [
+              "demo-inspection"
+            ],
+            "required_skills": [
+              "electrical"
+            ],
+            "severity": 2,
+            "task_id": "T1",
+            "tools": [
+              "meter"
+            ]
+          },
+          {
+            "approval": {
+              "current_version": 1,
+              "status": "APPROVED",
+              "version": 1
+            },
+            "asset_ids": [
+              "demo-asset-T2"
+            ],
+            "asset_mapping_valid": true,
+            "checks": [
+              "DEMO_CHANNEL_CHECK"
+            ],
+            "deadline_minute": 25,
+            "duration_minutes": 10,
+            "hard_deadline": true,
+            "installation_id": "demo-installation-v1",
+            "location": "A",
+            "predecessors": [
+              "T1"
+            ],
+            "required_qualifications": [
+              "demo-inspection"
+            ],
+            "required_skills": [
+              "electrical"
+            ],
+            "severity": 2,
+            "task_id": "T2",
+            "tools": [
+              "meter"
+            ]
+          }
+        ],
+        "time_quantum_minutes": 5,
+        "time_unit": "minute",
+        "tools": [
+          {
+            "available_windows": [
+              [
+                0,
+                30
+              ]
+            ],
+            "capacity": 1,
+            "tool_id": "meter"
+          }
+        ],
+        "travel_minutes": {
+          "A": {
+            "A": 0,
+            "B": 5
+          },
+          "B": {
+            "A": 5,
+            "B": 0
+          }
+        }
+      },
+      "kind": "dispatch",
+      "oracle": {
+        "assignments": [
+          {
+            "end": 10,
+            "engineer_id": "E1",
+            "start": 0,
+            "task_id": "T1"
+          },
+          {
+            "end": 20,
+            "engineer_id": "E1",
+            "start": 10,
+            "task_id": "T2"
+          }
+        ],
+        "excluded": [],
+        "feasible_assignment_count": 8,
+        "idempotent_duplicate_task_ids": [],
+        "locked_tasks_preserved": [],
+        "method": "exhaustive_discrete_grid",
+        "objective": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "requires_human_schedule_confirmation": true,
+        "status": "optimal",
+        "unassigned": []
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-8.2"
+      ],
+      "synthetic": true
+    },
+    {
+      "coverage_tags": [
+        "lexicographic_severity"
+      ],
+      "data_scope": "demo_synthetic",
+      "fixture_id": "dispatch-critical-priority",
+      "generated_by": "deterministic_fixture_oracle_v1",
+      "inputs": {
+        "current_snapshot_version": 1,
+        "engineers": [
+          {
+            "available": true,
+            "available_from_minute": 0,
+            "engineer_id": "E1",
+            "initial_location": "A",
+            "leave_windows": [],
+            "max_work_minutes": 30,
+            "qualifications": [
+              "demo-inspection"
+            ],
+            "shift_windows": [
+              [
+                0,
+                30
+              ]
+            ],
+            "skills": [
+              "electrical",
+              "instrumentation"
+            ]
+          }
+        ],
+        "horizon_minutes": 30,
+        "locked_tasks": [],
+        "snapshot_version": 1,
+        "tasks": [
+          {
+            "approval": {
+              "current_version": 1,
+              "status": "APPROVED",
+              "version": 1
+            },
+            "asset_ids": [
+              "demo-asset-T1"
+            ],
+            "asset_mapping_valid": true,
+            "checks": [
+              "DEMO_CHANNEL_CHECK"
+            ],
+            "deadline_minute": 10,
+            "duration_minutes": 10,
+            "hard_deadline": true,
+            "installation_id": "demo-installation-v1",
+            "location": "A",
+            "predecessors": [],
+            "required_qualifications": [
+              "demo-inspection"
+            ],
+            "required_skills": [
+              "electrical"
+            ],
+            "severity": 1,
+            "task_id": "T1",
+            "tools": [
+              "meter"
+            ]
+          },
+          {
+            "approval": {
+              "current_version": 1,
+              "status": "APPROVED",
+              "version": 1
+            },
+            "asset_ids": [
+              "demo-asset-T2"
+            ],
+            "asset_mapping_valid": true,
+            "checks": [
+              "DEMO_CHANNEL_CHECK"
+            ],
+            "deadline_minute": 10,
+            "duration_minutes": 10,
+            "hard_deadline": true,
+            "installation_id": "demo-installation-v1",
+            "location": "A",
+            "predecessors": [],
+            "required_qualifications": [
+              "demo-inspection"
+            ],
+            "required_skills": [
+              "electrical"
+            ],
+            "severity": 3,
+            "task_id": "T2",
+            "tools": [
+              "meter"
+            ]
+          }
+        ],
+        "time_quantum_minutes": 5,
+        "time_unit": "minute",
+        "tools": [
+          {
+            "available_windows": [
+              [
+                0,
+                30
+              ]
+            ],
+            "capacity": 1,
+            "tool_id": "meter"
+          }
+        ],
+        "travel_minutes": {
+          "A": {
+            "A": 0,
+            "B": 5
+          },
+          "B": {
+            "A": 5,
+            "B": 0
+          }
+        }
+      },
+      "kind": "dispatch",
+      "oracle": {
+        "assignments": [
+          {
+            "end": 10,
+            "engineer_id": "E1",
+            "start": 0,
+            "task_id": "T2"
+          }
+        ],
+        "excluded": [],
+        "feasible_assignment_count": 3,
+        "idempotent_duplicate_task_ids": [],
+        "locked_tasks_preserved": [],
+        "method": "exhaustive_discrete_grid",
+        "objective": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "requires_human_schedule_confirmation": true,
+        "status": "optimal",
+        "unassigned": [
+          {
+            "reason": "RESOURCE_OR_DEADLINE_CONFLICT",
+            "task_id": "T1"
+          }
+        ]
+      },
+      "origin": "physics_simulated",
+      "schema_version": "mathematical-fixture-v1",
+      "source_refs": [
+        "doc02-section-8.2"
+      ],
+      "synthetic": true
+    }
+  ],
+  "all_carbon_fixture_ids": [
+    "carbon-wh-to-kwh",
+    "carbon-kg-to-tonne",
+    "carbon-manufacturing-per-pack",
+    "carbon-manufacturing-per-capacity",
+    "carbon-missing-factor-source",
+    "carbon-annual-co2-versus-lifecycle-co2e",
+    "carbon-simple-electricity",
+    "carbon-auxiliary-counted-once",
+    "carbon-same-service-positive-benefit",
+    "carbon-inefficiency-offsets-manufacturing",
+    "carbon-delay-not-permanent-avoidance",
+    "carbon-right-censored-life",
+    "carbon-zero-replacements",
+    "carbon-one-replacement",
+    "carbon-multiple-replacements",
+    "carbon-replacement-state-reset",
+    "carbon-terminal-state-mismatch",
+    "carbon-gamma-0-0",
+    "carbon-gamma-1-0",
+    "carbon-gamma-1-5",
+    "carbon-gamma-2-0",
+    "carbon-shared-error-cancels",
+    "carbon-negative-robust-lower-benefit",
+    "carbon-pareto-dominance",
+    "carbon-pareto-ties",
+    "carbon-shadow-value-no-cash",
+    "carbon-qualified-demo-income-split",
+    "carbon-correction-and-demo-export",
+    "carbon-nonlinear-efficiency-expectation",
+    "carbon-stopped-state-unmet-service"
+  ],
+  "sources": [
+    "battery_platform/docs/V2_CARBON_IMPLEMENTATION.md",
+    "docs/V2_SKILLS_DETAIL.md",
+    "docs/V2_CONTENT_IMPLEMENTATION.md",
+    "docs/V2_FIXTURES_DETAIL.md",
+    "content_v1/fixtures/carbon.jsonl",
+    "content_v1/fixtures/dispatch.jsonl"
+  ]
+}

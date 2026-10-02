@@ -1,0 +1,368 @@
+[
+  {
+    "section": "AGENT · 云端执行与证据报告",
+    "title": "一个执行器，把数值与行动连接起来",
+    "subtitle": "云端语言推理、数值预测和程序权限各有职责",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "DEV 新增的单 Agent 按采集、适用性检查、Skill 路由、候选分析、工具调用、严格报告验证的流程工作；补测后从再评估继续。它将已到达的测量、数值模型结果与授权知识组织成可审查报告。模型仍由云端 API 提供，平台不训练或修改 LLM 权重。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "组成",
+          "具体职责",
+          "用户看到的输出"
+        ],
+        "rows": [
+          [
+            "数值预测服务",
+            "绑定版本化特征/模型包，计算 SOH、RUL 或支持的概率",
+            "数值估计、区间、适用域与缺失说明"
+          ],
+          [
+            "云端 Agent",
+            "调用 OpenAI 兼容 Chat Completions；历史实测 deepseek-flash",
+            "事实、假设、反证、未知项、建议检查与理由"
+          ],
+          [
+            "程序执行器",
+            "检查身份、时间、引用、参数、工具预算和报告 schema",
+            "明确错误、等待补测或证据不足状态"
+          ]
+        ],
+        "widths": [
+          0.19,
+          0.4,
+          0.41
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "让建议可以落到下一次检查"
+      },
+      {
+        "type": "p",
+        "text": "用户可阅读事实及其证据编号、候选解释的支持与反证、适用性、检查优先级，以及未批准工单提案。假设概率默认空值；非空必须匹配校准数值工具。数据不足可以拒判，人员描述不能自动变成确诊。测试结果只有在已选中且授权后才到达，Agent 根据新证据重新分析。"
+      },
+      {
+        "type": "p",
+        "text": "工具白名单包含读取资产、测量、预测、邻接异常、知识、Skill、Memory，以及检查排序、工单提案和报告追加，共 10 项。每轮最多 12 次调用、4 个 Skill 正文。服务绑定安装身份、可见时间与 Context 版本，阻止未来数据、其他安装和隐藏标签进入报告。批准派单与正式执行继续由业务流程负责。"
+      },
+      {
+        "type": "callout",
+        "label": "真实接口已执行",
+        "text": "两根/臂 smoke 实际产生 14 个云端请求、76,602 tokens；证明接口与小规模更新链可执行。所有组都保守输出证据不足，不能当作真实故障准确率提升。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_IMPLEMENTATION.md",
+      "battery_platform/reports/v2_agent/cloud_smoke.json",
+      "battery_platform/reports/v2_agent/cloud_single_report.json"
+    ]
+  },
+  {
+    "section": "SELF EVOLVE · 反馈与经验",
+    "title": "把反馈保留下来，再有条件地使用",
+    "subtitle": "完整事实、可信来源、有限上下文和真正关闭的消融",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "现场自由反馈与结构化测量进入抽取器后，保留原文 span、作者、反馈 ID 与版本、可见时间、测量对象和信任等级。温度、内阻、电压的小数不再被英文句号拆坏。文字“未测到”不当阴性标签，干预后暂时无故障不自动当作误报。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "局部操作",
+          "何时使用",
+          "记录结果"
+        ],
+        "rows": [
+          [
+            "ADD / REVISE",
+            "新增经验或修正已有来源",
+            "保存完整事实引用与新来源版本"
+          ],
+          [
+            "CONFLICT",
+            "出现反证或文字/测量冲突",
+            "保留双方原值与信任等级"
+          ],
+          [
+            "DEPRECATE / NO_UPDATE",
+            "过期、不适用、重复或证据不足",
+            "明确停用/不更新，避免制造经验"
+          ]
+        ],
+        "widths": [
+          0.25,
+          0.35,
+          0.4
+        ]
+      },
+      {
+        "type": "p",
+        "text": "ACE 更新采用不可变快照和版本 CAS；当前运行继续使用开始时冻结的 Context。最新修复让每条 Memory 保存完整 fact_references，摘要最多 6 条事实、2,400 个 claim 字符，按纠错、测量、反证、未知项、结论和普通描述排序。末尾测量不再被前六句登记信息挤掉。模型可检索全文，并获取同一 Memory 的另一组相关事实。"
+      },
+      {
+        "type": "h2",
+        "text": "区分事件历史与相似经验"
+      },
+      {
+        "type": "p",
+        "text": "同安装、同根事件的已到达历史作为 event_history；相似经验按中文双字词片段、英文词边界及有限中英症状映射计算相关性。零相关、空查询和通用巡检词返回空。作用域、时间、过期与状态先过滤，相关候选中的正反例各最多 3 条，初始与工具检索共用 6 个唯一 Memory ID 的预算。"
+      },
+      {
+        "type": "callout",
+        "label": "消融修复 F05",
+        "text": "no_memory 在执行层清空学习 Memory，并关闭初始历史、相似检索及 search_memory；外部工具 callback 也不能重新打开。实际 initial/history/tool memory_ids 均被记录。此修复验证消融成立，不等于诊断分数升高。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_IMPLEMENTATION.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/tests/test_v2_feedback_facts.py",
+      "battery_platform/tests/test_v2_no_memory_control.py",
+      "battery_platform/tests/test_v2_memory_relevance.py"
+    ]
+  },
+  {
+    "section": "SELF EVOLVE · 候选选择与恢复",
+    "title": "候选必须过门，失败必须能解释",
+    "subtitle": "GEPA 文本优化、自动回归和来源版本恢复已接入真实服务",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "项目采用 GEPA 风格文本候选适配器：从已完成 evolution 报告、工具轨迹和可见反馈提出局部 Skill 修改，在独立 dev 根上比较基线与候选。允许改 instructions、routing_description、evidence_checklist、retrieval_query_template 与 inspection_selection_hints；工具权限、数值预测和 LLM 权重不随候选修改。"
+      },
+      {
+        "type": "p",
+        "text": "默认累计 50 个不同根事件触发，rollout 上限 200；历史 pilot 显式使用每批 2 根、一个候选、基线/候选各 2 根 dev，总 4 rollout。冻结先于调用，失败也占预算并记费用。有效且不劣的候选自动激活；不满足条件返回 NO_UPDATE 或隔离。候选生成器不能读取 sealed。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "历史批次",
+          "选择分：基线 → 候选",
+          "结果"
+        ],
+        "rows": [
+          [
+            "1",
+            "0.9333 → 0.9333",
+            "激活"
+          ],
+          [
+            "2",
+            "0.9333 → 0.8667",
+            "拒绝：候选严格失败"
+          ],
+          [
+            "3 / 4",
+            "0.9333 → 0.9333",
+            "各激活一次"
+          ],
+          [
+            "5",
+            "0.8667 → 0.8667",
+            "拒绝：两侧严格失败"
+          ],
+          [
+            "6",
+            "0.9333 → 0.9333",
+            "激活"
+          ]
+        ],
+        "widths": [
+          0.19,
+          0.38,
+          0.43
+        ]
+      },
+      {
+        "type": "p",
+        "text": "真实完成 6 次提案、24 次选择 rollout，4 次激活、2 次不更新。修改集中在 data-quality 的允许字段，补充引用编号可解析、校准与工况未核对不确诊、独立复核优先等规则。四次激活均为选择集平分，说明不劣门执行，不能称选择集升分。"
+      },
+      {
+        "type": "h2",
+        "text": "发布之后仍检查，来源失败可以有界恢复"
+      },
+      {
+        "type": "p",
+        "text": "Context 发布自动排队回归，默认 previous/current 各 5 个 dev 根；分数下降或硬失败可经取消/CAS屏障恢复并隔离坏版。缺 Key、prior、dev 或完整预算明确 no_check。GEPA 消费按根+反馈ID+版本固定，区分预留、终结、可重试失败、缺配置、取消和中断；同恢复代最多 3 自动尝试，60/120 秒退避。主动取消或重启后须显式 retry，原费用与失败记录保留。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_FINAL_REVIEW.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/docs/GEPA_RECOVERY.md",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/results.json"
+    ]
+  },
+  {
+    "section": "AGENT · 真实消融成绩",
+    "title": "A0–A4：全部分数使用同一口径展示",
+    "subtitle": "历史预登记小试验；每个已运行阶段均为 12 根",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "12 个主桶各选一个 evolution、dev 与 sealed 根，共 36 个互不交叉的根及母模板身份。evolution 六批各两根，先预测冻结，再揭示已选且授权检查并学习可见反馈。final Context 冻结、优化器关闭之后首次打开 sealed。dev 参与候选选择，不能称盲测。"
+      },
+      {
+        "type": "formula",
+        "text": "Q = 0.4×初始状态符合 + 0.3×引用完整 + 0.2×合适首项检查/拒判 + 0.1/(1+检查数)"
+      },
+      {
+        "type": "p",
+        "text": "直接云端报告 JSON 或严格契约失败记 0，失败仍进入 12 根分母；每根只计一次初始报告。Q 是程序质量，状态符合与引用可追溯不等于最终根因正确。保守拒判也可高分。漏/误检查依据 requires_initial_test 项目配置，不能解释成现场故障 recall/precision。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法 / 机制",
+          "Evolution Q",
+          "Final dev Q",
+          "Sealed Q",
+          "Sealed云报告"
+        ],
+        "rows": [
+          [
+            "A0 · 规则",
+            "0.9250",
+            "0.9250",
+            "0.9250",
+            "不适用"
+          ],
+          [
+            "A1 · 静态Skill/RAG",
+            "0.8556",
+            "0.9333",
+            "0.7000",
+            "9 / 12"
+          ],
+          [
+            "A2 · 情景记忆",
+            "0.8556",
+            "未运行",
+            "0.8556",
+            "11 / 12"
+          ],
+          [
+            "A3 · ACE经验",
+            "0.8556",
+            "未运行",
+            "0.7778",
+            "10 / 12"
+          ],
+          [
+            "A4 · ACE + GEPA",
+            "0.9333",
+            "0.5444",
+            "0.3111",
+            "4 / 12"
+          ]
+        ],
+        "widths": [
+          0.29,
+          0.17,
+          0.17,
+          0.17,
+          0.2
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A2/A3 的 final dev 为满足已登记累计预算未运行。sealed 初始 A1–A4 都是同一静态 v0，报告共享；A1 final仍 v0，复用同份结果，不计为四组独立实测。A2/A3 final v11各有 11 条 Memory；A4 final v16有 12 条 Memory和 data-quality Skill覆盖。"
+      },
+      {
+        "type": "callout",
+        "label": "比较身份必须明确",
+        "text": "0.7000 是这个 V2 pilot 内部的静态云端消融基线，不是 main 版本 Agent 分数。main 与当前 DEV 没有这套实验的同口径前后分数，不能画成 main 0.7 → DEV 0.8556。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_EXPERIMENT.md",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/protocol.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/summary.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/final_contexts.json"
+    ]
+  },
+  {
+    "section": "SELF EVOLVE · 有效性判定",
+    "title": "观察到更高分，也保留负结果",
+    "subtitle": "闭环能力已验证；自进化造成泛化提升尚未证明",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "sealed 的 A2 从静态基线 0.7000 到 0.8556，观察差 +0.1556，相对 +22.22%；A3 到 0.7778，相对 +11.11%；A4 到 0.3111，相对 −55.56%。A2 是本试验最高云端臂，但低于规则 A0 的 0.9250。所有分数保留，不能只呈现最好方法。"
+      },
+      {
+        "type": "p",
+        "text": "A2 情景记忆限同安装，而独立根安装不同，无法把这次差异归因于跨根 Memory 收益。每根单次云端实测、未固定 seed、仅12根且专家语义盲审 pending；温度0也不保证服务确定性。A4在 final dev 与 sealed都下降。现有证据支持真实接口、候选、检查反馈、激活/拒绝和冻结比较可执行，尚不支持 Self Evolve 因果升分或显著泛化结论。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "V2实际阶段",
+          "HTTP请求",
+          "provider tokens"
+        ],
+        "rows": [
+          [
+            "Evolution",
+            "48",
+            "500,310"
+          ],
+          [
+            "GEPA提案 / 选择",
+            "30",
+            "273,750"
+          ],
+          [
+            "Final dev",
+            "24",
+            "268,800"
+          ],
+          [
+            "Sealed静态 / final",
+            "12 / 34",
+            "120,848 / 364,226"
+          ],
+          [
+            "V2合计",
+            "148",
+            "1,527,934"
+          ],
+          [
+            "含取消V1累计",
+            "177",
+            "1,887,590"
+          ]
+        ],
+        "widths": [
+          0.48,
+          0.22,
+          0.3
+        ]
+      },
+      {
+        "type": "p",
+        "text": "V2 API/JSON失败为0，却有22份直接报告严格无效：20份数值契约拒绝、2份HTTP前预算预留阻断。事后只读核验识别12份中文数字边界误拒，另8份含引用中没有的派生/舍入值。后置词法修复属于新的运行版本，没有回填旧分数或把sealed失败交给优化器。"
+      },
+      {
+        "type": "callout",
+        "label": "最新修复与历史成绩分开",
+        "text": "原非空活动Context的no_memory对照解释失效；本pilot A1确实为空v0，所以静态分数保留。F02–F07及604项Python回归验证软件行为，当前没有新的云端质量评分。软件回归不能换算为诊断0.9，自进化因果收益也尚未证明。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_EXPERIMENT.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/summary.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/post_execution_audit.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/post_pilot_runtime_change.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/provider_calls.jsonl"
+    ]
+  }
+]

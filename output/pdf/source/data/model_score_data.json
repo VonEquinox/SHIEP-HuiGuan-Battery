@@ -1,0 +1,972 @@
+{
+  "evidence_date": "2026-10-02",
+  "dev_commit": "0d9a53de2afaf062e4a2fa433dec97f759d56680",
+  "main_commit": "c4203014c4c6999c2d176b1402d596813a072f73",
+  "unit": "SOH percentage points (ratio error ×100); lower is better",
+  "aggregation": "For each physical cell, average absolute error across its prefixes; average those cell MAEs within source; mean±sample SD across seeds0,1,2 (not CI).",
+  "metric_formula": "MAE_source = (1/C) Σ_cell [(100/N_cell) Σ_rows |pred_soh - true_soh|]",
+  "main_model": {
+    "name": "TabICL+ExtraTrees equal frozen streaming hybrid",
+    "schema": "xjtu_71d_partial_cc_v1",
+    "role": "XJTU-only matched71D adaptive development OOF; protected3 cells unscored",
+    "mae_pp": 0.5858972199103465,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "train_cells": 21,
+    "train_rows": 2058,
+    "source_path": "c4203014c4c6999c2d176b1402d596813a072f73:model_lab/reports/round3/champion_hybrid_v2_streaming/manifest.json",
+    "source_json_selector": "development_ensemble_mae_pp",
+    "direct_comparison_with_dev_HM1_valid": false,
+    "reason": "Different71Dvs30D input, windows, calibration semantics, and development population/protocol."
+  },
+  "scale": {
+    "source_path": "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+    "source_json_selector": "data_scale",
+    "complete_comparison": {
+      "xjtu_cells": 21,
+      "joint_cells": 56,
+      "xjtu_rows": 168,
+      "joint_rows": 448,
+      "ratio": 2.6666666666666665,
+      "increase_pct": 166.66666666666666
+    },
+    "development_nonfinal": {
+      "xjtu_cells": 18,
+      "joint_cells": 47,
+      "xjtu_rows": 144,
+      "joint_rows": 376,
+      "ratio": 2.611111111111111,
+      "increase_pct": 161.11111111111111
+    },
+    "train": {
+      "xjtu_cells": 11,
+      "joint_cells": 28,
+      "xjtu_rows": 88,
+      "joint_rows": 224,
+      "ratio": 2.5454545454545454,
+      "increase_pct": 154.54545454545453
+    },
+    "split_population": {
+      "train": {
+        "xjtu_cells": 11,
+        "matr_cells": 17,
+        "joint_rows": 224
+      },
+      "dev": {
+        "xjtu_cells": 3,
+        "matr_cells": 6,
+        "joint_rows": 72
+      },
+      "calibration": {
+        "xjtu_cells": 4,
+        "matr_cells": 6,
+        "joint_rows": 80
+      },
+      "historical_comparison_final": {
+        "xjtu_cells": 3,
+        "matr_cells": 6,
+        "joint_rows": 72
+      }
+    },
+    "warning": "Counts are modelable cell identities and prefix rows in the 30D package, not total downloaded raw MATR cells/cycles. V1 main used 2058 different partial-curve windows: do not divide DEV448 by2058. Source/chemistry coverage XJTU NCM→XJTU NCM+MATR LFP is qualitative, not a measured geometric-distribution multiplier."
+  },
+  "development": {
+    "feature_schema": "battery_features_v2_channel_validity_1",
+    "population": {
+      "train_cells": 28,
+      "train_rows": 224,
+      "dev_xjtu_cells": 3,
+      "dev_xjtu_rows": 24,
+      "dev_matr_cells": 6,
+      "dev_matr_rows": 48,
+      "calibration_cells": 10,
+      "calibration_rows": 80,
+      "nonfinal_cells": 47,
+      "nonfinal_rows": 376
+    },
+    "models": {
+      "MLP": {
+        "role": "pre-F01 historical scalar comparator; unchanged raw 30D inputs, population, labels, own preprocessing; not a newly scored 6-channel artifact",
+        "source_path": "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json",
+        "source_json_selector": "rows where method=mlp and part=dev",
+        "metrics": {
+          "xjtu": {
+            "mean": 0.7297388163511475,
+            "sample_sd": 0.15867181889393847,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.9113932310298324,
+              0.6182234159558833,
+              0.6595998020677266
+            ]
+          },
+          "matr": {
+            "mean": 5.330279534841793,
+            "sample_sd": 3.2562021569120585,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              9.08730801737841,
+              3.323682419092945,
+              3.5798481680540246
+            ]
+          }
+        }
+      },
+      "LSTM": {
+        "role": "pre-F01 historical scalar comparator; unchanged raw 30D inputs, population, labels, own preprocessing; not a newly scored 6-channel artifact",
+        "source_path": "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json",
+        "source_json_selector": "rows where method=lstm and part=dev",
+        "metrics": {
+          "xjtu": {
+            "mean": 4.490945443733923,
+            "sample_sd": 0.005833115461095096,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              4.494081399459474,
+              4.49453978824078,
+              4.484215143501515
+            ]
+          },
+          "matr": {
+            "mean": 12.057030670795715,
+            "sample_sd": 0.27279849935473793,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              12.324448170532085,
+              11.779152118693295,
+              12.067491723161766
+            ]
+          }
+        }
+      },
+      "LIGHTGBM": {
+        "role": "pre-F01 historical scalar comparator; unchanged raw 30D inputs, population, labels, own preprocessing; not a newly scored 6-channel artifact",
+        "source_path": "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json",
+        "source_json_selector": "rows where method=lightgbm and part=dev",
+        "metrics": {
+          "xjtu": {
+            "mean": 1.266915739081391,
+            "sample_sd": 0.0,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              1.266915739081391,
+              1.266915739081391,
+              1.266915739081391
+            ]
+          },
+          "matr": {
+            "mean": 4.064937437202786,
+            "sample_sd": 0.0,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              4.064937437202786,
+              4.064937437202786,
+              4.064937437202786
+            ]
+          }
+        }
+      },
+      "M1": {
+        "role": "new schema independently retrained development weights",
+        "source_path": "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+        "source_json_selector": "models.M1.new6channel",
+        "metrics": {
+          "xjtu": {
+            "mean": 0.6095458466379114,
+            "sample_sd": 0.06588783312261236,
+            "seed_values": [
+              0.5879449152224084,
+              0.6835227033084289,
+              0.5571699213828968
+            ],
+            "seeds": [
+              0,
+              1,
+              2
+            ]
+          },
+          "matr": {
+            "mean": 1.7021475435912425,
+            "sample_sd": 0.008235919104800258,
+            "seed_values": [
+              1.6960880765950301,
+              1.6988296390804376,
+              1.7115249150982599
+            ],
+            "seeds": [
+              0,
+              1,
+              2
+            ]
+          }
+        }
+      },
+      "M2": {
+        "role": "new schema independently retrained development weights",
+        "source_path": "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+        "source_json_selector": "models.M2.new6channel",
+        "metrics": {
+          "xjtu": {
+            "mean": 4.808777402229416,
+            "sample_sd": 4.10586381887899,
+            "seed_values": [
+              4.267162371389836,
+              9.158568561641424,
+              1.000601273656986
+            ],
+            "seeds": [
+              0,
+              1,
+              2
+            ]
+          },
+          "matr": {
+            "mean": 8.529433462200194,
+            "sample_sd": 0.6476742411572995,
+            "seed_values": [
+              9.266191732336553,
+              8.049823210991145,
+              8.272285443272885
+            ],
+            "seeds": [
+              0,
+              1,
+              2
+            ]
+          }
+        }
+      },
+      "H-M1": {
+        "role": "new schema independently retrained development weights",
+        "source_path": "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+        "source_json_selector": "models.H-M1.new6channel",
+        "metrics": {
+          "xjtu": {
+            "mean": 0.38412701184047154,
+            "sample_sd": 0.017268099639337665,
+            "seed_values": [
+              0.39320165522418177,
+              0.36421355927157334,
+              0.3949658210256594
+            ],
+            "seeds": [
+              0,
+              1,
+              2
+            ]
+          },
+          "matr": {
+            "mean": 1.5289539187495047,
+            "sample_sd": 0.03443280412667837,
+            "seed_values": [
+              1.5622886811027925,
+              1.5310538819285118,
+              1.4935191932172103
+            ],
+            "seeds": [
+              0,
+              1,
+              2
+            ]
+          }
+        }
+      }
+    },
+    "HM1_improvements": {
+      "M1": {
+        "xjtu": {
+          "baseline_mae_pp": 0.6095458466379114,
+          "candidate_mae_pp": 0.38412701184047154,
+          "absolute_error_reduction_pp": 0.2254188347974399,
+          "relative_error_reduction_pct": 36.98144053327386,
+          "error_ratio_baseline_over_candidate": 1.5868341143659448,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        },
+        "matr": {
+          "baseline_mae_pp": 1.7021475435912425,
+          "candidate_mae_pp": 1.5289539187495047,
+          "absolute_error_reduction_pp": 0.17319362484173784,
+          "relative_error_reduction_pct": 10.175006596451015,
+          "error_ratio_baseline_over_candidate": 1.11327589583824,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        }
+      },
+      "MLP": {
+        "xjtu": {
+          "baseline_mae_pp": 0.7297388163511475,
+          "candidate_mae_pp": 0.38412701184047154,
+          "absolute_error_reduction_pp": 0.3456118045106759,
+          "relative_error_reduction_pct": 47.36102791390624,
+          "error_ratio_baseline_over_candidate": 1.899733145177015,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        },
+        "matr": {
+          "baseline_mae_pp": 5.330279534841793,
+          "candidate_mae_pp": 1.5289539187495047,
+          "absolute_error_reduction_pp": 3.8013256160922886,
+          "relative_error_reduction_pct": 71.31568975406681,
+          "error_ratio_baseline_over_candidate": 3.4862264123704283,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        }
+      },
+      "LSTM": {
+        "xjtu": {
+          "baseline_mae_pp": 4.490945443733923,
+          "candidate_mae_pp": 0.38412701184047154,
+          "absolute_error_reduction_pp": 4.106818431893452,
+          "relative_error_reduction_pct": 91.44663375110844,
+          "error_ratio_baseline_over_candidate": 11.691303410859893,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        },
+        "matr": {
+          "baseline_mae_pp": 12.057030670795715,
+          "candidate_mae_pp": 1.5289539187495047,
+          "absolute_error_reduction_pp": 10.52807675204621,
+          "relative_error_reduction_pct": 87.31898457840947,
+          "error_ratio_baseline_over_candidate": 7.885803831587596,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        }
+      },
+      "LIGHTGBM": {
+        "xjtu": {
+          "baseline_mae_pp": 1.266915739081391,
+          "candidate_mae_pp": 0.38412701184047154,
+          "absolute_error_reduction_pp": 0.8827887272409194,
+          "relative_error_reduction_pct": 69.68014525425404,
+          "error_ratio_baseline_over_candidate": 3.2981688348632527,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        },
+        "matr": {
+          "baseline_mae_pp": 4.064937437202786,
+          "candidate_mae_pp": 1.5289539187495047,
+          "absolute_error_reduction_pp": 2.535983518453282,
+          "relative_error_reduction_pct": 62.386778582215356,
+          "error_ratio_baseline_over_candidate": 2.6586396014651656,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        }
+      }
+    },
+    "interval_metrics": {
+      "dev": {
+        "xjtu": {
+          "mae_pp": {
+            "mean": 0.3841270118404715,
+            "sample_sd": 0.017268099639337665,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.39320165522418177,
+              0.36421355927157334,
+              0.3949658210256594
+            ]
+          },
+          "rmse_pp": {
+            "mean": 0.48104151030917286,
+            "sample_sd": 0.026333490117999573,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.4870265362825712,
+              0.4522306453249489,
+              0.5038673493199984
+            ]
+          },
+          "coverage_90": {
+            "mean": 0.9583333333333334,
+            "sample_sd": 0.0,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.9583333333333334,
+              0.9583333333333334,
+              0.9583333333333334
+            ]
+          },
+          "width_pp": {
+            "mean": 8.937169579258347,
+            "sample_sd": 0.15946440091485325,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              9.026337568372671,
+              8.75306606116733,
+              9.032105108235038
+            ]
+          }
+        },
+        "matr": {
+          "mae_pp": {
+            "mean": 1.528953918749505,
+            "sample_sd": 0.034432804126678374,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              1.5622886811027925,
+              1.5310538819285118,
+              1.4935191932172103
+            ]
+          },
+          "rmse_pp": {
+            "mean": 3.9254015136676608,
+            "sample_sd": 0.053949456716486134,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              3.9780146235789977,
+              3.927981623093627,
+              3.8702082943303577
+            ]
+          },
+          "coverage_90": {
+            "mean": 0.8125,
+            "sample_sd": 0.02083333333333337,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.7916666666666666,
+              0.8333333333333334,
+              0.8125
+            ]
+          },
+          "width_pp": {
+            "mean": 12.817406268625522,
+            "sample_sd": 0.13746169403783878,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              12.690407076181843,
+              12.963362648478197,
+              12.798449081216525
+            ]
+          }
+        }
+      },
+      "calibration": {
+        "xjtu": {
+          "mae_pp": {
+            "mean": 0.694405434186664,
+            "sample_sd": 0.04266759165208415,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.6519548951353353,
+              0.7372868155073324,
+              0.6939745919173241
+            ]
+          },
+          "rmse_pp": {
+            "mean": 0.9830891709838445,
+            "sample_sd": 0.015677188038991485,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.974677755046811,
+              1.001176892000207,
+              0.9734128659045155
+            ]
+          },
+          "coverage_90": {
+            "mean": 0.7291666666666666,
+            "sample_sd": 0.03608439182435161,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.75,
+              0.6875,
+              0.75
+            ]
+          },
+          "width_pp": {
+            "mean": 9.639460399057818,
+            "sample_sd": 0.20877369477767466,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              9.688650963168666,
+              9.410483924293857,
+              9.81924630971093
+            ]
+          }
+        },
+        "matr": {
+          "mae_pp": {
+            "mean": 0.1751364556583752,
+            "sample_sd": 0.02643780155597838,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.19423754972849758,
+              0.18620916018815084,
+              0.1449626570584772
+            ]
+          },
+          "rmse_pp": {
+            "mean": 0.3284573840558465,
+            "sample_sd": 0.059788373529219854,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.3778142540949774,
+              0.34558294578569226,
+              0.26197495228686996
+            ]
+          },
+          "coverage_90": {
+            "mean": 0.9305555555555556,
+            "sample_sd": 0.02405626121623445,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              0.9166666666666666,
+              0.9583333333333334,
+              0.9166666666666666
+            ]
+          },
+          "width_pp": {
+            "mean": 16.989572859235995,
+            "sample_sd": 0.34153775532871655,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "seed_values": [
+              16.76785280933696,
+              17.382883238972962,
+              16.817982529398066
+            ]
+          }
+        }
+      }
+    },
+    "interval_source_path": "battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_development.json",
+    "interval_warning": "Uncalibrated research quantile intervals; empirical90% coverage XJTU95.83%, MATR81.25% on dev. Do not claim uniformly calibrated90% safety guarantees or new final/SOTA."
+  },
+  "historical_final": {
+    "source_path": "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+    "unit": "SOHpp",
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "population": {
+      "xjtu_cells": 3,
+      "xjtu_rows": 24,
+      "matr_cells": 6,
+      "matr_rows": 48
+    },
+    "status": "XJTU historically exposed comparison final; MATR one-time frozen comparison; pre-F01schema. Not new H-M1 final or new6channelfinal.",
+    "models": {
+      "M1_joint": {
+        "matr": {
+          "mae_pp_mean": 2.4527911757498586,
+          "mae_pp_sd": 0.007442126784725232,
+          "rmse_pp_mean": 4.790583459998821,
+          "rmse_pp_sd": 0.01740072066179388,
+          "seeds": 3
+        },
+        "xjtu": {
+          "mae_pp_mean": 1.176750843955516,
+          "mae_pp_sd": 0.11206913777194731,
+          "rmse_pp_mean": 1.6628449872339932,
+          "rmse_pp_sd": 0.18010861465807604,
+          "seeds": 3
+        }
+      },
+      "M2_joint": {
+        "matr": {
+          "mae_pp_mean": 9.391801317005852,
+          "mae_pp_sd": 1.7472386477757242,
+          "rmse_pp_mean": 19.291057879249685,
+          "rmse_pp_sd": 4.828748037644737,
+          "seeds": 3
+        },
+        "xjtu": {
+          "mae_pp_mean": 3.0158657291263946,
+          "mae_pp_sd": 0.6034460556726111,
+          "rmse_pp_mean": 3.2872988555192926,
+          "rmse_pp_sd": 0.641718754507389,
+          "seeds": 3
+        }
+      },
+      "MLP_JOINT": {
+        "xjtu": {
+          "mae_pp_mean": 0.633793572584788,
+          "mae_pp_sd": 0.059776728335706145,
+          "rmse_pp_mean": 0.8024670507342254,
+          "rmse_pp_sd": 0.13333105992352473,
+          "seeds": 3
+        },
+        "matr": {
+          "mae_pp_mean": 4.57174823515945,
+          "mae_pp_sd": 2.9025961599236636,
+          "rmse_pp_mean": 7.024636845119162,
+          "rmse_pp_sd": 4.010442354556714,
+          "seeds": 3
+        }
+      },
+      "LSTM_JOINT": {
+        "xjtu": {
+          "mae_pp_mean": 4.169537623723348,
+          "mae_pp_sd": 0.7870935864916985,
+          "rmse_pp_mean": 5.5206988658380824,
+          "rmse_pp_sd": 1.3028497019916505,
+          "seeds": 3
+        },
+        "matr": {
+          "mae_pp_mean": 10.31156935625606,
+          "mae_pp_sd": 2.1715303226548768,
+          "rmse_pp_mean": 17.63663922929065,
+          "rmse_pp_sd": 5.004476921883075,
+          "seeds": 3
+        }
+      },
+      "LIGHTGBM_JOINT": {
+        "xjtu": {
+          "mae_pp_mean": 1.5715858914902379,
+          "mae_pp_sd": 0.0,
+          "rmse_pp_mean": 2.5781230671568967,
+          "rmse_pp_sd": 0.0,
+          "seeds": 3
+        },
+        "matr": {
+          "mae_pp_mean": 3.8754144406712974,
+          "mae_pp_sd": 0.0,
+          "rmse_pp_mean": 8.182336753309889,
+          "rmse_pp_sd": 0.0,
+          "seeds": 3
+        }
+      }
+    },
+    "M1_improvements": {
+      "MLP_JOINT": {
+        "xjtu": {
+          "baseline_mae_pp": 0.633793572584788,
+          "candidate_mae_pp": 1.176750843955516,
+          "absolute_error_reduction_pp": -0.5429572713707281,
+          "relative_error_reduction_pct": -85.66784121151562,
+          "error_ratio_baseline_over_candidate": 0.5385962337229875,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        },
+        "matr": {
+          "baseline_mae_pp": 4.57174823515945,
+          "candidate_mae_pp": 2.4527911757498586,
+          "absolute_error_reduction_pp": 2.118957059409591,
+          "relative_error_reduction_pct": 46.348944657834764,
+          "error_ratio_baseline_over_candidate": 1.863896233955502,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        }
+      },
+      "LSTM_JOINT": {
+        "xjtu": {
+          "baseline_mae_pp": 4.169537623723348,
+          "candidate_mae_pp": 1.176750843955516,
+          "absolute_error_reduction_pp": 2.9927867797678314,
+          "relative_error_reduction_pct": 71.7774259366272,
+          "error_ratio_baseline_over_candidate": 3.5432629134200697,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        },
+        "matr": {
+          "baseline_mae_pp": 10.31156935625606,
+          "candidate_mae_pp": 2.4527911757498586,
+          "absolute_error_reduction_pp": 7.858778180506201,
+          "relative_error_reduction_pct": 76.21321167508084,
+          "error_ratio_baseline_over_candidate": 4.204014372770093,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        }
+      },
+      "LIGHTGBM_JOINT": {
+        "xjtu": {
+          "baseline_mae_pp": 1.5715858914902379,
+          "candidate_mae_pp": 1.176750843955516,
+          "absolute_error_reduction_pp": 0.39483504753472176,
+          "relative_error_reduction_pct": 25.123351493078374,
+          "error_ratio_baseline_over_candidate": 1.3355298613660034,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        },
+        "matr": {
+          "baseline_mae_pp": 3.8754144406712974,
+          "candidate_mae_pp": 2.4527911757498586,
+          "absolute_error_reduction_pp": 1.4226232649214388,
+          "relative_error_reduction_pct": 36.70893234002123,
+          "error_ratio_baseline_over_candidate": 1.580001786938311,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        }
+      },
+      "M2_joint": {
+        "xjtu": {
+          "baseline_mae_pp": 3.0158657291263946,
+          "candidate_mae_pp": 1.176750843955516,
+          "absolute_error_reduction_pp": 1.8391148851708785,
+          "relative_error_reduction_pct": 60.981325110372694,
+          "error_ratio_baseline_over_candidate": 2.5628753483523323,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        },
+        "matr": {
+          "baseline_mae_pp": 9.391801317005852,
+          "candidate_mae_pp": 2.4527911757498586,
+          "absolute_error_reduction_pp": 6.939010141255993,
+          "relative_error_reduction_pct": 73.8836982069823,
+          "error_ratio_baseline_over_candidate": 3.8290260540156353,
+          "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+        }
+      }
+    },
+    "XJTU_only_OOD_to_joint_MATR": {
+      "mlp": {
+        "baseline_mae_pp": 23.60470609532462,
+        "candidate_mae_pp": 4.57174823515945,
+        "absolute_error_reduction_pp": 19.03295786016517,
+        "relative_error_reduction_pct": 80.63204762348228,
+        "error_ratio_baseline_over_candidate": 5.163168416359952,
+        "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+      },
+      "lstm": {
+        "baseline_mae_pp": 10.799387180142931,
+        "candidate_mae_pp": 10.31156935625606,
+        "absolute_error_reduction_pp": 0.48781782388687134,
+        "relative_error_reduction_pct": 4.517088013881312,
+        "error_ratio_baseline_over_candidate": 1.0473078158166982,
+        "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+      },
+      "lightgbm": {
+        "baseline_mae_pp": 9.859704210440862,
+        "candidate_mae_pp": 3.8754144406712974,
+        "absolute_error_reduction_pp": 5.984289769769564,
+        "relative_error_reduction_pct": 60.69441478206358,
+        "error_ratio_baseline_over_candidate": 2.5441676913225746,
+        "formula": "(baseline MAE - candidate MAE) / baseline MAE * 100; baseline is the denominator; positive means better"
+      }
+    },
+    "unsupported": "XJTU-only M1 has no legal MATR domain head, so no numeric M1 OOD score."
+  },
+  "F01": {
+    "source_path": "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+    "old_vs_new": {
+      "M1": {
+        "old5channel": {
+          "xjtu": {
+            "mean_mae_pp": 0.6095458466379114,
+            "sample_std_mae_pp": 0.06588783312261236,
+            "seeds_mae_pp": [
+              0.5879449152224084,
+              0.6835227033084289,
+              0.5571699213828968
+            ]
+          },
+          "matr": {
+            "mean_mae_pp": 1.7021475435912425,
+            "sample_std_mae_pp": 0.008235919104800258,
+            "seeds_mae_pp": [
+              1.6960880765950301,
+              1.6988296390804376,
+              1.7115249150982599
+            ]
+          }
+        },
+        "new6channel": {
+          "xjtu": {
+            "mean_mae_pp": 0.6095458466379114,
+            "sample_std_mae_pp": 0.06588783312261236,
+            "seeds_mae_pp": [
+              0.5879449152224084,
+              0.6835227033084289,
+              0.5571699213828968
+            ]
+          },
+          "matr": {
+            "mean_mae_pp": 1.7021475435912425,
+            "sample_std_mae_pp": 0.008235919104800258,
+            "seeds_mae_pp": [
+              1.6960880765950301,
+              1.6988296390804376,
+              1.7115249150982599
+            ]
+          }
+        }
+      },
+      "M2": {
+        "old5channel": {
+          "xjtu": {
+            "mean_mae_pp": 2.671866937329755,
+            "sample_std_mae_pp": 1.4275528961858501,
+            "seeds_mae_pp": [
+              3.138364974931538,
+              1.0694240107517836,
+              3.807811826305945
+            ]
+          },
+          "matr": {
+            "mean_mae_pp": 9.747352529836837,
+            "sample_std_mae_pp": 1.0501004286039881,
+            "seeds_mae_pp": [
+              8.69075750089687,
+              10.790835563094754,
+              9.760464525518882
+            ]
+          }
+        },
+        "new6channel": {
+          "xjtu": {
+            "mean_mae_pp": 4.808777402229416,
+            "sample_std_mae_pp": 4.10586381887899,
+            "seeds_mae_pp": [
+              4.267162371389836,
+              9.158568561641424,
+              1.000601273656986
+            ]
+          },
+          "matr": {
+            "mean_mae_pp": 8.529433462200194,
+            "sample_std_mae_pp": 0.6476742411572995,
+            "seeds_mae_pp": [
+              9.266191732336553,
+              8.049823210991145,
+              8.272285443272885
+            ]
+          }
+        }
+      },
+      "H-M1": {
+        "old5channel": {
+          "xjtu": {
+            "mean_mae_pp": 0.38412701184047154,
+            "sample_std_mae_pp": 0.017268099639337665,
+            "seeds_mae_pp": [
+              0.39320165522418177,
+              0.36421355927157334,
+              0.3949658210256594
+            ]
+          },
+          "matr": {
+            "mean_mae_pp": 1.5289539187495047,
+            "sample_std_mae_pp": 0.03443280412667837,
+            "seeds_mae_pp": [
+              1.5622886811027925,
+              1.5310538819285118,
+              1.4935191932172103
+            ]
+          }
+        },
+        "new6channel": {
+          "xjtu": {
+            "mean_mae_pp": 0.38412701184047154,
+            "sample_std_mae_pp": 0.017268099639337665,
+            "seeds_mae_pp": [
+              0.39320165522418177,
+              0.36421355927157334,
+              0.3949658210256594
+            ]
+          },
+          "matr": {
+            "mean_mae_pp": 1.5289539187495047,
+            "sample_std_mae_pp": 0.03443280412667837,
+            "seeds_mae_pp": [
+              1.5622886811027925,
+              1.5310538819285118,
+              1.4935191932172103
+            ]
+          }
+        }
+      }
+    },
+    "retrain_count": 9,
+    "weights_reused": false,
+    "scalar30D_unchanged": true,
+    "old_final_or_protected_scored": false,
+    "interpretation": "M1/H-M1 unchanged; M2 XJTU worsens and MATR improves. Channel/input/initialization changes together: not missingtemperature causal proof."
+  },
+  "architecture": {
+    "source_pooled_backbone": true,
+    "source_residual_stage": true,
+    "source_normalized_log_soh": true,
+    "quantiles": [
+      0.05,
+      0.5,
+      0.95
+    ],
+    "n_estimators": 160,
+    "depth": 3,
+    "min_leaf": 5,
+    "residual_estimators": 80,
+    "residual_depth": 2,
+    "residual_weight": 1.0,
+    "weighting": "cell-balanced"
+  },
+  "architecture_description": "Separate source-level q05/q50/q95 GBDT backbone pools protocols within XJTU and within MATR; source-level quantile residual, not cross-source weight-sharing. Target source-normalized logSOH; train-only median/mean/scale and cell-balanced fit; rowwise quantile sorting, point prediction is median of ordered outputs.",
+  "deployment_status": "Current selected research candidate = new-schema H-M1 quantile prototype. It has not replaced complete production DomainBaseline multihead package. Existing M1 remains cross-source production candidate; M2 not selected.",
+  "known_doc_error": "JOINT_XJTU_MATR_RESULTS_20261002.md sentence says LightGBM is better than M1 on XJTUfinal; JSON shows1.571586 vs1.176751, so M1 is25.123% better than LightGBM. Recomputed values above supersede that sentence."
+}

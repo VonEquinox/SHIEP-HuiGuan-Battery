@@ -1,0 +1,729 @@
+[
+  {
+    "section": "数值模型与数据证据",
+    "title": "数据已经落地：从 XJTU 到 XJTU + MATR",
+    "subtitle": "完整模型人口 2.667×；真正用于训练的人口 2.545×。下载规模与训练样本规模分开统计。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "MIT/Stanford 的 MATR 数据已经真实下载到本地：三个 corrected MATLAB 批次共 8,269,341,808 bytes，另有完整 Arbin 单电芯 CSV 与官方容量摘要 JSON。原始大文件保存在 model_lab/data/raw/matr/，只读且不进入 Git；官方文件大小、本地 SHA-256、稳定 URL 与来源许可回执保存在仓库。解析器逐电芯流式读取 HDF5，并通过限定 MCOS 字符串表还原 barcode，不执行 MATLAB 类。"
+      },
+      {
+        "type": "p",
+        "text": "140 个原始 struct 的条码与通道逐一核对官方 API，5 对续测依据真实条码与测量连续性合并成 135 个独立物理电芯；134 个有测量对象、113,303 物理周期。数据使用分两条：容量摘要构造共同 30D SOH 联合包；完整 corrected 轨迹用于物理循环寿命开发。完整批次的 135 个身份没有全部混进当前 SOH 比较。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "统计口径",
+          "原 XJTU 电芯/行",
+          "联合电芯/行",
+          "总量倍数"
+        ],
+        "rows": [
+          [
+            "完整 comparison",
+            "21 / 168",
+            "56 / 448",
+            "2.667×"
+          ],
+          [
+            "non-final 开发",
+            "18 / 144",
+            "47 / 376",
+            "2.611×"
+          ],
+          [
+            "train 拟合",
+            "11 / 88",
+            "28 / 224",
+            "2.545×"
+          ]
+        ],
+        "widths": [
+          0.29,
+          0.25,
+          0.26,
+          0.2
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "split",
+          "XJTU 电芯",
+          "MATR 电芯",
+          "联合行"
+        ],
+        "rows": [
+          [
+            "train",
+            "11",
+            "17",
+            "224"
+          ],
+          [
+            "dev",
+            "3",
+            "6",
+            "72"
+          ],
+          [
+            "calibration",
+            "4",
+            "6",
+            "80"
+          ],
+          [
+            "历史 comparison final",
+            "3",
+            "6",
+            "72"
+          ]
+        ],
+        "widths": [
+          0.4,
+          0.2,
+          0.2,
+          0.2
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "总量倍数 = 联合独立电芯 / 原 XJTU 独立电芯；新增比例 = (联合 − 原 XJTU) / 原 XJTU × 100%。"
+      },
+      {
+        "type": "callout",
+        "label": "分布覆盖的实际含义",
+        "text": "支持来源由 XJTU/NCM 扩展到 MATR/LFP；没有测量特征空间几何覆盖倍率。循环/窗口重复观测不等于新电芯，2.667×也不是精度提升倍率。XJTU 的三个 *-5 保护电芯继续封存。"
+      }
+    ],
+    "sources": [
+      "model_lab/reports/v2/sources/DELIVERY.md",
+      "model_lab/docs/V2_IMPLEMENTATION.md",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+      "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "M1 → H-M1：共享协议规律，保留来源边界",
+    "subtitle": "当前首选研究候选是 source-level quantile backbone + source-level residual。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "旧联合 M1 是 DomainBaseline：按 source::chemistry::protocol 分域拟合 q05/q50/q95 quantile GBDT，当前配方每头 80 棵树、学习率 0.10、三个 seed。XJTU 的三个协议被拆成小头，MATR 保留独立域；加入 MATR 不改变 XJTU 分支，因此旧联合与 XJTU-only 的 XJTU 分数相同。未知来源/协议或无合法标签的头返回 unsupported。"
+      },
+      {
+        "type": "p",
+        "text": "H-M1 对每个 source 内的全部协议合并训练，分别学习 q05/q50/q95 主干与残差。XJTU 与 MATR 各有自己的 source 归一化和数值树，并非跨来源共用所有权重。主干捕获来源内共性，浅层残差补偿系统误差，以此改善小协议头的数据效率，同时保留 MATR 的适用边界。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "组成",
+          "冻结配置",
+          "作用"
+        ],
+        "rows": [
+          [
+            "统计输入",
+            "15 个值 + 15 个缺失标志",
+            "维度 30，保留可见边界"
+          ],
+          [
+            "主干 GBDT",
+            "160 棵；深 3；叶 5；lr 0.03",
+            "各 source 的 q05/q50/q95"
+          ],
+          [
+            "残差 GBDT",
+            "80 棵；深 2；叶 5；lr 0.03",
+            "各 source / quantile，权重 1.0"
+          ],
+          [
+            "拟合权重",
+            "物理电芯反窗口数权重",
+            "避免长轨迹压过短轨迹"
+          ],
+          [
+            "输出",
+            "逐行排序三分位数",
+            "中位数点预测与区间"
+          ]
+        ],
+        "widths": [
+          0.23,
+          0.43,
+          0.34
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "z = [log(SOH) − μ_source] / σ_source；预测 = exp{ μ_source + σ_source × [B_source,q(x) + R_source,q(x)] }。"
+      },
+      {
+        "type": "p",
+        "text": "输入 median/mean/scale 与目标 μ/σ 只从 train 拟合。dev 用于结构门控：XJTU MAE 严格优于旧 M1 与同包 MLP，MATR 不高于旧 M1 + 0.10 pp；通过后按 XJTU_MAE + 0.2 × MATR_MAE 排序。calibration 只做稳定性报告，final 未参与此轮选择。三 seed 导出 JSON 数值树，重放最大 SOH 差均为 0。"
+      },
+      {
+        "type": "callout",
+        "label": "版本定位",
+        "text": "H-M1 是完整量化研究原型；尚未实现 DomainBaseline 的完整 efficiency/survival/fault 生产装载契约，不能将研究 JSON 直接替换线上多任务包。"
+      }
+    ],
+    "sources": [
+      "battery_platform/docs/HM1_OPTIMIZATION_RESULTS_20261002.md",
+      "battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_development.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "简单基线与共享编码器：对照到底怎么做",
+    "subtitle": "相同联合 30D 数据人口、对象级 split 和三种 seed；报告具体实现，不冒称全部方法充分调优。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "数值对照在固定 XJTU + MATR 数据包上运行：train 28 个电芯/224 行，dev 为 XJTU 3 个电芯/24 行和 MATR 6 个电芯/48 行。源信息与缺失状态保留；标准化只拟合 train，dev 用于早停/配方选择。误差先在每个电芯内计算，再在 source 内宏平均，避免用重复窗口数扩大独立样本。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "实际结构",
+          "输入与边界"
+        ],
+        "rows": [
+          [
+            "MLP",
+            "128 → 64 → 1；AdamW",
+            "30D 标准化 + 2 位 source one-hot；source log-SOH"
+          ],
+          [
+            "LSTM",
+            "单层 hidden 32；34 → 32 → 1",
+            "30 个统计字段当 30 步单通道序列，再拼 source"
+          ],
+          [
+            "LightGBM",
+            "800 上限；lr 0.03；31 叶；min child 12",
+            "同样 30D+source；dev early stopping；n_jobs=1"
+          ],
+          [
+            "M1",
+            "各 domain 80 棵 quantile GBDT",
+            "独立 domain 头，未知域拒判"
+          ],
+          [
+            "M2",
+            "width 128 temporal encoder；adapter 128→32→128",
+            "统计 + 历史序列；SOH/效率/生存/故障独立头"
+          ],
+          [
+            "H-M1",
+            "160 棵主干 + 80 棵来源残差",
+            "30D scalar；完整三分位数研究输出"
+          ]
+        ],
+        "widths": [
+          0.17,
+          0.4,
+          0.43
+        ]
+      },
+      {
+        "type": "p",
+        "text": "M2 尝试通过共享表示获得多任务与来源适应能力。来源/对象和任务权重固定；缺标签只贡献零而不重新分配权重。真实缺曲线输入使用全零 sequence mask，不合成电压、电流或温度。F01 后输入增加第六个 temperature_valid 通道并重新初始化、独立训练；它在当前开发人群上弱于 H-M1，未选用。"
+      },
+      {
+        "type": "p",
+        "text": "MLP/LSTM/LightGBM 表中的开发数是修复前 scalar 历史对照：新旧 376 行原始 30D 特征、SOH 标签和物理人口逐位相同，基线自身预处理配方未改变。它们未以新 schema 重新评分；与新 H-M1 的对照依据是未变化的标量研究输入，不是旧权重跨 schema 兼容。"
+      },
+      {
+        "type": "callout",
+        "label": "名称和信息量必须准确",
+        "text": "LSTM 是统计字段序列基线，不代表已利用 MATR 原始波形；LightGBM 不是 XGBoost。当前没有 XGBoost 实验，亦没有将这份结果包装为公开领域 SOTA。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json",
+      "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md",
+      "model_lab/docs/V2_IMPLEMENTATION.md",
+      "battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "当前 H-M1 的提升：两来源同时通过开发门控",
+    "subtitle": "XJTU 相比 MLP 下降 47.36%；MATR 相比旧 M1 下降 10.18%。数值越低越好。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "下表是同物理人群的 development SOH MAE，单位为 percentage points（pp，SOH 比例误差乘 100）。H-M1/M1/M2 采用新六通道 schema 独立重训；MLP/LSTM/LightGBM 是原始标量输入未变的历史对照。三个 seed 为 0/1/2，± 表示样本标准差，不是置信区间。dev 仅有 XJTU 3 电芯、MATR 6 电芯，所以百分比描述这次内部实验。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "XJTU dev MAE pp",
+          "MATR dev MAE pp"
+        ],
+        "rows": [
+          [
+            "H-M1",
+            "0.3841 ± 0.0173",
+            "1.5290 ± 0.0344"
+          ],
+          [
+            "M1",
+            "0.6095 ± 0.0659",
+            "1.7021 ± 0.0082"
+          ],
+          [
+            "MLP",
+            "0.7297 ± 0.1587",
+            "5.3303 ± 3.2562"
+          ],
+          [
+            "LSTM",
+            "4.4909 ± 0.0058",
+            "12.0570 ± 0.2728"
+          ],
+          [
+            "LIGHTGBM",
+            "1.2669 ± 0.0000",
+            "4.0649 ± 0.0000"
+          ],
+          [
+            "M2",
+            "4.8088 ± 4.1059",
+            "8.5294 ± 0.6477"
+          ]
+        ],
+        "widths": [
+          0.24,
+          0.38,
+          0.38
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "H-M1 相比",
+          "XJTU 误差下降",
+          "MATR 误差下降"
+        ],
+        "rows": [
+          [
+            "M1",
+            "36.98%",
+            "10.18%"
+          ],
+          [
+            "MLP",
+            "47.36%",
+            "71.32%"
+          ],
+          [
+            "LSTM",
+            "91.45%",
+            "87.32%"
+          ],
+          [
+            "LIGHTGBM",
+            "69.68%",
+            "62.39%"
+          ]
+        ],
+        "widths": [
+          0.34,
+          0.33,
+          0.33
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "相对误差下降 = (baseline MAE − H-M1 MAE) / baseline MAE × 100%；baseline 为分母。"
+      },
+      {
+        "type": "p",
+        "text": "选 H-M1 的理由是同一 dev 上同时降低两来源误差、保留三分位数输出且重载可复现，而非只选 XJTU 最低的点预测。宽搜索中的 ExtraTrees 可获得更低 XJTU 点误差，但 MATR 约 1.90–2.42 pp，不满足 MATR 门控，且缺 q05/q95 导出契约，因此未选。当前 H-M1 比旧 M1 的 XJTU 绝对低 0.2254 pp、MATR 低 0.1732 pp。"
+      },
+      {
+        "type": "callout",
+        "label": "与 main 的数值关系",
+        "text": "main 冻结 71D TabICL+ExtraTrees 的开发 OOF MAE 为 0.585897 pp（21 电芯/2,058 窗口）；当前 H-M1 使用 30D 和不同 split/窗口。二者的能力与版本可以比较，不能直接相除作为同协议精度提升。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json",
+      "battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_development.json",
+      "model_lab/reports/round3/champion_hybrid_v2_streaming/manifest.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "历史 final：联合 M1 的强项与弱项都保留",
+    "subtitle": "这是 pre-F01 的已发布比较；不把当前 H-M1 的 development 数字混入 final 榜单。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "历史联合实验在配方冻结后每个 seed 评分一次。MATR final 为 6 个电芯/48 行；XJTU 的 3 个电芯/24 行来自 V1 已暴露开发人口，称 comparison final，不是全新盲测。三个原 XJTU *-5 保护对象没有打开。下表均为旧 schema 历史指标，旧模型、旧权重和旧回执未被新特征修复覆盖。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "XJTU MAE pp",
+          "MATR MAE pp"
+        ],
+        "rows": [
+          [
+            "M1_joint",
+            "1.1768 ± 0.1121",
+            "2.4528 ± 0.0074"
+          ],
+          [
+            "M2_joint",
+            "3.0159 ± 0.6034",
+            "9.3918 ± 1.7472"
+          ],
+          [
+            "MLP_JOINT",
+            "0.6338 ± 0.0598",
+            "4.5717 ± 2.9026"
+          ],
+          [
+            "LSTM_JOINT",
+            "4.1695 ± 0.7871",
+            "10.3116 ± 2.1715"
+          ],
+          [
+            "LIGHTGBM_JOINT",
+            "1.5716 ± 0.0000",
+            "3.8754 ± 0.0000"
+          ]
+        ],
+        "widths": [
+          0.25,
+          0.375,
+          0.375
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "历史 M1 相比",
+          "XJTU 相对下降",
+          "MATR 相对下降"
+        ],
+        "rows": [
+          [
+            "MLP",
+            "-85.67%",
+            "46.35%"
+          ],
+          [
+            "LIGHTGBM",
+            "25.12%",
+            "36.71%"
+          ],
+          [
+            "LSTM",
+            "71.78%",
+            "76.21%"
+          ],
+          [
+            "M2_joint",
+            "60.98%",
+            "73.88%"
+          ]
+        ],
+        "widths": [
+          0.34,
+          0.33,
+          0.33
+        ]
+      },
+      {
+        "type": "p",
+        "text": "M1 在 MATR 的均值与 seed 稳定性优于简单基线，因此成为当阶段跨来源安全包实验候选；XJTU 上 MLP 数值更好。负的相对下降表示 M1 更差：相对 MLP 的 XJTU MAE 反而增加 85.67%。这不能被隐藏成“两来源 M1 全面领先”。LightGBM 的 0 标准差是确定性配方，不是泛化风险为零。"
+      },
+      {
+        "type": "formula",
+        "text": "例：MATR M1 vs MLP = (4.571748 − 2.452791) / 4.571748 × 100% = 46.35%。"
+      },
+      {
+        "type": "callout",
+        "label": "正确方向",
+        "text": "XJTU 历史 final 上，M1 1.176751 比 LightGBM 1.571586 低 0.394835 pp，以 LightGBM 为分母下降 25.12%；MLP 0.633794 比 M1 低 46.14%。两个方向和分母分别写清。"
+      },
+      {
+        "type": "p",
+        "text": "当前 H-M1 没有新的 untouched-final 分数。它超过同包 MLP 的证据来自 development 门控；不能把 0.3841 pp 标为 final，也不能把 historical final 用于此轮优化后仍称盲测。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+      "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md",
+      "battery_platform/docs/HM1_OPTIMIZATION_RESULTS_20261002.md"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "加入 MATR 是否有效：同方法跨来源迁移",
+    "subtitle": "容量摘要联合训练改善 MATR 外推；没有合法域头的 M1 应拒判，而不是生成一个 loss。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "为了衡量新增来源的数据价值，另做 XJTU-only → MATR 的 OOD 诊断。MLP/LSTM/LightGBM 只用 XJTU train 拟合并以 XJTU dev 早停，然后在相同 MATR final 6 电芯/48 行上评分。联合配方使用 XJTU+MATR train，并保留 source 信息；MATR final 标签没有参与选择。对照固定三个 seed，使用 cell-macro MAE。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "XJTU-only → MATR pp",
+          "联合 → MATR pp",
+          "下降比例"
+        ],
+        "rows": [
+          [
+            "MLP",
+            "23.6047",
+            "4.5717",
+            "80.63%"
+          ],
+          [
+            "LSTM",
+            "10.7994",
+            "10.3116",
+            "4.52%"
+          ],
+          [
+            "LIGHTGBM",
+            "9.8597",
+            "3.8754",
+            "60.69%"
+          ]
+        ],
+        "widths": [
+          0.2,
+          0.29,
+          0.29,
+          0.22
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "MLP： (23.604706 − 4.571748) / 23.604706 × 100% = 80.63%；LightGBM：60.69%；LSTM：4.52%。"
+      },
+      {
+        "type": "p",
+        "text": "结果表明：仅靠 XJTU 外推到 MATR 时，MLP 和 LightGBM 的误差明显增大；加入 MATR 可显著改善这两个具体实现的目标来源性能。LSTM 只小幅改善，因此不能说“数据增多使所有模型同幅增长”。联合使用容量摘要保留了真实数据的可见容量历史，没有虚构 MATR 原始波形。"
+      },
+      {
+        "type": "p",
+        "text": "M1 本身按合法 domain 拟合。XJTU-only M1 没有 MATR 的来源/化学域头，MATR 查询应返回 unsupported，因此不提供可比 OOD 数字；联合 M1 是新增 MATR 域头，而不是旧 XJTU 头神奇泛化到 LFP。M1 的 XJTU-only 与联合 XJTU MAE 都为 1.1768 pp，保持不变来自分域训练数据相同。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "旧主线",
+          "XJTU-only XJTU MAE",
+          "联合 XJTU MAE",
+          "变化"
+        ],
+        "rows": [
+          [
+            "M1",
+            "1.1768",
+            "1.1768",
+            "0.0000 pp"
+          ],
+          [
+            "M2",
+            "2.9973",
+            "3.0159",
+            "+0.0185 pp"
+          ]
+        ],
+        "widths": [
+          0.17,
+          0.3,
+          0.3,
+          0.23
+        ]
+      },
+      {
+        "type": "callout",
+        "label": "提升点的可靠表述",
+        "text": "可建模独立电芯从 21 增至 56，train 从 11 增至 28；来源覆盖增加；MLP/LightGBM 的 MATR OOD 误差明显下降。没有将下载规模等同性能倍率，也没有把 main 的 71D 模型冒充该 OOD 对照。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+      "battery_platform/research/joint_xjtu_matr/baselines/xjtu_only_transfer_final_20261002.json",
+      "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "真实物理循环寿命：可运行，不等于已部署",
+    "subtitle": "corrected MATR 开发 123 对象 / 368 查询；删失、未知策略和未校准明确展示。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "完整 MAT 轨迹另建寿命开发协议，查询物理循环 50/100/200，输入严格早于查询；参考容量是已经可见的 cycle≥10 首个有效正容量。六个历史 MATR final barcode 在数值投影前排除，续测 policy 改变对象不混合策略；实际 123 电芯为 train79/dev23/calibration21，0 final，共368 query rows，128精确事件和240右删失窗口。预算固定为8条历史×64点。"
+      },
+      {
+        "type": "p",
+        "text": "M1 的离散 hazard 与 M2 的生存 head 处理精确、右删失和区间删失。绝对终点减 query 得剩余物理循环；右删失是观察下界，不把末次记录+1当死亡点。RUL中位数和风险 1−S(H) 来自同一生存分布，越过预测网格中位数返回超过范围，不补造寿命。M1 joint及M2 joint/no-adapter/no-history/SOH single-task各3seed，共15正式开发运行。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "可核实项",
+          "结果/分母"
+        ],
+        "rows": [
+          [
+            "原始物理身份",
+            "135 注册 / 134 有测量 / 5 对真实续测"
+          ],
+          [
+            "研究支持策略",
+            "68 精确 policy；17 有≥2独立 train 生存对象"
+          ],
+          [
+            "共同 RUL 开发域",
+            "6 域 / 8 独立 dev 电芯：1 exact、7 right"
+          ],
+          [
+            "4.8C(80%)-4.8C 域 NLL",
+            "M1 2.378169；M2 joint 0.968311 ± 0.077945"
+          ],
+          [
+            "其他 5 个共同域",
+            "全右删失；近零 NLL 不证明未知 EOL 正确"
+          ],
+          [
+            "C-index",
+            "null：没有合法跨对象同 query 可排序事件对"
+          ],
+          [
+            "效率 / 故障",
+            "无合法源监督标签，unsupported"
+          ]
+        ],
+        "widths": [
+          0.39,
+          0.61
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "阈值风险(H) = 1 − S(H)；精确事件 NLL = −log P(T=t)；右删失 NLL = −log S(C)。"
+      },
+      {
+        "type": "callout",
+        "label": "校准与独立性边界",
+        "text": "每精确 policy 最多2个 calibration 电芯，α=0.2 的80% object-max CQR全部样本不足/无界；calibration_version=null。29个旧非final对象与新轨迹人口重叠，这不是干净独立来源泛化。"
+      },
+      {
+        "type": "p",
+        "text": "寿命安全 JSON/NPZ 包保留真实无标签开发查询和支持/不支持示例；六包整体重放容差1e-7。profile明确 development_only_research、validated_deployment=false，不能自动作为 Carbon 已验证寿命/效率参数。早期未知 policy fallback诊断已隔离，原指标/hash保留，纠正版同配置重跑。"
+      }
+    ],
+    "sources": [
+      "model_lab/docs/MATR_LIFETIME_PROTOCOL.md",
+      "model_lab/reports/v2/matr_lifetime_development_masked_20261002/BENCHMARK.md",
+      "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "F01 后的版本选择：实现、候选、研究首选三层",
+    "subtitle": "温度有效性修复建立独立 schema；不把新特征与旧模型混用，也不重写历史分数。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "旧特征将缺温填0却标成有效，导致与真实0°C无法区分。新 schema 为 battery_features_v2_channel_validity_1，第六通道 temperature_valid 表达传感器有效性；只在连续有限温度段内插值，统计量仅消费合格点，缺失标志与中性填充值一起进入模型。模型包装器检查 schema、形状与版本，拒绝新旧错配。"
+      },
+      {
+        "type": "p",
+        "text": "实际准入源盘点检查4,744条有V/I/time数组分段和5,965,256个基础有效点，未触发旧缺温置零；MATR摘要/DYAD无曲线列不适用。分段可能来源重叠，不是4,744独立电芯。新包冻结原376non-final行，30D scalar与标签逐位相同；H-M1/M1/M2各3seed共9次独立重训，旧权重未复用。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "模型",
+          "旧 XJTU → 新 MAE",
+          "旧 MATR → 新 MAE"
+        ],
+        "rows": [
+          [
+            "H-M1",
+            "0.3841 → 0.3841",
+            "1.5290 → 1.5290"
+          ],
+          [
+            "M1",
+            "0.6095 → 0.6095",
+            "1.7021 → 1.7021"
+          ],
+          [
+            "M2",
+            "2.6719 → 4.8088",
+            "9.7474 → 8.5294"
+          ]
+        ],
+        "widths": [
+          0.22,
+          0.39,
+          0.39
+        ]
+      },
+      {
+        "type": "p",
+        "text": "M2新输入通道、标准化与初始化同时变化，XJTU退化而MATR改善，不能把变化归因于缺温的单因素作用；该候选未选用。H-M1/M1不变符合本次实际输入未触发缺温缺陷与标量相同的事实，不宣称修复提升了本轮MAE。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "选用层次",
+          "模型及实际状态"
+        ],
+        "rows": [
+          [
+            "V1 已接入冻结模型",
+            "71D TabICL+ExtraTrees等权混合；main历史配方继续保留"
+          ],
+          [
+            "V2 安全包实验候选",
+            "DomainBaseline M1跨来源SOH实验包；来源头支持边界明确"
+          ],
+          [
+            "最新研究首选",
+            "新schema H-M1量化原型；dev双来源优于旧M1，尚无完整生产多任务契约"
+          ]
+        ],
+        "widths": [
+          0.32,
+          0.68
+        ]
+      },
+      {
+        "type": "callout",
+        "label": "用户看到的分数必须匹配版本",
+        "text": "历史final、当前dev、物理生命周期开发是三个协议；H-M1是研究首选，不等于线上所有请求已经使用H-M1。未知域/缺标签/无校准必须明确unsupported或uncalibrated，不显示伪造0或旧指标。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md",
+      "model_lab/docs/V2_IMPLEMENTATION.md",
+      "model_lab/reports/round3/champion_hybrid_v2_streaming/manifest.json"
+    ]
+  }
+]

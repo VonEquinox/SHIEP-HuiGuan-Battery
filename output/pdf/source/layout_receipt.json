@@ -1,0 +1,585 @@
+{
+  "page_count": 62,
+  "pages": [
+    {
+      "page": 2,
+      "title": "这次升级改变了什么",
+      "body_font_scale": 1,
+      "used_height": 426.3,
+      "available_height": 617.5,
+      "min_body_y": 256.2
+    },
+    {
+      "page": 3,
+      "title": "从功能、模型，到进化与碳排",
+      "body_font_scale": 1,
+      "used_height": 376.9,
+      "available_height": 617.5,
+      "min_body_y": 305.6
+    },
+    {
+      "page": 4,
+      "title": "四类计算怎样配合",
+      "body_font_scale": 1,
+      "used_height": 497.7,
+      "available_height": 617.5,
+      "min_body_y": 184.8
+    },
+    {
+      "page": 5,
+      "title": "从 V1 运维底座，到 V2 专业分析闭环",
+      "body_font_scale": 1,
+      "used_height": 469.5,
+      "available_height": 617.5,
+      "min_body_y": 213.0
+    },
+    {
+      "page": 6,
+      "title": "计算、解释、授权与核算各有明确职责",
+      "body_font_scale": 1,
+      "used_height": 486.6,
+      "available_height": 617.5,
+      "min_body_y": 195.9
+    },
+    {
+      "page": 7,
+      "title": "把来源、物理身份与模型适用范围展示给用户",
+      "body_font_scale": 1,
+      "used_height": 441.8,
+      "available_height": 617.5,
+      "min_body_y": 240.7
+    },
+    {
+      "page": 8,
+      "title": "从一个预测值，走向可核查的诊断与检查选择",
+      "body_font_scale": 1,
+      "used_height": 375.3,
+      "available_height": 617.5,
+      "min_body_y": 307.2
+    },
+    {
+      "page": 9,
+      "title": "共同异常先做可比性检查，再谈同步关联",
+      "body_font_scale": 1,
+      "used_height": 499.4,
+      "available_height": 617.5,
+      "min_body_y": 183.1
+    },
+    {
+      "page": 10,
+      "title": "从诊断到现场，再回到经验",
+      "body_font_scale": 1,
+      "used_height": 413.8,
+      "available_height": 617.5,
+      "min_body_y": 268.7
+    },
+    {
+      "page": 11,
+      "title": "提案先审、检查有界、结果由另一身份验收",
+      "body_font_scale": 1,
+      "used_height": 458.9,
+      "available_height": 617.5,
+      "min_body_y": 223.6
+    },
+    {
+      "page": 12,
+      "title": "用 CP-SAT 排时间、人员与工具，再由人确认",
+      "body_font_scale": 1,
+      "used_height": 411.3,
+      "available_height": 617.5,
+      "min_body_y": 271.2
+    },
+    {
+      "page": 13,
+      "title": "四个专业 Web 工作区，七页微信 TEST 现场工程",
+      "body_font_scale": 1,
+      "used_height": 431.2,
+      "available_height": 617.5,
+      "min_body_y": 251.3
+    },
+    {
+      "page": 14,
+      "title": "锁定环境、保留版本、正确处理失败与取消",
+      "body_font_scale": 1,
+      "used_height": 503.7,
+      "available_height": 617.5,
+      "min_body_y": 178.8
+    },
+    {
+      "page": 15,
+      "title": "不是只下载更多文件，而是形成可训练对象",
+      "body_font_scale": 1,
+      "used_height": 426.6,
+      "available_height": 617.5,
+      "min_body_y": 255.9
+    },
+    {
+      "page": 16,
+      "title": "数据已经落地：从 XJTU 到 XJTU + MATR",
+      "body_font_scale": 1,
+      "used_height": 534.9,
+      "available_height": 617.5,
+      "min_body_y": 147.6
+    },
+    {
+      "page": 17,
+      "title": "为什么最终研究首选是 H-M1",
+      "body_font_scale": 1,
+      "used_height": 438.1,
+      "available_height": 617.5,
+      "min_body_y": 244.4
+    },
+    {
+      "page": 18,
+      "title": "M1 → H-M1：共享协议规律，保留来源边界",
+      "body_font_scale": 1,
+      "used_height": 518.3,
+      "available_height": 617.5,
+      "min_body_y": 164.2
+    },
+    {
+      "page": 19,
+      "title": "简单基线与共享编码器：对照到底怎么做",
+      "body_font_scale": 1,
+      "used_height": 493.5,
+      "available_height": 617.5,
+      "min_body_y": 189.0
+    },
+    {
+      "page": 20,
+      "title": "两个来源的误差都下降了",
+      "body_font_scale": 1,
+      "used_height": 494.0,
+      "available_height": 617.5,
+      "min_body_y": 188.5
+    },
+    {
+      "page": 21,
+      "title": "当前 H-M1 的提升：两来源同时通过开发门控",
+      "body_font_scale": 0.975,
+      "used_height": 608.35,
+      "available_height": 617.5,
+      "min_body_y": 74.15
+    },
+    {
+      "page": 22,
+      "title": "保留历史 final 的真实胜负",
+      "body_font_scale": 1,
+      "used_height": 437.7,
+      "available_height": 617.5,
+      "min_body_y": 244.8
+    },
+    {
+      "page": 23,
+      "title": "历史 final：联合 M1 的强项与弱项都保留",
+      "body_font_scale": 1,
+      "used_height": 614.4,
+      "available_height": 617.5,
+      "min_body_y": 68.1
+    },
+    {
+      "page": 24,
+      "title": "MATR 数据带来的增益有直接对照",
+      "body_font_scale": 1,
+      "used_height": 436.9,
+      "available_height": 617.5,
+      "min_body_y": 245.6
+    },
+    {
+      "page": 25,
+      "title": "加入 MATR 是否有效：同方法跨来源迁移",
+      "body_font_scale": 1,
+      "used_height": 520.7,
+      "available_height": 617.5,
+      "min_body_y": 161.8
+    },
+    {
+      "page": 26,
+      "title": "真实物理循环寿命：可运行，不等于已部署",
+      "body_font_scale": 1,
+      "used_height": 573.3,
+      "available_height": 617.5,
+      "min_body_y": 109.2
+    },
+    {
+      "page": 27,
+      "title": "DyAD 多任务实验：异常任务受益，SOH负迁移保留",
+      "body_font_scale": 1,
+      "used_height": 398.9,
+      "available_height": 586.5,
+      "min_body_y": 252.6
+    },
+    {
+      "page": 28,
+      "title": "CH 四类故障：探索性参考，不冒充真实车辆泛化",
+      "body_font_scale": 1,
+      "used_height": 370.0,
+      "available_height": 617.5,
+      "min_body_y": 312.5
+    },
+    {
+      "page": 29,
+      "title": "F01 后的版本选择：实现、候选、研究首选三层",
+      "body_font_scale": 1,
+      "used_height": 506.5,
+      "available_height": 617.5,
+      "min_body_y": 176.0
+    },
+    {
+      "page": 30,
+      "title": "07 / 16 个 Skill：可审查的推理流程",
+      "body_font_scale": 1,
+      "used_height": 480.3,
+      "available_height": 617.5,
+      "min_body_y": 202.2
+    },
+    {
+      "page": 31,
+      "title": "08 / 合成规模、云端证据与可重建环境",
+      "body_font_scale": 1,
+      "used_height": 589.6,
+      "available_height": 617.5,
+      "min_body_y": 92.9
+    },
+    {
+      "page": 32,
+      "title": "一个执行器，把数值与行动连接起来",
+      "body_font_scale": 1,
+      "used_height": 442.9,
+      "available_height": 617.5,
+      "min_body_y": 239.6
+    },
+    {
+      "page": 33,
+      "title": "把反馈保留下来，再有条件地使用",
+      "body_font_scale": 1,
+      "used_height": 449.0,
+      "available_height": 617.5,
+      "min_body_y": 233.5
+    },
+    {
+      "page": 34,
+      "title": "自进化更新的全过程与失败边界",
+      "body_font_scale": 1,
+      "used_height": 418.8,
+      "available_height": 617.5,
+      "min_body_y": 263.7
+    },
+    {
+      "page": 35,
+      "title": "候选必须过门，失败必须能解释",
+      "body_font_scale": 1,
+      "used_height": 458.3,
+      "available_height": 617.5,
+      "min_body_y": 224.2
+    },
+    {
+      "page": 36,
+      "title": "A2 的观察收益清楚，A4 的退化也清楚",
+      "body_font_scale": 1,
+      "used_height": 440.6,
+      "available_height": 617.5,
+      "min_body_y": 241.9
+    },
+    {
+      "page": 37,
+      "title": "A0–A4：全部分数使用同一口径展示",
+      "body_font_scale": 1,
+      "used_height": 483.7,
+      "available_height": 617.5,
+      "min_body_y": 198.8
+    },
+    {
+      "page": 38,
+      "title": "观察到更高分，也保留负结果",
+      "body_font_scale": 1,
+      "used_height": 485.9,
+      "available_height": 617.5,
+      "min_body_y": 196.6
+    },
+    {
+      "page": 39,
+      "title": "碳模块不是一个黑箱预测模型",
+      "body_font_scale": 1,
+      "used_height": 525.4,
+      "available_height": 617.5,
+      "min_body_y": 157.1
+    },
+    {
+      "page": 40,
+      "title": "01 / 从同服务量到可追溯活动账",
+      "body_font_scale": 1,
+      "used_height": 473.1,
+      "available_height": 617.5,
+      "min_body_y": 209.4
+    },
+    {
+      "page": 41,
+      "title": "02 / 状态、效率与更换递推",
+      "body_font_scale": 1,
+      "used_height": 458.7,
+      "available_height": 617.5,
+      "min_body_y": 223.8
+    },
+    {
+      "page": 42,
+      "title": "03 / Γ 鲁棒区间与共享误差",
+      "body_font_scale": 1,
+      "used_height": 574.4,
+      "available_height": 617.5,
+      "min_body_y": 108.1
+    },
+    {
+      "page": 43,
+      "title": "看见不确定性，也看见决策权衡",
+      "body_font_scale": 1,
+      "used_height": 499.2,
+      "available_height": 617.5,
+      "min_body_y": 183.3
+    },
+    {
+      "page": 44,
+      "title": "04 / 运营 NPV、资格现金与影子值",
+      "body_font_scale": 1,
+      "used_height": 476.7,
+      "available_height": 617.5,
+      "min_body_y": 205.8
+    },
+    {
+      "page": 45,
+      "title": "05 / Pareto、ε 约束与敏感性",
+      "body_font_scale": 1,
+      "used_height": 547.5,
+      "available_height": 617.5,
+      "min_body_y": 135.0
+    },
+    {
+      "page": 46,
+      "title": "延用是否减排，答案由边界与效率决定",
+      "body_font_scale": 1,
+      "used_height": 505.0,
+      "available_height": 617.5,
+      "min_body_y": 177.5
+    },
+    {
+      "page": 47,
+      "title": "06 / 正负收益、台账与完整验算",
+      "body_font_scale": 1,
+      "used_height": 537.8,
+      "available_height": 617.5,
+      "min_body_y": 144.7
+    },
+    {
+      "page": 48,
+      "title": "缺温与真实 0°C，现在是不同输入",
+      "body_font_scale": 1,
+      "used_height": 338.7,
+      "available_height": 617.5,
+      "min_body_y": 343.8
+    },
+    {
+      "page": 49,
+      "title": "反馈、Memory、GEPA 与指标已修复",
+      "body_font_scale": 1,
+      "used_height": 404.3,
+      "available_height": 617.5,
+      "min_body_y": 278.2
+    },
+    {
+      "page": 50,
+      "title": "数值与拒绝边界，在界面上都看得见",
+      "body_font_scale": 1,
+      "used_height": 570.4,
+      "available_height": 617.5,
+      "min_body_y": 112.1
+    },
+    {
+      "page": 51,
+      "title": "一次性安装，逐层复现，保留失败与版本",
+      "body_font_scale": 1,
+      "used_height": 421.8,
+      "available_height": 617.5,
+      "min_body_y": 260.7
+    },
+    {
+      "page": 52,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 358.0,
+      "available_height": 617.5,
+      "min_body_y": 324.5
+    },
+    {
+      "page": 53,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 344.3,
+      "available_height": 617.5,
+      "min_body_y": 338.2
+    },
+    {
+      "page": 54,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 316.9,
+      "available_height": 617.5,
+      "min_body_y": 365.6
+    },
+    {
+      "page": 55,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 316.9,
+      "available_height": 617.5,
+      "min_body_y": 365.6
+    },
+    {
+      "page": 56,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 316.9,
+      "available_height": 617.5,
+      "min_body_y": 365.6
+    },
+    {
+      "page": 57,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 316.9,
+      "available_height": 617.5,
+      "min_body_y": 365.6
+    },
+    {
+      "page": 58,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 358.0,
+      "available_height": 617.5,
+      "min_body_y": 324.5
+    },
+    {
+      "page": 59,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 330.6,
+      "available_height": 617.5,
+      "min_body_y": 351.9
+    },
+    {
+      "page": 60,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 316.9,
+      "available_height": 617.5,
+      "min_body_y": 365.6
+    },
+    {
+      "page": 61,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 358.0,
+      "available_height": 617.5,
+      "min_body_y": 324.5
+    },
+    {
+      "page": 62,
+      "title": "证据索引与复现入口",
+      "body_font_scale": 1,
+      "used_height": 316.9,
+      "available_height": 617.5,
+      "min_body_y": 365.6
+    }
+  ],
+  "source_index": {
+    "main:battery_platform/README.md": 1,
+    "docs/V2_DELIVERY_ACCEPTANCE.md": 2,
+    "docs/V2_F01_F07_REPAIR_20261002.md": 3,
+    "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json": 4,
+    "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json": 5,
+    "docs/V2_AGENT_EXPERIMENT.md": 6,
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/protocol.json": 7,
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/summary.json": 8,
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/final_contexts.json": 9,
+    "docs/V2_AGENT_IMPLEMENTATION.md": 10,
+    "battery_platform/docs/V2_BACKEND_IMPLEMENTATION.md": 11,
+    "battery_platform/docs/V2_CARBON_IMPLEMENTATION.md": 12,
+    "main:battery_platform/frontend/src/App.tsx": 13,
+    "battery_platform/app/main.py": 14,
+    "battery_platform/frontend/src/App.tsx": 15,
+    "battery_platform/app/jobs.py": 16,
+    "battery_platform/app/v2_jobs.py": 17,
+    "battery_platform/app/agent/llm.py": 18,
+    "battery_platform/app/api_agent.py": 19,
+    "battery_platform/app/api_v2.py": 20,
+    "battery_platform/frontend/src/pages/V2Foundation.tsx": 21,
+    "model_lab/modeling/v2/prediction.py": 22,
+    "battery_platform/app/agent/executor.py": 23,
+    "battery_platform/app/agent/contracts.py": 24,
+    "battery_platform/app/diagnosis/active_tests.py": 25,
+    "battery_platform/frontend/src/pages/V2Diagnosis.tsx": 26,
+    "battery_platform/app/diagnosis/groups.py": 27,
+    "battery_platform/app/diagnosis/group_adapter.py": 28,
+    "battery_platform/tests/test_v2_group_numeric.py": 29,
+    "battery_platform/docs/V2_DISPATCH_IMPLEMENTATION.md": 30,
+    "battery_platform/docs/V2_MINIPROGRAM_IMPLEMENTATION.md": 31,
+    "battery_platform/app/api_inspection.py": 32,
+    "battery_platform/frontend/src/pages/V2Operations.tsx": 33,
+    "battery_platform/tests/test_v2_workflow.py": 34,
+    "battery_platform/app/dispatch/solver.py": 35,
+    "battery_platform/app/dispatch/contracts.py": 36,
+    "battery_platform/app/api_dispatch.py": 37,
+    "battery_platform/tests/test_v2_dispatch.py": 38,
+    "battery_platform/frontend/src/pages/V2Evolution.tsx": 39,
+    "battery_platform/frontend/e2e/v2.integration.spec.ts": 40,
+    "battery_platform/miniprogram/utils/outbox.js": 41,
+    "pyproject.toml": 42,
+    "uv.lock": 43,
+    "scripts/v2.sh": 44,
+    "battery_platform/app/migrations/__init__.py": 45,
+    "docs/V2_F01_F07_ACCEPTANCE_20261002.json": 46,
+    "model_lab/reports/v2/sources/DELIVERY.md": 47,
+    "model_lab/docs/V2_IMPLEMENTATION.md": 48,
+    "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md": 49,
+    "battery_platform/docs/HM1_OPTIMIZATION_RESULTS_20261002.md": 50,
+    "battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_development.json": 51,
+    "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json": 52,
+    "battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md": 53,
+    "model_lab/reports/round3/champion_hybrid_v2_streaming/manifest.json": 54,
+    "battery_platform/research/joint_xjtu_matr/baselines/xjtu_only_transfer_final_20261002.json": 55,
+    "model_lab/docs/MATR_LIFETIME_PROTOCOL.md": 56,
+    "model_lab/reports/v2/matr_lifetime_development_masked_20261002/BENCHMARK.md": 57,
+    "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json": 58,
+    "model_lab/reports/v2/multisource_fixed_loss_20261002/final_summary.json": 59,
+    "model_lab/reports/v2/ch_generated_20261002/inference_validation.json": 60,
+    "docs/V2_SKILLS_DETAIL.md": 61,
+    "tools/content/skill_catalog.py": 62,
+    "content_v1/skills/thermal-anomaly/manifest.json": 63,
+    "docs/V2_CONTENT_IMPLEMENTATION.md": 64,
+    "content_v1/manifests/cloud_enrichment.json": 65,
+    "battery_platform/reports/v2_agent/cloud_smoke.json": 66,
+    "battery_platform/reports/v2_agent/cloud_single_report.json": 67,
+    "battery_platform/tests/test_v2_feedback_facts.py": 68,
+    "battery_platform/tests/test_v2_no_memory_control.py": 69,
+    "battery_platform/tests/test_v2_memory_relevance.py": 70,
+    "battery_platform/docs/GEPA_RECOVERY.md": 71,
+    "docs/V2_AGENT_FINAL_REVIEW.md": 72,
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/results.json": 73,
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/post_execution_audit.json": 74,
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/post_pilot_runtime_change.json": 75,
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/provider_calls.jsonl": 76,
+    "battery_platform/app/carbon/engine.py": 77,
+    "battery_platform/frontend/src/pages/V2Carbon.tsx": 78,
+    "content_v1/fixtures/carbon.jsonl": 79,
+    "battery_platform/app/carbon/storage.py": 80,
+    "battery_platform/tests/test_v2_carbon.py": 81,
+    "docs/V2_FIXTURES_DETAIL.md": 82,
+    "battery_platform/app/carbon/schemas.py": 83,
+    "battery_platform/app/agent/experiment_metrics.py": 84,
+    "docs/evidence/v2/actual-numeric-profile.png": 85,
+    "docs/evidence/v2/actual-diagnostic-report.png": 86,
+    "README.md": 87,
+    "docs/V2_IMPLEMENTATION_LOG.md": 88
+  },
+  "file": "output/pdf/HuiGuan_DEV_vs_main_20261002.pdf",
+  "sha256": "a6947965acd6849801627eb09d4d64d5a502053a877a3a86cb107b457307113f"
+}

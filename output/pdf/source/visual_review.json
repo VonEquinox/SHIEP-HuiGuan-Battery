@@ -1,0 +1,116 @@
+{
+  "pdf_sha256": "a6947965acd6849801627eb09d4d64d5a502053a877a3a86cb107b457307113f",
+  "page_count": 62,
+  "renderer": "Poppler pdftoppm",
+  "render_dpi": 110,
+  "review_mode": "actual per-page view_image visual inspection, two complete rounds",
+  "reviewed_all_pages": true,
+  "reviewers": [
+    {
+      "agent": "pdf_main_feature_evidence",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "final_result": "passed; cover, architecture feedback route, work-order arrow fixed"
+    },
+    {
+      "agent": "pdf_model_score_evidence",
+      "pages": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "final_result": "passed; source-scale formula and error-bar number overlap fixed"
+    },
+    {
+      "agent": "pdf_agent_evolve_evidence",
+      "pages": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "final_result": "passed; valid-report header and evidence boundaries verified"
+    },
+    {
+      "agent": "pdf_carbon_skill_evidence",
+      "pages": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "final_result": "passed; carbon labels, credit sign, PMF, Gamma boundary, full reversal and NPV exponent verified"
+    }
+  ],
+  "root_latest_full_page_checks": [
+    1,
+    4,
+    10,
+    17,
+    20,
+    22,
+    38,
+    39,
+    43,
+    44,
+    46,
+    47,
+    50,
+    62
+  ],
+  "unresolved_findings": [],
+  "fonts": "embedded STHeiti; indices typeset as sub/super markup",
+  "new_business_tests": 0,
+  "new_cloud_calls": 0
+}

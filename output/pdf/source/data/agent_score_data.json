@@ -1,0 +1,552 @@
+{
+  "title": "Historical preregistered Agent pilot, not current post-fix runtime accuracy",
+  "verified_date": "2026-10-02 Asia/Shanghai",
+  "source_sha256": {
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/summary.json": "7c51802f598ce8f5ef8942fa9b19dafb828458f4337f24509309c209a421ced7",
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/results.json": "c832e67ee2afb21a7651c4275d6cd3457af0a922e7a98ecf0b4ecb06c60a9cd3",
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/protocol.json": "909953645f1b028625da3dd13d7f3711c9770f54f2ad66ad450586fae2d76404",
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/context_v0.json": "014acfe1ba16a9e2ba31abb512ac8fe1356b58d2588a8b5298323ce7383c23ce",
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/final_contexts.json": "5a1e4019b1bb4c4b9bd477e0b15777378726ba4505f739778ae42a6726769ad7",
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/post_execution_audit.json": "3e8989a212573d15ce8ed3b80d5c6bc7ea10253ff5308082f7ac8b423fabf40f",
+    "battery_platform/reports/v2_agent/preregistered_pilot_v2/provider_calls.jsonl": "d747ecd530a52d5261cf963f2731958f213391e82d0b7749c024d2a99b6b8d39",
+    "battery_platform/reports/v2_agent/preregistered_pilot_v1/summary.json": "d710fdc184b9d9136e82ed8f8749a5d8cfe4a235553eeed12529fd8f7bf45099",
+    "battery_platform/reports/v2_agent/cloud_smoke.json": "5bdf49dfee90a38bcd38f9c64b671d3b31788fd9b501e60621f90c1cea392da3"
+  },
+  "protocol_sha256": "cc626a7d4681ad32007fd56b067d1ac8470271ffec334e6d7844761e76282b38",
+  "metric": {
+    "key": "mean_report_quality",
+    "label": "程序质量 Q（越高越好）",
+    "formula": "0.4*initial-status correctness + 0.3*grounded citations + 0.2*acceptable first test/abstention + 0.1/(1+checks); invalid direct cloud report = 0",
+    "is_root_cause_accuracy": false,
+    "is_new_ExperimentMetrics_score": false
+  },
+  "arms": [
+    {
+      "arm": "A0",
+      "name": "规则基线",
+      "llm": false,
+      "skills": false,
+      "memory": false,
+      "learning": "none"
+    },
+    {
+      "arm": "A1",
+      "name": "静态 Skill / RAG",
+      "llm": true,
+      "skills": true,
+      "memory": false,
+      "learning": "none"
+    },
+    {
+      "arm": "A2",
+      "name": "Reflexion 情景记忆",
+      "llm": true,
+      "skills": true,
+      "memory": true,
+      "learning": "episode memory, same installation only"
+    },
+    {
+      "arm": "A3",
+      "name": "ACE 局部经验",
+      "llm": true,
+      "skills": true,
+      "memory": true,
+      "learning": "ADD/REVISE/DEPRECATE/CONFLICT/NO_UPDATE"
+    },
+    {
+      "arm": "A4",
+      "name": "ACE + GEPA",
+      "llm": true,
+      "skills": true,
+      "memory": true,
+      "learning": "ACE plus dev-gated textual Skill candidate"
+    }
+  ],
+  "scores": [
+    {
+      "stage": "evolution",
+      "arm": "A0",
+      "root_count": 12,
+      "mean_report_quality": 0.9249999999999999,
+      "cloud_valid_reports": 0,
+      "wrong_references": 0,
+      "mean_recommended_checks": 3.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    {
+      "stage": "evolution",
+      "arm": "A1",
+      "root_count": 12,
+      "mean_report_quality": 0.8555555555555555,
+      "cloud_valid_reports": 11,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.8333333333333333,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    {
+      "stage": "evolution",
+      "arm": "A2",
+      "root_count": 12,
+      "mean_report_quality": 0.8555555555555555,
+      "cloud_valid_reports": 11,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.8333333333333333,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    {
+      "stage": "evolution",
+      "arm": "A3",
+      "root_count": 12,
+      "mean_report_quality": 0.8555555555555555,
+      "cloud_valid_reports": 11,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.8333333333333333,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    {
+      "stage": "evolution",
+      "arm": "A4",
+      "root_count": 12,
+      "mean_report_quality": 0.9333333333333332,
+      "cloud_valid_reports": 12,
+      "wrong_references": 0,
+      "mean_recommended_checks": 2.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    {
+      "stage": "dev",
+      "arm": "A0",
+      "root_count": 12,
+      "mean_report_quality": 0.9249999999999999,
+      "cloud_valid_reports": 0,
+      "wrong_references": 0,
+      "mean_recommended_checks": 3.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    {
+      "stage": "dev",
+      "arm": "A1",
+      "root_count": 12,
+      "mean_report_quality": 0.9333333333333332,
+      "cloud_valid_reports": 12,
+      "wrong_references": 0,
+      "mean_recommended_checks": 2.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    {
+      "stage": "dev",
+      "arm": "A4",
+      "root_count": 12,
+      "mean_report_quality": 0.5444444444444444,
+      "cloud_valid_reports": 7,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.1666666666666667,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending"
+    },
+    {
+      "stage": "sealed",
+      "arm": "A0",
+      "root_count": 12,
+      "mean_report_quality": 0.9249999999999999,
+      "cloud_valid_reports": 0,
+      "wrong_references": 0,
+      "mean_recommended_checks": 3.0,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending",
+      "delta_vs_static_a1": 0.2250000000000001,
+      "relative_delta_vs_static_a1": 0.3214285714285716,
+      "static_initial_shared": false,
+      "same_context_reused": true
+    },
+    {
+      "stage": "sealed",
+      "arm": "A1",
+      "root_count": 12,
+      "mean_report_quality": 0.6999999999999998,
+      "cloud_valid_reports": 9,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.5,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending",
+      "delta_vs_static_a1": 0.0,
+      "relative_delta_vs_static_a1": 0.0,
+      "static_initial_shared": false,
+      "same_context_reused": true
+    },
+    {
+      "stage": "sealed",
+      "arm": "A2",
+      "root_count": 12,
+      "mean_report_quality": 0.8555555555555555,
+      "cloud_valid_reports": 11,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.8333333333333333,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending",
+      "delta_vs_static_a1": 0.15555555555555567,
+      "relative_delta_vs_static_a1": 0.22222222222222254,
+      "static_initial_shared": true,
+      "same_context_reused": false
+    },
+    {
+      "stage": "sealed",
+      "arm": "A3",
+      "root_count": 12,
+      "mean_report_quality": 0.7777777777777777,
+      "cloud_valid_reports": 10,
+      "wrong_references": 0,
+      "mean_recommended_checks": 1.6666666666666667,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending",
+      "delta_vs_static_a1": 0.07777777777777783,
+      "relative_delta_vs_static_a1": 0.11111111111111116,
+      "static_initial_shared": true,
+      "same_context_reused": false
+    },
+    {
+      "stage": "sealed",
+      "arm": "A4",
+      "root_count": 12,
+      "mean_report_quality": 0.31111111111111106,
+      "cloud_valid_reports": 4,
+      "wrong_references": 0,
+      "mean_recommended_checks": 0.6666666666666666,
+      "missed_inspections": 0,
+      "false_inspection_alarms": 1,
+      "permission_violations": 0,
+      "unjustified_confirmations": 0,
+      "semantic_blind_review": "pending",
+      "delta_vs_static_a1": -0.3888888888888888,
+      "relative_delta_vs_static_a1": -0.5555555555555556,
+      "static_initial_shared": true,
+      "same_context_reused": false
+    }
+  ],
+  "gepa_batches": [
+    {
+      "batch": 1,
+      "state": "candidate_ready",
+      "rollouts": 4,
+      "context_version_a4": 3,
+      "selection": [
+        {
+          "candidate_id": "baseline",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        },
+        {
+          "candidate_id": "cand-data-quality-01",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        }
+      ],
+      "quality": {
+        "A0": 0.9249999999999999,
+        "A1": 0.9333333333333332,
+        "A2": 0.9333333333333332,
+        "A3": 0.9333333333333332,
+        "A4": 0.9333333333333332
+      }
+    },
+    {
+      "batch": 2,
+      "state": "no_update",
+      "rollouts": 4,
+      "context_version_a4": 5,
+      "selection": [
+        {
+          "candidate_id": "baseline",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        },
+        {
+          "candidate_id": "cand-data-quality-01",
+          "score": 0.8666666666666666,
+          "state": "rejected",
+          "hard_failure_count": 1
+        }
+      ],
+      "quality": {
+        "A0": 0.9249999999999999,
+        "A1": 0.9333333333333332,
+        "A2": 0.9333333333333332,
+        "A3": 0.9333333333333332,
+        "A4": 0.9333333333333332
+      }
+    },
+    {
+      "batch": 3,
+      "state": "candidate_ready",
+      "rollouts": 4,
+      "context_version_a4": 8,
+      "selection": [
+        {
+          "candidate_id": "baseline",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        },
+        {
+          "candidate_id": "cand-1",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        }
+      ],
+      "quality": {
+        "A0": 0.9249999999999999,
+        "A1": 0.9333333333333332,
+        "A2": 0.9333333333333332,
+        "A3": 0.9333333333333332,
+        "A4": 0.9333333333333332
+      }
+    },
+    {
+      "batch": 4,
+      "state": "candidate_ready",
+      "rollouts": 4,
+      "context_version_a4": 11,
+      "selection": [
+        {
+          "candidate_id": "baseline",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        },
+        {
+          "candidate_id": "cand-data-quality-001",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        }
+      ],
+      "quality": {
+        "A0": 0.9249999999999999,
+        "A1": 0.9333333333333332,
+        "A2": 0.9333333333333332,
+        "A3": 0.9333333333333332,
+        "A4": 0.9333333333333332
+      }
+    },
+    {
+      "batch": 5,
+      "state": "no_update",
+      "rollouts": 4,
+      "context_version_a4": 13,
+      "selection": [
+        {
+          "candidate_id": "baseline",
+          "score": 0.8666666666666666,
+          "state": "rejected",
+          "hard_failure_count": 1
+        },
+        {
+          "candidate_id": "cand-data-quality-001",
+          "score": 0.8666666666666666,
+          "state": "rejected",
+          "hard_failure_count": 1
+        }
+      ],
+      "quality": {
+        "A0": 0.9249999999999999,
+        "A1": 0.4666666666666666,
+        "A2": 0.4666666666666666,
+        "A3": 0.4666666666666666,
+        "A4": 0.9333333333333332
+      }
+    },
+    {
+      "batch": 6,
+      "state": "candidate_ready",
+      "rollouts": 4,
+      "context_version_a4": 16,
+      "selection": [
+        {
+          "candidate_id": "baseline",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        },
+        {
+          "candidate_id": "cand-1",
+          "score": 0.9333333333333332,
+          "state": "passed",
+          "hard_failure_count": 0
+        }
+      ],
+      "quality": {
+        "A0": 0.9249999999999999,
+        "A1": 0.9333333333333332,
+        "A2": 0.9333333333333332,
+        "A3": 0.9333333333333332,
+        "A4": 0.9333333333333332
+      }
+    }
+  ],
+  "context_versions": {
+    "A0": {
+      "version": 0,
+      "memory_count": 0,
+      "skill_override_ids": []
+    },
+    "A1": {
+      "version": 0,
+      "memory_count": 0,
+      "skill_override_ids": []
+    },
+    "A2": {
+      "version": 11,
+      "memory_count": 11,
+      "skill_override_ids": []
+    },
+    "A3": {
+      "version": 11,
+      "memory_count": 11,
+      "skill_override_ids": []
+    },
+    "A4": {
+      "version": 16,
+      "memory_count": 12,
+      "skill_override_ids": [
+        "data-quality"
+      ]
+    }
+  },
+  "cost_v2": {
+    "http_attempts": 148,
+    "failed_calls": 0,
+    "reported_usage": {
+      "prompt_tokens": 1403366,
+      "completion_tokens": 124568,
+      "total_tokens": 1527934
+    },
+    "charged_tokens_including_unknown_failures": 1527934,
+    "max_http_attempts": 171,
+    "max_tokens": 1640344,
+    "remaining_calls": 23,
+    "combined_http_attempts": 177,
+    "combined_charged_tokens": 1887590
+  },
+  "cost_v1": {
+    "http_attempts": 29,
+    "failed_calls": 7,
+    "reported_usage": {
+      "prompt_tokens": 267218,
+      "completion_tokens": 92438,
+      "total_tokens": 359656
+    },
+    "charged_tokens_including_unknown_failures": 359656,
+    "max_http_attempts": 200,
+    "max_tokens": 2000000,
+    "remaining_calls": 171
+  },
+  "stage_cost_v2": {
+    "evolution": {
+      "http_attempts": 48,
+      "provider_tokens": 500310
+    },
+    "gepa": {
+      "http_attempts": 30,
+      "provider_tokens": 273750
+    },
+    "dev": {
+      "http_attempts": 24,
+      "provider_tokens": 268800
+    },
+    "sealed_static": {
+      "http_attempts": 12,
+      "provider_tokens": 120848
+    },
+    "sealed_final": {
+      "http_attempts": 34,
+      "provider_tokens": 364226
+    }
+  },
+  "audit_summary": {
+    "live_provider_calls_added": 0,
+    "frozen_runtime_and_content_verified": true,
+    "exact_frozen_inputs_verified": 156,
+    "direct_report_count": 156,
+    "direct_cloud_valid_reports": 98,
+    "reason_counts": {
+      "quantitative assertion is not present in its cited evidence": 20,
+      "preflight_token_reservation_budget_blocked": 2
+    },
+    "original_numeric_rejections_resolved_by_ascii_token_analysis": 12,
+    "preregistered_scores_changed": false,
+    "semantic_blind_review": "pending"
+  },
+  "sample": {
+    "evolution": 12,
+    "dev": 12,
+    "sealed": 12,
+    "independent_roots_total": 36,
+    "per_batch": 2,
+    "batches": 6,
+    "expert_semantic_review": "pending",
+    "final_dev_arms": [
+      "A0",
+      "A1",
+      "A4"
+    ],
+    "sealed_reports_static_initial_shared": true
+  },
+  "interpretation": {
+    "observed_a2_relative_gain_vs_static": 0.2222222222222222,
+    "self_evolve_causal_gain_proven": false,
+    "gepa_positive_generalization_proven": false,
+    "main_agent_comparable_score_available": false,
+    "post_F02_F07_cloud_retest_available": false,
+    "A2_same_installation_scope_blocks_cross_install_episode_retrieval": true,
+    "F05_old_nonempty_no_memory_valid": false,
+    "F05_pilot_A1_empty_v0": true,
+    "do_not_use_software_tests_as_quality_gain": true
+  }
+}

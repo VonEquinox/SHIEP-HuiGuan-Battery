@@ -1,0 +1,121 @@
+[
+  {
+    "section": "版本全景",
+    "title": "从 V1 运维底座，到 V2 专业分析闭环",
+    "subtitle": "比较真实 main c4203014 与 DEV 0d9a53de；原有能力保留，新能力逐项区分",
+    "blocks": [
+      {"type":"p","text":"main 已是完整的健康与运维应用：资产层级、真实 XJTU 数据、快速 ExtraTrees/混合模型、健康告警、工单、人员资格、附件、独立验收和审计都已存在。DEV 的主要变化是把数值研究、证据诊断、授权补测、上下文进化、数学排程及独立碳核算接入这个底座。开发采用多 Agent 协作，产品运行仍为一个固定流程诊断 Agent。"},
+      {"type":"table","headers":["功能层","main 已有","DEV 新增或增强"],"rows":[["资产与健康","资产/安装、SOH、告警","多头剖面、安全包绑定、截止时间"],["数据与模型","XJTU、ET/混合模型","多来源登记、M1/M2/H-M1、联合研究"],["诊断与学习","追加业务反馈","16 Skill、云 Agent、Memory/Context"],["运维执行","人工派单、维修、独立验收","待审批提案、授权轮次、CP-SAT"],["碳与经济","无独立模块","活动清单、鲁棒比较、NPV、台账"],["现场客户端","Web","七页微信 TEST 工程、离线队列"]],"widths":[0.22,0.30,0.48]},
+      {"type":"p","text":"用户由原来的“查看健康→创建工单”，扩展为“查看数值与来源→诊断候选和反证→批准检查→求解/确认排程→技术员测量→重新诊断→另一身份验收→积累带来源经验”。Carbon 则接受版本化结构化输入，独立计算和记账，避免自然语言诊断直接决定减排或现金。"},
+      {"type":"p","text":"侧栏一级工作区由 7 个扩展到 11 个，原七区仍保留；新增风险与群组、诊断、Context 进化、碳与经济。已接入 API 模块的 HTTP 装饰器声明由 56 增至 119，新增 63 条。这些数字描述工程覆盖，不能替代模型准确率或自进化效果。详细分数另按开发、final/sealed 和合成回放口径展示。"},
+      {"type":"callout","label":"报告口径","text":"本版是研究/测试环境：真实实验和数值计算、明确标记的模拟资产及持久化业务流程；没有生产 BMS 连接、物理控制或碳信用发行。"}
+    ],
+    "sources":["main:battery_platform/README.md","main:battery_platform/frontend/src/App.tsx","battery_platform/app/main.py","battery_platform/frontend/src/App.tsx","docs/V2_DELIVERY_ACCEPTANCE.md"]
+  },
+  {
+    "section":"系统架构",
+    "title":"计算、解释、授权与核算各有明确职责",
+    "subtitle":"避免把云端语言模型当作数值预测器、调度求解器或碳核算器",
+    "blocks":[
+      {"type":"p","text":"main 已有后端、数据库、React Web、数值子进程和单计算锁。DEV 在同一服务中新增数值 V2、诊断、观察反馈、Context、排程及 Carbon 模块，通过异步作业接入。作业采用 snapshot→compute→complete：短事务冻结输入，事务外执行网络或重算，最后再次检查取消、来源版本和业务对象，再原子发布。"},
+      {"type":"table","headers":["组件","负责输出","权限与边界"],"rows":[["数值服务","SOH/分布/支持状态","白名单 JSON+NPZ，不读在线标签"],["云端单 Agent","候选、反证、补测提案","只能调用十项程序工具"],["人类调度/管理员","批准提案、确认排程","未批准不产生正式派发"],["CP-SAT","合法时段、次序、资源","不用 LLM 指派，不优化碳收益"],["技术员/独立验收者","原始测量、现场结果、验收","仅获派授权范围，不能本人验收"],["Carbon 引擎","碳、成本、NPV、资格台账","只收结构化版本输入"]],"widths":[0.22,0.34,0.44]},
+      {"type":"p","text":"来源身份贯穿各层：实验数据、实验回放、模拟情景、待核实上传、人员声明测量分别标记；资产槽位、物理电芯和当前安装不是同一对象。服务端到达时间 available_at 与实际 measured_at 分开，晚到测量只能从收到之后参与判断；来源记录序号和已核实物理循环，也不被转换为现场 UTC 时间。"},
+      {"type":"p","text":"OpenAI 兼容客户端在服务器调用 /chat/completions，支持 function tools 和 JSON 报告；URL、模型、Key 和代理从服务端配置，Web/微信不持有 LLM 凭据。没有 Key 时明确使用 rule_baseline，云端失败保留错误和已知费用，不伪装成功。Context 进化只修改经验或允许的 Skill 文本，不训练 LLM 权重、不扩大工具权限。"},
+      {"type":"callout","label":"可验证性","text":"每份报告绑定安装、截止时间和 Context 版本；计算中换装、拆组或来源修订，会使旧结果无法发布。可追溯引用证明出处，仍需独立语义和现场验证。"}
+    ],
+    "sources":["battery_platform/app/jobs.py","battery_platform/app/v2_jobs.py","battery_platform/app/agent/llm.py","battery_platform/app/api_agent.py","battery_platform/docs/V2_BACKEND_IMPLEMENTATION.md"]
+  },
+  {
+    "section":"数据与资产",
+    "title":"把来源、物理身份与模型适用范围展示给用户",
+    "subtitle":"增强原七区的资产、数据、模型和健康页面；研究产物不自动替换现用模型",
+    "blocks":[
+      {"type":"p","text":"main 已可导入 XJTU 2,058 行、21 个开发电芯，显示 71 维特征、质量和来源，并进行 ET 训练与冻结混合模型推理；保护电芯没有导入评分。DEV 新增多来源 registry、许可/解析回执、化学体系、协议、对象身份、域、split 和 hash。用户可刷新元数据，或关联来源匹配的已登记本地数据，两种操作明确分开，元数据刷新不表示已下载原始全源。"},
+      {"type":"table","headers":["用户操作","实际结果","防误用设计"],"rows":[["选择安全模型包","查看支持头和对应开发观测","切包清空旧行；空观测不回退"],["绑定资产并推理","保存真实预测和输入快照","同安装不能改绑另一物理对象"],["查看多头剖面","SOH、分位/分布、生存等","未训练头保持 null/unsupported"],["查看校准信息","域、样本数、区间状态","不足时无界，不伪称置信保证"],["提交研究作业","训练/校准/评测及血缘","固定路径模块，完成不自动部署"]],"widths":[0.25,0.34,0.41]},
+      {"type":"p","text":"安全包仅使用验证 hash 的 JSON/NPZ，禁止 pickle；运行时读取白名单开发输入，不读取 y 或 final。分位带、登记密度和生存曲线按不同数据类型绘制：只有合法参数才画密度，只有真实物理横轴才显示寿命曲线。模型声明 unsupported 的寿命、效率和故障任务，不会因为界面有该栏目就被补成零或推断成热失控概率。"},
+      {"type":"p","text":"最新温度修复增加独立通道有效性与新 feature schema。缺失温度以中性值和无效标记同时输入，与实测 0°C 可区分；统计只用合格温度，新特征禁止搭配旧权重继续引用旧指标。准入来源 4,744 段扫描未发现旧缺温触发；独立目录完成九次版本重训，负迁移照实保留。"},
+      {"type":"callout","label":"适用边界","text":"实验电芯回放到模拟槽位仍是 experimental_replay。模型头的实现、保存和重载，不等于真实标签完整、泛化达标或可生产部署。"}
+    ],
+    "sources":["main:battery_platform/README.md","battery_platform/app/api_v2.py","battery_platform/frontend/src/pages/V2Foundation.tsx","model_lab/modeling/v2/prediction.py","docs/V2_F01_F07_REPAIR_20261002.md"]
+  },
+  {
+    "section":"诊断与补测",
+    "title":"从一个预测值，走向可核查的诊断与检查选择",
+    "subtitle":"DEV 新增证据工作区；候选、反证、未知和授权状态同时展示",
+    "blocks":[
+      {"type":"p","text":"main 提供健康预测与告警，DEV 新增诊断会话。左栏显示当前安装在截止时间内可见的片段、数值与引用，中栏显示候选解释、反证和未知，右栏列出建议或已授权检查。报告保留版本、工具轨迹、execution_mode、Token 和失败信息；反馈可针对具体断言和原文跨度，下一轮从重新评估开始。"},
+      {"type":"p","text":"执行器按采集、适用性、Skill 路由、候选分析、程序工具和严格报告验证的固定流程运行。最多读四个 Skill 正文、调用十二次工具；工具只能读取授权证据/数值/同伴/知识/Memory、排序检查、提出待批准工单和报告。概率默认 null，非空值须匹配校准数值工具；数字须能在引用中找到。未独立核实的人员描述不能直接确诊。"},
+      {"type":"h2","text":"补测的价值有可计算定义"},
+      {"type":"formula","text":"R(p) = min_d Σ_h p(h)L(d,h)\nVOI(a) = R(p) − Σ_y P(y|a)R(p(h|y,a)) − cost(a)"},
+      {"type":"p","text":"先验 p、结果似然、损失矩阵 L 及成本必须来自有版本的任务模型，包含失败和越界结果；以 Bayes 后验计算测后决策风险，再扣除检查成本。没有完整概率模型时仅返回假设覆盖/成本/时间规则排序，VOI 为 null，不编造信息增益。重复检查不被当成新独立证据，正价值耗尽、预算耗尽或需专业转交时可终止于未解决。"},
+      {"type":"callout","label":"建议不等于执行授权","text":"首轮只能提出待批准检查；资格、设备能力、SOP、破坏性授权、轮次和时间预算由程序过滤。真实云端报告链已跑通，但 smoke 成功与引用结构检查不证明专家语义正确或现场根因准确率。"}
+    ],
+    "sources":["battery_platform/app/agent/executor.py","battery_platform/app/agent/contracts.py","battery_platform/app/diagnosis/active_tests.py","battery_platform/frontend/src/pages/V2Diagnosis.tsx","docs/V2_AGENT_IMPLEMENTATION.md"]
+  },
+  {
+    "section":"群组风险",
+    "title":"共同异常先做可比性检查，再谈同步关联",
+    "subtitle":"DEV 将单体告警扩展为可拆分群组；相关性始终不自动升级为共同根因",
+    "blocks":[
+      {"type":"p","text":"main 有单体告警，DEV 风险页可按严重性选择多个资产，分析共享问题、查看成员、源观察版本和数据质量，并在新证据到达后按版本拆组。动机是区分共同采集偏置、共同环境、批次关系和单体退化：外观相似的告警未必来自同一物理故障。拆组保留原单体告警，旧提案与运行中旧输入无法覆盖新结构。"},
+      {"type":"h2","text":"实际使用的数值方法"},
+      {"type":"formula","text":"m = median(reference), MAD = median(|reference − m|)\nz_t = (x_t − m) / (1.4826 × MAD)\nρ = Σ_t (z_it − z̄_i)(z_jt − z̄_j) / √[Σ_t(z_it−z̄_i)² Σ_t(z_jt−z̄_j)²]"},
+      {"type":"p","text":"先用至少三个早期正常声明参考点计算稳健标准化残差，再对后续至少三个分析点按精确时间戳对齐计算相关与异常重叠。参考必须早于分析；同指标/单位/方法、体系、协议、负载、温度、同 cohort 与拓扑，当前安装、合法授权、有效仪器/校准和人员资格均需满足。常数 MAD、错位、重复/冲突时间、缺条件或不合格来源给具体 unsupported 原因。正常参考只是操作者声明，不会因为参与统计就被升级成独立确认的健康标签。"},
+      {"type":"table","headers":["界面结果","正确含义"],"rows":[["MAD 残差、ρ、对齐数","可复算的数值关联"],["仅拓扑/窗口关系","没有合格数值支持"],["来源引用/版本/时间","可追溯到真实观察记录"],["备选解释和拆分依据","保留单体复核与未知"]],"widths":[0.42,0.58]},
+      {"type":"callout","label":"验证与限制","text":"真实 HTTP 授权观察已进入算法，来源修订使旧计算 CAS 被拒绝。合成夹具可得到 residual>3、ρ=1、三点对齐，只证明程序连接；实验室回放不用于站内相关，输出始终 causality=not_established。"}
+    ],
+    "sources":["battery_platform/app/diagnosis/groups.py","battery_platform/app/diagnosis/group_adapter.py","battery_platform/app/api_agent.py","battery_platform/tests/test_v2_group_numeric.py","battery_platform/docs/V2_BACKEND_IMPLEMENTATION.md"]
+  },
+  {
+    "section":"运维闭环",
+    "title":"提案先审、检查有界、结果由另一身份验收",
+    "subtitle":"在 main 正式工单链之前加入诊断审批和多轮授权，保留原业务状态机",
+    "blocks":[
+      {"type":"p","text":"main 已有告警建单、人工派单、技术员接单/开始/附件/结果和另一身份验收关闭。DEV 在前段新增 PENDING_APPROVAL 提案：Agent 提出报告关联的资产、安装、测试、最低资格、时长、轮次、工具和期限；调度员或管理员核对后批准，才生成正式 V1 工单。Agent 无权批准、派发或自动解除告警。多资产检查保留每个安装快照与多告警映射。"},
+      {"type":"table","headers":["步骤","用户行为","服务端保证"],"rows":[["提案审阅","确认/拒绝检查范围","版本、安装、群组与最低资格"],["获派检查","选择本轮授权测试","实际分配人、开放轮、资格"],["提交观察","数值、仪器、照片、原文","单位/校准/时间/附件归属"],["重新诊断","比较新候选、反证、未知","只用已到达反馈，过滤重复测试"],["独立验收","另一身份验收/退回/关闭","维修者不能验收本人结果"]],"widths":[0.20,0.34,0.46]},
+      {"type":"p","text":"观察既可包含结构化测量，也可保留支持/排除/未知和自由原文。实测 value=0 是合法值；缺测保持 null，failed、inconclusive、out_of_range、refused、requires_authorization 单独保留，不当作阴性或默认盲重试。对抽取错误可指向原文 span 或测量来源修正；自动 Memory 仍标人员报告/测量支持，不借修正变成独立核实。"},
+      {"type":"p","text":"稳定 client_submission_id 与请求 hash 实现丢响应幂等，相同键不同内容返回 409；观察、轮次和工单版本防并发覆盖。新的检查不能自行扩充原批准范围，换装或群组改变必须重新核对。已关闭工单不把 SOH 改为 100%，不自动清除原告警；更换生成新的安装身份，历史测量、预测与工单继续保留。"},
+      {"type":"callout","label":"真实链路证据","text":"真实 API/worker 回归验证诊断→待审批提案→正式检查→观察→重判；原 Web 回归验证附件、独立验收及重启后关闭。合成现场输入不等于实际运维收益或真实根因核实。"}
+    ],
+    "sources":["main:battery_platform/README.md","battery_platform/app/api_agent.py","battery_platform/app/api_inspection.py","battery_platform/frontend/src/pages/V2Operations.tsx","battery_platform/tests/test_v2_workflow.py"]
+  },
+  {
+    "section":"数学排程",
+    "title":"用 CP-SAT 排时间、人员与工具，再由人确认",
+    "subtitle":"main 的人员推荐保留；DEV 新增完整约束草案与逐级优先目标",
+    "blocks":[
+      {"type":"p","text":"main 按资格、值班、距离和负载推荐人员，由调度员派单；DEV 进一步用实际 OR-Tools CP-SAT 安排时段、任务顺序、班次、工具、前置和旅行。用户配置声明资源与路线，提交异步求解，查看甘特/负载、未分配原因、求解状态和各级最优证明；可编辑但须重新检查硬约束，编辑后不再宣称最优。只有人工 confirm 才写正式 ASSIGNED、区间、通知和审计。"},
+      {"type":"formula","text":"Σ_e x_te + u_t = 1； end_t = start_t + duration_t\nstart_next ≥ end_previous + declared_travel_minutes\nlexmin (漏派_critical, 逾期_critical, 漏派_high, 逾期_high,\n        漏派_routine, 逾期_routine, 旅行分钟, 最大工时−最小工时)"},
+      {"type":"p","text":"可选 interval 与 NoOverlap 保证工程师不重叠且连续任务不跨班次空档；AddCumulative 约束工具容量和时段；每任务分一人或未分配。实际活跃技术员、on_call、技能并集是前置条件。depot circuit 表示相邻任务次序，只按声明分钟矩阵计算真实相邻旅行，未知路线不可通行。既有确认任务锁定，仍在现场却无时间安排的 V1 任务保守占用。"},
+      {"type":"p","text":"目标按严重等级逐阶段优化，上一阶段证明最优后固定其值，因此普通任务不能抵消严重漏派；碳收益不进入目标。无可行 incumbent 时分别显示 infeasible/timeout，有可行结果但预算耗尽显示 feasible，保留逐级证明状态。资源或工单变更使输入 fingerprint 失效，旧草案确认返回 409，不能覆盖现场接单。"},
+      {"type":"callout","label":"验证与能力边界","text":"40 个小实例与独立穷举 oracle 对比目标和区间；真实 API 验证 confirm/幂等/冲突/权限。最多 40 新工单、30 候选人员、30 秒计算；班次路线由人声明，无外部交通自动同步，末任务返基地旅行不计且明确标记。"}
+    ],
+    "sources":["battery_platform/app/dispatch/solver.py","battery_platform/app/dispatch/contracts.py","battery_platform/app/api_dispatch.py","battery_platform/tests/test_v2_dispatch.py","battery_platform/docs/V2_DISPATCH_IMPLEMENTATION.md"]
+  },
+  {
+    "section":"用户界面与现场端",
+    "title":"四个专业 Web 工作区，七页微信 TEST 现场工程",
+    "subtitle":"专业证据视图连接原七区；离线草稿不会被显示为业务完成",
+    "blocks":[
+      {"type":"table","headers":["新增 Web 入口","用户能看到和完成"],"rows":[["风险与群组","选择资产、看残差/来源、拆组与诊断"],["诊断工作区","证据/候选/反证/未知、补测、逐轮反馈"],["Context 进化","Skill/Memory、版本 diff、实验与恢复"],["碳与经济","情景、Γ重算、Pareto、分解与台账"]],"widths":[0.32,0.68]},
+      {"type":"p","text":"原七区继续显示资产、数据、模型、健康、告警工单和系统信息，V2 增强块接入同侧栏。页面使用真实作业和返回数值，空/不支持/证据不足/失败/取消/过期均可见；390px 使用单列，侧栏滚动，可访问标签和请求竞态保护避免迟到响应覆盖新对象。最新进化图按协议、split、方法、案例集和执行模式分组，计数与比率分开显示分母。"},
+      {"type":"p","text":"微信新增七页：测试登录、本人任务、工单、扫码、本轮检查、诊断往返、待同步。使用已有有限技术员账户，只能处理本人任务；二维码由服务器签名，绑定工单/资产/安装、十五分钟有效，扫码仍检查权限。可填写授权测试、仪器、校准、测量和反馈，拍照或选图上传；另一身份验收仅显示状态，没有本人验收按钮。"},
+      {"type":"p","text":"草稿/队列按 HTTPS 环境和服务端用户 ID 隔离，稳定 UUID 保持网络重试幂等，同一时间仅一个同步任务。网络/429/5xx 有界指数退避，断网暂停；401/403/422 待处理，409 冲突停止后序轮次。照片上传响应不确定时先核对已有附件，不盲重传；换装或轮次变化拒绝合并。服务器接受后才标已接收，未同步草稿不能标业务完成。"},
+      {"type":"callout","label":"验收层次","text":"13 项 Web 合同与 2 项不拦截 API 的真实浏览器测试通过；微信 11 行为测试、7 页/59 绑定检查通过。微信开发者工具、有效 AppID 和真机 HTTPS 环境不足，未声称原生编译、真机扫码/相机/断网已通过。"}
+    ],
+    "sources":["battery_platform/frontend/src/App.tsx","battery_platform/frontend/src/pages/V2Evolution.tsx","battery_platform/frontend/e2e/v2.integration.spec.ts","battery_platform/miniprogram/utils/outbox.js","battery_platform/docs/V2_MINIPROGRAM_IMPLEMENTATION.md"]
+  },
+  {
+    "section":"可复现与可靠性",
+    "title":"锁定环境、保留版本、正确处理失败与取消",
+    "subtitle":"DEV 加强安装、迁移和跨模块契约；继承 main 的身份、队列及备份机制",
+    "blocks":[
+      {"type":"p","text":"main 已有五角色、服务端会话/CSRF、技术员本人范围、独立验收、最后管理员保护、审计、队列取消、单进程/计算锁、备份 hash 与新目录恢复。DEV 增加严格 V2 请求、版本/UUID/hash 幂等、结构化错误与 X-Request-ID；研究员、调度员、技术员和观察员各自操作由后端约束，按钮只是展示，直接调用 API 不能绕过权限。"},
+      {"type":"table","headers":["工程机制","更新后的行为"],"rows":[["UV 一键运行","pyproject/uv.lock 冻结，旧 launcher 兼容"],["事务迁移","顺序执行、SHA 校验、升级备份、失败回滚"],["计算发布","事务外重算，完成检查取消与来源 CAS"],["云端费用","失败/取消仍保存请求、已知 token、未知 usage"],["GEPA 恢复","按反馈版本消费，有限退避；取消不自动恢复"],["Context 版本","快照不可变、唯一 active、恢复建新版本"]],"widths":[0.30,0.70]},
+      {"type":"p","text":"新 scripts/v2.sh 统一安装、初始化、启动与测试；sklearn/tabicl 固定兼容 V1 模型。迁移 002–005 不替换旧表，启动检查发布脚本 hash。数值重算仍共用计算锁，取消、超时或父进程退出结束子进程；worker 重启将 running 标 interrupted，不自动重放可能已经执行过的动作。V2 显式恢复需新用户意图，旧费用与取消记录继续保留。"},
+      {"type":"p","text":"F01–F07 修复把温度有效性、原文数值 span、完整事实检索、失败批次恢复、真正 no_memory、严格指标与中文相关性贯通。当前验收回执记录 604 Python 回归、13 浏览器合同、2 真实服务浏览器测试和构建全部通过；九次独立新版本模型拟合完成，本轮云调用为零。该工程质量证据不改写冻结云分数，不能替代 Self Evolve 的同协议效果对照。"},
+      {"type":"callout","label":"交付可追溯","text":"阶段 commit、操作、命令、失败与限制写入总实施日志；实验/原始数据/Key 分开保管。旧 Git archive 验收对应其记录 SHA，当前回归对应修复版，报告不混淆证据版本。"}
+    ],
+    "sources":["main:battery_platform/README.md","pyproject.toml","uv.lock","scripts/v2.sh","battery_platform/app/migrations/__init__.py","battery_platform/app/jobs.py","docs/V2_F01_F07_ACCEPTANCE_20261002.json"]
+  }
+]

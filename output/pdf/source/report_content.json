@@ -1,0 +1,3194 @@
+[
+  {
+    "section": "阅读起点 / EXECUTIVE VIEW",
+    "title": "这次升级改变了什么",
+    "subtitle": "基准是真实main实现；当前快照为DEV 0d9a53de；不是把所有已有功能重复算为新增。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 已有资产、数据、冻结SOH预测、告警、工单与独立验收等运维底座。DEV在其上新增多来源数值研究、可追溯诊断、单云端Agent、Skills/Memory/ACE/GEPA、约束派单、现场微信TEST工程，以及独立碳排与经济工作区。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "维度",
+          "main / 继承能力",
+          "当前DEV / 新增或增强"
+        ],
+        "rows": [
+          [
+            "产品工作区",
+            "7个基础区域；5类角色",
+            "新增关联、诊断、进化、Carbon，合计11区域"
+          ],
+          [
+            "电池预测",
+            "XJTU冻结TabICL + ExtraTrees",
+            "XJTU+MATR、DyAD/CH独立研究；H-M1开发首选"
+          ],
+          [
+            "诊断与进化",
+            "数值健康、规则告警与工单",
+            "10工具云执行器、16Skills、反馈Memory、受限GEPA"
+          ],
+          [
+            "碳排与经济",
+            "没有独立V2 Carbon工作区",
+            "同服务量活动核算、状态更新、Γ鲁棒、NPV、Pareto、台账"
+          ],
+          [
+            "验证",
+            "原V1的软件与模型验收",
+            "当前604 Python + 13界面合同 + 2真实浏览器通过"
+          ]
+        ],
+        "widths": [
+          0.18,
+          0.36,
+          0.46
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "最值得关注的三个结果"
+      },
+      {
+        "type": "p",
+        "text": "可比V2对象从21增至56（2.667倍）；H-M1开发集XJTU/MATR MAE为0.3841/1.5290 pp，相比MLP误差降低47.36%/71.32%。历史Agent A2 sealed程序分0.8556，高于static 0.7000；A4为0.3111，负结果完整保留。"
+      },
+      {
+        "type": "callout",
+        "label": "如何理解证据",
+        "text": "H-M1提升是开发集模型选择结果，尚无本轮新final；Agent观察升分没有证明Self Evolve因果收益；Carbon数值是合成数学验算，不是现场减排或政策收入。各章同时给出结果和适用边界。"
+      }
+    ],
+    "sources": [
+      "main:battery_platform/README.md",
+      "docs/V2_DELIVERY_ACCEPTANCE.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+      "docs/V2_AGENT_EXPERIMENT.md",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/protocol.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/summary.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/final_contexts.json"
+    ]
+  },
+  {
+    "section": "阅读导航 / CONTENTS",
+    "title": "从功能、模型，到进化与碳排",
+    "subtitle": "每个章节包含用户视角、实现方式、关键公式与实测结果；末尾附逐页来源索引。",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "章节",
+          "正文页码",
+          "内容重点"
+        ],
+        "rows": [
+          [
+            "功能与操作闭环",
+            "5",
+            "继承/新增对照、系统、数据、诊断、群组、派单、Web/微信、工程"
+          ],
+          [
+            "电池数据、公式与模型选择",
+            "15",
+            "物理对象、split、结构/超参、损失、MAE/区间、开发/final、负迁移"
+          ],
+          [
+            "Skills与合成数据",
+            "30",
+            "16目录、示例、母模板隔离、云请求与token、重建"
+          ],
+          [
+            "Agent与Self Evolve实验",
+            "32",
+            "执行器、ACE/Memory、GEPA门控、A0-A4全阶段结果与证明边界"
+          ],
+          [
+            "Carbon与经济决策",
+            "39",
+            "活动、效率/更新、Γ、NPV、Pareto、敏感性、台账与算例"
+          ],
+          [
+            "修复、真实界面与复现",
+            "48",
+            "F01-F07、604回归、浏览器实样、提交与运行入口"
+          ]
+        ],
+        "widths": [
+          0.32,
+          0.12,
+          0.56
+        ]
+      },
+      {
+        "type": "p",
+        "text": "建议先阅读结果总览与性能图，再进入对应公式页。每页页脚提供来源编号，附录映射到仓库具体文件；历史main文件通过Git固定提交复原。软件通过、开发选择、冻结pilot观察、合成数学fixture与现场验证均使用各自标签。"
+      },
+      {
+        "type": "callout",
+        "label": "分数阅读规则",
+        "text": "MAE越低越好，AUCPR/覆盖和Agent程序分通常越高越好，但区间还必须看宽度。提升比例写清基线分母；不同split/任务/类别/特征版本不画一条增长曲线。"
+      }
+    ],
+    "sources": []
+  },
+  {
+    "section": "系统图 / RESPONSIBILITIES",
+    "title": "四类计算怎样配合",
+    "subtitle": "数值预测回答测量含义；Agent组织证据与检查；业务人员批准行动；Carbon计算情景后果。",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "architecture",
+        "height": 235
+      },
+      {
+        "type": "p",
+        "text": "页面里出现一个AI报告，不代表一个LLM承担全部任务。数值服务加载版本化模型包，确定性代码执行权限/事实/计量检查，云端语言模型提出分析与下一步检查，人工角色完成审批和独立验收。开发过程的多个协作Agent也不等于产品中同时运行多个自治Agent。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "输入",
+          "到哪个模块",
+          "产物"
+        ],
+        "rows": [
+          [
+            "可见曲线/测量",
+            "数值模型与适用域检查",
+            "SOH分位数、受支持头或unsupported"
+          ],
+          [
+            "已到达反馈",
+            "ACE局部经验更新 / GEPA受限候选",
+            "版本化Context；dev门控；CAS发布"
+          ],
+          [
+            "活动清单/因子/情景",
+            "独立Carbon引擎",
+            "排放边界、经济分账、前沿及台账"
+          ]
+        ],
+        "widths": [
+          0.25,
+          0.38,
+          0.37
+        ]
+      },
+      {
+        "type": "callout",
+        "label": "身份与时间贯穿所有环节",
+        "text": "报告引用绑定来源、安装与可见时间；数值包绑定特征schema、来源域与校准状态；行动继续受到角色、材料、工具、时窗和验收约束。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_IMPLEMENTATION.md",
+      "battery_platform/docs/V2_BACKEND_IMPLEMENTATION.md",
+      "battery_platform/docs/V2_CARBON_IMPLEMENTATION.md"
+    ]
+  },
+  {
+    "section": "版本全景",
+    "title": "从 V1 运维底座，到 V2 专业分析闭环",
+    "subtitle": "比较真实 main c4203014 与 DEV 0d9a53de；原有能力保留，新能力逐项区分",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 已是完整的健康与运维应用：资产层级、真实 XJTU 数据、快速 ExtraTrees/混合模型、健康告警、工单、人员资格、附件、独立验收和审计都已存在。DEV 的主要变化是把数值研究、证据诊断、授权补测、上下文进化、数学排程及独立碳核算接入这个底座。开发采用多 Agent 协作，产品运行仍为一个固定流程诊断 Agent。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "功能层",
+          "main 已有",
+          "DEV 新增或增强"
+        ],
+        "rows": [
+          [
+            "资产与健康",
+            "资产/安装、SOH、告警",
+            "多头剖面、安全包绑定、截止时间"
+          ],
+          [
+            "数据与模型",
+            "XJTU、ET/混合模型",
+            "多来源登记、M1/M2/H-M1、联合研究"
+          ],
+          [
+            "诊断与学习",
+            "追加业务反馈",
+            "16 Skill、云 Agent、Memory/Context"
+          ],
+          [
+            "运维执行",
+            "人工派单、维修、独立验收",
+            "待审批提案、授权轮次、CP-SAT"
+          ],
+          [
+            "碳与经济",
+            "无独立模块",
+            "活动清单、鲁棒比较、NPV、台账"
+          ],
+          [
+            "现场客户端",
+            "Web",
+            "七页微信 TEST 工程、离线队列"
+          ]
+        ],
+        "widths": [
+          0.22,
+          0.3,
+          0.48
+        ]
+      },
+      {
+        "type": "p",
+        "text": "用户由原来的“查看健康→创建工单”，扩展为“查看数值与来源→诊断候选和反证→批准检查→求解/确认排程→技术员测量→重新诊断→另一身份验收→积累带来源经验”。Carbon 则接受版本化结构化输入，独立计算和记账，避免自然语言诊断直接决定减排或现金。"
+      },
+      {
+        "type": "p",
+        "text": "侧栏一级工作区由 7 个扩展到 11 个，原七区仍保留；新增风险与群组、诊断、Context 进化、碳与经济。已接入 API 模块的 HTTP 装饰器声明由 56 增至 119，新增 63 条。这些数字描述工程覆盖，不能替代模型准确率或自进化效果。详细分数另按开发、final/sealed 和合成回放口径展示。"
+      },
+      {
+        "type": "callout",
+        "label": "报告口径",
+        "text": "本版是研究/测试环境：真实实验和数值计算、明确标记的模拟资产及持久化业务流程；没有生产 BMS 连接、物理控制或碳信用发行。"
+      }
+    ],
+    "sources": [
+      "main:battery_platform/README.md",
+      "main:battery_platform/frontend/src/App.tsx",
+      "battery_platform/app/main.py",
+      "battery_platform/frontend/src/App.tsx",
+      "docs/V2_DELIVERY_ACCEPTANCE.md"
+    ]
+  },
+  {
+    "section": "系统架构",
+    "title": "计算、解释、授权与核算各有明确职责",
+    "subtitle": "避免把云端语言模型当作数值预测器、调度求解器或碳核算器",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 已有后端、数据库、React Web、数值子进程和单计算锁。DEV 在同一服务中新增数值 V2、诊断、观察反馈、Context、排程及 Carbon 模块，通过异步作业接入。作业采用 snapshot→compute→complete：短事务冻结输入，事务外执行网络或重算，最后再次检查取消、来源版本和业务对象，再原子发布。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "组件",
+          "负责输出",
+          "权限与边界"
+        ],
+        "rows": [
+          [
+            "数值服务",
+            "SOH/分布/支持状态",
+            "白名单 JSON+NPZ，不读在线标签"
+          ],
+          [
+            "云端单 Agent",
+            "候选、反证、补测提案",
+            "只能调用十项程序工具"
+          ],
+          [
+            "人类调度/管理员",
+            "批准提案、确认排程",
+            "未批准不产生正式派发"
+          ],
+          [
+            "CP-SAT",
+            "合法时段、次序、资源",
+            "不用 LLM 指派，不优化碳收益"
+          ],
+          [
+            "技术员/独立验收者",
+            "原始测量、现场结果、验收",
+            "仅获派授权范围，不能本人验收"
+          ],
+          [
+            "Carbon 引擎",
+            "碳、成本、NPV、资格台账",
+            "只收结构化版本输入"
+          ]
+        ],
+        "widths": [
+          0.22,
+          0.34,
+          0.44
+        ]
+      },
+      {
+        "type": "p",
+        "text": "来源身份贯穿各层：实验数据、实验回放、模拟情景、待核实上传、人员声明测量分别标记；资产槽位、物理电芯和当前安装不是同一对象。服务端到达时间 available_at 与实际 measured_at 分开，晚到测量只能从收到之后参与判断；来源记录序号和已核实物理循环，也不被转换为现场 UTC 时间。"
+      },
+      {
+        "type": "p",
+        "text": "OpenAI 兼容客户端在服务器调用 /chat/completions，支持 function tools 和 JSON 报告；URL、模型、Key 和代理从服务端配置，Web/微信不持有 LLM 凭据。没有 Key 时明确使用 rule_baseline，云端失败保留错误和已知费用，不伪装成功。Context 进化只修改经验或允许的 Skill 文本，不训练 LLM 权重、不扩大工具权限。"
+      },
+      {
+        "type": "callout",
+        "label": "可验证性",
+        "text": "每份报告绑定安装、截止时间和 Context 版本；计算中换装、拆组或来源修订，会使旧结果无法发布。可追溯引用证明出处，仍需独立语义和现场验证。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/jobs.py",
+      "battery_platform/app/v2_jobs.py",
+      "battery_platform/app/agent/llm.py",
+      "battery_platform/app/api_agent.py",
+      "battery_platform/docs/V2_BACKEND_IMPLEMENTATION.md"
+    ]
+  },
+  {
+    "section": "数据与资产",
+    "title": "把来源、物理身份与模型适用范围展示给用户",
+    "subtitle": "增强原七区的资产、数据、模型和健康页面；研究产物不自动替换现用模型",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 已可导入 XJTU 2,058 行、21 个开发电芯，显示 71 维特征、质量和来源，并进行 ET 训练与冻结混合模型推理；保护电芯没有导入评分。DEV 新增多来源 registry、许可/解析回执、化学体系、协议、对象身份、域、split 和 hash。用户可刷新元数据，或关联来源匹配的已登记本地数据，两种操作明确分开，元数据刷新不表示已下载原始全源。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "用户操作",
+          "实际结果",
+          "防误用设计"
+        ],
+        "rows": [
+          [
+            "选择安全模型包",
+            "查看支持头和对应开发观测",
+            "切包清空旧行；空观测不回退"
+          ],
+          [
+            "绑定资产并推理",
+            "保存真实预测和输入快照",
+            "同安装不能改绑另一物理对象"
+          ],
+          [
+            "查看多头剖面",
+            "SOH、分位/分布、生存等",
+            "未训练头保持 null/unsupported"
+          ],
+          [
+            "查看校准信息",
+            "域、样本数、区间状态",
+            "不足时无界，不伪称置信保证"
+          ],
+          [
+            "提交研究作业",
+            "训练/校准/评测及血缘",
+            "固定路径模块，完成不自动部署"
+          ]
+        ],
+        "widths": [
+          0.25,
+          0.34,
+          0.41
+        ]
+      },
+      {
+        "type": "p",
+        "text": "安全包仅使用验证 hash 的 JSON/NPZ，禁止 pickle；运行时读取白名单开发输入，不读取 y 或 final。分位带、登记密度和生存曲线按不同数据类型绘制：只有合法参数才画密度，只有真实物理横轴才显示寿命曲线。模型声明 unsupported 的寿命、效率和故障任务，不会因为界面有该栏目就被补成零或推断成热失控概率。"
+      },
+      {
+        "type": "p",
+        "text": "最新温度修复增加独立通道有效性与新 feature schema。缺失温度以中性值和无效标记同时输入，与实测 0°C 可区分；统计只用合格温度，新特征禁止搭配旧权重继续引用旧指标。准入来源 4,744 段扫描未发现旧缺温触发；独立目录完成九次版本重训，负迁移照实保留。"
+      },
+      {
+        "type": "callout",
+        "label": "适用边界",
+        "text": "实验电芯回放到模拟槽位仍是 experimental_replay。模型头的实现、保存和重载，不等于真实标签完整、泛化达标或可生产部署。"
+      }
+    ],
+    "sources": [
+      "main:battery_platform/README.md",
+      "battery_platform/app/api_v2.py",
+      "battery_platform/frontend/src/pages/V2Foundation.tsx",
+      "model_lab/modeling/v2/prediction.py",
+      "docs/V2_F01_F07_REPAIR_20261002.md"
+    ]
+  },
+  {
+    "section": "诊断与补测",
+    "title": "从一个预测值，走向可核查的诊断与检查选择",
+    "subtitle": "DEV 新增证据工作区；候选、反证、未知和授权状态同时展示",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 提供健康预测与告警，DEV 新增诊断会话。左栏显示当前安装在截止时间内可见的片段、数值与引用，中栏显示候选解释、反证和未知，右栏列出建议或已授权检查。报告保留版本、工具轨迹、execution_mode、Token 和失败信息；反馈可针对具体断言和原文跨度，下一轮从重新评估开始。"
+      },
+      {
+        "type": "p",
+        "text": "执行器按采集、适用性、Skill 路由、候选分析、程序工具和严格报告验证的固定流程运行。最多读四个 Skill 正文、调用十二次工具；工具只能读取授权证据/数值/同伴/知识/Memory、排序检查、提出待批准工单和报告。概率默认 null，非空值须匹配校准数值工具；数字须能在引用中找到。未独立核实的人员描述不能直接确诊。"
+      },
+      {
+        "type": "h2",
+        "text": "补测的价值有可计算定义"
+      },
+      {
+        "type": "formula",
+        "text": "R(p) = min_d Σ_h p(h)L(d,h)\nVOI(a) = R(p) − Σ_y P(y|a)R(p(h|y,a)) − cost(a)"
+      },
+      {
+        "type": "p",
+        "text": "先验 p、结果似然、损失矩阵 L 及成本必须来自有版本的任务模型，包含失败和越界结果；以 Bayes 后验计算测后决策风险，再扣除检查成本。没有完整概率模型时仅返回假设覆盖/成本/时间规则排序，VOI 为 null，不编造信息增益。重复检查不被当成新独立证据，正价值耗尽、预算耗尽或需专业转交时可终止于未解决。"
+      },
+      {
+        "type": "callout",
+        "label": "建议不等于执行授权",
+        "text": "首轮只能提出待批准检查；资格、设备能力、SOP、破坏性授权、轮次和时间预算由程序过滤。真实云端报告链已跑通，但 smoke 成功与引用结构检查不证明专家语义正确或现场根因准确率。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/agent/executor.py",
+      "battery_platform/app/agent/contracts.py",
+      "battery_platform/app/diagnosis/active_tests.py",
+      "battery_platform/frontend/src/pages/V2Diagnosis.tsx",
+      "docs/V2_AGENT_IMPLEMENTATION.md"
+    ]
+  },
+  {
+    "section": "群组风险",
+    "title": "共同异常先做可比性检查，再谈同步关联",
+    "subtitle": "DEV 将单体告警扩展为可拆分群组；相关性始终不自动升级为共同根因",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 有单体告警，DEV 风险页可按严重性选择多个资产，分析共享问题、查看成员、源观察版本和数据质量，并在新证据到达后按版本拆组。动机是区分共同采集偏置、共同环境、批次关系和单体退化：外观相似的告警未必来自同一物理故障。拆组保留原单体告警，旧提案与运行中旧输入无法覆盖新结构。"
+      },
+      {
+        "type": "h2",
+        "text": "实际使用的数值方法"
+      },
+      {
+        "type": "formula",
+        "text": "m = median(reference), MAD = median(|reference − m|)\nz_t = (x_t − m) / (1.4826 × MAD)\nρ = Σ_t (z_it − z̄_i)(z_jt − z̄_j) / √[Σ_t(z_it−z̄_i)² Σ_t(z_jt−z̄_j)²]"
+      },
+      {
+        "type": "p",
+        "text": "先用至少三个早期正常声明参考点计算稳健标准化残差，再对后续至少三个分析点按精确时间戳对齐计算相关与异常重叠。参考必须早于分析；同指标/单位/方法、体系、协议、负载、温度、同 cohort 与拓扑，当前安装、合法授权、有效仪器/校准和人员资格均需满足。常数 MAD、错位、重复/冲突时间、缺条件或不合格来源给具体 unsupported 原因。正常参考只是操作者声明，不会因为参与统计就被升级成独立确认的健康标签。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "界面结果",
+          "正确含义"
+        ],
+        "rows": [
+          [
+            "MAD 残差、ρ、对齐数",
+            "可复算的数值关联"
+          ],
+          [
+            "仅拓扑/窗口关系",
+            "没有合格数值支持"
+          ],
+          [
+            "来源引用/版本/时间",
+            "可追溯到真实观察记录"
+          ],
+          [
+            "备选解释和拆分依据",
+            "保留单体复核与未知"
+          ]
+        ],
+        "widths": [
+          0.42,
+          0.58
+        ]
+      },
+      {
+        "type": "callout",
+        "label": "验证与限制",
+        "text": "真实 HTTP 授权观察已进入算法，来源修订使旧计算 CAS 被拒绝。合成夹具可得到 residual>3、ρ=1、三点对齐，只证明程序连接；实验室回放不用于站内相关，输出始终 causality=not_established。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/diagnosis/groups.py",
+      "battery_platform/app/diagnosis/group_adapter.py",
+      "battery_platform/app/api_agent.py",
+      "battery_platform/tests/test_v2_group_numeric.py",
+      "battery_platform/docs/V2_BACKEND_IMPLEMENTATION.md"
+    ]
+  },
+  {
+    "section": "用户闭环 / FIELD WORKFLOW",
+    "title": "从诊断到现场，再回到经验",
+    "subtitle": "新增能力连接已有工单和独立验收，而不是停留在一个聊天框。",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "workflow",
+        "height": 230
+      },
+      {
+        "type": "p",
+        "text": "研究员/观察员可以查看适用数值、证据和诊断报告；调度员审查提案、人员资格与排程草案；技术员在获授权的工单上执行检查、扫码关联安装、提交原文与测量；另一身份完成验收。执行身份、反馈作者、来源版本和审批记录都保留。"
+      },
+      {
+        "type": "p",
+        "text": "补测到达后，Agent从再评估继续，更新候选解释、未知项和检查排序。结果可成为Memory来源，但不能把未测到当成阴性、把干预后没有故障当成误报，也不能将技术员自由文字自动升级为确诊。"
+      },
+      {
+        "type": "callout",
+        "label": "人看到和决定什么",
+        "text": "用户看到具体数值/缺失项、证据编号、支持与反证、下一项检查的理由及未批准提案。批准工单、确认CP-SAT草案和独立验收属于明确业务动作；LLM报告本身不具备派单权限。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_IMPLEMENTATION.md",
+      "battery_platform/docs/V2_DISPATCH_IMPLEMENTATION.md",
+      "battery_platform/docs/V2_MINIPROGRAM_IMPLEMENTATION.md"
+    ]
+  },
+  {
+    "section": "运维闭环",
+    "title": "提案先审、检查有界、结果由另一身份验收",
+    "subtitle": "在 main 正式工单链之前加入诊断审批和多轮授权，保留原业务状态机",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 已有告警建单、人工派单、技术员接单/开始/附件/结果和另一身份验收关闭。DEV 在前段新增 PENDING_APPROVAL 提案：Agent 提出报告关联的资产、安装、测试、最低资格、时长、轮次、工具和期限；调度员或管理员核对后批准，才生成正式 V1 工单。Agent 无权批准、派发或自动解除告警。多资产检查保留每个安装快照与多告警映射。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "步骤",
+          "用户行为",
+          "服务端保证"
+        ],
+        "rows": [
+          [
+            "提案审阅",
+            "确认/拒绝检查范围",
+            "版本、安装、群组与最低资格"
+          ],
+          [
+            "获派检查",
+            "选择本轮授权测试",
+            "实际分配人、开放轮、资格"
+          ],
+          [
+            "提交观察",
+            "数值、仪器、照片、原文",
+            "单位/校准/时间/附件归属"
+          ],
+          [
+            "重新诊断",
+            "比较新候选、反证、未知",
+            "只用已到达反馈，过滤重复测试"
+          ],
+          [
+            "独立验收",
+            "另一身份验收/退回/关闭",
+            "维修者不能验收本人结果"
+          ]
+        ],
+        "widths": [
+          0.2,
+          0.34,
+          0.46
+        ]
+      },
+      {
+        "type": "p",
+        "text": "观察既可包含结构化测量，也可保留支持/排除/未知和自由原文。实测 value=0 是合法值；缺测保持 null，failed、inconclusive、out_of_range、refused、requires_authorization 单独保留，不当作阴性或默认盲重试。对抽取错误可指向原文 span 或测量来源修正；自动 Memory 仍标人员报告/测量支持，不借修正变成独立核实。"
+      },
+      {
+        "type": "p",
+        "text": "稳定 client_submission_id 与请求 hash 实现丢响应幂等，相同键不同内容返回 409；观察、轮次和工单版本防并发覆盖。新的检查不能自行扩充原批准范围，换装或群组改变必须重新核对。已关闭工单不把 SOH 改为 100%，不自动清除原告警；更换生成新的安装身份，历史测量、预测与工单继续保留。"
+      },
+      {
+        "type": "callout",
+        "label": "真实链路证据",
+        "text": "真实 API/worker 回归验证诊断→待审批提案→正式检查→观察→重判；原 Web 回归验证附件、独立验收及重启后关闭。合成现场输入不等于实际运维收益或真实根因核实。"
+      }
+    ],
+    "sources": [
+      "main:battery_platform/README.md",
+      "battery_platform/app/api_agent.py",
+      "battery_platform/app/api_inspection.py",
+      "battery_platform/frontend/src/pages/V2Operations.tsx",
+      "battery_platform/tests/test_v2_workflow.py"
+    ]
+  },
+  {
+    "section": "数学排程",
+    "title": "用 CP-SAT 排时间、人员与工具，再由人确认",
+    "subtitle": "main 的人员推荐保留；DEV 新增完整约束草案与逐级优先目标",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 按资格、值班、距离和负载推荐人员，由调度员派单；DEV 进一步用实际 OR-Tools CP-SAT 安排时段、任务顺序、班次、工具、前置和旅行。用户配置声明资源与路线，提交异步求解，查看甘特/负载、未分配原因、求解状态和各级最优证明；可编辑但须重新检查硬约束，编辑后不再宣称最优。只有人工 confirm 才写正式 ASSIGNED、区间、通知和审计。"
+      },
+      {
+        "type": "formula",
+        "text": "Σ_e x_te + u_t = 1； end_t = start_t + duration_t\nstart_next ≥ end_previous + declared_travel_minutes\nlexmin (漏派_critical, 逾期_critical, 漏派_high, 逾期_high,\n        漏派_routine, 逾期_routine, 旅行分钟, 最大工时−最小工时)"
+      },
+      {
+        "type": "p",
+        "text": "可选 interval 与 NoOverlap 保证工程师不重叠且连续任务不跨班次空档；AddCumulative 约束工具容量和时段；每任务分一人或未分配。实际活跃技术员、on_call、技能并集是前置条件。depot circuit 表示相邻任务次序，只按声明分钟矩阵计算真实相邻旅行，未知路线不可通行。既有确认任务锁定，仍在现场却无时间安排的 V1 任务保守占用。"
+      },
+      {
+        "type": "p",
+        "text": "目标按严重等级逐阶段优化，上一阶段证明最优后固定其值，因此普通任务不能抵消严重漏派；碳收益不进入目标。无可行 incumbent 时分别显示 infeasible/timeout，有可行结果但预算耗尽显示 feasible，保留逐级证明状态。资源或工单变更使输入 fingerprint 失效，旧草案确认返回 409，不能覆盖现场接单。"
+      },
+      {
+        "type": "callout",
+        "label": "验证与能力边界",
+        "text": "40 个小实例与独立穷举 oracle 对比目标和区间；真实 API 验证 confirm/幂等/冲突/权限。最多 40 新工单、30 候选人员、30 秒计算；班次路线由人声明，无外部交通自动同步，末任务返基地旅行不计且明确标记。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/dispatch/solver.py",
+      "battery_platform/app/dispatch/contracts.py",
+      "battery_platform/app/api_dispatch.py",
+      "battery_platform/tests/test_v2_dispatch.py",
+      "battery_platform/docs/V2_DISPATCH_IMPLEMENTATION.md"
+    ]
+  },
+  {
+    "section": "用户界面与现场端",
+    "title": "四个专业 Web 工作区，七页微信 TEST 现场工程",
+    "subtitle": "专业证据视图连接原七区；离线草稿不会被显示为业务完成",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "新增 Web 入口",
+          "用户能看到和完成"
+        ],
+        "rows": [
+          [
+            "风险与群组",
+            "选择资产、看残差/来源、拆组与诊断"
+          ],
+          [
+            "诊断工作区",
+            "证据/候选/反证/未知、补测、逐轮反馈"
+          ],
+          [
+            "Context 进化",
+            "Skill/Memory、版本 diff、实验与恢复"
+          ],
+          [
+            "碳与经济",
+            "情景、Γ重算、Pareto、分解与台账"
+          ]
+        ],
+        "widths": [
+          0.32,
+          0.68
+        ]
+      },
+      {
+        "type": "p",
+        "text": "原七区继续显示资产、数据、模型、健康、告警工单和系统信息，V2 增强块接入同侧栏。页面使用真实作业和返回数值，空/不支持/证据不足/失败/取消/过期均可见；390px 使用单列，侧栏滚动，可访问标签和请求竞态保护避免迟到响应覆盖新对象。最新进化图按协议、split、方法、案例集和执行模式分组，计数与比率分开显示分母。"
+      },
+      {
+        "type": "p",
+        "text": "微信新增七页：测试登录、本人任务、工单、扫码、本轮检查、诊断往返、待同步。使用已有有限技术员账户，只能处理本人任务；二维码由服务器签名，绑定工单/资产/安装、十五分钟有效，扫码仍检查权限。可填写授权测试、仪器、校准、测量和反馈，拍照或选图上传；另一身份验收仅显示状态，没有本人验收按钮。"
+      },
+      {
+        "type": "p",
+        "text": "草稿/队列按 HTTPS 环境和服务端用户 ID 隔离，稳定 UUID 保持网络重试幂等，同一时间仅一个同步任务。网络/429/5xx 有界指数退避，断网暂停；401/403/422 待处理，409 冲突停止后序轮次。照片上传响应不确定时先核对已有附件，不盲重传；换装或轮次变化拒绝合并。服务器接受后才标已接收，未同步草稿不能标业务完成。"
+      },
+      {
+        "type": "callout",
+        "label": "验收层次",
+        "text": "13 项 Web 合同与 2 项不拦截 API 的真实浏览器测试通过；微信 11 行为测试、7 页/59 绑定检查通过。微信开发者工具、有效 AppID 和真机 HTTPS 环境不足，未声称原生编译、真机扫码/相机/断网已通过。"
+      }
+    ],
+    "sources": [
+      "battery_platform/frontend/src/App.tsx",
+      "battery_platform/frontend/src/pages/V2Evolution.tsx",
+      "battery_platform/frontend/e2e/v2.integration.spec.ts",
+      "battery_platform/miniprogram/utils/outbox.js",
+      "battery_platform/docs/V2_MINIPROGRAM_IMPLEMENTATION.md"
+    ]
+  },
+  {
+    "section": "可复现与可靠性",
+    "title": "锁定环境、保留版本、正确处理失败与取消",
+    "subtitle": "DEV 加强安装、迁移和跨模块契约；继承 main 的身份、队列及备份机制",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 已有五角色、服务端会话/CSRF、技术员本人范围、独立验收、最后管理员保护、审计、队列取消、单进程/计算锁、备份 hash 与新目录恢复。DEV 增加严格 V2 请求、版本/UUID/hash 幂等、结构化错误与 X-Request-ID；研究员、调度员、技术员和观察员各自操作由后端约束，按钮只是展示，直接调用 API 不能绕过权限。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "工程机制",
+          "更新后的行为"
+        ],
+        "rows": [
+          [
+            "UV 一键运行",
+            "pyproject/uv.lock 冻结，旧 launcher 兼容"
+          ],
+          [
+            "事务迁移",
+            "顺序执行、SHA 校验、升级备份、失败回滚"
+          ],
+          [
+            "计算发布",
+            "事务外重算，完成检查取消与来源 CAS"
+          ],
+          [
+            "云端费用",
+            "失败/取消仍保存请求、已知 token、未知 usage"
+          ],
+          [
+            "GEPA 恢复",
+            "按反馈版本消费，有限退避；取消不自动恢复"
+          ],
+          [
+            "Context 版本",
+            "快照不可变、唯一 active、恢复建新版本"
+          ]
+        ],
+        "widths": [
+          0.3,
+          0.7
+        ]
+      },
+      {
+        "type": "p",
+        "text": "新 scripts/v2.sh 统一安装、初始化、启动与测试；sklearn/tabicl 固定兼容 V1 模型。迁移 002–005 不替换旧表，启动检查发布脚本 hash。数值重算仍共用计算锁，取消、超时或父进程退出结束子进程；worker 重启将 running 标 interrupted，不自动重放可能已经执行过的动作。V2 显式恢复需新用户意图，旧费用与取消记录继续保留。"
+      },
+      {
+        "type": "p",
+        "text": "F01–F07 修复把温度有效性、原文数值 span、完整事实检索、失败批次恢复、真正 no_memory、严格指标与中文相关性贯通。当前验收回执记录 604 Python 回归、13 浏览器合同、2 真实服务浏览器测试和构建全部通过；九次独立新版本模型拟合完成，本轮云调用为零。该工程质量证据不改写冻结云分数，不能替代 Self Evolve 的同协议效果对照。"
+      },
+      {
+        "type": "callout",
+        "label": "交付可追溯",
+        "text": "阶段 commit、操作、命令、失败与限制写入总实施日志；实验/原始数据/Key 分开保管。旧 Git archive 验收对应其记录 SHA，当前回归对应修复版，报告不混淆证据版本。"
+      }
+    ],
+    "sources": [
+      "main:battery_platform/README.md",
+      "pyproject.toml",
+      "uv.lock",
+      "scripts/v2.sh",
+      "battery_platform/app/migrations/__init__.py",
+      "battery_platform/app/jobs.py",
+      "docs/V2_F01_F07_ACCEPTANCE_20261002.json"
+    ]
+  },
+  {
+    "section": "数据图 / SCALE",
+    "title": "不是只下载更多文件，而是形成可训练对象",
+    "subtitle": "下面比较同一V2 30D前缀协议的人口；原始循环、曲线窗口和物理电芯分别统计。",
+    "blocks": [
+      {
+        "type": "chart",
+        "kind": "expansion",
+        "height": 240
+      },
+      {
+        "type": "formula",
+        "label": "公式与口径",
+        "text": "扩容倍数 = N联合 / N原来源；新增比例 = (N联合−N原来源)/N原来源 ×100%"
+      },
+      {
+        "type": "p",
+        "text": "完整比较人口21→56个电芯、168→448个前缀行，增166.67%；实际拟合train 11→28个电芯、88→224行，增154.55%；non-final开发人口18→47个电芯、144→376行，增161.11%。同一电芯的多个前缀没有被当作独立电芯。"
+      },
+      {
+        "type": "p",
+        "text": "覆盖来源从XJTU NCM扩展到XJTU NCM与MATR LFP。来源/化学体系增多是可以核对的覆盖事实；尚未定义几何分布体积，因此不把2.667倍人口包装成“分布覆盖能力2.667倍”。main的2058条曲线窗口与这里448条前缀不是同一单位。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "数据已经落地：从 XJTU 到 XJTU + MATR",
+    "subtitle": "完整模型人口 2.667×；真正用于训练的人口 2.545×。下载规模与训练样本规模分开统计。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "MIT/Stanford 的 MATR 数据已经真实下载到本地：三个 corrected MATLAB 批次共 8,269,341,808 bytes，另有完整 Arbin 单电芯 CSV 与官方容量摘要 JSON。原始大文件保存在 model_lab/data/raw/matr/，只读且不进入 Git；官方文件大小、本地 SHA-256、稳定 URL 与来源许可回执保存在仓库。解析器逐电芯流式读取 HDF5，并通过限定 MCOS 字符串表还原 barcode，不执行 MATLAB 类。"
+      },
+      {
+        "type": "p",
+        "text": "140 个原始 struct 的条码与通道逐一核对官方 API，5 对续测依据真实条码与测量连续性合并成 135 个独立物理电芯；134 个有测量对象、113,303 物理周期。数据使用分两条：容量摘要构造共同 30D SOH 联合包；完整 corrected 轨迹用于物理循环寿命开发。完整批次的 135 个身份没有全部混进当前 SOH 比较。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "统计口径",
+          "原 XJTU 电芯/行",
+          "联合电芯/行",
+          "总量倍数"
+        ],
+        "rows": [
+          [
+            "完整 comparison",
+            "21 / 168",
+            "56 / 448",
+            "2.667×"
+          ],
+          [
+            "non-final 开发",
+            "18 / 144",
+            "47 / 376",
+            "2.611×"
+          ],
+          [
+            "train 拟合",
+            "11 / 88",
+            "28 / 224",
+            "2.545×"
+          ]
+        ],
+        "widths": [
+          0.29,
+          0.25,
+          0.26,
+          0.2
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "split",
+          "XJTU 电芯",
+          "MATR 电芯",
+          "联合行"
+        ],
+        "rows": [
+          [
+            "train",
+            "11",
+            "17",
+            "224"
+          ],
+          [
+            "dev",
+            "3",
+            "6",
+            "72"
+          ],
+          [
+            "calibration",
+            "4",
+            "6",
+            "80"
+          ],
+          [
+            "历史 comparison final",
+            "3",
+            "6",
+            "72"
+          ]
+        ],
+        "widths": [
+          0.4,
+          0.2,
+          0.2,
+          0.2
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "总量倍数 = 联合独立电芯 / 原 XJTU 独立电芯；新增比例 = (联合 − 原 XJTU) / 原 XJTU × 100%。"
+      },
+      {
+        "type": "callout",
+        "label": "分布覆盖的实际含义",
+        "text": "支持来源由 XJTU/NCM 扩展到 MATR/LFP；没有测量特征空间几何覆盖倍率。循环/窗口重复观测不等于新电芯，2.667×也不是精度提升倍率。XJTU 的三个 *-5 保护电芯继续封存。"
+      }
+    ],
+    "sources": [
+      "model_lab/reports/v2/sources/DELIVERY.md",
+      "model_lab/docs/V2_IMPLEMENTATION.md",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+      "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md"
+    ]
+  },
+  {
+    "section": "模型图 / H-M1",
+    "title": "为什么最终研究首选是 H-M1",
+    "subtitle": "协议内共享规律，来源间保留边界；残差补偿之后输出有序分位数。",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "hm1",
+        "height": 235
+      },
+      {
+        "type": "formula",
+        "label": "公式与口径",
+        "text": "z = [log(SOH) − μ_{source,train}]/σ_{source,train}；z预测_{τ} = g_{source,τ}(x) + λr_{source,τ}(x)；SOH预测_{τ} = exp(μ_{source,train} + σ_{source,train}·z预测_{τ})，τ∈{0.05,0.50,0.95}"
+      },
+      {
+        "type": "p",
+        "text": "每个来源单独拟合量化GBDT主干与来源残差，来源内部合并协议数据。主干160棵、深度3、最小叶5；残差80棵、深度2；两级学习率0.03、λ=1。训练中位数填补、均值/缩放和来源目标中心均只由train计算，按电芯平衡权重。反变换后逐行排序，排序结果的中间值为点预测。"
+      },
+      {
+        "type": "p",
+        "text": "选择规则要求XJTU优于联合MLP，MATR优于原M1，同时保留分布输出及来源门控；没有只选XJTU最低分。ExtraTrees候选虽有低XJTU误差，却未同时满足MATR/量化契约。H-M1是已安全JSON重放的研究原型，还没有替代完整多任务生产包。"
+      }
+    ],
+    "sources": [
+      "battery_platform/docs/HM1_OPTIMIZATION_RESULTS_20261002.md",
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "M1 → H-M1：共享协议规律，保留来源边界",
+    "subtitle": "当前首选研究候选是 source-level quantile backbone + source-level residual。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "旧联合 M1 是 DomainBaseline：按 source::chemistry::protocol 分域拟合 q05/q50/q95 quantile GBDT，当前配方每头 80 棵树、学习率 0.10、三个 seed。XJTU 的三个协议被拆成小头，MATR 保留独立域；加入 MATR 不改变 XJTU 分支，因此旧联合与 XJTU-only 的 XJTU 分数相同。未知来源/协议或无合法标签的头返回 unsupported。"
+      },
+      {
+        "type": "p",
+        "text": "H-M1 对每个 source 内的全部协议合并训练，分别学习 q05/q50/q95 主干与残差。XJTU 与 MATR 各有自己的 source 归一化和数值树，并非跨来源共用所有权重。主干捕获来源内共性，浅层残差补偿系统误差，以此改善小协议头的数据效率，同时保留 MATR 的适用边界。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "组成",
+          "冻结配置",
+          "作用"
+        ],
+        "rows": [
+          [
+            "统计输入",
+            "15 个值 + 15 个缺失标志",
+            "维度 30，保留可见边界"
+          ],
+          [
+            "主干 GBDT",
+            "160 棵；深 3；叶 5；lr 0.03",
+            "各 source 的 q05/q50/q95"
+          ],
+          [
+            "残差 GBDT",
+            "80 棵；深 2；叶 5；lr 0.03",
+            "各 source / quantile，权重 1.0"
+          ],
+          [
+            "拟合权重",
+            "物理电芯反窗口数权重",
+            "避免长轨迹压过短轨迹"
+          ],
+          [
+            "输出",
+            "逐行排序三分位数",
+            "中位数点预测与区间"
+          ]
+        ],
+        "widths": [
+          0.23,
+          0.43,
+          0.34
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "z = [log(SOH) − μ_source] / σ_source；预测 = exp{ μ_source + σ_source × [B_source,q(x) + R_source,q(x)] }。"
+      },
+      {
+        "type": "p",
+        "text": "输入 median/mean/scale 与目标 μ/σ 只从 train 拟合。dev 用于结构门控：XJTU MAE 严格优于旧 M1 与同包 MLP，MATR 不高于旧 M1 + 0.10 pp；通过后按 XJTU_MAE + 0.2 × MATR_MAE 排序。calibration 只做稳定性报告，final 未参与此轮选择。三 seed 导出 JSON 数值树，重放最大 SOH 差均为 0。"
+      },
+      {
+        "type": "callout",
+        "label": "版本定位",
+        "text": "H-M1 是完整量化研究原型；尚未实现 DomainBaseline 的完整 efficiency/survival/fault 生产装载契约，不能将研究 JSON 直接替换线上多任务包。"
+      }
+    ],
+    "sources": [
+      "battery_platform/docs/HM1_OPTIMIZATION_RESULTS_20261002.md",
+      "battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_development.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "简单基线与共享编码器：对照到底怎么做",
+    "subtitle": "相同联合 30D 数据人口、对象级 split 和三种 seed；报告具体实现，不冒称全部方法充分调优。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "数值对照在固定 XJTU + MATR 数据包上运行：train 28 个电芯/224 行，dev 为 XJTU 3 个电芯/24 行和 MATR 6 个电芯/48 行。源信息与缺失状态保留；标准化只拟合 train，dev 用于早停/配方选择。误差先在每个电芯内计算，再在 source 内宏平均，避免用重复窗口数扩大独立样本。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "实际结构",
+          "输入与边界"
+        ],
+        "rows": [
+          [
+            "MLP",
+            "128 → 64 → 1；AdamW",
+            "30D 标准化 + 2 位 source one-hot；source log-SOH"
+          ],
+          [
+            "LSTM",
+            "单层 hidden 32；34 → 32 → 1",
+            "30 个统计字段当 30 步单通道序列，再拼 source"
+          ],
+          [
+            "LightGBM",
+            "800 上限；lr 0.03；31 叶；min child 12",
+            "同样 30D+source；dev early stopping；n_jobs=1"
+          ],
+          [
+            "M1",
+            "各 domain 80 棵 quantile GBDT",
+            "独立 domain 头，未知域拒判"
+          ],
+          [
+            "M2",
+            "width 128 temporal encoder；adapter 128→32→128",
+            "统计 + 历史序列；SOH/效率/生存/故障独立头"
+          ],
+          [
+            "H-M1",
+            "160 棵主干 + 80 棵来源残差",
+            "30D scalar；完整三分位数研究输出"
+          ]
+        ],
+        "widths": [
+          0.17,
+          0.4,
+          0.43
+        ]
+      },
+      {
+        "type": "p",
+        "text": "M2 尝试通过共享表示获得多任务与来源适应能力。来源/对象和任务权重固定；缺标签只贡献零而不重新分配权重。真实缺曲线输入使用全零 sequence mask，不合成电压、电流或温度。F01 后输入增加第六个 temperature_valid 通道并重新初始化、独立训练；它在当前开发人群上弱于 H-M1，未选用。"
+      },
+      {
+        "type": "p",
+        "text": "MLP/LSTM/LightGBM 表中的开发数是修复前 scalar 历史对照：新旧 376 行原始 30D 特征、SOH 标签和物理人口逐位相同，基线自身预处理配方未改变。它们未以新 schema 重新评分；与新 H-M1 的对照依据是未变化的标量研究输入，不是旧权重跨 schema 兼容。"
+      },
+      {
+        "type": "callout",
+        "label": "名称和信息量必须准确",
+        "text": "LSTM 是统计字段序列基线，不代表已利用 MATR 原始波形；LightGBM 不是 XGBoost。当前没有 XGBoost 实验，亦没有将这份结果包装为公开领域 SOTA。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json",
+      "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md",
+      "model_lab/docs/V2_IMPLEMENTATION.md",
+      "battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md"
+    ]
+  },
+  {
+    "section": "性能图 / DEVELOPMENT",
+    "title": "两个来源的误差都下降了",
+    "subtitle": "电芯宏平均SOH MAE，单位百分点(pp)；三种子0/1/2，误差线为种子样本标准差。",
+    "blocks": [
+      {
+        "type": "chart",
+        "kind": "dev",
+        "height": 275
+      },
+      {
+        "type": "formula",
+        "label": "公式与口径",
+        "text": "相对误差降低 = (MAE基线−MAE候选)/MAE基线 ×100%；分母始终是所标基线"
+      },
+      {
+        "type": "p",
+        "text": "H-M1相比MLP：XJTU降低47.36%、MATR降低71.32%；相比M1：XJTU降低36.98%、MATR降低10.18%；相比LightGBM：69.68%/62.39%；相比LSTM：91.45%/87.32%。正值表示误差更低，不是把准确率与MAE相加。"
+      },
+      {
+        "type": "callout",
+        "label": "比较的具体边界",
+        "text": "本图使用相同开发人口和原始30D特征。H-M1/M1为新schema独立重训；MLP/LightGBM/LSTM是原标量协议参考，标量输入与标签逐位不变，但没有冒称为新六通道artifact。开发集只有XJTU3、MATR6个电芯，多次选择后不等价盲测。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+      "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "当前 H-M1 的提升：两来源同时通过开发门控",
+    "subtitle": "XJTU 相比 MLP 下降 47.36%；MATR 相比旧 M1 下降 10.18%。数值越低越好。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "下表是同物理人群的 development SOH MAE，单位为 percentage points（pp，SOH 比例误差乘 100）。H-M1/M1/M2 采用新六通道 schema 独立重训；MLP/LSTM/LightGBM 是原始标量输入未变的历史对照。三个 seed 为 0/1/2，± 表示样本标准差，不是置信区间。dev 仅有 XJTU 3 电芯、MATR 6 电芯，所以百分比描述这次内部实验。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "XJTU dev MAE pp",
+          "MATR dev MAE pp"
+        ],
+        "rows": [
+          [
+            "H-M1",
+            "0.3841 ± 0.0173",
+            "1.5290 ± 0.0344"
+          ],
+          [
+            "M1",
+            "0.6095 ± 0.0659",
+            "1.7021 ± 0.0082"
+          ],
+          [
+            "MLP",
+            "0.7297 ± 0.1587",
+            "5.3303 ± 3.2562"
+          ],
+          [
+            "LSTM",
+            "4.4909 ± 0.0058",
+            "12.0570 ± 0.2728"
+          ],
+          [
+            "LIGHTGBM",
+            "1.2669 ± 0.0000",
+            "4.0649 ± 0.0000"
+          ],
+          [
+            "M2",
+            "4.8088 ± 4.1059",
+            "8.5294 ± 0.6477"
+          ]
+        ],
+        "widths": [
+          0.24,
+          0.38,
+          0.38
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "H-M1 相比",
+          "XJTU 误差下降",
+          "MATR 误差下降"
+        ],
+        "rows": [
+          [
+            "M1",
+            "36.98%",
+            "10.18%"
+          ],
+          [
+            "MLP",
+            "47.36%",
+            "71.32%"
+          ],
+          [
+            "LSTM",
+            "91.45%",
+            "87.32%"
+          ],
+          [
+            "LIGHTGBM",
+            "69.68%",
+            "62.39%"
+          ]
+        ],
+        "widths": [
+          0.34,
+          0.33,
+          0.33
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "相对误差下降 = (baseline MAE − H-M1 MAE) / baseline MAE × 100%；baseline 为分母。"
+      },
+      {
+        "type": "p",
+        "text": "选 H-M1 的理由是同一 dev 上同时降低两来源误差、保留三分位数输出且重载可复现，而非只选 XJTU 最低的点预测。宽搜索中的 ExtraTrees 可获得更低 XJTU 点误差，但 MATR 约 1.90–2.42 pp，不满足 MATR 门控，且缺 q05/q95 导出契约，因此未选。当前 H-M1 比旧 M1 的 XJTU 绝对低 0.2254 pp、MATR 低 0.1732 pp。"
+      },
+      {
+        "type": "callout",
+        "label": "与 main 的数值关系",
+        "text": "main 冻结 71D TabICL+ExtraTrees 的开发 OOF MAE 为 0.585897 pp（21 电芯/2,058 窗口）；当前 H-M1 使用 30D 和不同 split/窗口。二者的能力与版本可以比较，不能直接相除作为同协议精度提升。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/baselines/development/v2_30d_domain_20261002.json",
+      "battery_platform/research/f01_channel_validity_20261002_qualified/hm1_quantile_development.json",
+      "model_lab/reports/round3/champion_hybrid_v2_streaming/manifest.json"
+    ]
+  },
+  {
+    "section": "性能图 / HISTORICAL FINAL",
+    "title": "保留历史 final 的真实胜负",
+    "subtitle": "同一历史比较协议里，M1在MATR领先；MLP在XJTU更好。此页不是H-M1的新final。",
+    "blocks": [
+      {
+        "type": "chart",
+        "kind": "final",
+        "height": 270
+      },
+      {
+        "type": "p",
+        "text": "MATR：M1 2.4528 pp，MLP 4.5717，LightGBM 3.8754，LSTM 10.3116，M2 9.3918。M1相对MLP降低46.35%、LightGBM降低36.71%、LSTM降低76.21%。"
+      },
+      {
+        "type": "p",
+        "text": "XJTU：M1 1.1768 pp，而MLP 0.6338 pp；M1未同时获胜。M1仍比LightGBM 1.5716 pp低25.12%，这一比较方向在旧文档中曾写反，PDF汇编已按机器回执纠正。"
+      },
+      {
+        "type": "callout",
+        "label": "一次性结果与历史暴露",
+        "text": "MATR final为6个对象；XJTU comparison final为3个已在V1开发中暴露的对象。XJTU *-5保护集仍封存。本轮H-M1没有读取新final标签，也没有把开发分数换名写为final。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "历史 final：联合 M1 的强项与弱项都保留",
+    "subtitle": "这是 pre-F01 的已发布比较；不把当前 H-M1 的 development 数字混入 final 榜单。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "历史联合实验在配方冻结后每个 seed 评分一次。MATR final 为 6 个电芯/48 行；XJTU 的 3 个电芯/24 行来自 V1 已暴露开发人口，称 comparison final，不是全新盲测。三个原 XJTU *-5 保护对象没有打开。下表均为旧 schema 历史指标，旧模型、旧权重和旧回执未被新特征修复覆盖。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "XJTU MAE pp",
+          "MATR MAE pp"
+        ],
+        "rows": [
+          [
+            "M1_joint",
+            "1.1768 ± 0.1121",
+            "2.4528 ± 0.0074"
+          ],
+          [
+            "M2_joint",
+            "3.0159 ± 0.6034",
+            "9.3918 ± 1.7472"
+          ],
+          [
+            "MLP_JOINT",
+            "0.6338 ± 0.0598",
+            "4.5717 ± 2.9026"
+          ],
+          [
+            "LSTM_JOINT",
+            "4.1695 ± 0.7871",
+            "10.3116 ± 2.1715"
+          ],
+          [
+            "LIGHTGBM_JOINT",
+            "1.5716 ± 0.0000",
+            "3.8754 ± 0.0000"
+          ]
+        ],
+        "widths": [
+          0.25,
+          0.375,
+          0.375
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "历史 M1 相比",
+          "XJTU 相对下降",
+          "MATR 相对下降"
+        ],
+        "rows": [
+          [
+            "MLP",
+            "-85.67%",
+            "46.35%"
+          ],
+          [
+            "LIGHTGBM",
+            "25.12%",
+            "36.71%"
+          ],
+          [
+            "LSTM",
+            "71.78%",
+            "76.21%"
+          ],
+          [
+            "M2_joint",
+            "60.98%",
+            "73.88%"
+          ]
+        ],
+        "widths": [
+          0.34,
+          0.33,
+          0.33
+        ]
+      },
+      {
+        "type": "p",
+        "text": "M1 在 MATR 的均值与 seed 稳定性优于简单基线，因此成为当阶段跨来源安全包实验候选；XJTU 上 MLP 数值更好。负的相对下降表示 M1 更差：相对 MLP 的 XJTU MAE 反而增加 85.67%。这不能被隐藏成“两来源 M1 全面领先”。LightGBM 的 0 标准差是确定性配方，不是泛化风险为零。"
+      },
+      {
+        "type": "formula",
+        "text": "例：MATR M1 vs MLP = (4.571748 − 2.452791) / 4.571748 × 100% = 46.35%。"
+      },
+      {
+        "type": "callout",
+        "label": "正确方向",
+        "text": "XJTU 历史 final 上，M1 1.176751 比 LightGBM 1.571586 低 0.394835 pp，以 LightGBM 为分母下降 25.12%；MLP 0.633794 比 M1 低 46.14%。两个方向和分母分别写清。"
+      },
+      {
+        "type": "p",
+        "text": "当前 H-M1 没有新的 untouched-final 分数。它超过同包 MLP 的证据来自 development 门控；不能把 0.3841 pp 标为 final，也不能把 historical final 用于此轮优化后仍称盲测。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+      "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md",
+      "battery_platform/docs/HM1_OPTIMIZATION_RESULTS_20261002.md"
+    ]
+  },
+  {
+    "section": "性能图 / TRANSFER",
+    "title": "MATR 数据带来的增益有直接对照",
+    "subtitle": "使用相同方法：只训练XJTU后跨域推断，与XJTU+MATR联合训练后比较。",
+    "blocks": [
+      {
+        "type": "chart",
+        "kind": "transfer",
+        "height": 235
+      },
+      {
+        "type": "p",
+        "text": "MLP的MATR误差从23.6047降至4.5717 pp（降低80.63%，误差缩小5.16倍）；LightGBM从9.8597降至3.8754（降低60.69%，2.54倍）；LSTM从10.7994降至10.3116（降低4.52%，1.05倍）。不同方法能从新增来源中获得的收益明显不同。"
+      },
+      {
+        "type": "p",
+        "text": "XJTU-only M1没有合法MATR domain head，返回unsupported，无法给一个真实跨域loss。原M1加入MATR后保留独立XJTU分支，因此XJTU误差不变；这证明分支保护，不是跨来源共享权重带来的提升。M2共享编码器保留了SOH负迁移结果，不能因为结构更复杂就优先上线。"
+      },
+      {
+        "type": "callout",
+        "label": "数据扩容与模型收益分开证明",
+        "text": "扩容倍率是对象计数；上图是同方法在同MATR比较集的实际误差下降。H-M1选择依赖另一个开发协议，不能从本图推导它的新盲测提升。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "加入 MATR 是否有效：同方法跨来源迁移",
+    "subtitle": "容量摘要联合训练改善 MATR 外推；没有合法域头的 M1 应拒判，而不是生成一个 loss。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "为了衡量新增来源的数据价值，另做 XJTU-only → MATR 的 OOD 诊断。MLP/LSTM/LightGBM 只用 XJTU train 拟合并以 XJTU dev 早停，然后在相同 MATR final 6 电芯/48 行上评分。联合配方使用 XJTU+MATR train，并保留 source 信息；MATR final 标签没有参与选择。对照固定三个 seed，使用 cell-macro MAE。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "XJTU-only → MATR pp",
+          "联合 → MATR pp",
+          "下降比例"
+        ],
+        "rows": [
+          [
+            "MLP",
+            "23.6047",
+            "4.5717",
+            "80.63%"
+          ],
+          [
+            "LSTM",
+            "10.7994",
+            "10.3116",
+            "4.52%"
+          ],
+          [
+            "LIGHTGBM",
+            "9.8597",
+            "3.8754",
+            "60.69%"
+          ]
+        ],
+        "widths": [
+          0.2,
+          0.29,
+          0.29,
+          0.22
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "MLP： (23.604706 − 4.571748) / 23.604706 × 100% = 80.63%；LightGBM：60.69%；LSTM：4.52%。"
+      },
+      {
+        "type": "p",
+        "text": "结果表明：仅靠 XJTU 外推到 MATR 时，MLP 和 LightGBM 的误差明显增大；加入 MATR 可显著改善这两个具体实现的目标来源性能。LSTM 只小幅改善，因此不能说“数据增多使所有模型同幅增长”。联合使用容量摘要保留了真实数据的可见容量历史，没有虚构 MATR 原始波形。"
+      },
+      {
+        "type": "p",
+        "text": "M1 本身按合法 domain 拟合。XJTU-only M1 没有 MATR 的来源/化学域头，MATR 查询应返回 unsupported，因此不提供可比 OOD 数字；联合 M1 是新增 MATR 域头，而不是旧 XJTU 头神奇泛化到 LFP。M1 的 XJTU-only 与联合 XJTU MAE 都为 1.1768 pp，保持不变来自分域训练数据相同。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "旧主线",
+          "XJTU-only XJTU MAE",
+          "联合 XJTU MAE",
+          "变化"
+        ],
+        "rows": [
+          [
+            "M1",
+            "1.1768",
+            "1.1768",
+            "0.0000 pp"
+          ],
+          [
+            "M2",
+            "2.9973",
+            "3.0159",
+            "+0.0185 pp"
+          ]
+        ],
+        "widths": [
+          0.17,
+          0.3,
+          0.3,
+          0.23
+        ]
+      },
+      {
+        "type": "callout",
+        "label": "提升点的可靠表述",
+        "text": "可建模独立电芯从 21 增至 56，train 从 11 增至 28；来源覆盖增加；MLP/LightGBM 的 MATR OOD 误差明显下降。没有将下载规模等同性能倍率，也没有把 main 的 71D 模型冒充该 OOD 对照。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json",
+      "battery_platform/research/joint_xjtu_matr/baselines/xjtu_only_transfer_final_20261002.json",
+      "battery_platform/docs/JOINT_XJTU_MATR_RESULTS_20261002.md"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "真实物理循环寿命：可运行，不等于已部署",
+    "subtitle": "corrected MATR 开发 123 对象 / 368 查询；删失、未知策略和未校准明确展示。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "完整 MAT 轨迹另建寿命开发协议，查询物理循环 50/100/200，输入严格早于查询；参考容量是已经可见的 cycle≥10 首个有效正容量。六个历史 MATR final barcode 在数值投影前排除，续测 policy 改变对象不混合策略；实际 123 电芯为 train79/dev23/calibration21，0 final，共368 query rows，128精确事件和240右删失窗口。预算固定为8条历史×64点。"
+      },
+      {
+        "type": "p",
+        "text": "M1 的离散 hazard 与 M2 的生存 head 处理精确、右删失和区间删失。绝对终点减 query 得剩余物理循环；右删失是观察下界，不把末次记录+1当死亡点。RUL中位数和风险 1−S(H) 来自同一生存分布，越过预测网格中位数返回超过范围，不补造寿命。M1 joint及M2 joint/no-adapter/no-history/SOH single-task各3seed，共15正式开发运行。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "可核实项",
+          "结果/分母"
+        ],
+        "rows": [
+          [
+            "原始物理身份",
+            "135 注册 / 134 有测量 / 5 对真实续测"
+          ],
+          [
+            "研究支持策略",
+            "68 精确 policy；17 有≥2独立 train 生存对象"
+          ],
+          [
+            "共同 RUL 开发域",
+            "6 域 / 8 独立 dev 电芯：1 exact、7 right"
+          ],
+          [
+            "4.8C(80%)-4.8C 域 NLL",
+            "M1 2.378169；M2 joint 0.968311 ± 0.077945"
+          ],
+          [
+            "其他 5 个共同域",
+            "全右删失；近零 NLL 不证明未知 EOL 正确"
+          ],
+          [
+            "C-index",
+            "null：没有合法跨对象同 query 可排序事件对"
+          ],
+          [
+            "效率 / 故障",
+            "无合法源监督标签，unsupported"
+          ]
+        ],
+        "widths": [
+          0.39,
+          0.61
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "阈值风险(H) = 1 − S(H)；精确事件 NLL = −log P(T=t)；右删失 NLL = −log S(C)。"
+      },
+      {
+        "type": "callout",
+        "label": "校准与独立性边界",
+        "text": "每精确 policy 最多2个 calibration 电芯，α=0.2 的80% object-max CQR全部样本不足/无界；calibration_version=null。29个旧非final对象与新轨迹人口重叠，这不是干净独立来源泛化。"
+      },
+      {
+        "type": "p",
+        "text": "寿命安全 JSON/NPZ 包保留真实无标签开发查询和支持/不支持示例；六包整体重放容差1e-7。profile明确 development_only_research、validated_deployment=false，不能自动作为 Carbon 已验证寿命/效率参数。早期未知 policy fallback诊断已隔离，原指标/hash保留，纠正版同配置重跑。"
+      }
+    ],
+    "sources": [
+      "model_lab/docs/MATR_LIFETIME_PROTOCOL.md",
+      "model_lab/reports/v2/matr_lifetime_development_masked_20261002/BENCHMARK.md",
+      "model_lab/reports/v2/package_replay_with_lifetime_units_20261002.json"
+    ]
+  },
+  {
+    "section": "补充研究 / MULTI-SOURCE",
+    "title": "DyAD 多任务实验：异常任务受益，SOH负迁移保留",
+    "subtitle": "这组固定损失实验独立于联合H-M1选择；15个训练模型，三种子完整归档。",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "方法",
+          "MATR dev / final MAE pp",
+          "DyAD dev / final AUCPR"
+        ],
+        "rows": [
+          [
+            "M1 per-domain",
+            "1.702±0.008 / 2.453±0.007",
+            "0.750±0 / 0.333±0"
+          ],
+          [
+            "M2 joint",
+            "10.175±0.563 / 9.920±0.780",
+            "0.861±0.127 / 0.833±0.289"
+          ],
+          [
+            "无domain adapter",
+            "10.239±0.278 / 10.169±0.326",
+            "0.750±0 / 0.667±0.289"
+          ],
+          [
+            "无history",
+            "11.756±1.757 / 11.407±1.736",
+            "0.861±0.127 / 0.833±0.289"
+          ],
+          [
+            "仅SOH任务",
+            "11.552±1.148 / 11.240±1.186",
+            "unsupported / unsupported"
+          ]
+        ],
+        "widths": [
+          0.23,
+          0.4,
+          0.37
+        ]
+      },
+      {
+        "type": "p",
+        "text": "DyAD标签为车辆异常二分类，不是电芯根因。final仅15个独立车辆，14正常、1异常；120个landmark另列，不能当作120辆车。独立校准10车辆中只有1异常，Platt保持insufficient_calibration_class_objects，未伪造校准系数。"
+      },
+      {
+        "type": "h2",
+        "text": "高覆盖率也可能来自极宽区间"
+      },
+      {
+        "type": "p",
+        "text": "MATR六个独立校准对象允许80% object-max CQR。M1 final landmark/整轨迹覆盖为95.83%/66.67%，宽13.419±0.728 pp；M2为100%/100%，但宽105.861±25.972 pp。区间更宽不是模型更好，覆盖与宽度必须同时展示。"
+      },
+      {
+        "type": "callout",
+        "label": "为什么不直接采用M2",
+        "text": "M2在DyAD上观察到较高AUCPR，但SOH明显落后，而且异常正样本极少。这种跨任务权衡不能支持“所有来源全面提升”；当前没有用这组final反复调参。"
+      }
+    ],
+    "sources": [
+      "model_lab/docs/V2_IMPLEMENTATION.md",
+      "model_lab/reports/v2/multisource_fixed_loss_20261002/final_summary.json"
+    ]
+  },
+  {
+    "section": "补充研究 / GENERATED FAULT",
+    "title": "CH 四类故障：探索性参考，不冒充真实车辆泛化",
+    "subtitle": "normal / high_resistance / low_capacity / self_discharge；作者公开生成数据，与LLM合成分开。",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "范围",
+          "dev可评分类宏AUPRC",
+          "探索性final可评分类宏AUPRC"
+        ],
+        "rows": [
+          [
+            "LFP",
+            "0.455±0.014",
+            "0.964±0.041"
+          ],
+          [
+            "NCM",
+            "0.746±0.010",
+            "0.852±0.028"
+          ],
+          [
+            "合并VIN",
+            "0.702±0",
+            "0.938±0.060"
+          ]
+        ],
+        "widths": [
+          0.2,
+          0.4,
+          0.4
+        ]
+      },
+      {
+        "type": "p",
+        "text": "保守按48个VIN根分组；两化学体系96条记录不是96个独立电池。train/dev/calibration/final为29/7/5/7根，58/14/10/14记录。三种子GBDT完成，train-only预处理、每化学体系温度缩放、安全JSON导出与逐条预测重放最大绝对差0。"
+      },
+      {
+        "type": "p",
+        "text": "dev没有high_resistance，final没有normal，完整四分类宏AUPRC均为null。表中仅统计当时可评分、有正负样本的类；不能把0.702→0.938说成同一指标提升33.69%。作者没有母本身份，分组独立性仍有限，五个校准根也不足以证明校准可靠。"
+      },
+      {
+        "type": "formula",
+        "label": "公式与口径",
+        "text": "按类计算AP后，对可评类别求宏平均；完整四类有不可评类时full_macro_AUPRC=null"
+      },
+      {
+        "type": "callout",
+        "label": "为什么仍保留这个实验",
+        "text": "它验证公开生成来源的导入、标签遮罩、有限数据训练和安全重载，并提供故障分类工具参考。它不参与H-M1 SOH门控，不支撑真实电芯根因准确率或公开SOTA。"
+      }
+    ],
+    "sources": [
+      "model_lab/docs/V2_IMPLEMENTATION.md",
+      "model_lab/reports/v2/ch_generated_20261002/inference_validation.json"
+    ]
+  },
+  {
+    "section": "数值模型与数据证据",
+    "title": "F01 后的版本选择：实现、候选、研究首选三层",
+    "subtitle": "温度有效性修复建立独立 schema；不把新特征与旧模型混用，也不重写历史分数。",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "旧特征将缺温填0却标成有效，导致与真实0°C无法区分。新 schema 为 battery_features_v2_channel_validity_1，第六通道 temperature_valid 表达传感器有效性；只在连续有限温度段内插值，统计量仅消费合格点，缺失标志与中性填充值一起进入模型。模型包装器检查 schema、形状与版本，拒绝新旧错配。"
+      },
+      {
+        "type": "p",
+        "text": "实际准入源盘点检查4,744条有V/I/time数组分段和5,965,256个基础有效点，未触发旧缺温置零；MATR摘要/DYAD无曲线列不适用。分段可能来源重叠，不是4,744独立电芯。新包冻结原376non-final行，30D scalar与标签逐位相同；H-M1/M1/M2各3seed共9次独立重训，旧权重未复用。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "模型",
+          "旧 XJTU → 新 MAE",
+          "旧 MATR → 新 MAE"
+        ],
+        "rows": [
+          [
+            "H-M1",
+            "0.3841 → 0.3841",
+            "1.5290 → 1.5290"
+          ],
+          [
+            "M1",
+            "0.6095 → 0.6095",
+            "1.7021 → 1.7021"
+          ],
+          [
+            "M2",
+            "2.6719 → 4.8088",
+            "9.7474 → 8.5294"
+          ]
+        ],
+        "widths": [
+          0.22,
+          0.39,
+          0.39
+        ]
+      },
+      {
+        "type": "p",
+        "text": "M2新输入通道、标准化与初始化同时变化，XJTU退化而MATR改善，不能把变化归因于缺温的单因素作用；该候选未选用。H-M1/M1不变符合本次实际输入未触发缺温缺陷与标量相同的事实，不宣称修复提升了本轮MAE。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "选用层次",
+          "模型及实际状态"
+        ],
+        "rows": [
+          [
+            "V1 已接入冻结模型",
+            "71D TabICL+ExtraTrees等权混合；main历史配方继续保留"
+          ],
+          [
+            "V2 安全包实验候选",
+            "DomainBaseline M1跨来源SOH实验包；来源头支持边界明确"
+          ],
+          [
+            "最新研究首选",
+            "新schema H-M1量化原型；dev双来源优于旧M1，尚无完整生产多任务契约"
+          ]
+        ],
+        "widths": [
+          0.32,
+          0.68
+        ]
+      },
+      {
+        "type": "callout",
+        "label": "用户看到的分数必须匹配版本",
+        "text": "历史final、当前dev、物理生命周期开发是三个协议；H-M1是研究首选，不等于线上所有请求已经使用H-M1。未知域/缺标签/无校准必须明确unsupported或uncalibrated，不显示伪造0或旧指标。"
+      }
+    ],
+    "sources": [
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md",
+      "model_lab/docs/V2_IMPLEMENTATION.md",
+      "model_lab/reports/round3/champion_hybrid_v2_streaming/manifest.json"
+    ]
+  },
+  {
+    "section": "Skills 与合成回放基础",
+    "title": "07 / 16 个 Skill：可审查的推理流程",
+    "subtitle": "一个运维 Agent 按需加载；每包有证据、反例、工具和停止规则",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main没有本轮标准化Skill目录。V2生成16个包，为数据质量、状态解释、故障候选、主动检查、报告和反馈更新提供受限流程。这16个包不是16个分别训练的模型，也不是16个常驻决策Agent。每包至少3个候选流程、2个困难反例、4个示例，带输入要求、证据清单、停止/转交条件及行为契约。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Skill组（完整16项）",
+          "具体作用"
+        ],
+        "rows": [
+          [
+            "data-quality / chemistry-eligibility",
+            "安装身份、单位/时间/缺测；体系/协议/模型适用与拒判"
+          ],
+          [
+            "soh-trend / lifetime-interpretation",
+            "同参考SOH趋势；寿命分布、右删失、强度换算"
+          ],
+          [
+            "efficiency-measurement / internal-resistance",
+            "SOC/能量边界与辅助能耗；可比内阻复核"
+          ],
+          [
+            "capacity-loss / self-discharge",
+            "容量与SOC/截止条件；静置净损失与待机负载"
+          ],
+          [
+            "voltage-inconsistency / thermal-anomaly",
+            "同步电压与通道映射；环境/负载温升及已批SOP转交"
+          ],
+          [
+            "charging-anomaly / sensor-anomaly",
+            "声明充电策略；偏置/漂移/断线与剩余真实异常"
+          ],
+          [
+            "fleet-correlation / active-test-selection",
+            "关联组与确认共因；授权、区分力、价值/成本选补测"
+          ],
+          [
+            "report-work-proposal / feedback-context-update",
+            "事实/候选/反证/未知分栏，待确认工单；原文span、冲突与受限经验"
+          ]
+        ],
+        "widths": [
+          0.49,
+          0.51
+        ]
+      },
+      {
+        "type": "p",
+        "text": "生成器写SKILL.md、manifest、证据references、checks/contract.json和4个example。工具声明取运行时10个白名单工具的子集；Carbon工具不在Skill中。示例仅来自cold_start当前可见观察，未来、oracle和封存输入拒绝；事实引用须在当前可见集合，未确认候选confidence留空。正例表示流程适用，不能当作已确认根因。"
+      },
+      {
+        "type": "callout",
+        "label": "验证与效果分开",
+        "text": "16/16标准格式、64示例可见性/引用/白名单/权限和隐藏哨兵检查通过。程序验收不等于0.9准确率；有效性需要总报告的同协议云端对照。材料为AI辅助项目合成，未进行独立专家盲评。"
+      }
+    ],
+    "sources": [
+      "docs/V2_SKILLS_DETAIL.md",
+      "tools/content/skill_catalog.py",
+      "content_v1/skills/thermal-anomaly/manifest.json"
+    ]
+  },
+  {
+    "section": "Skills 与合成回放基础",
+    "title": "08 / 合成规模、云端证据与可重建环境",
+    "subtitle": "语言由云端补充，数学与隐藏答案由独立程序生成",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "合成数据服务多轮检查与反馈回放，不冒充真实现场根因或电化学模拟验证。数据保留观察单位、时间、安装身份、缺失和可见门槛；根因配置、简化物理值、概率与VOI、排程和Carbon oracle由程序生成，云LLM提供措辞和反例补充，避免同一模型既出答案又当唯一裁判。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "交付项",
+          "冻结数量/划分"
+        ],
+        "rows": [
+          [
+            "根情景",
+            "2400；12主桶各200"
+          ],
+          [
+            "root split",
+            "cold960 / evolution720 / dev360 / sealed360"
+          ],
+          [
+            "观察分支 / parentage",
+            "31200 / 33600"
+          ],
+          [
+            "Skill / 示例 / 知识证据",
+            "16 / 64 / 17"
+          ],
+          [
+            "数学fixture / 注入探针",
+            "派单40、Carbon30 / 7类"
+          ],
+          [
+            "覆盖",
+            "初始补测73.33%；正常/域外/不足41.67%；冲突/未解决26.67%"
+          ]
+        ],
+        "widths": [
+          0.37,
+          0.63
+        ]
+      },
+      {
+        "type": "p",
+        "text": "母模板、物理对象、安装和已知近重复组整体划分，不跨split；同症状不同原因的成对根保持同组。公开部署只复制许可通过Skills、知识和cold_start可见信息；oracle、未来观察、evolution/dev/sealed及数学fixture不进Agent索引。生成recipe仍共享，不能把平衡合成分布宣称为真实部署precision。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "实际云请求",
+          "冻结结果"
+        ],
+        "rows": [
+          [
+            "16次Skill + 12次反馈",
+            "48条条件/反例 + 72段自由文本；28/28语言结构通过"
+          ],
+          [
+            "Provider usage",
+            "prompt6280；completion39128；total45408 tokens"
+          ],
+          [
+            "提供商/记录",
+            "DeepSeek deepseek-flash；请求/响应hash、usage、状态；无Key"
+          ]
+        ],
+        "widths": [
+          0.37,
+          0.63
+        ]
+      },
+      {
+        "type": "p",
+        "text": "OpenAI兼容客户端POST到配置URL的/chat/completions，支持messages/tools/JSON输出、有限重试、超时、失败和token usage记录；7897为默认代理。GitHub保留pyproject.toml、uv.lock及一键install/bootstrap/demo/serve/test；UV冻结Python3.12依赖，测试命令清空云Key。保存的cloud enrichment足够离线确定性重建，无需再消耗API额度。"
+      },
+      {
+        "type": "callout",
+        "label": "来源与验收",
+        "text": "全部标合成，不是专家署名、厂家SOP、已批准现实阈值或真实政策。生成报告validation=passed、hashes_checked=true；历史内容阶段82项测试通过。没有取得账单，不推测金额。"
+      }
+    ],
+    "sources": [
+      "docs/V2_CONTENT_IMPLEMENTATION.md",
+      "content_v1/manifests/cloud_enrichment.json",
+      "battery_platform/app/agent/llm.py",
+      "scripts/v2.sh",
+      "pyproject.toml",
+      "uv.lock"
+    ]
+  },
+  {
+    "section": "AGENT · 云端执行与证据报告",
+    "title": "一个执行器，把数值与行动连接起来",
+    "subtitle": "云端语言推理、数值预测和程序权限各有职责",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "DEV 新增的单 Agent 按采集、适用性检查、Skill 路由、候选分析、工具调用、严格报告验证的流程工作；补测后从再评估继续。它将已到达的测量、数值模型结果与授权知识组织成可审查报告。模型仍由云端 API 提供，平台不训练或修改 LLM 权重。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "组成",
+          "具体职责",
+          "用户看到的输出"
+        ],
+        "rows": [
+          [
+            "数值预测服务",
+            "绑定版本化特征/模型包，计算 SOH、RUL 或支持的概率",
+            "数值估计、区间、适用域与缺失说明"
+          ],
+          [
+            "云端 Agent",
+            "调用 OpenAI 兼容 Chat Completions；历史实测 deepseek-flash",
+            "事实、假设、反证、未知项、建议检查与理由"
+          ],
+          [
+            "程序执行器",
+            "检查身份、时间、引用、参数、工具预算和报告 schema",
+            "明确错误、等待补测或证据不足状态"
+          ]
+        ],
+        "widths": [
+          0.19,
+          0.4,
+          0.41
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "让建议可以落到下一次检查"
+      },
+      {
+        "type": "p",
+        "text": "用户可阅读事实及其证据编号、候选解释的支持与反证、适用性、检查优先级，以及未批准工单提案。假设概率默认空值；非空必须匹配校准数值工具。数据不足可以拒判，人员描述不能自动变成确诊。测试结果只有在已选中且授权后才到达，Agent 根据新证据重新分析。"
+      },
+      {
+        "type": "p",
+        "text": "工具白名单包含读取资产、测量、预测、邻接异常、知识、Skill、Memory，以及检查排序、工单提案和报告追加，共 10 项。每轮最多 12 次调用、4 个 Skill 正文。服务绑定安装身份、可见时间与 Context 版本，阻止未来数据、其他安装和隐藏标签进入报告。批准派单与正式执行继续由业务流程负责。"
+      },
+      {
+        "type": "callout",
+        "label": "真实接口已执行",
+        "text": "两根/臂 smoke 实际产生 14 个云端请求、76,602 tokens；证明接口与小规模更新链可执行。所有组都保守输出证据不足，不能当作真实故障准确率提升。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_IMPLEMENTATION.md",
+      "battery_platform/reports/v2_agent/cloud_smoke.json",
+      "battery_platform/reports/v2_agent/cloud_single_report.json"
+    ]
+  },
+  {
+    "section": "SELF EVOLVE · 反馈与经验",
+    "title": "把反馈保留下来，再有条件地使用",
+    "subtitle": "完整事实、可信来源、有限上下文和真正关闭的消融",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "现场自由反馈与结构化测量进入抽取器后，保留原文 span、作者、反馈 ID 与版本、可见时间、测量对象和信任等级。温度、内阻、电压的小数不再被英文句号拆坏。文字“未测到”不当阴性标签，干预后暂时无故障不自动当作误报。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "局部操作",
+          "何时使用",
+          "记录结果"
+        ],
+        "rows": [
+          [
+            "ADD / REVISE",
+            "新增经验或修正已有来源",
+            "保存完整事实引用与新来源版本"
+          ],
+          [
+            "CONFLICT",
+            "出现反证或文字/测量冲突",
+            "保留双方原值与信任等级"
+          ],
+          [
+            "DEPRECATE / NO_UPDATE",
+            "过期、不适用、重复或证据不足",
+            "明确停用/不更新，避免制造经验"
+          ]
+        ],
+        "widths": [
+          0.25,
+          0.35,
+          0.4
+        ]
+      },
+      {
+        "type": "p",
+        "text": "ACE 更新采用不可变快照和版本 CAS；当前运行继续使用开始时冻结的 Context。最新修复让每条 Memory 保存完整 fact_references，摘要最多 6 条事实、2,400 个 claim 字符，按纠错、测量、反证、未知项、结论和普通描述排序。末尾测量不再被前六句登记信息挤掉。模型可检索全文，并获取同一 Memory 的另一组相关事实。"
+      },
+      {
+        "type": "h2",
+        "text": "区分事件历史与相似经验"
+      },
+      {
+        "type": "p",
+        "text": "同安装、同根事件的已到达历史作为 event_history；相似经验按中文双字词片段、英文词边界及有限中英症状映射计算相关性。零相关、空查询和通用巡检词返回空。作用域、时间、过期与状态先过滤，相关候选中的正反例各最多 3 条，初始与工具检索共用 6 个唯一 Memory ID 的预算。"
+      },
+      {
+        "type": "callout",
+        "label": "消融修复 F05",
+        "text": "no_memory 在执行层清空学习 Memory，并关闭初始历史、相似检索及 search_memory；外部工具 callback 也不能重新打开。实际 initial/history/tool memory_ids 均被记录。此修复验证消融成立，不等于诊断分数升高。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_IMPLEMENTATION.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/tests/test_v2_feedback_facts.py",
+      "battery_platform/tests/test_v2_no_memory_control.py",
+      "battery_platform/tests/test_v2_memory_relevance.py"
+    ]
+  },
+  {
+    "section": "进化图 / UPDATE GATES",
+    "title": "自进化更新的全过程与失败边界",
+    "subtitle": "ACE处理局部反馈；GEPA提出受限文本候选；独立dev比较与CAS保护发布。",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "gepa",
+        "height": 235
+      },
+      {
+        "type": "p",
+        "text": "默认50个不同反馈根触发，最多200 rollout；历史pilot每批2根、单候选，baseline/candidate各2根dev。候选仅改允许文本字段，不能改工具schema、数值模型、预算或授权范围。"
+      },
+      {
+        "type": "p",
+        "text": "当前修复按root/feedback/version记录预留与消费。临时provider失败和CAS冲突可有界恢复，同代最多3次、60/120秒退避；无Key等待配置变化。主动取消、重启中断需要显式幂等retry，原费用与预算保留，不能静默自动重试消耗额度。"
+      },
+      {
+        "type": "callout",
+        "label": "效果门与产品门",
+        "text": "已发布Context还要与上一版在固定dev根回归；有分数下界、硬门和来源版本检查。样本不足标no_check，不当作通过。实现保证可以检验和拒绝更新，提升效果仍需要另行实验。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_IMPLEMENTATION.md",
+      "battery_platform/docs/GEPA_RECOVERY.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md"
+    ]
+  },
+  {
+    "section": "SELF EVOLVE · 候选选择与恢复",
+    "title": "候选必须过门，失败必须能解释",
+    "subtitle": "GEPA 文本优化、自动回归和来源版本恢复已接入真实服务",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "项目采用 GEPA 风格文本候选适配器：从已完成 evolution 报告、工具轨迹和可见反馈提出局部 Skill 修改，在独立 dev 根上比较基线与候选。允许改 instructions、routing_description、evidence_checklist、retrieval_query_template 与 inspection_selection_hints；工具权限、数值预测和 LLM 权重不随候选修改。"
+      },
+      {
+        "type": "p",
+        "text": "默认累计 50 个不同根事件触发，rollout 上限 200；历史 pilot 显式使用每批 2 根、一个候选、基线/候选各 2 根 dev，总 4 rollout。冻结先于调用，失败也占预算并记费用。有效且不劣的候选自动激活；不满足条件返回 NO_UPDATE 或隔离。候选生成器不能读取 sealed。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "历史批次",
+          "选择分：基线 → 候选",
+          "结果"
+        ],
+        "rows": [
+          [
+            "1",
+            "0.9333 → 0.9333",
+            "激活"
+          ],
+          [
+            "2",
+            "0.9333 → 0.8667",
+            "拒绝：候选严格失败"
+          ],
+          [
+            "3 / 4",
+            "0.9333 → 0.9333",
+            "各激活一次"
+          ],
+          [
+            "5",
+            "0.8667 → 0.8667",
+            "拒绝：两侧严格失败"
+          ],
+          [
+            "6",
+            "0.9333 → 0.9333",
+            "激活"
+          ]
+        ],
+        "widths": [
+          0.19,
+          0.38,
+          0.43
+        ]
+      },
+      {
+        "type": "p",
+        "text": "真实完成 6 次提案、24 次选择 rollout，4 次激活、2 次不更新。修改集中在 data-quality 的允许字段，补充引用编号可解析、校准与工况未核对不确诊、独立复核优先等规则。四次激活均为选择集平分，说明不劣门执行，不能称选择集升分。"
+      },
+      {
+        "type": "h2",
+        "text": "发布之后仍检查，来源失败可以有界恢复"
+      },
+      {
+        "type": "p",
+        "text": "Context 发布自动排队回归，默认 previous/current 各 5 个 dev 根；分数下降或硬失败可经取消/CAS屏障恢复并隔离坏版。缺 Key、prior、dev 或完整预算明确 no_check。GEPA 消费按根+反馈ID+版本固定，区分预留、终结、可重试失败、缺配置、取消和中断；同恢复代最多 3 自动尝试，60/120 秒退避。主动取消或重启后须显式 retry，原费用与失败记录保留。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_FINAL_REVIEW.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/docs/GEPA_RECOVERY.md",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/results.json"
+    ]
+  },
+  {
+    "section": "AGENT图 / SEALED PILOT",
+    "title": "A2 的观察收益清楚，A4 的退化也清楚",
+    "subtitle": "同一冻结pilot的程序质量评分；严格无效报告以0计入原始分母。",
+    "blocks": [
+      {
+        "type": "chart",
+        "kind": "agent",
+        "height": 238
+      },
+      {
+        "type": "formula",
+        "label": "公式与口径",
+        "text": "Q = 0.4状态 + 0.3引用完整 + 0.2首项检查/适当拒判 + 0.1/(1+检查数)；严格契约无效则Q=0"
+      },
+      {
+        "type": "p",
+        "text": "static 0.7000，A2 0.8556（+22.22%），A3 0.7778（+11.11%），A4 0.3111（−55.56%）。A0规则0.9250且全部保守拒判，说明高程序分不等于确诊率。该0.7是DEV pilot内部静态Agent基线，main没有这个云Agent，不能写成main被提升至0.85。"
+      },
+      {
+        "type": "callout",
+        "label": "Self Evolve 是否已证明有效",
+        "text": "尚未形成因果证明：样本12根，安装作用域限制导致A2未取到可比的跨根经验，四次GEPA激活选择分均持平，A4 sealed明显变差。F02-F07修复后无新云端评分，不能把604软件测试包装成0.9诊断效果。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_EXPERIMENT.md",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/protocol.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/summary.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/final_contexts.json"
+    ]
+  },
+  {
+    "section": "AGENT · 真实消融成绩",
+    "title": "A0–A4：全部分数使用同一口径展示",
+    "subtitle": "历史预登记小试验；每个已运行阶段均为 12 根",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "12 个主桶各选一个 evolution、dev 与 sealed 根，共 36 个互不交叉的根及母模板身份。evolution 六批各两根，先预测冻结，再揭示已选且授权检查并学习可见反馈。final Context 冻结、优化器关闭之后首次打开 sealed。dev 参与候选选择，不能称盲测。"
+      },
+      {
+        "type": "formula",
+        "text": "Q = 0.4×初始状态符合 + 0.3×引用完整 + 0.2×合适首项检查/拒判 + 0.1/(1+检查数)"
+      },
+      {
+        "type": "p",
+        "text": "直接云端报告 JSON 或严格契约失败记 0，失败仍进入 12 根分母；每根只计一次初始报告。Q 是程序质量，状态符合与引用可追溯不等于最终根因正确。保守拒判也可高分。漏/误检查依据 requires_initial_test 项目配置，不能解释成现场故障 recall/precision。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "方法 / 机制",
+          "Evolution Q",
+          "Final dev Q",
+          "Sealed Q",
+          "严格有效报告"
+        ],
+        "rows": [
+          [
+            "A0 · 规则",
+            "0.9250",
+            "0.9250",
+            "0.9250",
+            "不适用"
+          ],
+          [
+            "A1 · 静态Skill/RAG",
+            "0.8556",
+            "0.9333",
+            "0.7000",
+            "9 / 12"
+          ],
+          [
+            "A2 · 情景记忆",
+            "0.8556",
+            "未运行",
+            "0.8556",
+            "11 / 12"
+          ],
+          [
+            "A3 · ACE经验",
+            "0.8556",
+            "未运行",
+            "0.7778",
+            "10 / 12"
+          ],
+          [
+            "A4 · ACE + GEPA",
+            "0.9333",
+            "0.5444",
+            "0.3111",
+            "4 / 12"
+          ]
+        ],
+        "widths": [
+          0.29,
+          0.17,
+          0.17,
+          0.17,
+          0.2
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A2/A3 的 final dev 为满足已登记累计预算未运行。sealed 初始 A1–A4 都是同一静态 v0，报告共享；A1 final仍 v0，复用同份结果，不计为四组独立实测。A2/A3 final v11各有 11 条 Memory；A4 final v16有 12 条 Memory和 data-quality Skill覆盖。"
+      },
+      {
+        "type": "callout",
+        "label": "比较身份必须明确",
+        "text": "0.7000 是这个 V2 pilot 内部的静态云端消融基线，不是 main 版本 Agent 分数。main 与当前 DEV 没有这套实验的同口径前后分数，不能画成 main 0.7 → DEV 0.8556。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_EXPERIMENT.md",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/protocol.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/summary.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/final_contexts.json"
+    ]
+  },
+  {
+    "section": "SELF EVOLVE · 有效性判定",
+    "title": "观察到更高分，也保留负结果",
+    "subtitle": "闭环能力已验证；自进化造成泛化提升尚未证明",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "sealed 的 A2 从静态基线 0.7000 到 0.8556，观察差 +0.1556，相对 +22.22%；A3 到 0.7778，相对 +11.11%；A4 到 0.3111，相对 −55.56%。A2 是本试验最高云端臂，但低于规则 A0 的 0.9250。所有分数保留，不能只呈现最好方法。"
+      },
+      {
+        "type": "p",
+        "text": "A2 情景记忆限同安装，而独立根安装不同，无法把这次差异归因于跨根 Memory 收益。每根单次云端实测、未固定 seed、仅12根且专家语义盲审 pending；温度0也不保证服务确定性。A4在 final dev 与 sealed都下降。现有证据支持真实接口、候选、检查反馈、激活/拒绝和冻结比较可执行，尚不支持 Self Evolve 因果升分或显著泛化结论。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "V2实际阶段",
+          "HTTP请求",
+          "provider tokens"
+        ],
+        "rows": [
+          [
+            "Evolution",
+            "48",
+            "500,310"
+          ],
+          [
+            "GEPA提案 / 选择",
+            "30",
+            "273,750"
+          ],
+          [
+            "Final dev",
+            "24",
+            "268,800"
+          ],
+          [
+            "Sealed静态 / final",
+            "12 / 34",
+            "120,848 / 364,226"
+          ],
+          [
+            "V2合计",
+            "148",
+            "1,527,934"
+          ],
+          [
+            "含取消V1累计",
+            "177",
+            "1,887,590"
+          ]
+        ],
+        "widths": [
+          0.48,
+          0.22,
+          0.3
+        ]
+      },
+      {
+        "type": "p",
+        "text": "V2 API/JSON失败为0，却有22份直接报告严格无效：20份数值契约拒绝、2份HTTP前预算预留阻断。事后只读核验识别12份中文数字边界误拒，另8份含引用中没有的派生/舍入值。后置词法修复属于新的运行版本，没有回填旧分数或把sealed失败交给优化器。"
+      },
+      {
+        "type": "callout",
+        "label": "最新修复与历史成绩分开",
+        "text": "原非空活动Context的no_memory对照解释失效；本pilot A1确实为空v0，所以静态分数保留。F02–F07及604项Python回归验证软件行为，当前没有新的云端质量评分。软件回归不能换算为诊断0.9，自进化因果收益也尚未证明。"
+      }
+    ],
+    "sources": [
+      "docs/V2_AGENT_EXPERIMENT.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/summary.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/post_execution_audit.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/post_pilot_runtime_change.json",
+      "battery_platform/reports/v2_agent/preregistered_pilot_v2/provider_calls.jsonl"
+    ]
+  },
+  {
+    "section": "CARBON图 / DECISION CHAIN",
+    "title": "碳模块不是一个黑箱预测模型",
+    "subtitle": "它把可追溯活动、物理情景、误差集合和财务资格连接成明确计算链。",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "carbon",
+        "height": 235
+      },
+      {
+        "type": "p",
+        "text": "建立这一模块的原因，是延长使用寿命的收益不能只看减少制造。旧电池效率低、维护频繁或服务不足，都可能抵消制造收益；购买新电池也不必然在每个计算期限内更好。系统要求共同功能单位，并展示各活动对总量和比较减排的贡献。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "用户看到",
+          "来自哪里"
+        ],
+        "rows": [
+          [
+            "名义排放 / 上下界 / 活动贡献",
+            "活动清单×因子；同源误差预算"
+          ],
+          [
+            "继续使用、维修、更换候选的可行性",
+            "状态效率、剩余寿命、显式制造及服务量约束"
+          ],
+          [
+            "成本/碳排前沿与切换条件",
+            "有限候选Pareto、ε约束、单参数敏感性"
+          ],
+          [
+            "可审计台账与正式导出",
+            "claim类型、来源冻结、审核及全额冲销"
+          ]
+        ],
+        "widths": [
+          0.4,
+          0.6
+        ]
+      },
+      {
+        "type": "callout",
+        "label": "与电池模型的接线边界",
+        "text": "当前SOH尚未形成经过验证的寿命/效率状态适配器；validated_model路径不接受虚构输入。可以用明确测量或用户声明的情景核算，不能说H-M1已经自动预测实际减排。"
+      }
+    ],
+    "sources": [
+      "battery_platform/docs/V2_CARBON_IMPLEMENTATION.md",
+      "battery_platform/app/carbon/engine.py",
+      "battery_platform/frontend/src/pages/V2Carbon.tsx",
+      "content_v1/fixtures/carbon.jsonl",
+      "battery_platform/app/carbon/storage.py",
+      "battery_platform/tests/test_v2_carbon.py",
+      "docs/V2_FIXTURES_DETAIL.md"
+    ]
+  },
+  {
+    "section": "独立碳与经济决策",
+    "title": "01 / 从同服务量到可追溯活动账",
+    "subtitle": "新增独立碳工作区：让减排结论有边界、有来源、有分解",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "main 提供资产、模型与运维基础，没有独立 V2 Carbon 工作区。当前版本新增因子、情景、求解、活动分解和分类台账。建立这一模块，是为了比较继续使用、检查、维修及更换在同一服务量下的真实权衡：少制造一块电池，并不必然减少总排放，效率下降带来的额外电量也必须计入。"
+      },
+      {
+        "type": "formula",
+        "text": "E = Σᵢ σᵢ aᵢ fᵢ；B = E基准 − E候选；σᵢ=+1一般活动，−1合格回收抵扣"
+      },
+      {
+        "type": "p",
+        "text": "aᵢ 是逐期用电、制造、运输、检查等活动量，fᵢ 是冻结版本的匹配排放因子。每条活动保留过程、期间、单位、来源、版本与气体口径。制造按电池块数或额定容量建账，运输按吨公里，能耗按 kWh；不能将 Ah 当能量。功能单位声明交付量、地区、期间和终端处理，从源头避免不同服务量的虚假比较。 活动量非负；回收抵扣单列，必须保留allocation_method与material_flow_id，同一材料流禁止重复抵扣。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "用户操作",
+          "系统展示/检查"
+        ],
+        "rows": [
+          [
+            "登记因子",
+            "值±偏差、来源 URL、版本、地区、单位、气体口径、有效期"
+          ],
+          [
+            "配置情景",
+            "共同输出 kWh、期数、基准/候选、边界及终端处理"
+          ],
+          [
+            "设置 Γ 并求解",
+            "异步状态、取消、冻结输入版本；新作业时保留旧结果"
+          ],
+          [
+            "查看候选",
+            "可行性、名义排放/成本、上下界、比较减排及活动分解"
+          ]
+        ],
+        "widths": [
+          0.26,
+          0.74
+        ]
+      },
+      {
+        "type": "p",
+        "text": "每次计算先校验活动与因子的单位、气体范围、边界、地区和有效期，来源缺失或不匹配直接拒算；合成因子不能支撑真实核算。点击结果数字可逐项追到具体活动与因子快照。来源修改不会回写历史冻结结果，发布时还检查情景版本，过期输入不能冒充当前结论。"
+      },
+      {
+        "type": "callout",
+        "label": "结果口径",
+        "text": "Carbon 使用独立确定性数学引擎；Agent 的 Skills、Memory、自然语言报告不决定核算因子或政策金额。比较减排为负时原值保留。"
+      }
+    ],
+    "sources": [
+      "battery_platform/docs/V2_CARBON_IMPLEMENTATION.md",
+      "battery_platform/app/carbon/engine.py",
+      "battery_platform/frontend/src/pages/V2Carbon.tsx"
+    ]
+  },
+  {
+    "section": "独立碳与经济决策",
+    "title": "02 / 状态、效率与更换递推",
+    "subtitle": "用同一服务量表达老化与更换，不把一次检查当成物理恢复",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "仅用固定效率无法表达不同健康状态的能耗；仅用一次更换假设会遗漏期内多次更新。实现因此将状态概率递推和更新过程单列。状态包含效率 η、可用性、年龄、健康及旧/新安装 cohort。每期转移矩阵行和为 1，每期传播后的概率仍归一；正常运行要推进年龄，不能把旧安装静默重置为新电池。"
+      },
+      {
+        "type": "formula",
+        "text": "pₜ₊₁ = pₜ Pₜ；Qₜ = Σ可用s pₜ(s) Dₜ/ηₛ + 备用电量 + 辅助电量"
+      },
+      {
+        "type": "formula",
+        "text": "未满足服务 Uₜ = Dₜ Σ不可用s pₜ(s)；无明确备用时，Uₜ > 0 的候选不可行"
+      },
+      {
+        "type": "p",
+        "text": "Dₜ 是共同交付需求。期望电量必须取 E[D/η]，不能取 D/E[η]。演示中输出100 kWh，效率0.5/0.9各概率0.5，正确输入155.556 kWh，而均值捷径为142.857 kWh，低估12.698 kWh。辅助能耗若已包括在效率边界，不可再相加；不可用状态也不能以低耗电获得虚假的最优。"
+      },
+      {
+        "type": "h2",
+        "text": "旧剩余寿命与新寿命分别递推"
+      },
+      {
+        "type": "formula",
+        "text": "m新(h) = F_L(h) + Σₛ₌₁ʰ L(s) m新(h−s)；m旧(h) = F_R(h) + Σₛ₌₁ʰ R(s) m新(h−s)"
+      },
+      {
+        "type": "p",
+        "text": "R/L 是旧剩余/新寿命离散PMF，F_X(h)=Σₛ≤h X(s)，m(0)=0。PMF缺失质量须显式声明存活至计算期限，不能由右删失自动推断。更换进入年龄0的新cohort并增加制造。R=L=确定2期时，6期内更换3次；延期不能声称永久避免制造。最后1000周期未观察到EOL，只提供寿命下界。"
+      },
+      {
+        "type": "callout",
+        "label": "当前适用性",
+        "text": "当前 SOH 输出尚不能自动映射为验证过的寿命/效率转移模型；代码拒绝未建立的 validated_model 输入。显式测量或用户情景可核算，普通实测电量无需寿命 ML。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/carbon/engine.py",
+      "battery_platform/app/carbon/schemas.py",
+      "content_v1/fixtures/carbon.jsonl"
+    ]
+  },
+  {
+    "section": "独立碳与经济决策",
+    "title": "03 / Γ 鲁棒区间与共享误差",
+    "subtitle": "给出定义参数集内的上下界，避免夸大或丢失共同来源误差",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "排放因子并非绝对精确。实现使用固定活动清单的仿射预算鲁棒模型：每项因子偏差有范围，并通过共享 uncertainty_key 表示共同误差来源。Γ 控制同时偏离的总预算，使用户能比较名义、局部最坏与全维最坏情形。它描述所设误差集合，不能称作95%统计置信度。"
+      },
+      {
+        "type": "formula",
+        "text": "E(z) = E₀ + Σⱼ cⱼzⱼ；|zⱼ| ≤ 1，Σⱼ|zⱼ| ≤ Γ"
+      },
+      {
+        "type": "formula",
+        "text": "hΓ(c) = Σⱼ₌₁ᵏ |c|排序ⱼ + (Γ−k)|c|排序ₖ₊₁；k=floor(Γ)，0≤Γ≤n；k=n时下一项取0。E∈[E₀−hΓ，E₀+hΓ]"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Γ",
+          "名义值",
+          "下界 / 上界（kg）"
+        ],
+        "rows": [
+          [
+            "0",
+            "100",
+            "100 / 100"
+          ],
+          [
+            "1",
+            "100",
+            "80 / 120"
+          ],
+          [
+            "1.5",
+            "100",
+            "75 / 125"
+          ],
+          [
+            "2",
+            "100",
+            "70 / 130"
+          ]
+        ],
+        "widths": [
+          0.2,
+          0.25,
+          0.55
+        ]
+      },
+      {
+        "type": "p",
+        "text": "上表使用误差系数20和10，排序后取完整最大项与下一项的部分。比较减排需要先按同一来源求系数差，再对差值求鲁棒性。若基准200、候选100且共同grid=20、meter=10，来源差为0，收益上下界都为100 kg。把两个独立区间硬相减会失去这一抵消结构。"
+      },
+      {
+        "type": "formula",
+        "text": "B₀ = E基准₀−E候选₀；cB = c基准−c候选；B∈[B₀−hΓ(cB)，B₀+hΓ(cB)]"
+      },
+      {
+        "type": "p",
+        "text": "只有收益下界>0，才报告在定义集合内始终更优。另一个演示名义收益5 kg、偏差20 kg、Γ=1，其范围[−15,25]，系统明确不能确认全面占优。用户可查看 Γ 扫描、共享来源及系数，而不是只看一个积极点估计。"
+      },
+      {
+        "type": "callout",
+        "label": "精确性边界",
+        "text": "支持函数对固定活动、仿射系数精确。效率与转移概率的非线性不确定性须显式另列情景，未被 Γ 自动涵盖；当前最多32个共享维度。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/carbon/engine.py",
+      "content_v1/fixtures/carbon.jsonl",
+      "docs/V2_FIXTURES_DETAIL.md"
+    ]
+  },
+  {
+    "section": "CARBON图 / ROBUSTNESS",
+    "title": "看见不确定性，也看见决策权衡",
+    "subtitle": "两图均为合成数学演示；参数Γ不是概率，Pareto不是自动采购许可。",
+    "blocks": [
+      {
+        "type": "chart",
+        "kind": "gamma",
+        "height": 218
+      },
+      {
+        "type": "chart",
+        "kind": "pareto",
+        "height": 218
+      },
+      {
+        "type": "p",
+        "text": "Γ扫描展示偏差集合扩大后的上界；预算支持函数对固定仿射活动精确。Pareto先剔除不可行D，再保留A/C；B成本与碳排均不优于A，因此被支配。前沿只覆盖输入候选，不宣称已经搜索全部现实方案。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/carbon/engine.py",
+      "content_v1/fixtures/carbon.jsonl",
+      "docs/V2_FIXTURES_DETAIL.md",
+      "battery_platform/frontend/src/pages/V2Carbon.tsx"
+    ]
+  },
+  {
+    "section": "独立碳与经济决策",
+    "title": "04 / 运营 NPV、资格现金与影子值",
+    "subtitle": "物理排放不折现；成本、现金和内部估值分别给出",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "低碳候选可能成本更高，成本低的候选也可能不满足服务或安全约束。实现将各期能源、检查、人工、更换、停机和其他现金成本计入运营NPV；残值只按期末折现减一次。排放kg保持物理量，不随人民币折现率缩小。能源费用可由状态电量×单价自动计算，启用后禁止重复录入人工电费。"
+      },
+      {
+        "type": "formula",
+        "text": "NPV运营 = C₀ + Σₜ Cₜ/(1+r)^{tΔ} − V期末/(1+r)^{HΔ}"
+      },
+      {
+        "type": "formula",
+        "text": "NPV净成本 = NPV运营 − 合格政策现金现值；影子值 = B(kg)/1000 × 碳影子价(RMB/t)"
+      },
+      {
+        "type": "p",
+        "text": "政策资格是独立编码规则：检查地区、主体、有效日期、已核验规则版本、技术条件、所需材料及交易/补助依据；已结算还要求收款事实。缺证据或不合资格不能产生可兑现收入。同一收款不得重复使用，规则cap在项目全部期间合计计算，不允许每期重新拿一次完整上限。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "演示情况",
+          "运营节约",
+          "影子值",
+          "信用现金",
+          "总现金节约"
+        ],
+        "rows": [
+          [
+            "无资格：减排1t",
+            "20元",
+            "80元",
+            "未建立",
+            "20元"
+          ],
+          [
+            "有测试资格：模拟签发0.8t",
+            "20元",
+            "80元",
+            "80元",
+            "100元"
+          ]
+        ],
+        "widths": [
+          0.32,
+          0.17,
+          0.16,
+          0.17,
+          0.18
+        ]
+      },
+      {
+        "type": "p",
+        "text": "表内影子价为80元/t、模拟合同价100元/t。两行都可有内部影子值80元；只有第二行的模拟签发0.8t支持演示现金80元。影子值并不再加进总现金。TEST_RULE_001是虚构算例，没有真实政府文号、官方政策或已兑现收益。运行时将 eligible、realized、projected eligible 分列，用户能查看具体缺材料、失败条件和规则版本。"
+      },
+      {
+        "type": "callout",
+        "label": "产品意义",
+        "text": "用户获得成本与收益的可审查分账，而不是一个混合“总收益”数。程序匹配资格不构成法律意见、第三方核证或碳信用签发；报告没有推测真实政策收入。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/carbon/engine.py",
+      "battery_platform/app/carbon/schemas.py",
+      "content_v1/fixtures/carbon.jsonl"
+    ]
+  },
+  {
+    "section": "独立碳与经济决策",
+    "title": "05 / Pareto、ε 约束与敏感性",
+    "subtitle": "让管理者看见成本—碳权衡，以及结论何时会改变",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "系统对明确有限候选先检查共同服务量与约束，只把可行方案送入Pareto比较。一个方案若成本与碳都不优于另一个，且至少一项严格更差，就被支配；不同方案的完全相同坐标仍保留。前沿不是自动派单结论，它向管理者展示“再减少碳需要增加多少成本”的候选关系。"
+      },
+      {
+        "type": "formula",
+        "text": "min 成本上界(x)，s.t. 碳上界(x) ≤ ε，x ∈ 可行候选集"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "演示方案",
+          "成本",
+          "碳",
+          "数学结果"
+        ],
+        "rows": [
+          [
+            "A",
+            "10",
+            "10",
+            "前沿"
+          ],
+          [
+            "B",
+            "15",
+            "15",
+            "被A支配"
+          ],
+          [
+            "C",
+            "20",
+            "5",
+            "前沿：更贵但碳更低"
+          ],
+          [
+            "D",
+            "0",
+            "0",
+            "不可行，不参与前沿"
+          ]
+        ],
+        "widths": [
+          0.18,
+          0.18,
+          0.18,
+          0.46
+        ]
+      },
+      {
+        "type": "p",
+        "text": "用户界面以圆点画名义值，以方点画当前Γ上界；线段连接同一候选的两种结果，名义前沿和鲁棒前沿分开着色。ε约束回答“在碳上限内，哪个候选成本最少”；Γ扫描回答误差预算扩大后前沿是否改变，而不是将Γ当成概率。上述A/C来自冻结数学fixture，不是虚构真实人民币报价。"
+      },
+      {
+        "type": "h2",
+        "text": "结论切换点的精确计算"
+      },
+      {
+        "type": "formula",
+        "text": "成本相交点 z* = (Cᵦ₀−Cₐ₀)/(cₐ−cᵦ)；碳可行边界 z* = (ε−E₀)/cE"
+      },
+      {
+        "type": "p",
+        "text": "敏感性一次改变一个共享来源 z∈[−1,1]，其余取名义值。代码收集−1、0、1、成本交点与碳门槛交点，逐一核验边界及开区间中点，返回建议区间和排名是否改变。用户能追踪是哪一个因子导致结论切换，不能只看到无来源的“推荐最优”。若工作预算超限，返回resource_limit并要求缩小ε网格，不假装完成。"
+      },
+      {
+        "type": "callout",
+        "label": "实现范围",
+        "text": "这是有限候选枚举，没有宣称模块组合整数优化。敏感性精确性限于单个仿射来源，其余名义；没有对多个非线性参数联合给全局最优保证。"
+      }
+    ],
+    "sources": [
+      "battery_platform/app/carbon/engine.py",
+      "battery_platform/frontend/src/pages/V2Carbon.tsx",
+      "content_v1/fixtures/carbon.jsonl"
+    ]
+  },
+  {
+    "section": "CARBON图 / POSITIVE AND NEGATIVE",
+    "title": "延用是否减排，答案由边界与效率决定",
+    "subtitle": "同为1000 kWh交付、0.5 kg/kWh电网因子；新/旧效率为0.9/0.8。",
+    "blocks": [
+      {
+        "type": "chart",
+        "kind": "carbonbenefit",
+        "height": 210
+      },
+      {
+        "type": "formula",
+        "label": "公式与口径",
+        "text": "基准 E新 = M制造 + D/η新 × fgrid；候选 E延用 = D/η旧 × fgrid；B=E新−E延用"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "新电池制造排放",
+          "B减排",
+          "相对基准变化"
+        ],
+        "rows": [
+          [
+            "100 kg",
+            "+30.556 kg",
+            "降低4.66%"
+          ],
+          [
+            "20 kg",
+            "−49.444 kg",
+            "增加8.59%"
+          ]
+        ],
+        "widths": [
+          0.37,
+          0.3,
+          0.33
+        ]
+      },
+      {
+        "type": "p",
+        "text": "制造排放高时，在这个期限内延用有收益；制造排放较低时，旧电池额外用电导致净增排。系统保留负数，不用“绿色”标签替代数学结果。另一个鲁棒案例名义收益5 kg、Γ=1偏差20 kg，范围[−15,25]，也不能确认始终更好。"
+      },
+      {
+        "type": "callout",
+        "label": "这类图能证明什么",
+        "text": "能验证具体算例的核算和正负方向，不能证明真实项目节省了这些排放。真实结论还需要实际活动、有效因子、共同服务边界、审核和对应资格。"
+      }
+    ],
+    "sources": [
+      "content_v1/fixtures/carbon.jsonl",
+      "battery_platform/app/carbon/storage.py",
+      "battery_platform/tests/test_v2_carbon.py",
+      "docs/V2_FIXTURES_DETAIL.md",
+      "battery_platform/app/carbon/engine.py"
+    ]
+  },
+  {
+    "section": "独立碳与经济决策",
+    "title": "06 / 正负收益、台账与完整验算",
+    "subtitle": "减排要能复核；演示、预测与已结算记录不能混为一谈",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "最有说明力的新增结果，是系统能保留正收益也能识别负收益。同样输出1000 kWh，电网因子0.5kg/kWh：基准新电池效率0.9，候选继续使用效率0.8。候选虽然少制造，却多耗电；制造差额不同会导致相反选择。下表数字来自冻结合成数学fixture，验证核算方法，不代表真实设备节省。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "场景",
+          "基准排放",
+          "候选排放",
+          "减排/变化"
+        ],
+        "rows": [
+          [
+            "基准制造100kg",
+            "655.556kg",
+            "625kg",
+            "+30.556kg，减少4.66%"
+          ],
+          [
+            "基准制造20kg",
+            "575.556kg",
+            "625kg",
+            "−49.444kg，增加8.59%"
+          ],
+          [
+            "简单100kWh×0.5",
+            "50kg",
+            "—",
+            "无需寿命ML"
+          ]
+        ],
+        "widths": [
+          0.27,
+          0.22,
+          0.22,
+          0.29
+        ]
+      },
+      {
+        "type": "formula",
+        "text": "正例：100 + 1000/0.9×0.5 − 1000/0.8×0.5 = 30.556 kg"
+      },
+      {
+        "type": "p",
+        "text": "活动排放、产品足迹和比较减排采用不同claim_type；预测和已结算采用不同basis。状态推导未来清单不能通过把标签改为settled入账。冻结结果追加台账还需记账依据、期间和审核状态；重算Γ不能对同一来源重复认领收益。纠错保留原行，以关联冲销修正，一条原记录受一条纠错约束。 当前API仅全额冲销：原40、冲销−40，再以新更正情景/版本入账30。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "台账演示",
+          "记录/导出"
+        ],
+        "rows": [
+          [
+            "独立数学fixture：40−10",
+            "净额30kg；非当前冲销API能力"
+          ],
+          [
+            "正式导出",
+            "本演示排放导出0kg，synthetic不能变正式"
+          ]
+        ],
+        "widths": [
+          0.45,
+          0.55
+        ]
+      },
+      {
+        "type": "p",
+        "text": "正式导出排除合成、未核验、预测、未审核、无效冲销以及重复来源；分组保留边界、期间、气体和来源。Carbon有24项确定性与API账务测试；30个数学fixture给出独立算术合同，其中4个鲁棒范围、3个更新过程、2个Pareto直接与实际引擎对照。其余由手算与结构断言验证，没有宣称全部30项完成真实API入账。"
+      },
+      {
+        "type": "callout",
+        "label": "证据强度",
+        "text": "已证明指定算例下的数学正确性和账务边界；没有真实项目测量减排、政策获批或信用签发数据。本章图表均标注合成数学演示，不将这些数字写为现场收益。"
+      }
+    ],
+    "sources": [
+      "content_v1/fixtures/carbon.jsonl",
+      "battery_platform/app/carbon/storage.py",
+      "battery_platform/tests/test_v2_carbon.py",
+      "docs/V2_FIXTURES_DETAIL.md"
+    ]
+  },
+  {
+    "section": "修复专题 / F01",
+    "title": "缺温与真实 0°C，现在是不同输入",
+    "subtitle": "缺失标记、通道有效性、特征schema、模型权重和新旧指标一起管理。",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "情况",
+          "当前处理"
+        ],
+        "rows": [
+          [
+            "完全缺温 / 全NaN",
+            "填充值伴随无效通道；温度统计缺失"
+          ],
+          [
+            "短温度数组 / 局部NaN",
+            "保留合格部分；不跨缺失间隙伪插值；标记部分覆盖"
+          ],
+          [
+            "每点真实0°C",
+            "温度值0且通道有效，能与缺失区分"
+          ],
+          [
+            "旧schema + 新权重或反向",
+            "显式拒绝，避免沿用旧指标"
+          ]
+        ],
+        "widths": [
+          0.33,
+          0.67
+        ]
+      },
+      {
+        "type": "p",
+        "text": "准入后统计六类来源表：4744条V/I/time合格分段、5965256个基础有效点未触发旧缺温置零。MATR摘要与DyAD缺少合格曲线另列不适用；CH有限数组不证明真实传感器来源。这个统计不等于所有下载数据无缺温，更不证明温度就是此前负迁移原因。"
+      },
+      {
+        "type": "p",
+        "text": "重建376行开发包，train/dev/calibration=224/72/80。物理人口、30D原始标量与标签逐位一致，M1/H-M1/M2各三种子共9次独立重训，旧artifact SHA不变。M1/H-M1开发分相同；M2 XJTU 2.6719→4.8088变差，MATR 9.7474→8.5294改善，未选用。"
+      },
+      {
+        "type": "callout",
+        "label": "新旧证据保持可追溯",
+        "text": "新H-M1绑定schema/data/bundle/code SHA，JSON重放误差0。旧final、保护集和云pilot均未重评分；MLP输入与预处理未变，但明确保留为原标量参考。"
+      }
+    ],
+    "sources": [
+      "battery_platform/docs/F01_CHANNEL_VALIDITY_RETRAIN_20261002.md",
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/research/f01_channel_validity_20261002_qualified/development_model_comparison.json",
+      "battery_platform/research/joint_xjtu_matr/summary/joint_benchmark_summary_20261002.json"
+    ]
+  },
+  {
+    "section": "修复专题 / F02–F07",
+    "title": "反馈、Memory、GEPA 与指标已修复",
+    "subtitle": "这些是当前软件行为的修复验收，不能自动折算成新的LLM质量分数。",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "发现",
+          "修复后的行为",
+          "关键验收"
+        ],
+        "rows": [
+          [
+            "F02 小数断句",
+            "数值友好切句，保留原文span",
+            "小数/负数/科学记数/范围/日期/单位"
+          ],
+          [
+            "F03 六句截断",
+            "完整事实引用；语义优先摘要；溢出按需检索",
+            "末尾测量/结论、晚反证、文字测量冲突"
+          ],
+          [
+            "F04 来源永久消费",
+            "版本化预留与消费；有界失败恢复；主动取消保护",
+            "临时失败、无Key、CAS、改版、重启"
+          ],
+          [
+            "F05 no_memory泄漏",
+            "执行层禁用初始/历史/工具Memory及外部回调",
+            "禁用组全部memory_ids为空；对照可检索"
+          ],
+          [
+            "F06 指标错名/曲线混合",
+            "严格共用Metrics；计数、比率和分母分开",
+            "真实API→worker→列表→浏览器"
+          ],
+          [
+            "F07 零相关检索",
+            "区分事件历史与相似经验；中文相关性与空结果",
+            "无关/通用/空查询为空，正反例仅在相关候选"
+          ]
+        ],
+        "widths": [
+          0.23,
+          0.44,
+          0.33
+        ]
+      },
+      {
+        "type": "p",
+        "text": "ExperimentMetrics真实字段包括grounded_assertion_ratio、diagnosis_accuracy、false_alarms、misses。没有独立正负标签分母时不生成率；未测量字段显示unsupported。普通ReplayEvaluator没有可假定的顶层score。曲线按协议、split、方法、案例集、口径及真实云/规则执行方式分组。"
+      },
+      {
+        "type": "callout",
+        "label": "回归与旧指标",
+        "text": "604 Python通过、13界面合同和2真实浏览器通过。旧云端报告、失败成本和实验分数保留；修复后没有新增云请求或重新给sealed改分。"
+      }
+    ],
+    "sources": [
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "battery_platform/app/agent/experiment_metrics.py"
+    ]
+  },
+  {
+    "section": "真实界面 / ACCEPTANCE",
+    "title": "数值与拒绝边界，在界面上都看得见",
+    "subtitle": "本截图来自已归档真实Chrome/API验收；这是单样例界面，不是总体性能图。",
+    "blocks": [
+      {
+        "type": "image",
+        "path": "output/pdf/source/figures/numeric-profile-crop.png",
+        "max_height": 265,
+        "caption": "真实数值页局部：SOH 95.32%；无界校准与不支持头原样展示。"
+      },
+      {
+        "type": "p",
+        "text": "用户可绑定模型包与输入周期，看到SOH、寿命、效率和风险各头的支持状态及来源。此样例SOH约95.32%，校准区间无界，其他头明确unsupported；不能将它改成所有模型头均可用的演示。诊断页另归档rule_baseline报告，缺云Key时不假称云端结果。"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "验证层",
+          "当前证据"
+        ],
+        "rows": [
+          [
+            "Python",
+            "604 passed / 82.61s"
+          ],
+          [
+            "Web",
+            "TypeScript typecheck与Vite build通过"
+          ],
+          [
+            "浏览器",
+            "13/13受控响应界面合同；2/2真实服务浏览器 / 14.250s"
+          ],
+          [
+            "微信TEST",
+            "历史11项行为验证；原生AppID/设备外部验收待完成"
+          ]
+        ],
+        "widths": [
+          0.25,
+          0.75
+        ]
+      },
+      {
+        "type": "callout",
+        "label": "不同验证回答不同问题",
+        "text": "软件测试证明合同与业务边界，数值重放证明模型加载一致性，云pilot证明实际接口可运行；专业盲评、真实故障泛化、现场使用和真实减排仍须独立证据。"
+      }
+    ],
+    "sources": [
+      "docs/V2_F01_F07_REPAIR_20261002.md",
+      "docs/evidence/v2/actual-numeric-profile.png",
+      "docs/evidence/v2/actual-diagnostic-report.png"
+    ]
+  },
+  {
+    "section": "交付与复现 / REPRODUCTION",
+    "title": "一次性安装，逐层复现，保留失败与版本",
+    "subtitle": "依赖、命令、材料和阶段日志均在仓库中；原始大数据与密钥保持本机管理。",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "阶段/提交",
+          "可复核的工作"
+        ],
+        "rows": [
+          [
+            "5aaee397 / 69b7a548",
+            "UV锁定与原子迁移；2400情景与16Skills"
+          ],
+          [
+            "ad837321 / 1bcadd66",
+            "Carbon鲁棒核算；约束派单"
+          ],
+          [
+            "0addea66 / 7ac492c8",
+            "单Agent与Context进化；真实API/现场闭环"
+          ],
+          [
+            "ce4f87fc / 6f9a9274",
+            "多源实际模型；冻结云Agent比较与tokens"
+          ],
+          [
+            "956e5b59 / cc8eb1ab",
+            "MATR物理续接/删失寿命；自动回归/分组/包输入"
+          ],
+          [
+            "4a4913bc / d9cf67a3",
+            "XJTU+MATR基线；H-M1开发优化"
+          ],
+          [
+            "fa3273b9 / 0d9a53de",
+            "F01有效性与独立重训；F02–F07及统一验收"
+          ]
+        ],
+        "widths": [
+          0.34,
+          0.66
+        ]
+      },
+      {
+        "type": "p",
+        "text": "根pyproject.toml与uv.lock保留冻结环境，scripts/v2提供install/bootstrap/demo/serve/test入口。实验配置、来源manifest、数据hash、逐seed JSON、导出模型和独立文档分别归档；PDF source目录保留全部章节JSON、图表数据、构建脚本、排版和QA回执。"
+      },
+      {
+        "type": "p",
+        "text": "复现先检查数据许可/路径与冻结依赖，再按对应独立协议构造train/dev/calibration并运行。历史final是保存结果，不由PDF构建触发重评分。PDF生成不调用云API，图表从已保存回执取数；此报告不含测试Key，也不推测账单金额。"
+      },
+      {
+        "type": "callout",
+        "label": "版本比较与后续条件",
+        "text": "报告固定比较main c4203014与DEV实现0d9a53de。当前文档提交只汇编、纠错并归档PDF；待完成的H-M1生产多任务接入、新独立盲测、Self Evolve因果实验、微信原生验证和真实Carbon核验均明确保留。"
+      }
+    ],
+    "sources": [
+      "README.md",
+      "docs/V2_IMPLEMENTATION_LOG.md",
+      "docs/V2_DELIVERY_ACCEPTANCE.md",
+      "pyproject.toml",
+      "uv.lock"
+    ]
+  }
+]

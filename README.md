@@ -22,6 +22,7 @@ Memory/Skill 通过程序校验后自动生效，Carbon 在独立工作区计算
 | 内容 | 独立记录 |
 | --- | --- |
 | 每次 Commit 做了什么 | [实施总记录](docs/V2_IMPLEMENTATION_LOG.md) |
+| main→DEV 完整功能、公式、模型选择与分数对比 | [62页图文PDF](output/pdf/HuiGuan_DEV_vs_main_20261002.pdf)、[汇编/复核记录](docs/V2_MAIN_COMPARISON_PDF_20261002.md)、[完整可搜索正文](output/pdf/source/report_content.md) |
 | UV 安装、账号、API、升级与恢复 | [运行手册](docs/V2_RUNBOOK.md) |
 | 合成数据、16 个 Skill、派单/碳算例 | [合成内容](docs/V2_CONTENT_IMPLEMENTATION.md)、[Skill 明细](docs/V2_SKILLS_DETAIL.md)、[数学算例](docs/V2_FIXTURES_DETAIL.md) |
 | 单 Agent、ACE/GEPA 与实际云端对照 | [Agent 实现](docs/V2_AGENT_IMPLEMENTATION.md)、[冻结实验](docs/V2_AGENT_EXPERIMENT.md) |
